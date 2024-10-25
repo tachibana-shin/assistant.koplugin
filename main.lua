@@ -11,6 +11,9 @@ local AskGPT = InputContainer:new {
   is_doc_only = true,
 }
 
+-- Flag to ensure the update message is shown only once per session
+local updateMessageShown = false
+
 function AskGPT:init()
   self.ui.highlight:addToHighlightDialog("askgpt_ChatGPT", function(_reader_highlight_instance)
     return {
@@ -18,7 +21,10 @@ function AskGPT:init()
       enabled = Device:hasClipboard(),
       callback = function()
         NetworkMgr:runWhenOnline(function()
-          UpdateChecker.checkForUpdates()
+          if not updateMessageShown then
+            UpdateChecker.checkForUpdates()
+            updateMessageShown = true -- Set flag to true so it won't show again
+          end
           showChatGPTDialog(self.ui, _reader_highlight_instance.selected_text.text)
         end)
       end,
