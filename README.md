@@ -39,18 +39,29 @@ local CONFIGURATION = {
 return CONFIGURATION
 ```
 
-Additionally, as other extra features are rolled out, they will be optional and can be set in the `features` table in the `configuration.lua` file. For example, if you want to use the `translate_to` parameter, you can set it in the `features` table like so:
+## Other Features
+
+Additionally, as other extra features are rolled out, they will be optional and can be set in the `features` table in the `configuration.lua` file.
+
+
+### Translation
+
+To enable translation, you can set the `translate_to` parameter in the `features` table. For example, if you want to translate the text to French, you can set the `translate_to` parameter to `"French"`.
+
+By setting the `translate_to` parameter, you can have the plugin translate the text to the language you specify. This is useful if you are reading a book in a language you are not fluent in and want to understand a chunk of text in a language you are more comfortable with.
 
 ```lua
 local CONFIGURATION = {
     api_key = "YOUR_API_KEY",
     model = "gpt-4o-mini",
-    base_url = "https://api.openai.com/v1/chat/completions"
+    base_url = "https://api.openai.com/v1/chat/completions",
     features = {
         translate_to = "French"
     }
 }
 ```
+
+## Installation
 
 If you clone this project, you should be able to put the directory, `askgpt.koplugin`, in the `koreader/plugins` directory and it should work. If you want to use the plugin without cloning the project, you can download the zip file from the releases page and extract the `askgpt.koplugin` directory to the `koreader/plugins` directory. If for some reason you extract the files of this repository in another directory, rename it before moving it to the `koreader/plugins` directory.
 
