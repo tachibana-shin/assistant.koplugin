@@ -1,75 +1,78 @@
 local api_key = nil
 local CONFIGURATION = nil
+local Defaults = require("api_handlers.defaults")
 
--- Attempt to load the api_key module. IN A LATER VERSION, THIS WILL BE REMOVED
-local success, result = pcall(function() return require("api_key") end)
+-- Attempt to load the configuration module first
+local success, result = pcall(function() return require("configuration") end)
 if success then
-  api_key = result.key
+    CONFIGURATION = result
 else
-  print("api_key.lua not found, skipping...")
+    print("configuration.lua not found, attempting legacy api_key.lua...")
+    -- Try legacy api_key as fallback
+    success, result = pcall(function() return require("api_key") end)
+    if success then
+        api_key = result.key
+        -- Create configuration from legacy api_key using defaults
+        local provider = "anthropic" -- Default provider
+        CONFIGURATION = Defaults.ProviderDefaults[provider]
+        CONFIGURATION.api_key = api_key
+    else
+        print("No configuration found. Please set up configuration.lua")
+    end
 end
 
--- Attempt to load the configuration module
-success, result = pcall(function() return require("configuration") end)
-if success then
-  CONFIGURATION = result
-else
-  print("configuration.lua not found, skipping...")
+-- Define handlers table with proper error handling
+local handlers = {}
+local function loadHandler(name)
+    local success, handler = pcall(function() 
+        return require("api_handlers." .. name)
+    end)
+    if success then
+        handlers[name] = handler
+    else
+        print("Failed to load " .. name .. " handler: " .. tostring(handler))
+    end
 end
 
--- Define your queryChatGPT function
-local https = require("ssl.https")
-local http = require("socket.http")
-local ltn12 = require("ltn12")
-local json = require("json")
+loadHandler("anthropic")
+loadHandler("openai")
+loadHandler("deepseek")
+
+local function getApiKey(provider)
+    local success, apikeys = pcall(function() return require("apikeys") end)
+    if success and apikeys and apikeys[provider] then
+        return apikeys[provider]
+    end
+    return nil
+end
 
 local function queryChatGPT(message_history)
-  -- Use api_key from CONFIGURATION or fallback to the api_key module
-  local api_key_value = CONFIGURATION and CONFIGURATION.api_key or api_key
-  local api_url = CONFIGURATION and CONFIGURATION.base_url or "https://api.openai.com/v1/chat/completions"
-  local model = CONFIGURATION and CONFIGURATION.model or "gpt-4o-mini"
-
-  -- Determine whether to use http or https
-  local request_library = api_url:match("^https://") and https or http
-
-  -- Start building the request body
-  local requestBodyTable = {
-    model = model,
-    messages = message_history,
-  }
-
-  -- Add additional parameters if they exist
-  if CONFIGURATION and CONFIGURATION.additional_parameters then
-    for key, value in pairs(CONFIGURATION.additional_parameters) do
-      requestBodyTable[key] = value
+    if not CONFIGURATION then
+        return "Error: No configuration found. Please set up configuration.lua"
     end
-  end
 
-  -- Encode the request body as JSON
-  local requestBody = json.encode(requestBodyTable)
-
-  local headers = {
-    ["Content-Type"] = "application/json",
-    ["Authorization"] = "Bearer " .. api_key_value,
-  }
-
-  local responseBody = {}
-
-  -- Make the HTTP/HTTPS request
-  local res, code, responseHeaders = request_library.request {
-    url = api_url,
-    method = "POST",
-    headers = headers,
-    source = ltn12.source.string(requestBody),
-    sink = ltn12.sink.table(responseBody),
-  }
-
-  if code ~= 200 then
-    error("Error querying ChatGPT API: " .. code)
-  end
-
-  local response = json.decode(table.concat(responseBody))
-  return response.choices[1].message.content
+    local provider = CONFIGURATION.provider or "anthropic"
+    local handler = handlers[provider]
+    
+    if not handler then
+        return "Error: Unsupported provider " .. provider
+    end
+    
+    -- Get API key for the selected provider
+    CONFIGURATION.api_key = getApiKey(provider)
+    if not CONFIGURATION.api_key then
+        return "Error: No API key found for provider " .. provider .. ". Please check apikeys.lua"
+    end
+    
+    local success, result = pcall(function()
+        return handler:query(message_history, CONFIGURATION)
+    end)
+    
+    if not success then
+        return "Error: " .. tostring(result)
+    end
+    
+    return result
 end
 
 return queryChatGPT

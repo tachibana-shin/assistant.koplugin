@@ -17,7 +17,7 @@ local updateMessageShown = false
 function AskGPT:init()
   self.ui.highlight:addToHighlightDialog("askgpt_ChatGPT", function(_reader_highlight_instance)
     return {
-      text = _("Ask ChatGPT"),
+      text = _("Assistant"),
       enabled = Device:hasClipboard(),
       callback = function()
         NetworkMgr:runWhenOnline(function()

@@ -1,8 +1,64 @@
 local CONFIGURATION = {
-    api_key = "YOUR_API_KEY",
-    model = "gpt-4o-mini",
-    base_url = "https://api.openai.com/v1/chat/completions",
-    additional_parameters = {},
+    -- Choose your preferred AI provider: "anthropic", "openai", or "deepseek"
+    provider = "openai",
+    
+    -- Provider-specific settings (override defaults in api_handlers/defaults.lua)
+    provider_settings = {
+        anthropic = {
+            model = "claude-3-5-haiku-latest",
+            base_url = "https://api.anthropic.com/v1/messages",
+            additional_parameters = {
+                anthropic_version = "2023-06-01",
+                max_tokens = 4096
+            }
+        },
+        openai = {
+            model = "gpt-4o-mini", --gpt-4
+            base_url = "https://api.openai.com/v1/chat/completions",
+            additional_parameters = {
+                temperature = 0.7,
+                max_tokens = 4096
+            }
+        }
+    },
+    
+    -- Optional features
+    features = {
+        hide_highlighted_text = false,  -- Set to true to hide the highlighted text at the top
+        hide_long_highlights = true,    -- Hide highlighted text if longer than threshold
+        long_highlight_threshold = 280,  -- Number of characters considered "long"
+        translate_to = "Turkish",  -- Set to language name to enable simple translation, e.g. "French"
+        system_prompt = nil, -- Custom system prompt for the AI ("Ask" button) to override the default
+        
+        -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant" if not set.
+        prompts = {
+            explain = {
+                text = "Explain",
+                system_prompt = "You are a helpful assistant that explains complex topics clearly and concisely. Break down concepts into simple terms. Answer in Turkish",
+                user_prompt = "Please explain the following text in Turkish: "
+            },
+            summarize = {
+                text = "Summarize",
+                system_prompt = "You are a summarization expert. Provide clear, concise summaries that capture the main points. Answer in Turkish",
+                user_prompt = "Please provide a concise summary of the following text in Turkish: "
+            },
+            historical_context = {
+                text = "Historical Context",
+                system_prompt = "You are a historical context expert. Provide relevant historical background and connections. Answer in Turkish",
+                user_prompt = "Explain the historical context of this text in Turkish: "
+            },
+            key_points = {
+                text = "Key Points",
+                system_prompt = "You are a key points expert. Provide a concise list of key points from the text. Answer in Turkish",
+                user_prompt = "Please provide a concise list of key points from the following text in Turkish: "
+            },
+            ELI5 = {
+                text = "ELI5",
+                system_prompt = "You are an ELI5 expert. Provide simple, concise explanations for complex terms. Answer in Turkish",
+                user_prompt = "Please provide an ELI5 explanation for the following text in Turkish: "
+            }
+        }
+    }
 }
 
 return CONFIGURATION

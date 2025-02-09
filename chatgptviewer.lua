@@ -66,7 +66,12 @@ local ChatGPTViewer = InputContainer:extend {
   find_centered_lines_count = 5, -- line with find results to be not far from the center
 
   onAskQuestion = nil,
+  input_dialog = nil,
 }
+
+-- Global variables
+local active_chatgpt_viewer = nil
+local is_input_dialog_open = false
 
 function ChatGPTViewer:init()
   -- calculate window dimension
@@ -142,6 +147,13 @@ function ChatGPTViewer:init()
     }
   end
 
+  -- If another ChatGPTViewer is open, close it
+  if active_chatgpt_viewer and active_chatgpt_viewer ~= self then
+    UIManager:close(active_chatgpt_viewer)
+  end
+  
+  active_chatgpt_viewer = self
+
   local titlebar = TitleBar:new {
     width = self.width,
     align = "left",
@@ -215,6 +227,7 @@ function ChatGPTViewer:init()
     },
     {
       text = _("Close"),
+      id = "close",
       callback = function()
         self:onClose()
       end,
@@ -225,6 +238,69 @@ function ChatGPTViewer:init()
   if self.add_default_buttons or not self.buttons_table then
     table.insert(buttons, default_buttons)
   end
+  
+  -- Add a copy button to the bottom button row
+  local copy_button = {
+      text = _("Copy"),
+      callback = function()
+          if self.text and self.text ~= "" then
+              Device.input.setClipboardText(self.text)
+              UIManager:show(Notification:new{
+                  text = _("Text copied to clipboard"),
+                  timeout = 3,
+                  align = "center",
+                  vertical_align = "center"
+              })
+          end
+      end
+  }
+  
+  -- Add a button to show initial assistant options
+  local show_options_button = {
+      text = _("..."),
+      callback = function()
+          -- Reuse the existing showChatGPTDialog function
+          local showChatGPTDialog = require("dialogs")
+          
+          -- Create a dummy ui object with the document properties
+          local dummy_ui = {
+              document = {
+                  getProps = function()
+                      return {
+                          title = self.title or _("Unknown Title"),
+                          authors = _("AI Assistant")
+                      }
+                  end
+              }
+          }
+          
+          -- Ensure message_history is preserved
+          local preserved_message_history = self.message_history or {}
+          
+          -- Create a wrapper function to inject preserved message history
+          local function injectedShowChatGPTDialog(ui, highlightedText)
+              -- Temporarily modify the global message_history
+              local original_message_history = message_history
+              message_history = preserved_message_history
+              
+              -- Call the original dialog function
+              local result = showChatGPTDialog(ui, highlightedText)
+              
+              -- Restore the original message_history
+              message_history = original_message_history
+              
+              return result
+          end
+          
+          -- Directly call the dialog with the current highlighted text
+          injectedShowChatGPTDialog(dummy_ui, self.highlighted_text or "")
+      end
+  }
+  
+  -- Insert the buttons into the existing buttons, with close button on the right
+  table.insert(buttons[#buttons], copy_button)
+  -- table.insert(buttons[#buttons], show_options_button)
+  
   self.button_table = ButtonTable:new {
     width = self.width - 2 * self.button_padding,
     buttons = buttons,
@@ -300,43 +376,153 @@ function ChatGPTViewer:init()
   }
 end
 
-function ChatGPTViewer:askAnotherQuestion()
-  local input_dialog
-  input_dialog = InputDialog:new {
-    title = _("Ask another question"),
-    input = "",
-    input_type = "text",
-    description = _("Enter your question for ChatGPT."),
-    buttons = {
-      {
-        {
-          text = _("Cancel"),
-          callback = function()
-            UIManager:close(input_dialog)
-          end,
-        },
-        {
-          text = _("Ask"),
-          is_enter_default = true,
-          callback = function()
-            local input_text = input_dialog:getInputText()
-            if input_text and input_text ~= "" then
-              self:onAskQuestion(input_text)
-            end
-            UIManager:close(input_dialog)
-          end,
-        },
-      },
-    },
-  }
-  UIManager:show(input_dialog)
-  input_dialog:onShowKeyboard()
+function ChatGPTViewer:onCloseWidget()
+  -- Reset all history and context
+  self.text = ""
+  self.message_history = nil
+  self.highlighted_text = nil
+  
+  -- Reset the active window
+  if active_chatgpt_viewer == self then
+    active_chatgpt_viewer = nil
+  end
+  
+  -- Call InputContainer's default onCloseWidget method
+  if InputContainer.onCloseWidget then
+    InputContainer.onCloseWidget(self)
+  end
 end
 
-function ChatGPTViewer:onCloseWidget()
-  UIManager:setDirty(nil, function()
-    return "partial", self.frame.dimen
-  end)
+function ChatGPTViewer:askAnotherQuestion()
+  -- Prevent multiple dialogs
+  if self.input_dialog and self.input_dialog.dialog_open then
+    return
+  end
+
+  -- Attempt to load configuration
+  local success, CONFIGURATION = pcall(function() return require("configuration") end)
+  
+  -- Prepare default options with fallback
+  local default_options = {
+    -- Default built-in options
+    {
+      text = _("Translate"),
+      callback = function(self, question)
+        
+        local target_language = nil
+        if CONFIGURATION and CONFIGURATION.features then
+          if type(CONFIGURATION.features.translate_to) == "string" then
+            target_language = CONFIGURATION.features.translate_to
+          end
+        end
+
+        if not target_language then
+          target_language = "Turkish"
+        end
+        if self.onAskQuestion then
+          self.onAskQuestion(self, _("Translate the following text to ") .. target_language .. ": " .. (question or ""))
+        end
+      end
+    },
+    {
+      text = _("Simplify"),
+      callback = function(self, question)
+        if self.onAskQuestion then
+          self.onAskQuestion(self, _("Simplify the text in its original language"))
+        end
+      end
+    }
+  }
+
+  -- Load additional prompts from configuration if available
+  if success and CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
+    local prompts = CONFIGURATION.features.prompts
+    for prompt_key, prompt_config in pairs(prompts) do
+      table.insert(default_options, {
+        text = prompt_config.text,
+        callback = function(self, question)
+          if self.onAskQuestion then
+            self.onAskQuestion(self, prompt_config.user_prompt .. "\n" .. (question or ""))
+          end
+        end
+      })
+    end
+  end
+
+  -- Prepare buttons
+  local buttons = {
+    {
+      text = _("Cancel"),
+      id = "close",
+      callback = function()
+        if self.input_dialog then
+          UIManager:close(self.input_dialog)
+          self.input_dialog = nil
+        end
+      end
+    },
+    {
+      text = _("Ask"),
+      is_enter_default = true,
+      callback = function()
+        local question = self.input_dialog:getInputText()
+        
+        UIManager:close(self.input_dialog)
+        self.input_dialog = nil
+        
+        if self.onAskQuestion then
+          self.onAskQuestion(self, question)
+        end
+      end
+    }
+  }
+
+  -- Add custom prompt buttons
+  for _, option in ipairs(default_options) do
+    table.insert(buttons, {
+      text = option.text,
+      callback = function()
+        local question = self.input_dialog:getInputText()
+        
+        UIManager:close(self.input_dialog)
+        self.input_dialog = nil
+        
+        option.callback(self, question)
+      end
+    })
+  end
+
+  -- Split buttons into rows (3 buttons per row)
+  local button_rows = {}
+  for i = 1, #buttons, 3 do
+    local row = {}
+    for j = 0, 2 do
+      if buttons[i + j] then
+        table.insert(row, buttons[i + j])
+      end
+    end
+    table.insert(button_rows, row)
+  end
+
+  -- Create input dialog
+  self.input_dialog = InputDialog:new {
+    title = _("Ask Another Question"),
+    input = "",
+    input_hint = _("Type your question here"),
+    input_type = "text",
+    width = Screen:getWidth() * 0.8,
+    height = Screen:getHeight() * 0.4,
+    buttons = button_rows,
+    close_callback = function()
+      if self.input_dialog then
+        UIManager:close(self.input_dialog)
+        self.input_dialog = nil
+      end
+    end
+  }
+
+  -- Show the dialog
+  UIManager:show(self.input_dialog)
 end
 
 function ChatGPTViewer:onShow()
@@ -347,9 +533,41 @@ function ChatGPTViewer:onShow()
 end
 
 function ChatGPTViewer:onTapClose(arg, ges_ev)
+  if self.button_table then
+    for _, button_row in ipairs(self.button_table.buttons) do
+      for _, button in ipairs(button_row) do
+        if button.id == "close" and button.dimen then
+          if ges_ev.pos:intersectWith(button.dimen) then
+            self:onClose()
+            return true
+          end
+        end
+      end
+    end
+  end
+  
   if ges_ev.pos:notIntersectWith(self.frame.dimen) then
     self:onClose()
+    return true
   end
+  
+  return false
+end
+
+function ChatGPTViewer:onClose()
+  local ok, active_window = pcall(function() return UIManager:getActiveWindow() end)
+  
+  pcall(function() UIManager:close(self) end)
+  
+  pcall(function() 
+    UIManager:setDirty(nil, "full") 
+    UIManager:forceRePaint()
+  end)
+  
+  if self.close_callback then
+    pcall(function() self.close_callback() end)
+  end
+  
   return true
 end
 
@@ -358,14 +576,6 @@ function ChatGPTViewer:onMultiSwipe(arg, ges_ev)
   -- used to close and where we then allow any multiswipe to close, allow any
   -- multiswipe to close this widget too.
   self:onClose()
-  return true
-end
-
-function ChatGPTViewer:onClose()
-  UIManager:close(self)
-  if self.close_callback then
-    self.close_callback()
-  end
   return true
 end
 
@@ -447,7 +657,7 @@ function ChatGPTViewer:handleTextSelection(text, hold_duration, start_idx, end_i
     return
   end
   if Device:hasClipboard() then
-    Device.input.setClipboardText(text)
+    -- translator.copyToClipboard(text)
     UIManager:show(Notification:new {
       text = start_idx == end_idx and _("Word copied to clipboard.")
           or _("Selection copied to clipboard."),
@@ -456,17 +666,22 @@ function ChatGPTViewer:handleTextSelection(text, hold_duration, start_idx, end_i
 end
 
 function ChatGPTViewer:update(new_text)
-  UIManager:close(self)
-  local updated_viewer = ChatGPTViewer:new {
-    title = self.title,
-    text = new_text,
-    width = self.width,
-    height = self.height,
-    buttons_table = self.buttons_table,
-    onAskQuestion = self.onAskQuestion,
-  }
-  updated_viewer.scroll_text_w:scrollToBottom()
-  UIManager:show(updated_viewer)
+  -- Check if the new text is substantially different from the current text
+  if not self.text or #new_text > #self.text then
+    local updated_viewer = ChatGPTViewer:new {
+      title = self.title,
+      text = new_text,
+      width = self.width,
+      height = self.height,
+      onAskQuestion = self.onAskQuestion
+    }
+    UIManager:show(updated_viewer)
+    
+    -- Always scroll to the new text
+    if updated_viewer.scroll_text_w then
+      updated_viewer.scroll_text_w:scrollToBottom()
+    end
+  end
 end
 
 return ChatGPTViewer
