@@ -2,7 +2,7 @@
 
 A powerful plugin that lets you interact with AI language models (Claude, GPT-4,DeepSeek etc.) while reading. Ask questions about text, get translations, summaries, explanations and more - all without leaving your book.
 
-<small>Originally forked from deleted fork of  [zeeyado](https://github.com/zeeyado)  of [AskGPT](https://github.com/drewbaumann/askgpt),then modified using WİndSurf.</small>
+<small>Originally forked from deleted fork of  [zeeyado](https://github.com/zeeyado)  of [AskGPT](https://github.com/drewbaumann/askgpt),then modified using WindSurf.</small>
 
 ## Features
 
