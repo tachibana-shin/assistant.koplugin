@@ -25,6 +25,15 @@ local ProviderDefaults = {
             temperature = 0.7,
             max_tokens = 4096
         }
+    },
+    gemini = {
+        provider = "gemini",
+        model = "gemini-1.5-pro-latest",
+        base_url = "https://generativelanguage.googleapis.com/v1beta/models/",
+        additional_parameters = {
+            temperature = 0.7,
+            max_tokens = 4096
+        }
     }
 }
 

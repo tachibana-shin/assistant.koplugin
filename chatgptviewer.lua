@@ -14,6 +14,7 @@ local ButtonTable = require("ui/widget/buttontable")
 local CenterContainer = require("ui/widget/container/centercontainer")
 local CheckButton = require("ui/widget/checkbutton")
 local Device = require("device")
+local Event = require("ui/event")
 local Geom = require("ui/geometry")
 local Font = require("ui/font")
 local FrameContainer = require("ui/widget/container/framecontainer")
@@ -31,6 +32,7 @@ local WidgetContainer = require("ui/widget/container/widgetcontainer")
 local T = require("ffi/util").template
 local util = require("util")
 local _ = require("gettext")
+local InfoMessage = require("ui/widget/infomessage")
 local Screen = Device.screen
 
 local ChatGPTViewer = InputContainer:extend {
@@ -245,15 +247,86 @@ function ChatGPTViewer:init()
       callback = function()
           if self.text and self.text ~= "" then
               Device.input.setClipboardText(self.text)
-              UIManager:show(Notification:new{
+              UIManager:show(InfoMessage:new{
                   text = _("Text copied to clipboard"),
                   timeout = 3,
-                  align = "center",
-                  vertical_align = "center"
               })
           end
       end
   }
+  
+  -- Insert the buttons into the existing buttons, with close button on the right
+  table.insert(buttons[#buttons], copy_button)
+  
+  -- Add a button to add notes
+  local function createAddNoteButton(self)
+      return {
+          text = _("Add Note"),
+          callback = function()
+              -- Check if ui is available in self
+              local ui = self.ui
+              if not ui or not ui.highlight then
+                  UIManager:show(InfoMessage:new{
+                      text = _("Highlight functionality not available"),
+                      timeout = 2
+                  })
+                  return
+              end
+              
+              if not self.text or self.text == "" then
+                  UIManager:show(InfoMessage:new{
+                      text = _("No text to add as note"),
+                      timeout = 2
+                  })
+                  return
+              end
+              
+              -- Get the selected text
+              local selected_text = self.highlighted_text or ""
+              
+              -- Remove the selected text from the full text with multiple strategies
+              local note_text = self.text
+              
+              -- First, try a direct replacement
+              note_text = note_text:gsub(selected_text:gsub("([%(%)%.%%%+%-%*%?%[%]%^%$])", "%%%1"), "")
+              
+              -- If that doesn't work, try trimming
+              note_text = note_text:gsub("^%s*" .. selected_text:gsub("([%(%)%.%%%+%-%*%?%[%]%^%$])", "%%%1") .. "%s*", "")
+              note_text = note_text:gsub("^%s*" .. selected_text:gsub("([%(%)%.%%%+%-%*%?%[%]%^%$])", "%%%1") .. "%s*$", "")
+              
+              -- Remove Highlighted text markers
+              note_text = note_text:gsub('Highlighted text: %"%"', "")
+              
+              -- Trim whitespace
+              note_text = note_text:gsub("^%s+", ""):gsub("%s+$", "")
+                            
+              if note_text == "" then
+                  UIManager:show(InfoMessage:new{
+                      text = _("No text left to add as note"),
+                      timeout = 2
+                  })
+                  return
+              end
+              
+              local index = ui.highlight:saveHighlight(true)
+              local a = ui.annotation.annotations[index]
+              a.note = note_text
+              ui:handleEvent(Event:new("AnnotationsModified", 
+                                      { a, nb_highlights_added = -1, nb_notes_added = 1 }))
+              
+              UIManager:show(InfoMessage:new{
+                  text = _("Note added successfully"),
+                  timeout = 2
+              })
+          end
+      }
+  end
+  
+  -- Only add Add Note button if ui context is available
+  if self.ui then
+      local add_note_button = createAddNoteButton(self)
+      table.insert(buttons[#buttons], add_note_button)
+  end
   
   -- Add a button to show initial assistant options
   local show_options_button = {
@@ -297,8 +370,6 @@ function ChatGPTViewer:init()
       end
   }
   
-  -- Insert the buttons into the existing buttons, with close button on the right
-  table.insert(buttons[#buttons], copy_button)
   -- table.insert(buttons[#buttons], show_options_button)
   
   self.button_table = ButtonTable:new {
@@ -673,7 +744,13 @@ function ChatGPTViewer:update(new_text)
       text = new_text,
       width = self.width,
       height = self.height,
-      onAskQuestion = self.onAskQuestion
+      onAskQuestion = self.onAskQuestion,
+      message_history = self.message_history,  -- Preserve message history
+      highlighted_text = self.highlighted_text,  -- Preserve highlighted text
+      ui = self.ui,  -- Preserve UI context
+      buttons_table = self.buttons_table,  -- Preserve buttons
+      add_default_buttons = self.add_default_buttons,  -- Preserve add default buttons
+      text_selection_callback = self.text_selection_callback  -- Preserve text selection callback
     }
     UIManager:show(updated_viewer)
     

@@ -209,6 +209,7 @@ local function showChatGPTDialog(ui, highlightedText)
           local chatgpt_viewer = ChatGPTViewer:new {
             title = _("AI Assistant"),
             text = result_text,
+            ui = ui,
             onAskQuestion = function(viewer, new_question)
               local new_context_message = {
                 role = "user",
@@ -301,6 +302,7 @@ local function showChatGPTDialog(ui, highlightedText)
           local chatgpt_viewer = ChatGPTViewer:new {
             title = _("Translation"),
             text = result_text,
+            ui = ui,
             onAskQuestion = function(viewer, new_question)
               local new_context_message = {
                 role = "user",
@@ -378,6 +380,7 @@ local function showChatGPTDialog(ui, highlightedText)
           local chatgpt_viewer = ChatGPTViewer:new {
               title = _(prompt.text),
               text = result_text,
+              ui = ui,
               onAskQuestion = function(viewer, new_question)
                 local new_context_message = {
                   role = "user",

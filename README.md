@@ -1,6 +1,6 @@
 # Assistant: AI Helper Plugin for KOReader
 
-A powerful plugin that lets you interact with AI language models (Claude, GPT-4,DeepSeek etc.) while reading. Ask questions about text, get translations, summaries, explanations and more - all without leaving your book.
+A powerful plugin that lets you interact with AI language models (Claude, GPT-4, Gemini, DeepSeek etc.) while reading. Ask questions about text, get translations, summaries, explanations and more - all without leaving your book.
 
 <small>Originally forked from deleted fork of  [zeeyado](https://github.com/zeeyado)  of [AskGPT](https://github.com/drewbaumann/askgpt),then modified using WindSurf.</small>
 
@@ -10,11 +10,14 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 - **Quick Actions**: One-click buttons for common tasks like summarizing or explaining
 - **Translation**: Instantly translate highlighted text to any language
 - **Multiple AI Providers**: Support for:
-  - Anthropic's Claude
+  - Anthropic's Claude 
   - OpenAI's GPT models
-  - DeepSeek 
+  - Gemini
+  - DeepSeek (not tested)
 - **Custom Prompts**: Create your own specialized AI helpers with their own quick actions and prompts
+- **Additional Questions** : Ask addtional questions about the highlighted text using your custom prompts
 - **Smart Display**: Automatically hides long text snippets for cleaner viewing
+- **"Add to Note" and "Copy to Clipboard"**: Easily add whole dialog as a note to highlighted text or copy to use for later.
 
 ## Basic Requirements
 
@@ -37,6 +40,11 @@ You'll need API keys for the AI service you want to use:
 2. Create an account or login to your existing account
 3. Go to "API Keys" section and create a new key
 
+**For Gemini**:
+1. Visit [aistudio.google.com](https://aistudio.google.com/)
+2. Create an account or login to your existing account
+3. Go to ["Get Api Key"](https://aistudio.google.com/app/apikey) section and create a new key
+
 **For DeepSeek**:
 1. Visit [deepseek.com](https://deepseek.com)
 2. Create an account or login to your existing account
@@ -44,12 +52,14 @@ You'll need API keys for the AI service you want to use:
 
 ### 2. Configure the Plugin
 
-1. Create a file named `apikeys.lua` in your plugin directory:
+1. Copy `apikeys.lua.sample` to `apikeys.lua` and edit the file to set your API keys:
 
 ```lua
 return {
-        anthropic = "YOUR-ANTHROPIC-KEY",
-        openai = "YOUR-OPENAI-KEY" -- Optional if not using OpenAI
+        anthropic = "YOUR-ANTHROPIC-KEY", -- Optional if not using Anthropic
+        openai = "YOUR-OPENAI-KEY", -- Optional if not using OpenAI
+        gemini = "YOUR-GEMINI-KEY", -- Optional if not using Gemini
+        deepseek = "YOUR-DEEPSEEK-KEY" -- Optional if not using DeepSeek
 }
 ```
 
@@ -58,14 +68,14 @@ return {
 ```lua
 local CONFIGURATION = {
 -- Choose your AI provider
-provider = "anthropic", -- or "openai"
+provider = "openai", -- or "anthropic"
 -- Optional features
 features = {
 -- Hide very long highlights automatically
 hide_long_highlights = true,
 long_highlight_threshold = 280,
 -- Enable translation (set to target language)
-translate_to = "French", -- or nil to disable
+translate_to = "Turkish", -- or nil to disable
 -- Custom AI helpers
 prompts = {
 explain = {

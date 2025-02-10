@@ -37,6 +37,7 @@ end
 loadHandler("anthropic")
 loadHandler("openai")
 loadHandler("deepseek")
+loadHandler("gemini")
 
 local function getApiKey(provider)
     local success, apikeys = pcall(function() return require("apikeys") end)

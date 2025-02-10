@@ -2,5 +2,6 @@
 return {
     anthropic = "your-antropic-key",    
     openai = "your-openai-key",
-    deepseek = "your-deepseek-key"
+    deepseek = "your-deepseek-key",
+    gemini = "your-gemini-key"
 }
