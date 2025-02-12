@@ -22,7 +22,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 ## Basic Requirements
 
 - [KoReader](https://github.com/koreader/koreader) installed on your device
-- API key from your preferred provider (Anthropic, OpenAI, DeepSeek, etc.)
+- API key from your preferred provider (Anthropic, OpenAI, Gemini, DeepSeek, etc.)
 
 ## Getting Started 
 

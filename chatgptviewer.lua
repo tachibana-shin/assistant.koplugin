@@ -287,15 +287,16 @@ function ChatGPTViewer:init()
               -- Remove the selected text from the full text with multiple strategies
               local note_text = self.text
               
-              -- First, try a direct replacement
-              note_text = note_text:gsub(selected_text:gsub("([%(%)%.%%%+%-%*%?%[%]%^%$])", "%%%1"), "")
-              
-              -- If that doesn't work, try trimming
-              note_text = note_text:gsub("^%s*" .. selected_text:gsub("([%(%)%.%%%+%-%*%?%[%]%^%$])", "%%%1") .. "%s*", "")
-              note_text = note_text:gsub("^%s*" .. selected_text:gsub("([%(%)%.%%%+%-%*%?%[%]%^%$])", "%%%1") .. "%s*$", "")
-              
-              -- Remove Highlighted text markers
-              note_text = note_text:gsub('Highlighted text: %"%"', "")
+              -- First, try to remove only if the selected text is after "Highlighted text: "
+              local highlighted_start, highlighted_end = note_text:find('Highlighted text: "([^"]*)"')
+              if highlighted_start then
+                  local highlighted_part = note_text:sub(highlighted_start, highlighted_end)
+                  local selected_text_in_highlight = highlighted_part:match('"([^"]*)"')
+                  
+                  if selected_text_in_highlight == selected_text then
+                      note_text = note_text:gsub('Highlighted text: "' .. selected_text:gsub("([%(%)%.%%%+%-%*%?%[%]%^%$])", "%%%1") .. '"', "")
+                  end
+              end
               
               -- Trim whitespace
               note_text = note_text:gsub("^%s+", ""):gsub("%s+$", "")
