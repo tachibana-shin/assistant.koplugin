@@ -1,5 +1,5 @@
 local CONFIGURATION = {
-    -- Choose your preferred AI provider: "anthropic", "openai", or "deepseek"
+    -- Choose your preferred AI provider: "anthropic", "openai", "gemini" or "deepseek"
     provider = "openai",
     
     -- Provider-specific settings (override defaults in api_handlers/defaults.lua)
@@ -38,40 +38,52 @@ local CONFIGURATION = {
         }   
     },
     
-    -- Optional features
+    -- Optional features, replace each "Turkish" with your desired language
     features = {
         hide_highlighted_text = false,  -- Set to true to hide the highlighted text at the top
         hide_long_highlights = true,    -- Hide highlighted text if longer than threshold
-        long_highlight_threshold = 280,  -- Number of characters considered "long"
+        long_highlight_threshold = 500,  -- Number of characters considered "long"
         translate_to = "Turkish",  -- Set to language name to enable simple translation, e.g. "French"
-        system_prompt = nil, -- Custom system prompt for the AI ("Ask" button) to override the default
+        show_translation_on_main_popup = true, -- Show translation in main popup
+        system_prompt = "You are a helpful assistant that provides clear explanations and if not stated oterwise always answers in Turkish .", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
         
-        -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant" if not set.
+        -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant."
         prompts = {
             explain = {
                 text = "Explain",
-                system_prompt = "You are a helpful assistant that explains complex topics clearly and concisely. Break down concepts into simple terms. Answer in Turkish",
-                user_prompt = "Please explain the following text in Turkish: "
+                system_prompt = "You are a helpful assistant that explains complex topics clearly and concisely. Break down concepts into simple terms.",
+                user_prompt = "Please explain the following text in Turkish: ",
+                show_on_main_popup = false -- Show the button in main popup    
             },
             summarize = {
                 text = "Summarize",
-                system_prompt = "You are a summarization expert. Provide clear, concise summaries that capture the main points. Answer in Turkish",
-                user_prompt = "Please provide a concise summary of the following text in Turkish: "
+                system_prompt = "You are a summarization expert. Provide clear, concise summaries that capture the main points.",
+                user_prompt = "Please provide a concise summary of the following text in its original language: ",
+                show_on_main_popup = false -- Show the button in main popup
             },
             historical_context = {
                 text = "Historical Context",
-                system_prompt = "You are a historical context expert. Provide relevant historical background and connections. Answer in Turkish",
-                user_prompt = "Explain the historical context of this text in Turkish: "
+                system_prompt = "You are a historical context expert. Provide relevant historical background and connections.",
+                user_prompt = "Explain the historical context of this text in Turkish: ",
+                show_on_main_popup = false -- Show the button in main popup      
             },
             key_points = {
                 text = "Key Points",
-                system_prompt = "You are a key points expert. Provide a concise list of key points from the text. Answer in Turkish",
-                user_prompt = "Please provide a concise list of key points from the following text in Turkish: "
+                system_prompt = "You are a key points expert. Provide a concise list of key points from the text.",
+                user_prompt = "Please provide a concise list of key points from the following text in Turkish: ",
+                show_on_main_popup = false -- Show the button in main popup
             },
             ELI5 = {
                 text = "ELI5",
-                system_prompt = "You are an ELI5 expert. Provide simple, concise explanations for complex terms. Answer in Turkish",
-                user_prompt = "Please provide an ELI5 explanation for the following text in Turkish: "
+                system_prompt = "You are an ELI5 expert. Provide simple, concise explanations for complex terms.",
+                user_prompt = "Please provide an ELI5 explanation for the following text in Turkish: ",
+                show_on_main_popup = false -- Show the button in main popup
+            },
+            grammar = {
+                text = "Grammer",
+                system_prompt = "You are a grammar expert.",
+                user_prompt = "Explain the grammar in this sentence in Turkish: ",
+                show_on_main_popup = true -- Show the button in main popup
             }
         }
     }

@@ -1,7 +1,7 @@
 local _ = require("gettext")
 return {
-    name = "Assistant",
+    name = "assistant",
     fullname = _("Assistant"),
-    description = _([[Allows the user to query the ChatGPT API for answers to questions about highlighted text.]]),
-    version = 1.01,
+    description = _([[Allows the user to query an AI API for answers to questions about highlighted text.]]),
+    version = 1.02,
 }

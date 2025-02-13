@@ -18,6 +18,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 - **Additional Questions** : Ask addtional questions about the highlighted text using your custom prompts
 - **Smart Display**: Automatically hides long text snippets for cleaner viewing
 - **"Add to Note" and "Copy to Clipboard"**: Easily add whole dialog as a note to highlighted text or copy to use for later.
+- **Quick Access** : Ability to access some of quick actions ( also "Translate" button) directly from the main menu.
 
 ## Basic Requirements
 
@@ -93,7 +94,7 @@ user_prompt = "Please summarize: "
 }
 return CONFIGURATION
 }
-
+```
 
 ### 3. Using the Plugin
 
@@ -124,7 +125,8 @@ The plugin supports extensive customization through `configuration.lua`. See the
 
 Example of a full configuration with all options:
 
-## Installation
+## Installation:
+### Using Latest version:
 
 1. Clone the repository
 2. Copy the `assistant.koplugin` directory to your KOReader plugins directory:
@@ -133,6 +135,7 @@ Example of a full configuration with all options:
    - PocketBook: `applications/koreader/plugins/`
    - Android: `koreader/plugins/`
 
+### Using A Stable Release:
 1. Download the latest release from GitHub (coming soon)
 2. Extract `assistant.koplugin` to your KOReader plugins directory:
    - Kobo: `.adds/koreader/plugins/`
