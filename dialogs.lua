@@ -2,6 +2,7 @@ local InputDialog = require("ui/widget/inputdialog")
 local ChatGPTViewer = require("chatgptviewer")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
+local NetworkMgr = require("ui/network/manager")
 local _ = require("gettext")
 
 local queryChatGPT = require("gpt_query")
@@ -104,9 +105,12 @@ local function createResultText(highlightedText, message_history, previous_text,
 
   if last_user_message and last_user_message.role == "user" and 
      last_assistant_message and last_assistant_message.role == "assistant" then
+    -- Add nil checks for content
+    local user_content = last_user_message.content or _("(Empty message)")
+    local assistant_content = last_assistant_message.content or _("(No response)")
     return previous_text .. 
-           _("User: ") .. last_user_message.content .. "\n\n" .. 
-           _("Assistant: ") .. last_assistant_message.content .. "\n\n"
+           _("User: ") .. user_content .. "\n\n" .. 
+           _("Assistant: ") .. assistant_content .. "\n\n"
   end
 
   return previous_text
@@ -122,18 +126,20 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
     text = result_text,
     ui = ui,
     onAskQuestion = function(viewer, new_question)
-      -- Viewer'ın kendi highlighted_text değerini kullan
-      local current_highlight = viewer.highlighted_text or highlightedText
-      message_history = handleFollowUpQuestion(message_history, new_question, ui, current_highlight)
-      local new_result_text = createResultText(current_highlight, message_history, viewer.text, false)
-      viewer:update(new_result_text)
-      
-      if viewer.scroll_text_w then
-        viewer.scroll_text_w:scrollToBottom()
-      end
+      NetworkMgr:runWhenOnline(function()
+        -- Use viewer's own highlighted_text value
+        local current_highlight = viewer.highlighted_text or highlightedText
+        message_history = handleFollowUpQuestion(message_history, new_question, ui, current_highlight)
+        local new_result_text = createResultText(current_highlight, message_history, viewer.text, false)
+        viewer:update(new_result_text)
+        
+        if viewer.scroll_text_w then
+          viewer.scroll_text_w:resetScroll()
+        end
+      end)
     end,
-    message_history = message_history,
-    highlighted_text = highlightedText
+    highlighted_text = highlightedText,
+    message_history = message_history
   }
   
   UIManager:show(chatgpt_viewer)

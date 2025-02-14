@@ -130,7 +130,7 @@ The plugin supports extensive customization through `configuration.lua`. See the
 ### Using Latest version:
 
 1. Clone the repository
-2. Copy the `assistant.koplugin` directory to your KOReader plugins directory:
+2. Rename the directory as  `assistant.koplugin` and copy it to your KOReader plugins directory:
    - Kobo: `.adds/koreader/plugins/`
    - Kindle: `koreader/plugins/`
    - PocketBook: `applications/koreader/plugins/`
