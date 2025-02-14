@@ -317,7 +317,22 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
 
   -- Add custom prompt buttons
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
+    -- Create a sorted list of prompts
+    local sorted_prompts = {}
     for prompt_type, prompt in pairs(CONFIGURATION.features.prompts) do
+      table.insert(sorted_prompts, {type = prompt_type, config = prompt})
+    end
+    -- Sort by order value, default to 1000 if not specified
+    table.sort(sorted_prompts, function(a, b)
+      local order_a = a.config.order or 1000
+      local order_b = b.config.order or 1000
+      return order_a < order_b
+    end)
+    
+    -- Add buttons in sorted order
+    for idx, prompt_data in ipairs(sorted_prompts) do
+      local prompt_type = prompt_data.type
+      local prompt = prompt_data.config
       table.insert(all_buttons, {
         text = _(prompt.text),
         callback = function()

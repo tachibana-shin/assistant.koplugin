@@ -328,51 +328,7 @@ function ChatGPTViewer:init()
       local add_note_button = createAddNoteButton(self)
       table.insert(buttons[#buttons], add_note_button)
   end
-  
-  -- Add a button to show initial assistant options
-  local show_options_button = {
-      text = _("..."),
-      callback = function()
-          -- Reuse the existing showChatGPTDialog function
-          local showChatGPTDialog = require("dialogs")
-          
-          -- Create a dummy ui object with the document properties
-          local dummy_ui = {
-              document = {
-                  getProps = function()
-                      return {
-                          title = self.title or _("Unknown Title"),
-                          authors = _("AI Assistant")
-                      }
-                  end
-              }
-          }
-          
-          -- Ensure message_history is preserved
-          local preserved_message_history = self.message_history or {}
-          
-          -- Create a wrapper function to inject preserved message history
-          local function injectedShowChatGPTDialog(ui, highlightedText)
-              -- Temporarily modify the global message_history
-              local original_message_history = message_history
-              message_history = preserved_message_history
-              
-              -- Call the original dialog function
-              local result = showChatGPTDialog(ui, highlightedText)
-              
-              -- Restore the original message_history
-              message_history = original_message_history
-              
-              return result
-          end
-          
-          -- Directly call the dialog with the current highlighted text
-          injectedShowChatGPTDialog(dummy_ui, self.highlighted_text or "")
-      end
-  }
-  
-  -- table.insert(buttons[#buttons], show_options_button)
-  
+
   self.button_table = ButtonTable:new {
     width = self.width - 2 * self.button_padding,
     buttons = buttons,
@@ -508,8 +464,21 @@ function ChatGPTViewer:askAnotherQuestion()
 
   -- Load additional prompts from configuration if available
   if success and CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
-    local prompts = CONFIGURATION.features.prompts
-    for prompt_key, prompt_config in pairs(prompts) do
+    -- Create a sorted list of prompts
+    local sorted_prompts = {}
+    for prompt_key, prompt_config in pairs(CONFIGURATION.features.prompts) do
+      table.insert(sorted_prompts, {key = prompt_key, config = prompt_config})
+    end
+    -- Sort by order value, default to 1000 if not specified
+    table.sort(sorted_prompts, function(a, b)
+      local order_a = a.config.order or 1000
+      local order_b = b.config.order or 1000
+      return order_a < order_b
+    end)
+    
+    -- Add buttons in sorted order
+    for _, prompt_data in ipairs(sorted_prompts) do
+      local prompt_config = prompt_data.config
       table.insert(default_options, {
         text = prompt_config.text,
         callback = function(self, question)

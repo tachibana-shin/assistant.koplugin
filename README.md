@@ -137,7 +137,7 @@ The plugin supports extensive customization through `configuration.lua`. See the
    - Android: `koreader/plugins/`
 
 ### Using A Stable Release:
-1. Download the latest release from GitHub (coming soon)
+1. Download the [latest release](https://www.github.com/omer-faruq/assistant.koplugin/releases/latest) from GitHub 
 2. Extract `assistant.koplugin` to your KOReader plugins directory:
    - Kobo: `.adds/koreader/plugins/`
    - Kindle: `koreader/plugins/`
