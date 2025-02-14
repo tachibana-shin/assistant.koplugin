@@ -56,37 +56,37 @@ local CONFIGURATION = {
             explain = {
                 text = "Explain",
                 system_prompt = "You are a helpful assistant that explains complex topics clearly and concisely. Break down concepts into simple terms.",
-                user_prompt = "Please explain the following text in Turkish: ",
+                user_prompt = "Please explain the following text. Answer in Turkish: ",
                 show_on_main_popup = false -- Show the button in main popup    
             },
             summarize = {
                 text = "Summarize",
                 system_prompt = "You are a summarization expert. Provide clear, concise summaries that capture the main points.",
-                user_prompt = "Please provide a concise summary of the following text in its original language: ",
+                user_prompt = "Please provide a concise summary of the following text. Answer in its original language: ",
                 show_on_main_popup = false -- Show the button in main popup
             },
             historical_context = {
                 text = "Historical Context",
                 system_prompt = "You are a historical context expert. Provide relevant historical background and connections.",
-                user_prompt = "Explain the historical context of this text in Turkish: ",
+                user_prompt = "Explain the historical context of this text. Answer in Turkish: ",
                 show_on_main_popup = false -- Show the button in main popup      
             },
             key_points = {
                 text = "Key Points",
                 system_prompt = "You are a key points expert. Provide a concise list of key points from the text.",
-                user_prompt = "Please provide a concise list of key points from the following text in Turkish: ",
+                user_prompt = "Please provide a concise list of key points from the following text. Answer in Turkish: ",
                 show_on_main_popup = false -- Show the button in main popup
             },
             ELI5 = {
                 text = "ELI5",
                 system_prompt = "You are an ELI5 expert. Provide simple, concise explanations for complex terms.",
-                user_prompt = "Please provide an ELI5 explanation for the following text in Turkish: ",
+                user_prompt = "Please provide an ELI5 explanation for the following text. Answer in Turkish: ",
                 show_on_main_popup = false -- Show the button in main popup
             },
             grammar = {
                 text = "Grammer",
                 system_prompt = "You are a grammar expert.",
-                user_prompt = "Explain the grammar in this sentence in Turkish: ",
+                user_prompt = "Explain the grammar of the following text. Answer in Turkish: ",
                 show_on_main_popup = true -- Show the button in main popup
             }
         }
