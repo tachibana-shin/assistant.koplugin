@@ -78,9 +78,7 @@ local CONFIGURATION = {
     features = {
         hide_highlighted_text = false,  -- Set to true to hide the highlighted text at the top
         hide_long_highlights = true,    -- Hide highlighted text if longer than threshold
-        long_highlight_threshold = 500,  -- Number of characters considered "long"
-        translate_to = "Turkish",  -- Set to language name to enable simple translation, e.g. "French"
-        show_translation_on_main_popup = true, -- Show translation in main popup
+        long_highlight_threshold = 500,  -- Number of characters considered "long",
         system_prompt = "You are a helpful assistant that provides clear explanations and if not stated oterwise always answers in Turkish .", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
         
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.

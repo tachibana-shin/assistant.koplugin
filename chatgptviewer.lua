@@ -160,7 +160,7 @@ function ChatGPTViewer:init()
     width = self.width,
     align = "left",
     with_bottom_line = true,
-    title = self.title,
+    title = "Assistant: " .. (self.title or ""),
     title_face = self.title_face,
     title_multilines = self.title_multilines,
     title_shrink_font_to_fit = self.title_shrink_font_to_fit,
@@ -430,30 +430,9 @@ function ChatGPTViewer:askAnotherQuestion()
   -- Attempt to load configuration
   local success, CONFIGURATION = pcall(function() return require("configuration") end)
   
-  -- Prepare default options with fallback
-  local default_options = {
-    -- Default built-in options
-    {
-      text = _("Translate"),
-      callback = function(self, question)
-        
-        local target_language = nil
-        if CONFIGURATION and CONFIGURATION.features then
-          if type(CONFIGURATION.features.translate_to) == "string" then
-            target_language = CONFIGURATION.features.translate_to
-          end
-        end
-
-        if not target_language then
-          target_language = "Turkish"
-        end
-        if self.onAskQuestion then
-          self.onAskQuestion(self, _("Translate the following text to ") .. target_language .. ": " .. (question or ""))
-        end
-      end
-    }
-  }
-
+  -- Initialize default options
+  local default_options = {}
+  
   -- Load additional prompts from configuration if available
   if success and CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
     -- Create a sorted list of prompts

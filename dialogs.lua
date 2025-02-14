@@ -149,32 +149,6 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
   end
 end
 
--- Handle translation request
-local function handleTranslation(ui, highlightedText)
-  local target_language = CONFIGURATION.features.translate_to or "English"
-  local message_history = {
-    {
-      role = "system",
-      content = "You are a helpful translation assistant. Provide direct translations without additional commentary."
-    },
-    {
-      role = "user",
-      content = "Translate the following text to " .. target_language .. ": " .. highlightedText,
-      is_context = true
-    }
-  }
-  
-  local answer = queryChatGPT(message_history)
-  if answer then
-    table.insert(message_history, {
-      role = "assistant",
-      content = answer
-    })
-  end
-  
-  return message_history
-end
-
 -- Handle predefined prompt request
 local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
   if not CONFIGURATION or not CONFIGURATION.features or not CONFIGURATION.features.prompts then
@@ -221,24 +195,19 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
     input_dialog = nil
   end
 
-  -- Handle direct prompts (translate or custom)
+  -- Handle direct prompts ( custom)
   if direct_prompt then
     showLoadingDialog()
     UIManager:scheduleIn(0.1, function()
       local message_history, err
       local title
 
-      if direct_prompt == "translate" then
-        message_history = handleTranslation(ui, highlightedText)
-        title = "Translation"
-      else
-        message_history, err = handlePredefinedPrompt(direct_prompt, highlightedText, ui)
-        if err then
-          UIManager:show(InfoMessage:new{text = _("Error: " .. err)})
-          return
-        end
-        title = CONFIGURATION.features.prompts[direct_prompt].text
+      message_history, err = handlePredefinedPrompt(direct_prompt, highlightedText, ui)
+      if err then
+        UIManager:show(InfoMessage:new{text = _("Error: " .. err)})
+        return
       end
+      title = CONFIGURATION.features.prompts[direct_prompt].text
 
       if not message_history or #message_history < 1 then
         UIManager:show(InfoMessage:new{text = _("Error: No response received")})
@@ -298,18 +267,6 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
           end
           
           createAndShowViewer(ui, highlightedText, message_history, "Assistant")
-        end)
-      end
-    },
-    {
-      text = _("Translate"),
-      callback = function()
-        UIManager:close(input_dialog)
-        input_dialog = nil
-        showLoadingDialog()
-        UIManager:scheduleIn(0.1, function()
-          local message_history = handleTranslation(ui, highlightedText)
-          createAndShowViewer(ui, highlightedText, message_history, "Translation")
         end)
       end
     }
