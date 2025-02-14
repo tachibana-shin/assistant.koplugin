@@ -40,9 +40,10 @@ loadHandler("deepseek")
 loadHandler("gemini")
 
 local function getApiKey(provider)
-    local success, apikeys = pcall(function() return require("apikeys") end)
-    if success and apikeys and apikeys[provider] then
-        return apikeys[provider]
+    if CONFIGURATION and CONFIGURATION.provider_settings and 
+       CONFIGURATION.provider_settings[provider] and 
+       CONFIGURATION.provider_settings[provider].api_key then
+        return CONFIGURATION.provider_settings[provider].api_key
     end
     return nil
 end
@@ -62,7 +63,7 @@ local function queryChatGPT(message_history)
     -- Get API key for the selected provider
     CONFIGURATION.api_key = getApiKey(provider)
     if not CONFIGURATION.api_key then
-        return "Error: No API key found for provider " .. provider .. ". Please check apikeys.lua"
+        return "Error: No API key found for provider " .. provider .. ". Please check configuration.lua"
     end
     
     local success, result = pcall(function()

@@ -1,7 +1,0 @@
--- Store your API keys here for different providers
-return {
-    anthropic = "your-antropic-key",    
-    openai = "your-openai-key",
-    deepseek = "your-deepseek-key",
-    gemini = "your-gemini-key"
-}

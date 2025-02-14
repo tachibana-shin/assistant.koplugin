@@ -740,25 +740,31 @@ end
 function ChatGPTViewer:update(new_text)
   -- Check if the new text is substantially different from the current text
   if not self.text or #new_text > #self.text then
-    local updated_viewer = ChatGPTViewer:new {
-      title = self.title,
+    -- Update the text
+    self.text = new_text
+    
+    -- Create a new ScrollTextWidget with the updated text
+    self.scroll_text_w = ScrollTextWidget:new{
       text = new_text,
-      width = self.width,
-      height = self.height,
-      onAskQuestion = self.onAskQuestion,
-      message_history = self.message_history,  -- Preserve message history
-      highlighted_text = self.highlighted_text,  -- Preserve highlighted text
-      ui = self.ui,  -- Preserve UI context
-      buttons_table = self.buttons_table,  -- Preserve buttons
-      add_default_buttons = self.add_default_buttons,  -- Preserve add default buttons
-      text_selection_callback = self.text_selection_callback  -- Preserve text selection callback
+      face = self.text_face,
+      fgcolor = self.fgcolor,
+      width = self.width - 2 * self.text_padding - 2 * self.text_margin,
+      height = self.textw:getSize().h - 2 * self.text_padding - 2 * self.text_margin,
+      dialog = self,
+      alignment = self.alignment,
+      justified = self.justified,
+      lang = self.lang,
+      para_direction_rtl = self.para_direction_rtl,
+      auto_para_direction = self.auto_para_direction,
+      alignment_strict = self.alignment_strict,
     }
-    UIManager:show(updated_viewer)
+    
+    -- Update the frame container with the new scroll widget
+    self.textw:clear()
+    self.textw[1] = self.scroll_text_w
     
     -- Always scroll to the new text
-    if updated_viewer.scroll_text_w then
-      updated_viewer.scroll_text_w:scrollToBottom()
-    end
+    self.scroll_text_w:scrollToBottom()
   end
 end
 

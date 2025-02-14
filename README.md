@@ -53,47 +53,50 @@ You'll need API keys for the AI service you want to use:
 
 ### 2. Configure the Plugin
 
-1. Copy `apikeys.lua.sample` to `apikeys.lua` and edit the file to set your API keys:
+1. Copy `configuration.lua.sample` to `configuration.lua` and edit as needed:
 
-```lua
-return {
-        anthropic = "YOUR-ANTHROPIC-KEY", -- Optional if not using Anthropic
-        openai = "YOUR-OPENAI-KEY", -- Optional if not using OpenAI
-        gemini = "YOUR-GEMINI-KEY", -- Optional if not using Gemini
-        deepseek = "YOUR-DEEPSEEK-KEY" -- Optional if not using DeepSeek
-}
-```
-
-2. Copy `configuration.lua.sample` to `configuration.lua` and edit as needed:
-
+Configuration file has this structure:
 ```lua
 local CONFIGURATION = {
--- Choose your AI provider
-provider = "openai", -- or "anthropic"
--- Optional features
-features = {
--- Hide very long highlights automatically
-hide_long_highlights = true,
-long_highlight_threshold = 280,
--- Enable translation (set to target language)
-translate_to = "Turkish", -- or nil to disable
--- Custom AI helpers
-prompts = {
-explain = {
-text = "Explain",
-system_prompt = "You explain complex topics clearly and simply.",
-user_prompt = "Please explain this text: "
-},
-summarize = {
-text = "Summarize",
-system_prompt = "You create concise summaries.",
-user_prompt = "Please summarize: "
+    -- Choose your preferred AI provider: "anthropic", "openai", "gemini" or "deepseek"
+    provider = "openai",
+    
+    -- Provider-specific settings (override defaults in api_handlers/defaults.lua)
+    provider_settings = {
+        AI_ID = {
+            model = "api-model",
+            base_url = "URL_to_API",
+            api_key = "your-api-key", -- set your api key here
+            additional_parameters = {
+              --.. other parameters
+            }
+        },  
+        -- ... other AI providers
+    },
+    
+    -- Optional features, replace each "Turkish" with your desired language
+    features = {
+        hide_highlighted_text = false,  -- Set to true to hide the highlighted text at the top
+        hide_long_highlights = true,    -- Hide highlighted text if longer than threshold
+        long_highlight_threshold = 500,  -- Number of characters considered "long"
+        translate_to = "Turkish",  -- Set to language name to enable simple translation, e.g. "French"
+        show_translation_on_main_popup = true, -- Show translation in main popup
+        system_prompt = "You are a helpful assistant that provides clear explanations and if not stated oterwise always answers in Turkish .", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
+        
+        -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
+        prompts = {
+            prompt_id = {
+                text = "prompt_name",
+                system_prompt = "You are a helpful assistant that ....",
+                user_prompt = "Please ...  in Turkish: ",
+                show_on_main_popup = false -- Show the button in main popup    
+            },
+            -- ... other prompts
+        }
+    }
 }
-}
-}
-}
+
 return CONFIGURATION
-}
 ```
 
 ### 3. Using the Plugin
@@ -122,8 +125,6 @@ The plugin supports extensive customization through `configuration.lua`. See the
 - Translation settings
 - Display preferences
 - Custom button actions
-
-Example of a full configuration with all options:
 
 ## Installation:
 ### Using Latest version:

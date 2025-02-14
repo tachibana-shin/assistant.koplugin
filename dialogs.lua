@@ -122,8 +122,10 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
     text = result_text,
     ui = ui,
     onAskQuestion = function(viewer, new_question)
-      message_history = handleFollowUpQuestion(message_history, new_question, ui, highlightedText)
-      local new_result_text = createResultText(highlightedText, message_history, viewer.text, false)
+      -- Viewer'ın kendi highlighted_text değerini kullan
+      local current_highlight = viewer.highlighted_text or highlightedText
+      message_history = handleFollowUpQuestion(message_history, new_question, ui, current_highlight)
+      local new_result_text = createResultText(current_highlight, message_history, viewer.text, false)
       viewer:update(new_result_text)
       
       if viewer.scroll_text_w then
@@ -301,7 +303,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
         showLoadingDialog()
         UIManager:scheduleIn(0.1, function()
           local message_history = handleTranslation(ui, highlightedText)
-          createAndShowViewer(ui, highlightedText, message_history, "Translation", false)
+          createAndShowViewer(ui, highlightedText, message_history, "Translation")
         end)
       end
     }
