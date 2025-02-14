@@ -451,14 +451,6 @@ function ChatGPTViewer:askAnotherQuestion()
           self.onAskQuestion(self, _("Translate the following text to ") .. target_language .. ": " .. (question or ""))
         end
       end
-    },
-    {
-      text = _("Simplify"),
-      callback = function(self, question)
-        if self.onAskQuestion then
-          self.onAskQuestion(self, _("Simplify the text in its original language"))
-        end
-      end
     }
   }
 
