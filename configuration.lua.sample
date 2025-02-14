@@ -5,16 +5,16 @@ local CONFIGURATION = {
     -- Provider-specific settings (override defaults in api_handlers/defaults.lua)
     provider_settings = {
         anthropic = {
-            model = "claude-3-5-haiku-latest",
+            model = "claude-3-5-haiku-latest", -- model list: https://docs.anthropic.com/en/docs/about-claude/models
             base_url = "https://api.anthropic.com/v1/messages",
             api_key = "your-anthropic-api-key",
             additional_parameters = {
-                anthropic_version = "2023-06-01",
+                anthropic_version = "2023-06-01", -- api version list: https://docs.anthropic.com/en/api/versioning
                 max_tokens = 4096
             }
         },
         openai = {
-            model = "gpt-4o-mini", --gpt-4
+            model = "gpt-4o-mini", -- model list: https://platform.openai.com/docs/models
             base_url = "https://api.openai.com/v1/chat/completions",
             api_key = "your-openai-api-key",
             additional_parameters = {
@@ -23,7 +23,7 @@ local CONFIGURATION = {
             }
         },
         gemini = {
-            model = "gemini-1.5-pro-latest",
+            model = "gemini-1.5-pro-latest", -- model list: https://ai.google.dev/gemini-api/docs/models/gemini
             base_url = "https://generativelanguage.googleapis.com/v1beta/models/",
             api_key = "your-gemini-api-key",
             additional_parameters = {
