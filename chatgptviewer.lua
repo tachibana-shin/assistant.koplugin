@@ -678,6 +678,9 @@ function ChatGPTViewer:handleTextSelection(text, hold_duration, start_idx, end_i
 end
 
 function ChatGPTViewer:update(new_text)
+  -- Attempt to load configuration
+  local success, CONFIGURATION = pcall(function() return require("configuration") end)
+
   -- Check if the new text is substantially different from the current text
   if not self.text or #new_text > #self.text then
     -- Update the text
@@ -705,6 +708,11 @@ function ChatGPTViewer:update(new_text)
     
     -- Always scroll to the new text
     self.scroll_text_w:scrollToBottom()
+
+    -- Refresh the screen after displaying the results
+    if success and CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.refresh_screen_after_displaying_results then
+      UIManager:setDirty(nil, "full")
+    end
   end
 end
 
