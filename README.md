@@ -7,18 +7,18 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 ## Features
 
 - **Ask Questions**: Highlight text and ask questions about it
-- **Quick Actions**: One-click buttons for common tasks like summarizing or explaining
-- **Translation**: Instantly translate highlighted text to any language
 - **Multiple AI Providers**: Support for:
   - Anthropic's Claude 
   - OpenAI's GPT models
   - Gemini
   - DeepSeek (not tested)
 - **Custom Prompts**: Create your own specialized AI helpers with their own quick actions and prompts
+  - **Translation**: Instantly translate highlighted text to any language
+  - **Quick Actions**: One-click buttons for common tasks like summarizing or explaining
 - **Additional Questions** : Ask addtional questions about the highlighted text using your custom prompts
 - **Smart Display**: Automatically hides long text snippets for cleaner viewing
 - **"Add to Note" and "Copy to Clipboard"**: Easily add whole dialog as a note to highlighted text or copy to use for later.
-- **Quick Access** : Ability to access some of quick actions ( also "Translate" button) directly from the main menu.
+- **Quick Access** : Ability to access some of custom prompts directly from the main menu.
 
 ## Basic Requirements
 
@@ -80,7 +80,8 @@ local CONFIGURATION = {
         hide_long_highlights = true,    -- Hide highlighted text if longer than threshold
         long_highlight_threshold = 500,  -- Number of characters considered "long",
         system_prompt = "You are a helpful assistant that provides clear explanations and if not stated oterwise always answers in Turkish .", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
-        
+        refresh_screen_after_displaying_results = true, -- Set to true to refresh the screen after displaying the results
+
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
         prompts = {
             prompt_id = {
@@ -105,8 +106,9 @@ return CONFIGURATION
 3. Tap the highlight and select "Assistant"
 4. Choose an action:
    - **Ask**: Ask a specific question about the text
-   - **Translate**: Convert text to your configured language
    - **Custom Actions**: Use any prompts you've configured
+       - **Translate**: Convert text to your configured language
+5. **Additional Questions**: Ask additional questions about the highlighted text using your custom prompts
 
 ### Tips
 
@@ -120,10 +122,11 @@ return CONFIGURATION
 The plugin supports extensive customization through `configuration.lua`. See the sample file for all options:
 
 - Multiple AI providers with different settings
-- Custom system prompts
-- Translation settings
 - Display preferences
+    - Refresh screen after displaying results
 - Custom button actions
+    - Adjust order of custom buttons
+    - Make some custom buttons display on the main popup
 
 ## Installation:
 ### Using Latest version:
@@ -134,6 +137,7 @@ The plugin supports extensive customization through `configuration.lua`. See the
    - Kindle: `koreader/plugins/`
    - PocketBook: `applications/koreader/plugins/`
    - Android: `koreader/plugins/`
+3. Create/modify `configuration.lua` as needed.
 
 ### Using A Stable Release:
 1. Download the [latest release](https://www.github.com/omer-faruq/assistant.koplugin/releases/latest) from GitHub 
@@ -142,3 +146,4 @@ The plugin supports extensive customization through `configuration.lua`. See the
    - Kindle: `koreader/plugins/`
    - PocketBook: `applications/koreader/plugins/`
    - Android: `koreader/plugins/`
+3. Create/modify `configuration.lua` as needed.
