@@ -1,24 +1,12 @@
 local api_key = nil
 local CONFIGURATION = nil
-local Defaults = require("api_handlers.defaults")
 
 -- Attempt to load the configuration module first
 local success, result = pcall(function() return require("configuration") end)
 if success then
     CONFIGURATION = result
 else
-    print("configuration.lua not found, attempting legacy api_key.lua...")
-    -- Try legacy api_key as fallback
-    success, result = pcall(function() return require("api_key") end)
-    if success then
-        api_key = result.key
-        -- Create configuration from legacy api_key using defaults
-        local provider = "anthropic" -- Default provider
-        CONFIGURATION = Defaults.ProviderDefaults[provider]
-        CONFIGURATION.api_key = api_key
-    else
-        print("No configuration found. Please set up configuration.lua")
-    end
+    print("No configuration found. Please set up configuration.lua")
 end
 
 -- Define handlers table with proper error handling
@@ -34,14 +22,21 @@ local function loadHandler(name)
     end
 end
 
-loadHandler("anthropic")
-loadHandler("openai")
-loadHandler("deepseek")
-loadHandler("gemini")
+local provider_handlers = {
+    anthropic = function() loadHandler("anthropic") end,
+    openai = function() loadHandler("openai") end,
+    deepseek = function() loadHandler("deepseek") end,
+    gemini = function() loadHandler("gemini") end,
+    openrouter = function() loadHandler("openrouter") end
+}
+
+if CONFIGURATION and CONFIGURATION.provider and provider_handlers[CONFIGURATION.provider] then
+    provider_handlers[CONFIGURATION.provider]()
+end
 
 local function getApiKey(provider)
-    if CONFIGURATION and CONFIGURATION.provider_settings and 
-       CONFIGURATION.provider_settings[provider] and 
+    if CONFIGURATION and CONFIGURATION.provider_settings and
+       CONFIGURATION.provider_settings[provider] and
        CONFIGURATION.provider_settings[provider].api_key then
         return CONFIGURATION.provider_settings[provider].api_key
     end
@@ -53,7 +48,7 @@ local function queryChatGPT(message_history)
         return "Error: No configuration found. Please set up configuration.lua"
     end
 
-    local provider = CONFIGURATION.provider or "anthropic"
+    local provider = CONFIGURATION.provider
     local handler = handlers[provider]
     
     if not handler then

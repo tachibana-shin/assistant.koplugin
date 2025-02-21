@@ -5,8 +5,10 @@ local json = require("json")
 
 local GeminiHandler = BaseHandler:new()
 
-function GeminiHandler:query(message_history, config)
-    if not config or not config.api_key then
+function GeminiHandler:query(message_history, config)    
+    local gemini_settings = config.provider_settings and config.provider_settings.gemini
+    
+    if not gemini_settings or not gemini_settings.api_key then
         return "Error: Missing API key in configuration"
     end
 
@@ -51,12 +53,11 @@ function GeminiHandler:query(message_history, config)
         ["Content-Type"] = "application/json"
     }
 
-    local gemini_settings = config.provider_settings and config.provider_settings.gemini or {}
-    local model = gemini_settings.model or "gemini-1.5-pro-latest"
-    local base_url = gemini_settings.base_url or "https://generativelanguage.googleapis.com/v1beta/models/"
+    local model = gemini_settings.model
+    local base_url = gemini_settings.base_url
 
     local success, code, responseHeaders = https.request({
-        url = string.format("%s%s:generateContent?key=%s", base_url, model, config.api_key),
+        url = string.format("%s%s:generateContent?key=%s", base_url, model, gemini_settings.api_key),
         method = "POST",
         headers = headers,
         source = ltn12.source.string(requestBody),
@@ -81,7 +82,7 @@ function GeminiHandler:query(message_history, config)
        response.candidates[1].content.parts[1] then
         return response.candidates[1].content.parts[1].text
     else
-        return "Error: Unexpected response format from Gemini API"
+        return "Error: Unexpected response format from Gemini API: " .. table.concat(responseBody)
     end
 end
 

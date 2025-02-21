@@ -6,7 +6,6 @@ local NetworkMgr = require("ui/network/manager")
 local _ = require("gettext")
 
 local queryChatGPT = require("gpt_query")
-local Defaults = require("api_handlers.defaults")
 
 local CONFIGURATION = nil
 local buttons, input_dialog = nil, nil
@@ -91,9 +90,9 @@ local function createResultText(highlightedText, message_history, previous_text,
     for i = 2, #message_history do
       if not message_history[i].is_context then
         if message_history[i].role == "user" then
-          result_text = result_text .. _("User: ") .. message_history[i].content .. "\n\n"
+          result_text = result_text .. "⮞ " .. _("User: ") .. message_history[i].content .. "\n"
         else
-          result_text = result_text .. _("Assistant: ") .. message_history[i].content .. "\n\n"
+          result_text = result_text .. "⮞ Assistant: " .. message_history[i].content .. "\n\n"
         end
       end
     end
@@ -109,8 +108,8 @@ local function createResultText(highlightedText, message_history, previous_text,
     local user_content = last_user_message.content or _("(Empty message)")
     local assistant_content = last_assistant_message.content or _("(No response)")
     return previous_text .. 
-           _("User: ") .. user_content .. "\n\n" .. 
-           _("Assistant: ") .. assistant_content .. "\n\n"
+           "⮞ " .. _("User: ") .. user_content .. "\n" .. 
+           "⮞ Assistant: " .. assistant_content .. "\n\n"
   end
 
   return previous_text
@@ -246,6 +245,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
     },
     {
       text = _("Ask"),
+      is_enter_default = true,
       callback = function()
         showLoadingDialog()
         UIManager:scheduleIn(0.1, function()

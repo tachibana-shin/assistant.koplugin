@@ -6,26 +6,28 @@ local json = require("json")
 local DeepSeekHandler = BaseHandler:new()
 
 function DeepSeekHandler:query(message_history, config)
-    if not config or not config.api_key then
+    local deepseek_settings = config.provider_settings and config.provider_settings.deepseek
+
+    if not deepseek_settings or not deepseek_settings.api_key then
         return "Error: Missing API key in configuration"
     end
 
     -- DeepSeek uses OpenAI-compatible API format
     local requestBodyTable = {
-        model = config.model or "deepseek-chat",
+        model = deepseek_settings.model,
         messages = message_history,
-        max_tokens = (config.additional_parameters and config.additional_parameters.max_tokens) or 4096
+        max_tokens = (deepseek_settings.additional_parameters and deepseek_settings.additional_parameters.max_tokens)
     }
 
     local requestBody = json.encode(requestBodyTable)
     local responseBody = {}
     local headers = {
         ["Content-Type"] = "application/json",
-        ["Authorization"] = "Bearer " .. config.api_key
+        ["Authorization"] = "Bearer " .. deepseek_settings.api_key
     }
 
     local success, code = https.request({
-        url = config.base_url or "https://api.deepseek.com/v1/chat/completions",
+        url = deepseek_settings.base_url,
         method = "POST",
         headers = headers,
         source = ltn12.source.string(requestBody),
@@ -41,7 +43,7 @@ function DeepSeekHandler:query(message_history, config)
     if response and response.choices and response.choices[1] and response.choices[1].message then
         return response.choices[1].message.content
     else
-        return "Error: Unexpected response format from API"
+        return "Error: Unexpected response format from API: " .. table.concat(responseBody)
     end
 end
 

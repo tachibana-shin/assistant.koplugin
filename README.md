@@ -11,6 +11,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
   - Anthropic's Claude 
   - OpenAI's GPT models
   - Gemini
+  - OpenRouter: unified interface for LLMs
   - DeepSeek (not tested)
 - **Custom Prompts**: Create your own specialized AI helpers with their own quick actions and prompts
   - **Translation**: Instantly translate highlighted text to any language
@@ -31,7 +32,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 
 You'll need API keys for the AI service you want to use:
 
-**For Claude/Anthropic (Recommended)**:
+**For Claude/Anthropic**:
 1. Go to [console.anthropic.com](https://console.anthropic.com)
 2. Sign up for an account or login to your existing account
 3. Go to "API Keys" and create a new key
@@ -46,6 +47,11 @@ You'll need API keys for the AI service you want to use:
 2. Create an account or login to your existing account
 3. Go to ["Get Api Key"](https://aistudio.google.com/app/apikey) section and create a new key
 
+**For OpenRouter**:
+1. Visit [openrouter.ai/](https://openrouter.ai)
+2. Create an account or login to your existing account
+3. Go to [API Keys](https://openrouter.ai/settings/keys) section and create a new key
+
 **For DeepSeek**:
 1. Visit [deepseek.com](https://deepseek.com)
 2. Create an account or login to your existing account
@@ -58,7 +64,7 @@ You'll need API keys for the AI service you want to use:
 Configuration file has this structure:
 ```lua
 local CONFIGURATION = {
-    -- Choose your preferred AI provider: "anthropic", "openai", "gemini" or "deepseek"
+    -- Choose your preferred AI provider: "anthropic", "openai", "gemini", "openrouter" or "deepseek"
     provider = "openai",
     
     -- Provider-specific settings (override defaults in api_handlers/defaults.lua)
@@ -140,7 +146,7 @@ The plugin supports extensive customization through `configuration.lua`. See the
 3. Create/modify `configuration.lua` as needed.
 
 ### Using A Stable Release:
-1. Download the [latest release](https://www.github.com/omer-faruq/assistant.koplugin/releases/latest) from GitHub 
+1. Download a [release](https://www.github.com/omer-faruq/assistant.koplugin/releases) from GitHub 
 2. Extract `assistant.koplugin` to your KOReader plugins directory:
    - Kobo: `.adds/koreader/plugins/`
    - Kindle: `koreader/plugins/`
