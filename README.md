@@ -14,7 +14,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
   - OpenRouter: unified interface for LLMs
   - DeepSeek (not tested)
 - **Builtin Prompts**:
-  - **Dictionary** : Get synonyms, context-aware dictionary explanation and example for the selected word. ( thanks to [plateaukao](https://github.com/plateaukao/AskGP) :) )
+  - **Dictionary** : Get synonyms, context-aware dictionary explanation and example for the selected word. (thanks to [plateaukao](https://github.com/plateaukao/AskGP))
 - **Custom Prompts**: Create your own specialized AI helpers with their own quick actions and prompts
   - **Translation**: Instantly translate highlighted text to any language
   - **Quick Actions**: One-click buttons for common tasks like summarizing or explaining
@@ -59,9 +59,46 @@ You'll need API keys for the AI service you want to use:
 2. Create an account or login to your existing account
 3. Go to "API Keys" section and create a new key
 
-### 2. Configure the Plugin
+### 2. Installation:
+#### Using The Latest Version:
+1. Clone the repository
+2. Rename the directory as  `assistant.koplugin` and copy it to your KOReader plugins directory:
+   - Kobo: `.adds/koreader/plugins/`
+   - Kindle: `koreader/plugins/`
+   - PocketBook: `applications/koreader/plugins/`
+   - Android: `koreader/plugins/`
+3. Create/modify `configuration.lua` as needed.
 
-1. Copy `configuration.lua.sample` to `configuration.lua` and edit as needed:
+#### Using A Stable Release:
+1. Download a [release](https://www.github.com/omer-faruq/assistant.koplugin/releases) from GitHub 
+2. Extract `assistant.koplugin` to your KOReader plugins directory:
+   - Kobo: `.adds/koreader/plugins/`
+   - Kindle: `koreader/plugins/`
+   - PocketBook: `applications/koreader/plugins/`
+   - Android: `koreader/plugins/`
+3. Create/modify `configuration.lua` as needed.
+
+### 3. Configure the Plugin
+
+1. Copy `configuration.lua.sample` to `configuration.lua` ( do not modify the sample file)
+2. Edit the `configuration.lua` file as needed.
+    - Set the chosen AI provider in `provider`
+    - Set your API keys in `provider_settings` 
+    - Make sure the file has the correct language written in `features` part.(Initially set to "Turkish")    
+
+#### Advanced Configuration:
+
+The plugin supports extensive customization through `configuration.lua`. See the [sample file](https://raw.githubusercontent.com/omer-faruq/assistant.koplugin/refs/heads/main/configuration.lua.sample) for all options:
+
+- Multiple AI providers with different settings
+- Display preferences
+    - Hide highlighted text at the top
+    - Show/Hide dictionary button in Asistant Menu: give dictionary_translate_to = nil to hide it
+    - Show/Hide dictionary button in main popup
+    - Refresh screen after displaying results
+- Custom button actions
+    - Adjust order of custom buttons
+    - Make some custom buttons display on the main popup
 
 Configuration file has this structure:
 ```lua
@@ -90,7 +127,7 @@ local CONFIGURATION = {
         system_prompt = "You are a helpful assistant that provides clear explanations and if not stated oterwise always answers in Turkish .", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
         refresh_screen_after_displaying_results = true, -- Set to true to refresh the screen after displaying the results
         show_dictionary_button_in_main_popup = true, -- Set to true to show the dictionary button in the main popup
-        dictionary_translate_to = "tr-TR", -- Set to the desired language code for the dictionary
+        dictionary_translate_to = "tr-TR", -- Set to the desired language code for the dictionary, nil to hide it
 
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
         prompts = {
@@ -109,7 +146,7 @@ local CONFIGURATION = {
 return CONFIGURATION
 ```
 
-### 3. Using the Plugin
+### 4. Using the Plugin
 
 1. Open any book in KOReader
 2. Highlight text you want to analyze
@@ -126,34 +163,3 @@ return CONFIGURATION
 - Use "Ask" for specific questions about the text
 - Try the pre-made buttons for quick analysis
 - Add your own custom prompts for specialized tasks
-
-## Advanced Configuration
-
-The plugin supports extensive customization through `configuration.lua`. See the sample file for all options:
-
-- Multiple AI providers with different settings
-- Display preferences
-    - Refresh screen after displaying results
-- Custom button actions
-    - Adjust order of custom buttons
-    - Make some custom buttons display on the main popup
-
-## Installation:
-### Using Latest version:
-
-1. Clone the repository
-2. Rename the directory as  `assistant.koplugin` and copy it to your KOReader plugins directory:
-   - Kobo: `.adds/koreader/plugins/`
-   - Kindle: `koreader/plugins/`
-   - PocketBook: `applications/koreader/plugins/`
-   - Android: `koreader/plugins/`
-3. Create/modify `configuration.lua` as needed.
-
-### Using A Stable Release:
-1. Download a [release](https://www.github.com/omer-faruq/assistant.koplugin/releases) from GitHub 
-2. Extract `assistant.koplugin` to your KOReader plugins directory:
-   - Kobo: `.adds/koreader/plugins/`
-   - Kindle: `koreader/plugins/`
-   - PocketBook: `applications/koreader/plugins/`
-   - Android: `koreader/plugins/`
-3. Create/modify `configuration.lua` as needed.

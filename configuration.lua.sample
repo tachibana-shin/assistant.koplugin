@@ -59,7 +59,7 @@ local CONFIGURATION = {
         system_prompt = "You are a helpful assistant that provides clear explanations.", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
         refresh_screen_after_displaying_results = true, -- Set to true to refresh the screen after displaying the results
         show_dictionary_button_in_main_popup = true, -- Set to true to show the dictionary button in the main popup
-        dictionary_translate_to = "tr-TR", -- Set to the desired language code for the dictionary
+        dictionary_translate_to = "tr-TR", -- Set to the desired language code for the dictionary, nil to hide it
 
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
         prompts = {
