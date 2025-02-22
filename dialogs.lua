@@ -276,6 +276,25 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
       end
     }
   }
+  
+  -- Add Dictionary button
+  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to then
+    table.insert(all_buttons, {
+      text = _("Dictionary"),
+      callback = function()
+        if input_dialog then
+          UIManager:close(input_dialog)
+          input_dialog = nil
+        end
+        showLoadingDialog()
+        UIManager:scheduleIn(0.1, function()
+          local showDictionaryDialog = require("dictdialog")
+          showDictionaryDialog(ui, highlightedText)
+        end)
+      end
+    })  
+  end
+
 
   -- Add custom prompt buttons
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then

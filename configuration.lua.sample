@@ -23,7 +23,7 @@ local CONFIGURATION = {
             }
         },
         gemini = {
-            model = "gemini-1.5-pro-latest", -- model list: https://ai.google.dev/gemini-api/docs/models/gemini
+            model = "gemini-2.0-flash-001", -- model list: https://ai.google.dev/gemini-api/docs/models/gemini , ex: gemini-1.5-pro-latest , gemini-2.0-flash-001
             base_url = "https://generativelanguage.googleapis.com/v1beta/models/",
             api_key = "your-gemini-api-key",
             additional_parameters = {
@@ -58,6 +58,8 @@ local CONFIGURATION = {
         long_highlight_threshold = 500,  -- Number of characters considered "long"
         system_prompt = "You are a helpful assistant that provides clear explanations.", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
         refresh_screen_after_displaying_results = true, -- Set to true to refresh the screen after displaying the results
+        show_dictionary_button_in_main_popup = true, -- Set to true to show the dictionary button in the main popup
+        dictionary_translate_to = "tr-TR", -- Set to the desired language code for the dictionary
 
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
         prompts = {

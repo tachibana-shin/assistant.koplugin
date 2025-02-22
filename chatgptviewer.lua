@@ -69,6 +69,7 @@ local ChatGPTViewer = InputContainer:extend {
 
   onAskQuestion = nil,
   input_dialog = nil,
+  showAskQuestion = true,
 }
 
 -- Global variables
@@ -200,42 +201,49 @@ function ChatGPTViewer:init()
   end
 
   -- buttons
-  local default_buttons =
-  {
-    {
+  local default_buttons = {}
+  
+  -- Only add Ask Another Question button if showAskQuestion is true
+  if self.showAskQuestion ~= false then
+    table.insert(default_buttons, {
       text = _("Ask Another Question"),
       id = "ask_another_question",
       callback = function()
         self:askAnotherQuestion()
       end,
-    },
-    {
-      text = "⇱",
-      id = "top",
-      callback = function()
-        self.scroll_text_w:scrollToTop()
-      end,
-      hold_callback = self.default_hold_callback,
-      allow_hold_when_disabled = true,
-    },
-    {
-      text = "⇲",
-      id = "bottom",
-      callback = function()
-        self.scroll_text_w:scrollToBottom()
-      end,
-      hold_callback = self.default_hold_callback,
-      allow_hold_when_disabled = true,
-    },
-    {
-      text = _("Close"),
-      id = "close",
-      callback = function()
-        self:onClose()
-      end,
-      hold_callback = self.default_hold_callback,
-    },
-  }
+    })
+  end
+  
+  -- Add the rest of the default buttons
+  table.insert(default_buttons, {
+    text = "⇱",
+    id = "top",
+    callback = function()
+      self.scroll_text_w:scrollToTop()
+    end,
+    hold_callback = self.default_hold_callback,
+    allow_hold_when_disabled = true,
+  })
+  
+  table.insert(default_buttons, {
+    text = "⇲",
+    id = "bottom",
+    callback = function()
+      self.scroll_text_w:scrollToBottom()
+    end,
+    hold_callback = self.default_hold_callback,
+    allow_hold_when_disabled = true,
+  })
+  
+  table.insert(default_buttons, {
+    text = _("Close"),
+    id = "close",
+    callback = function()
+      self:onClose()
+    end,
+    hold_callback = self.default_hold_callback,
+  })
+  
   local buttons = self.buttons_table or {}
   if self.add_default_buttons or not self.buttons_table then
     table.insert(buttons, default_buttons)

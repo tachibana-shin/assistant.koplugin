@@ -13,6 +13,8 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
   - Gemini
   - OpenRouter: unified interface for LLMs
   - DeepSeek (not tested)
+- **Builtin Prompts**:
+  - **Dictionary** : Get synonyms, context-aware dictionary explanation and example for the selected word. ( thanks to [plateaukao](https://github.com/plateaukao/AskGP) :) )
 - **Custom Prompts**: Create your own specialized AI helpers with their own quick actions and prompts
   - **Translation**: Instantly translate highlighted text to any language
   - **Quick Actions**: One-click buttons for common tasks like summarizing or explaining
@@ -24,7 +26,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 ## Basic Requirements
 
 - [KoReader](https://github.com/koreader/koreader) installed on your device
-- API key from your preferred provider (Anthropic, OpenAI, Gemini, DeepSeek, etc.)
+- API key from your preferred provider (Anthropic, OpenAI, Gemini, OpenRouter, DeepSeek, etc.)
 
 ## Getting Started 
 
@@ -53,7 +55,7 @@ You'll need API keys for the AI service you want to use:
 3. Go to [API Keys](https://openrouter.ai/settings/keys) section and create a new key
 
 **For DeepSeek**:
-1. Visit [deepseek.com](https://deepseek.com)
+1. Visit [platform.deepseek.com](https://platform.deepseek.com)
 2. Create an account or login to your existing account
 3. Go to "API Keys" section and create a new key
 
@@ -87,6 +89,8 @@ local CONFIGURATION = {
         long_highlight_threshold = 500,  -- Number of characters considered "long",
         system_prompt = "You are a helpful assistant that provides clear explanations and if not stated oterwise always answers in Turkish .", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
         refresh_screen_after_displaying_results = true, -- Set to true to refresh the screen after displaying the results
+        show_dictionary_button_in_main_popup = true, -- Set to true to show the dictionary button in the main popup
+        dictionary_translate_to = "tr-TR", -- Set to the desired language code for the dictionary
 
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
         prompts = {

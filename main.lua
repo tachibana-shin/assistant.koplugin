@@ -40,6 +40,21 @@ function Assistant:init()
       end,
     }
   end)
+  -- Dictionary button
+  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and CONFIGURATION.features.show_dictionary_button_in_main_popup then
+    self.ui.highlight:addToHighlightDialog("dictionary", function(_reader_highlight_instance)
+      return {
+          text = _("Dictionary").." (AI)",
+          enabled = Device:hasClipboard(),
+          callback = function()
+              NetworkMgr:runWhenOnline(function()
+                  local showDictionaryDialog = require("dictdialog")
+                  showDictionaryDialog(self.ui, _reader_highlight_instance.selected_text.text)
+              end)
+          end,
+      }
+    end)
+  end
 
   -- Add Custom buttons (ones with show_on_main_popup = true)
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
