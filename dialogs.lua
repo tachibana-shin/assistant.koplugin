@@ -26,6 +26,23 @@ local function showLoadingDialog()
   UIManager:show(loading)
 end
 
+-- Helper function to truncate text based on configuration
+local function truncateUserPrompt(text)
+  if not CONFIGURATION or not CONFIGURATION.features.max_display_user_prompt_length then
+    return text
+  end
+  
+  local max_length = CONFIGURATION.features.max_display_user_prompt_length
+  if max_length <= 0 then
+    return text
+  end
+  
+  if text and #text > max_length then
+    return text:sub(1, max_length) .. "..."
+  end
+  return text
+end
+
 local function getBookContext(ui)
   return {
     title = ui.document:getProps().title or _("Unknown Title"),
@@ -90,7 +107,7 @@ local function createResultText(highlightedText, message_history, previous_text,
     for i = 2, #message_history do
       if not message_history[i].is_context then
         if message_history[i].role == "user" then
-          result_text = result_text .. "⮞ " .. _("User: ") .. message_history[i].content .. "\n"
+          result_text = result_text .. "⮞ " .. _("User: ") .. truncateUserPrompt(message_history[i].content) .. "\n"
         else
           result_text = result_text .. "⮞ Assistant: " .. message_history[i].content .. "\n\n"
         end
@@ -108,7 +125,7 @@ local function createResultText(highlightedText, message_history, previous_text,
     local user_content = last_user_message.content or _("(Empty message)")
     local assistant_content = last_assistant_message.content or _("(No response)")
     return previous_text .. 
-           "⮞ " .. _("User: ") .. user_content .. "\n" .. 
+           "⮞ " .. _("User: ") .. truncateUserPrompt(user_content) .. "\n" .. 
            "⮞ Assistant: " .. assistant_content .. "\n\n"
   end
 
@@ -168,7 +185,15 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
   local formatted_user_prompt = (prompt.user_prompt or "Please analyze: ")
     :gsub("{title}", book.title)
     :gsub("{author}", book.author)
-
+    :gsub("{highlight}", highlightedText)
+  
+  local user_content = ""
+  if string.find(prompt.user_prompt or "Please analyze: ", "{highlight}") then
+    user_content = formatted_user_prompt
+  else
+    user_content = formatted_user_prompt .. highlightedText
+  end
+  
   local message_history = {
     {
       role = "system",
@@ -176,7 +201,7 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
     },
     {
       role = "user",
-      content = formatted_user_prompt .. highlightedText,
+      content = user_content,
       is_context = true
     }
   }
