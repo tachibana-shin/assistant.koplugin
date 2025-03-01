@@ -95,4 +95,21 @@ function Assistant:init()
   end
 end
 
+function Assistant:onDictButtonsReady(dict_popup, buttons)
+  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.show_dictionary_button_in_dictionary_popup then
+    table.insert(buttons, 1, {{
+        id = "assistant_dictionary",
+        text = _("Dictionary").." (AI)",
+        font_bold = false,
+        callback = function()
+            NetworkMgr:runWhenOnline(function()
+                local showDictionaryDialog = require("dictdialog")
+                -- Pass the word from the dict_popup instead of the highlight instance:
+                showDictionaryDialog(self.ui, dict_popup.lookupword)
+            end)
+        end,
+    }})
+  end
+end
+
 return Assistant
