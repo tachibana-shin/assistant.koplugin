@@ -12,7 +12,7 @@ end
 -- Define handlers table with proper error handling
 local handlers = {}
 local function loadHandler(name)
-    local success, handler = pcall(function() 
+    local success, handler = pcall(function()
         return require("api_handlers." .. name)
     end)
     if success then
@@ -27,7 +27,8 @@ local provider_handlers = {
     openai = function() loadHandler("openai") end,
     deepseek = function() loadHandler("deepseek") end,
     gemini = function() loadHandler("gemini") end,
-    openrouter = function() loadHandler("openrouter") end
+    openrouter = function() loadHandler("openrouter") end,
+    ollama = function() loadHandler("ollama") end
 }
 
 if CONFIGURATION and CONFIGURATION.provider and provider_handlers[CONFIGURATION.provider] then
@@ -50,25 +51,25 @@ local function queryChatGPT(message_history)
 
     local provider = CONFIGURATION.provider
     local handler = handlers[provider]
-    
+
     if not handler then
         return "Error: Unsupported provider " .. provider
     end
-    
+
     -- Get API key for the selected provider
     CONFIGURATION.api_key = getApiKey(provider)
     if not CONFIGURATION.api_key then
         return "Error: No API key found for provider " .. provider .. ". Please check configuration.lua"
     end
-    
+
     local success, result = pcall(function()
         return handler:query(message_history, CONFIGURATION)
     end)
-    
+
     if not success then
         return "Error: " .. tostring(result)
     end
-    
+
     return result
 end
 

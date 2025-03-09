@@ -1,7 +1,7 @@
 local CONFIGURATION = {
-    -- Choose your preferred AI provider: "anthropic", "openai", "gemini", "openrouter" or "deepseek"
+    -- Choose your preferred AI provider: "anthropic", "openai", "gemini", "openrouter", "deepseek" or "ollama"
     provider = "openai",
-    
+
     -- Provider-specific settings
     provider_settings = {
         anthropic = {
@@ -48,9 +48,15 @@ local CONFIGURATION = {
                 temperature = 0.7,
                 max_tokens = 4096
             }
-        }   
+        },
+        ollama = {
+            model = "your-preferred-model", -- model list: https://ollama.com/library
+            base_url = "your-ollama-api-endpoint", -- ex: "https://ollama.example.com/api/chat"
+            api_key = "ollama",
+            additional_parameters = { }
+        },
     },
-    
+
     -- Optional features, replace each "Turkish" with your desired language
     features = {
         hide_highlighted_text = false,  -- Set to true to hide the highlighted text at the top
@@ -79,14 +85,14 @@ local CONFIGURATION = {
                 order = 2,
                 system_prompt = "You are a helpful assistant that provides clear explanations.",
                 user_prompt = "Please simplify the following text in its own language: {highlight}",
-                show_on_main_popup = false -- Show the button in main popup    
+                show_on_main_popup = false -- Show the button in main popup
             },
             explain = {
                 text = "Explain",
                 order = 3,
                 system_prompt = "You are a helpful assistant that explains complex topics clearly and concisely. Break down concepts into simple terms.",
-                user_prompt = "Please explain the following text. Answer in Turkish: {highlight}", 
-                show_on_main_popup = false -- Show the button in main popup    
+                user_prompt = "Please explain the following text. Answer in Turkish: {highlight}",
+                show_on_main_popup = false -- Show the button in main popup
             },
             summarize = {
                 text = "Summarize",
@@ -100,7 +106,7 @@ local CONFIGURATION = {
                 order = 5,
                 system_prompt = "You are a historical context expert. Provide relevant historical background and connections.",
                 user_prompt = "Explain the historical context of this text. Answer in Turkish: {highlight}",
-                show_on_main_popup = false -- Show the button in main popup      
+                show_on_main_popup = false -- Show the button in main popup
             },
             key_points = {
                 text = "Key Points",
