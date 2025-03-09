@@ -1,6 +1,6 @@
 # Assistant: AI Helper Plugin for KOReader
 
-A powerful plugin that lets you interact with AI language models (Claude, GPT-4, Gemini, DeepSeek etc.) while reading. Ask questions about text, get translations, summaries, explanations and more - all without leaving your book.
+A powerful plugin that lets you interact with AI language models (Claude, GPT-4, Gemini, DeepSeek, Ollama etc.) while reading. Ask questions about text, get translations, summaries, explanations and more - all without leaving your book.
 
 <small>Originally forked from deleted fork of  [zeeyado](https://github.com/zeeyado)  of [AskGPT](https://github.com/drewbaumann/askgpt),then modified using WindSurf.</small>
 
@@ -13,6 +13,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
   - Gemini
   - OpenRouter: unified interface for LLMs
   - DeepSeek (not tested)
+  - Ollama
 - **Builtin Prompts**:
   - **Dictionary** : Get synonyms, context-aware dictionary explanation and example for the selected word. (thanks to [plateaukao](https://github.com/plateaukao/AskGP))
 - **Custom Prompts**: Create your own specialized AI helpers with their own quick actions and prompts
@@ -26,7 +27,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 ## Basic Requirements
 
 - [KoReader](https://github.com/koreader/koreader) installed on your device
-- API key from your preferred provider (Anthropic, OpenAI, Gemini, OpenRouter, DeepSeek, etc.)
+- API key from your preferred provider (Anthropic, OpenAI, Gemini, OpenRouter, DeepSeek, Ollama, etc.)
 
 ## Getting Started 
 
@@ -58,6 +59,9 @@ You'll need API keys for the AI service you want to use:
 1. Visit [platform.deepseek.com](https://platform.deepseek.com)
 2. Create an account or login to your existing account
 3. Go to "API Keys" section and create a new key
+
+**For Ollama**:
+1. Ollama doesn't use an API key. However, a placeholder API key value (ex: "ollama") is required.
 
 ### 2. Installation:
 #### Using The Latest Version:
@@ -103,7 +107,7 @@ The plugin supports extensive customization through `configuration.lua`. See the
 Configuration file has this structure:
 ```lua
 local CONFIGURATION = {
-    -- Choose your preferred AI provider: "anthropic", "openai", "gemini", "openrouter" or "deepseek"
+    -- Choose your preferred AI provider: "anthropic", "openai", "gemini", "openrouter", "deepseek" or "ollama"
     provider = "openai",
     
     -- Provider-specific settings (override defaults in api_handlers/defaults.lua)
