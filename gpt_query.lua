@@ -49,11 +49,16 @@ local function queryChatGPT(message_history)
         return "Error: No configuration found. Please set up configuration.lua"
     end
 
-    local provider = CONFIGURATION.provider
+    local provider = CONFIGURATION.provider 
+    
+    if not provider then
+        return "Error: No provider specified in configuration"
+    end
+
     local handler = handlers[provider]
 
     if not handler then
-        return "Error: Unsupported provider " .. provider
+        return "Error: Unsupported provider " .. provider .. ". Please check configuration.lua"
     end
 
     -- Get API key for the selected provider
