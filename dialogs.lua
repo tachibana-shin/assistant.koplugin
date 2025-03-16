@@ -252,7 +252,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
   local book = getBookContext(ui)
   local message_history = {{
     role = "system",
-    content = CONFIGURATION.features.system_prompt or "You are a helpful assistant for reading comprehension."
+    content = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.system_prompt or "You are a helpful assistant for reading comprehension."
   }}
 
   -- Create button rows (3 buttons per row)

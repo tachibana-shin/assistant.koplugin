@@ -30,6 +30,14 @@ function Assistant:init()
       text = _("Assistant"),
       enabled = Device:hasClipboard(),
       callback = function()
+        if not CONFIGURATION then
+          local UIManager = require("ui/uimanager")
+          local InfoMessage = require("ui/widget/infomessage")
+          UIManager:show(InfoMessage:new{
+            text = _("Configuration not found. Please set up configuration.lua first.")
+          })
+          return
+        end
         NetworkMgr:runWhenOnline(function()
           if not updateMessageShown then
             UpdateChecker.checkForUpdates()
