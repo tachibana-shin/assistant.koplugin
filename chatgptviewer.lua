@@ -688,6 +688,7 @@ end
 function ChatGPTViewer:update(new_text)
   -- Attempt to load configuration
   local success, CONFIGURATION = pcall(function() return require("configuration") end)
+  local first_time = not self.text
 
   -- Check if the new text is substantially different from the current text
   if not self.text or #new_text > #self.text then
@@ -714,8 +715,10 @@ function ChatGPTViewer:update(new_text)
     self.textw:clear()
     self.textw[1] = self.scroll_text_w
     
-    -- Always scroll to the new text
-    self.scroll_text_w:scrollToBottom()
+    -- Always scroll to the new text except first time
+    if not first_time then
+      self.scroll_text_w:scrollToBottom()
+    end
 
     -- Refresh the screen after displaying the results
     if success and CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.refresh_screen_after_displaying_results then

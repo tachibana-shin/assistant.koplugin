@@ -160,10 +160,6 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
   
   UIManager:show(chatgpt_viewer)
   
-  if chatgpt_viewer.scroll_text_w then
-    chatgpt_viewer.scroll_text_w:scrollToBottom()
-  end
-  
   -- Refresh the screen after displaying the results
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.refresh_screen_after_displaying_results then
     UIManager:setDirty(nil, "full")
