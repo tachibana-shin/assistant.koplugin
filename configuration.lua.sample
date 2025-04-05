@@ -128,6 +128,25 @@ local CONFIGURATION = {
                 system_prompt = "You are a grammar expert.",
                 user_prompt = "Explain the grammar of the following text. Answer in Turkish: {highlight}",
                 show_on_main_popup = true -- Show the button in main popup
+            },
+            vocabulary = {
+                text = "Vocabulary",
+                order = 9,
+                system_prompt = "You are a vocabulary expert.",
+                user_prompt = [[**Your Task:** Analyze the Input Text below. Find words/phrases that are B2 level or higher. Ignore common words (B1 level) and proper nouns.
+
+                                **Output Requirements:**
+                                1.  For each difficult word/phrase found:
+                                    *   Correct any typos.
+                                    *   Convert it to its base form (e.g., "go", "dog", "good", "kick the bucket").
+                                    *   List up to 3 simple synonyms (suitable for B1+ learners). Do not reuse the original word.
+                                    *   Explain its meaning simply **in Turkish**, considering its context in the text. Do not reuse the original word in the explanation.
+                                2.  **Format:** Create a numbered list using this exact structure for each item:
+                                    `index: base_form : synonym1, synonym2, synonym3 : turkish_explanation`
+                                3.  **Output Content:** **ONLY** provide the numbered list. Do not include the original text, titles, or any extra sentences.
+
+                                **Input Text:** {highlight} ]], 
+                show_on_main_popup = false -- Show the button in main popup
             }
         }
     }
