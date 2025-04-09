@@ -55,6 +55,15 @@ local CONFIGURATION = {
             api_key = "ollama",
             additional_parameters = { }
         },
+        mistral = {
+            model = "mistral-small-latest", -- model list: https://docs.mistral.ai/getting-started/models/models_overview/
+            base_url = "https://api.mistral.ai/v1/chat/completions",
+            api_key = "your-mistral-api-key",
+            additional_parameters = {
+                temperature = 0.7,
+                max_tokens = 4096
+            }
+        },
     },
 
     -- Optional features, replace each "Turkish" with your desired language
