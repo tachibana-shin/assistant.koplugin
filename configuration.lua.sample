@@ -1,5 +1,5 @@
 local CONFIGURATION = {
-    -- Choose your preferred AI provider: "anthropic", "openai", "gemini", "openrouter", "deepseek" or "ollama"
+    -- Choose your preferred AI provider: "anthropic", "openai", "gemini", "openrouter", "deepseek", "ollama", "mistral" or "azure_openai"
     provider = "openai",
 
     -- Provider-specific settings
@@ -63,6 +63,14 @@ local CONFIGURATION = {
                 temperature = 0.7,
                 max_tokens = 4096
             }
+        },
+        azure_openai = {
+            endpoint = "https://your-resource-name.openai.azure.com", -- Your Azure OpenAI resource endpoint
+            deployment_name = "your-deployment-name", -- Your model deployment name
+            api_version = "2024-02-15-preview", -- Azure OpenAI API version
+            api_key = "your-azure-api-key", -- Your Azure OpenAI API key
+            temperature = 0.7,
+            max_tokens = 4096
         },
     },
 

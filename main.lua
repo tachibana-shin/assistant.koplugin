@@ -120,4 +120,15 @@ function Assistant:onDictButtonsReady(dict_popup, buttons)
   end
 end
 
+local provider_handlers = {
+    openai = OpenAIHandler,
+    anthropic = AnthropicHandler,
+    gemini = GeminiHandler,
+    openrouter = OpenRouterHandler,
+    deepseek = DeepseekHandler,
+    ollama = OllamaHandler,
+    mistral = MistralHandler,
+    azure_openai = AzureOpenAIHandler,
+}
+
 return Assistant
