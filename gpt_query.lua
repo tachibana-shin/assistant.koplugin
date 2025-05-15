@@ -29,7 +29,8 @@ local provider_handlers = {
     gemini = function() loadHandler("gemini") end,
     openrouter = function() loadHandler("openrouter") end,
     ollama = function() loadHandler("ollama") end,
-    mistral = function() loadHandler("mistral") end
+    mistral = function() loadHandler("mistral") end,
+    groq = function() loadHandler("groq") end
 }
 
 if CONFIGURATION and CONFIGURATION.provider and provider_handlers[CONFIGURATION.provider] then
