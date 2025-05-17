@@ -64,6 +64,12 @@ local CONFIGURATION = {
                 max_tokens = 4096
             }
         },
+        groq = {
+            model = "llama-3.3-70b-versatile", -- model list: https://console.groq.com/docs/models
+            base_url = "https://api.groq.com/openai/v1/chat/completions",
+            api_key = "your-groq-api-key",
+            additional_parameters = { }
+        },
         azure_openai = {
             endpoint = "https://your-resource-name.openai.azure.com", -- Your Azure OpenAI resource endpoint
             deployment_name = "your-deployment-name", -- Your model deployment name

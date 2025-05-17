@@ -30,6 +30,7 @@ local provider_handlers = {
     openrouter = function() loadHandler("openrouter") end,
     ollama = function() loadHandler("ollama") end,
     mistral = function() loadHandler("mistral") end,
+    groq = function() loadHandler("groq") end,
     azure_openai = function() loadHandler("azure_openai") end
 }
 
