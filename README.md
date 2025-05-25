@@ -22,7 +22,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
   - **Quick Actions**: One-click buttons for common tasks like summarizing or explaining
 - **Additional Questions** : Ask addtional questions about the highlighted text using your custom prompts
 - **Smart Display**: Automatically hides long text snippets for cleaner viewing
-  - **Mark Down Support**: (thanks to [David Fan](https://github.com/d-fan))
+  - **Markdown Support**: (thanks to [David Fan](https://github.com/d-fan))
 
 - **"Add to Note" and "Copy to Clipboard"**: Easily add whole dialog as a note to highlighted text or copy to use for later.
 - **Quick Access** : Ability to access some of custom prompts directly from the main menu.
