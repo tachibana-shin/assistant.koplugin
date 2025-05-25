@@ -133,7 +133,7 @@ local function createResultText(highlightedText, message_history, previous_text,
 end
 
 -- Helper function to create and show ChatGPT viewer
-local function createAndShowViewer(ui, highlightedText, message_history, title, show_highlighted_text)
+local function createAndShowViewer(ui, highlightedText, message_history, title, render_markdown, show_highlighted_text)
   show_highlighted_text = show_highlighted_text == nil and true or show_highlighted_text
   local result_text = createResultText(highlightedText, message_history, nil, show_highlighted_text)
   
@@ -155,7 +155,8 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
       end)
     end,
     highlighted_text = highlightedText,
-    message_history = message_history
+    message_history = message_history,
+    render_markdown = render_markdown,
   }
   
   UIManager:show(chatgpt_viewer)
@@ -226,6 +227,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
     UIManager:scheduleIn(0.1, function()
       local message_history, err
       local title
+      local render_markdown = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown
 
       message_history, err = handlePredefinedPrompt(direct_prompt, highlightedText, ui)
       if err then
@@ -239,7 +241,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
         return
       end
 
-      createAndShowViewer(ui, highlightedText, message_history, title)
+      createAndShowViewer(ui, highlightedText, message_history, title, render_markdown)
     end)
     return
   end
@@ -250,6 +252,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
     role = "system",
     content = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.system_prompt or "You are a helpful assistant for reading comprehension."
   }}
+  local render_markdown = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown
 
   -- Create button rows (3 buttons per row)
   local button_rows = {}
@@ -292,7 +295,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
             input_dialog = nil
           end
           
-          createAndShowViewer(ui, highlightedText, message_history, "Assistant")
+          createAndShowViewer(ui, highlightedText, message_history, "Assistant", render_markdown)
         end)
       end
     }
@@ -347,7 +350,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
               UIManager:show(InfoMessage:new{text = _("Error: " .. err)})
               return
             end
-            createAndShowViewer(ui, highlightedText, message_history, prompt.text)
+            createAndShowViewer(ui, highlightedText, message_history, prompt.text, render_markdown)
           end)
         end
       })

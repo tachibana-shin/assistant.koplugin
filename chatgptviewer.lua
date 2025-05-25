@@ -14,6 +14,7 @@ local ButtonTable = require("ui/widget/buttontable")
 local CenterContainer = require("ui/widget/container/centercontainer")
 local CheckButton = require("ui/widget/checkbutton")
 local Device = require("device")
+local logger = require("logger")
 local Event = require("ui/event")
 local Geom = require("ui/geometry")
 local Font = require("ui/font")
@@ -24,6 +25,7 @@ local InputDialog = require("ui/widget/inputdialog")
 local MovableContainer = require("ui/widget/container/movablecontainer")
 local Notification = require("ui/widget/notification")
 local ScrollTextWidget = require("ui/widget/scrolltextwidget")
+local ScrollHtmlWidget = require("ui/widget/scrollhtmlwidget")
 local Size = require("ui/size")
 local TitleBar = require("ui/widget/titlebar")
 local UIManager = require("ui/uimanager")
@@ -34,6 +36,28 @@ local util = require("util")
 local _ = require("gettext")
 local InfoMessage = require("ui/widget/infomessage")
 local Screen = Device.screen
+local MD = require("apps/filemanager/lib/md")
+
+-- https://github.com/koreader/koreader/blob/14ddbbfcd3e9b2426e8fd6fe2c244e6561355ed3/frontend/ui/widget/dictquicklookup.lua#L807-L826
+local VIEWER_CSS = [[
+@page {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+blockquote, dd {
+    margin: 0 1em;
+}
+
+ol, ul, menu {
+    margin: 0;
+    padding-left: 1.7em;
+}
+]]
 
 local ChatGPTViewer = InputContainer:extend {
   title = nil,
@@ -53,6 +77,7 @@ local ChatGPTViewer = InputContainer:extend {
   para_direction_rtl = nil,
   auto_para_direction = true,
   alignment_strict = false,
+  render_markdown = true, -- converts markdown to HTML and displays the HTML
 
   title_face = nil,               -- use default from TitleBar
   title_multilines = nil,         -- see TitleBar for details
@@ -346,21 +371,41 @@ function ChatGPTViewer:init()
 
   local textw_height = self.height - titlebar:getHeight() - self.button_table:getSize().h
 
-  self.scroll_text_w = ScrollTextWidget:new {
-    text = self.text,
-    face = self.text_face,
-    fgcolor = self.fgcolor,
-    width = self.width - 2 * self.text_padding - 2 * self.text_margin,
-    height = textw_height - 2 * self.text_padding - 2 * self.text_margin,
-    dialog = self,
-    alignment = self.alignment,
-    justified = self.justified,
-    lang = self.lang,
-    para_direction_rtl = self.para_direction_rtl,
-    auto_para_direction = self.auto_para_direction,
-    alignment_strict = self.alignment_strict,
-    scroll_callback = self._buttons_scroll_callback,
-  }
+  if self.render_markdown then
+    -- Convert Markdown to HTML and render in a ScrollHtmlWidget
+    -- https://github.com/koreader/koreader/blob/20fee6536d2621e66c5fd17b971f616924ddd537/frontend/apps/filemanager/filemanagerconverter.lua#L41-L54
+    local html_body, err = MD(self.text, {})
+    if err then
+      logger.warn("ChatGPTViewer: could not generate HTML", err)
+      -- Fallback to plain text if HTML generation fails
+      html_body = self.text or "Missing text."
+    end
+    self.scroll_text_w = ScrollHtmlWidget:new {
+      html_body = html_body,
+      css = VIEWER_CSS,
+      width = self.width - 2 * self.text_padding - 2 * self.text_margin,
+      height = textw_height - 2 * self.text_padding - 2 * self.text_margin,
+      dialog = self,
+    }
+  else
+    -- If not rendering Markdown, use the text as is
+    self.scroll_text_w = ScrollTextWidget:new {
+      text = self.text,
+      face = self.text_face,
+      fgcolor = self.fgcolor,
+      width = self.width - 2 * self.text_padding - 2 * self.text_margin,
+      height = textw_height - 2 * self.text_padding - 2 * self.text_margin,
+      dialog = self,
+      alignment = self.alignment,
+      justified = self.justified,
+      lang = self.lang,
+      para_direction_rtl = self.para_direction_rtl,
+      auto_para_direction = self.auto_para_direction,
+      alignment_strict = self.alignment_strict,
+      scroll_callback = self._buttons_scroll_callback,
+    }
+  end
+
   self.textw = FrameContainer:new {
     padding = self.text_padding,
     margin = self.text_margin,
@@ -694,22 +739,40 @@ function ChatGPTViewer:update(new_text)
   if not self.text or #new_text > #self.text then
     -- Update the text
     self.text = new_text
-    
-    -- Create a new ScrollTextWidget with the updated text
-    self.scroll_text_w = ScrollTextWidget:new{
-      text = new_text,
-      face = self.text_face,
-      fgcolor = self.fgcolor,
-      width = self.width - 2 * self.text_padding - 2 * self.text_margin,
-      height = self.textw:getSize().h - 2 * self.text_padding - 2 * self.text_margin,
-      dialog = self,
-      alignment = self.alignment,
-      justified = self.justified,
-      lang = self.lang,
-      para_direction_rtl = self.para_direction_rtl,
-      auto_para_direction = self.auto_para_direction,
-      alignment_strict = self.alignment_strict,
-    }
+
+    if self.render_markdown then
+      -- Convert Markdown to HTML and recreate the ScrollHtmlWidget with the new text
+      -- https://github.com/koreader/koreader/blob/20fee6536d2621e66c5fd17b971f616924ddd537/frontend/apps/filemanager/filemanagerconverter.lua#L41-L54
+      local html_body, err = MD(self.text, {})
+      if err then
+        logger.warn("ChatGPTViewer: could not generate HTML", err)
+        -- Fallback to plain text if HTML generation fails
+        html_body = self.text or "Missing text."
+      end
+      self.scroll_text_w = ScrollHtmlWidget:new {
+        html_body = html_body,
+        css = VIEWER_CSS,
+        width = self.width - 2 * self.text_padding - 2 * self.text_margin,
+        height = self.textw:getSize().h - 2 * self.text_padding - 2 * self.text_margin,
+        dialog = self,
+      }
+    else
+      -- Create a new ScrollTextWidget with the updated text
+      self.scroll_text_w = ScrollTextWidget:new{
+        text = new_text,
+        face = self.text_face,
+        fgcolor = self.fgcolor,
+        width = self.width - 2 * self.text_padding - 2 * self.text_margin,
+        height = self.textw:getSize().h - 2 * self.text_padding - 2 * self.text_margin,
+        dialog = self,
+        alignment = self.alignment,
+        justified = self.justified,
+        lang = self.lang,
+        para_direction_rtl = self.para_direction_rtl,
+        auto_para_direction = self.auto_para_direction,
+        alignment_strict = self.alignment_strict,
+      }
+    end
     
     -- Update the frame container with the new scroll widget
     self.textw:clear()
