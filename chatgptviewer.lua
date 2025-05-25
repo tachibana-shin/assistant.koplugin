@@ -779,7 +779,12 @@ function ChatGPTViewer:update(new_text)
     
     -- Always scroll to the new text except first time
     if not first_time then
-      self.scroll_text_w:scrollToBottom()
+      if self.render_markdown then
+        -- If rendering in a ScrollHtmlWidget, use scrollToRatio
+        self.scroll_text_w:scrollToRatio(1)
+      else
+        self.scroll_text_w:scrollToBottom()
+      end
     end
 
     -- Refresh the screen after displaying the results
