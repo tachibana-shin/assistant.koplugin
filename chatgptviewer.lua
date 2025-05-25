@@ -38,7 +38,8 @@ local InfoMessage = require("ui/widget/infomessage")
 local Screen = Device.screen
 local MD = require("apps/filemanager/lib/md")
 
--- https://github.com/koreader/koreader/blob/14ddbbfcd3e9b2426e8fd6fe2c244e6561355ed3/frontend/ui/widget/dictquicklookup.lua#L807-L826
+-- Undo default margins and padding in ScrollHtmlWidget.
+-- Based on ui/widget/dictquicklookup.
 local VIEWER_CSS = [[
 @page {
     margin: 0;
@@ -373,7 +374,6 @@ function ChatGPTViewer:init()
 
   if self.render_markdown then
     -- Convert Markdown to HTML and render in a ScrollHtmlWidget
-    -- https://github.com/koreader/koreader/blob/20fee6536d2621e66c5fd17b971f616924ddd537/frontend/apps/filemanager/filemanagerconverter.lua#L41-L54
     local html_body, err = MD(self.text, {})
     if err then
       logger.warn("ChatGPTViewer: could not generate HTML", err)
@@ -742,7 +742,6 @@ function ChatGPTViewer:update(new_text)
 
     if self.render_markdown then
       -- Convert Markdown to HTML and recreate the ScrollHtmlWidget with the new text
-      -- https://github.com/koreader/koreader/blob/20fee6536d2621e66c5fd17b971f616924ddd537/frontend/apps/filemanager/filemanagerconverter.lua#L41-L54
       local html_body, err = MD(self.text, {})
       if err then
         logger.warn("ChatGPTViewer: could not generate HTML", err)
