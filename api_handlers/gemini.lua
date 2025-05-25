@@ -109,9 +109,12 @@ function GeminiHandler:query(message_history, config)
         return "Error: Missing API key in configuration"
     end
 
+    local gemini_settings = config.provider_settings and config.provider_settings.gemini or {}
+
     -- Gemini API requires messages with explicit roles
     local contents = {}
     local systemMessage = nil
+    local generationConfig = nil
 
     for i, msg in ipairs(message_history) do
         -- First message is treated as system message
@@ -133,6 +136,13 @@ function GeminiHandler:query(message_history, config)
         table.insert(contents, 1, systemMessage)
     end
 
+    local thinking_budget = gemini_settings and gemini_settings.additional_parameters and
+                            gemini_settings.additional_parameters.thinking_budget
+    if thinking_budget ~= nil then
+        generationConfig = generationConfig or { thinkingConfig = {} }
+        generationConfig.thinkingConfig.thinkingBudget = thinking_budget
+    end
+
     local requestBodyTable = {
         contents = contents,
         safety_settings = {
@@ -140,7 +150,8 @@ function GeminiHandler:query(message_history, config)
             { category = "HARM_CATEGORY_HATE_SPEECH", threshold = "BLOCK_NONE" },
             { category = "HARM_CATEGORY_HARASSMENT", threshold = "BLOCK_NONE" },
             { category = "HARM_CATEGORY_DANGEROUS_CONTENT", threshold = "BLOCK_NONE" }
-        }
+        },
+        generationConfig = generationConfig
     }
 
     local requestBody = json.encode(requestBodyTable)
@@ -149,7 +160,6 @@ function GeminiHandler:query(message_history, config)
         ["Content-Type"] = "application/json"
     }
 
-    local gemini_settings = config.provider_settings and config.provider_settings.gemini or {}
     local model = gemini_settings.model or "gemini-1.5-pro-latest"
     local base_url = gemini_settings.base_url or "https://generativelanguage.googleapis.com/v1beta/models/"
     

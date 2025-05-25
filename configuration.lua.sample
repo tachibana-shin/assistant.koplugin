@@ -28,7 +28,9 @@ local CONFIGURATION = {
             api_key = "your-gemini-api-key",
             additional_parameters = {
                 temperature = 0.7,
-                max_tokens = 4096
+                max_tokens = 4096,
+                -- Set to 0 to disable thinking. Recommended for gemini-2.5-* and newer, where thinking is enabled by default.
+                thinking_budget = nil
             }
         },
         openrouter = {
