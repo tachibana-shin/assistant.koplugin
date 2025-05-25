@@ -245,7 +245,12 @@ function ChatGPTViewer:init()
     text = "⇱",
     id = "top",
     callback = function()
-      self.scroll_text_w:scrollToTop()
+      if self.render_markdown then
+        -- If rendering in a ScrollHtmlWidget, use scrollToRatio
+        self.scroll_text_w:scrollToRatio(0)
+      else
+        self.scroll_text_w:scrollToTop()
+      end
     end,
     hold_callback = self.default_hold_callback,
     allow_hold_when_disabled = true,
@@ -255,7 +260,12 @@ function ChatGPTViewer:init()
     text = "⇲",
     id = "bottom",
     callback = function()
-      self.scroll_text_w:scrollToBottom()
+      if self.render_markdown then
+        -- If rendering in a ScrollHtmlWidget, use scrollToRatio
+        self.scroll_text_w:scrollToRatio(1)
+      else
+        self.scroll_text_w:scrollToBottom()
+      end
     end,
     hold_callback = self.default_hold_callback,
     allow_hold_when_disabled = true,
@@ -781,7 +791,7 @@ function ChatGPTViewer:update(new_text)
     if not first_time then
       if self.render_markdown then
         -- If rendering in a ScrollHtmlWidget, use scrollToRatio
-        self.scroll_text_w:scrollToRatio(1)
+        --self.scroll_text_w:scrollToRatio(1)
       else
         self.scroll_text_w:scrollToBottom()
       end

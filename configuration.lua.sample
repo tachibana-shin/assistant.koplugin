@@ -92,7 +92,7 @@ local CONFIGURATION = {
         dictionary_translate_to = "tr-TR", -- Set to the desired language code for the dictionary, nil to hide it
         show_dictionary_button_in_dictionary_popup = true, -- Set to true to show the Dictionary (AI) button in the dictionary popup
         enable_AI_recap = true, -- Set to true to allow for a popup on a book you haven't read in a while to give you a quick AI recap
-        render_markdown = false, -- Set to true to render markdown in the AI responses
+        render_markdown = true, -- Set to true to render markdown in the AI responses
 
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
         --You can use {author} and {title} variables in the user_prompt,
