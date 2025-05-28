@@ -19,13 +19,13 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     local context_message = {
         role = "user",
         content = prev_context .. "<<" .. highlightedText .. ">>" .. next_context .. "\n" ..
-            "explain vocabulary or content in <<>> in above sentence with following format:\n" ..
-            "⮞ Vocabulary in original conjugation if its different than the form in the sentence\n" ..
-            "⮞ 3 synonyms for the word if available\n" ..
-            "⮞ Give the meaning of the expression without reference to context.Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
-            "⮞ Explanation of content in <<>> according to context. Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
-            "⮞ Give another example sentence. Answer this part  in the language of text in <<>>\n" ..
-            "only show the replies, do not give a description"
+            "explain vocabulary or content in <<>> in above sentence with following information:\n" ..
+            "- Vocabulary in original conjugation if its different than the form in the sentence\n" ..
+            "- 3 synonyms for the word if available\n" ..
+            "- Meaning of the expression without reference to context. Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
+            "- Explanation of the content according to context. Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
+            "- Another example sentence. Answer this part in the original language of text in <<>>\n" ..
+            "only show the replies, do not give a description, in markdown list format."
     }
     table.insert(message_history, context_message)
 
