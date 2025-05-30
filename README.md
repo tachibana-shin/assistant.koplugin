@@ -16,7 +16,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
   - Ollama
 - **Builtin Prompts**:
   - **Dictionary** : Get synonyms, context-aware dictionary explanation and example for the selected word. (thanks to [plateaukao](https://github.com/plateaukao))
-  - **Recap** : Get a quick recap of a book when you open it, for books that haven't been opened in 28 hrs and <95% complete. (thanks to [jbhul](https://github.com/jbhul))
+  - **Recap** : Get a quick recap of a book when you open it, for books that haven't been opened in 28 hrs and <95% complete. Also available via shortcut/gesture for on-demand access. Fully configurable prompts. (thanks to [jbhul](https://github.com/jbhul))
 - **Custom Prompts**: Create your own specialized AI helpers with their own quick actions and prompts
   - **Translation**: Instantly translate highlighted text to any language
   - **Quick Actions**: One-click buttons for common tasks like summarizing or explaining
@@ -135,6 +135,13 @@ local CONFIGURATION = {
         refresh_screen_after_displaying_results = true, -- Set to true to refresh the screen after displaying the results
         show_dictionary_button_in_main_popup = true, -- Set to true to show the dictionary button in the main popup
         dictionary_translate_to = "tr-TR", -- Set to the desired language code for the dictionary, nil to hide it
+
+        -- AI Recap configuration (optional)
+        recap_config = {
+            system_prompt = "You are a book recap giver with entertaining tone...", -- Custom system prompt for recap
+            user_prompt = "{title} by {author} that has been {progress}% read...", -- Custom user prompt template with variables
+            language = "tr-TR" -- Language for recap responses, uses dictionary_translate_to as fallback
+        },
 
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
         prompts = {

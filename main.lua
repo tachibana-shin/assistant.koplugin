@@ -30,8 +30,7 @@ function Assistant:onDispatcherRegisterActions()
     category = "none", 
     event = "AskAIQuestion", 
     title = _("Ask AI Question"), 
-    general = true,
-    separator = true
+    general = true
   })
   
   -- Register AI recap action
@@ -41,6 +40,7 @@ function Assistant:onDispatcherRegisterActions()
       event = "AskAIRecap", 
       title = _("AI Recap"), 
       general = true,
+      separator = true
     })
   end
   

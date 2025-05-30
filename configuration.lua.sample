@@ -96,6 +96,19 @@ local CONFIGURATION = {
         enable_AI_recap = true, -- Set to true to allow for a popup on a book you haven't read in a while to give you a quick AI recap
         render_markdown = true, -- Set to true to render markdown in the AI responses
 
+        -- AI Recap configuration
+        recap_config = {
+            system_prompt = "You are a book recap giver with entertaining tone and high quality detail with a focus on summarization. You also match the tone of the book provided.",
+            user_prompt = "{title} by {author} that has been {progress}% read.\n" ..
+                         "Given the above title and author of a book and the positional parameter, very briefly summarize the contents of the book prior with rich text formatting.\n" ..
+                         "Above all else do not give any spoilers to the book, only consider prior content. Focus on the more recent content rather than a general summary to help the user pick up where they left off.\n" ..
+                         "Match the tone and energy of the book, for example if the book is funny match that style of humor and tone, if it's an exciting fantasy novel show it, if it's a historical or sad book reflect that.\n" ..
+                         "Use text bolding to emphasize names and locations. Use italics to emphasize major plot points. No emojis or symbols.\n" ..
+                         "Answer this whole response in {language} language.\n" ..
+                         "only show the replies, do not give a description.",
+            language = "tr-TR" -- Language for recap responses, uses dictionary_translate_to as fallback
+        },
+
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
         --You can use {author} and {title} variables in the user_prompt,
         --and {highlight} variable for the highlighted text otherwise its appended to the user_prompt automatically.
