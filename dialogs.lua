@@ -52,12 +52,20 @@ end
 
 local function createContextMessage(ui, highlightedText)
   local book = getBookContext(ui)
-  return {
-    role = "user",
-    content = "I'm reading something titled '" .. book.title .. "' by " .. book.author ..
-      ". I have a question about the following highlighted text: " .. highlightedText,
-    is_context = true
-  }
+  if highlightedText and highlightedText ~= "" then
+    return {
+      role = "user",
+      content = "I'm reading something titled '" .. book.title .. "' by " .. book.author ..
+        ". I have a question about the following highlighted text: " .. highlightedText,
+      is_context = true
+    }
+  else
+    return {
+      role = "user",
+      content = "I'm reading something titled '" .. book.title .. "' by " .. book.author .. ". I have a question about this book.",
+      is_context = true
+    }
+  end
 end
 
 local function handleFollowUpQuestion(message_history, new_question, ui, highlightedText)
@@ -71,6 +79,16 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
   table.insert(message_history, question_message)
 
   local answer = queryChatGPT(message_history)
+  
+  -- Check if we got a valid response
+  if not answer or answer == "" then
+    UIManager:show(InfoMessage:new{
+      text = "No response received from AI service. Please check your configuration and network connection.",
+      timeout = 3
+    })
+    return
+  end
+  
   local answer_message = {
     role = "assistant",
     content = answer
@@ -85,6 +103,7 @@ local function createResultText(highlightedText, message_history, previous_text,
     local result_text = ""
     -- Check if we should show highlighted text based on configuration
     if show_highlighted_text and 
+       highlightedText and highlightedText ~= "" and
        (not CONFIGURATION or 
         not CONFIGURATION.features or 
         not CONFIGURATION.features.hide_highlighted_text) then
@@ -94,7 +113,7 @@ local function createResultText(highlightedText, message_history, previous_text,
       if CONFIGURATION and CONFIGURATION.features then
         if CONFIGURATION.features.hide_long_highlights and 
            CONFIGURATION.features.long_highlight_threshold and 
-           #highlightedText > CONFIGURATION.features.long_highlight_threshold then
+           highlightedText and #highlightedText > CONFIGURATION.features.long_highlight_threshold then
           should_show = false
         end
       end
@@ -107,9 +126,11 @@ local function createResultText(highlightedText, message_history, previous_text,
     for i = 2, #message_history do
       if not message_history[i].is_context then
         if message_history[i].role == "user" then
-          result_text = result_text .. "⮞ " .. _("User: ") .. truncateUserPrompt(message_history[i].content) .. "\n"
+          local user_content = message_history[i].content or _("(Empty message)")
+          result_text = result_text .. "⮞ " .. _("User: ") .. truncateUserPrompt(user_content) .. "\n"
         else
-          result_text = result_text .. "⮞ Assistant: " .. message_history[i].content .. "\n\n"
+          local assistant_content = message_history[i].content or _("(No response)")
+          result_text = result_text .. "⮞ Assistant: " .. assistant_content .. "\n\n"
         end
       end
     end
@@ -179,16 +200,33 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
   end
 
   local book = getBookContext(ui)
+  
+  -- Handle case where no text is highlighted (gesture-triggered)
+  local text_to_use = highlightedText and highlightedText ~= "" and highlightedText or ""
+  
   local formatted_user_prompt = (prompt.user_prompt or "Please analyze: ")
     :gsub("{title}", book.title)
     :gsub("{author}", book.author)
-    :gsub("{highlight}", highlightedText)
+    :gsub("{highlight}", text_to_use)
   
   local user_content = ""
   if string.find(prompt.user_prompt or "Please analyze: ", "{highlight}") then
-    user_content = formatted_user_prompt
+    -- If the prompt contains {highlight} placeholder, use the formatted prompt
+    if text_to_use == "" then
+      -- If no text highlighted, modify the prompt to be more general
+      user_content = formatted_user_prompt:gsub("the following text: ", "this book: ")
+                                         :gsub("following text", "this book")
+                                         :gsub("this text", "this book")
+    else
+      user_content = formatted_user_prompt
+    end
   else
-    user_content = formatted_user_prompt .. highlightedText
+    -- If no {highlight} placeholder, append the text (if any)
+    if text_to_use ~= "" then
+      user_content = formatted_user_prompt .. text_to_use
+    else
+      user_content = formatted_user_prompt .. "this book"
+    end
   end
   
   local message_history = {
@@ -283,6 +321,16 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
           table.insert(message_history, question_message)
 
           local answer = queryChatGPT(message_history)
+          
+          -- Check if we got a valid response
+          if not answer or answer == "" then
+            UIManager:show(InfoMessage:new{
+              text = "No response received from AI service. Please check your configuration and network connection.",
+              timeout = 3
+            })
+            return
+          end
+          
           local answer_message = {
             role = "assistant",
             content = answer
@@ -295,65 +343,72 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
             input_dialog = nil
           end
           
-          createAndShowViewer(ui, highlightedText, message_history, "Assistant", render_markdown)
+          -- Create a contextual title
+          local viewer_title = highlightedText and highlightedText ~= "" and 
+            _("Text Analysis") or 
+            book.title
+          
+          createAndShowViewer(ui, highlightedText, message_history, viewer_title, render_markdown)
         end)
       end
     }
   }
   
-  -- Add Dictionary button
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to then
-    table.insert(all_buttons, {
-      text = _("Dictionary"),
-      callback = function()
-        if input_dialog then
-          UIManager:close(input_dialog)
-          input_dialog = nil
-        end
-        showLoadingDialog()
-        UIManager:scheduleIn(0.1, function()
-          local showDictionaryDialog = require("dictdialog")
-          showDictionaryDialog(ui, highlightedText)
-        end)
-      end
-    })  
-  end
-
-
-  -- Add custom prompt buttons
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
-    -- Create a sorted list of prompts
-    local sorted_prompts = {}
-    for prompt_type, prompt in pairs(CONFIGURATION.features.prompts) do
-      table.insert(sorted_prompts, {type = prompt_type, config = prompt})
-    end
-    -- Sort by order value, default to 1000 if not specified
-    table.sort(sorted_prompts, function(a, b)
-      local order_a = a.config.order or 1000
-      local order_b = b.config.order or 1000
-      return order_a < order_b
-    end)
-    
-    -- Add buttons in sorted order
-    for idx, prompt_data in ipairs(sorted_prompts) do
-      local prompt_type = prompt_data.type
-      local prompt = prompt_data.config
+  -- Only add additional buttons if there's highlighted text
+  if highlightedText and highlightedText ~= "" then
+    -- Add Dictionary button
+    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to then
       table.insert(all_buttons, {
-        text = _(prompt.text),
+        text = _("Dictionary"),
         callback = function()
-          UIManager:close(input_dialog)
-          input_dialog = nil
+          if input_dialog then
+            UIManager:close(input_dialog)
+            input_dialog = nil
+          end
           showLoadingDialog()
           UIManager:scheduleIn(0.1, function()
-            local message_history, err = handlePredefinedPrompt(prompt_type, highlightedText, ui)
-            if err then
-              UIManager:show(InfoMessage:new{text = _("Error: " .. err)})
-              return
-            end
-            createAndShowViewer(ui, highlightedText, message_history, prompt.text, render_markdown)
+            local showDictionaryDialog = require("dictdialog")
+            showDictionaryDialog(ui, highlightedText)
           end)
         end
-      })
+      })  
+    end
+
+    -- Add custom prompt buttons
+    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
+      -- Create a sorted list of prompts
+      local sorted_prompts = {}
+      for prompt_type, prompt in pairs(CONFIGURATION.features.prompts) do
+        table.insert(sorted_prompts, {type = prompt_type, config = prompt})
+      end
+      -- Sort by order value, default to 1000 if not specified
+      table.sort(sorted_prompts, function(a, b)
+        local order_a = a.config.order or 1000
+        local order_b = b.config.order or 1000
+        return order_a < order_b
+      end)
+      
+      -- Add buttons in sorted order
+      for idx, prompt_data in ipairs(sorted_prompts) do
+        local prompt_type = prompt_data.type
+        local prompt = prompt_data.config
+        table.insert(all_buttons, {
+          text = _(prompt.text),
+          callback = function()
+            UIManager:close(input_dialog)
+            input_dialog = nil
+            showLoadingDialog()
+            UIManager:scheduleIn(0.1, function()
+              local message_history, err = handlePredefinedPrompt(prompt_type, highlightedText, ui)
+              if err then
+                UIManager:show(InfoMessage:new{text = _("Error: " .. err)})
+                return
+              end
+              createAndShowViewer(ui, highlightedText, message_history, prompt.text, render_markdown)
+            end)
+          end
+        })
+      end
     end
   end
   
@@ -372,9 +427,17 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
   end
 
   -- Show the dialog with the button rows
+  local dialog_title = highlightedText and highlightedText ~= "" and 
+    _("Ask a question about the highlighted text") or 
+    _("Ask a question about this book")
+  
+  local input_hint = highlightedText and highlightedText ~= "" and 
+    _("Type your question here...") or 
+    _("Ask anything about this book...")
+  
   input_dialog = InputDialog:new{
-    title = _("Ask a question about the highlighted text"),
-    input_hint = _("Type your question here..."),
+    title = dialog_title,
+    input_hint = input_hint,
     input_type = "text",
     buttons = button_rows,
     close_callback = function()
@@ -390,6 +453,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
       end
     end
   }
+  
   UIManager:show(input_dialog)
   input_dialog:onShowKeyboard()
 end

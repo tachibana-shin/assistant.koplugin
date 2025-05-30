@@ -1,6 +1,7 @@
 local Device = require("device")
 local InputContainer = require("ui/widget/container/inputcontainer")
 local NetworkMgr = require("ui/network/manager")
+local Dispatcher = require("dispatcher")
 local _ = require("gettext")
 
 local showChatGPTDialog = require("dialogs")
@@ -23,7 +24,24 @@ end
 -- Flag to ensure the update message is shown only once per session
 local updateMessageShown = false
 
+function Assistant:onDispatcherRegisterActions()
+  -- Register main AI ask action
+  Dispatcher:registerAction("ai_ask_question", {
+    category = "none", 
+    event = "AskAIQuestion", 
+    title = _("Ask AI Question"), 
+    general = true,
+    separator = true
+  })
+  
+  -- Note: Dictionary and custom prompt actions are not registered as they require highlighted text
+  -- They remain available through the highlight dialog and main AI dialog
+end
+
 function Assistant:init()
+  -- Register actions with dispatcher for gesture assignment
+  self:onDispatcherRegisterActions()
+  
   -- Assistant button
   self.ui.highlight:addToHighlightDialog("assistant", function(_reader_highlight_instance)
     return {
@@ -166,6 +184,28 @@ function Assistant:onDictButtonsReady(dict_popup, buttons)
         end,
     }})
   end
+end
+
+-- Event handlers for gesture-triggered actions
+function Assistant:onAskAIQuestion()
+  if not CONFIGURATION then
+    local UIManager = require("ui/uimanager")
+    local InfoMessage = require("ui/widget/infomessage")
+    UIManager:show(InfoMessage:new{
+      text = _("Configuration not found. Please set up configuration.lua first.")
+    })
+    return true
+  end
+  
+  NetworkMgr:runWhenOnline(function()
+    if not updateMessageShown then
+      UpdateChecker.checkForUpdates()
+      updateMessageShown = true
+    end
+    -- Show dialog without requiring highlighted text
+    showChatGPTDialog(self.ui, nil)
+  end)
+  return true
 end
 
 return Assistant
