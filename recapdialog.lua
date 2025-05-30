@@ -12,7 +12,7 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
     local message_history = message_history or {
         {
             role = "system",
-            content = "You are a book recap giver with entertaining tone and high quality detail with a focus on summarization. You also match the tone of the book provided.",
+            content = "You are a professional book reviewer with high quality to detail and a focus on summarization. You also match the tone of the book provided.",
         },
     }
     
@@ -23,7 +23,7 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
             "Above all else do not give any spoilers to the book, only consider prior content. Focus on the more recent content rather than a general summary to help the user pick up where they left off. \n" ..
 			"Match the tone and energy of the book, for example if the book is funny match that style of humor and tone, if it's an exciting fantasy novel show it, if it's a historical or sad book reflect that.\n" ..
 			"Use text bolding to emphasize names and locations. Use italics to emphasize major plot points. No emojis or symbols.\n" ..
-            "Answer this whole response in ".. configuration.features.dictionary_translate_to .." language.\n" ..
+            "Answer this whole response in ".. configuration.features.dictionary_translate_to .." language, ensuring the language used is appropriate and avoids overly casual or stereotypical expressions.\n" ..
             "only show the replies, do not give a description."
     }
     table.insert(message_history, context_message)
