@@ -8,6 +8,41 @@ local queryChatGPT = require("gpt_query")
 local configuration = require("configuration")
 
 local function showDictionaryDialog(ui, highlightedText, message_history)
+    -- Handle case where no text is highlighted (gesture-triggered)
+    if not highlightedText or highlightedText == "" then
+        -- Show a simple input dialog to ask for a word to look up
+        local input_dialog = InputDialog:new{
+            title = _("AI Dictionary"),
+            input_hint = _("Enter a word to look up..."),
+            input_type = "text",
+            buttons = {
+                {
+                    {
+                        text = _("Cancel"),
+                        callback = function()
+                            UIManager:close(input_dialog)
+                        end,
+                    },
+                    {
+                        text = _("Look Up"),
+                        is_enter_default = true,
+                        callback = function()
+                            local word = input_dialog:getInputText()
+                            UIManager:close(input_dialog)
+                            if word and word ~= "" then
+                                -- Recursively call with the entered word
+                                showDictionaryDialog(ui, word, message_history)
+                            end
+                        end,
+                    },
+                }
+            }
+        }
+        UIManager:show(input_dialog)
+        input_dialog:onShowKeyboard()
+        return
+    end
+
     local message_history = message_history or {
         {
             role = "system",
@@ -15,7 +50,18 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
         },
     }
     
-    prev_context, next_context = ui.highlight:getSelectedWordContext(10)
+    -- Try to get context, but handle cases where no text is selected
+    local prev_context, next_context = "", ""
+    if ui.highlight and ui.highlight.getSelectedWordContext then
+        local success, prev, next = pcall(function()
+            return ui.highlight:getSelectedWordContext(10)
+        end)
+        if success then
+            prev_context = prev or ""
+            next_context = next or ""
+        end
+    end
+    
     local context_message = {
         role = "user",
         content = prev_context .. "<<" .. highlightedText .. ">>" .. next_context .. "\n" ..
@@ -42,14 +88,22 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     local chatgpt_viewer = nil
 
     local function handleAddToNote()
-        local index = ui.highlight:saveHighlight(true)
-        local a = ui.annotation.annotations[index]
-        a.note = result_text
-        ui:handleEvent(Event:new("AnnotationsModified",
-                            { a, nb_highlights_added = -1, nb_notes_added = 1 }))
+        if ui.highlight and ui.highlight.saveHighlight then
+            local success, index = pcall(function()
+                return ui.highlight:saveHighlight(true)
+            end)
+            if success and index then
+                local a = ui.annotation.annotations[index]
+                a.note = result_text
+                ui:handleEvent(Event:new("AnnotationsModified",
+                                    { a, nb_highlights_added = -1, nb_notes_added = 1 }))
+            end
+        end
 
         UIManager:close(chatgpt_viewer)
-        ui.highlight:onClose()
+        if ui.highlight and ui.highlight.onClose then
+            ui.highlight:onClose()
+        end
     end
 
     chatgpt_viewer = ChatGPTViewer:new {

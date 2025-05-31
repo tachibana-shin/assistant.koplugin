@@ -9,22 +9,30 @@ local configuration = require("configuration")
 
 local function showRecapDialog(ui, title, author, progress_percent, message_history)
 	local formatted_progress_percent = string.format("%.2f", progress_percent * 100)
+    
+    -- Get recap configuration with fallbacks
+    local recap_config = configuration.features and configuration.features.recap_config or {}
+    local system_prompt = recap_config.system_prompt or "You are a book recap giver with entertaining tone and high quality detail with a focus on summarization. You also match the tone of the book provided."
+    local user_prompt_template = recap_config.user_prompt or "{title} by {author} that has been {progress}% read.\nGiven the above title and author of a book and the positional parameter, very briefly summarize the contents of the book prior with rich text formatting.\nAbove all else do not give any spoilers to the book, only consider prior content. Focus on the more recent content rather than a general summary to help the user pick up where they left off.\nMatch the tone and energy of the book, for example if the book is funny match that style of humor and tone, if it's an exciting fantasy novel show it, if it's a historical or sad book reflect that.\nUse text bolding to emphasize names and locations. Use italics to emphasize major plot points. No emojis or symbols.\nAnswer this whole response in {language} language.\nonly show the replies, do not give a description."
+    local language = recap_config.language or (configuration.features and configuration.features.dictionary_translate_to) or "English"
+    
     local message_history = message_history or {
         {
             role = "system",
-            content = "You are a book recap giver with entertaining tone and high quality detail with a focus on summarization. You also match the tone of the book provided.",
+            content = system_prompt,
         },
     }
     
+    -- Format the user prompt with variables
+    local user_content = user_prompt_template
+        :gsub("{title}", title)
+        :gsub("{author}", author)
+        :gsub("{progress}", formatted_progress_percent)
+        :gsub("{language}", language)
+    
     local context_message = {
         role = "user",
-		content = title .. " by " .. author .. " that has been " .. formatted_progress_percent .. "% read.\n" ..
-            "Given the above title and author of a book and the positional parameter, very briefly summarize the contents of the book prior with rich text formatting.\n" ..
-            "Above all else do not give any spoilers to the book, only consider prior content. Focus on the more recent content rather than a general summary to help the user pick up where they left off. \n" ..
-			"Match the tone and energy of the book, for example if the book is funny match that style of humor and tone, if it's an exciting fantasy novel show it, if it's a historical or sad book reflect that.\n" ..
-			"Use text bolding to emphasize names and locations. Use italics to emphasize major plot points. No emojis or symbols.\n" ..
-            "Answer this whole response in ".. configuration.features.dictionary_translate_to .." language.\n" ..
-            "only show the replies, do not give a description."
+		content = user_content
     }
     table.insert(message_history, context_message)
 
