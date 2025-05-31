@@ -50,6 +50,40 @@ local function getBookContext(ui)
   }
 end
 
+local function formatUserPrompt(user_prompt, highlightedText, ui)
+  local book = getBookContext(ui)
+  
+  -- Handle case where no text is highlighted (gesture-triggered)
+  local text_to_use = highlightedText and highlightedText ~= "" and highlightedText or ""
+  
+  local formatted_user_prompt = (user_prompt or "Please analyze: ")
+    :gsub("{title}", book.title)
+    :gsub("{author}", book.author)
+    :gsub("{highlight}", text_to_use)
+  
+  local formatted_user_content = ""
+  if string.find(user_prompt or "Please analyze: ", "{highlight}") then
+    -- If the prompt contains {highlight} placeholder, use the formatted prompt
+    if text_to_use == "" then
+      -- If no text highlighted, modify the prompt to be more general
+      formatted_user_content = formatted_user_prompt:gsub("the following text: ", "this book: ")
+                                                   :gsub("following text", "this book")
+                                                   :gsub("this text", "this book")
+    else
+      formatted_user_content = formatted_user_prompt
+    end
+  else
+    -- If no {highlight} placeholder, append the text (if any)
+    if text_to_use ~= "" then
+      formatted_user_content = formatted_user_prompt .. text_to_use
+    else
+      formatted_user_content = formatted_user_prompt .. "this book"
+    end
+  end
+
+  return formatted_user_content
+end
+
 local function createContextMessage(ui, highlightedText)
   local book = getBookContext(ui)
   if highlightedText and highlightedText ~= "" then
@@ -74,7 +108,7 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
 
   local question_message = {
     role = "user",
-    content = new_question
+    content = formatUserPrompt(new_question, highlightedText, ui)
   }
   table.insert(message_history, question_message)
 
@@ -119,7 +153,7 @@ local function createResultText(highlightedText, message_history, previous_text,
       end
       
       if should_show then
-        result_text = _("Highlighted text: ") .. "\"" .. highlightedText .. "\"\n\n"
+        result_text = _("__Highlighted text: __") .. "\"" .. highlightedText .. "\"\n\n"
       end
     end
     
@@ -127,10 +161,10 @@ local function createResultText(highlightedText, message_history, previous_text,
       if not message_history[i].is_context then
         if message_history[i].role == "user" then
           local user_content = message_history[i].content or _("(Empty message)")
-          result_text = result_text .. "⮞ " .. _("User: ") .. truncateUserPrompt(user_content) .. "\n"
+          result_text = result_text .. "### ⮞ " .. _("User: ") .. "\n\n" .. truncateUserPrompt(user_content) .. "\n"
         else
           local assistant_content = message_history[i].content or _("(No response)")
-          result_text = result_text .. "⮞ Assistant: " .. assistant_content .. "\n\n"
+          result_text = result_text .. "### ⮞ Assistant: \n\n" .. assistant_content .. "\n"
         end
       end
     end
@@ -146,17 +180,19 @@ local function createResultText(highlightedText, message_history, previous_text,
     local user_content = last_user_message.content or _("(Empty message)")
     local assistant_content = last_assistant_message.content or _("(No response)")
     return previous_text .. 
-           "⮞ " .. _("User: ") .. truncateUserPrompt(user_content) .. "\n" .. 
-           "⮞ Assistant: " .. assistant_content .. "\n\n"
+           "### ⮞ " .. _("User: ") .. "\n" .. truncateUserPrompt(user_content) .. "\n" .. 
+           "### ⮞ Assistant: \n" .. assistant_content .. "\n"
   end
 
   return previous_text
 end
 
 -- Helper function to create and show ChatGPT viewer
-local function createAndShowViewer(ui, highlightedText, message_history, title, render_markdown, show_highlighted_text)
+local function createAndShowViewer(ui, highlightedText, message_history, title, show_highlighted_text)
   show_highlighted_text = show_highlighted_text == nil and true or show_highlighted_text
   local result_text = createResultText(highlightedText, message_history, nil, show_highlighted_text)
+  local render_markdown = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown) or true
+  local markdown_font_size = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.markdown_font_size) or 20
   
   local chatgpt_viewer = ChatGPTViewer:new {
     title = _(title),
@@ -178,6 +214,7 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
     highlighted_text = highlightedText,
     message_history = message_history,
     render_markdown = render_markdown,
+    markdown_font_size = markdown_font_size,
   }
   
   UIManager:show(chatgpt_viewer)
@@ -199,35 +236,7 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
     return nil, "Prompt '" .. prompt_type .. "' not found"
   end
 
-  local book = getBookContext(ui)
-  
-  -- Handle case where no text is highlighted (gesture-triggered)
-  local text_to_use = highlightedText and highlightedText ~= "" and highlightedText or ""
-  
-  local formatted_user_prompt = (prompt.user_prompt or "Please analyze: ")
-    :gsub("{title}", book.title)
-    :gsub("{author}", book.author)
-    :gsub("{highlight}", text_to_use)
-  
-  local user_content = ""
-  if string.find(prompt.user_prompt or "Please analyze: ", "{highlight}") then
-    -- If the prompt contains {highlight} placeholder, use the formatted prompt
-    if text_to_use == "" then
-      -- If no text highlighted, modify the prompt to be more general
-      user_content = formatted_user_prompt:gsub("the following text: ", "this book: ")
-                                         :gsub("following text", "this book")
-                                         :gsub("this text", "this book")
-    else
-      user_content = formatted_user_prompt
-    end
-  else
-    -- If no {highlight} placeholder, append the text (if any)
-    if text_to_use ~= "" then
-      user_content = formatted_user_prompt .. text_to_use
-    else
-      user_content = formatted_user_prompt .. "this book"
-    end
-  end
+  local user_content = formatUserPrompt(prompt.user_prompt, highlightedText, ui)
   
   local message_history = {
     {
@@ -265,7 +274,6 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
     UIManager:scheduleIn(0.1, function()
       local message_history, err
       local title
-      local render_markdown = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown
 
       message_history, err = handlePredefinedPrompt(direct_prompt, highlightedText, ui)
       if err then
@@ -279,7 +287,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
         return
       end
 
-      createAndShowViewer(ui, highlightedText, message_history, title, render_markdown)
+      createAndShowViewer(ui, highlightedText, message_history, title)
     end)
     return
   end
@@ -290,7 +298,6 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
     role = "system",
     content = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.system_prompt or "You are a helpful assistant for reading comprehension."
   }}
-  local render_markdown = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown
 
   -- Create button rows (3 buttons per row)
   local button_rows = {}
@@ -348,7 +355,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
             _("Text Analysis") or 
             book.title
           
-          createAndShowViewer(ui, highlightedText, message_history, viewer_title, render_markdown)
+          createAndShowViewer(ui, highlightedText, message_history, viewer_title)
         end)
       end
     }
@@ -404,7 +411,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
                 UIManager:show(InfoMessage:new{text = _("Error: " .. err)})
                 return
               end
-              createAndShowViewer(ui, highlightedText, message_history, prompt.text, render_markdown)
+              createAndShowViewer(ui, highlightedText, message_history, prompt.text)
             end)
           end
         })
