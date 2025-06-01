@@ -25,7 +25,8 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
   - **Markdown Support**: (thanks to [David Fan](https://github.com/d-fan))
 
 - **"Add to Note" and "Copy to Clipboard"**: Easily add whole dialog as a note to highlighted text or copy to use for later.
-- **Quick Access** : Ability to access some of custom prompts directly from the main menu.
+- **Quick Access** : Ability to access some of custom prompts directly from the main highlight menu (Configurable).
+- **Gesture-Enabled Prompts**: You can assign gestures to **Ask** and **Recap**. This enables the user to ask anything about the book without needing to highlight text first. It also enables triggering the recap at any time. (thanks to [Jayphen](https://github.com/Jayphen))
 
 ## Basic Requirements
 
