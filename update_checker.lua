@@ -6,6 +6,12 @@ local InfoMessage = require("ui/widget/infomessage")
 local UIManager = require("ui/uimanager")
 
 local function checkForUpdates()
+
+  local success, CONFIGURATION = pcall(function() return require("configuration") end)
+  if success and CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.updater_disabled then
+    return
+  end
+
   local response_body = {}
   local _, code = http.request {
     url = "https://api.github.com/repos/omer-faruq/assistant.koplugin/releases/latest",

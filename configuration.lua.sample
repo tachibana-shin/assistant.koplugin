@@ -96,6 +96,7 @@ local CONFIGURATION = {
         enable_AI_recap = true, -- Set to true to allow for a popup on a book you haven't read in a while to give you a quick AI recap
         render_markdown = true, -- Set to true to render markdown in the AI responses
         markdown_font_size = 20, -- Default normal text font size of rendered markdown.
+        updater_disabled = false, -- Set to true to disable update check.
 
         -- AI Recap configuration
         recap_config = {
