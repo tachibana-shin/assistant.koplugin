@@ -293,6 +293,7 @@ function ChatGPTViewer:init()
           if self.text and self.text ~= "" then
               Device.input.setClipboardText(self.text)
               UIManager:show(InfoMessage:new{
+                  icon = "info",
                   text = _("Text copied to clipboard"),
                   timeout = 3,
               })
@@ -312,6 +313,7 @@ function ChatGPTViewer:init()
               local ui = self.ui
               if not ui or not ui.highlight then
                   UIManager:show(InfoMessage:new{
+                      icon = "cancel",
                       text = _("Highlight functionality not available"),
                       timeout = 2
                   })
@@ -320,6 +322,7 @@ function ChatGPTViewer:init()
               
               if not self.text or self.text == "" then
                   UIManager:show(InfoMessage:new{
+                      icon = "cancel",
                       text = _("No text to add as note"),
                       timeout = 2
                   })
@@ -348,6 +351,7 @@ function ChatGPTViewer:init()
                             
               if note_text == "" then
                   UIManager:show(InfoMessage:new{
+                      icon = "cancel",
                       text = _("No text left to add as note"),
                       timeout = 2
                   })
@@ -361,6 +365,7 @@ function ChatGPTViewer:init()
                                       { a, nb_highlights_added = -1, nb_notes_added = 1 }))
               
               UIManager:show(InfoMessage:new{
+                  icon = "info",
                   text = _("Note added successfully"),
                   timeout = 2
               })
