@@ -1,6 +1,7 @@
 local InputDialog = require("ui/widget/inputdialog")
 local ChatGPTViewer = require("chatgptviewer")
 local UIManager = require("ui/uimanager")
+local InfoMessage = require("ui/widget/infomessage")
 local TextBoxWidget = require("ui/widget/textboxwidget")
 local _ = require("gettext")
 local Event = require("ui/event")
@@ -75,49 +76,56 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     }
     table.insert(message_history, context_message)
 
-    local answer = queryChatGPT(message_history)
-    local function createResultText(highlightedText, answer)
-        local result_text = 
-            TextBoxWidget.PTF_HEADER .. 
-            "... " .. prev_context .. TextBoxWidget.PTF_BOLD_START .. highlightedText .. TextBoxWidget.PTF_BOLD_END .. next_context .. " ...\n\n" ..
-            answer 
-        return result_text
-    end
+    UIManager:show(InfoMessage:new{
+      icon = "book.opened",
+      text = _("Generating Dictionary (AI) response ..."),
+      timeout = 0.1
+    })
+    UIManager:scheduleIn(0.1, function()
+      local answer = queryChatGPT(message_history)
+      local function createResultText(highlightedText, answer)
+          local result_text = 
+              TextBoxWidget.PTF_HEADER .. 
+              "... " .. prev_context .. TextBoxWidget.PTF_BOLD_START .. highlightedText .. TextBoxWidget.PTF_BOLD_END .. next_context .. " ...\n\n" ..
+              answer 
+          return result_text
+      end
 
-    local result_text = createResultText(highlightedText, answer)
-    local chatgpt_viewer = nil
+      local result_text = createResultText(highlightedText, answer)
+      local chatgpt_viewer = nil
 
-    local function handleAddToNote()
-        if ui.highlight and ui.highlight.saveHighlight then
-            local success, index = pcall(function()
-                return ui.highlight:saveHighlight(true)
-            end)
-            if success and index then
-                local a = ui.annotation.annotations[index]
-                a.note = result_text
-                ui:handleEvent(Event:new("AnnotationsModified",
-                                    { a, nb_highlights_added = -1, nb_notes_added = 1 }))
-            end
-        end
+      local function handleAddToNote()
+          if ui.highlight and ui.highlight.saveHighlight then
+              local success, index = pcall(function()
+                  return ui.highlight:saveHighlight(true)
+              end)
+              if success and index then
+                  local a = ui.annotation.annotations[index]
+                  a.note = result_text
+                  ui:handleEvent(Event:new("AnnotationsModified",
+                                      { a, nb_highlights_added = -1, nb_notes_added = 1 }))
+              end
+          end
 
-        UIManager:close(chatgpt_viewer)
-        if ui.highlight and ui.highlight.onClose then
-            ui.highlight:onClose()
-        end
-    end
+          UIManager:close(chatgpt_viewer)
+          if ui.highlight and ui.highlight.onClose then
+              ui.highlight:onClose()
+          end
+      end
 
-    chatgpt_viewer = ChatGPTViewer:new {
-        ui = ui,
-        title = _("Dictionary"),
-        text = result_text,
-        showAskQuestion = false,
-        onAddToNote = handleAddToNote,
-    }
+      chatgpt_viewer = ChatGPTViewer:new {
+          ui = ui,
+          title = _("Dictionary"),
+          text = result_text,
+          showAskQuestion = false,
+          onAddToNote = handleAddToNote,
+      }
 
-    UIManager:show(chatgpt_viewer)
-    if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
-        UIManager:setDirty(nil, "full")
-    end
+      UIManager:show(chatgpt_viewer)
+      if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
+          UIManager:setDirty(nil, "full")
+      end
+    end)
 end
 
 return showDictionaryDialog
