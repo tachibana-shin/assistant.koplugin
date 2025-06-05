@@ -6,6 +6,7 @@ local InfoMessage = require("ui/widget/infomessage")
 local UIManager = require("ui/uimanager")
 local logger = require("logger")
 local _ = require("gettext")
+local Screen = require("device").screen
 
 local function checkForUpdates()
 
@@ -16,9 +17,9 @@ local function checkForUpdates()
 
   UIManager:show(InfoMessage:new{
     text = _("Checking update for assistant.koplugin"),
-    timeout = 0.1
-  })
-  UIManager:scheduleIn(0.1, function()
+    timeout = 1
+  },nil,nil,0,Screen:scaleBySize(-80))
+  UIManager:tickAfterNext(function()
     local response_body = {}
     local _, code = http.request {
       url = "https://api.github.com/repos/omer-faruq/assistant.koplugin/releases/latest",
@@ -43,9 +44,10 @@ local function checkForUpdates()
             local message = "A new version of the " .. meta.fullname .. " plugin (" .. latest_version .. ") is available. Please update!"
             local info_message = InfoMessage:new{
                 text = message,
+		show_delay = 0.1, -- Ensure the message shown is scheduled
                 timeout = 5 -- Display message for 5 seconds
             }
-            UIManager:show(info_message)
+            UIManager:show(info_message,nil,nil,0,Screen:scaleBySize(-80))
           end
         end
       end
