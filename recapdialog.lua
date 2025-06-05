@@ -39,7 +39,7 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
 
     UIManager:show(InfoMessage:new{
       icon = "book.opened",
-      text = _("Generating recap for ") .. title,
+      text = _("Loading..."),
       timeout = 0.1
     })
     UIManager:scheduleIn(0.1, function()

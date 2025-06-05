@@ -78,7 +78,7 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
 
     UIManager:show(InfoMessage:new{
       icon = "book.opened",
-      text = _("Generating Dictionary (AI) response ..."),
+      text = _("Loading..."),
       timeout = 0.1
     })
     UIManager:scheduleIn(0.1, function()
