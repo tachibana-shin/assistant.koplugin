@@ -1,14 +1,15 @@
 local InputDialog = require("ui/widget/inputdialog")
-local ChatGPTViewer = require("chatgptviewer")
 local UIManager = require("ui/uimanager")
 local TextBoxWidget = require("ui/widget/textboxwidget")
-local _ = require("gettext")
+local InfoMessage = require("ui/widget/infomessage")
 local Event = require("ui/event")
+local _ = require("gettext")
+local ChatGPTViewer = require("chatgptviewer")
 local queryChatGPT = require("gpt_query")
 local configuration = require("configuration")
 
 local function showRecapDialog(ui, title, author, progress_percent, message_history)
-	local formatted_progress_percent = string.format("%.2f", progress_percent * 100)
+    local formatted_progress_percent = string.format("%.2f", progress_percent * 100)
     
     -- Get recap configuration with fallbacks
     local recap_config = configuration.features and configuration.features.recap_config or {}
@@ -32,33 +33,37 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
     
     local context_message = {
         role = "user",
-		content = user_content
+        content = user_content
     }
     table.insert(message_history, context_message)
 
-    local answer = queryChatGPT(message_history)
-    local function createResultText(answer)
+    UIManager:show(InfoMessage:new{
+      icon = "book.opened",
+      text = _("Generating recap for ") .. title,
+      timeout = 0.1
+    })
+    UIManager:scheduleIn(0.1, function()
+
+      local function createResultText(answer)
         local result_text = 
-            TextBoxWidget.PTF_HEADER .. 
-            TextBoxWidget.PTF_BOLD_START .. title .. TextBoxWidget.PTF_BOLD_END .. " by " .. author .. " is " .. formatted_progress_percent .. "% complete.\n\n" ..
-            answer 
+          TextBoxWidget.PTF_HEADER ..
+          TextBoxWidget.PTF_BOLD_START .. title .. TextBoxWidget.PTF_BOLD_END .. " by " .. author .. " is " .. formatted_progress_percent .. "% complete.\n\n" ..  answer
         return result_text
-    end
+      end
 
-    local result_text = createResultText(answer)
-    local chatgpt_viewer = nil
-
-    chatgpt_viewer = ChatGPTViewer:new {
+      local answer = queryChatGPT(message_history)
+      local chatgpt_viewer = ChatGPTViewer:new {
         ui = ui,
         title = _("Recap"),
-        text = result_text,
+        text = createResultText(answer),
         showAskQuestion = false
-    }
+      }
 
-    UIManager:show(chatgpt_viewer)
-    if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
+      UIManager:show(chatgpt_viewer)
+      if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
         UIManager:setDirty(nil, "full")
-    end
+      end
+    end)
 end
 
 return showRecapDialog

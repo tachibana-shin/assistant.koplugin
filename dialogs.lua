@@ -20,6 +20,7 @@ end
 -- Common helper functions
 local function showLoadingDialog()
   local loading = InfoMessage:new{
+    icon = "info",
     text = _("Loading..."),
     timeout = 0.1
   }
