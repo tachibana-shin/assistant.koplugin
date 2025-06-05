@@ -15,7 +15,6 @@ local function checkForUpdates()
   end
 
   UIManager:show(InfoMessage:new{
-    icon = "info",
     text = _("Checking update for assistant.koplugin"),
     timeout = 0.1
   })
@@ -43,7 +42,6 @@ local function checkForUpdates()
             -- Show notification to the user if a new version is available
             local message = "A new version of the " .. meta.fullname .. " plugin (" .. latest_version .. ") is available. Please update!"
             local info_message = InfoMessage:new{
-                icon = "info",
                 text = message,
                 timeout = 5 -- Display message for 5 seconds
             }

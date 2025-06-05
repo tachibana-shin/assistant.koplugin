@@ -21,7 +21,6 @@ end
 -- Common helper functions
 local function showLoadingDialog()
   local loading = InfoMessage:new{
-    icon = "info",
     text = _("Loading..."),
     timeout = 0.1
   }
@@ -119,7 +118,7 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
   -- Check if we got a valid response
   if not answer or answer == "" then
     UIManager:show(InfoMessage:new{
-      icon = "cancel",
+      icon = "notice-warning",
       text = "No response received from AI service. Please check your configuration and network connection.",
       timeout = 3
     })
@@ -280,13 +279,13 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
 
       message_history, err = handlePredefinedPrompt(direct_prompt, highlightedText, ui)
       if err then
-        UIManager:show(InfoMessage:new{text = _("Error: " .. err), icon = "cancel"})
+        UIManager:show(InfoMessage:new{text = _("Error: " .. err), icon = "notice-warning"})
         return
       end
       title = CONFIGURATION.features.prompts[direct_prompt].text
 
       if not message_history or #message_history < 1 then
-        UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "cancel"})
+        UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
         return
       end
 
@@ -335,7 +334,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
           -- Check if we got a valid response
           if not answer or answer == "" then
             UIManager:show(InfoMessage:new{
-              icon = "cancel",
+              icon = "notice-warning",
               text = "No response received from AI service. Please check your configuration and network connection.",
               timeout = 3
             })
@@ -412,7 +411,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
             UIManager:scheduleIn(0.1, function()
               local message_history, err = handlePredefinedPrompt(prompt_type, highlightedText, ui)
               if err then
-                UIManager:show(InfoMessage:new{text = _("Error: " .. err), icon = "cancel"})
+                UIManager:show(InfoMessage:new{text = _("Error: " .. err), icon = "notice-warning"})
                 return
               end
               createAndShowViewer(ui, highlightedText, message_history, prompt.text)

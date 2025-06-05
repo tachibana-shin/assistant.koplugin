@@ -63,7 +63,7 @@ function Assistant:init()
       callback = function()
         if not CONFIGURATION then
           UIManager:show(InfoMessage:new{
-            icon = "cancel",
+            icon = "notice-warning",
             text = _("Configuration not found. Please set up configuration.lua first.")
           })
           return
@@ -200,7 +200,7 @@ end
 function Assistant:onAskAIQuestion()
   if not CONFIGURATION then
     UIManager:show(InfoMessage:new{
-      icon = "cancel",
+      icon = "notice-warning",
       text = _("Configuration not found. Please set up configuration.lua first.")
     })
     return true
@@ -220,7 +220,7 @@ end
 function Assistant:onAskAIRecap()
   if not CONFIGURATION then
     UIManager:show(InfoMessage:new{
-      icon = "cancel",
+      icon = "notice-warning",
       text = _("Configuration not found. Please set up configuration.lua first.")
     })
     return true
@@ -228,7 +228,7 @@ function Assistant:onAskAIRecap()
   
   if not CONFIGURATION.features or not CONFIGURATION.features.enable_AI_recap then
     UIManager:show(InfoMessage:new{
-      icon = "cancel",
+      icon = "notice-warning",
       text = _("AI Recap feature is not enabled in configuration.")
     })
     return true
