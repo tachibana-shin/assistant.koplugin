@@ -1,7 +1,10 @@
 local Device = require("device")
+local logger = require("logger")
 local InputContainer = require("ui/widget/container/inputcontainer")
 local NetworkMgr = require("ui/network/manager")
 local Dispatcher = require("dispatcher")
+local UIManager = require("ui/uimanager")
+local InfoMessage = require("ui/widget/infomessage")
 local _ = require("gettext")
 
 local showChatGPTDialog = require("dialogs")
@@ -18,7 +21,7 @@ local success, result = pcall(function() return require("configuration") end)
 if success then
   CONFIGURATION = result
 else
-  print("configuration.lua not found, skipping...")
+  logger.warn("configuration.lua not found, skipping...")
 end
 
 -- Flag to ensure the update message is shown only once per session
@@ -59,9 +62,8 @@ function Assistant:init()
       enabled = Device:hasClipboard(),
       callback = function()
         if not CONFIGURATION then
-          local UIManager = require("ui/uimanager")
-          local InfoMessage = require("ui/widget/infomessage")
           UIManager:show(InfoMessage:new{
+            icon = "notice-warning",
             text = _("Configuration not found. Please set up configuration.lua first.")
           })
           return
@@ -96,7 +98,6 @@ function Assistant:init()
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.enable_AI_recap then
     local ReaderUI    = require("apps/reader/readerui")
     local ConfirmBox  = require("ui/widget/confirmbox")
-    local UIManager   = require("ui/uimanager")
     local T 		      = require("ffi/util").template
     local lfs         = require("libs/libkoreader-lfs")   -- for file attributes
     local DocSettings = require("docsettings")			      -- for document progress
@@ -142,7 +143,6 @@ function Assistant:init()
 
   -- Add Custom buttons (ones with show_on_main_popup = true)
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
-    local _ = require("gettext")  -- Ensure gettext is available in this scope
     -- Create a sorted list of prompts
     local sorted_prompts = {}
     for prompt_type, prompt in pairs(CONFIGURATION.features.prompts) do
@@ -199,9 +199,8 @@ end
 -- Event handlers for gesture-triggered actions
 function Assistant:onAskAIQuestion()
   if not CONFIGURATION then
-    local UIManager = require("ui/uimanager")
-    local InfoMessage = require("ui/widget/infomessage")
     UIManager:show(InfoMessage:new{
+      icon = "notice-warning",
       text = _("Configuration not found. Please set up configuration.lua first.")
     })
     return true
@@ -220,18 +219,16 @@ end
 
 function Assistant:onAskAIRecap()
   if not CONFIGURATION then
-    local UIManager = require("ui/uimanager")
-    local InfoMessage = require("ui/widget/infomessage")
     UIManager:show(InfoMessage:new{
+      icon = "notice-warning",
       text = _("Configuration not found. Please set up configuration.lua first.")
     })
     return true
   end
   
   if not CONFIGURATION.features or not CONFIGURATION.features.enable_AI_recap then
-    local UIManager = require("ui/uimanager")
-    local InfoMessage = require("ui/widget/infomessage")
     UIManager:show(InfoMessage:new{
+      icon = "notice-warning",
       text = _("AI Recap feature is not enabled in configuration.")
     })
     return true

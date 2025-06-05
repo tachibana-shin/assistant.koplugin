@@ -312,6 +312,7 @@ function ChatGPTViewer:init()
               local ui = self.ui
               if not ui or not ui.highlight then
                   UIManager:show(InfoMessage:new{
+                      icon = "notice-warning",
                       text = _("Highlight functionality not available"),
                       timeout = 2
                   })
@@ -320,6 +321,7 @@ function ChatGPTViewer:init()
               
               if not self.text or self.text == "" then
                   UIManager:show(InfoMessage:new{
+                      icon = "notice-warning",
                       text = _("No text to add as note"),
                       timeout = 2
                   })
@@ -348,6 +350,7 @@ function ChatGPTViewer:init()
                             
               if note_text == "" then
                   UIManager:show(InfoMessage:new{
+                      icon = "notice-warning",
                       text = _("No text left to add as note"),
                       timeout = 2
                   })

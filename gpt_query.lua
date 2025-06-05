@@ -1,3 +1,4 @@
+local logger = require("logger")
 local api_key = nil
 local CONFIGURATION = nil
 
@@ -6,7 +7,7 @@ local success, result = pcall(function() return require("configuration") end)
 if success then
     CONFIGURATION = result
 else
-    print("No configuration found. Please set up configuration.lua")
+    logger.warn("No configuration found. Please set up configuration.lua")
 end
 
 -- Define handlers table with proper error handling
@@ -18,7 +19,7 @@ local function loadHandler(name)
     if success then
         handlers[name] = handler
     else
-        print("Failed to load " .. name .. " handler: " .. tostring(handler))
+        logger.warn("Failed to load " .. name .. " handler: " .. tostring(handler))
     end
 end
 
