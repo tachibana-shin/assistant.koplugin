@@ -386,6 +386,14 @@ function ChatGPTViewer:init()
 
   local textw_height = self.height - titlebar:getHeight() - self.button_table:getSize().h
 
+
+  -- load configuration
+  local success, CONFIGURATION = pcall(function() return require("configuration") end)
+  if success and CONFIGURATION.features.render_markdown ~= nil then
+    -- defaults to true, if user omits the option (nil)
+    self.render_markdown = CONFIGURATION.features.render_markdown
+  end
+
   if self.render_markdown then
     -- Convert Markdown to HTML and render in a ScrollHtmlWidget
     local html_body, err = MD(self.text, {})
