@@ -174,7 +174,8 @@ return CONFIGURATION
 
 ### Tips
 
+- Use **Long-tap** (tap & hold for 3 secs) on a single word to popup the highlight menu
 - Keep highlights reasonably sized for best results
-- Use "Ask" for specific questions about the text
+- Use **"Ask"** for specific questions about the text
 - Try the pre-made buttons for quick analysis
 - Add your own custom prompts for specialized tasks
