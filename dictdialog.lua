@@ -87,8 +87,10 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
       local function createResultText(highlightedText, answer)
           local result_text
           if configuration and configuration.features and (configuration.features.render_markdown or configuration.features.render_markdown == nil) then
+            -- in markdown mode, outputs markdown formated highlighted text
             result_text = "... " .. prev_context .. " **" .. highlightedText ..  "** " ..  next_context ..  " ...\n\n" ..  answer
           else
+            -- in plain text mode, use widget controled characters.
             result_text =
               TextBoxWidget.PTF_HEADER .. 
               "... " .. prev_context .. TextBoxWidget.PTF_BOLD_START .. highlightedText .. TextBoxWidget.PTF_BOLD_END .. next_context .. " ...\n\n" ..
