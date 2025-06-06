@@ -65,8 +65,8 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     
     local context_message = {
         role = "user",
-        content = prev_context .. "**" .. highlightedText .. "**" .. next_context .. "\n" ..
-            "Explain vocabulary or content quoted with ** in the above sentence with following information:\n" ..
+        content = prev_context .. "<<" .. highlightedText .. ">>" .. next_context .. "\n" ..
+            "Explain vocabulary or content quoted with <<>> in the above sentence with following information:\n" ..
             "- *Conjugation*. Vocabulary in original conjugation if its different than the form in the sentence\n" ..
             "- *Synonyms*. 3 synonyms for the word if available\n" ..
             "- *Meaning*. Meaning of the expression without reference to context. Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
