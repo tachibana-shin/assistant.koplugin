@@ -65,14 +65,15 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     
     local context_message = {
         role = "user",
-        content = prev_context .. "<<" .. highlightedText .. ">>" .. next_context .. "\n" ..
-            "explain vocabulary or content in <<>> in above sentence with following information:\n" ..
-            "- Vocabulary in original conjugation if its different than the form in the sentence\n" ..
-            "- 3 synonyms for the word if available\n" ..
-            "- Meaning of the expression without reference to context. Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
-            "- Explanation of the content according to context. Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
-            "- Another example sentence. Answer this part in the original language of text in <<>>\n" ..
-            "only show the replies, do not give a description, in markdown list format."
+        content = prev_context .. "**" .. highlightedText .. "**" .. next_context .. "\n" ..
+            "Explain vocabulary or content quoted with ** in the above sentence with following information:\n" ..
+            "- *Conjugation*. Vocabulary in original conjugation if its different than the form in the sentence\n" ..
+            "- *Synonyms*. 3 synonyms for the word if available\n" ..
+            "- *Meaning*. Meaning of the expression without reference to context. Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
+            "- *Explanation*. Explanation of the content according to context. Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
+            "- *Example*. Another example sentence. Answer this part in the original language of the sentence.\n" ..
+            "- *Origin*. Origin of that word, tracing it back to its ancient roots. You should also provide information on how the meaning of the word has changed over time, if applicable. Answer this part in ".. configuration.features.dictionary_translate_to .." language.\n" ..
+            "Only show the requested replies, do not give a description, answer in markdown list format."
     }
     table.insert(message_history, context_message)
 
@@ -84,10 +85,15 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     UIManager:scheduleIn(0.1, function()
       local answer = queryChatGPT(message_history)
       local function createResultText(highlightedText, answer)
-          local result_text = 
+          local result_text
+          if configuration and configuration.features and (configuration.features.render_markdown or configuration.features.render_markdown == nil) then
+            result_text = "... " .. prev_context .. " **" .. highlightedText ..  "** " ..  next_context ..  " ...\n\n" ..  answer
+          else
+            result_text =
               TextBoxWidget.PTF_HEADER .. 
               "... " .. prev_context .. TextBoxWidget.PTF_BOLD_START .. highlightedText .. TextBoxWidget.PTF_BOLD_END .. next_context .. " ...\n\n" ..
               answer 
+          end
           return result_text
       end
 
