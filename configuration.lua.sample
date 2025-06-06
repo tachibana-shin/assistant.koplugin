@@ -189,6 +189,13 @@ local CONFIGURATION = {
 
                                 **Input Text:** {highlight} ]], 
                 show_on_main_popup = false -- Show the button in main popup
+            },
+            wikipedia = {
+                text = "Wikipedia",
+                order = 10,
+                system_prompt = "You are an informative assistant that provides wikipedia articles.",
+                user_prompt = "I want you to act as a Wikipedia page. I will give you the name of a topic, and you will provide a summary of that topic in the format of a Wikipedia page. Your summary should be informative and factual, covering the most important aspects of the topic. Start your summary with an introductory paragraph that gives an overview of the topic. I prefer the answer in Turkish. My first topic is {highlight}",
+                show_on_main_popup = false -- Show the button in main popup
             }
         }
     }
