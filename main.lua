@@ -188,8 +188,11 @@ function Assistant:onDictButtonsReady(dict_popup, buttons)
         callback = function()
             NetworkMgr:runWhenOnline(function()
                 local showDictionaryDialog = require("dictdialog")
-                -- Pass the word from the dict_popup instead of the highlight instance:
-                showDictionaryDialog(self.ui, dict_popup.lookupword)
+		-- NOTE: `dict_popup.lookupword` is a dictionary word
+		-- in the case of complex words, eg: multicolored, only "multi-" prefix is 
+		-- looked up in dictionary (in SOEDrich). Thus the AI model doesn't know the 
+		-- original word "multicolored".  Feed the module with original text here.
+                showDictionaryDialog(self.ui, dict_popup.word)
             end)
         end,
     }})
