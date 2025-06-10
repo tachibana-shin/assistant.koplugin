@@ -113,13 +113,13 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
   }
   table.insert(message_history, question_message)
 
-  local answer = queryChatGPT(message_history)
+  local answer, err = queryChatGPT(message_history)
   
   -- Check if we got a valid response
-  if not answer or answer == "" then
+  if not answer or answer == "" or err ~= nil then
     UIManager:show(InfoMessage:new{
       icon = "notice-warning",
-      text = "No response received from AI service. Please check your configuration and network connection.",
+      text = "Error received from AI service." .. err or "",
       timeout = 3
     })
     return
@@ -252,7 +252,7 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
     }
   }
   
-  local answer = queryChatGPT(message_history)
+  local answer, err = queryChatGPT(message_history)
   if answer then
     table.insert(message_history, {
       role = "assistant",
@@ -260,7 +260,7 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
     })
   end
   
-  return message_history, nil
+  return message_history, err
 end
 
 -- Main dialog function
@@ -279,7 +279,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
 
       message_history, err = handlePredefinedPrompt(direct_prompt, highlightedText, ui)
       if err then
-        UIManager:show(InfoMessage:new{text = _("Error: " .. err), icon = "notice-warning"})
+        UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
         return
       end
       title = CONFIGURATION.features.prompts[direct_prompt].text
@@ -329,13 +329,13 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
           }
           table.insert(message_history, question_message)
 
-          local answer = queryChatGPT(message_history)
+          local answer, err = queryChatGPT(message_history)
           
           -- Check if we got a valid response
-          if not answer or answer == "" then
+          if not answer or answer == "" or err ~= nil then
             UIManager:show(InfoMessage:new{
               icon = "notice-warning",
-              text = "No response received from AI service. Please check your configuration and network connection.",
+              text = "Error received from AI service." .. err or "",
               timeout = 3
             })
             return
@@ -411,7 +411,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
             UIManager:scheduleIn(0.1, function()
               local message_history, err = handlePredefinedPrompt(prompt_type, highlightedText, ui)
               if err then
-                UIManager:show(InfoMessage:new{text = _("Error: " .. err), icon = "notice-warning"})
+                UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
                 return
               end
               createAndShowViewer(ui, highlightedText, message_history, prompt.text)

@@ -48,35 +48,41 @@ local function getApiKey(provider)
     return nil
 end
 
+-- return: answer, err
 local function queryChatGPT(message_history)
     if not CONFIGURATION then
-        return "Error: No configuration found. Please set up configuration.lua"
+        return "", "Error: No configuration found. Please set up configuration.lua"
     end
 
     local provider = CONFIGURATION.provider 
     
     if not provider then
-        return "Error: No provider specified in configuration"
+        return "", "Error: No provider specified in configuration"
     end
 
     local handler = handlers[provider]
 
     if not handler then
-        return "Error: Unsupported provider " .. provider .. ". Please check configuration.lua"
+        return "", "Error: Unsupported provider " .. provider .. ". Please check configuration.lua"
     end
 
     -- Get API key for the selected provider
     CONFIGURATION.api_key = getApiKey(provider)
     if not CONFIGURATION.api_key then
-        return "Error: No API key found for provider " .. provider .. ". Please check configuration.lua"
+        return "", "Error: No API key found for provider " .. provider .. ". Please check configuration.lua"
     end
 
     local success, result = pcall(function()
-        return handler:query(message_history, CONFIGURATION)
+        local res, err = handler:query(message_history, CONFIGURATION)
+        if err ~= nil then
+	  logger.warn("API Error", err)
+          error(err)
+        end
+        return res
     end)
 
     if not success then
-        return "Error: " .. tostring(result)
+        return "", "Error: " .. tostring(result)
     end
 
     return result

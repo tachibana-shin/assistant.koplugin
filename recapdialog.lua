@@ -51,7 +51,12 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
         return result_text
       end
 
-      local answer = queryChatGPT(message_history)
+      local answer, err = queryChatGPT(message_history)
+      if err ~= nil then
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err, timeout = 3 })
+        return
+      end
+
       local chatgpt_viewer = ChatGPTViewer:new {
         ui = ui,
         title = _("Recap"),
