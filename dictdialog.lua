@@ -83,7 +83,13 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
       timeout = 0.1
     })
     UIManager:scheduleIn(0.1, function()
-      local answer = queryChatGPT(message_history)
+      local answer, err = queryChatGPT(message_history)
+
+      if err ~= nil then
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err, timeout = 3 })
+	return
+      end
+
       local function createResultText(highlightedText, answer)
           local result_text
           if configuration and configuration.features and (configuration.features.render_markdown or configuration.features.render_markdown == nil) then
