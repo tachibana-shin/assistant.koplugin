@@ -37,9 +37,11 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
     }
     table.insert(message_history, context_message)
 
+    local current_model = configuration.provider_settings[configuration.provider].model
     UIManager:show(InfoMessage:new{
       icon = "book.opened",
-      text = _("Loading..."),
+      text = _("Querying AI ...") .. "\n" .. configuration.provider .. "/" .. current_model,
+      force_one_line = true,
       timeout = 0.1
     })
     UIManager:scheduleIn(0.1, function()

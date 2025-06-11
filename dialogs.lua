@@ -20,8 +20,11 @@ end
 
 -- Common helper functions
 local function showLoadingDialog()
+  local current_model = CONFIGURATION.provider_settings[CONFIGURATION.provider].model
   local loading = InfoMessage:new{
-    text = _("Loading..."),
+    text = _("Querying AI ...") .. "\n" .. CONFIGURATION.provider .. "/" .. current_model,
+    icon = "book.opened",
+    force_one_line = true,
     timeout = 0.1
   }
   UIManager:show(loading)
