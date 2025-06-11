@@ -77,9 +77,11 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     }
     table.insert(message_history, context_message)
 
+    local current_model = configuration.provider_settings[configuration.provider].model
     UIManager:show(InfoMessage:new{
       icon = "book.opened",
-      text = _("Loading..."),
+      text = _("Querying AI ...") .. "\n" .. configuration.provider .. "/" .. current_model,
+      force_one_line = true,
       timeout = 0.1
     })
     UIManager:scheduleIn(0.1, function()
@@ -87,7 +89,7 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
 
       if err ~= nil then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err, timeout = 3 })
-	return
+        return
       end
 
       local function createResultText(highlightedText, answer)
