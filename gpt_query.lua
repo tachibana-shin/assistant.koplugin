@@ -75,14 +75,14 @@ local function queryChatGPT(message_history)
     local success, result = pcall(function()
         local res, err = handler:query(message_history, CONFIGURATION)
         if err ~= nil then
-	  logger.warn("API Error", err)
+        logger.warn("API Error", err)
           error(err)
         end
         return res
     end)
 
     if not success then
-        return "", "Error: " .. tostring(result)
+        return "", tostring(result)
     end
 
     return result
