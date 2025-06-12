@@ -39,7 +39,16 @@ local CONFIGURATION = {
             api_key = "your-openrouter-api-key",
             additional_parameters = {
                 temperature = 0.7,
-                max_tokens = 4096
+                max_tokens = 4096,
+                -- Reasoning tokens configuration (optional)
+                -- reference: https://openrouter.ai/docs/use-cases/reasoning-tokens
+                -- reasoning = {
+                --     -- One of the following (not both):
+                --     effort = "high", -- Can be "high", "medium", or "low" (OpenAI-style)
+                --     -- max_tokens = 2000, -- Specific token limit (Anthropic-style)
+                --     -- Or enable reasoning with the default parameters:
+                --     -- enabled = true -- Default: inferred from effort or max_tokens
+                -- }
             }
         },
         deepseek = {
