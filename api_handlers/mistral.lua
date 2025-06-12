@@ -46,8 +46,8 @@ function MistralHandler:query(message_history, config)
         
         -- server response error message
         logger.warn("API Error", code, response)
-        if success and responseData and responseData.error and responseData.error.message then
-            return nil, responseData.error.message 
+        if success and responseData and responseData.message then
+            return nil, responseData.message 
         end
     end
     
