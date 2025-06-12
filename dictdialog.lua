@@ -88,7 +88,7 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
       local answer, err = queryChatGPT(message_history)
 
       if err ~= nil then
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err, timeout = 3 })
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
       end
 

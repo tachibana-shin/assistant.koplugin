@@ -55,7 +55,7 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
 
       local answer, err = queryChatGPT(message_history)
       if err ~= nil then
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err, timeout = 3 })
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
       end
 

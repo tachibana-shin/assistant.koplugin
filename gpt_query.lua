@@ -72,20 +72,11 @@ local function queryChatGPT(message_history)
         return "", "Error: No API key found for provider " .. provider .. ". Please check configuration.lua"
     end
 
-    local success, result = pcall(function()
-        local res, err = handler:query(message_history, CONFIGURATION)
-        if err ~= nil then
-            logger.warn("API Error:", err)
-            error(err)
-        end
-        return res
-    end)
-
-    if not success then
-        return "", tostring(result)
+    local res, err = handler:query(message_history, CONFIGURATION)
+    if err ~= nil then
+        return "", "Error: " .. tostring(err)
     end
-
-    return result
+    return res
 end
 
 return queryChatGPT
