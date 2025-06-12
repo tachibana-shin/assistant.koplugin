@@ -29,19 +29,21 @@ function OllamaHandler:query(message_history, config)
 
     local success, code, response = self:makeRequest(ollama_settings.base_url, headers, requestBody)
     if not success then
-        return "Error: Failed to connect to Ollama API - " .. tostring(response)
+        return nil, "Error: Failed to connect to Ollama API - " .. tostring(response)
     end
 
     local success_parse, parsed = pcall(json.decode, response)
     if not success_parse then
         logger.warn("JSON Decode Error:", parsed)
-        return "Error: Failed to parse Ollama API response"
+        return nil, "Error: Failed to parse Ollama API response"
     end
 
     if parsed and parsed.message then
         return parsed.message.content
+    elseif parsed and parsed.error and parsed.error.message then
+        return nil, parsed.error.message 
     else
-        return "Error: Unexpected response format from API"
+        return nil, "Error: Unexpected response format from API"
     end
 end
 

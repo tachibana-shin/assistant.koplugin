@@ -38,10 +38,16 @@ function OpenRouterProvider:query(message_history, config)
 
     local status, code, response = self:makeRequest(openrouter_settings.base_url, headers, requestBody)
 
-    if status and code == 200 then
+    if status then
         local success, responseData = pcall(json.decode, response)
         if success and responseData and responseData.choices and responseData.choices[1] then
             return responseData.choices[1].message.content
+        end
+        
+        -- server response error message
+        logger.warn("API Error", code, response)
+        if success and responseData and responseData.error and responseData.error.message then
+            return nil, responseData.error.message 
         end
     end
     

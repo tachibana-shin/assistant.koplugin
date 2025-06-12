@@ -75,21 +75,23 @@ function GeminiHandler:query(message_history, config)
             request_size = #requestBody,
             message_count = #message_history
         })
-        return "Error: Failed to connect to Gemini API - " .. tostring(response)
+        return nil,"Error: Failed to connect to Gemini API - " .. tostring(response)
     end
 
     local success, parsed = pcall(json.decode, response)
     if not success then
         logger.warn("JSON Decode Error:", parsed)
-        return "Error: Failed to parse Gemini API response"
+        return nil,"Error: Failed to parse Gemini API response"
     end
     
     if parsed and parsed.candidates and parsed.candidates[1] and 
        parsed.candidates[1].content and parsed.candidates[1].content.parts and
        parsed.candidates[1].content.parts[1] then
         return parsed.candidates[1].content.parts[1].text
+    elseif parsed and parsed.error and parsed.error.message then
+        return nil, parsed.error.message 
     else
-        return "Error: Unexpected response format from Gemini API"
+        return nil,"Error: Unexpected response format from Gemini API"
     end
 end
 

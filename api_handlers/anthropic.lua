@@ -37,19 +37,21 @@ function AnthropicHandler:query(message_history, config)
     local success, code, response = self:makeRequest(anthropic_settings.base_url, headers, requestBody)
 
     if not success then
-        return "Error: Failed to connect to Anthropic API - " .. tostring(response)
+        return nil,"Error: Failed to connect to Anthropic API - " .. tostring(response)
     end
 
     local success_parse, parsed = pcall(json.decode, response)
     if not success_parse then
         logger.warn("JSON Decode Error:", parsed)
-        return "Error: Failed to parse Anthropic API response"
+        return nil, "Error: Failed to parse Anthropic API response"
     end
     
     if parsed and parsed.content and parsed.content[1] and parsed.content[1].text then
         return parsed.content[1].text
+    elseif parsed and parsed.error and parsed.error.message then
+        return nil, parsed.error.message 
     else
-        return "Error: Unexpected response format from API"
+        return nil, "Error: Unexpected response format from API"
     end
 end
 
