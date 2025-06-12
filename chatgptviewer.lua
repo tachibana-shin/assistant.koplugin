@@ -43,10 +43,13 @@ local MD = require("apps/filemanager/lib/md")
 local VIEWER_CSS = [[
 @page {
     margin: 0;
+    font-family: 'Noto Sans';
 }
 
 body {
     margin: 0;
+    line-height: 1.3;
+    text-align: justify;
     padding: 0;
 }
 
