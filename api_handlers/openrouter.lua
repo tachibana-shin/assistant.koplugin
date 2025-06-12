@@ -88,6 +88,20 @@ function OpenRouterProvider:query(message_history, config)
         max_tokens = openrouter_settings.max_tokens,
         temperature = openrouter_settings.temperature
     }
+    
+    -- Handle reasoning tokens configuration
+    if openrouter_settings.additional_parameters and openrouter_settings.additional_parameters.reasoning ~= nil then
+        -- Create a copy of the reasoning configuration
+        requestBodyTable.reasoning = {}
+        for k, v in pairs(openrouter_settings.additional_parameters.reasoning) do
+            requestBodyTable.reasoning[k] = v
+        end
+        
+        -- Set exclude to true by default if not explicitly set
+        if requestBodyTable.reasoning.exclude == nil then
+            requestBodyTable.reasoning.exclude = true
+        end
+    end
 
     local requestBody = json.encode(requestBodyTable)
     local headers = {
