@@ -29,6 +29,12 @@ function groqHandler:query(message_history, config)
         max_tokens = groq_settings.max_tokens
     }
 
+    if groq_settings.additional_parameters then
+       for k, v in pairs(groq_settings.additional_parameters) do
+            requestBodyTable[k] = v
+       end
+    end
+
     local requestBody = json.encode(requestBodyTable)
     local headers = {
         ["Content-Type"] = "application/json",
