@@ -113,7 +113,6 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
     UIManager:show(InfoMessage:new{
       icon = "notice-warning",
       text = "Error received from AI service." .. err or "",
-      timeout = 3
     })
     return
   end
@@ -195,15 +194,21 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
     ui = ui,
     onAskQuestion = function(viewer, new_question)
       NetworkMgr:runWhenOnline(function()
-        -- Use viewer's own highlighted_text value
-        local current_highlight = viewer.highlighted_text or highlightedText
-        message_history = handleFollowUpQuestion(message_history, new_question, ui, current_highlight)
-        local new_result_text = createResultText(current_highlight, message_history, viewer.text, false)
-        viewer:update(new_result_text)
-        
-        if viewer.scroll_text_w then
-          viewer.scroll_text_w:resetScroll()
-        end
+        showLoadingDialog()
+        UIManager:scheduleIn(0.1, function()
+          -- Use viewer's own highlighted_text value
+          local current_highlight = viewer.highlighted_text or highlightedText
+          local msg = handleFollowUpQuestion(message_history, new_question, ui, current_highlight)
+          if msg ~= nil then
+            message_history = msg
+            local new_result_text = createResultText(current_highlight, message_history, viewer.text, false)
+            viewer:update(new_result_text)
+            
+            if viewer.scroll_text_w then
+              viewer.scroll_text_w:resetScroll()
+            end
+          end
+        end)
       end)
     end,
     highlighted_text = highlightedText,
