@@ -1,7 +1,10 @@
+local logger = require("logger")
+
+--[[
 local https = require("ssl.https")
 local ltn12 = require("ltn12")
-local logger = require("logger")
 local Device = require("device")
+]]
 
 local BaseHandler = {}
 
@@ -17,6 +20,7 @@ function BaseHandler:query(message_history)
     error("query method must be implemented")
 end
 
+--[[
 function BaseHandler:CurlRequest(url, headers, body)
     local tmp_request = "/tmp/assi_request.json"
     local tmp_response = "/tmp/assi_response.json"
@@ -99,6 +103,60 @@ function BaseHandler:HTTPSRequest(url, headers, body)
     logger.warn("API request failed with details:", error_info)
 end
 
+]]
+
+-- borrowed func code from koreader frontend/ui/wikipedia.lua
+-- 
+function BaseHandler:postUrlContent(url, headers, body, timeout, maxtime)
+    local http = require("socket.http")
+    local ltn12 = require("ltn12")
+    local socket = require("socket")
+    local socketutil = require("socketutil")
+    local socket_url = require("socket.url")
+    if url:find("^https://") then
+        local https = require("ssl.https")
+        https.cert_verify = false  -- disable CA verify
+    end
+
+    local parsed = socket_url.parse(url)
+    if parsed.scheme ~= "http" and parsed.scheme ~= "https" then
+        return false, nil, "Unsupported protocol"
+    end
+
+    if not timeout then timeout = 45 end -- single IO timeout
+    local sink = {}
+    socketutil:set_timeout(timeout, maxtime or 120) -- maxtime: all the response finished time.
+    local request = {
+        url = url,
+        method = "POST",
+        headers = headers or {},
+        source = ltn12.source.string(body or ""),
+        sink = maxtime and socketutil.table_sink(sink) or ltn12.sink.table(sink),
+    }
+    local code, headers, status = socket.skip(1, http.request(request)) -- receiving the 1st byte
+    socketutil:reset_timeout()
+    local content = table.concat(sink)  -- empty or content accumulated till now
+
+    if code == socketutil.TIMEOUT_CODE or
+       code == socketutil.SSL_HANDSHAKE_CODE or
+       code == socketutil.SINK_TIMEOUT_CODE then
+        logger.warn("request interrupted/timed out:", code)
+        return false, code, "Request interrupted/timed out"
+    end
+    if headers == nil then
+        logger.warn("No HTTP headers:", status or code or "network unreachable")
+        return false, nil, "Network or remote server unavailable"
+    end
+    if headers and headers["content-length"] then
+        -- Check we really got the announced content size
+        local content_length = tonumber(headers["content-length"])
+        if #content ~= content_length then
+            return false, code, "Incomplete content received"
+        end
+    end
+    return true, code, content
+end
+
 -- Add fallback HTTP request function
 function BaseHandler:makeRequest(url, headers, body)
     logger.dbg("Attempting API request:", {
@@ -106,7 +164,8 @@ function BaseHandler:makeRequest(url, headers, body)
         headers = headers,
         body_length = #body
     })
-    
+   
+--[[
     -- Try using curl first (more reliable on Kindle)
     if Device:isKindle() then
         return self:CurlRequest(url, headers, body)
@@ -115,6 +174,8 @@ function BaseHandler:makeRequest(url, headers, body)
     -- Fallback to standard HTTPS when not on Kindle
     logger.dbg("Attempting HTTPS fallback request")
     return self:HTTPSRequest(url, headers, body)
+]]
+    return self:postUrlContent(url, headers, body)
 end
 
 return BaseHandler 
