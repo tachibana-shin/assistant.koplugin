@@ -1,10 +1,6 @@
 local BaseHandler = require("api_handlers.base")
-local https = require("ssl.https")
-local ltn12 = require("ltn12")
 local json = require("json")
-local socket = require("socket")
 local logger = require("logger")
-local Device = require("device")
 
 local GeminiHandler = BaseHandler:new()
 

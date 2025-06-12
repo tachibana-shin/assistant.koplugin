@@ -1,10 +1,7 @@
 -- filepath: /Users/Q620675/Code/assistant.koplugin/api_handlers/azure_openai.lua
 local BaseHandler = require("api_handlers.base")
-local https = require("ssl.https")
-local ltn12 = require("ltn12")
 local json = require("json")
 local logger = require("logger")
-local Device = require("device")
 
 local AzureOpenAIHandler = BaseHandler:new()
 
