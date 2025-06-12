@@ -84,7 +84,7 @@ local function createContextMessage(ui, highlightedText)
       role = "user",
       content = "I'm reading something titled '" .. book.title .. "' by " .. book.author ..
         ". I have a question about the following highlighted text: " .. highlightedText .. 
-        ". If the question isn't clean enough, analyze the highlighted text.",
+        ". If the question is not clear enough, analyze the highlighted text.",
       is_context = true
     }
   else
