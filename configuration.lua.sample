@@ -79,7 +79,12 @@ local CONFIGURATION = {
             model = "llama-3.3-70b-versatile", -- model list: https://console.groq.com/docs/models
             base_url = "https://api.groq.com/openai/v1/chat/completions",
             api_key = "your-groq-api-key",
-            additional_parameters = { }
+            additional_parameters = {
+                temperature = 0.7,
+                -- config options, see: https://console.groq.com/docs/api-reference
+                -- eg: disable reasoning for model qwen3, set:
+                -- reasoning_effort = "none" 
+            }
         },
         azure_openai = {
             endpoint = "https://your-resource-name.openai.azure.com", -- Your Azure OpenAI resource endpoint
