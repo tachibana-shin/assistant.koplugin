@@ -39,15 +39,6 @@ if CONFIGURATION and CONFIGURATION.provider and provider_handlers[CONFIGURATION.
     provider_handlers[CONFIGURATION.provider]()
 end
 
-local function getApiKey(provider)
-    if CONFIGURATION and CONFIGURATION.provider_settings and
-       CONFIGURATION.provider_settings[provider] and
-       CONFIGURATION.provider_settings[provider].api_key then
-        return CONFIGURATION.provider_settings[provider].api_key
-    end
-    return nil
-end
-
 -- return: answer, err
 local function queryChatGPT(message_history)
     if not CONFIGURATION then
@@ -64,12 +55,6 @@ local function queryChatGPT(message_history)
 
     if not handler then
         return "", "Error: Unsupported provider " .. provider .. ". Please check configuration.lua"
-    end
-
-    -- Get API key for the selected provider
-    CONFIGURATION.api_key = getApiKey(provider)
-    if not CONFIGURATION.api_key then
-        return "", "Error: No API key found for provider " .. provider .. ". Please check configuration.lua"
     end
 
     local res, err = handler:query(message_history, CONFIGURATION)
