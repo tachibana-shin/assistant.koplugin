@@ -68,23 +68,6 @@ function BaseHandler:postUrlContent(url, headers, body, timeout, maxtime)
     return true, code, content
 end
 
-function BaseHandler:logError(code)
-    -- Log detailed error information
-    local error_info = {
-        error_type = type(code),
-        error_message = tostring(code),
-        ssl_loaded = package.loaded["ssl"] ~= nil,
-        https_loaded = package.loaded["ssl.https"] ~= nil,
-        socket_loaded = package.loaded["socket"] ~= nil,
-        device_info = {
-            model = Device:info(),
-            firmware = Device:otaModel(),
-        }
-    }
-    
-    logger.warn("API request failed with details:", error_info)
-end
-
 --- Compatible function to call postUrlContent with error handling
 function BaseHandler:makeRequest(url, headers, body)
     logger.dbg("Attempting API request:", {
@@ -92,15 +75,7 @@ function BaseHandler:makeRequest(url, headers, body)
         headers = headers,
         body_length = #body
     })
-   
-    local ok, code, resp = self:postUrlContent(url, headers, body)
-    if ok then
-        return true, code, resp
-    end
-
-    -- If the request failed, log the error details
-    self:logErrorDetails(code)
-    return false, code, resp
+    return self:postUrlContent(url, headers, body)
 end
     
 return BaseHandler
