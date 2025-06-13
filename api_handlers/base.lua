@@ -4,6 +4,7 @@ local ltn12 = require("ltn12")
 local socket = require("socket")
 local socketutil = require("socketutil")
 local https = require("ssl.https")
+local Device = require("device")
 
 local BaseHandler = {}
 
@@ -76,9 +77,8 @@ function BaseHandler:logError(code)
         https_loaded = package.loaded["ssl.https"] ~= nil,
         socket_loaded = package.loaded["socket"] ~= nil,
         device_info = {
-            is_kindle = Device:isKindle(),
-            model = Device:getModel(),
-            firmware = Device:getFirmware(),
+            model = Device:info(),
+            firmware = Device:otaModel(),
         }
     }
     
