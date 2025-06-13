@@ -57,7 +57,12 @@ local function queryChatGPT(message_history)
         return "", "Error: Unsupported provider " .. provider .. ". Please check configuration.lua"
     end
 
-    local res, err = handler:query(message_history, CONFIGURATION)
+    if not (CONFIGURATION.provider_settings and
+       CONFIGURATION.provider_settings[provider]) then
+       return "", "Error: No provider settings found for " .. provider
+    end
+
+    local res, err = handler:query(message_history, CONFIGURATION.provider_settings[provider])
     if err ~= nil then
         return "", "Error: " .. tostring(err)
     end

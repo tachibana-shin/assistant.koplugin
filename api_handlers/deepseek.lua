@@ -4,8 +4,7 @@ local logger = require("logger")
 
 local DeepSeekHandler = BaseHandler:new()
 
-function DeepSeekHandler:query(message_history, config)
-    local deepseek_settings = config.provider_settings and config.provider_settings.deepseek
+function DeepSeekHandler:query(message_history, deepseek_settings)
 
     if not deepseek_settings or not deepseek_settings.api_key then
         return "Error: Missing API key in configuration"

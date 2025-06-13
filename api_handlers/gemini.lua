@@ -4,12 +4,11 @@ local logger = require("logger")
 
 local GeminiHandler = BaseHandler:new()
 
-function GeminiHandler:query(message_history, config)
-    if not config or not config.api_key then
+function GeminiHandler:query(message_history, gemini_settings)
+
+    if not gemini_settings or not gemini_settings.api_key then
         return "Error: Missing API key in configuration"
     end
-
-    local gemini_settings = config.provider_settings and config.provider_settings.gemini or {}
 
     -- Gemini API requires messages with explicit roles
     local contents = {}

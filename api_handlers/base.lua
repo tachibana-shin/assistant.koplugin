@@ -15,7 +15,7 @@ function BaseHandler:new(o)
     return o
 end
 
-function BaseHandler:query(message_history)
+function BaseHandler:query(message_history, provider_setting)
     -- To be implemented by specific handlers
     error("query method must be implemented")
 end

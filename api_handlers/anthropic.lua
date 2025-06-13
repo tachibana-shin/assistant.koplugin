@@ -4,8 +4,7 @@ local logger = require("logger")
 
 local AnthropicHandler = BaseHandler:new()
 
-function AnthropicHandler:query(message_history, config)
-    local anthropic_settings = config.provider_settings and config.provider_settings.anthropic
+function AnthropicHandler:query(message_history, anthropic_settings)
 
     if not anthropic_settings or not anthropic_settings.api_key then
         return "Error: Missing API key in configuration"

@@ -4,8 +4,7 @@ local logger = require("logger")
 
 local MistralHandler = BaseHandler:new()
 
-function MistralHandler:query(message_history, config)
-    local mistral_settings = config.provider_settings and config.provider_settings.mistral
+function MistralHandler:query(message_history, mistral_settings)
 
     -- Remove is_context from body, which causes an error in Mistral API
     -- Need to clone the history so that we don't affect the actual message history which gets displayed

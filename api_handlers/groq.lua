@@ -4,8 +4,7 @@ local logger = require("logger")
 
 local groqHandler = BaseHandler:new()
 
-function groqHandler:query(message_history, config)
-    local groq_settings = config.provider_settings and config.provider_settings.groq
+function groqHandler:query(message_history, groq_settings)
 
     -- Remove is_context from body, which causes an error in groq API
     -- Need to clone the history so that we don't affect the actual message history which gets displayed

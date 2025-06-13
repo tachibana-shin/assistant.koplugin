@@ -4,8 +4,7 @@ local logger = require("logger")
 
 local OpenRouterProvider = BaseHandler:new()
 
-function OpenRouterProvider:query(message_history, config)
-    local openrouter_settings = config.provider_settings and config.provider_settings.openrouter
+function OpenRouterProvider:query(message_history, openrouter_settings)
     
     local requestBodyTable = {
         model = openrouter_settings.model,
