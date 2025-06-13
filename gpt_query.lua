@@ -21,8 +21,14 @@ function Querier:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
-    o:init()
     return o
+end
+
+function  Querier:is_inited()
+    return self.handler ~= nil and 
+        self.provider_settings ~= nil and 
+        self.provider_name ~= nil and 
+        self.handler_name ~= nil
 end
 
 --- Initialize the Querier with the provider settings and handler
@@ -53,21 +59,36 @@ function Querier:init()
         if success then
             self.handler = handler
         else
-            error("Handler not found: " .. CONFIGURATION.provider .. ". Please ensure the handler exists in api_handlers directory.")
+            error("Handler not found: " .. self.handler_name .. ". Please ensure the handler exists in api_handlers directory.")
         end
+    else
+        error("No provider set in configuration.lua. Please set the provider and provider_settings.")
     end
 end
 
 function Querier:model()
-    return string.format("[%s](%s)",  self.provider_settings.model, self.provider_name)
+    if not self:is_inited() then
+        local ok, err = pcall(function()
+            self:init()
+        end)
+        if not ok then
+            return tostring(err)
+        end
+    end
+
+    return string.format("%s⮞%s", self.provider_name, self.provider_settings.model)
 end
 
 --- Query the AI with the provided message history
 --- return: answer, error (if any)
 function Querier:query(message_history)
-    if not self.handler then
-        logger.warn("No handler loaded. Please load a handler before querying.")
-        return "", "Error: No handler loaded"
+    if not self:is_inited() then
+        local ok, err = pcall(function()
+            self:init()
+        end)
+        if not ok then
+            return "", "Error init: " .. tostring(err)
+        end
     end
 
     local res, err = self.handler:query(message_history, self.provider_settings)
