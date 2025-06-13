@@ -26,7 +26,6 @@ function groqHandler:query(message_history, config)
     local requestBodyTable = {
         model = groq_settings.model,
         messages = cloned_history,
-        max_tokens = groq_settings.max_tokens
     }
 
     if groq_settings.additional_parameters then

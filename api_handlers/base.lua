@@ -29,7 +29,7 @@ end
 ---@param maxtime any total response finished max time, default 120 seconds
 ---@return boolean success, status code, string content
 function BaseHandler:postUrlContent(url, headers, body, timeout, maxtime)
-    if url:find("^https://") then
+    if string.sub(url, 1, 8) == "https://" then
         https.cert_verify = false  -- disable CA verify
     end
 
