@@ -1,10 +1,9 @@
 local logger = require("logger")
-
---[[
-local https = require("ssl.https")
+local http = require("socket.http")
 local ltn12 = require("ltn12")
-local Device = require("device")
-]]
+local socket = require("socket")
+local socketutil = require("socketutil")
+local https = require("ssl.https")
 
 local BaseHandler = {}
 
@@ -20,112 +19,23 @@ function BaseHandler:query(message_history)
     error("query method must be implemented")
 end
 
---[[
-function BaseHandler:CurlRequest(url, headers, body)
-    local tmp_request = "/tmp/assi_request.json"
-    local tmp_response = "/tmp/assi_response.json"
-    
-    -- Write request body
-    local f = io.open(tmp_request, "w")
-    if f then
-        f:write(body)
-        f:close()
-    end
-    
-    -- Construct curl command with proper headers
-    local header_args = ""
-    for k, v in pairs(headers) do
-        header_args = header_args .. string.format(' -H "%s: %s"', k, v)
-    end
-    
-    local curl_cmd = string.format(
-        'curl -k -s -X POST%s --connect-timeout 30 --retry 2 --retry-delay 3 '..
-        '--data-binary @%s "%s" -o %s',
-        header_args, tmp_request, url, tmp_response
-    )
-    
-    logger.dbg("Executing curl command:", curl_cmd:gsub(headers["Authorization"], "Bearer ***")) -- Hide API key in logs
-    local curl_result = os.execute(curl_cmd)
-    logger.dbg("Curl execution result:", curl_result)
-    
-    -- Read response
-    local response = nil
-    f = io.open(tmp_response, "r")
-    if f then
-        response = f:read("*all")
-        f:close()
-        logger.dbg("Curl response length:", #response)
-    else
-        logger.warn("Failed to read curl response file")
-    end
-    
-    -- Cleanup
-    os.remove(tmp_request)
-    os.remove(tmp_response)
-    
-    if response then
-        return true, 200, response
-    end
-    return false, 400, ""
-end
-
-function BaseHandler:HTTPSRequest(url, headers, body)
-    local response = {}
-    local status, code, responseHeaders = https.request({
-        url = url,
-        method = "POST",
-        headers = headers,
-        source = ltn12.source.string(body),
-        sink = ltn12.sink.table(response),
-        protocol = "tlsv1_2",
-        verify = "none", -- Disable SSL verification for Kindle
-        timeout = 30
-    })
-    
-    if status then
-        return status, code, table.concat(response)
-    end
-
-    -- Log detailed error information
-    local error_info = {
-        error_type = type(code),
-        error_message = tostring(code),
-        ssl_loaded = package.loaded["ssl"] ~= nil,
-        https_loaded = package.loaded["ssl.https"] ~= nil,
-        socket_loaded = package.loaded["socket"] ~= nil,
-        device_info = {
-            is_kindle = Device:isKindle(),
-            model = Device:getModel(),
-            firmware = Device:getFirmware(),
-        }
-    }
-    
-    logger.warn("API request failed with details:", error_info)
-end
-
-]]
-
--- borrowed func code from koreader frontend/ui/wikipedia.lua
--- 
+--- func from koreader frontend/ui/wikipedia.lua
+--- Post URL content with optional headers and body.
+--- using koreader patched socketutil with timeout support
+---@param url any
+---@param headers any
+---@param body any
+---@param timeout any blocking timtout, default 45 seconds
+---@param maxtime any total response finished max time, default 120 seconds
+---@return boolean success, status code, string content
 function BaseHandler:postUrlContent(url, headers, body, timeout, maxtime)
-    local http = require("socket.http")
-    local ltn12 = require("ltn12")
-    local socket = require("socket")
-    local socketutil = require("socketutil")
-    local socket_url = require("socket.url")
     if url:find("^https://") then
-        local https = require("ssl.https")
         https.cert_verify = false  -- disable CA verify
     end
 
-    local parsed = socket_url.parse(url)
-    if parsed.scheme ~= "http" and parsed.scheme ~= "https" then
-        return false, nil, "Unsupported protocol"
-    end
-
-    if not timeout then timeout = 45 end -- single IO timeout
+    if not timeout then timeout = 45 end -- block_timeout
     local sink = {}
-    socketutil:set_timeout(timeout, maxtime or 120) -- maxtime: all the response finished time.
+    socketutil:set_timeout(timeout, maxtime or 120) -- maxtime: total response finished max time.
     local request = {
         url = url,
         method = "POST",
@@ -157,7 +67,24 @@ function BaseHandler:postUrlContent(url, headers, body, timeout, maxtime)
     return true, code, content
 end
 
--- Add fallback HTTP request function
+function BaseHandler:logError(code)
+    -- Log detailed error information
+    local error_info = {
+        error_type = type(code),
+        error_message = tostring(code),
+        ssl_loaded = package.loaded["ssl"] ~= nil,
+        https_loaded = package.loaded["ssl.https"] ~= nil,
+        socket_loaded = package.loaded["socket"] ~= nil,
+        device_info = {
+            is_kindle = Device:isKindle(),
+            model = Device:getModel(),
+            firmware = Device:getFirmware(),
+        }
+    }
+    
+    logger.warn("API request failed with details:", error_info)
+end
+
 function BaseHandler:makeRequest(url, headers, body)
     logger.dbg("Attempting API request:", {
         url = url,
@@ -165,17 +92,14 @@ function BaseHandler:makeRequest(url, headers, body)
         body_length = #body
     })
    
---[[
-    -- Try using curl first (more reliable on Kindle)
-    if Device:isKindle() then
-        return self:CurlRequest(url, headers, body)
+    local ok, code, resp = self:postUrlContent(url, headers, body)
+    if ok then
+        return true, code, resp
     end
 
-    -- Fallback to standard HTTPS when not on Kindle
-    logger.dbg("Attempting HTTPS fallback request")
-    return self:HTTPSRequest(url, headers, body)
-]]
-    return self:postUrlContent(url, headers, body)
+    -- If the request failed, log the error details
+    self:logErrorDetails(code)
+    return false, code, resp
 end
-
-return BaseHandler 
+    
+return BaseHandler
