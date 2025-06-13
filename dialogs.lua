@@ -6,8 +6,6 @@ local InfoMessage = require("ui/widget/infomessage")
 local NetworkMgr = require("ui/network/manager")
 local _ = require("gettext")
 
-local queryChatGPT = require("gpt_query")
-
 local CONFIGURATION = nil
 local buttons, input_dialog = nil, nil
 
@@ -18,11 +16,13 @@ else
   logger.warn("configuration.lua not found, skipping...")
 end
 
+local Querier = require("gpt_query"):new()
+
 -- Common helper functions
 local function showLoadingDialog()
-  local current_model = CONFIGURATION.provider_settings[CONFIGURATION.provider].model
+  local current_model = Querier:model()
   local loading = InfoMessage:new{
-    text = _("Querying AI ...") .. "\n" .. CONFIGURATION.provider .. "/" .. current_model,
+    text = string.format("%s\n%s", _("Querying AI ..."), current_model),
     icon = "book.opened",
     force_one_line = true,
     timeout = 0.1
@@ -106,7 +106,7 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
   }
   table.insert(message_history, question_message)
 
-  local answer, err = queryChatGPT(message_history)
+  local answer, err = Querier:query(message_history)
   
   -- Check if we got a valid response
   if not answer or answer == "" or err ~= nil then
@@ -250,7 +250,7 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
     }
   }
   
-  local answer, err = queryChatGPT(message_history)
+  local answer, err = Querier:query(message_history)
   if answer then
     table.insert(message_history, {
       role = "assistant",
@@ -327,7 +327,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
           }
           table.insert(message_history, question_message)
 
-          local answer, err = queryChatGPT(message_history)
+          local answer, err = Querier:query(message_history)
           
           -- Check if we got a valid response
           if not answer or answer == "" or err ~= nil then

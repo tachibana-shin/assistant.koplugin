@@ -10,63 +10,71 @@ else
     logger.warn("No configuration found. Please set up configuration.lua")
 end
 
--- Define handlers table with proper error handling
-local handlers = {}
-local function loadHandler(name)
-    local success, handler = pcall(function()
-        return require("api_handlers." .. name)
-    end)
-    if success then
-        handlers[name] = handler
-    else
-        logger.warn("Failed to load " .. name .. " handler: " .. tostring(handler))
-    end
-end
-
-local provider_handlers = {
-    anthropic = function() loadHandler("anthropic") end,
-    openai = function() loadHandler("openai") end,
-    deepseek = function() loadHandler("deepseek") end,
-    gemini = function() loadHandler("gemini") end,
-    openrouter = function() loadHandler("openrouter") end,
-    ollama = function() loadHandler("ollama") end,
-    mistral = function() loadHandler("mistral") end,
-    groq = function() loadHandler("groq") end,
-    azure_openai = function() loadHandler("azure_openai") end
+local Querier = {
+    handler = nil,
+    handler_name = nil,
+    provider_settings = nil,
+    provider_name = nil
 }
 
-if CONFIGURATION and CONFIGURATION.provider and provider_handlers[CONFIGURATION.provider] then
-    provider_handlers[CONFIGURATION.provider]()
+function Querier:new(o)
+    o = o or {}
+    setmetatable(o, self)
+    self.__index = self
+    o:init()
+    return o
 end
 
--- return: answer, err
-local function queryChatGPT(message_history)
-    if not CONFIGURATION then
-        return "", "Error: No configuration found. Please set up configuration.lua"
+--- Initialize the Querier with the provider settings and handler
+--- This function checks the CONFIGURATION for the provider and loads the appropriate handler.
+function Querier:init()
+    if CONFIGURATION and CONFIGURATION.provider then
+
+        self.provider_name = CONFIGURATION.provider
+        --- Check if the provider is set in the configuration
+        if CONFIGURATION.provider_settings and CONFIGURATION.provider_settings[CONFIGURATION.provider] then
+            self.provider_settings = CONFIGURATION.provider_settings[CONFIGURATION.provider]
+        else
+            error("Provider settings not found for: " .. CONFIGURATION.provider .. ". Please check your configuration.lua file.")
+        end
+
+        if self.provider_name:find("_") then
+            --- Split the provider name by underscore and 
+            --- take the first part as handler name
+            self.handler_name = CONFIGURATION.provider:match("([^_]+)")
+        else
+            self.handler_name = CONFIGURATION.provider
+        end
+
+        --- Load the handler based on the provider name
+        local success, handler = pcall(function()
+            return require("api_handlers." .. self.handler_name)
+        end)
+        if success then
+            self.handler = handler
+        else
+            error("Handler not found: " .. CONFIGURATION.provider .. ". Please ensure the handler exists in api_handlers directory.")
+        end
+    end
+end
+
+function Querier:model()
+    return string.format("[%s](%s)",  self.provider_settings.model, self.provider_name)
+end
+
+--- Query the AI with the provided message history
+--- return: answer, error (if any)
+function Querier:query(message_history)
+    if not self.handler then
+        logger.warn("No handler loaded. Please load a handler before querying.")
+        return "", "Error: No handler loaded"
     end
 
-    local provider = CONFIGURATION.provider 
-    
-    if not provider then
-        return "", "Error: No provider specified in configuration"
-    end
-
-    local handler = handlers[provider]
-
-    if not handler then
-        return "", "Error: Unsupported provider " .. provider .. ". Please check configuration.lua"
-    end
-
-    if not (CONFIGURATION.provider_settings and
-       CONFIGURATION.provider_settings[provider]) then
-       return "", "Error: No provider settings found for " .. provider
-    end
-
-    local res, err = handler:query(message_history, CONFIGURATION.provider_settings[provider])
+    local res, err = self.handler:query(message_history, self.provider_settings)
     if err ~= nil then
         return "", "Error: " .. tostring(err)
     end
     return res
 end
 
-return queryChatGPT
+return Querier

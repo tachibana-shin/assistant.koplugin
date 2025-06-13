@@ -85,6 +85,7 @@ function BaseHandler:logError(code)
     logger.warn("API request failed with details:", error_info)
 end
 
+--- Compatible function to call postUrlContent with error handling
 function BaseHandler:makeRequest(url, headers, body)
     logger.dbg("Attempting API request:", {
         url = url,

@@ -5,8 +5,8 @@ local InfoMessage = require("ui/widget/infomessage")
 local TextBoxWidget = require("ui/widget/textboxwidget")
 local _ = require("gettext")
 local Event = require("ui/event")
-local queryChatGPT = require("gpt_query")
 local configuration = require("configuration")
+local Querier = require("gpt_query"):new()
 
 local function showDictionaryDialog(ui, highlightedText, message_history)
     -- Handle case where no text is highlighted (gesture-triggered)
@@ -77,15 +77,15 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     }
     table.insert(message_history, context_message)
 
-    local current_model = configuration.provider_settings[configuration.provider].model
+    local current_model = Querier:model()
     UIManager:show(InfoMessage:new{
       icon = "book.opened",
-      text = _("Querying AI ...") .. "\n" .. configuration.provider .. "/" .. current_model,
+      text = string.format("%s\n%s", _("Querying AI ..."), current_model),
       force_one_line = true,
       timeout = 0.1
     })
     UIManager:scheduleIn(0.1, function()
-      local answer, err = queryChatGPT(message_history)
+      local answer, err = Querier:query(message_history)
 
       if err ~= nil then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
