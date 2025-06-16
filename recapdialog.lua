@@ -1,3 +1,4 @@
+local logger = require("logger")
 local InputDialog = require("ui/widget/inputdialog")
 local UIManager = require("ui/uimanager")
 local TextBoxWidget = require("ui/widget/textboxwidget")
@@ -5,10 +6,19 @@ local InfoMessage = require("ui/widget/infomessage")
 local Event = require("ui/event")
 local _ = require("gettext")
 local ChatGPTViewer = require("chatgptviewer")
-local queryChatGPT = require("gpt_query")
 local configuration = require("configuration")
+local Querier = require("gpt_query"):new()
 
 local function showRecapDialog(ui, title, author, progress_percent, message_history)
+    -- Check if Querier is initialized
+    local ok, err = Querier:load_model(configuration.provider)
+    if not ok then
+        logger.warn(err)
+        -- Extract error message after colon
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err:sub(string.find(err, ":") + 5) or err})
+        return
+    end
+
     local formatted_progress_percent = string.format("%.2f", progress_percent * 100)
     
     -- Get recap configuration with fallbacks
@@ -37,10 +47,9 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
     }
     table.insert(message_history, context_message)
 
-    local current_model = configuration.provider_settings[configuration.provider].model
     UIManager:show(InfoMessage:new{
       icon = "book.opened",
-      text = _("Querying AI ...") .. "\n" .. configuration.provider .. "/" .. current_model,
+      text = string.format("%s\n️%s", _("Querying AI ..."), Querier:get_model_desc()),
       force_one_line = true,
       timeout = 0.1
     })
@@ -53,9 +62,9 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
         return result_text
       end
 
-      local answer, err = queryChatGPT(message_history)
+      local answer, err = Querier:query(message_history)
       if err ~= nil then
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err, timeout = 3 })
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
       end
 

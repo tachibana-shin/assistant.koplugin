@@ -15,8 +15,9 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
   - OpenAI's GPT models
   - Gemini
   - OpenRouter: unified interface for LLMs
-  - DeepSeek (not tested)
+  - DeepSeek
   - Ollama
+  - Other OpenAI compatible API services (grok, nvidia ...)
 - **Builtin Prompts**:
   - **Dictionary** : Get synonyms, context-aware dictionary explanation and example for the selected word. (thanks to [plateaukao](https://github.com/plateaukao))
   - **Recap** : Get a quick recap of a book when you open it, for books that haven't been opened in 28 hrs and <95% complete. Also available via shortcut/gesture for on-demand access. Fully configurable prompts. (thanks to [jbhul](https://github.com/jbhul))
@@ -42,33 +43,19 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 
 You'll need API keys for the AI service you want to use:
 
-**For Claude/Anthropic**:
-1. Go to [console.anthropic.com](https://console.anthropic.com)
-2. Sign up for an account or login to your existing account
-3. Go to "API Keys" and create a new key
+1. Select one of the services listed below, 
+1. Sign up and login.
+1. create an API key as their web page instructed.
 
-**For OpenAI**:
-1. Visit [platform.openai.com](https://platform.openai.com)
-2. Create an account or login to your existing account
-3. Go to "API Keys" section and create a new key
-
-**For Gemini**:
-1. Visit [aistudio.google.com](https://aistudio.google.com/)
-2. Create an account or login to your existing account
-3. Go to ["Get Api Key"](https://aistudio.google.com/app/apikey) section and create a new key
-
-**For OpenRouter**:
-1. Visit [openrouter.ai/](https://openrouter.ai)
-2. Create an account or login to your existing account
-3. Go to [API Keys](https://openrouter.ai/settings/keys) section and create a new key
-
-**For DeepSeek**:
-1. Visit [platform.deepseek.com](https://platform.deepseek.com)
-2. Create an account or login to your existing account
-3. Go to "API Keys" section and create a new key
-
-**For Ollama**:
-1. Ollama doesn't use an API key. However, a placeholder API key value (ex: "ollama") is required.
+| Platform API Key Pages                                            | Notes                                                     |
+| ----------------------------------------------------------------- | --------------------------------------------------------- |
+| [OpenAI](https://platform.openai.com/api-keys)                    | ChatGPT.                                                  |
+| [Gemini](https://aistudio.google.com/app/apikey)                  | Google's AI.                                              |
+| [Claude / Anthropic](https://console.anthropic.com/settings/keys) | AI for complex reasoning and conversation.                |
+| [DeepSeek](https://platform.deepseek.com/api_keys)                | Multilingual AI, major in Chinese.                        |
+| [Groq](https://console.groq.com/keys)                             | Ultra-fast AI for real-time use.                          |
+| [Mistral AI](https://console.mistral.ai/api-keys)                 | Efficient and accurate AI models.                         |
+| Ollama                                                            | Local AI models. use placeholder value.<br>(ex: `ollama`) |
 
 ### 2. Installation:
 #### Using The Latest Version:
@@ -102,9 +89,11 @@ You'll need API keys for the AI service you want to use:
 The plugin supports extensive customization through `configuration.lua`. See the [sample file](https://raw.githubusercontent.com/omer-faruq/assistant.koplugin/refs/heads/main/configuration.lua.sample) for all options:
 
 - Multiple AI providers with different settings
+    - An underscore in `provider` means to use the first part as the handler, various profiles for each API.
+    - TODO: Switch different model profile in UI (not implemented yet).
 - Display preferences
     - Hide highlighted text at the top
-    - Show/Hide dictionary button in Asistant Menu: give dictionary_translate_to = nil to hide it
+    - Show/Hide dictionary button in Asistant Menu: give `dictionary_translate_to = nil` to hide it
     - Show/Hide dictionary button in main popup
     - Refresh screen after displaying results
 - Custom button actions
@@ -116,10 +105,12 @@ Configuration file has this structure:
 local CONFIGURATION = {
     -- Choose your preferred AI provider: "anthropic", "openai", "gemini", "openrouter", "deepseek" or "ollama"
     provider = "openai",
+    -- or 
+    provider = "openai_grok", -- latter one is in effective
     
     -- Provider-specific settings (override defaults in api_handlers/defaults.lua)
     provider_settings = {
-        AI_ID = {
+        openai = {
             model = "api-model",
             base_url = "URL_to_API",
             api_key = "your-api-key", -- set your api key here
@@ -127,6 +118,11 @@ local CONFIGURATION = {
               --.. other parameters
             }
         },  
+        openai_grok = { -- using same openai handler for compatible API, eg grok
+            model = "grok-3-mini-fast", -- see: https://x.ai/api
+            base_url = "https://api.x.ai/v1/chat/completions",
+            api_key = "your-grok-api-key", -- set your api key here
+        },
         -- ... other AI providers
     },
     

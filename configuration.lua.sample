@@ -1,5 +1,7 @@
 local CONFIGURATION = {
-    -- Choose your preferred AI provider: "anthropic", "openai", "gemini", "openrouter", "deepseek", "ollama", "mistral" or "azure_openai"
+    -- Choose your preferred AI provider: "anthropic", "openai", "gemini", ...
+    -- use one of the settings defined in provider_settings below.
+    -- NOTE: "openai" , "openai_grok" are different service using same handling code.
     provider = "openai",
 
     -- Provider-specific settings
@@ -22,6 +24,16 @@ local CONFIGURATION = {
                 max_tokens = 4096
             }
         },
+        openai_grok = {
+            --- use grok model via openai handler
+            model = "grok-3-mini-fast", -- model list: https://docs.x.ai/docs/models
+            base_url = "https://api.x.ai/v1/chat/completions",
+            api_key = "your-grok-api-key",
+            additional_parameters = {
+                temperature = 0.7,
+                max_tokens = 4096
+            }
+        },
         gemini = {
             model = "gemini-2.0-flash-001", -- model list: https://ai.google.dev/gemini-api/docs/models/gemini , ex: gemini-1.5-pro-latest , gemini-2.0-flash-001
             base_url = "https://generativelanguage.googleapis.com/v1beta/models/",
@@ -34,7 +46,7 @@ local CONFIGURATION = {
             }
         },
         openrouter = {
-            model = "google/gemini-2.0-flash-001", -- model list: https://openrouter.ai/models?order=top-weekly
+            model = "google/gemini-2.0-flash-exp:free", -- model list: https://openrouter.ai/models?order=top-weekly
             base_url = "https://openrouter.ai/api/v1/chat/completions",
             api_key = "your-openrouter-api-key",
             additional_parameters = {
@@ -49,6 +61,16 @@ local CONFIGURATION = {
                 --     -- Or enable reasoning with the default parameters:
                 --     -- enabled = true -- Default: inferred from effort or max_tokens
                 -- }
+            }
+        },
+        openrouter_free = {
+            --- use another free model with defferent configuration
+            model = "deepseek/deepseek-chat-v3-0324:free", -- model list: https://openrouter.ai/models?order=top-weekly
+            base_url = "https://openrouter.ai/api/v1/chat/completions",
+            api_key = "your-openrouter-api-key",
+            additional_parameters = {
+                temperature = 0.7,
+                max_tokens = 4096,
             }
         },
         deepseek = {
@@ -79,7 +101,23 @@ local CONFIGURATION = {
             model = "llama-3.3-70b-versatile", -- model list: https://console.groq.com/docs/models
             base_url = "https://api.groq.com/openai/v1/chat/completions",
             api_key = "your-groq-api-key",
-            additional_parameters = { }
+            additional_parameters = {
+                temperature = 0.7,
+                -- config options, see: https://console.groq.com/docs/api-reference
+                -- eg: disable reasoning for model qwen3, set:
+                -- reasoning_effort = "none" 
+            }
+        },
+        groq_qwen = {
+            --- Recommended setting
+            --- qwen3 without reasoning
+            model = "qwen/qwen3-32b",
+            base_url = "https://api.groq.com/openai/v1/chat/completions",
+            api_key = "your-groq-api-key",
+            additional_parameters = {
+                temperature = 0.7,
+                reasoning_effort = "none"
+            }
         },
         azure_openai = {
             endpoint = "https://your-resource-name.openai.azure.com", -- Your Azure OpenAI resource endpoint

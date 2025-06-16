@@ -6,8 +6,6 @@ local InfoMessage = require("ui/widget/infomessage")
 local NetworkMgr = require("ui/network/manager")
 local _ = require("gettext")
 
-local queryChatGPT = require("gpt_query")
-
 local CONFIGURATION = nil
 local buttons, input_dialog = nil, nil
 
@@ -18,11 +16,12 @@ else
   logger.warn("configuration.lua not found, skipping...")
 end
 
+local Querier = require("gpt_query"):new()
+
 -- Common helper functions
-local function showLoadingDialog()
-  local current_model = CONFIGURATION.provider_settings[CONFIGURATION.provider].model
+local function showLoadingDialog(model)
   local loading = InfoMessage:new{
-    text = _("Querying AI ...") .. "\n" .. CONFIGURATION.provider .. "/" .. current_model,
+    text = string.format("%s\n️%s", _("Querying AI ..."), Querier:get_model_desc()),
     icon = "book.opened",
     force_one_line = true,
     timeout = 0.1
@@ -106,7 +105,7 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
   }
   table.insert(message_history, question_message)
 
-  local answer, err = queryChatGPT(message_history)
+  local answer, err = Querier:query(message_history)
   
   -- Check if we got a valid response
   if not answer or answer == "" or err ~= nil then
@@ -194,7 +193,7 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
     ui = ui,
     onAskQuestion = function(viewer, new_question)
       NetworkMgr:runWhenOnline(function()
-        showLoadingDialog()
+        showLoadingDialog(current_model)
         UIManager:scheduleIn(0.1, function()
           -- Use viewer's own highlighted_text value
           local current_highlight = viewer.highlighted_text or highlightedText
@@ -250,7 +249,7 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
     }
   }
   
-  local answer, err = queryChatGPT(message_history)
+  local answer, err = Querier:query(message_history)
   if answer then
     table.insert(message_history, {
       role = "assistant",
@@ -268,9 +267,20 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
     input_dialog = nil
   end
 
+  -- Check if Querier is initialized
+  if not Querier:is_inited() then
+    local ok, err = Querier:load_model(CONFIGURATION.provider)
+    if not ok then
+        logger.warn(err)
+        -- Extract error message after colon
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err:sub(string.find(err, ":") + 5) or err})
+        return
+    end
+  end
+
   -- Handle direct prompts ( custom)
   if direct_prompt then
-    showLoadingDialog()
+    showLoadingDialog(current_model)
     UIManager:scheduleIn(0.1, function()
       local message_history, err
       local title
@@ -316,7 +326,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
       text = _("Ask"),
       is_enter_default = true,
       callback = function()
-        showLoadingDialog()
+        showLoadingDialog(current_model)
         UIManager:scheduleIn(0.1, function()
           local context_message = createContextMessage(ui, highlightedText)
           table.insert(message_history, context_message)
@@ -327,7 +337,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
           }
           table.insert(message_history, question_message)
 
-          local answer, err = queryChatGPT(message_history)
+          local answer, err = Querier:query(message_history)
           
           -- Check if we got a valid response
           if not answer or answer == "" or err ~= nil then
