@@ -20,23 +20,22 @@ function BaseHandler:query(message_history, provider_setting)
     error("query method must be implemented")
 end
 
---- func from koreader frontend/ui/wikipedia.lua
---- Post URL content with optional headers and body.
---- using koreader patched socketutil with timeout support
+--- Post URL content with optional headers and body with timeout setting
+--- func code references frontend/ui/wikipedia.lua
 ---@param url any
 ---@param headers any
 ---@param body any
----@param timeout any blocking timtout, default 45 seconds
----@param maxtime any total response finished max time, default 120 seconds
+---@param timeout any blocking timtout, default 35 seconds
+---@param maxtime any total response finished max time, default 60 seconds
 ---@return boolean success, status code, string content
-function BaseHandler:postUrlContent(url, headers, body, timeout, maxtime)
+function BaseHandler:makeRequest(url, headers, body, timeout, maxtime)
     if string.sub(url, 1, 8) == "https://" then
         https.cert_verify = false  -- disable CA verify
     end
 
-    if not timeout then timeout = 45 end -- block_timeout
+    if not timeout then timeout = 35 end -- block_timeout
     local sink = {}
-    socketutil:set_timeout(timeout, maxtime or 120) -- maxtime: total response finished max time.
+    socketutil:set_timeout(timeout, maxtime or 60) -- maxtime: total response finished max time.
     local request = {
         url = url,
         method = "POST",
@@ -68,14 +67,4 @@ function BaseHandler:postUrlContent(url, headers, body, timeout, maxtime)
     return true, code, content
 end
 
---- Compatible function to call postUrlContent with error handling
-function BaseHandler:makeRequest(url, headers, body)
-    logger.dbg("Attempting API request:", {
-        url = url,
-        headers = headers,
-        body_length = #body
-    })
-    return self:postUrlContent(url, headers, body)
-end
-    
 return BaseHandler

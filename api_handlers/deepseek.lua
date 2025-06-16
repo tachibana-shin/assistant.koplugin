@@ -23,7 +23,13 @@ function DeepSeekHandler:query(message_history, deepseek_settings)
         ["Authorization"] = "Bearer " .. deepseek_settings.api_key
     }
 
-    local success, code, response = self:makeRequest(deepseek_settings.base_url, headers, requestBody)
+    local success, code, response = self:makeRequest(
+        deepseek_settings.base_url,
+        headers,
+        requestBody,
+        45,  -- block_timeout
+        90   -- maxtime: total response finished max time
+    )
 
     if not success then
         return nil, "Error: Failed to connect to DeepSeek API - " .. tostring(response)
