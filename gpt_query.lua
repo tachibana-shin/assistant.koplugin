@@ -1,15 +1,4 @@
-local logger = require("logger")
-local api_key = nil
-local CONFIGURATION = nil
-
--- Attempt to load the configuration module first
-local success, result = pcall(function() return require("configuration") end)
-if success then
-    CONFIGURATION = result
-else
-    logger.warn("No configuration found. Please set up configuration.lua")
-end
-
+--- Querier module for handling AI queries with dynamic provider loading
 local Querier = {
     handler = nil,
     handler_name = nil,
@@ -24,7 +13,7 @@ function Querier:new(o)
     return o
 end
 
-function  Querier:is_inited()
+function Querier:is_inited()
     return self.handler and self.handler_name and
         self.provider_settings and self.provider_name 
 end
@@ -32,6 +21,15 @@ end
 --- Initialize the Querier with the provider settings and handler
 --- This function checks the CONFIGURATION for the provider and loads the appropriate handler.
 function Querier:init(provider_name)
+
+    local CONFIGURATION
+    local success, result = pcall(function() return require("configuration") end)
+    if success then
+        CONFIGURATION = result
+    else
+        error("No configuration found. Please set up configuration.lua")
+    end
+
     if CONFIGURATION and CONFIGURATION.provider then
 
         --- Check if the provider is set in the configuration
@@ -74,9 +72,10 @@ function Querier:load_model(provider_name)
             return tostring(err)
         end
     end
-
 end
 
+-- Get the model description for the current provider
+-- using unicode emojis for better readability
 function Querier:get_model_desc()
     return string.format("☁️ %s\n⚡ %s", self.handler_name, self.provider_settings.model)
 end
