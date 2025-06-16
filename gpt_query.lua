@@ -43,10 +43,10 @@ function Querier:init(provider_name)
 
         self.provider_name = provider_name
 
-        --- If provider_name contains an underscore, we assume it's a composite name
-        if self.provider_name:find("_") then
-            --- take the first part as handler name
-            self.handler_name = self.provider_name:match("([^_]+)")
+        local underscore_pos = self.provider_name:find("_")
+        if underscore_pos then
+            -- Extract the substring before the first underscore as the handler name
+            self.handler_name = self.provider_name:sub(1, underscore_pos - 1)
         else
             self.handler_name = self.provider_name
         end
