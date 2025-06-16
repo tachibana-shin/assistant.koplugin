@@ -7,7 +7,7 @@ local _ = require("gettext")
 local ChatGPTViewer = require("chatgptviewer")
 local configuration = require("configuration")
 local Querier = require("gpt_query"):new()
-local current_model = Querier:load_model(configuration.provider)
+Querier:load_model(configuration.provider)
 
 local function showRecapDialog(ui, title, author, progress_percent, message_history)
     local formatted_progress_percent = string.format("%.2f", progress_percent * 100)
@@ -40,7 +40,7 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
 
     UIManager:show(InfoMessage:new{
       icon = "book.opened",
-      text = string.format("%s\n%s", _("Querying AI ..."), current_model),
+      text = string.format("%s\n️%s", _("Querying AI ..."), Querier:get_model_desc()),
       force_one_line = true,
       timeout = 0.1
     })

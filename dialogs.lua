@@ -17,12 +17,12 @@ else
 end
 
 local Querier = require("gpt_query"):new()
-local current_model = Querier:load_model(CONFIGURATION.provider)
+Querier:load_model(CONFIGURATION.provider)
 
 -- Common helper functions
 local function showLoadingDialog(model)
   local loading = InfoMessage:new{
-    text = string.format("%s\n%s", _("Querying AI ..."), model),
+    text = string.format("%s\n️%s", _("Querying AI ..."), Querier:get_model_desc()),
     icon = "book.opened",
     force_one_line = true,
     timeout = 0.1

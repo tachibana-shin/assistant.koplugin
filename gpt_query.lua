@@ -75,7 +75,10 @@ function Querier:load_model(provider_name)
         end
     end
 
-    return string.format("%s⮞%s", self.provider_name, self.provider_settings.model)
+end
+
+function Querier:get_model_desc()
+    return string.format("☁️ %s\n⚡ %s", self.handler_name, self.provider_settings.model)
 end
 
 --- Query the AI with the provided message history

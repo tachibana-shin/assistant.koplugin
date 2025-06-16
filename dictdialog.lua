@@ -7,7 +7,7 @@ local _ = require("gettext")
 local Event = require("ui/event")
 local configuration = require("configuration")
 local Querier = require("gpt_query"):new()
-local current_model = Querier:load_model(configuration.provider)
+Querier:load_model(configuration.provider)
 
 
 local function showDictionaryDialog(ui, highlightedText, message_history)
@@ -81,7 +81,7 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
 
     UIManager:show(InfoMessage:new{
       icon = "book.opened",
-      text = string.format("%s\n%s", _("Querying AI ..."), current_model),
+      text = string.format("%s\n️%s", _("Querying AI ..."), Querier:get_model_desc()),
       force_one_line = true,
       timeout = 0.1
     })
