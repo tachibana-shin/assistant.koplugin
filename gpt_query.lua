@@ -62,8 +62,10 @@ function Querier:init(provider_name)
     end
 end
 
+--- Load provider model for the Querier
 function Querier:load_model(provider_name)
-    if not self:is_inited() then
+    -- If the provider name is different or not initialized, reinitialize
+    if provider_name ~= self.provider_name or not self:is_inited() then
         return pcall(function()
             self:init(provider_name)
         end)
