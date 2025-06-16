@@ -7,6 +7,8 @@ local _ = require("gettext")
 local Event = require("ui/event")
 local configuration = require("configuration")
 local Querier = require("gpt_query"):new()
+local current_model = Querier:load_model(configuration.provider)
+
 
 local function showDictionaryDialog(ui, highlightedText, message_history)
     -- Handle case where no text is highlighted (gesture-triggered)
@@ -77,7 +79,6 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     }
     table.insert(message_history, context_message)
 
-    local current_model = Querier:model()
     UIManager:show(InfoMessage:new{
       icon = "book.opened",
       text = string.format("%s\n%s", _("Querying AI ..."), current_model),

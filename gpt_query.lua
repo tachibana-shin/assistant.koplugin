@@ -33,23 +33,24 @@ end
 
 --- Initialize the Querier with the provider settings and handler
 --- This function checks the CONFIGURATION for the provider and loads the appropriate handler.
-function Querier:init()
+function Querier:init(provider_name)
     if CONFIGURATION and CONFIGURATION.provider then
 
-        self.provider_name = CONFIGURATION.provider
         --- Check if the provider is set in the configuration
-        if CONFIGURATION.provider_settings and CONFIGURATION.provider_settings[CONFIGURATION.provider] then
-            self.provider_settings = CONFIGURATION.provider_settings[CONFIGURATION.provider]
+        if CONFIGURATION.provider_settings and CONFIGURATION.provider_settings[provider_name] then
+            self.provider_settings = CONFIGURATION.provider_settings[provider_name]
         else
-            error("Provider settings not found for: " .. CONFIGURATION.provider .. ". Please check your configuration.lua file.")
+            error("Provider settings not found for: " .. provider_name .. ". Please check your configuration.lua file.")
         end
 
+        self.provider_name = provider_name
+
+        --- If provider_name contains an underscore, we assume it's a composite name
         if self.provider_name:find("_") then
-            --- Split the provider name by underscore and 
             --- take the first part as handler name
-            self.handler_name = CONFIGURATION.provider:match("([^_]+)")
+            self.handler_name = self.provider_name:match("([^_]+)")
         else
-            self.handler_name = CONFIGURATION.provider
+            self.handler_name = self.provider_name
         end
 
         --- Load the handler based on the provider name
@@ -66,10 +67,10 @@ function Querier:init()
     end
 end
 
-function Querier:model()
+function Querier:load_model(provider_name)
     if not self:is_inited() then
         local ok, err = pcall(function()
-            self:init()
+            self:init(provider_name)
         end)
         if not ok then
             return tostring(err)
@@ -83,12 +84,7 @@ end
 --- return: answer, error (if any)
 function Querier:query(message_history)
     if not self:is_inited() then
-        local ok, err = pcall(function()
-            self:init()
-        end)
-        if not ok then
-            return "", "Error init: " .. tostring(err)
-        end
+        return "", "Querier not inited yet."
     end
 
     local res, err = self.handler:query(message_history, self.provider_settings)

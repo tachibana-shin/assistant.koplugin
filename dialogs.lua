@@ -17,12 +17,12 @@ else
 end
 
 local Querier = require("gpt_query"):new()
+local current_model = Querier:load_model(CONFIGURATION.provider)
 
 -- Common helper functions
-local function showLoadingDialog()
-  local current_model = Querier:model()
+local function showLoadingDialog(model)
   local loading = InfoMessage:new{
-    text = string.format("%s\n%s", _("Querying AI ..."), current_model),
+    text = string.format("%s\n%s", _("Querying AI ..."), model),
     icon = "book.opened",
     force_one_line = true,
     timeout = 0.1
@@ -194,7 +194,7 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
     ui = ui,
     onAskQuestion = function(viewer, new_question)
       NetworkMgr:runWhenOnline(function()
-        showLoadingDialog()
+        showLoadingDialog(current_model)
         UIManager:scheduleIn(0.1, function()
           -- Use viewer's own highlighted_text value
           local current_highlight = viewer.highlighted_text or highlightedText
@@ -270,7 +270,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
 
   -- Handle direct prompts ( custom)
   if direct_prompt then
-    showLoadingDialog()
+    showLoadingDialog(current_model)
     UIManager:scheduleIn(0.1, function()
       local message_history, err
       local title
@@ -316,7 +316,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
       text = _("Ask"),
       is_enter_default = true,
       callback = function()
-        showLoadingDialog()
+        showLoadingDialog(current_model)
         UIManager:scheduleIn(0.1, function()
           local context_message = createContextMessage(ui, highlightedText)
           table.insert(message_history, context_message)
