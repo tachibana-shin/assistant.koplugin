@@ -43,33 +43,19 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 
 You'll need API keys for the AI service you want to use:
 
-**For Claude/Anthropic**:
-1. Go to [console.anthropic.com](https://console.anthropic.com)
-2. Sign up for an account or login to your existing account
-3. Go to "API Keys" and create a new key
+1. Select one of the services listed below, 
+1. Sign up and login.
+1. create an API key as their web page instrcted.
 
-**For OpenAI**:
-1. Visit [platform.openai.com](https://platform.openai.com)
-2. Create an account or login to your existing account
-3. Go to "API Keys" section and create a new key
-
-**For Gemini**:
-1. Visit [aistudio.google.com](https://aistudio.google.com/)
-2. Create an account or login to your existing account
-3. Go to ["Get Api Key"](https://aistudio.google.com/app/apikey) section and create a new key
-
-**For OpenRouter**:
-1. Visit [openrouter.ai](https://openrouter.ai)
-2. Create an account or login to your existing account
-3. Go to [API Keys](https://openrouter.ai/settings/keys) section and create a new key
-
-**For DeepSeek**:
-1. Visit [platform.deepseek.com](https://platform.deepseek.com)
-2. Create an account or login to your existing account
-3. Go to "API Keys" section and create a new key
-
-**For Ollama**:
-1. Ollama doesn't use an API key. However, a placeholder API key value (ex: "ollama") is required.
+| Platform API Key Pages                                            | Notes                                                     |
+| ----------------------------------------------------------------- | --------------------------------------------------------- |
+| [OpenAI](https://platform.openai.com/api-keys)                    | ChatGPT.                                                  |
+| [Gemini](https://aistudio.google.com/app/apikey)                  | Google's AI.                                              |
+| [Claude / Anthropic](https://console.anthropic.com/settings/keys) | AI for complex reasoning and conversation.                |
+| [DeepSeek](https://platform.deepseek.com/api_keys)                | Multilingual AI, major in Chinese.                        |
+| [Groq](https://console.groq.com/keys)                             | Ultra-fast AI for real-time use.                          |
+| [Mistral AI](https://console.mistral.ai/api-keys)                 | Efficient and accurate AI models.                         |
+| Ollama                                                            | Local AI models. use placeholder value.<br>(ex: `ollama`) |
 
 ### 2. Installation:
 #### Using The Latest Version:
