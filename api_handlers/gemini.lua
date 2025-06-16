@@ -62,7 +62,7 @@ function GeminiHandler:query(message_history, gemini_settings)
     local model = gemini_settings.model or "gemini-1.5-pro-latest"
     local base_url = gemini_settings.base_url or "https://generativelanguage.googleapis.com/v1beta/models/"
     
-    local url = string.format("%s%s:generateContent?key=%s", base_url, model, config.api_key)
+    local url = string.format("%s%s:generateContent?key=%s", base_url, model, gemini_settings.api_key)
     logger.dbg("Making Gemini API request to model:", model)
     
     local success, code, response = self:makeRequest(url, headers, requestBody)
@@ -70,7 +70,7 @@ function GeminiHandler:query(message_history, gemini_settings)
         logger.warn("Gemini API request failed:", {
             error = response,
             model = model,
-            base_url = base_url:gsub(config.api_key, "***"), -- Hide API key in logs
+            base_url = base_url:gsub(gemini_settings.api_key, "***"), -- Hide API key in logs
             request_size = #requestBody,
             message_count = #message_history
         })

@@ -30,7 +30,7 @@ function OpenRouterProvider:query(message_history, openrouter_settings)
     local requestBody = json.encode(requestBodyTable)
     local headers = {
         ["Content-Type"] = "application/json",
-        ["Authorization"] = "Bearer " .. (openrouter_settings.api_key or config.api_key),
+        ["Authorization"] = "Bearer " .. openrouter_settings.api_key,
         ["HTTP-Referer"] = "https://github.com/omer-faruq/assistant.koplugin",
         ["X-Title"] = "assistant.koplugin"
     }
