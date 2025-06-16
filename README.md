@@ -15,8 +15,9 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
   - OpenAI's GPT models
   - Gemini
   - OpenRouter: unified interface for LLMs
-  - DeepSeek (not tested)
+  - DeepSeek
   - Ollama
+  - Other OpenAI compatible API services (grok, nvidia ...)
 - **Builtin Prompts**:
   - **Dictionary** : Get synonyms, context-aware dictionary explanation and example for the selected word. (thanks to [plateaukao](https://github.com/plateaukao))
   - **Recap** : Get a quick recap of a book when you open it, for books that haven't been opened in 28 hrs and <95% complete. Also available via shortcut/gesture for on-demand access. Fully configurable prompts. (thanks to [jbhul](https://github.com/jbhul))
@@ -58,7 +59,7 @@ You'll need API keys for the AI service you want to use:
 3. Go to ["Get Api Key"](https://aistudio.google.com/app/apikey) section and create a new key
 
 **For OpenRouter**:
-1. Visit [openrouter.ai/](https://openrouter.ai)
+1. Visit [openrouter.ai](https://openrouter.ai)
 2. Create an account or login to your existing account
 3. Go to [API Keys](https://openrouter.ai/settings/keys) section and create a new key
 
@@ -102,9 +103,11 @@ You'll need API keys for the AI service you want to use:
 The plugin supports extensive customization through `configuration.lua`. See the [sample file](https://raw.githubusercontent.com/omer-faruq/assistant.koplugin/refs/heads/main/configuration.lua.sample) for all options:
 
 - Multiple AI providers with different settings
+    - A underscore in `provider` means to use the first part as handler, the later part can be various.
+    - TODO: Switch different model profile in UI (not implemented yet).
 - Display preferences
     - Hide highlighted text at the top
-    - Show/Hide dictionary button in Asistant Menu: give dictionary_translate_to = nil to hide it
+    - Show/Hide dictionary button in Asistant Menu: give `dictionary_translate_to = nil` to hide it
     - Show/Hide dictionary button in main popup
     - Refresh screen after displaying results
 - Custom button actions
@@ -116,10 +119,12 @@ Configuration file has this structure:
 local CONFIGURATION = {
     -- Choose your preferred AI provider: "anthropic", "openai", "gemini", "openrouter", "deepseek" or "ollama"
     provider = "openai",
+    -- or 
+    provider = "openai_grok", -- latter one is in effective
     
     -- Provider-specific settings (override defaults in api_handlers/defaults.lua)
     provider_settings = {
-        AI_ID = {
+        openai = {
             model = "api-model",
             base_url = "URL_to_API",
             api_key = "your-api-key", -- set your api key here
@@ -127,6 +132,11 @@ local CONFIGURATION = {
               --.. other parameters
             }
         },  
+        openai_grok = { -- using same openai handler for compatible API, eg grok
+            model = "grok-3-mini-fast", -- see: https://x.ai/api
+            base_url = "https://api.x.ai/v1/chat/completions",
+            api_key = "your-grok-api-key", -- set your api key here
+        },
         -- ... other AI providers
     },
     
