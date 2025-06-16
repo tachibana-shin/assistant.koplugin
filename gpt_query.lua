@@ -25,10 +25,8 @@ function Querier:new(o)
 end
 
 function  Querier:is_inited()
-    return self.handler ~= nil and 
-        self.provider_settings ~= nil and 
-        self.provider_name ~= nil and 
-        self.handler_name ~= nil
+    return self.handler and self.handler_name and
+        self.provider_settings and self.provider_name 
 end
 
 --- Initialize the Querier with the provider settings and handler
@@ -83,7 +81,7 @@ end
 --- Query the AI with the provided message history
 --- return: answer, error (if any)
 function Querier:query(message_history)
-    if not self:is_inited() then
+    if not self.handler then
         return "", "Querier not inited yet."
     end
 
