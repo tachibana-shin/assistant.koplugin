@@ -45,7 +45,7 @@ You'll need API keys for the AI service you want to use:
 
 1. Select one of the services listed below, 
 1. Sign up and login.
-1. create an API key as their web page instrcted.
+1. create an API key as their web page instructed.
 
 | Platform API Key Pages                                            | Notes                                                     |
 | ----------------------------------------------------------------- | --------------------------------------------------------- |
@@ -89,7 +89,7 @@ You'll need API keys for the AI service you want to use:
 The plugin supports extensive customization through `configuration.lua`. See the [sample file](https://raw.githubusercontent.com/omer-faruq/assistant.koplugin/refs/heads/main/configuration.lua.sample) for all options:
 
 - Multiple AI providers with different settings
-    - A underscore in `provider` means to use the first part as handler, the later part can be various.
+    - An underscore in `provider` means to use the first part as the handler, various profiles for each API.
     - TODO: Switch different model profile in UI (not implemented yet).
 - Display preferences
     - Hide highlighted text at the top
