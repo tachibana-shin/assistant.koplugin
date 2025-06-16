@@ -14,8 +14,7 @@ function Querier:new(o)
 end
 
 function Querier:is_inited()
-    return self.handler and self.handler_name and
-        self.provider_settings and self.provider_name 
+    return self.handler ~= nil
 end
 
 --- Initialize the Querier with the provider settings and handler
@@ -65,26 +64,27 @@ end
 
 function Querier:load_model(provider_name)
     if not self:is_inited() then
-        local ok, err = pcall(function()
+        return pcall(function()
             self:init(provider_name)
         end)
-        if not ok then
-            return tostring(err)
-        end
     end
+    return true
 end
 
 -- Get the model description for the current provider
 -- using unicode emojis for better readability
 function Querier:get_model_desc()
+    if not self:is_inited() then
+        return "Assitant: not configured."
+    end
     return string.format("☁️ %s\n⚡ %s", self.handler_name, self.provider_settings.model)
 end
 
 --- Query the AI with the provided message history
 --- return: answer, error (if any)
 function Querier:query(message_history)
-    if not self.handler then
-        return "", "Querier not inited yet."
+    if not self:is_inited() then
+        return "", "Assitant: not configured."
     end
 
     local res, err = self.handler:query(message_history, self.provider_settings)

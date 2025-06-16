@@ -1,3 +1,4 @@
+local logger = require("logger")
 local InputDialog = require("ui/widget/inputdialog")
 local ChatGPTViewer = require("chatgptviewer")
 local UIManager = require("ui/uimanager")
@@ -7,10 +8,18 @@ local _ = require("gettext")
 local Event = require("ui/event")
 local configuration = require("configuration")
 local Querier = require("gpt_query"):new()
-Querier:load_model(configuration.provider)
-
 
 local function showDictionaryDialog(ui, highlightedText, message_history)
+
+    -- Check if Querier is initialized
+    local ok, err = Querier:load_model(configuration.provider)
+    if not ok then
+        logger.warn(err)
+        -- Extract error message after colon
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err:sub(string.find(err, ":") + 5) or err})
+        return
+    end
+
     -- Handle case where no text is highlighted (gesture-triggered)
     if not highlightedText or highlightedText == "" then
         -- Show a simple input dialog to ask for a word to look up

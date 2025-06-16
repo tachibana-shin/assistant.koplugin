@@ -17,7 +17,6 @@ else
 end
 
 local Querier = require("gpt_query"):new()
-Querier:load_model(CONFIGURATION.provider)
 
 -- Common helper functions
 local function showLoadingDialog(model)
@@ -266,6 +265,17 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
   if input_dialog then
     UIManager:close(input_dialog)
     input_dialog = nil
+  end
+
+  -- Check if Querier is initialized
+  if not Querier:is_inited() then
+    local ok, err = Querier:load_model(CONFIGURATION.provider)
+    if not ok then
+        logger.warn(err)
+        -- Extract error message after colon
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err:sub(string.find(err, ":") + 5) or err})
+        return
+    end
   end
 
   -- Handle direct prompts ( custom)

@@ -1,3 +1,4 @@
+local logger = require("logger")
 local InputDialog = require("ui/widget/inputdialog")
 local UIManager = require("ui/uimanager")
 local TextBoxWidget = require("ui/widget/textboxwidget")
@@ -7,9 +8,17 @@ local _ = require("gettext")
 local ChatGPTViewer = require("chatgptviewer")
 local configuration = require("configuration")
 local Querier = require("gpt_query"):new()
-Querier:load_model(configuration.provider)
 
 local function showRecapDialog(ui, title, author, progress_percent, message_history)
+    -- Check if Querier is initialized
+    local ok, err = Querier:load_model(configuration.provider)
+    if not ok then
+        logger.warn(err)
+        -- Extract error message after colon
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err:sub(string.find(err, ":") + 5) or err})
+        return
+    end
+
     local formatted_progress_percent = string.format("%.2f", progress_percent * 100)
     
     -- Get recap configuration with fallbacks
