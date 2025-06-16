@@ -15,13 +15,18 @@ function BaseHandler:new(o)
     return o
 end
 
+--- Query method to be implemented by specific handlers
+--- @param message_history table: conversation history, a list of messages
+--- @param provider_setting table: settings for the specific provider
+--- @return: response or nil, error message
 function BaseHandler:query(message_history, provider_setting)
     -- To be implemented by specific handlers
     error("query method must be implemented")
 end
 
 --- Post URL content with optional headers and body with timeout setting
---- func code references frontend/ui/wikipedia.lua
+--- func code references frontend/ui/wikipedia.lua `getURLContent`
+--- TODO: to support user abort interruption.
 ---@param url any
 ---@param headers any
 ---@param body any

@@ -32,7 +32,7 @@ function groqHandler:query(message_history, groq_settings)
         --- available req body args: https://console.groq.com/docs/api-reference
         for _, option in ipairs({"temperature", "top_p", "max_completion_tokens", "max_tokens", 
                                     "reasoning_effort", "reasoning_format", "search_settings", }) do
-            if groq_settings.additional_parameters[option] ~= nil then
+            if groq_settings.additional_parameters[option] then
                 requestBodyTable[option] = groq_settings.additional_parameters[option]
             end
         end

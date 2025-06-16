@@ -27,7 +27,7 @@ function DeepSeekHandler:query(message_history, deepseek_settings)
         deepseek_settings.base_url,
         headers,
         requestBody,
-        45,  -- block_timeout
+        45,  -- block_timeout, API is slow sometimes, need longer timeout
         90   -- maxtime: total response finished max time
     )
 
