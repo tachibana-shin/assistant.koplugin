@@ -1,4 +1,8 @@
 --- Querier module for handling AI queries with dynamic provider loading
+local _ = require("gettext")
+local InfoMessage = require("ui/widget/infomessage")
+local UIManager = require("ui/uimanager")
+local logger = require("logger")
 local Querier = {
     handler = nil,
     handler_name = nil,
@@ -73,26 +77,34 @@ function Querier:load_model(provider_name)
     return true
 end
 
--- Get the model description for the current provider
--- using unicode emojis for better readability
-function Querier:get_model_desc()
-    if not self:is_inited() then
-        return "Assitant: not configured."
-    end
-    return string.format("☁️ %s\n⚡ %s", self.handler_name, self.provider_settings.model)
-end
-
 --- Query the AI with the provided message history
 --- return: answer, error (if any)
-function Querier:query(message_history)
+function Querier:query(message_history, title)
     if not self:is_inited() then
         return "", "Assitant: not configured."
     end
 
-    local res, err = self.handler:query(message_history, self.provider_settings)
-    if err ~= nil then
-        return "", "Error: " .. tostring(err)
+    local infomsg = InfoMessage:new{
+      icon = "book.opened",
+      text = string.format("%s\n️☁️ %s\n⚡ %s", title or _("Querying AI ..."),
+            self.handler_name, self.provider_settings.model),
+    }
+    UIManager:show(infomsg)
+
+    local Trapper = require("ui/trapper")
+    local completed, res, err = Trapper:dismissableRunInSubprocess(function()
+        return self.handler:query(message_history, self.provider_settings)
+    end, infomsg)
+
+    -- logger.info("Querier:query completed with result: ", res, " and error: ", err)
+    UIManager:close(infomsg)
+    if not completed then
+        return "", "Query cancelled by user."
     end
+    if err ~= nil then
+        return "", tostring(err)
+    end
+
     return res
 end
 

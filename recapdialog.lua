@@ -9,7 +9,7 @@ local ChatGPTViewer = require("chatgptviewer")
 local configuration = require("configuration")
 local Querier = require("gpt_query"):new()
 
-local function showRecapDialog(ui, title, author, progress_percent, message_history)
+local function _showRecapDialog(ui, title, author, progress_percent, message_history)
     -- Check if Querier is initialized
     local ok, err = Querier:load_model(configuration.provider)
     if not ok then
@@ -47,38 +47,36 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
     }
     table.insert(message_history, context_message)
 
-    UIManager:show(InfoMessage:new{
-      icon = "book.opened",
-      text = string.format("%s\n️%s", _("Querying AI ..."), Querier:get_model_desc()),
-      force_one_line = true,
-      timeout = 0.1
-    })
-    UIManager:scheduleIn(0.1, function()
+    local function createResultText(answer)
+      local result_text = 
+        TextBoxWidget.PTF_HEADER ..
+        TextBoxWidget.PTF_BOLD_START .. title .. TextBoxWidget.PTF_BOLD_END .. " by " .. author .. " is " .. formatted_progress_percent .. "% complete.\n\n" ..  answer
+      return result_text
+    end
 
-      local function createResultText(answer)
-        local result_text = 
-          TextBoxWidget.PTF_HEADER ..
-          TextBoxWidget.PTF_BOLD_START .. title .. TextBoxWidget.PTF_BOLD_END .. " by " .. author .. " is " .. formatted_progress_percent .. "% complete.\n\n" ..  answer
-        return result_text
-      end
+    local answer, err = Querier:query(message_history, "Loading Recap ...")
+    if err ~= nil then
+      UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
+      return
+    end
 
-      local answer, err = Querier:query(message_history)
-      if err ~= nil then
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
-        return
-      end
+    local chatgpt_viewer = ChatGPTViewer:new {
+      ui = ui,
+      title = _("Recap"),
+      text = createResultText(answer),
+      showAskQuestion = false
+    }
 
-      local chatgpt_viewer = ChatGPTViewer:new {
-        ui = ui,
-        title = _("Recap"),
-        text = createResultText(answer),
-        showAskQuestion = false
-      }
+    UIManager:show(chatgpt_viewer)
+    if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
+      UIManager:setDirty(nil, "full")
+    end
+end
 
-      UIManager:show(chatgpt_viewer)
-      if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
-        UIManager:setDirty(nil, "full")
-      end
+local function showRecapDialog(ui, title, author, progress_percent, message_history)
+    local Trapper = require("ui/trapper")
+    Trapper:wrap(function()
+      _showRecapDialog(ui, title, author, progress_percent, message_history)
     end)
 end
 
