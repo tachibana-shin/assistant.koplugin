@@ -4,6 +4,7 @@ local ChatGPTViewer = require("chatgptviewer")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
 local _ = require("gettext")
+local Trapper = require("ui/trapper")
 
 local CONFIGURATION = nil
 local buttons, input_dialog = nil, nil
@@ -180,7 +181,6 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
     text = result_text,
     ui = ui,
     onAskQuestion = function(viewer, new_question)
-        local Trapper = require("ui/trapper")
         Trapper:wrap(function()
           -- Use viewer's own highlighted_text value
           local current_highlight = viewer.highlighted_text or highlightedText
@@ -247,7 +247,7 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
 end
 
 -- Main dialog function
-local function _showChatGPTDialog(ui, highlightedText, direct_prompt)
+local function showChatGPTDialog(ui, highlightedText, direct_prompt)
   if input_dialog then
     UIManager:close(input_dialog)
     input_dialog = nil
@@ -266,22 +266,23 @@ local function _showChatGPTDialog(ui, highlightedText, direct_prompt)
 
   -- Handle direct prompts ( custom)
   if direct_prompt then
-    local message_history, err
-    local title
+    Trapper:wrap(function()
+      local message_history, err
+      local title
+      message_history, err = handlePredefinedPrompt(direct_prompt, highlightedText, ui)
+      if err then
+        UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
+        return
+      end
+      title = CONFIGURATION.features.prompts[direct_prompt].text
 
-    message_history, err = handlePredefinedPrompt(direct_prompt, highlightedText, ui)
-    if err then
-      UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
-      return
-    end
-    title = CONFIGURATION.features.prompts[direct_prompt].text
+      if not message_history or #message_history < 1 then
+        UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
+        return
+      end
 
-    if not message_history or #message_history < 1 then
-      UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
-      return
-    end
-
-    createAndShowViewer(ui, highlightedText, message_history, title)
+      createAndShowViewer(ui, highlightedText, message_history, title)
+    end)
     return
   end
 
@@ -318,36 +319,38 @@ local function _showChatGPTDialog(ui, highlightedText, direct_prompt)
         }
         table.insert(message_history, question_message)
 
-        local answer, err = Querier:query(message_history)
-        
-        -- Check if we got a valid response
-        if not answer or answer == "" or err ~= nil then
-          UIManager:show(InfoMessage:new{
-            icon = "notice-warning",
-            text = "Error: " .. err or "",
-            timeout = 3
-          })
-          return
-        end
-        
-        local answer_message = {
-          role = "assistant",
-          content = answer
-        }
-        table.insert(message_history, answer_message)
+        Trapper:wrap(function()
+          local answer, err = Querier:query(message_history)
+          
+          -- Check if we got a valid response
+          if not answer or answer == "" or err ~= nil then
+            UIManager:show(InfoMessage:new{
+              icon = "notice-warning",
+              text = "Error: " .. err or "",
+              timeout = 3
+            })
+            return
+          end
+          
+          local answer_message = {
+            role = "assistant",
+            content = answer
+          }
+          table.insert(message_history, answer_message)
 
-        -- Close input dialog and keyboard before showing the viewer
-        if input_dialog then
-          UIManager:close(input_dialog)
-          input_dialog = nil
-        end
+          -- Close input dialog and keyboard before showing the viewer
+          if input_dialog then
+            UIManager:close(input_dialog)
+            input_dialog = nil
+          end
+          
+          -- Create a contextual title
+          local viewer_title = highlightedText and highlightedText ~= "" and 
+            _("Text Analysis") or 
+            book.title
         
-        -- Create a contextual title
-        local viewer_title = highlightedText and highlightedText ~= "" and 
-          _("Text Analysis") or 
-          book.title
-        
-        createAndShowViewer(ui, highlightedText, message_history, viewer_title)
+          createAndShowViewer(ui, highlightedText, message_history, viewer_title)
+        end)
       end
     }
   }
@@ -392,12 +395,14 @@ local function _showChatGPTDialog(ui, highlightedText, direct_prompt)
           callback = function()
             UIManager:close(input_dialog)
             input_dialog = nil
-            local message_history, err = handlePredefinedPrompt(prompt_type, highlightedText, ui)
-            if err then
-              UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
-              return
-            end
-            createAndShowViewer(ui, highlightedText, message_history, prompt.text)
+            Trapper:wrap(function()
+              local message_history, err = handlePredefinedPrompt(prompt_type, highlightedText, ui)
+              if err then
+                UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
+                return
+              end
+              createAndShowViewer(ui, highlightedText, message_history, prompt.text)
+            end)
           end
         })
       end
@@ -448,14 +453,6 @@ local function _showChatGPTDialog(ui, highlightedText, direct_prompt)
   
   UIManager:show(input_dialog)
   input_dialog:onShowKeyboard()
-end
-
--- Wrapper function to handle UI and highlighted text
-local function showChatGPTDialog(ui, highlightedText, direct_prompt)
-  local Trapper = require("ui/trapper")
-  Trapper:wrap(function()
-    _showChatGPTDialog(ui, highlightedText, direct_prompt)
-  end)
 end
 
 return showChatGPTDialog
