@@ -3,7 +3,6 @@ local InputDialog = require("ui/widget/inputdialog")
 local ChatGPTViewer = require("chatgptviewer")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
-local NetworkMgr = require("ui/network/manager")
 local _ = require("gettext")
 
 local CONFIGURATION = nil
