@@ -100,7 +100,7 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
   if not answer or answer == "" or err ~= nil then
     UIManager:show(InfoMessage:new{
       icon = "notice-warning",
-      text = "Error received from AI service." .. err or "",
+      text = "Error: " .. err or "",
     })
     return
   end
@@ -325,7 +325,7 @@ local function _showChatGPTDialog(ui, highlightedText, direct_prompt)
         if not answer or answer == "" or err ~= nil then
           UIManager:show(InfoMessage:new{
             icon = "notice-warning",
-            text = "Error received from AI service." .. err or "",
+            text = "Error: " .. err or "",
             timeout = 3
           })
           return
