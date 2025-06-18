@@ -50,6 +50,9 @@ function MistralHandler:query(message_history, mistral_settings)
         end
     end
     
+    if code == BaseHandler.CODE_CANCELLED then
+        return nil, response
+    end
     return nil, "Error: " .. (code or "unknown") .. " - " .. response
 end
 

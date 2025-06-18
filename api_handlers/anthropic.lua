@@ -36,6 +36,9 @@ function AnthropicHandler:query(message_history, anthropic_settings)
     local success, code, response = self:makeRequest(anthropic_settings.base_url, headers, requestBody)
 
     if not success then
+        if code == BaseHandler.CODE_CANCELLED then
+            return nil, response
+        end
         return nil,"Error: Failed to connect to Anthropic API - " .. tostring(response)
     end
 

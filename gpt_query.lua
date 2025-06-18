@@ -89,22 +89,16 @@ function Querier:query(message_history, title)
       text = string.format("%s\n️☁️ %s\n⚡ %s", title or _("Querying AI ..."),
             self.handler_name, self.provider_settings.model),
     }
+
     UIManager:show(infomsg)
-
-    local Trapper = require("ui/trapper")
-    local completed, res, err = Trapper:dismissableRunInSubprocess(function()
-        return self.handler:query(message_history, self.provider_settings)
-    end, infomsg)
-
-    -- logger.info("Querier:query completed with result: ", res, " and error: ", err)
+    self.handler:setTrapWidget(infomsg)
+    local res, err = self.handler:query(message_history, self.provider_settings)
+    self.handler:resetTrapWidget()
     UIManager:close(infomsg)
-    if not completed then
-        return "", "Query cancelled by user."
-    end
+
     if err ~= nil then
         return "", tostring(err)
     end
-
     return res
 end
 

@@ -58,6 +58,9 @@ function groqHandler:query(message_history, groq_settings)
         end
     end
     
+    if code == BaseHandler.CODE_CANCELLED then
+        return nil, response
+    end
     logger.warn("groq API Error", response)
     return nil, "Error: " .. (code or "unknown") .. " - " .. response
 end

@@ -51,6 +51,10 @@ function AzureOpenAIHandler:query(message_history, azure_settings )
             return nil, responseData.error.message
         end
     end
+
+    if code == BaseHandler.CODE_CANCELLED then
+        return nil, response
+    end
     
     return nil, "Error: " .. (code or "unknown") .. " - " .. response
 end

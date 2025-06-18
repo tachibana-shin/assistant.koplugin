@@ -5,14 +5,27 @@ local socket = require("socket")
 local socketutil = require("socketutil")
 local https = require("ssl.https")
 local Device = require("device")
+local Trapper = require("ui/trapper")
 
-local BaseHandler = {}
+local BaseHandler = {
+    trap_widget = nil,  -- widget to trap the request
+}
+
+BaseHandler.CODE_CANCELLED = -42  -- code for request cancelled by user
 
 function BaseHandler:new(o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     return o
+end
+
+function BaseHandler:setTrapWidget(trap_widget)
+    self.trap_widget = trap_widget
+end
+
+function BaseHandler:resetTrapWidget()
+    self.trap_widget = nil
 end
 
 --- Query method to be implemented by specific handlers
@@ -30,17 +43,16 @@ end
 ---@param url any
 ---@param headers any
 ---@param body any
----@param timeout any blocking timtout, default 35 seconds
----@param maxtime any total response finished max time, default 60 seconds
+---@param timeout any blocking timtout
+---@param maxtime any total response finished max time
 ---@return boolean success, status code, string content
-function BaseHandler:makeRequest(url, headers, body, timeout, maxtime)
+local function postURLContent(url, headers, body, timeout, maxtime)
     if string.sub(url, 1, 8) == "https://" then
         https.cert_verify = false  -- disable CA verify
     end
 
-    if not timeout then timeout = 35 end -- block_timeout
     local sink = {}
-    socketutil:set_timeout(timeout, maxtime or 60) -- maxtime: total response finished max time.
+    socketutil:set_timeout(timeout, maxtime)
     local request = {
         url = url,
         method = "POST",
@@ -70,6 +82,24 @@ function BaseHandler:makeRequest(url, headers, body, timeout, maxtime)
         end
     end
     return true, code, content
+end
+
+function BaseHandler:makeRequest(url, headers, body, timeout, maxtime)
+    local completed, success, code, content
+    if self.trap_widget then
+        -- If a trap widget is set, run the request in a subprocess
+        completed, success, code, content = Trapper:dismissableRunInSubprocess(function()
+                return postURLContent(url, headers, body, timeout or 45, maxtime or 120)
+            end, self.trap_widget)
+        if not completed then
+            return false, self.CODE_CANCELLED, "Request cancelled by user."
+        end
+    else
+        -- If no trap widget is set, run the request directly
+        success, code, content = postURLContent(url, headers, body, timeout or 20, maxtime or 60)
+    end
+
+    return success, code, content
 end
 
 return BaseHandler
