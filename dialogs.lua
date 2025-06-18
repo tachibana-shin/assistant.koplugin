@@ -252,9 +252,7 @@ local function showMainPopupDialog(ui, highlightedText, prompt_index)
   if not Querier:is_inited() then
     local ok, err = Querier:load_model(CONFIGURATION.provider)
     if not ok then
-        logger.warn(err)
-        -- Extract error message after colon
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err:sub(string.find(err, ":") + 5) or err})
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
     end
   end
@@ -285,9 +283,7 @@ local function showChatGPTDialog(ui, highlightedText)
   if not Querier:is_inited() then
     local ok, err = Querier:load_model(CONFIGURATION.provider)
     if not ok then
-        logger.warn(err)
-        -- Extract error message after colon
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err:sub(string.find(err, ":") + 5) or err})
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err})
         return
     end
   end
