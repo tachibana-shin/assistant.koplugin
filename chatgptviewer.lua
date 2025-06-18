@@ -303,8 +303,9 @@ function ChatGPTViewer:init()
       end
   }
   
-  -- Insert the buttons into the existing buttons, with close button on the right
-  table.insert(buttons[#buttons], copy_button)
+  -- Insert the buttons into the existing buttons, 
+  -- to keep close button on the right, insert into the second-to-last position
+  table.insert(buttons[#buttons], #(buttons[#buttons]), copy_button)
   
   -- Add a button to add notes
   local function createAddNoteButton(self)
@@ -377,7 +378,8 @@ function ChatGPTViewer:init()
   -- Only add Add Note button if ui context is available
   if self.ui then
       local add_note_button = createAddNoteButton(self)
-      table.insert(buttons[#buttons], add_note_button)
+      -- to keep close button on the right, insert into the second-to-last position
+      table.insert(buttons[#buttons], #(buttons[#buttons]), add_note_button)
   end
 
   self.button_table = ButtonTable:new {
