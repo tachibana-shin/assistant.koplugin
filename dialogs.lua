@@ -322,6 +322,13 @@ local function showChatGPTDialog(ui, highlightedText, prompt_index)
             content = input_dialog:getInputText()
           }
           table.insert(message_history, question_message)
+
+          -- Close input dialog and keyboard before querying
+          if input_dialog then
+            UIManager:close(input_dialog)
+            input_dialog = nil
+          end
+
           local answer, err = Querier:query(message_history)
           
           -- Check if we got a valid response
@@ -339,12 +346,6 @@ local function showChatGPTDialog(ui, highlightedText, prompt_index)
             content = answer
           }
           table.insert(message_history, answer_message)
-
-          -- Close input dialog and keyboard before showing the viewer
-          if input_dialog then
-            UIManager:close(input_dialog)
-            input_dialog = nil
-          end
           
           -- Create a contextual title
           local viewer_title = highlightedText and highlightedText ~= "" and 
