@@ -114,7 +114,7 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
   return message_history
 end
 
-local function createResultText(highlightedText, message_history, previous_text, show_highlighted_text)
+local function createResultText(highlightedText, message_history, previous_text, show_highlighted_text, title)
   if not previous_text then
     local result_text = ""
     -- Check if we should show highlighted text based on configuration
@@ -143,10 +143,12 @@ local function createResultText(highlightedText, message_history, previous_text,
       if not message_history[i].is_context then
         if message_history[i].role == "user" then
           local user_content = message_history[i].content or _("(Empty message)")
-          result_text = result_text .. "### ⮞ " .. _("User: ") .. "\n\n" .. truncateUserPrompt(user_content) .. "\n"
+          result_text = string.format("### ⮞ User: %s\n\n%s\n\n%s\n",
+                                      title or "", truncateUserPrompt(user_content), result_text)
         else
           local assistant_content = message_history[i].content or _("(No response)")
-          result_text = result_text .. "### ⮞ Assistant: \n\n" .. assistant_content .. "\n"
+          result_text = string.format("### ⮞ Assistant: %s\n\n%s\n\n%s\n",
+                                      title or "", assistant_content, result_text)
         end
       end
     end
@@ -161,9 +163,8 @@ local function createResultText(highlightedText, message_history, previous_text,
     -- Add nil checks for content
     local user_content = last_user_message.content or _("(Empty message)")
     local assistant_content = last_assistant_message.content or _("(No response)")
-    return previous_text .. 
-           "### ⮞ " .. _("User: ") .. "\n" .. truncateUserPrompt(user_content) .. "\n" .. 
-           "### ⮞ Assistant: \n" .. assistant_content .. "\n"
+    return string.format("%s\n\n### ⮞ User: \n%s\n### ⮞ Assistant: %s\n\n%s\n",
+                         previous_text, truncateUserPrompt(user_content), title or "", assistant_content)
   end
 
   return previous_text
@@ -171,23 +172,25 @@ end
 
 -- Helper function to create and show ChatGPT viewer
 local function createAndShowViewer(ui, highlightedText, message_history, title, show_highlighted_text)
+  -- logger.info("title", title)
   show_highlighted_text = show_highlighted_text == nil and true or show_highlighted_text
-  local result_text = createResultText(highlightedText, message_history, nil, show_highlighted_text)
+  local result_text = createResultText(highlightedText, message_history, nil, show_highlighted_text, title)
   local render_markdown = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown) or true
   local markdown_font_size = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.markdown_font_size) or 20
   
   local chatgpt_viewer = ChatGPTViewer:new {
-    title = _(title),
+    title = title,
     text = result_text,
     ui = ui,
-    onAskQuestion = function(viewer, new_question)
+    onAskQuestion = function(viewer, new_question, _title)
+        logger.info("onAskQuestion", _title)
         Trapper:wrap(function()
           -- Use viewer's own highlighted_text value
           local current_highlight = viewer.highlighted_text or highlightedText
           local msg = handleFollowUpQuestion(message_history, new_question, ui, current_highlight)
           if msg ~= nil then
             message_history = msg
-            local new_result_text = createResultText(current_highlight, message_history, viewer.text, false)
+            local new_result_text = createResultText(current_highlight, message_history, viewer.text, false, _title)
             viewer:update(new_result_text)
             
             if viewer.scroll_text_w then

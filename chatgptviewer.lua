@@ -535,7 +535,7 @@ function ChatGPTViewer:askAnotherQuestion()
         text = prompt_config.text,
         callback = function(self, question)
           if self.onAskQuestion then
-            self.onAskQuestion(self, prompt_config.user_prompt .. "\n" .. (question or ""))
+            self.onAskQuestion(self, prompt_config.user_prompt .. "\n" .. (question or ""), prompt_config.text)
           end
         end
       })
