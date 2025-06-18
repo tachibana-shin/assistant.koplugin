@@ -246,8 +246,35 @@ local function handlePredefinedPrompt(prompt_idx, highlightedText, ui, title)
   return message_history, err
 end
 
+-- Process main select popup buttons
+-- ( custom prompts from configuration )
+local function showProcCustomPrompt(ui, highlightedText, prompt_index)
+  -- Check if Querier is initialized
+  if not Querier:is_inited() then
+    local ok, err = Querier:load_model(CONFIGURATION.provider)
+    if not ok then
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
+        return
+    end
+  end
+
+  local title = CONFIGURATION.features.prompts[prompt_index].text or prompt_index
+  local message_history, err = handlePredefinedPrompt(prompt_index, highlightedText, ui, title)
+  if err then
+    UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
+    return
+  end
+
+  if not message_history or #message_history < 1 then
+    UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
+    return
+  end
+
+  createAndShowViewer(ui, highlightedText, message_history, title)
+end
+
 -- Main dialog function
-local function showChatGPTDialog(ui, highlightedText, prompt_index)
+local function showChatGPTDialog(ui, highlightedText)
   if input_dialog then
     UIManager:close(input_dialog)
     input_dialog = nil
@@ -257,37 +284,13 @@ local function showChatGPTDialog(ui, highlightedText, prompt_index)
   if not Querier:is_inited() then
     local ok, err = Querier:load_model(CONFIGURATION.provider)
     if not ok then
-        logger.warn(err)
-        -- Extract error message after colon
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err:sub(string.find(err, ":") + 5) or err})
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err})
         return
     end
   end
 
-  -- Handle main popup button
-  -- when clicked [xxx (AI)] button in main select popup,
-  -- the prompt_index is set and it's the key of the prompts
-  if prompt_index then
-    local message_history, err
-    local title = CONFIGURATION.features.prompts[prompt_index].text or prompt_index
-    message_history, err = handlePredefinedPrompt(prompt_index, highlightedText, ui, title)
-    if err then
-      UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
-      return
-    end
-
-    if not message_history or #message_history < 1 then
-      UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
-      return
-    end
-
-    createAndShowViewer(ui, highlightedText, message_history, title)
-    return
-  end
-
   -- When clicked [Assistant] button in main select popup,
   -- Or when activated from guesture (no text highlighted)
-  -- prompt_index is nil
 
   -- Handle regular dialog (user input prompt, other buttons)
   local book = getBookContext(ui)
@@ -381,8 +384,8 @@ local function showChatGPTDialog(ui, highlightedText, prompt_index)
     if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
       -- Create a sorted list of prompts
       local sorted_prompts = {}
-      for prompt_idx, prompt in pairs(CONFIGURATION.features.prompts) do
-        table.insert(sorted_prompts, {type = prompt_idx, config = prompt})
+      for prompt_index, prompt in pairs(CONFIGURATION.features.prompts) do
+        table.insert(sorted_prompts, {idx = prompt_index, config = prompt})
       end
       -- Sort by order value, default to 1000 if not specified
       table.sort(sorted_prompts, function(a, b)
@@ -392,21 +395,16 @@ local function showChatGPTDialog(ui, highlightedText, prompt_index)
       end)
       
       -- Add buttons in sorted order
-      for idx, prompt_data in ipairs(sorted_prompts) do
-        local prompt_idx = prompt_data.type
-        local prompt = prompt_data.config
+      for _, tab in ipairs(sorted_prompts) do
         table.insert(all_buttons, {
-          text = _(prompt.text),
+          text = tab.config.text,
           callback = function()
-            UIManager:close(input_dialog)
-            input_dialog = nil
+            if input_dialog then
+              UIManager:close(input_dialog)
+              input_dialog = nil
+            end
             Trapper:wrap(function()
-              local message_history, err = handlePredefinedPrompt(prompt_idx, highlightedText, ui)
-              if err then
-                UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
-                return
-              end
-              createAndShowViewer(ui, highlightedText, message_history, prompt.text)
+              showProcCustomPrompt(ui, highlightedText, tab.idx)
             end)
           end
         })
@@ -460,4 +458,7 @@ local function showChatGPTDialog(ui, highlightedText, prompt_index)
   input_dialog:onShowKeyboard()
 end
 
-return showChatGPTDialog
+return {
+  showChatGPTDialog = showChatGPTDialog,
+  showProcCustomPrompt = showProcCustomPrompt,
+}

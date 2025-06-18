@@ -14,9 +14,7 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     -- Check if Querier is initialized
     local ok, err = Querier:load_model(configuration.provider)
     if not ok then
-        logger.warn(err)
-        -- Extract error message after colon
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err:sub(string.find(err, ":") + 5) or err})
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
     end
 

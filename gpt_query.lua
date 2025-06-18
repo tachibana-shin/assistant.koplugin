@@ -23,6 +23,7 @@ end
 
 --- Initialize the Querier with the provider settings and handler
 --- This function checks the CONFIGURATION for the provider and loads the appropriate handler.
+--- return: nil on success, or an error message if initialization fails.
 function Querier:init(provider_name)
 
     local CONFIGURATION
@@ -30,7 +31,7 @@ function Querier:init(provider_name)
     if success then
         CONFIGURATION = result
     else
-        error("No configuration found. Please set up configuration.lua")
+        return _("No configuration found. Please set up configuration.lua")
     end
 
     if CONFIGURATION and CONFIGURATION.provider then
@@ -39,7 +40,9 @@ function Querier:init(provider_name)
         if CONFIGURATION.provider_settings and CONFIGURATION.provider_settings[provider_name] then
             self.provider_settings = CONFIGURATION.provider_settings[provider_name]
         else
-            error("Provider settings not found for: " .. provider_name .. ". Please check your configuration.lua file.")
+            return string.format(
+                _("Provider settings not found for: %s. Please check your configuration.lua file."),
+                provider_name)
         end
 
         self.provider_name = provider_name
@@ -59,10 +62,12 @@ function Querier:init(provider_name)
         if success then
             self.handler = handler
         else
-            error("Handler not found: " .. self.handler_name .. ". Please ensure the handler exists in api_handlers directory.")
+            return string.format(
+                _("Handler not found for: %s. Please ensure the handler exists in api_handlers directory."),
+                self.handler_name)
         end
     else
-        error("No provider set in configuration.lua. Please set the provider and provider_settings.")
+        return _("No provider set in configuration.lua. Please set the provider and provider_settings for %s.")
     end
 end
 
@@ -70,9 +75,11 @@ end
 function Querier:load_model(provider_name)
     -- If the provider name is different or not initialized, reinitialize
     if provider_name ~= self.provider_name or not self:is_inited() then
-        return pcall(function()
-            self:init(provider_name)
-        end)
+        local err = self:init(provider_name)
+        if err then
+            logger.warn("Querier initialization failed: " .. err)
+            return false, err
+        end
     end
     return true
 end
