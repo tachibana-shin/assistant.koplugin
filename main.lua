@@ -149,13 +149,14 @@ function Assistant:init()
     end
   end
 
-  -- Add Custom buttons (ones with show_on_main_popup = true)
+  -- Add Custom buttons to main select popup menu
+  -- prompts with `show_on_main_popup = true`
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
     -- Create a sorted list of prompts
     local sorted_prompts = {}
     for prompt_idx, prompt in pairs(CONFIGURATION.features.prompts) do
       if prompt.show_on_main_popup then
-        table.insert(sorted_prompts, {type = prompt_idx, config = prompt})
+        table.insert(sorted_prompts, {idx = prompt_idx, config = prompt})
       end
     end
     
@@ -167,22 +168,20 @@ function Assistant:init()
     end)
     
     -- Add buttons in sorted order
-    for _, prompt_data in ipairs(sorted_prompts) do
-      local prompt_idx = prompt_data.type
-      local prompt = prompt_data.config
+    for _, tab in ipairs(sorted_prompts) do
       -- Use order in the index for proper sorting (pad with zeros for consistent sorting)
       self.ui.highlight:addToHighlightDialog(
-        string.format("assistant_%02d_%s", prompt.order or 1000, prompt_idx),
+        string.format("assistant_%02d_%s", tab.config.order or 1000, tab.idx),
         function(_reader_highlight_instance)
           return {
-            text = prompt.text.." (AI)", 
+            text = tab.config.text.." (AI)",  -- append "(AI)" to identify as our function
             enabled = Device:hasClipboard(),
             callback = function()
               NetworkMgr:runWhenOnline(function()
                 Trapper:wrap(function()
                   ChatGPTDialog.showMainPopupDialog(self.ui, 
                     _reader_highlight_instance.selected_text.text,
-                    prompt_idx)
+                    tab.idx)
                 end)
               end)
             end,

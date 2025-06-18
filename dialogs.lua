@@ -387,8 +387,8 @@ local function showChatGPTDialog(ui, highlightedText)
     if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
       -- Create a sorted list of prompts
       local sorted_prompts = {}
-      for prompt_idx, prompt in pairs(CONFIGURATION.features.prompts) do
-        table.insert(sorted_prompts, {type = prompt_idx, config = prompt})
+      for prompt_index, prompt in pairs(CONFIGURATION.features.prompts) do
+        table.insert(sorted_prompts, {idx = prompt_index, config = prompt})
       end
       -- Sort by order value, default to 1000 if not specified
       table.sort(sorted_prompts, function(a, b)
@@ -398,18 +398,16 @@ local function showChatGPTDialog(ui, highlightedText)
       end)
       
       -- Add buttons in sorted order
-      for idx, prompt_data in ipairs(sorted_prompts) do
-        local prompt_idx = prompt_data.type
-        local prompt = prompt_data.config
+      for _, tab in ipairs(sorted_prompts) do
         table.insert(all_buttons, {
-          text = _(prompt.text),
+          text = tab.config.text,
           callback = function()
             if input_dialog then
               UIManager:close(input_dialog)
               input_dialog = nil
             end
             Trapper:wrap(function()
-              showMainPopupDialog(ui, highlightedText, prompt_idx)
+              showMainPopupDialog(ui, highlightedText, tab.idx)
             end)
           end
         })
