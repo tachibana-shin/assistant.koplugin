@@ -32,6 +32,9 @@ function DeepSeekHandler:query(message_history, deepseek_settings)
     )
 
     if not success then
+        if code == BaseHandler.CODE_CANCELLED then
+            return nil, response
+        end
         return nil, "Error: Failed to connect to DeepSeek API - " .. tostring(response)
     end
 

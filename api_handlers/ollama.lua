@@ -28,6 +28,9 @@ function OllamaHandler:query(message_history, ollama_settings)
 
     local success, code, response = self:makeRequest(ollama_settings.base_url, headers, requestBody)
     if not success then
+        if code == BaseHandler.CODE_CANCELLED then
+            return nil, response
+        end
         return nil, "Error: Failed to connect to Ollama API - " .. tostring(response)
     end
 

@@ -88,70 +88,62 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
     }
     table.insert(message_history, context_message)
 
-    UIManager:show(InfoMessage:new{
-      icon = "book.opened",
-      text = string.format("%s\n️%s", _("Querying AI ..."), Querier:get_model_desc()),
-      force_one_line = true,
-      timeout = 0.1
-    })
-    UIManager:scheduleIn(0.1, function()
-      local answer, err = Querier:query(message_history)
-
-      if err ~= nil then
+    -- Query the AI with the message history
+    local answer, err = Querier:query(message_history, "Loading AI Dictionary ...")
+    if err ~= nil then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
-      end
+    end
 
-      local function createResultText(highlightedText, answer)
-          local result_text
-          if configuration and configuration.features and (configuration.features.render_markdown or configuration.features.render_markdown == nil) then
-            -- in markdown mode, outputs markdown formated highlighted text
-            result_text = "... " .. prev_context .. " **" .. highlightedText ..  "** " ..  next_context ..  " ...\n\n" ..  answer
-          else
-            -- in plain text mode, use widget controled characters.
-            result_text =
-              TextBoxWidget.PTF_HEADER .. 
-              "... " .. prev_context .. TextBoxWidget.PTF_BOLD_START .. highlightedText .. TextBoxWidget.PTF_BOLD_END .. next_context .. " ...\n\n" ..
-              answer 
-          end
-          return result_text
-      end
+    local function createResultText(highlightedText, answer)
+        local result_text
+        if configuration and configuration.features and (configuration.features.render_markdown or configuration.features.render_markdown == nil) then
+        -- in markdown mode, outputs markdown formated highlighted text
+        result_text = "... " .. prev_context .. " **" .. highlightedText ..  "** " ..  next_context ..  " ...\n\n" ..  answer
+        else
+        -- in plain text mode, use widget controled characters.
+        result_text =
+            TextBoxWidget.PTF_HEADER .. 
+            "... " .. prev_context .. TextBoxWidget.PTF_BOLD_START .. highlightedText .. TextBoxWidget.PTF_BOLD_END .. next_context .. " ...\n\n" ..
+            answer 
+        end
+        return result_text
+    end
 
-      local result_text = createResultText(highlightedText, answer)
-      local chatgpt_viewer = nil
+    local result_text = createResultText(highlightedText, answer)
+    local chatgpt_viewer = nil
 
-      local function handleAddToNote()
-          if ui.highlight and ui.highlight.saveHighlight then
-              local success, index = pcall(function()
-                  return ui.highlight:saveHighlight(true)
-              end)
-              if success and index then
-                  local a = ui.annotation.annotations[index]
-                  a.note = result_text
-                  ui:handleEvent(Event:new("AnnotationsModified",
-                                      { a, nb_highlights_added = -1, nb_notes_added = 1 }))
-              end
-          end
+    local function handleAddToNote()
+        if ui.highlight and ui.highlight.saveHighlight then
+            local success, index = pcall(function()
+                return ui.highlight:saveHighlight(true)
+            end)
+            if success and index then
+                local a = ui.annotation.annotations[index]
+                a.note = result_text
+                ui:handleEvent(Event:new("AnnotationsModified",
+                                    { a, nb_highlights_added = -1, nb_notes_added = 1 }))
+            end
+        end
 
-          UIManager:close(chatgpt_viewer)
-          if ui.highlight and ui.highlight.onClose then
-              ui.highlight:onClose()
-          end
-      end
+        UIManager:close(chatgpt_viewer)
+        if ui.highlight and ui.highlight.onClose then
+            ui.highlight:onClose()
+        end
+    end
 
-      chatgpt_viewer = ChatGPTViewer:new {
-          ui = ui,
-          title = _("Dictionary"),
-          text = result_text,
-          showAskQuestion = false,
-          onAddToNote = handleAddToNote,
-      }
+    chatgpt_viewer = ChatGPTViewer:new {
+        ui = ui,
+        title = _("Dictionary"),
+        text = result_text,
+        showAskQuestion = false,
+        onAddToNote = handleAddToNote,
+    }
 
-      UIManager:show(chatgpt_viewer)
-      if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
-          UIManager:setDirty(nil, "full")
-      end
-    end)
+    UIManager:show(chatgpt_viewer)
+    if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
+        UIManager:setDirty(nil, "full")
+    end
 end
 
 return showDictionaryDialog

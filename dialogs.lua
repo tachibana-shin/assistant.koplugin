@@ -3,8 +3,8 @@ local InputDialog = require("ui/widget/inputdialog")
 local ChatGPTViewer = require("chatgptviewer")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
-local NetworkMgr = require("ui/network/manager")
 local _ = require("gettext")
+local Trapper = require("ui/trapper")
 
 local CONFIGURATION = nil
 local buttons, input_dialog = nil, nil
@@ -17,17 +17,6 @@ else
 end
 
 local Querier = require("gpt_query"):new()
-
--- Common helper functions
-local function showLoadingDialog(model)
-  local loading = InfoMessage:new{
-    text = string.format("%s\n️%s", _("Querying AI ..."), Querier:get_model_desc()),
-    icon = "book.opened",
-    force_one_line = true,
-    timeout = 0.1
-  }
-  UIManager:show(loading)
-end
 
 -- Helper function to truncate text based on configuration
 local function truncateUserPrompt(text)
@@ -111,7 +100,7 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
   if not answer or answer == "" or err ~= nil then
     UIManager:show(InfoMessage:new{
       icon = "notice-warning",
-      text = "Error received from AI service." .. err or "",
+      text = err or "",
     })
     return
   end
@@ -192,9 +181,7 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
     text = result_text,
     ui = ui,
     onAskQuestion = function(viewer, new_question)
-      NetworkMgr:runWhenOnline(function()
-        showLoadingDialog(current_model)
-        UIManager:scheduleIn(0.1, function()
+        Trapper:wrap(function()
           -- Use viewer's own highlighted_text value
           local current_highlight = viewer.highlighted_text or highlightedText
           local msg = handleFollowUpQuestion(message_history, new_question, ui, current_highlight)
@@ -208,7 +195,6 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
             end
           end
         end)
-      end)
     end,
     highlighted_text = highlightedText,
     message_history = message_history,
@@ -225,14 +211,14 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
 end
 
 -- Handle predefined prompt request
-local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
+local function handlePredefinedPrompt(prompt_idx, highlightedText, ui, title)
   if not CONFIGURATION or not CONFIGURATION.features or not CONFIGURATION.features.prompts then
     return nil, "No prompts configured"
   end
 
-  local prompt = CONFIGURATION.features.prompts[prompt_type]
+  local prompt = CONFIGURATION.features.prompts[prompt_idx]
   if not prompt then
-    return nil, "Prompt '" .. prompt_type .. "' not found"
+    return nil, "Prompt '" .. prompt_idx .. "' not found"
   end
 
   local user_content = formatUserPrompt(prompt.user_prompt, highlightedText, ui)
@@ -249,7 +235,7 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
     }
   }
   
-  local answer, err = Querier:query(message_history)
+  local answer, err = Querier:query(message_history, string.format("🌐 Loading %s ...", title or prompt_idx))
   if answer then
     table.insert(message_history, {
       role = "assistant",
@@ -261,7 +247,7 @@ local function handlePredefinedPrompt(prompt_type, highlightedText, ui)
 end
 
 -- Main dialog function
-local function showChatGPTDialog(ui, highlightedText, direct_prompt)
+local function showChatGPTDialog(ui, highlightedText, prompt_index)
   if input_dialog then
     UIManager:close(input_dialog)
     input_dialog = nil
@@ -278,31 +264,32 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
     end
   end
 
-  -- Handle direct prompts ( custom)
-  if direct_prompt then
-    showLoadingDialog(current_model)
-    UIManager:scheduleIn(0.1, function()
-      local message_history, err
-      local title
+  -- Handle main popup button
+  -- when clicked [xxx (AI)] button in main select popup,
+  -- the prompt_index is set and it's the key of the prompts
+  if prompt_index then
+    local message_history, err
+    local title = CONFIGURATION.features.prompts[prompt_index].text or prompt_index
+    message_history, err = handlePredefinedPrompt(prompt_index, highlightedText, ui, title)
+    if err then
+      UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
+      return
+    end
 
-      message_history, err = handlePredefinedPrompt(direct_prompt, highlightedText, ui)
-      if err then
-        UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
-        return
-      end
-      title = CONFIGURATION.features.prompts[direct_prompt].text
+    if not message_history or #message_history < 1 then
+      UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
+      return
+    end
 
-      if not message_history or #message_history < 1 then
-        UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
-        return
-      end
-
-      createAndShowViewer(ui, highlightedText, message_history, title)
-    end)
+    createAndShowViewer(ui, highlightedText, message_history, title)
     return
   end
 
-  -- Handle regular dialog with buttons
+  -- When clicked [Assistant] button in main select popup,
+  -- Or when activated from guesture (no text highlighted)
+  -- prompt_index is nil
+
+  -- Handle regular dialog (user input prompt, other buttons)
   local book = getBookContext(ui)
   local message_history = {{
     role = "system",
@@ -326,8 +313,7 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
       text = _("Ask"),
       is_enter_default = true,
       callback = function()
-        showLoadingDialog(current_model)
-        UIManager:scheduleIn(0.1, function()
+        Trapper:wrap(function()
           local context_message = createContextMessage(ui, highlightedText)
           table.insert(message_history, context_message)
 
@@ -337,13 +323,19 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
           }
           table.insert(message_history, question_message)
 
+          -- Close input dialog and keyboard before querying
+          if input_dialog then
+            UIManager:close(input_dialog)
+            input_dialog = nil
+          end
+
           local answer, err = Querier:query(message_history)
           
           -- Check if we got a valid response
           if not answer or answer == "" or err ~= nil then
             UIManager:show(InfoMessage:new{
               icon = "notice-warning",
-              text = "Error received from AI service." .. err or "",
+              text = "Error: " .. err or "",
               timeout = 3
             })
             return
@@ -354,18 +346,12 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
             content = answer
           }
           table.insert(message_history, answer_message)
-
-          -- Close input dialog and keyboard before showing the viewer
-          if input_dialog then
-            UIManager:close(input_dialog)
-            input_dialog = nil
-          end
           
           -- Create a contextual title
           local viewer_title = highlightedText and highlightedText ~= "" and 
             _("Text Analysis") or 
             book.title
-          
+        
           createAndShowViewer(ui, highlightedText, message_history, viewer_title)
         end)
       end
@@ -383,9 +369,8 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
             UIManager:close(input_dialog)
             input_dialog = nil
           end
-          showLoadingDialog()
-          UIManager:scheduleIn(0.1, function()
-            local showDictionaryDialog = require("dictdialog")
+          local showDictionaryDialog = require("dictdialog")
+          Trapper:wrap(function()
             showDictionaryDialog(ui, highlightedText)
           end)
         end
@@ -396,8 +381,8 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
     if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
       -- Create a sorted list of prompts
       local sorted_prompts = {}
-      for prompt_type, prompt in pairs(CONFIGURATION.features.prompts) do
-        table.insert(sorted_prompts, {type = prompt_type, config = prompt})
+      for prompt_idx, prompt in pairs(CONFIGURATION.features.prompts) do
+        table.insert(sorted_prompts, {type = prompt_idx, config = prompt})
       end
       -- Sort by order value, default to 1000 if not specified
       table.sort(sorted_prompts, function(a, b)
@@ -408,16 +393,15 @@ local function showChatGPTDialog(ui, highlightedText, direct_prompt)
       
       -- Add buttons in sorted order
       for idx, prompt_data in ipairs(sorted_prompts) do
-        local prompt_type = prompt_data.type
+        local prompt_idx = prompt_data.type
         local prompt = prompt_data.config
         table.insert(all_buttons, {
           text = _(prompt.text),
           callback = function()
             UIManager:close(input_dialog)
             input_dialog = nil
-            showLoadingDialog()
-            UIManager:scheduleIn(0.1, function()
-              local message_history, err = handlePredefinedPrompt(prompt_type, highlightedText, ui)
+            Trapper:wrap(function()
+              local message_history, err = handlePredefinedPrompt(prompt_idx, highlightedText, ui)
               if err then
                 UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
                 return

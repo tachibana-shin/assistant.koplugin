@@ -33,6 +33,9 @@ function OpenAIHandler:query(message_history, openai_settings)
         end
     end
     
+    if code == BaseHandler.CODE_CANCELLED then
+        return nil, response
+    end
     return nil, "Error: " .. (code or "unknown") .. " - " .. response
 end
 
