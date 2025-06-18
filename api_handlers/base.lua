@@ -11,7 +11,7 @@ local BaseHandler = {
     trap_widget = nil,  -- widget to trap the request
 }
 
-BaseHandler.CODE_CANCELLED = -42  -- code for request cancelled by user
+BaseHandler.CODE_CANCELLED = "USER_CANCELED"
 
 function BaseHandler:new(o)
     o = o or {}
@@ -97,7 +97,8 @@ function BaseHandler:makeRequest(url, headers, body, timeout, maxtime)
         end
     else
         -- If no trap widget is set, run the request directly
-        success, code, content = postURLContent(url, headers, body, timeout or 20, maxtime or 60)
+        -- use smaller timeout because we are blocking the UI
+        success, code, content = postURLContent(url, headers, body, timeout or 20, maxtime or 45)
     end
 
     return success, code, content
