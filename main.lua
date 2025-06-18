@@ -179,7 +179,7 @@ function Assistant:init()
             callback = function()
               NetworkMgr:runWhenOnline(function()
                 Trapper:wrap(function()
-                  ChatGPTDialog.showMainPopupDialog(self.ui, 
+                  ChatGPTDialog.showProcCustomPrompt(self.ui, 
                     _reader_highlight_instance.selected_text.text,
                     tab.idx)
                 end)

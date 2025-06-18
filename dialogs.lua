@@ -246,8 +246,9 @@ local function handlePredefinedPrompt(prompt_idx, highlightedText, ui, title)
   return message_history, err
 end
 
--- Show popup dialog with predefined prompts
-local function showMainPopupDialog(ui, highlightedText, prompt_index)
+-- Process main select popup buttons
+-- ( custom prompts from configuration )
+local function showProcCustomPrompt(ui, highlightedText, prompt_index)
   -- Check if Querier is initialized
   if not Querier:is_inited() then
     local ok, err = Querier:load_model(CONFIGURATION.provider)
@@ -403,7 +404,7 @@ local function showChatGPTDialog(ui, highlightedText)
               input_dialog = nil
             end
             Trapper:wrap(function()
-              showMainPopupDialog(ui, highlightedText, tab.idx)
+              showProcCustomPrompt(ui, highlightedText, tab.idx)
             end)
           end
         })
@@ -459,6 +460,5 @@ end
 
 return {
   showChatGPTDialog = showChatGPTDialog,
-  showMainPopupDialog = showMainPopupDialog,
+  showProcCustomPrompt = showProcCustomPrompt,
 }
-
