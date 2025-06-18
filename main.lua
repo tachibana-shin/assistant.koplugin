@@ -73,7 +73,11 @@ function Assistant:init()
             UpdateChecker.checkForUpdates()
             updateMessageShown = true
           end
-          showChatGPTDialog(self.ui, _reader_highlight_instance.selected_text.text)
+          local Trapper = require("ui/trapper")
+          Trapper:wrap(function()
+            -- Show the main AI dialog with highlighted text
+            showChatGPTDialog(self.ui, _reader_highlight_instance.selected_text.text)
+          end)
         end)
       end,
     }
@@ -86,8 +90,11 @@ function Assistant:init()
           enabled = Device:hasClipboard(),
           callback = function()
               NetworkMgr:runWhenOnline(function()
-                  local showDictionaryDialog = require("dictdialog")
+                local showDictionaryDialog = require("dictdialog")
+                local Trapper = require("ui/trapper")
+                Trapper:wrap(function()
                   showDictionaryDialog(self.ui, _reader_highlight_instance.selected_text.text)
+                end)
               end)
           end,
       }
@@ -130,7 +137,10 @@ function Assistant:init()
             ok_callback     = function()
               NetworkMgr:runWhenOnline(function()
                 local showRecapDialog = require("recapdialog")
-                showRecapDialog(self.ui, title, authors, percent_finished)
+                local Trapper = require("ui/trapper")
+                Trapper:wrap(function()
+                  showRecapDialog(self.ui, title, authors, percent_finished)
+                end)
               end)
             end,
             cancel_text     = _("No"),
@@ -145,9 +155,9 @@ function Assistant:init()
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
     -- Create a sorted list of prompts
     local sorted_prompts = {}
-    for prompt_type, prompt in pairs(CONFIGURATION.features.prompts) do
+    for prompt_idx, prompt in pairs(CONFIGURATION.features.prompts) do
       if prompt.show_on_main_popup then
-        table.insert(sorted_prompts, {type = prompt_type, config = prompt})
+        table.insert(sorted_prompts, {type = prompt_idx, config = prompt})
       end
     end
     
@@ -160,21 +170,25 @@ function Assistant:init()
     
     -- Add buttons in sorted order
     for _, prompt_data in ipairs(sorted_prompts) do
-      local prompt_type = prompt_data.type
+      local prompt_idx = prompt_data.type
       local prompt = prompt_data.config
       -- Use order in the index for proper sorting (pad with zeros for consistent sorting)
-      local order_str = string.format("%02d", prompt.order or 1000)
-      self.ui.highlight:addToHighlightDialog("assistant_" .. order_str .. "_" .. prompt_type, function(_reader_highlight_instance)
-        return {
-          text = prompt.text.." (AI)", 
-          enabled = Device:hasClipboard(),
-          callback = function()
-            NetworkMgr:runWhenOnline(function()
-              showChatGPTDialog(self.ui, _reader_highlight_instance.selected_text.text, prompt_type)
-            end)
-          end,
-        }
-      end)
+      self.ui.highlight:addToHighlightDialog(
+        string.format("assistant_%02d_%s", prompt.order or 1000, prompt_idx),
+        function(_reader_highlight_instance)
+          return {
+            text = prompt.text.." (AI)", 
+            enabled = Device:hasClipboard(),
+            callback = function()
+              NetworkMgr:runWhenOnline(function()
+                local Trapper = require("ui/trapper")
+                Trapper:wrap(function()
+                  showChatGPTDialog(self.ui, _reader_highlight_instance.selected_text.text, prompt_idx)
+                end)
+              end)
+            end,
+          }
+        end)
     end
   end
 end
@@ -188,11 +202,10 @@ function Assistant:onDictButtonsReady(dict_popup, buttons)
         callback = function()
             NetworkMgr:runWhenOnline(function()
                 local showDictionaryDialog = require("dictdialog")
-		-- NOTE: `dict_popup.lookupword` is a dictionary word
-		-- in the case of complex words, eg: multicolored, only "multi-" prefix is 
-		-- looked up in dictionary (in SOEDrich). Thus the AI model doesn't know the 
-		-- original word "multicolored".  Feed the module with original text here.
-                showDictionaryDialog(self.ui, dict_popup.word)
+                local Trapper = require("ui/trapper")
+                Trapper:wrap(function()
+                  showDictionaryDialog(self.ui, dict_popup.word)
+                end)
             end)
         end,
     }})
@@ -253,7 +266,10 @@ function Assistant:onAskAIRecap()
     
     -- Show recap dialog
     local showRecapDialog = require("recapdialog")
-    showRecapDialog(self.ui, title, authors, percent_finished)
+    local Trapper = require("ui/trapper")
+    Trapper:wrap(function()
+      showRecapDialog(self.ui, title, authors, percent_finished)
+    end)
   end)
   return true
 end

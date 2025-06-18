@@ -9,7 +9,7 @@ local Event = require("ui/event")
 local configuration = require("configuration")
 local Querier = require("gpt_query"):new()
 
-local function _showDictionaryDialog(ui, highlightedText, message_history)
+local function showDictionaryDialog(ui, highlightedText, message_history)
 
     -- Check if Querier is initialized
     local ok, err = Querier:load_model(configuration.provider)
@@ -144,15 +144,6 @@ local function _showDictionaryDialog(ui, highlightedText, message_history)
     if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
         UIManager:setDirty(nil, "full")
     end
-end
-
-
--- Function wrapper to show the dictionary dialog
-local function showDictionaryDialog(ui, highlightedText, message_history)
-    local Trapper = require("ui/trapper")
-    Trapper:wrap(function()
-        _showDictionaryDialog(ui, highlightedText, message_history)
-    end)
 end
 
 return showDictionaryDialog

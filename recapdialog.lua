@@ -9,7 +9,7 @@ local ChatGPTViewer = require("chatgptviewer")
 local configuration = require("configuration")
 local Querier = require("gpt_query"):new()
 
-local function _showRecapDialog(ui, title, author, progress_percent, message_history)
+local function showRecapDialog(ui, title, author, progress_percent, message_history)
     -- Check if Querier is initialized
     local ok, err = Querier:load_model(configuration.provider)
     if not ok then
@@ -71,13 +71,6 @@ local function _showRecapDialog(ui, title, author, progress_percent, message_his
     if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
       UIManager:setDirty(nil, "full")
     end
-end
-
-local function showRecapDialog(ui, title, author, progress_percent, message_history)
-    local Trapper = require("ui/trapper")
-    Trapper:wrap(function()
-      _showRecapDialog(ui, title, author, progress_percent, message_history)
-    end)
 end
 
 return showRecapDialog

@@ -84,6 +84,7 @@ local function postURLContent(url, headers, body, timeout, maxtime)
     return true, code, content
 end
 
+--- func description: Make a request to the specified URL with headers and body.
 function BaseHandler:makeRequest(url, headers, body, timeout, maxtime)
     local completed, success, code, content
     if self.trap_widget then
