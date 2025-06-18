@@ -143,12 +143,12 @@ local function createResultText(highlightedText, message_history, previous_text,
       if not message_history[i].is_context then
         if message_history[i].role == "user" then
           local user_content = message_history[i].content or _("(Empty message)")
-          result_text = string.format("### ⮞ User: %s\n\n%s\n\n%s\n",
-                                      title or "", truncateUserPrompt(user_content), result_text)
+          result_text = string.format("%s\n\n### ⮞ User: %s\n\n%s\n\n",
+                                      result_text, title or "", truncateUserPrompt(user_content))
         else
           local assistant_content = message_history[i].content or _("(No response)")
-          result_text = string.format("### ⮞ Assistant: %s\n\n%s\n\n%s\n",
-                                      title or "", assistant_content, result_text)
+          result_text = string.format("%s\n\n### ⮞ Assistant: %s\n\n%s\n\n",
+                                      result_text, title or "", assistant_content)
         end
       end
     end
