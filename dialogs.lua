@@ -247,7 +247,7 @@ local function handlePredefinedPrompt(prompt_idx, highlightedText, ui, title)
 end
 
 -- Main dialog function
-local function showChatGPTDialog(ui, highlightedText, prompt_index)
+local function showChatGPTDialog(ui, highlightedText)
   if input_dialog then
     UIManager:close(input_dialog)
     input_dialog = nil
@@ -264,30 +264,8 @@ local function showChatGPTDialog(ui, highlightedText, prompt_index)
     end
   end
 
-  -- Handle main popup button
-  -- when clicked [xxx (AI)] button in main select popup,
-  -- the prompt_index is set and it's the key of the prompts
-  if prompt_index then
-    local message_history, err
-    local title = CONFIGURATION.features.prompts[prompt_index].text or prompt_index
-    message_history, err = handlePredefinedPrompt(prompt_index, highlightedText, ui, title)
-    if err then
-      UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
-      return
-    end
-
-    if not message_history or #message_history < 1 then
-      UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
-      return
-    end
-
-    createAndShowViewer(ui, highlightedText, message_history, title)
-    return
-  end
-
   -- When clicked [Assistant] button in main select popup,
   -- Or when activated from guesture (no text highlighted)
-  -- prompt_index is nil
 
   -- Handle regular dialog (user input prompt, other buttons)
   local book = getBookContext(ui)
@@ -460,4 +438,35 @@ local function showChatGPTDialog(ui, highlightedText, prompt_index)
   input_dialog:onShowKeyboard()
 end
 
-return showChatGPTDialog
+local function showMainPopupDialog(ui, highlightedText, prompt_index)
+  -- Check if Querier is initialized
+  if not Querier:is_inited() then
+    local ok, err = Querier:load_model(CONFIGURATION.provider)
+    if not ok then
+        logger.warn(err)
+        -- Extract error message after colon
+        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err:sub(string.find(err, ":") + 5) or err})
+        return
+    end
+  end
+
+  local title = CONFIGURATION.features.prompts[prompt_index].text or prompt_index
+  local message_history, err = handlePredefinedPrompt(prompt_index, highlightedText, ui, title)
+  if err then
+    UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
+    return
+  end
+
+  if not message_history or #message_history < 1 then
+    UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
+    return
+  end
+
+  createAndShowViewer(ui, highlightedText, message_history, title)
+end
+
+return {
+  showChatGPTDialog = showChatGPTDialog,
+  showMainPopupDialog = showMainPopupDialog,
+}
+

@@ -8,7 +8,7 @@ local InfoMessage = require("ui/widget/infomessage")
 local Trapper = require("ui/trapper")
 local _ = require("gettext")
 
-local showChatGPTDialog = require("dialogs")
+local ChatGPTDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
 
 local Assistant = InputContainer:new {
@@ -76,7 +76,7 @@ function Assistant:init()
           end
           Trapper:wrap(function()
             -- Show the main AI dialog with highlighted text
-            showChatGPTDialog(self.ui, _reader_highlight_instance.selected_text.text)
+            ChatGPTDialog.showChatGPTDialog(self.ui, _reader_highlight_instance.selected_text.text)
           end)
         end)
       end,
@@ -180,7 +180,9 @@ function Assistant:init()
             callback = function()
               NetworkMgr:runWhenOnline(function()
                 Trapper:wrap(function()
-                  showChatGPTDialog(self.ui, _reader_highlight_instance.selected_text.text, prompt_idx)
+                  ChatGPTDialog.showMainPopupDialog(self.ui, 
+                    _reader_highlight_instance.selected_text.text,
+                    prompt_idx)
                 end)
               end)
             end,
@@ -224,7 +226,7 @@ function Assistant:onAskAIQuestion()
       updateMessageShown = true
     end
     -- Show dialog without requiring highlighted text
-    showChatGPTDialog(self.ui, nil)
+    ChatGPTDialog.showChatGPTDialog(self.ui, nil)
   end)
   return true
 end
