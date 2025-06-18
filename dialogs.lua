@@ -183,7 +183,6 @@ local function createAndShowViewer(ui, highlightedText, message_history, title, 
     text = result_text,
     ui = ui,
     onAskQuestion = function(viewer, new_question, _title)
-        logger.info("onAskQuestion", _title)
         Trapper:wrap(function()
           -- Use viewer's own highlighted_text value
           local current_highlight = viewer.highlighted_text or highlightedText
