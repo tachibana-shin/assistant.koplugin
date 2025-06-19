@@ -6,6 +6,9 @@ local Dispatcher = require("dispatcher")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
 local Trapper = require("ui/trapper")
+local LuaSettings = require("luasettings")
+local DataStorage = require("datastorage")
+local RadioButtonWidget = require("ui/widget/radiobuttonwidget")
 local _ = require("gettext")
 
 local ChatGPTDialog = require("dialogs")
@@ -14,6 +17,8 @@ local UpdateChecker = require("update_checker")
 local Assistant = InputContainer:new {
   name = "Assistant",
   is_doc_only = true,
+  settings_file = DataStorage:getSettingsDir() .. "/assistant.lua",
+  settings = nil,
 }
 
 -- Load Configuration
@@ -52,9 +57,95 @@ function Assistant:onDispatcherRegisterActions()
   -- They remain available through the highlight dialog and main AI dialog
 end
 
+function Assistant:addToMainMenu(menu_items)
+    menu_items.assitant = {
+        text = "Assitant AI Model Provider",
+        -- in which menu this should be appended
+        sorting_hint = "more_tools",
+        -- a callback when tapping
+        callback = function()
+          local model_provider = self:getModelProvider()
+          local provider_settings = CONFIGURATION and CONFIGURATION.provider_settings or {}
+
+          -- sort keys of provider_settings
+          local provider_keys = {}
+          for key, _ in pairs(CONFIGURATION.provider_settings) do
+            table.insert(provider_keys, key)
+          end
+          table.sort(provider_keys)
+
+          local radio_buttons = {}
+          for _, key in ipairs(provider_keys) do
+            table.insert(radio_buttons, {{
+              text = string.format("%s (%s)", key, provider_settings[key].model),
+              provider = key, -- note: this `provider` field belongs to the RadioButtonWidget, not our AI Model provider.
+              checked = (key == model_provider),
+            }})
+          end
+
+          -- Show the RadioButtonWidget dialog for selecting AI provider
+          UIManager:show(RadioButtonWidget:new{
+            title_text = _("Select AI Provider Profile"),
+            info_text = _("Use the selected provider (overrides the provider in configuration.lua)"),
+            cancel_text = _("Close"),
+            ok_text = _("Apply"),
+            width_factor = 0.9,
+            radio_buttons = radio_buttons,
+            callback = function(radio)
+              if radio.provider ~= model_provider then
+                self.settings:saveSetting("provider", radio.provider)
+                UIManager:show(InfoMessage:new{
+                  icon = "notice-info",
+                  text = string.format(_("AI provider changed to: %s (%s)"),
+                                      radio.provider,
+                                      provider_settings[radio.provider].model),
+                })
+              end
+            end,
+          })
+        end,
+    }
+end
+
+
+function Assistant:getModelProvider()
+  local provider = self.settings:readSetting("provider", CONFIGURATION.provider)
+  if CONFIGURATION and CONFIGURATION.provider_settings then
+    if not CONFIGURATION.provider_settings[provider] then
+      logger.warn("Invalid provider setting found, using default: " .. CONFIGURATION.provider)
+      provider = CONFIGURATION.provider
+      self.settings:writeSetting("provider", provider)
+      self.updated = true -- mark as updated to flush settings
+      self.settings:flush()
+    end
+  else
+    error("No provider settings found") 
+  end
+  return provider
+end
+
+-- Flush settings to disk, triggered by koreader
+function Assistant:onFlushSettings()
+    if self.updated then
+        self.settings:flush()
+        self.updated = nil
+    end
+end
+
 function Assistant:init()
   -- Register actions with dispatcher for gesture assignment
   self:onDispatcherRegisterActions()
+
+  -- Register model switch to main menu (under "More tools")
+  self.ui.menu:registerToMainMenu(self)
+
+  -- Initialize settings file
+  self.settings = LuaSettings:open(self.settings_file)
+  if next(self.settings.data) == nil then
+    self.updated = true -- first run, force flush
+    self.settings:saveSetting("provider", CONFIGURATION.provider)
+  end
+
   
   -- Assistant button
   self.ui.highlight:addToHighlightDialog("assistant", function(_reader_highlight_instance)
