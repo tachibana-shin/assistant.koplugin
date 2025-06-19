@@ -60,7 +60,7 @@ end
 
 function Assistant:addToMainMenu(menu_items)
     menu_items.assitant = {
-        text = "Assitant AI Model Provider",
+        text = "Assitant Provider Switch",
         -- in which menu this should be appended
         sorting_hint = "more_tools",
         -- a callback when tapping
@@ -70,7 +70,7 @@ function Assistant:addToMainMenu(menu_items)
 
           -- sort keys of provider_settings
           local provider_keys = {}
-          for key, _ in pairs(CONFIGURATION.provider_settings) do
+          for key, _ in pairs(provider_settings) do
             table.insert(provider_keys, key)
           end
           table.sort(provider_keys)
@@ -95,7 +95,7 @@ function Assistant:addToMainMenu(menu_items)
             callback = function(radio)
               if radio.provider ~= model_provider then
                 self.settings:saveSetting("provider", radio.provider)
-                self.querier:load_model(self.settings:readSetting("provider"))
+                self.querier:load_model(radio.provider)
                 UIManager:show(InfoMessage:new{
                   icon = "notice-info",
                   text = string.format(_("AI provider changed to: %s (%s)"),
@@ -114,11 +114,17 @@ function Assistant:getModelProvider()
   local provider = self.settings:readSetting("provider", CONFIGURATION.provider)
   if CONFIGURATION and CONFIGURATION.provider_settings then
     if not CONFIGURATION.provider_settings[provider] then
-      logger.warn("Invalid provider setting found, using default: " .. CONFIGURATION.provider)
-      provider = CONFIGURATION.provider
-      self.settings:writeSetting("provider", provider)
-      self.updated = true -- mark as updated to flush settings
-      self.settings:flush()
+      -- neither the provider is set in settings nor in CONFIGURATION.provider is corrent
+      -- so we use the default from configuration.lua
+      local function first_key(t)
+        for k, _ in pairs(t) do
+          return k
+        end
+      end
+      logger.warn("Invalid provider setting found, using default: ", provider)
+      provider = first_key(CONFIGURATION.provider_settings)
+      self.settings:saveSetting("provider", provider)
+      logger.info("Using default provider: ", provider)
     end
   else
     error("No provider settings found") 
@@ -143,14 +149,16 @@ function Assistant:init()
 
   -- Initialize settings file
   self.settings = LuaSettings:open(self.settings_file)
+  logger.info("Assistant settings initialized at: ", self.settings.data)
   if next(self.settings.data) == nil then
     self.updated = true -- first run, force flush
     self.settings:saveSetting("provider", CONFIGURATION.provider)
+    logger.info("Assistant settings initialized with provider: " .. CONFIGURATION.provider)
   end
 
   -- Load the model provider from settings or default configuration
   self.querier = require("gpt_query"):new()
-  self.querier:load_model(self.settings:readSetting("provider") or CONFIGURATION.provider)
+  self.querier:load_model(self:getModelProvider())
   
   -- Assistant button
   self.ui.highlight:addToHighlightDialog("assistant", function(_reader_highlight_instance)

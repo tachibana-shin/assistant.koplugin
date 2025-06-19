@@ -13,7 +13,7 @@ local function showRecapDialog(assitant, title, author, progress_percent, messag
     local ui = assitant.ui
 
     -- Check if Querier is initialized
-    local ok, err = Querier:load_model(assitant.settings:readSetting("provider") or configuration.provider)
+    local ok, err = Querier:load_model(assitant:getModelProvider())
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return

@@ -257,7 +257,7 @@ local function showProcCustomPrompt(assitant, highlightedText, prompt_index)
 
   -- Check if Querier is initialized
   if not Querier:is_inited() then
-    local ok, err = Querier:load_model(assitant.settings:readSetting("provider") or CONFIGURATION.provider)
+    local ok, err = Querier:load_model(assitant:getModelProvider())
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
@@ -293,7 +293,7 @@ local function showChatGPTDialog(assitant, highlightedText)
 
   -- Check if Querier is initialized
   if not Querier:is_inited() then
-    local ok, err = Querier:load_model(assitant.settings:readSetting("provider") or CONFIGURATION.provider)
+    local ok, err = Querier:load_model(assitant:getModelProvider())
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err})
         return
