@@ -102,6 +102,7 @@ function Assistant:showProviderSwitch()
         if radio.provider ~= model_provider then
           self.settings:saveSetting("provider", radio.provider)
           self.querier:load_model(radio.provider)
+          self.updated = true -- mark settings as updated
           UIManager:show(InfoMessage:new{
             icon = "notice-info",
             text = string.format(_("AI provider changed to: %s (%s)"),
