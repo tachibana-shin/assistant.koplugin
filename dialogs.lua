@@ -8,6 +8,7 @@ local Trapper = require("ui/trapper")
 
 local CONFIGURATION = nil
 local buttons, input_dialog = nil, nil
+local Querier = nil
 
 local success, result = pcall(function() return require("configuration") end)
 if success then
@@ -15,8 +16,6 @@ if success then
 else
   logger.warn("configuration.lua not found, skipping...")
 end
-
-local Querier = require("gpt_query"):new()
 
 -- Helper function to truncate text based on configuration
 local function truncateUserPrompt(text)
@@ -171,14 +170,15 @@ local function createResultText(highlightedText, message_history, previous_text,
 end
 
 -- Helper function to create and show ChatGPT viewer
-local function createAndShowViewer(ui, highlightedText, message_history, title, show_highlighted_text)
-  -- logger.info("title", title)
+local function createAndShowViewer(assitant, highlightedText, message_history, title, show_highlighted_text)
+  local ui = assitant.ui
   show_highlighted_text = show_highlighted_text == nil and true or show_highlighted_text
   local result_text = createResultText(highlightedText, message_history, nil, show_highlighted_text, title)
   local render_markdown = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown) or true
   local markdown_font_size = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.markdown_font_size) or 20
   
   local chatgpt_viewer = ChatGPTViewer:new {
+    assitant = assitant,
     title = title,
     text = result_text,
     ui = ui,
@@ -250,10 +250,15 @@ end
 
 -- Process main select popup buttons
 -- ( custom prompts from configuration )
-local function showProcCustomPrompt(ui, highlightedText, prompt_index)
+local function showProcCustomPrompt(assitant, highlightedText, prompt_index)
+  local ui = assitant.ui
+  if not Querier then
+    Querier = assitant.querier
+  end
+
   -- Check if Querier is initialized
   if not Querier:is_inited() then
-    local ok, err = Querier:load_model(CONFIGURATION.provider)
+    local ok, err = Querier:load_model(assitant:getModelProvider())
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
@@ -272,11 +277,16 @@ local function showProcCustomPrompt(ui, highlightedText, prompt_index)
     return
   end
 
-  createAndShowViewer(ui, highlightedText, message_history, title)
+  createAndShowViewer(assitant, highlightedText, message_history, title)
 end
 
 -- Main dialog function
-local function showChatGPTDialog(ui, highlightedText)
+local function showChatGPTDialog(assitant, highlightedText)
+  local ui = assitant.ui
+  if not Querier then
+    Querier = assitant.querier
+  end
+
   if input_dialog then
     UIManager:close(input_dialog)
     input_dialog = nil
@@ -284,7 +294,7 @@ local function showChatGPTDialog(ui, highlightedText)
 
   -- Check if Querier is initialized
   if not Querier:is_inited() then
-    local ok, err = Querier:load_model(CONFIGURATION.provider)
+    local ok, err = Querier:load_model(assitant:getModelProvider())
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err})
         return
@@ -340,7 +350,7 @@ local function showChatGPTDialog(ui, highlightedText)
           if not answer or answer == "" or err ~= nil then
             UIManager:show(InfoMessage:new{
               icon = "notice-warning",
-              text = "Error: " .. err or "",
+              text = "Error: " .. (err or ""),
               timeout = 3
             })
             return
@@ -357,7 +367,7 @@ local function showChatGPTDialog(ui, highlightedText)
             _("Text Analysis") or 
             book.title
         
-          createAndShowViewer(ui, highlightedText, message_history, viewer_title)
+          createAndShowViewer(assitant, highlightedText, message_history, viewer_title)
         end)
       end
     }

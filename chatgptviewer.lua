@@ -64,6 +64,7 @@ ol, ul, menu {
 ]]
 
 local ChatGPTViewer = InputContainer:extend {
+  assitant = nil, -- The assistant object that created this viewer
   title = nil,
   text = nil,
   width = nil,
@@ -104,7 +105,6 @@ local ChatGPTViewer = InputContainer:extend {
 
 -- Global variables
 local active_chatgpt_viewer = nil
-local is_input_dialog_open = false
 
 function ChatGPTViewer:init()
   -- calculate window dimension
@@ -243,6 +243,17 @@ function ChatGPTViewer:init()
       end,
     })
   end
+
+  -- Add switch model button
+  table.insert(default_buttons, {
+    text = _("Switch Model"),
+    id = "switch_model",
+    callback = function()
+      if self.assitant then
+        self.assitant:showProviderSwitch()
+      end
+    end,
+  })
   
   -- Add the rest of the default buttons
   table.insert(default_buttons, {

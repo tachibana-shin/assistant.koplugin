@@ -7,11 +7,13 @@ local Event = require("ui/event")
 local _ = require("gettext")
 local ChatGPTViewer = require("chatgptviewer")
 local configuration = require("configuration")
-local Querier = require("gpt_query"):new()
 
-local function showRecapDialog(ui, title, author, progress_percent, message_history)
+local function showRecapDialog(assitant, title, author, progress_percent, message_history)
+    local Querier = assitant.querier
+    local ui = assitant.ui
+
     -- Check if Querier is initialized
-    local ok, err = Querier:load_model(configuration.provider)
+    local ok, err = Querier:load_model(assitant:getModelProvider())
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
@@ -59,6 +61,7 @@ local function showRecapDialog(ui, title, author, progress_percent, message_hist
     end
 
     local chatgpt_viewer = ChatGPTViewer:new {
+      assitant = assitant,
       ui = ui,
       title = _("Recap"),
       text = createResultText(answer),
