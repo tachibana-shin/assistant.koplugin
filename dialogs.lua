@@ -8,6 +8,7 @@ local Trapper = require("ui/trapper")
 
 local CONFIGURATION = nil
 local buttons, input_dialog = nil, nil
+local Querier = nil
 
 local success, result = pcall(function() return require("configuration") end)
 if success then
@@ -15,8 +16,6 @@ if success then
 else
   logger.warn("configuration.lua not found, skipping...")
 end
-
-local Querier = require("gpt_query"):new()
 
 -- Helper function to truncate text based on configuration
 local function truncateUserPrompt(text)
@@ -250,10 +249,15 @@ end
 
 -- Process main select popup buttons
 -- ( custom prompts from configuration )
-local function showProcCustomPrompt(ui, highlightedText, prompt_index)
+local function showProcCustomPrompt(assitant, highlightedText, prompt_index)
+  local ui = assitant.ui
+  if not Querier then
+    Querier = assitant.querier
+  end
+
   -- Check if Querier is initialized
   if not Querier:is_inited() then
-    local ok, err = Querier:load_model(CONFIGURATION.provider)
+    local ok, err = Querier:load_model(assitant.settings:readSetting("provider") or CONFIGURATION.provider)
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
@@ -276,7 +280,12 @@ local function showProcCustomPrompt(ui, highlightedText, prompt_index)
 end
 
 -- Main dialog function
-local function showChatGPTDialog(ui, highlightedText)
+local function showChatGPTDialog(assitant, highlightedText)
+  local ui = assitant.ui
+  if not Querier then
+    Querier = assitant.querier
+  end
+
   if input_dialog then
     UIManager:close(input_dialog)
     input_dialog = nil
@@ -284,7 +293,7 @@ local function showChatGPTDialog(ui, highlightedText)
 
   -- Check if Querier is initialized
   if not Querier:is_inited() then
-    local ok, err = Querier:load_model(CONFIGURATION.provider)
+    local ok, err = Querier:load_model(assitant.settings:readSetting("provider") or CONFIGURATION.provider)
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err})
         return
@@ -340,7 +349,7 @@ local function showChatGPTDialog(ui, highlightedText)
           if not answer or answer == "" or err ~= nil then
             UIManager:show(InfoMessage:new{
               icon = "notice-warning",
-              text = "Error: " .. err or "",
+              text = "Error: " .. (err or ""),
               timeout = 3
             })
             return

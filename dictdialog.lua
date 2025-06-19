@@ -7,21 +7,23 @@ local TextBoxWidget = require("ui/widget/textboxwidget")
 local _ = require("gettext")
 local Event = require("ui/event")
 local configuration = require("configuration")
-local Querier = require("gpt_query"):new()
 
-local function showDictionaryDialog(ui, highlightedText, message_history)
+local function showDictionaryDialog(assitant, highlightedText, message_history)
+    local Querier = assitant.querier
+    local ui = assitant.ui
 
     -- Check if Querier is initialized
-    local ok, err = Querier:load_model(configuration.provider)
+    local ok, err = Querier:load_model(assitant.settings:readSetting("provider") or configuration.provider)
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
     end
 
     -- Handle case where no text is highlighted (gesture-triggered)
+    local input_dialog
     if not highlightedText or highlightedText == "" then
         -- Show a simple input dialog to ask for a word to look up
-        local input_dialog = InputDialog:new{
+        input_dialog = InputDialog:new{
             title = _("AI Dictionary"),
             input_hint = _("Enter a word to look up..."),
             input_type = "text",
@@ -41,7 +43,7 @@ local function showDictionaryDialog(ui, highlightedText, message_history)
                             UIManager:close(input_dialog)
                             if word and word ~= "" then
                                 -- Recursively call with the entered word
-                                showDictionaryDialog(ui, word, message_history)
+                                showDictionaryDialog(assitant, word, message_history)
                             end
                         end,
                     },

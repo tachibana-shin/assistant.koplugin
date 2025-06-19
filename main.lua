@@ -19,6 +19,7 @@ local Assistant = InputContainer:new {
   is_doc_only = true,
   settings_file = DataStorage:getSettingsDir() .. "/assistant.lua",
   settings = nil,
+  querier = nil,
 }
 
 -- Load Configuration
@@ -94,6 +95,7 @@ function Assistant:addToMainMenu(menu_items)
             callback = function(radio)
               if radio.provider ~= model_provider then
                 self.settings:saveSetting("provider", radio.provider)
+                self.querier:load_model(self.settings:readSetting("provider"))
                 UIManager:show(InfoMessage:new{
                   icon = "notice-info",
                   text = string.format(_("AI provider changed to: %s (%s)"),
@@ -146,6 +148,9 @@ function Assistant:init()
     self.settings:saveSetting("provider", CONFIGURATION.provider)
   end
 
+  -- Load the model provider from settings or default configuration
+  self.querier = require("gpt_query"):new()
+  self.querier:load_model(self.settings:readSetting("provider") or CONFIGURATION.provider)
   
   -- Assistant button
   self.ui.highlight:addToHighlightDialog("assistant", function(_reader_highlight_instance)
@@ -167,7 +172,7 @@ function Assistant:init()
           end
           Trapper:wrap(function()
             -- Show the main AI dialog with highlighted text
-            ChatGPTDialog.showChatGPTDialog(self.ui, _reader_highlight_instance.selected_text.text)
+            ChatGPTDialog.showChatGPTDialog(self, _reader_highlight_instance.selected_text.text)
           end)
         end)
       end,
@@ -183,7 +188,7 @@ function Assistant:init()
               NetworkMgr:runWhenOnline(function()
                 local showDictionaryDialog = require("dictdialog")
                 Trapper:wrap(function()
-                  showDictionaryDialog(self.ui, _reader_highlight_instance.selected_text.text)
+                  showDictionaryDialog(self, _reader_highlight_instance.selected_text.text)
                 end)
               end)
           end,
@@ -228,7 +233,7 @@ function Assistant:init()
               NetworkMgr:runWhenOnline(function()
                 local showRecapDialog = require("recapdialog")
                 Trapper:wrap(function()
-                  showRecapDialog(self.ui, title, authors, percent_finished)
+                  showRecapDialog(self, title, authors, percent_finished)
                 end)
               end)
             end,
@@ -270,7 +275,7 @@ function Assistant:init()
             callback = function()
               NetworkMgr:runWhenOnline(function()
                 Trapper:wrap(function()
-                  ChatGPTDialog.showProcCustomPrompt(self.ui, 
+                  ChatGPTDialog.showProcCustomPrompt(self, 
                     _reader_highlight_instance.selected_text.text,
                     tab.idx)
                 end)
@@ -292,7 +297,7 @@ function Assistant:onDictButtonsReady(dict_popup, buttons)
             NetworkMgr:runWhenOnline(function()
                 local showDictionaryDialog = require("dictdialog")
                 Trapper:wrap(function()
-                  showDictionaryDialog(self.ui, dict_popup.word)
+                  showDictionaryDialog(self, dict_popup.word)
                 end)
             end)
         end,
@@ -316,7 +321,7 @@ function Assistant:onAskAIQuestion()
       updateMessageShown = true
     end
     -- Show dialog without requiring highlighted text
-    ChatGPTDialog.showChatGPTDialog(self.ui, nil)
+    ChatGPTDialog.showChatGPTDialog(self, nil)
   end)
   return true
 end
@@ -355,7 +360,7 @@ function Assistant:onAskAIRecap()
     -- Show recap dialog
     local showRecapDialog = require("recapdialog")
     Trapper:wrap(function()
-      showRecapDialog(self.ui, title, authors, percent_finished)
+      showRecapDialog(self, title, authors, percent_finished)
     end)
   end)
   return true
