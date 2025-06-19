@@ -61,6 +61,7 @@ local function showRecapDialog(assitant, title, author, progress_percent, messag
     end
 
     local chatgpt_viewer = ChatGPTViewer:new {
+      assitant = assitant,
       ui = ui,
       title = _("Recap"),
       text = createResultText(answer),

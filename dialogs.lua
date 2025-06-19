@@ -170,14 +170,15 @@ local function createResultText(highlightedText, message_history, previous_text,
 end
 
 -- Helper function to create and show ChatGPT viewer
-local function createAndShowViewer(ui, highlightedText, message_history, title, show_highlighted_text)
-  -- logger.info("title", title)
+local function createAndShowViewer(assitant, highlightedText, message_history, title, show_highlighted_text)
+  local ui = assitant.ui
   show_highlighted_text = show_highlighted_text == nil and true or show_highlighted_text
   local result_text = createResultText(highlightedText, message_history, nil, show_highlighted_text, title)
   local render_markdown = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown) or true
   local markdown_font_size = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.markdown_font_size) or 20
   
   local chatgpt_viewer = ChatGPTViewer:new {
+    assitant = assitant,
     title = title,
     text = result_text,
     ui = ui,
@@ -276,7 +277,7 @@ local function showProcCustomPrompt(assitant, highlightedText, prompt_index)
     return
   end
 
-  createAndShowViewer(ui, highlightedText, message_history, title)
+  createAndShowViewer(assitant, highlightedText, message_history, title)
 end
 
 -- Main dialog function
@@ -366,7 +367,7 @@ local function showChatGPTDialog(assitant, highlightedText)
             _("Text Analysis") or 
             book.title
         
-          createAndShowViewer(ui, highlightedText, message_history, viewer_title)
+          createAndShowViewer(assitant, highlightedText, message_history, viewer_title)
         end)
       end
     }

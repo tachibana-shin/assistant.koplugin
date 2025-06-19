@@ -133,6 +133,7 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
     end
 
     chatgpt_viewer = ChatGPTViewer:new {
+        assitant = assitant,
         ui = ui,
         title = _("Dictionary"),
         text = result_text,

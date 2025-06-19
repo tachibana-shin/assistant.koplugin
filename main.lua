@@ -64,51 +64,54 @@ function Assistant:addToMainMenu(menu_items)
         -- in which menu this should be appended
         sorting_hint = "more_tools",
         -- a callback when tapping
-        callback = function()
-          local model_provider = self:getModelProvider()
-          local provider_settings = CONFIGURATION and CONFIGURATION.provider_settings or {}
-
-          -- sort keys of provider_settings
-          local provider_keys = {}
-          for key, _ in pairs(provider_settings) do
-            table.insert(provider_keys, key)
-          end
-          table.sort(provider_keys)
-
-          local radio_buttons = {}
-          for _, key in ipairs(provider_keys) do
-            table.insert(radio_buttons, {{
-              text = string.format("%s (%s)", key, provider_settings[key].model),
-              provider = key, -- note: this `provider` field belongs to the RadioButtonWidget, not our AI Model provider.
-              checked = (key == model_provider),
-            }})
-          end
-
-          -- Show the RadioButtonWidget dialog for selecting AI provider
-          UIManager:show(RadioButtonWidget:new{
-            title_text = _("Select AI Provider Profile"),
-            info_text = _("Use the selected provider (overrides the provider in configuration.lua)"),
-            cancel_text = _("Close"),
-            ok_text = _("Apply"),
-            width_factor = 0.9,
-            radio_buttons = radio_buttons,
-            callback = function(radio)
-              if radio.provider ~= model_provider then
-                self.settings:saveSetting("provider", radio.provider)
-                self.querier:load_model(radio.provider)
-                UIManager:show(InfoMessage:new{
-                  icon = "notice-info",
-                  text = string.format(_("AI provider changed to: %s (%s)"),
-                                      radio.provider,
-                                      provider_settings[radio.provider].model),
-                })
-              end
-            end,
-          })
-        end,
+        callback = function ()
+          self:showProviderSwitch()
+        end
     }
 end
 
+function Assistant:showProviderSwitch()
+    local model_provider = self:getModelProvider()
+    local provider_settings = CONFIGURATION and CONFIGURATION.provider_settings or {}
+
+    -- sort keys of provider_settings
+    local provider_keys = {}
+    for key, _ in pairs(provider_settings) do
+      table.insert(provider_keys, key)
+    end
+    table.sort(provider_keys)
+
+    local radio_buttons = {}
+    for _, key in ipairs(provider_keys) do
+      table.insert(radio_buttons, {{
+        text = string.format("%s (%s)", key, provider_settings[key].model),
+        provider = key, -- note: this `provider` field belongs to the RadioButtonWidget, not our AI Model provider.
+        checked = (key == model_provider),
+      }})
+    end
+
+    -- Show the RadioButtonWidget dialog for selecting AI provider
+    UIManager:show(RadioButtonWidget:new{
+      title_text = _("Select AI Provider Profile"),
+      info_text = _("Use the selected provider (overrides the provider in configuration.lua)"),
+      cancel_text = _("Close"),
+      ok_text = _("Apply"),
+      width_factor = 0.9,
+      radio_buttons = radio_buttons,
+      callback = function(radio)
+        if radio.provider ~= model_provider then
+          self.settings:saveSetting("provider", radio.provider)
+          self.querier:load_model(radio.provider)
+          UIManager:show(InfoMessage:new{
+            icon = "notice-info",
+            text = string.format(_("AI provider changed to: %s (%s)"),
+                                radio.provider,
+                                provider_settings[radio.provider].model),
+          })
+        end
+      end,
+    })
+end
 
 function Assistant:getModelProvider()
   local provider = self.settings:readSetting("provider", CONFIGURATION.provider)
@@ -149,11 +152,10 @@ function Assistant:init()
 
   -- Initialize settings file
   self.settings = LuaSettings:open(self.settings_file)
-  logger.info("Assistant settings initialized at: ", self.settings.data)
   if next(self.settings.data) == nil then
     self.updated = true -- first run, force flush
     self.settings:saveSetting("provider", CONFIGURATION.provider)
-    logger.info("Assistant settings initialized with provider: " .. CONFIGURATION.provider)
+    logger.info("Assistant settings initialized with provider: ", CONFIGURATION.provider)
   end
 
   -- Load the model provider from settings or default configuration
