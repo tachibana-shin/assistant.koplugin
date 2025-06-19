@@ -114,6 +114,11 @@ function Assistant:showProviderSwitch()
 end
 
 function Assistant:getModelProvider()
+
+  if not CONFIGURATION then
+    error("Configuration not found. Please set up configuration.lua first.")
+  end
+
   local provider = self.settings:readSetting("provider", CONFIGURATION.provider)
   if CONFIGURATION and CONFIGURATION.provider_settings then
     if not CONFIGURATION.provider_settings[provider] then
@@ -144,6 +149,13 @@ function Assistant:onFlushSettings()
 end
 
 function Assistant:init()
+
+  -- skip initialization if configuration.lua is not found
+  if not CONFIGURATION then
+    logger.error("Configuration not found. Please set up configuration.lua first.")
+    return
+  end
+
   -- Register actions with dispatcher for gesture assignment
   self:onDispatcherRegisterActions()
 
