@@ -126,30 +126,42 @@ local CONFIGURATION = {
         -- ... other AI providers
     },
     
-    -- Optional features, replace each "Turkish" with your desired language
+    -- Optional features
     features = {
+        dictionary_translate_to = "Turkish", -- Set language for the dictionary response, nil to disable dictionary.
+        response_language = "Turkish", --  Set language for the other responses, nil to English response. 
         hide_highlighted_text = false,  -- Set to true to hide the highlighted text at the top
         hide_long_highlights = true,    -- Hide highlighted text if longer than threshold
-        long_highlight_threshold = 500,  -- Number of characters considered "long",
-        system_prompt = "You are a helpful assistant that provides clear explanations and if not stated oterwise always answers in Turkish .", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
+        long_highlight_threshold = 500,  -- Number of characters considered "long"
+        max_display_user_prompt_length = 100,  -- Maximum number of characters of user_prompt to show in result window  (0 or nil for no limit)
+        system_prompt = "You are a helpful assistant that provides clear explanations.", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
         refresh_screen_after_displaying_results = true, -- Set to true to refresh the screen after displaying the results
         show_dictionary_button_in_main_popup = true, -- Set to true to show the dictionary button in the main popup
-        dictionary_translate_to = "tr-TR", -- Set to the desired language code for the dictionary, nil to hide it
+        show_dictionary_button_in_dictionary_popup = true, -- Set to true to show the Dictionary (AI) button in the dictionary popup
+        enable_AI_recap = true, -- Set to true to allow for a popup on a book you haven't read in a while to give you a quick AI recap
+        render_markdown = true, -- Set to true to render markdown in the AI responses
+        markdown_font_size = 20, -- Default normal text font size of rendered markdown.
+        updater_disabled = false, -- Set to true to disable update check.
 
         -- AI Recap configuration (optional)
         recap_config = {
             system_prompt = "You are a book recap giver with entertaining tone...", -- Custom system prompt for recap
             user_prompt = "{title} by {author} that has been {progress}% read...", -- Custom user prompt template with variables
-            language = "tr-TR" -- Language for recap responses, uses dictionary_translate_to as fallback
+            language = "Turkish" -- Language for recap responses, uses dictionary_translate_to as fallback
         },
 
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
+        -- Available placeholder for user prompts:
+        -- {title}  : book title from metadata
+        -- {author} : book author from metadata
+        -- {highlight}  : selected texts
+        -- {language}   : the `response_language` variable defined above
         prompts = {
             prompt_id = {
                 text = "prompt_name",
                 order = 1, -- give order to buttons to fix the order of them
                 system_prompt = "You are a helpful assistant that ....",
-                user_prompt = "Please ...  in Turkish: ",
+                user_prompt = "Please ...  in {language}: ",
                 show_on_main_popup = false -- Show the button in main popup    
             },
             -- ... other prompts
