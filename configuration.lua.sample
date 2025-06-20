@@ -161,8 +161,11 @@ Answer this whole response in {language} language. Only show the replies, do not
         },
 
         -- Custom prompts for the AI (text = button text in the UI). system-prompt defaults to "You are a helpful assistant." if not set.
-        --You can use {author} and {title} variables in the user_prompt,
-        --and {highlight} variable for the highlighted text otherwise its appended to the user_prompt automatically.
+        -- Available placeholder for user prompts:
+        -- {title}  : book title from metadata
+        -- {author} : book author from metadata
+        -- {highlight}  : selected texts
+        -- {language}   : the `response_language` variable defined above
         prompts = {
             translate = {
                 text = "Translate",
