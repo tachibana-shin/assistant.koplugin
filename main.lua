@@ -71,6 +71,15 @@ function Assistant:addToMainMenu(menu_items)
 end
 
 function Assistant:showProviderSwitch()
+
+    if not CONFIGURATION or not CONFIGURATION.provider_settings then
+      UIManager:show(InfoMessage:new{
+        icon = "notice-warning",
+        text = _("Configuration not found or provider settings are missing.")
+      })
+      return
+    end
+
     local current_provider = self.querier.provider_name
     local provider_settings = CONFIGURATION and CONFIGURATION.provider_settings or {}
 
@@ -95,14 +104,14 @@ function Assistant:showProviderSwitch()
       title_text = _("Select AI Provider Profile"),
       info_text = _("Use the selected provider (overrides the provider in configuration.lua)"),
       cancel_text = _("Close"),
-      ok_text = _("Apply"),
+      ok_text = _("OK"),
       width_factor = 0.9,
       radio_buttons = radio_buttons,
       callback = function(radio)
         if radio.provider ~= current_provider then
           self.settings:saveSetting("provider", radio.provider)
+          self.updated = true
           self.querier:load_model(radio.provider)
-          self.updated = true -- mark settings as updated
           UIManager:show(InfoMessage:new{
             icon = "notice-info",
             text = string.format(_("AI provider changed to: %s (%s)"),
@@ -120,25 +129,31 @@ function Assistant:getModelProvider()
     error("Configuration not found. Please set up configuration.lua first.")
   end
 
-  local provider = self.settings:readSetting("provider", CONFIGURATION.provider)
-  if CONFIGURATION and CONFIGURATION.provider_settings then
-    if not CONFIGURATION.provider_settings[provider] then
-      -- neither the provider is set in settings nor in CONFIGURATION.provider is corrent
-      -- so we use the default from configuration.lua
+  local provider_settings = CONFIGURATION.provider_settings
+
+  local setting_provider = self.settings:readSetting("provider")
+  if provider_settings[setting_provider] then
+    -- If the setting provider is valid, use it
+    return setting_provider
+  else
+    local conf_provider = CONFIGURATION.provider
+    -- If the setting provider is invalid, check the configuration provider
+    if provider_settings[conf_provider] then
+      setting_provider = conf_provider
+    else
+      -- If both are invalid, log a warning and use a random one available provider
       local function first_key(t)
         for k, _ in pairs(t) do
           return k
         end
       end
-      logger.warn("Invalid provider setting found, using default: ", provider)
-      provider = first_key(CONFIGURATION.provider_settings)
-      self.settings:saveSetting("provider", provider)
-      logger.info("Using default provider: ", provider)
+      setting_provider = first_key(CONFIGURATION.provider_settings)
+      logger.warn("Invalid provider setting found, using random one: ", setting_provider)
     end
-  else
-    error("No provider settings found") 
+    self.settings:saveSetting("provider", setting_provider)
+    self.updated = true -- mark settings as updated
   end
-  return provider
+  return setting_provider
 end
 
 -- Flush settings to disk, triggered by koreader
@@ -151,30 +166,12 @@ end
 
 function Assistant:init()
 
-  -- skip initialization if configuration.lua is not found
-  if not CONFIGURATION then
-    logger.error("Configuration not found. Please set up configuration.lua first.")
-    return
-  end
-
   -- Register actions with dispatcher for gesture assignment
   self:onDispatcherRegisterActions()
 
   -- Register model switch to main menu (under "More tools")
   self.ui.menu:registerToMainMenu(self)
 
-  -- Initialize settings file
-  self.settings = LuaSettings:open(self.settings_file)
-  if next(self.settings.data) == nil then
-    self.updated = true -- first run, force flush
-    self.settings:saveSetting("provider", CONFIGURATION.provider)
-    logger.info("Assistant settings initialized with provider: ", CONFIGURATION.provider)
-  end
-
-  -- Load the model provider from settings or default configuration
-  self.querier = require("gpt_query"):new()
-  self.querier:load_model(self:getModelProvider())
-  
   -- Assistant button
   self.ui.highlight:addToHighlightDialog("assistant", function(_reader_highlight_instance)
     return {
@@ -201,6 +198,25 @@ function Assistant:init()
       end,
     }
   end)
+
+  -- skip initialization if configuration.lua is not found
+  if not CONFIGURATION then
+    logger.warn("Configuration not found. Please set up configuration.lua first.")
+    return
+  end
+
+  -- Initialize settings file
+  self.settings = LuaSettings:open(self.settings_file)
+  if next(self.settings.data) == nil then
+    self.updated = true -- first run, force flush
+    self.settings:saveSetting("provider", CONFIGURATION.provider)
+    logger.info("Assistant settings initialized with provider: ", CONFIGURATION.provider)
+  end
+
+  -- Load the model provider from settings or default configuration
+  self.querier = require("gpt_query"):new()
+  self.querier:load_model(self:getModelProvider())
+
   -- Dictionary button
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and CONFIGURATION.features.show_dictionary_button_in_main_popup then
     self.ui.highlight:addToHighlightDialog("dictionary", function(_reader_highlight_instance)
@@ -229,7 +245,7 @@ function Assistant:init()
   
     -- Save a reference to the original doShowReader method.
     local original_doShowReader = ReaderUI.doShowReader
-  
+    local assitant = self
     -- Override the ReaderUI:doShowReader method.
     function ReaderUI:doShowReader(file, provider, seamless)
       -- Get file metadata; here we use the file's "access" attribute.
@@ -250,13 +266,13 @@ function Assistant:init()
   
           -- Display the request popup using ConfirmBox.
           UIManager:show(ConfirmBox:new{
-            text            = T(_(message)),
+            text            = message,
             ok_text         = _("Yes"),
             ok_callback     = function()
               NetworkMgr:runWhenOnline(function()
                 local showRecapDialog = require("recapdialog")
                 Trapper:wrap(function()
-                  showRecapDialog(self, title, authors, percent_finished)
+                  showRecapDialog(assitant, title, authors, percent_finished)
                 end)
               end)
             end,
