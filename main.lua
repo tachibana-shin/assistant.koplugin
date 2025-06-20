@@ -95,14 +95,14 @@ function Assistant:showProviderSwitch()
       title_text = _("Select AI Provider Profile"),
       info_text = _("Use the selected provider (overrides the provider in configuration.lua)"),
       cancel_text = _("Close"),
-      ok_text = _("Apply"),
+      ok_text = _("OK"),
       width_factor = 0.9,
       radio_buttons = radio_buttons,
       callback = function(radio)
         if radio.provider ~= current_provider then
           self.settings:saveSetting("provider", radio.provider)
+          self.updated = true
           self.querier:load_model(radio.provider)
-          self.updated = true -- mark settings as updated
           UIManager:show(InfoMessage:new{
             icon = "notice-info",
             text = string.format(_("AI provider changed to: %s (%s)"),
