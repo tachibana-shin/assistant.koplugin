@@ -46,22 +46,15 @@ local function formatUserPrompt(user_prompt, highlightedText, ui)
   
   -- Handle case where no text is highlighted (gesture-triggered)
   local text_to_use = highlightedText and highlightedText ~= "" and highlightedText or ""
+  local language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or "English"
   
-  local formatted_user_prompt = (user_prompt or "Please analyze: ")
-    :gsub("{title}", book.title)
-    :gsub("{author}", book.author)
-    :gsub("{highlight}", text_to_use)
-  
-  local formatted_user_content = formatted_user_prompt
-
-  if string.find(user_prompt or "Please analyze: ", "{highlight}") and text_to_use == "" then
-      -- If the prompt contains {highlight} placeholder, and no text highlighted, modify the prompt to be more general
-      formatted_user_content = formatted_user_prompt:gsub("the following text: ", "this book: ")
-                                                   :gsub("following text", "this book")
-                                                   :gsub("this text", "this book")
-  end
-
-  return formatted_user_content
+  -- replace placeholders in the user prompt
+  return user_prompt:gsub("{(%w+)}", {
+    title = book.title,
+    author = book.author,
+    language = language,
+    highlight = text_to_use,
+  })
 end
 
 local function createContextMessage(ui, highlightedText)
