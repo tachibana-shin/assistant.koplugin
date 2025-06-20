@@ -262,7 +262,9 @@ function Assistant:init()
           local percent_finished = doc_settings:readSetting("percent_finished") or 0
           local timeDiffHours = (os.time() - lastAccess) / 3600.0
     
-          if timeDiffHours >= 28 and percent_finished <= 0.95 then -- More than 28hrs since last open and less than 95% complete
+          -- More than 28hrs since last open and less than 95% complete
+          -- percent = 0 may means the book is not started yet, the docsettings maybe empty
+          if timeDiffHours >= 28 and percent_finished > 0 and percent_finished <= 0.95 then 
             -- Construct the message to display.
             local doc_props = doc_settings:child("doc_props")
             local title = doc_props:readSetting("title", "Unknown Title")
