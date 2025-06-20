@@ -71,7 +71,7 @@ function Assistant:addToMainMenu(menu_items)
 end
 
 function Assistant:showProviderSwitch()
-    local model_provider = self:getModelProvider()
+    local current_provider = self.querier.provider_name
     local provider_settings = CONFIGURATION and CONFIGURATION.provider_settings or {}
 
     -- sort keys of provider_settings
@@ -86,7 +86,7 @@ function Assistant:showProviderSwitch()
       table.insert(radio_buttons, {{
         text = string.format("%s (%s)", key, provider_settings[key].model),
         provider = key, -- note: this `provider` field belongs to the RadioButtonWidget, not our AI Model provider.
-        checked = (key == model_provider),
+        checked = (key == current_provider),
       }})
     end
 
@@ -99,7 +99,7 @@ function Assistant:showProviderSwitch()
       width_factor = 0.9,
       radio_buttons = radio_buttons,
       callback = function(radio)
-        if radio.provider ~= model_provider then
+        if radio.provider ~= current_provider then
           self.settings:saveSetting("provider", radio.provider)
           self.querier:load_model(radio.provider)
           self.updated = true -- mark settings as updated
