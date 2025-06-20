@@ -120,25 +120,31 @@ function Assistant:getModelProvider()
     error("Configuration not found. Please set up configuration.lua first.")
   end
 
-  local provider = self.settings:readSetting("provider", CONFIGURATION.provider)
-  if CONFIGURATION and CONFIGURATION.provider_settings then
-    if not CONFIGURATION.provider_settings[provider] then
-      -- neither the provider is set in settings nor in CONFIGURATION.provider is corrent
-      -- so we use the default from configuration.lua
+  local provider_settings = CONFIGURATION.provider_settings
+
+  local setting_provider = self.settings:readSetting("provider")
+  if provider_settings[setting_provider] then
+    -- If the setting provider is valid, use it
+    return setting_provider
+  else
+    local conf_provider = CONFIGURATION.provider
+    -- If the setting provider is invalid, check the configuration provider
+    if provider_settings[conf_provider] then
+      setting_provider = conf_provider
+    else
+      -- If both are invalid, log a warning and use a random one available provider
       local function first_key(t)
         for k, _ in pairs(t) do
           return k
         end
       end
-      logger.warn("Invalid provider setting found, using default: ", provider)
-      provider = first_key(CONFIGURATION.provider_settings)
-      self.settings:saveSetting("provider", provider)
-      logger.info("Using default provider: ", provider)
+      setting_provider = first_key(CONFIGURATION.provider_settings)
+      logger.warn("Invalid provider setting found, using random one: ", setting_provider)
     end
-  else
-    error("No provider settings found") 
+    self.settings:saveSetting("provider", setting_provider)
+    self.updated = true -- mark settings as updated
   end
-  return provider
+  return setting_provider
 end
 
 -- Flush settings to disk, triggered by koreader
