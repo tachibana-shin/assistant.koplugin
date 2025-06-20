@@ -245,7 +245,7 @@ function Assistant:init()
   
     -- Save a reference to the original doShowReader method.
     local original_doShowReader = ReaderUI.doShowReader
-  
+    local assitant = self
     -- Override the ReaderUI:doShowReader method.
     function ReaderUI:doShowReader(file, provider, seamless)
       -- Get file metadata; here we use the file's "access" attribute.
@@ -266,13 +266,13 @@ function Assistant:init()
   
           -- Display the request popup using ConfirmBox.
           UIManager:show(ConfirmBox:new{
-            text            = T(_(message)),
+            text            = message,
             ok_text         = _("Yes"),
             ok_callback     = function()
               NetworkMgr:runWhenOnline(function()
                 local showRecapDialog = require("recapdialog")
                 Trapper:wrap(function()
-                  showRecapDialog(self, title, authors, percent_finished)
+                  showRecapDialog(assitant, title, authors, percent_finished)
                 end)
               end)
             end,
