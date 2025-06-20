@@ -242,16 +242,16 @@ function Assistant:init()
     local ReaderUI    = require("apps/reader/readerui")
     -- avoid recurive overrides here
     -- pulgin is loaded on every time file opened
-    if not ReaderUI._original_showReaderCoroutine then 
+    if not ReaderUI._original_doShowReader then 
       -- Save a reference to the original doShowReader method.
-      ReaderUI._original_showReaderCoroutine = ReaderUI.showReaderCoroutine
+      ReaderUI._original_doShowReader = ReaderUI.doShowReader
 
       local assitant = self -- reference to the Assistant instance
       local lfs         = require("libs/libkoreader-lfs")   -- for file attributes
       local DocSettings = require("docsettings")			      -- for document progress
     
-      -- Override to hook into the reader's showReaderCoroutine method.
-      function ReaderUI:showReaderCoroutine(file, provider, seamless)
+      -- Override to hook into the reader's doShowReader method.
+      function ReaderUI:doShowReader(file, provider, seamless)
 
         -- Get file metadata; here we use the file's "access" attribute.
         local attr = lfs.attributes(file)
@@ -287,7 +287,7 @@ function Assistant:init()
             })
           end
         end
-        return ReaderUI._original_showReaderCoroutine(self, file, provider, seamless)
+        return ReaderUI._original_doShowReader(self, file, provider, seamless)
       end
     end
   end
