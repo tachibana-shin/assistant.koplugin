@@ -74,18 +74,30 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
         end
     end
     
+    local dict_language = configuration.features and configuration.features.dictionary_translate_to or "English"
     local context_message = {
         role = "user",
-        content = prev_context .. "<<" .. highlightedText .. ">>" .. next_context .. "\n" ..
-            "Explain vocabulary or content quoted with <<>> in the above sentence with following information:\n" ..
-            "- *Conjugation*. Vocabulary in original conjugation if its different than the form in the sentence\n" ..
-            "- *Synonyms*. 3 synonyms for the word if available\n" ..
-            "- *Meaning*. Meaning of the expression without reference to context. Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
-            "- *Explanation*. Explanation of the content according to context. Answer this part in ".. configuration.features.dictionary_translate_to .." language\n" ..
-            "- *Example*. Another example sentence. Answer this part in the original language of the sentence.\n" ..
-            "- *Origin*. Origin of that word, tracing it back to its ancient roots. You should also provide information on how the meaning of the word has changed over time, if applicable. Answer this part in ".. configuration.features.dictionary_translate_to .." language.\n" ..
-            "Only show the requested replies, do not give a description, answer in markdown list format."
-    }
+        content = string.gsub([[
+"Explain vocabulary or content with the focus word with following information:"
+"- *Conjugation*. Vocabulary in original conjugation if its different than the form in the sentence."
+"- *Synonyms*. 3 synonyms for the word if available."
+"- *Meaning*. Meaning of the expression without reference to context. Answer this part in {language} language."
+"- *Explanation*. Explanation of the content according to context. Answer this part in {language} language."
+"- *Example*. Another example sentence. Answer this part in the original language of the sentence."
+"- *Origin*. Origin of that word, tracing it back to its ancient roots. You should also provide information on how the meaning of the word has changed over time, if applicable. Answer this part in {language} language." ..
+"Only show the requested replies, do not give a description, answer in markdown list format."
+
+[CONTEXT]
+{context}
+
+[FOCUS WORD]
+{word}
+]], "{(%w+)}", {
+    language = dict_language,
+    context = prev_context .. highlightedText .. next_context,
+    word = highlightedText
+    })}
+
     table.insert(message_history, context_message)
 
     -- Query the AI with the message history
