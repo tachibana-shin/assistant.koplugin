@@ -71,6 +71,15 @@ function Assistant:addToMainMenu(menu_items)
 end
 
 function Assistant:showProviderSwitch()
+
+    if not CONFIGURATION or not CONFIGURATION.provider_settings then
+      UIManager:show(InfoMessage:new{
+        icon = "notice-warning",
+        text = _("Configuration not found or provider settings are missing.")
+      })
+      return
+    end
+
     local current_provider = self.querier.provider_name
     local provider_settings = CONFIGURATION and CONFIGURATION.provider_settings or {}
 
@@ -157,30 +166,12 @@ end
 
 function Assistant:init()
 
-  -- skip initialization if configuration.lua is not found
-  if not CONFIGURATION then
-    logger.error("Configuration not found. Please set up configuration.lua first.")
-    return
-  end
-
   -- Register actions with dispatcher for gesture assignment
   self:onDispatcherRegisterActions()
 
   -- Register model switch to main menu (under "More tools")
   self.ui.menu:registerToMainMenu(self)
 
-  -- Initialize settings file
-  self.settings = LuaSettings:open(self.settings_file)
-  if next(self.settings.data) == nil then
-    self.updated = true -- first run, force flush
-    self.settings:saveSetting("provider", CONFIGURATION.provider)
-    logger.info("Assistant settings initialized with provider: ", CONFIGURATION.provider)
-  end
-
-  -- Load the model provider from settings or default configuration
-  self.querier = require("gpt_query"):new()
-  self.querier:load_model(self:getModelProvider())
-  
   -- Assistant button
   self.ui.highlight:addToHighlightDialog("assistant", function(_reader_highlight_instance)
     return {
@@ -207,6 +198,25 @@ function Assistant:init()
       end,
     }
   end)
+
+  -- skip initialization if configuration.lua is not found
+  if not CONFIGURATION then
+    logger.warn("Configuration not found. Please set up configuration.lua first.")
+    return
+  end
+
+  -- Initialize settings file
+  self.settings = LuaSettings:open(self.settings_file)
+  if next(self.settings.data) == nil then
+    self.updated = true -- first run, force flush
+    self.settings:saveSetting("provider", CONFIGURATION.provider)
+    logger.info("Assistant settings initialized with provider: ", CONFIGURATION.provider)
+  end
+
+  -- Load the model provider from settings or default configuration
+  self.querier = require("gpt_query"):new()
+  self.querier:load_model(self:getModelProvider())
+
   -- Dictionary button
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and CONFIGURATION.features.show_dictionary_button_in_main_popup then
     self.ui.highlight:addToHighlightDialog("dictionary", function(_reader_highlight_instance)
