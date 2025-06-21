@@ -129,13 +129,14 @@ end
 
 function Assistant:getModelProvider()
 
-  if not CONFIGURATION then
+  if not (CONFIGURATION and CONFIGURATION.provider_settings) then
     error("Configuration not found. Please set up configuration.lua first.")
   end
 
-  local setting_provider = nil
-  local provider_settings = CONFIGURATION.provider_settings
-
+  local provider_settings = CONFIGURATION.provider_settings -- provider settings table from configuration.lua
+  local setting_provider = nil -- provider name from LuaSettings
+  
+  -- settings may not be initialized, so check if self.settings exists
   if self.settings and next(self.settings.data) ~= nil then
     setting_provider = self.settings:readSetting("provider")
   end
@@ -144,12 +145,15 @@ function Assistant:getModelProvider()
     -- If the setting provider is valid, use it
     return setting_provider
   else
-    local conf_provider = CONFIGURATION.provider
-    -- If the setting provider is invalid, check the configuration provider
+    -- If the setting provider is invalid, try to find one from configuration
+
+    local conf_provider = CONFIGURATION.provider -- provider name from configuration.lua
+
     if provider_settings[conf_provider] then
+      -- if the configuration provider is valid, use it
       setting_provider = conf_provider
     else
-      -- If both are invalid, try to find the one defined with `default = true`
+      -- still invalid, try to find the one defined with `default = true`
       for key, tab in pairs(CONFIGURATION.provider_settings) do
         if tab.default then
           setting_provider = key
