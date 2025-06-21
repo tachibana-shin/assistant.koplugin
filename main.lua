@@ -133,10 +133,14 @@ function Assistant:getModelProvider()
     error("Configuration not found. Please set up configuration.lua first.")
   end
 
+  local setting_provider = nil
   local provider_settings = CONFIGURATION.provider_settings
 
-  local setting_provider = self.settings:readSetting("provider")
-  if provider_settings[setting_provider] then
+  if self.settings and next(self.settings.data) ~= nil then
+    setting_provider = self.settings:readSetting("provider")
+  end
+
+  if setting_provider and provider_settings[setting_provider] then
     -- If the setting provider is valid, use it
     return setting_provider
   else
@@ -146,7 +150,7 @@ function Assistant:getModelProvider()
       setting_provider = conf_provider
     else
       -- If both are invalid, try to find the one defined with `default = true`
-      for key, tab in pars(CONFIGURATION.provider_settings) do
+      for key, tab in pairs(CONFIGURATION.provider_settings) do
         if tab.default then
           setting_provider = key
           break
@@ -154,11 +158,11 @@ function Assistant:getModelProvider()
       end
       
       -- still invalid (none of them defined `default`)
-      if not provider_settings[conf_provider] then
+      if not setting_provider then
         -- log a warning and use a random one available provider
         local function first_key(t) for k, _ in pairs(t) do return k end end
         setting_provider = first_key(CONFIGURATION.provider_settings)
-        logger.warn("Invalid provider setting found, using random one: ", setting_provider)
+        logger.warn("Invalid provider setting found, using a random one: ", setting_provider)
       end
     end
     self.settings:saveSetting("provider", setting_provider)
@@ -176,6 +180,8 @@ function Assistant:onFlushSettings()
 end
 
 function Assistant:init()
+  -- init settings
+  self.settings = LuaSettings:open(self.settings_file)
 
   -- Register actions with dispatcher for gesture assignment
   self:onDispatcherRegisterActions()
@@ -216,17 +222,17 @@ function Assistant:init()
     return
   end
 
+  local provider = self:getModelProvider()
   -- Initialize settings file
-  self.settings = LuaSettings:open(self.settings_file)
-  if next(self.settings.data) == nil then
-    self.updated = true -- first run, force flush
-    self.settings:saveSetting("provider", CONFIGURATION.provider)
-    logger.info("Assistant settings initialized with provider: ", CONFIGURATION.provider)
+  if next(self.settings.data) == nil then -- first run with no settings
+    self.settings:saveSetting("provider", provider)
+    logger.info("Assistant settings initialized with provider: ", provider)
+    self.updated = true
   end
 
   -- Load the model provider from settings or default configuration
   self.querier = require("gpt_query"):new()
-  self.querier:load_model(self:getModelProvider())
+  self.querier:load_model(provider)
 
   -- Dictionary button
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and CONFIGURATION.features.show_dictionary_button_in_main_popup then
