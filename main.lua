@@ -87,8 +87,10 @@ function Assistant:showProviderSwitch()
 
     -- sort keys of provider_settings
     local provider_keys = {}
-    for key, _ in pairs(provider_settings) do
-      table.insert(provider_keys, key)
+    for key, tab in pairs(provider_settings) do
+      if tab.visible ~= false then
+        table.insert(provider_keys, key)
+      end
     end
     table.sort(provider_keys)
 
@@ -127,30 +129,45 @@ end
 
 function Assistant:getModelProvider()
 
-  if not CONFIGURATION then
+  if not (CONFIGURATION and CONFIGURATION.provider_settings) then
     error("Configuration not found. Please set up configuration.lua first.")
   end
 
-  local provider_settings = CONFIGURATION.provider_settings
+  local provider_settings = CONFIGURATION.provider_settings -- provider settings table from configuration.lua
+  local setting_provider = nil -- provider name from LuaSettings
+  
+  -- settings may not be initialized, so check if self.settings exists
+  if self.settings and next(self.settings.data) ~= nil then
+    setting_provider = self.settings:readSetting("provider")
+  end
 
-  local setting_provider = self.settings:readSetting("provider")
-  if provider_settings[setting_provider] then
+  if setting_provider and provider_settings[setting_provider] then
     -- If the setting provider is valid, use it
     return setting_provider
   else
-    local conf_provider = CONFIGURATION.provider
-    -- If the setting provider is invalid, check the configuration provider
+    -- If the setting provider is invalid, try to find one from configuration
+
+    local conf_provider = CONFIGURATION.provider -- provider name from configuration.lua
+
     if provider_settings[conf_provider] then
+      -- if the configuration provider is valid, use it
       setting_provider = conf_provider
     else
-      -- If both are invalid, log a warning and use a random one available provider
-      local function first_key(t)
-        for k, _ in pairs(t) do
-          return k
+      -- still invalid, try to find the one defined with `default = true`
+      for key, tab in pairs(CONFIGURATION.provider_settings) do
+        if tab.default then
+          setting_provider = key
+          break
         end
       end
-      setting_provider = first_key(CONFIGURATION.provider_settings)
-      logger.warn("Invalid provider setting found, using random one: ", setting_provider)
+      
+      -- still invalid (none of them defined `default`)
+      if not setting_provider then
+        -- log a warning and use a random one available provider
+        local function first_key(t) for k, _ in pairs(t) do return k end end
+        setting_provider = first_key(CONFIGURATION.provider_settings)
+        logger.warn("Invalid provider setting found, using a random one: ", setting_provider)
+      end
     end
     self.settings:saveSetting("provider", setting_provider)
     self.updated = true -- mark settings as updated
@@ -167,6 +184,8 @@ function Assistant:onFlushSettings()
 end
 
 function Assistant:init()
+  -- init settings
+  self.settings = LuaSettings:open(self.settings_file)
 
   -- Register actions with dispatcher for gesture assignment
   self:onDispatcherRegisterActions()
@@ -205,14 +224,6 @@ function Assistant:init()
   if not CONFIGURATION then
     logger.warn("Configuration not found. Please set up configuration.lua first.")
     return
-  end
-
-  -- Initialize settings file
-  self.settings = LuaSettings:open(self.settings_file)
-  if next(self.settings.data) == nil then
-    self.updated = true -- first run, force flush
-    self.settings:saveSetting("provider", CONFIGURATION.provider)
-    logger.info("Assistant settings initialized with provider: ", CONFIGURATION.provider)
   end
 
   -- Load the model provider from settings or default configuration

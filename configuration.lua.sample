@@ -6,16 +6,9 @@ local CONFIGURATION = {
 
     -- Provider-specific settings
     provider_settings = {
-        anthropic = {
-            model = "claude-3-5-haiku-latest", -- model list: https://docs.anthropic.com/en/docs/about-claude/models
-            base_url = "https://api.anthropic.com/v1/messages",
-            api_key = "your-anthropic-api-key",
-            additional_parameters = {
-                anthropic_version = "2023-06-01", -- api version list: https://docs.anthropic.com/en/api/versioning
-                max_tokens = 4096
-            }
-        },
         openai = {
+            defalut = true, -- optional, if provider above is not set, will try to find one with `defalut =  true`
+            visible = true, -- optional, if set to false, will not shown in the provider switch
             model = "gpt-4o-mini", -- model list: https://platform.openai.com/docs/models
             base_url = "https://api.openai.com/v1/chat/completions",
             api_key = "your-openai-api-key",
@@ -31,6 +24,16 @@ local CONFIGURATION = {
             api_key = "your-grok-api-key",
             additional_parameters = {
                 temperature = 0.7,
+                max_tokens = 4096
+            }
+        },
+        anthropic = {
+            visible = true, -- optional, if set to false, will not shown in the profile switch
+            model = "claude-3-5-haiku-latest", -- model list: https://docs.anthropic.com/en/docs/about-claude/models
+            base_url = "https://api.anthropic.com/v1/messages",
+            api_key = "your-anthropic-api-key",
+            additional_parameters = {
+                anthropic_version = "2023-06-01", -- api version list: https://docs.anthropic.com/en/api/versioning
                 max_tokens = 4096
             }
         },

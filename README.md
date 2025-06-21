@@ -107,10 +107,13 @@ local CONFIGURATION = {
     provider = "openai",
     -- or 
     provider = "openai_grok", -- latter one is in effective
+    -- or you can choose one in the Model Provider Switch
     
     -- Provider-specific settings (override defaults in api_handlers/defaults.lua)
     provider_settings = {
         openai = {
+            defalut = true, -- optional, if provider is not set, will try to find the one with `defalut =  true`
+            visible = true, -- optional, if set to false, will not shown in the profile switch
             model = "api-model",
             base_url = "URL_to_API",
             api_key = "your-api-key", -- set your api key here

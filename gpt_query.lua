@@ -34,7 +34,7 @@ function Querier:init(provider_name)
         return _("No configuration found. Please set up configuration.lua")
     end
 
-    if CONFIGURATION and CONFIGURATION.provider then
+    if CONFIGURATION and CONFIGURATION.provider_settings then
 
         --- Check if the provider is set in the configuration
         if CONFIGURATION.provider_settings and CONFIGURATION.provider_settings[provider_name] then
