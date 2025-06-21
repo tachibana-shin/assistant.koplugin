@@ -87,8 +87,10 @@ function Assistant:showProviderSwitch()
 
     -- sort keys of provider_settings
     local provider_keys = {}
-    for key, _ in pairs(provider_settings) do
-      table.insert(provider_keys, key)
+    for key, tab in pairs(provider_settings) do
+      if tab.visible ~= false then
+        table.insert(provider_keys, key)
+      end
     end
     table.sort(provider_keys)
 
@@ -143,14 +145,21 @@ function Assistant:getModelProvider()
     if provider_settings[conf_provider] then
       setting_provider = conf_provider
     else
-      -- If both are invalid, log a warning and use a random one available provider
-      local function first_key(t)
-        for k, _ in pairs(t) do
-          return k
+      -- If both are invalid, try to find the one defined with `default = true`
+      for key, tab in pars(CONFIGURATION.provider_settings) do
+        if tab.default then
+          setting_provider = key
+          break
         end
       end
-      setting_provider = first_key(CONFIGURATION.provider_settings)
-      logger.warn("Invalid provider setting found, using random one: ", setting_provider)
+      
+      -- still invalid (none of them defined `default`)
+      if not provider_settings[conf_provider] then
+        -- log a warning and use a random one available provider
+        local function first_key(t) for k, _ in pairs(t) do return k end end
+        setting_provider = first_key(CONFIGURATION.provider_settings)
+        logger.warn("Invalid provider setting found, using random one: ", setting_provider)
+      end
     end
     self.settings:saveSetting("provider", setting_provider)
     self.updated = true -- mark settings as updated
