@@ -222,17 +222,9 @@ function Assistant:init()
     return
   end
 
-  local provider = self:getModelProvider()
-  -- Initialize settings file
-  if next(self.settings.data) == nil then -- first run with no settings
-    self.settings:saveSetting("provider", provider)
-    logger.info("Assistant settings initialized with provider: ", provider)
-    self.updated = true
-  end
-
   -- Load the model provider from settings or default configuration
   self.querier = require("gpt_query"):new()
-  self.querier:load_model(provider)
+  self.querier:load_model(self:getModelProvider())
 
   -- Dictionary button
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and CONFIGURATION.features.show_dictionary_button_in_main_popup then
