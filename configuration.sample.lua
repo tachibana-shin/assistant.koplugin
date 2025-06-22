@@ -159,7 +159,7 @@ Above all else do not give any spoilers to the book, only consider prior content
 Focus on the more recent content rather than a general summary to help the user pick up where they left off.
 Match the tone and energy of the book, for example if the book is funny match that style of humor and tone, if it's an exciting fantasy novel show it, if it's a historical or sad book reflect that.
 Use text bolding to emphasize names and locations. Use italics to emphasize major plot points. No emojis or symbols.
-Answer this whole response in {language} language. Only show the replies, do not give a description.]]
+Answer this whole response in {language} language. Only show the replies, do not give a description.]],
             language = "Turkish" -- Language for recap responses, uses dictionary_translate_to as fallback
         },
 
