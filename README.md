@@ -78,7 +78,7 @@ You'll need API keys for the AI service you want to use:
 
 ### 3. Configure the Plugin
 
-1. Copy `configuration.lua.sample` to `configuration.lua` ( do not modify the sample file)
+1. Copy `configuration.sample.lua` to `configuration.lua` ( do not modify the sample file)
 2. Edit the `configuration.lua` file as needed.
     - Set the chosen AI provider in `provider`
     - Set your API keys in `provider_settings` 
@@ -86,7 +86,7 @@ You'll need API keys for the AI service you want to use:
 
 #### Advanced Configuration:
 
-The plugin supports extensive customization through `configuration.lua`. See the [sample file](https://raw.githubusercontent.com/omer-faruq/assistant.koplugin/refs/heads/main/configuration.lua.sample) for all options:
+The plugin supports extensive customization through `configuration.lua`. See the [sample file](https://raw.githubusercontent.com/omer-faruq/assistant.koplugin/refs/heads/main/configuration.sample.lua) for all options:
 
 - Multiple AI providers with different settings
     - An underscore in `provider` means to use the first part as the handler, various profiles for each API.
