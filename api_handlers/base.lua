@@ -12,6 +12,7 @@ local BaseHandler = {
 }
 
 BaseHandler.CODE_CANCELLED = "USER_CANCELED"
+BaseHandler.CODE_NETWORK_UNAVAILABLE = "NETWORK_UNAVAILABLE"
 
 function BaseHandler:new(o)
     o = o or {}
@@ -31,7 +32,7 @@ end
 --- Query method to be implemented by specific handlers
 --- @param message_history table: conversation history, a list of messages
 --- @param provider_setting table: settings for the specific provider
---- @return: response or nil, error message
+--- @return string response_content, string error_message
 function BaseHandler:query(message_history, provider_setting)
     -- To be implemented by specific handlers
     error("query method must be implemented")
@@ -45,7 +46,7 @@ end
 ---@param body any
 ---@param timeout any blocking timtout
 ---@param maxtime any total response finished max time
----@return boolean success, status code, string content
+---@return boolean success, string status_code, string content
 local function postURLContent(url, headers, body, timeout, maxtime)
     if string.sub(url, 1, 8) == "https://" then
         https.cert_verify = false  -- disable CA verify
@@ -72,7 +73,7 @@ local function postURLContent(url, headers, body, timeout, maxtime)
     end
     if headers == nil then
         logger.warn("No HTTP headers:", status or code or "network unreachable")
-        return false, nil, "Network or remote server unavailable"
+        return false, BaseHandler.CODE_NETWORK_UNAVAILABLE, "Network or remote server unavailable"
     end
     if headers and headers["content-length"] then
         -- Check we really got the announced content size
