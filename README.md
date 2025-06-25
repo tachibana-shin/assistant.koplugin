@@ -188,7 +188,8 @@ return CONFIGURATION
 
 ### Tips
 
-- Use **Long-tap** (tap & hold for 3 secs) on a single word to popup the highlight menu
+- Use **Long-tap** (tap & hold for 3+ secs) on a single word to popup the highlight menu
+- Draw a multiswipe to **CLOSE** the dialog (eg: swipe ⮠  or ⮡  or circle ↺)
 - Keep highlights reasonably sized for best results
 - Use **"Ask"** for specific questions about the text
 - Try the pre-made buttons for quick analysis
