@@ -379,7 +379,7 @@ local function showChatGPTDialog(assitant, highlightedText)
           end
           local showDictionaryDialog = require("dictdialog")
           Trapper:wrap(function()
-            showDictionaryDialog(ui, highlightedText)
+            showDictionaryDialog(assitant, highlightedText)
           end)
         end
       })  
