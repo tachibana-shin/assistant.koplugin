@@ -409,7 +409,7 @@ local function showChatGPTDialog(assitant, highlightedText)
               input_dialog = nil
             end
             Trapper:wrap(function()
-              showProcCustomPrompt(ui, highlightedText, tab.idx)
+              showProcCustomPrompt(assitant, highlightedText, tab.idx)
             end)
           end
         })
