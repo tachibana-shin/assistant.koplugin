@@ -9,14 +9,12 @@ local Trapper = require("ui/trapper")
 -- main dialog class
 local AssitantDialog = {
   input_dialog = nil,
-  config = nil,
 }
 AssitantDialog.__index = AssitantDialog
 
 function AssitantDialog:new(assitant, config)
   local self = setmetatable({}, AssitantDialog)
   self.assitant = assitant
-  self.ui = assitant.ui
   self.querier = assitant.querier
   self.config = config
   return self
@@ -164,7 +162,7 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
     assitant = self.assitant,
     title = title,
     text = result_text,
-    ui = self.ui,
+    ui = self.assitant.ui,
     onAskQuestion = function(viewer, new_question, _title)
         Trapper:wrap(function()
           -- Use viewer's own highlighted_text value
@@ -196,7 +194,7 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
 end
 
 function AssitantDialog:_getBookContext()
-  local prop = self.ui.document:getProps()
+  local prop = self.assitant.ui.document:getProps()
   return {
     title = prop.title or _("Unknown Title"),
     author = prop.authors or _("Unknown Author")
@@ -386,7 +384,6 @@ end
 function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
 
   local CONFIGURATION = self.config
-  local title = self.config.features.prompts[prompt_index].text or prompt_index
   if not CONFIGURATION or not CONFIGURATION.features or not CONFIGURATION.features.prompts then
     return nil, "No prompts configured"
   end
@@ -396,6 +393,7 @@ function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
     return nil, string.format("Prompt %s not found", prompt_index)
   end
 
+  local title = self.config.features.prompts[prompt_index].text or prompt_index
   local user_content = self:_formatUserPrompt(prompt.user_prompt, highlightedText)
   local message_history = {
     {
@@ -409,7 +407,7 @@ function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
     }
   }
   
-  local answer, err = self.querier:query(message_history, string.format("🌐 Loading %s ...", title or prompt_idx))
+  local answer, err = self.querier:query(message_history, string.format("🌐 Loading for %s ...", title or prompt_index))
   if err then
     UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
     return
