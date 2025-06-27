@@ -12,7 +12,6 @@ local BD = require("ui/bidi")
 local Blitbuffer = require("ffi/blitbuffer")
 local ButtonTable = require("ui/widget/buttontable")
 local CenterContainer = require("ui/widget/container/centercontainer")
-local CheckButton = require("ui/widget/checkbutton")
 local Device = require("device")
 local logger = require("logger")
 local Event = require("ui/event")
@@ -570,7 +569,13 @@ function ChatGPTViewer:askAnotherQuestion()
       is_enter_default = true,
       callback = function()
         local question = self.input_dialog:getInputText()
-        
+        if not question or question == "" then
+          UIManager:show(InfoMessage:new{
+            text = _("Enter a question before proceeding."),
+            timeout = 3
+          })
+          return
+        end
         UIManager:close(self.input_dialog)
         self.input_dialog = nil
         
