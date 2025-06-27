@@ -64,28 +64,6 @@ function AssitantDialog:_formatUserPrompt(user_prompt, highlightedText)
   })
 end
 
-function AssitantDialog:_createContextMessage(highlightedText)
-  local book = self:_getBookContext()
-  if highlightedText and highlightedText ~= "" then
-    return {
-      role = "user",
-      content = string.format([[I'm reading something titled '%s' by %s. 
-I have a question about the following highlighted text: ```%s```. 
-If the question is not clear enough, analyze the highlighted text.]],
-      book.title, book.author, highlightedText),
-      is_context = true
-    }
-  else
-    return {
-      role = "user",
-      content = string.format([[
-I'm reading something titled '%s' by %s. 
-I have a question about this book.]], book.title, book.author),
-      is_context = true
-    }
-  end
-end
-
 function AssitantDialog:_handleFollowUpQuestion(message_history, new_question, highlightedText)
   local question_message = {
     role = "user",
@@ -120,6 +98,11 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
   if not previous_text then
     local result_text = ""
     local show_highlighted_text = true
+
+    -- if highlightedText is nil or empty, don't show highlighted text
+    if not highlightedText or highlightedText == "" then
+      show_highlighted_text = false
+    end
 
     -- won't show if `hide_highlighted_text` is set to false
     if CONFIGURATION.features and CONFIGURATION.features.hide_highlighted_text then
@@ -212,43 +195,6 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
   end
 end
 
--- Handle predefined prompt request
-function AssitantDialog:_handlePredefinedPrompt(prompt_idx, highlightedText, title)
-  local CONFIGURATION = self.config
-  if not CONFIGURATION or not CONFIGURATION.features or not CONFIGURATION.features.prompts then
-    return nil, "No prompts configured"
-  end
-
-  local prompt = CONFIGURATION.features.prompts[prompt_idx]
-  if not prompt then
-    return nil, "Prompt '" .. prompt_idx .. "' not found"
-  end
-
-  local user_content = self:_formatUserPrompt(prompt.user_prompt, highlightedText)
-  
-  local message_history = {
-    {
-      role = "system",
-      content = prompt.system_prompt or "You are a helpful assistant."
-    },
-    {
-      role = "user",
-      content = user_content,
-      is_context = true
-    }
-  }
-  
-  local answer, err = self.querier:query(message_history, string.format("🌐 Loading %s ...", title or prompt_idx))
-  if answer then
-    table.insert(message_history, {
-      role = "assistant",
-      content = answer
-    })
-  end
-  
-  return message_history, err
-end
-
 function AssitantDialog:_getBookContext()
   local prop = self.ui.document:getProps()
   return {
@@ -290,23 +236,50 @@ function AssitantDialog:show(highlightedText)
       text = _("Ask"),
       is_enter_default = true,
       callback = function()
-        Trapper:wrap(function()
-          local context_message = self:_createContextMessage(highlightedText)
-          table.insert(message_history, context_message)
+        local user_question = self.input_dialog and self.input_dialog:getInputText() or ""
+        if not user_question or user_question == "" then
+          UIManager:show(InfoMessage:new{
+            text = _("Enter a question before proceeding."),
+            timeout = 3
+          })
+          return
+        end
 
+        Trapper:wrap(function()
+
+          local book = self:_getBookContext()
+          local context = {}
+          if highlightedText and highlightedText ~= "" then
+            context = {
+              role = "user",
+              is_context = true,
+              content = string.format([[I'm reading something titled '%s' by %s. 
+I have a question about the following highlighted text: ```%s```. 
+If the question is not clear enough, analyze the highlighted text.]],
+              book.title, book.author, highlightedText),
+            }
+          else
+            context = {
+              role = "user",
+              is_context = true,
+              content = string.format([[I'm reading something titled '%s' by %s. 
+I have a question about this book.]], book.title, book.author),
+            }
+          end
+
+          table.insert(message_history, context)
           local question_message = {
             role = "user",
-            content = self.input_dialog:getInputText()
+            content = user_question
           }
           table.insert(message_history, question_message)
 
           -- Close input dialog and keyboard before querying
           self:_close()
-
           local answer, err = self.querier:query(message_history)
           
           -- Check if we got a valid response
-          if not answer or answer == "" or err ~= nil then
+          if err then
             UIManager:show(InfoMessage:new{
               icon = "notice-warning",
               text = "Error: " .. (err or ""),
@@ -321,8 +294,7 @@ function AssitantDialog:show(highlightedText)
           })
           
           -- Create a contextual title
-          local viewer_title = is_highlighted and _("Text Analysis") or book.title
-        
+          local viewer_title = is_highlighted and _("Book Analysis")
           self:_createAndShowViewer(highlightedText, message_history, viewer_title)
         end)
       end
@@ -400,7 +372,6 @@ function AssitantDialog:show(highlightedText)
   self.input_dialog = InputDialog:new{
     title = dialog_title,
     input_hint = input_hint,
-    input_type = "text",
     buttons = button_rows,
     close_callback = function () self:_close() end,
     dismiss_callback = function () self:_close() end
@@ -414,11 +385,40 @@ end
 -- ( custom prompts from configuration )
 function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
 
+  local CONFIGURATION = self.config
   local title = self.config.features.prompts[prompt_index].text or prompt_index
-  local message_history, err = self:_handlePredefinedPrompt(prompt_index, highlightedText, title)
+  if not CONFIGURATION or not CONFIGURATION.features or not CONFIGURATION.features.prompts then
+    return nil, "No prompts configured"
+  end
+
+  local prompt = CONFIGURATION.features.prompts[prompt_index]
+  if not prompt then
+    return nil, string.format("Prompt %s not found", prompt_index)
+  end
+
+  local user_content = self:_formatUserPrompt(prompt.user_prompt, highlightedText)
+  local message_history = {
+    {
+      role = "system",
+      content = prompt.system_prompt or "You are a helpful assistant."
+    },
+    {
+      role = "user",
+      content = user_content,
+      is_context = true
+    }
+  }
+  
+  local answer, err = self.querier:query(message_history, string.format("🌐 Loading %s ...", title or prompt_idx))
   if err then
     UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
     return
+  end
+  if answer then
+    table.insert(message_history, {
+      role = "assistant",
+      content = answer
+    })
   end
 
   if not message_history or #message_history < 1 then
