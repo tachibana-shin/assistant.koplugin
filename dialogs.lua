@@ -92,6 +92,19 @@ end
 function AssitantDialog:_createResultText(highlightedText, message_history, previous_text, title)
   local CONFIGURATION = self.config
 
+  -- Helper function to format a single message (user or assistant)
+  local function formatSingleMessage(message, title)
+    if not message then return "" end
+    if message.role == "user" then
+      local user_content = message.content or _("(Empty message)")
+      return string.format("### ⮞ User: %s\n\n%s\n\n", title or "", self:_truncateUserPrompt(user_content))
+    elseif message.role == "assistant" then
+      local assistant_content = message.content or _("(No response)")
+      return string.format("### ⮞ Assistant: %s\n\n%s\n\n", title or "", assistant_content)
+    end
+    return "" -- Should not happen for valid roles
+  end
+
   -- first response message
   if not previous_text then
     local result_text = ""
@@ -108,47 +121,32 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
     end
 
     -- won't show if highlighted text is longer than threshold `long_highlight_threshold`
-    if show_highlighted_text and CONFIGURATION.features 
-          and CONFIGURATION.features.hide_long_highlights and CONFIGURATION.features.long_highlight_threshold and 
+    if show_highlighted_text and CONFIGURATION.features
+          and CONFIGURATION.features.hide_long_highlights and CONFIGURATION.features.long_highlight_threshold and
           highlightedText and #highlightedText > CONFIGURATION.features.long_highlight_threshold then
         show_highlighted_text = false
     end
 
+    local result_parts = {}
     if show_highlighted_text then
-      result_text = string.format("__%s__\"%s\"\n\n", _("Highlighted text:"), highlightedText)
+      table.insert(result_parts, string.format("__%s__\"%s\"\n\n", _("Highlighted text:"), highlightedText))
     end
     
     -- skips the first message (system prompt)
     for i = 2, #message_history do
-      if not message_history[i].is_context then
-        if message_history[i].role == "user" then
-          local user_content = message_history[i].content or _("(Empty message)")
-          result_text = result_text .. string.format("### ⮞ User: %s\n\n%s\n\n",
-                                                  title or "", self:_truncateUserPrompt(user_content))
-        else
-          local assistant_content = message_history[i].content or _("(No response)")
-          result_text = result_text .. string.format("### ⮞ Assistant: %s\n\n%s\n\n",
-                                                  title or "", assistant_content)
-        end
+      local message = message_history[i]
+      if not message.is_context then
+        table.insert(result_parts, formatSingleMessage(message, title))
       end
     end
-
-    return result_text
+    return table.concat(result_parts)
   end
 
   local last_user_message = message_history[#message_history - 1]
   local last_assistant_message = message_history[#message_history]
 
-  if last_user_message and last_user_message.role == "user" and 
-     last_assistant_message and last_assistant_message.role == "assistant" then
-    -- Add nil checks for content
-    local user_content = last_user_message.content or _("(Empty message)")
-    local assistant_content = last_assistant_message.content or _("(No response)")
-    return previous_text .. string.format("### ⮞ User: %s\n\n%s\n### ⮞ Assistant: %s\n\n%s\n\n",
-                title or "", self:_truncateUserPrompt(user_content), title or "", assistant_content)
-  end
-
-  return previous_text
+  -- Concatenate previous_text with the newly formatted messages
+  return previous_text .. formatSingleMessage(last_user_message, title) .. formatSingleMessage(last_assistant_message, title)
 end
 
 -- Helper function to create and show ChatGPT viewer
