@@ -69,24 +69,24 @@ function AssitantDialog:_createContextMessage(highlightedText)
   if highlightedText and highlightedText ~= "" then
     return {
       role = "user",
-      content = "I'm reading something titled '" .. book.title .. "' by " .. book.author ..
-        ". I have a question about the following highlighted text: " .. highlightedText .. 
-        ". If the question is not clear enough, analyze the highlighted text.",
+      content = string.format([[I'm reading something titled '%s' by %s. 
+I have a question about the following highlighted text: ```%s```. 
+If the question is not clear enough, analyze the highlighted text.]],
+      book.title, book.author, highlightedText),
       is_context = true
     }
   else
     return {
       role = "user",
-      content = "I'm reading something titled '" .. book.title .. "' by " .. book.author .. ". I have a question about this book.",
+      content = string.format([[
+I'm reading something titled '%s' by %s. 
+I have a question about this book.]], book.title, book.author),
       is_context = true
     }
   end
 end
 
 function AssitantDialog:_handleFollowUpQuestion(message_history, new_question, highlightedText)
-  local context_message = self:_createContextMessage(highlightedText)
-  table.insert(message_history, context_message)
-
   local question_message = {
     role = "user",
     content = self:_formatUserPrompt(new_question, highlightedText)
@@ -113,32 +113,28 @@ function AssitantDialog:_handleFollowUpQuestion(message_history, new_question, h
   return message_history
 end
 
-function AssitantDialog:_createResultText(highlightedText, message_history, previous_text, show_highlighted_text, title)
+function AssitantDialog:_createResultText(highlightedText, message_history, previous_text, title)
   local CONFIGURATION = self.config
+
+  -- first response message
   if not previous_text then
     local result_text = ""
+    
+
     -- Check if we should show highlighted text based on configuration
-    if show_highlighted_text and 
-       highlightedText and highlightedText ~= "" and
-       (not CONFIGURATION or 
-        not CONFIGURATION.features or 
-        not CONFIGURATION.features.hide_highlighted_text) then
-      
+    if CONFIGURATION.features and CONFIGURATION.features.hide_highlighted_text ~= false then
       -- Check for long text
       local should_show = true
-      if CONFIGURATION and CONFIGURATION.features then
-        if CONFIGURATION.features.hide_long_highlights and 
-           CONFIGURATION.features.long_highlight_threshold and 
+      if CONFIGURATION.features and CONFIGURATION.features.long_highlight_threshold and 
            highlightedText and #highlightedText > CONFIGURATION.features.long_highlight_threshold then
           should_show = false
-        end
       end
-      
       if should_show then
-        result_text = _("__Highlighted text: __") .. "\"" .. highlightedText .. "\"\n\n"
+        result_text = string.format("%s\"%s\"\n\n", _("__Highlighted text: __"), highlightedText)
       end
     end
     
+    -- skips the first message (system prompt)
     for i = 2, #message_history do
       if not message_history[i].is_context then
         if message_history[i].role == "user" then
@@ -152,6 +148,7 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
         end
       end
     end
+
     return result_text
   end
 
@@ -171,10 +168,9 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
 end
 
 -- Helper function to create and show ChatGPT viewer
-function AssitantDialog:_createAndShowViewer(highlightedText, message_history, title, show_highlighted_text)
+function AssitantDialog:_createAndShowViewer(highlightedText, message_history, title)
   local CONFIGURATION = self.config
-  show_highlighted_text = show_highlighted_text == nil and true or show_highlighted_text
-  local result_text = self:_createResultText(highlightedText, message_history, nil, show_highlighted_text, title)
+  local result_text = self:_createResultText(highlightedText, message_history, nil, title)
   local render_markdown = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown) or true
   local markdown_font_size = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.markdown_font_size) or 20
   
@@ -190,7 +186,7 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
           local msg = self:_handleFollowUpQuestion(message_history, new_question, current_highlight)
           if msg ~= nil then
             message_history = msg
-            local new_result_text = self:_createResultText(current_highlight, message_history, viewer.text, false, _title)
+            local new_result_text = self:_createResultText(current_highlight, message_history, viewer.text, _title)
             viewer:update(new_result_text)
             
             if viewer.scroll_text_w then
