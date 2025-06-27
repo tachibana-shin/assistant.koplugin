@@ -6,19 +6,32 @@ local InfoMessage = require("ui/widget/infomessage")
 local _ = require("gettext")
 local Trapper = require("ui/trapper")
 
-local CONFIGURATION = nil
-local buttons, input_dialog = nil, nil
-local Querier = nil
+-- main dialog class
+local AssitantDialog = {
+  input_dialog = nil,
+  config = nil,
+}
+AssitantDialog.__index = AssitantDialog
 
-local success, result = pcall(function() return require("configuration") end)
-if success then
-  CONFIGURATION = result
-else
-  logger.warn("configuration.lua not found, skipping...")
+function AssitantDialog:new(assitant, config)
+  local self = setmetatable({}, AssitantDialog)
+  self.assitant = assitant
+  self.ui = assitant.ui
+  self.querier = assitant.querier
+  self.config = config
+  return self
+end
+
+function AssitantDialog:_close()
+  if self.input_dialog then
+    UIManager:close(self.input_dialog)
+    self.input_dialog = nil
+  end
 end
 
 -- Helper function to truncate text based on configuration
-local function truncateUserPrompt(text)
+function AssitantDialog:_truncateUserPrompt(text)
+  local CONFIGURATION = self.config
   if not CONFIGURATION or not CONFIGURATION.features.max_display_user_prompt_length then
     return text
   end
@@ -34,15 +47,9 @@ local function truncateUserPrompt(text)
   return text
 end
 
-local function getBookContext(ui)
-  return {
-    title = ui.document:getProps().title or _("Unknown Title"),
-    author = ui.document:getProps().authors or _("Unknown Author")
-  }
-end
-
-local function formatUserPrompt(user_prompt, highlightedText, ui)
-  local book = getBookContext(ui)
+function AssitantDialog:_formatUserPrompt(user_prompt, highlightedText)
+  local CONFIGURATION = self.config
+  local book = self:_getBookContext()
   
   -- Handle case where no text is highlighted (gesture-triggered)
   local text_to_use = highlightedText and highlightedText ~= "" and highlightedText or ""
@@ -57,8 +64,8 @@ local function formatUserPrompt(user_prompt, highlightedText, ui)
   })
 end
 
-local function createContextMessage(ui, highlightedText)
-  local book = getBookContext(ui)
+function AssitantDialog:_createContextMessage(highlightedText)
+  local book = self:_getBookContext()
   if highlightedText and highlightedText ~= "" then
     return {
       role = "user",
@@ -76,17 +83,17 @@ local function createContextMessage(ui, highlightedText)
   end
 end
 
-local function handleFollowUpQuestion(message_history, new_question, ui, highlightedText)
-  local context_message = createContextMessage(ui, highlightedText)
+function AssitantDialog:_handleFollowUpQuestion(message_history, new_question, highlightedText)
+  local context_message = self:_createContextMessage(highlightedText)
   table.insert(message_history, context_message)
 
   local question_message = {
     role = "user",
-    content = formatUserPrompt(new_question, highlightedText, ui)
+    content = self:_formatUserPrompt(new_question, highlightedText)
   }
   table.insert(message_history, question_message)
 
-  local answer, err = Querier:query(message_history)
+  local answer, err = self.querier:query(message_history)
   
   -- Check if we got a valid response
   if not answer or answer == "" or err ~= nil then
@@ -106,7 +113,8 @@ local function handleFollowUpQuestion(message_history, new_question, ui, highlig
   return message_history
 end
 
-local function createResultText(highlightedText, message_history, previous_text, show_highlighted_text, title)
+function AssitantDialog:_createResultText(highlightedText, message_history, previous_text, show_highlighted_text, title)
+  local CONFIGURATION = self.config
   if not previous_text then
     local result_text = ""
     -- Check if we should show highlighted text based on configuration
@@ -136,7 +144,7 @@ local function createResultText(highlightedText, message_history, previous_text,
         if message_history[i].role == "user" then
           local user_content = message_history[i].content or _("(Empty message)")
           result_text = string.format("%s\n\n### ⮞ User: %s\n\n%s\n\n",
-                                      result_text, title or "", truncateUserPrompt(user_content))
+                                      result_text, title or "", self:_truncateUserPrompt(user_content))
         else
           local assistant_content = message_history[i].content or _("(No response)")
           result_text = string.format("%s\n\n### ⮞ Assistant: %s\n\n%s\n\n",
@@ -156,33 +164,33 @@ local function createResultText(highlightedText, message_history, previous_text,
     local user_content = last_user_message.content or _("(Empty message)")
     local assistant_content = last_assistant_message.content or _("(No response)")
     return string.format("%s\n\n### ⮞ User: \n%s\n### ⮞ Assistant: %s\n\n%s\n",
-                         previous_text, truncateUserPrompt(user_content), title or "", assistant_content)
+                         previous_text, self:_truncateUserPrompt(user_content), title or "", assistant_content)
   end
 
   return previous_text
 end
 
 -- Helper function to create and show ChatGPT viewer
-local function createAndShowViewer(assitant, highlightedText, message_history, title, show_highlighted_text)
-  local ui = assitant.ui
+function AssitantDialog:_createAndShowViewer(highlightedText, message_history, title, show_highlighted_text)
+  local CONFIGURATION = self.config
   show_highlighted_text = show_highlighted_text == nil and true or show_highlighted_text
-  local result_text = createResultText(highlightedText, message_history, nil, show_highlighted_text, title)
+  local result_text = self:_createResultText(highlightedText, message_history, nil, show_highlighted_text, title)
   local render_markdown = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown) or true
   local markdown_font_size = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.markdown_font_size) or 20
   
   local chatgpt_viewer = ChatGPTViewer:new {
-    assitant = assitant,
+    assitant = self.assitant,
     title = title,
     text = result_text,
-    ui = ui,
+    ui = self.ui,
     onAskQuestion = function(viewer, new_question, _title)
         Trapper:wrap(function()
           -- Use viewer's own highlighted_text value
           local current_highlight = viewer.highlighted_text or highlightedText
-          local msg = handleFollowUpQuestion(message_history, new_question, ui, current_highlight)
+          local msg = self:_handleFollowUpQuestion(message_history, new_question, current_highlight)
           if msg ~= nil then
             message_history = msg
-            local new_result_text = createResultText(current_highlight, message_history, viewer.text, false, _title)
+            local new_result_text = self:_createResultText(current_highlight, message_history, viewer.text, false, _title)
             viewer:update(new_result_text)
             
             if viewer.scroll_text_w then
@@ -206,7 +214,8 @@ local function createAndShowViewer(assitant, highlightedText, message_history, t
 end
 
 -- Handle predefined prompt request
-local function handlePredefinedPrompt(prompt_idx, highlightedText, ui, title)
+function AssitantDialog:_handlePredefinedPrompt(prompt_idx, highlightedText, title)
+  local CONFIGURATION = self.config
   if not CONFIGURATION or not CONFIGURATION.features or not CONFIGURATION.features.prompts then
     return nil, "No prompts configured"
   end
@@ -216,7 +225,7 @@ local function handlePredefinedPrompt(prompt_idx, highlightedText, ui, title)
     return nil, "Prompt '" .. prompt_idx .. "' not found"
   end
 
-  local user_content = formatUserPrompt(prompt.user_prompt, highlightedText, ui)
+  local user_content = self:_formatUserPrompt(prompt.user_prompt, highlightedText)
   
   local message_history = {
     {
@@ -230,7 +239,7 @@ local function handlePredefinedPrompt(prompt_idx, highlightedText, ui, title)
     }
   }
   
-  local answer, err = Querier:query(message_history, string.format("🌐 Loading %s ...", title or prompt_idx))
+  local answer, err = self.querier:query(message_history, string.format("🌐 Loading %s ...", title or prompt_idx))
   if answer then
     table.insert(message_history, {
       role = "assistant",
@@ -241,67 +250,31 @@ local function handlePredefinedPrompt(prompt_idx, highlightedText, ui, title)
   return message_history, err
 end
 
--- Process main select popup buttons
--- ( custom prompts from configuration )
-local function showProcCustomPrompt(assitant, highlightedText, prompt_index)
-  local ui = assitant.ui
-  if not Querier then
-    Querier = assitant.querier
-  end
-
-  -- Check if Querier is initialized
-  if not Querier:is_inited() then
-    local ok, err = Querier:load_model(assitant:getModelProvider())
-    if not ok then
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
-        return
-    end
-  end
-
-  local title = CONFIGURATION.features.prompts[prompt_index].text or prompt_index
-  local message_history, err = handlePredefinedPrompt(prompt_index, highlightedText, ui, title)
-  if err then
-    UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
-    return
-  end
-
-  if not message_history or #message_history < 1 then
-    UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
-    return
-  end
-
-  createAndShowViewer(assitant, highlightedText, message_history, title)
+function AssitantDialog:_getBookContext()
+  local prop = self.ui.document:getProps()
+  return {
+    title = prop.title or _("Unknown Title"),
+    author = prop.authors or _("Unknown Author")
+  }
 end
 
--- Main dialog function
-local function showChatGPTDialog(assitant, highlightedText)
-  local ui = assitant.ui
-  if not Querier then
-    Querier = assitant.querier
-  end
+-- When clicked [Assistant] button in main select popup,
+-- Or when activated from guesture (no text highlighted)
+function AssitantDialog:show(highlightedText)
 
-  if input_dialog then
-    UIManager:close(input_dialog)
-    input_dialog = nil
-  end
+  local is_highlighted = highlightedText and highlightedText ~= ""
+  
+  -- close any existing input dialog
+  self:_close()
 
-  -- Check if Querier is initialized
-  if not Querier:is_inited() then
-    local ok, err = Querier:load_model(assitant:getModelProvider())
-    if not ok then
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err})
-        return
-    end
-  end
-
-  -- When clicked [Assistant] button in main select popup,
-  -- Or when activated from guesture (no text highlighted)
+  local CONFIGURATION = self.config
 
   -- Handle regular dialog (user input prompt, other buttons)
-  local book = getBookContext(ui)
+  local book = self:_getBookContext()
+  local system_prompt = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.system_prompt or "You are a helpful assistant for reading comprehension."
   local message_history = {{
     role = "system",
-    content = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.system_prompt or "You are a helpful assistant for reading comprehension."
+    content = system_prompt
   }}
 
   -- Create button rows (3 buttons per row)
@@ -311,10 +284,7 @@ local function showChatGPTDialog(assitant, highlightedText)
       text = _("Cancel"),
       id = "close",
       callback = function()
-        if input_dialog then
-          UIManager:close(input_dialog)
-          input_dialog = nil
-        end
+        self:_close()
       end
     },
     {
@@ -322,22 +292,19 @@ local function showChatGPTDialog(assitant, highlightedText)
       is_enter_default = true,
       callback = function()
         Trapper:wrap(function()
-          local context_message = createContextMessage(ui, highlightedText)
+          local context_message = self:_createContextMessage(highlightedText)
           table.insert(message_history, context_message)
 
           local question_message = {
             role = "user",
-            content = input_dialog:getInputText()
+            content = self.input_dialog:getInputText()
           }
           table.insert(message_history, question_message)
 
           -- Close input dialog and keyboard before querying
-          if input_dialog then
-            UIManager:close(input_dialog)
-            input_dialog = nil
-          end
+          self:_close()
 
-          local answer, err = Querier:query(message_history)
+          local answer, err = self.querier:query(message_history)
           
           -- Check if we got a valid response
           if not answer or answer == "" or err ~= nil then
@@ -349,37 +316,31 @@ local function showChatGPTDialog(assitant, highlightedText)
             return
           end
           
-          local answer_message = {
+          table.insert(message_history, {
             role = "assistant",
-            content = answer
-          }
-          table.insert(message_history, answer_message)
+            content = answer,
+          })
           
           -- Create a contextual title
-          local viewer_title = highlightedText and highlightedText ~= "" and 
-            _("Text Analysis") or 
-            book.title
+          local viewer_title = is_highlighted and _("Text Analysis") or book.title
         
-          createAndShowViewer(assitant, highlightedText, message_history, viewer_title)
+          self:_createAndShowViewer(highlightedText, message_history, viewer_title)
         end)
       end
     }
   }
   
   -- Only add additional buttons if there's highlighted text
-  if highlightedText and highlightedText ~= "" then
+  if is_highlighted then
     -- Add Dictionary button
     if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to then
       table.insert(all_buttons, {
         text = _("Dictionary"),
         callback = function()
-          if input_dialog then
-            UIManager:close(input_dialog)
-            input_dialog = nil
-          end
+          self:_close()
           local showDictionaryDialog = require("dictdialog")
           Trapper:wrap(function()
-            showDictionaryDialog(assitant, highlightedText)
+            showDictionaryDialog(self.assitant, highlightedText)
           end)
         end
       })  
@@ -404,12 +365,9 @@ local function showChatGPTDialog(assitant, highlightedText)
         table.insert(all_buttons, {
           text = tab.config.text,
           callback = function()
-            if input_dialog then
-              UIManager:close(input_dialog)
-              input_dialog = nil
-            end
+            self:_close()
             Trapper:wrap(function()
-              showProcCustomPrompt(assitant, highlightedText, tab.idx)
+              self:showCustomPrompt(highlightedText, tab.idx)
             end)
           end
         })
@@ -432,38 +390,44 @@ local function showChatGPTDialog(assitant, highlightedText)
   end
 
   -- Show the dialog with the button rows
-  local dialog_title = highlightedText and highlightedText ~= "" and 
+  local dialog_title = is_highlighted and 
     _("Ask a question about the highlighted text") or 
     _("Ask a question about this book")
   
-  local input_hint = highlightedText and highlightedText ~= "" and 
+  local input_hint = is_highlighted and 
     _("Type your question here...") or 
     _("Ask anything about this book...")
   
-  input_dialog = InputDialog:new{
+  self.input_dialog = InputDialog:new{
     title = dialog_title,
     input_hint = input_hint,
     input_type = "text",
     buttons = button_rows,
-    close_callback = function()
-      if input_dialog then
-        UIManager:close(input_dialog)
-        input_dialog = nil
-      end
-    end,
-    dismiss_callback = function()
-      if input_dialog then
-        UIManager:close(input_dialog)
-        input_dialog = nil
-      end
-    end
+    close_callback = function () self:_close() end,
+    dismiss_callback = function () self:_close() end
   }
   
-  UIManager:show(input_dialog)
-  input_dialog:onShowKeyboard()
+  UIManager:show(self.input_dialog)
+  self.input_dialog:onShowKeyboard() -- Show keyboard immediately
 end
 
-return {
-  showChatGPTDialog = showChatGPTDialog,
-  showProcCustomPrompt = showProcCustomPrompt,
-}
+-- Process main select popup buttons
+-- ( custom prompts from configuration )
+function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
+
+  local title = self.config.features.prompts[prompt_index].text or prompt_index
+  local message_history, err = self:_handlePredefinedPrompt(prompt_index, highlightedText, title)
+  if err then
+    UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
+    return
+  end
+
+  if not message_history or #message_history < 1 then
+    UIManager:show(InfoMessage:new{text = _("Error: No response received"), icon = "notice-warning"})
+    return
+  end
+
+  self:_createAndShowViewer(highlightedText, message_history, title)
+end
+
+return AssitantDialog
