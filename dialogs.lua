@@ -134,22 +134,23 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
     title = title,
     text = result_text,
     ui = self.assitant.ui,
-    onAskQuestion = function(viewer, new_question, prompt_title) -- callback for "Ask another Question" button
+    onAskQuestion = function(viewer, user_question, is_user_entered_prompt) -- callback for user entered question
+        -- Use viewer's own highlighted_text value
+        local current_highlight = viewer.highlighted_text or highlightedText
 
-        -- user entered a question
-        if prompt_title == nil or prompt_title == "" then
-          self:_userEnteredPrompt(highlightedText, message_history, new_question)
-          return
-        end
-
-        -- custom prompt title provided (button pressed)
-        Trapper:wrap(function()
-          -- Use viewer's own highlighted_text value
-          local current_highlight = viewer.highlighted_text or highlightedText
+        if is_user_entered_prompt then
+          -- Use user entered question
+          self:_prepareMessageHistoryForUserQuery(message_history, current_highlight, user_question)
+        else
+          -- Use custom prompt from configuration
           table.insert(message_history, {
             role = "user",
-            content = self:_formatUserPrompt(new_question, current_highlight)
+            content = self:_formatUserPrompt(user_question, current_highlight)
           })
+        end
+
+        Trapper:wrap(function()
+          -- Use viewer's own highlighted_text value
           local answer, err = self.querier:query(message_history)
           
           -- Check if we got a valid response
@@ -165,14 +166,14 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
             role = "assistant",
             content = answer
           })
-          local new_result_text = self:_createResultText(current_highlight, message_history, viewer.text, prompt_title)
+          local new_result_text = self:_createResultText(current_highlight, message_history, viewer.text)
           viewer:update(new_result_text)
           
           if viewer.scroll_text_w then
             viewer.scroll_text_w:resetScroll()
           end
         end)
-    end,
+      end,
     highlighted_text = highlightedText,
     message_history = message_history,
     render_markdown = render_markdown,
@@ -187,16 +188,16 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
   end
 end
 
-function AssitantDialog:_userEnteredPrompt(highlightedText, message_history, user_question)
 
+function AssitantDialog:_prepareMessageHistoryForUserQuery(message_history, highlightedText, user_question)
   local book = self:_getBookContext()
   local context = {}
   if highlightedText and highlightedText ~= "" then
     context = {
       role = "user",
       is_context = true,
-      content = string.format([[I'm reading something titled '%s' by %s. 
-I have a question about the following highlighted text: ```%s```. 
+      content = string.format([[I'm reading something titled '%s' by %s.
+I have a question about the following highlighted text: ```%s```.
 If the question is not clear enough, analyze the highlighted text.]],
       book.title, book.author, highlightedText),
     }
@@ -204,7 +205,7 @@ If the question is not clear enough, analyze the highlighted text.]],
     context = {
       role = "user",
       is_context = true,
-      content = string.format([[I'm reading something titled '%s' by %s. 
+      content = string.format([[I'm reading something titled '%s' by %s.
 I have a question about this book.]], book.title, book.author),
     }
   end
@@ -215,32 +216,6 @@ I have a question about this book.]], book.title, book.author),
     content = user_question
   }
   table.insert(message_history, question_message)
-
-  -- Close input dialog and keyboard before querying
-  self:_close()
-
-  Trapper:wrap(function()
-    local answer, err = self.querier:query(message_history)
-    
-    -- Check if we got a valid response
-    if err then
-      UIManager:show(InfoMessage:new{
-        icon = "notice-warning",
-        text = "Error: " .. (err or ""),
-        timeout = 3
-      })
-      return
-    end
-    
-    table.insert(message_history, {
-      role = "assistant",
-      content = answer,
-    })
-    
-    -- Create a contextual title
-    local viewer_title = highlightedText and highlightedText ~= "" and _("Book Analysis")
-    self:_createAndShowViewer(highlightedText, message_history, viewer_title)
-  end)
 end
 
 function AssitantDialog:_getBookContext()
@@ -292,7 +267,30 @@ function AssitantDialog:show(highlightedText)
           })
           return
         end
-        self:_userEnteredPrompt(highlightedText, message_history, user_question)
+        self:_close()
+        self:_prepareMessageHistoryForUserQuery(message_history, highlightedText, user_question)
+        Trapper:wrap(function()
+          local answer, err = self.querier:query(message_history)
+          
+          -- Check if we got a valid response
+          if err then
+            UIManager:show(InfoMessage:new{
+              icon = "notice-warning",
+              text = "Error: " .. (err or ""),
+              timeout = 3
+            })
+            return
+          end
+          
+          table.insert(message_history, {
+            role = "assistant",
+            content = answer,
+          })
+          
+          -- Create a contextual title
+          local viewer_title = highlightedText and highlightedText ~= "" and _("Book Analysis")
+          self:_createAndShowViewer(highlightedText, message_history, viewer_title)
+        end)
       end
     }
   }

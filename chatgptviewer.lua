@@ -545,7 +545,7 @@ function ChatGPTViewer:askAnotherQuestion()
         text = prompt_config.text,
         callback = function(self, question)
           if self.onAskQuestion then
-            self.onAskQuestion(self, prompt_config.user_prompt .. "\n" .. (question or ""), prompt_config.text)
+            self.onAskQuestion(self, prompt_config.user_prompt, false) -- false indicates button pressed (custom prompt)
           end
         end
       })
@@ -580,7 +580,7 @@ function ChatGPTViewer:askAnotherQuestion()
         self.input_dialog = nil
         
         if self.onAskQuestion then
-          self.onAskQuestion(self, question)
+          self.onAskQuestion(self, question, true) -- true indicates user entered question
         end
       end
     }
