@@ -119,19 +119,22 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
   -- first response message
   if not previous_text then
     local result_text = ""
-    
+    local show_highlighted_text = true
 
-    -- Check if we should show highlighted text based on configuration
-    if CONFIGURATION.features and CONFIGURATION.features.hide_highlighted_text ~= false then
-      -- Check for long text
-      local should_show = true
-      if CONFIGURATION.features and CONFIGURATION.features.long_highlight_threshold and 
-           highlightedText and #highlightedText > CONFIGURATION.features.long_highlight_threshold then
-          should_show = false
-      end
-      if should_show then
-        result_text = string.format("%s\"%s\"\n\n", _("__Highlighted text: __"), highlightedText)
-      end
+    -- won't show if `hide_highlighted_text` is set to false
+    if CONFIGURATION.features and CONFIGURATION.features.hide_highlighted_text then
+      show_highlighted_text = false
+    end
+
+    -- won't show if highlighted text is longer than threshold `long_highlight_threshold`
+    if show_highlighted_text and CONFIGURATION.features 
+          and CONFIGURATION.features.hide_long_highlights and CONFIGURATION.features.long_highlight_threshold and 
+          highlightedText and #highlightedText > CONFIGURATION.features.long_highlight_threshold then
+        show_highlighted_text = false
+    end
+
+    if show_highlighted_text then
+      result_text = string.format("__%s__\"%s\"\n\n", _("Highlighted text:"), highlightedText)
     end
     
     -- skips the first message (system prompt)
@@ -139,12 +142,12 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
       if not message_history[i].is_context then
         if message_history[i].role == "user" then
           local user_content = message_history[i].content or _("(Empty message)")
-          result_text = string.format("%s\n\n### ⮞ User: %s\n\n%s\n\n",
-                                      result_text, title or "", self:_truncateUserPrompt(user_content))
+          result_text = result_text .. string.format("### ⮞ User: %s\n\n%s\n\n",
+                                                  title or "", self:_truncateUserPrompt(user_content))
         else
           local assistant_content = message_history[i].content or _("(No response)")
-          result_text = string.format("%s\n\n### ⮞ Assistant: %s\n\n%s\n\n",
-                                      result_text, title or "", assistant_content)
+          result_text = result_text .. string.format("### ⮞ Assistant: %s\n\n%s\n\n",
+                                                  title or "", assistant_content)
         end
       end
     end
@@ -160,8 +163,8 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
     -- Add nil checks for content
     local user_content = last_user_message.content or _("(Empty message)")
     local assistant_content = last_assistant_message.content or _("(No response)")
-    return string.format("%s\n\n### ⮞ User: \n%s\n### ⮞ Assistant: %s\n\n%s\n",
-                         previous_text, self:_truncateUserPrompt(user_content), title or "", assistant_content)
+    return previous_text .. string.format("### ⮞ User: %s\n\n%s\n### ⮞ Assistant: %s\n\n%s\n\n",
+                title or "", self:_truncateUserPrompt(user_content), title or "", assistant_content)
   end
 
   return previous_text
