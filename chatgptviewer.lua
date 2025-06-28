@@ -545,7 +545,7 @@ function ChatGPTViewer:askAnotherQuestion()
         text = prompt_config.text,
         callback = function(self, question)
           if self.onAskQuestion then
-            self.onAskQuestion(self, prompt_config.user_prompt, false) -- false indicates button pressed (custom prompt)
+            self.onAskQuestion(self, prompt_config) -- question is table (configed prompt)
           end
         end
       })
@@ -580,7 +580,7 @@ function ChatGPTViewer:askAnotherQuestion()
         self.input_dialog = nil
         
         if self.onAskQuestion then
-          self.onAskQuestion(self, question, true) -- true indicates user entered question
+          self.onAskQuestion(self, question) -- question is string (user input)
         end
       end
     }
@@ -831,11 +831,7 @@ function ChatGPTViewer:update(new_text)
         self.scroll_text_w:scrollToBottom()
       end
     end
-
-    -- Refresh the screen after displaying the results
-    if success and CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.refresh_screen_after_displaying_results then
-      UIManager:setDirty(nil, "full")
-    end
+    UIManager:setDirty(self.scroll_text_w, "partial")
   end
 end
 

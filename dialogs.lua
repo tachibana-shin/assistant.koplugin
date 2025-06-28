@@ -119,7 +119,8 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
   local last_assistant_message = message_history[#message_history]
 
   -- Concatenate previous_text with the newly formatted messages
-  return previous_text .. formatSingleMessage(last_user_message, title) .. formatSingleMessage(last_assistant_message, title)
+  return previous_text .. "------------\n\n" .. 
+      formatSingleMessage(last_user_message, title) .. formatSingleMessage(last_assistant_message, title)
 end
 
 -- Helper function to create and show ChatGPT viewer
@@ -134,18 +135,20 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
     title = title,
     text = result_text,
     ui = self.assitant.ui,
-    onAskQuestion = function(viewer, user_question, is_user_entered_prompt) -- callback for user entered question
+    onAskQuestion = function(viewer, user_question) -- callback for user entered question
         -- Use viewer's own highlighted_text value
         local current_highlight = viewer.highlighted_text or highlightedText
+        local viewer_title = ""
 
-        if is_user_entered_prompt then
+        if type(user_question) == "string" then
           -- Use user entered question
           self:_prepareMessageHistoryForUserQuery(message_history, current_highlight, user_question)
-        else
+        elseif type(user_question) == "table" then
           -- Use custom prompt from configuration
+          viewer_title = user_question.text or "Custom Prompt"
           table.insert(message_history, {
             role = "user",
-            content = self:_formatUserPrompt(user_question, current_highlight)
+            content = self:_formatUserPrompt(user_question.user_prompt, current_highlight)
           })
         end
 
@@ -166,8 +169,7 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
             role = "assistant",
             content = answer
           })
-          local new_result_text = self:_createResultText(current_highlight, message_history, viewer.text)
-          viewer:update(new_result_text)
+          viewer:update(self:_createResultText(current_highlight, message_history, viewer.text, viewer_title))
           
           if viewer.scroll_text_w then
             viewer.scroll_text_w:resetScroll()
