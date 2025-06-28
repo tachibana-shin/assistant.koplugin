@@ -119,8 +119,16 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
   local last_assistant_message = message_history[#message_history]
 
   -- Concatenate previous_text with the newly formatted messages
-  return previous_text .. "------------\n\n" .. 
+  local formatted_text = previous_text .. "------------\n\n"
+  
+  -- custom prompt have title, no need to include it in the message
+  if title and title ~= "" then
+    formatted_text = formatted_text .. formatSingleMessage(last_assistant_message, title)
+  else
+    formatted_text = formatted_text .. 
       formatSingleMessage(last_user_message, title) .. formatSingleMessage(last_assistant_message, title)
+  end
+  return formatted_text
 end
 
 -- Helper function to create and show ChatGPT viewer
