@@ -13,7 +13,7 @@ local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
 local _ = require("gettext")
 
-local ChatGPTDialog = require("dialogs")
+local AssistantDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
 
 local Assistant = InputContainer:new {
@@ -22,6 +22,8 @@ local Assistant = InputContainer:new {
   settings_file = DataStorage:getSettingsDir() .. "/assistant.lua",
   settings = nil,
   querier = nil,
+  updated = false, -- flag to track if settings were updated
+  assitant_dialog = nil, -- reference to the main dialog instance
 }
 
 -- Load Configuration
@@ -213,7 +215,7 @@ function Assistant:init()
           end
           Trapper:wrap(function()
             -- Show the main AI dialog with highlighted text
-            ChatGPTDialog.showChatGPTDialog(self, _reader_highlight_instance.selected_text.text)
+            self.assitant_dialog:show(_reader_highlight_instance.selected_text.text)
           end)
         end)
       end,
@@ -229,6 +231,8 @@ function Assistant:init()
   -- Load the model provider from settings or default configuration
   self.querier = require("gpt_query"):new()
   self.querier:load_model(self:getModelProvider())
+
+  self.assitant_dialog = AssistantDialog:new(self, CONFIGURATION)
 
   -- Dictionary button
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and CONFIGURATION.features.show_dictionary_button_in_main_popup then
@@ -333,7 +337,7 @@ function Assistant:init()
             callback = function()
               NetworkMgr:runWhenOnline(function()
                 Trapper:wrap(function()
-                  ChatGPTDialog.showProcCustomPrompt(self, 
+                  self.assitant_dialog:showCustomPrompt(
                     _reader_highlight_instance.selected_text.text,
                     tab.idx)
                 end)
@@ -378,8 +382,10 @@ function Assistant:onAskAIQuestion()
       UpdateChecker.checkForUpdates()
       updateMessageShown = true
     end
-    -- Show dialog without requiring highlighted text
-    ChatGPTDialog.showChatGPTDialog(self, nil)
+    -- Show dialog without highlighted text
+    Trapper:wrap(function()
+      self.assitant_dialog:show()
+    end)
   end)
   return true
 end

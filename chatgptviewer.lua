@@ -12,7 +12,6 @@ local BD = require("ui/bidi")
 local Blitbuffer = require("ffi/blitbuffer")
 local ButtonTable = require("ui/widget/buttontable")
 local CenterContainer = require("ui/widget/container/centercontainer")
-local CheckButton = require("ui/widget/checkbutton")
 local Device = require("device")
 local logger = require("logger")
 local Event = require("ui/event")
@@ -64,7 +63,6 @@ ol, ul, menu {
 ]]
 
 local ChatGPTViewer = InputContainer:extend {
-  assitant = nil, -- The assistant object that created this viewer
   title = nil,
   text = nil,
   width = nil,
@@ -98,7 +96,8 @@ local ChatGPTViewer = InputContainer:extend {
   default_hold_callback = nil,   -- on each default button
   find_centered_lines_count = 5, -- line with find results to be not far from the center
 
-  onAskQuestion = nil,
+  onShowSwitchModel = nil, -- callback when the Switch Model button is pressed
+  onAskQuestion = nil, -- callback when the Ask Another Question button is pressed
   input_dialog = nil,
   showAskQuestion = true,
 }
@@ -249,8 +248,8 @@ function ChatGPTViewer:init()
     text = _("Switch Model"),
     id = "switch_model",
     callback = function()
-      if self.assitant then
-        self.assitant:showProviderSwitch()
+      if self.onShowSwitchModel then
+        self.onShowSwitchModel()
       end
     end,
   })
@@ -546,7 +545,7 @@ function ChatGPTViewer:askAnotherQuestion()
         text = prompt_config.text,
         callback = function(self, question)
           if self.onAskQuestion then
-            self.onAskQuestion(self, prompt_config.user_prompt .. "\n" .. (question or ""), prompt_config.text)
+            self.onAskQuestion(self, prompt_config) -- question is table (configed prompt)
           end
         end
       })
@@ -570,12 +569,18 @@ function ChatGPTViewer:askAnotherQuestion()
       is_enter_default = true,
       callback = function()
         local question = self.input_dialog:getInputText()
-        
+        if not question or question == "" then
+          UIManager:show(InfoMessage:new{
+            text = _("Enter a question before proceeding."),
+            timeout = 3
+          })
+          return
+        end
         UIManager:close(self.input_dialog)
         self.input_dialog = nil
         
         if self.onAskQuestion then
-          self.onAskQuestion(self, question)
+          self.onAskQuestion(self, question) -- question is string (user input)
         end
       end
     }
@@ -770,8 +775,6 @@ function ChatGPTViewer:handleTextSelection(text, hold_duration, start_idx, end_i
 end
 
 function ChatGPTViewer:update(new_text)
-  -- Attempt to load configuration
-  local success, CONFIGURATION = pcall(function() return require("configuration") end)
   local first_time = not self.text
 
   -- Check if the new text is substantially different from the current text
@@ -820,17 +823,14 @@ function ChatGPTViewer:update(new_text)
     -- Always scroll to the new text except first time
     if not first_time then
       if self.render_markdown then
-        -- If rendering in a ScrollHtmlWidget, use scrollToRatio
-        --self.scroll_text_w:scrollToRatio(1)
+        -- HTMLWidget only supports scroll by page
+        -- scroll to bottom would be weired mostly. keep it to top here
+        self.scroll_text_w:resetScroll()
       else
         self.scroll_text_w:scrollToBottom()
       end
     end
-
-    -- Refresh the screen after displaying the results
-    if success and CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.refresh_screen_after_displaying_results then
-      UIManager:setDirty(nil, "full")
-    end
+    UIManager:setDirty(self.scroll_text_w, "partial")
   end
 end
 
