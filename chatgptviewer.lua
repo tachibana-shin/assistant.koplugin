@@ -63,7 +63,6 @@ ol, ul, menu {
 ]]
 
 local ChatGPTViewer = InputContainer:extend {
-  assitant = nil, -- The assistant object that created this viewer
   title = nil,
   text = nil,
   width = nil,
@@ -97,7 +96,8 @@ local ChatGPTViewer = InputContainer:extend {
   default_hold_callback = nil,   -- on each default button
   find_centered_lines_count = 5, -- line with find results to be not far from the center
 
-  onAskQuestion = nil,
+  onShowSwitchModel = nil, -- callback when the Switch Model button is pressed
+  onAskQuestion = nil, -- callback when the Ask Another Question button is pressed
   input_dialog = nil,
   showAskQuestion = true,
 }
@@ -248,8 +248,8 @@ function ChatGPTViewer:init()
     text = _("Switch Model"),
     id = "switch_model",
     callback = function()
-      if self.assitant then
-        self.assitant:showProviderSwitch()
+      if self.onShowSwitchModel then
+        self.onShowSwitchModel()
       end
     end,
   })

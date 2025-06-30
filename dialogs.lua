@@ -139,10 +139,12 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
   local markdown_font_size = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.markdown_font_size) or 20
   
   local chatgpt_viewer = ChatGPTViewer:new {
-    assitant = self.assitant,
     title = title,
     text = result_text,
     ui = self.assitant.ui,
+    onShowSwitchModel = function() -- callback for switch model button
+      self.assitant:showProviderSwitch()
+    end,
     onAskQuestion = function(viewer, user_question) -- callback for user entered question
         -- Use viewer's own highlighted_text value
         local current_highlight = viewer.highlighted_text or highlightedText
