@@ -239,7 +239,7 @@ Answer this whole response in {language} language. Only show the replies, do not
                                     *   List up to 3 simple synonyms (suitable for B1+ learners). Do not reuse the original word.
                                     *   Explain its meaning simply **in {language}**, considering its context in the text. Do not reuse the original word in the explanation.
                                 2.  **Format:** Create a numbered list using this exact structure for each item:
-                                    `index. base_form : synonym1, synonym2, synonym3 : {language}_explanation`
+                                    `index. base form : synonym1, synonym2, synonym3 : {language} explanation`
                                 3.  **Output Content:** **ONLY** provide the numbered list. Do not include the original text, titles, or any extra sentences.
 
                                 **Input Text:** {highlight} ]], 
