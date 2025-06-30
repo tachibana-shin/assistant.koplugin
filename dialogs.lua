@@ -69,11 +69,18 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
   local function formatSingleMessage(message, title)
     if not message then return "" end
     if message.role == "user" then
-      local user_content = message.content or _("(Empty message)")
-      return string.format("### ⮞ User: %s\n\n%s\n\n", title or "", self:_truncateUserPrompt(user_content))
+      local user_message
+      if title and title ~= "" then
+        -- shows "User: <title>" if title is provided
+        user_message = string.format("%s\n\n", title)
+      else
+        -- shows user input prompt
+        user_message = string.format("\n\n%s\n\n", self:_truncateUserPrompt(message.content or _("(Empty message)")))
+      end
+      return "### ⮞ User: " .. user_message
     elseif message.role == "assistant" then
       local assistant_content = message.content or _("(No response)")
-      return string.format("### ⮞ Assistant: %s\n\n%s\n\n", title or "", assistant_content)
+      return string.format("### ⮞ Assistant:\n\n%s\n\n", assistant_content)
     end
     return "" -- Should not happen for valid roles
   end
@@ -118,17 +125,8 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
   local last_user_message = message_history[#message_history - 1]
   local last_assistant_message = message_history[#message_history]
 
-  -- Concatenate previous_text with the newly formatted messages
-  local formatted_text = previous_text .. "------------\n\n"
-  
-  -- custom prompt have title, no need to include it in the message
-  if title and title ~= "" then
-    formatted_text = formatted_text .. formatSingleMessage(last_assistant_message, title)
-  else
-    formatted_text = formatted_text .. 
+  return previous_text .. "------------\n\n" ..
       formatSingleMessage(last_user_message, title) .. formatSingleMessage(last_assistant_message, title)
-  end
-  return formatted_text
 end
 
 -- Helper function to create and show ChatGPT viewer
