@@ -775,8 +775,6 @@ function ChatGPTViewer:handleTextSelection(text, hold_duration, start_idx, end_i
 end
 
 function ChatGPTViewer:update(new_text)
-  -- Attempt to load configuration
-  local success, CONFIGURATION = pcall(function() return require("configuration") end)
   local first_time = not self.text
 
   -- Check if the new text is substantially different from the current text
@@ -825,8 +823,9 @@ function ChatGPTViewer:update(new_text)
     -- Always scroll to the new text except first time
     if not first_time then
       if self.render_markdown then
-        -- If rendering in a ScrollHtmlWidget, use scrollToRatio
-        --self.scroll_text_w:scrollToRatio(1)
+        -- HTMLWidget only supports scroll by page
+        -- scroll to bottom would be weired mostly. keep it to top here
+        self.scroll_text_w:resetScroll()
       else
         self.scroll_text_w:scrollToBottom()
       end
