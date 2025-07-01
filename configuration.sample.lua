@@ -149,8 +149,9 @@ local CONFIGURATION = {
         markdown_font_size = 20, -- Default normal text font size of rendered markdown.
         updater_disabled = false, -- Set to true to disable update check.
 
-        -- Prompts defined in `prompts.lua` can be overriden here.
-        -- The order determines the position in the main popup.
+        -- These are prompts defined in `prompts.lua`, can be overriden here.
+        -- each prompt shown as a button in the main dialog.
+        -- The `order` determines the position in the main popup.
         -- The `show_on_main_popup` determines if the prompt is shown in the main popup
         prompts = {
             translate          = { order = 1, show_on_main_popup = true, },
