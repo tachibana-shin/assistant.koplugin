@@ -7,6 +7,7 @@ local TextBoxWidget = require("ui/widget/textboxwidget")
 local _ = require("gettext")
 local Event = require("ui/event")
 local configuration = require("configuration")
+local dict_prompts = require("prompts").assitant_prompts.dict
 
 local function showDictionaryDialog(assitant, highlightedText, message_history)
     local Querier = assitant.querier
@@ -58,7 +59,7 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
     local message_history = message_history or {
         {
             role = "system",
-            content = "You are a dictionary with high quality detail vocabulary definitions and examples.",
+            content = dict_prompts.system_prompt,
         },
     }
     
@@ -77,22 +78,7 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
     local dict_language = configuration.features and configuration.features.dictionary_translate_to or "English"
     local context_message = {
         role = "user",
-        content = string.gsub([[
-"Explain vocabulary or content with the focus word with following information:"
-"- *Conjugation*. Vocabulary in original conjugation if its different than the form in the sentence."
-"- *Synonyms*. 3 synonyms for the word if available."
-"- *Meaning*. Meaning of the expression without reference to context. Answer this part in {language} language."
-"- *Explanation*. Explanation of the content according to context. Answer this part in {language} language."
-"- *Example*. Another example sentence. Answer this part in the original language of the sentence."
-"- *Origin*. Origin of that word, tracing it back to its ancient roots. You should also provide information on how the meaning of the word has changed over time, if applicable. Answer this part in {language} language." ..
-"Only show the requested replies, do not give a description, answer in markdown list format."
-
-[CONTEXT]
-{context}
-
-[FOCUS WORD]
-{word}
-]], "{(%w+)}", {
+        content = string.gsub(dict_prompts.user_prompt, "{(%w+)}", {
     language = dict_language,
     context = prev_context .. highlightedText .. next_context,
     word = highlightedText

@@ -37,6 +37,8 @@ local InfoMessage = require("ui/widget/infomessage")
 local Screen = Device.screen
 local MD = require("apps/filemanager/lib/md")
 
+local Prompts = require("prompts")
+
 -- Undo default margins and padding in ScrollHtmlWidget.
 -- Based on ui/widget/dictquicklookup.
 local VIEWER_CSS = [[
@@ -525,32 +527,20 @@ function ChatGPTViewer:askAnotherQuestion()
   local default_options = {}
   
   -- Load additional prompts from configuration if available
-  if success and CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
-    -- Create a sorted list of prompts
-    local sorted_prompts = {}
-    for prompt_key, prompt_config in pairs(CONFIGURATION.features.prompts) do
-      table.insert(sorted_prompts, {key = prompt_key, config = prompt_config})
-    end
-    -- Sort by order value, default to 1000 if not specified
-    table.sort(sorted_prompts, function(a, b)
-      local order_a = a.config.order or 1000
-      local order_b = b.config.order or 1000
-      return order_a < order_b
-    end)
+  local sorted_prompts = Prompts.getSortedCustomPrompts() or {}
+  local merged_prompts = Prompts.getMergedCustomPrompts() or {}
     
     -- Add buttons in sorted order
-    for _, prompt_data in ipairs(sorted_prompts) do
-      local prompt_config = prompt_data.config
+    for _, tab in ipairs(sorted_prompts) do
       table.insert(default_options, {
-        text = prompt_config.text,
-        callback = function(self, question)
+        text = tab.text,
+        callback = function(self)
           if self.onAskQuestion then
-            self.onAskQuestion(self, prompt_config) -- question is table (configed prompt)
+            self.onAskQuestion(self, merged_prompts[tab.idx]) -- question is table (custom prompt)
           end
         end
       })
     end
-  end
 
   -- Prepare buttons
   local buttons = {
@@ -591,12 +581,9 @@ function ChatGPTViewer:askAnotherQuestion()
     table.insert(buttons, {
       text = option.text,
       callback = function()
-        local question = self.input_dialog:getInputText()
-        
         UIManager:close(self.input_dialog)
         self.input_dialog = nil
-        
-        option.callback(self, question)
+        option.callback(self)
       end
     })
   end
