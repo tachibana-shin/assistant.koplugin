@@ -184,6 +184,11 @@ local M = {
     show_on_main_popup_prompts = nil, -- Prompts that should be shown on the main popup
 }
 
+-- Func description:
+-- This function returns the merged custom prompts from the configuration and custom prompts.
+-- It merges the custom prompts with the configuration prompts, if available.
+-- return table of merged prompts
+-- Example: { translate = { text = "Translate", user_prompt = "...", order = 1, show_on_main_popup = true }, ... }
 M.getMergedCustomPrompts = function()
     if M.merged_prompts then
         return M.merged_prompts
@@ -208,6 +213,9 @@ M.getMergedCustomPrompts = function()
     return M.merged_prompts
 end
 
+-- Func description:
+-- This function returns a list of custom prompts sorted by their order.
+-- return list item: {idx, order, text}
 M.getSortedCustomPrompts = function()
     if M.sorted_custom_prompts then
         return M.sorted_custom_prompts
@@ -226,7 +234,10 @@ M.getSortedCustomPrompts = function()
     return sorted_prompts
 end
 
--- prompts with `show_on_main_popup = true`
+-- Func description:
+-- This function returns a list of prompts that should be shown on the main popup dialog.
+-- Filtered with `show_on_main_popup = true`
+-- return list item: {idx, order, text}
 M.getShowOnMainPopupPrompts = function()
     if M.show_on_main_popup_prompts then
         return M.show_on_main_popup_prompts
@@ -249,4 +260,3 @@ M.getShowOnMainPopupPrompts = function()
 end
 
 return M
--- end of prompts.lua
