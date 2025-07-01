@@ -150,8 +150,31 @@ Answer this whole response in {language} language. Only show the replies, do not
 }
 
 
-local logger = require("logger")
-local utils = require("utils")
+local function table_merge(t1, t2)
+    local result = {}
+    for k, v in pairs(t1) do
+        result[k] = v
+    end
+    for k, v in pairs(t2) do
+        if type(v) == "table" and type(result[k]) == "table" then
+            result[k] = table_merge(result[k], v)
+        else
+            result[k] = v
+        end
+    end
+    return result
+end
+
+
+local function table_sort (t, key)
+    table.sort(t, function(a, b)
+        if a[key] == nil or b[key] == nil then
+            return false
+        end
+        return a[key] < b[key]
+    end)
+end
+
 
 local M = {
     custom_prompts = custom_prompts, -- Custom prompts for the AI
@@ -172,12 +195,12 @@ M.getMergedCustomPrompts = function()
     if success then
         CONFIGURATION = result
     else
-        logger.warn("configuration.lua not found, skipping...")
+        error("configuration.lua not found, skipping...")
     end
 
     -- Merge custom prompts with configuration prompts
     if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
-        M.merged_prompts = utils.table_merge(custom_prompts, CONFIGURATION.features.prompts)
+        M.merged_prompts = table_merge(custom_prompts, CONFIGURATION.features.prompts)
     else
         M.merged_prompts = custom_prompts
     end
@@ -198,7 +221,7 @@ M.getSortedCustomPrompts = function()
     for prompt_index, prompt in pairs(M.merged_prompts) do
         table.insert(sorted_prompts, {idx = prompt_index, order = prompt.order or 1000, text = prompt.text or prompt_index})
     end
-    utils.table_sort(sorted_prompts, "order")
+    table_sort(sorted_prompts, "order")
     
     return sorted_prompts
 end
@@ -221,7 +244,7 @@ M.getShowOnMainPopupPrompts = function()
         end
     end
     
-    utils.table_sort(M.show_on_main_popup_prompts, "order")
+    table_sort(M.show_on_main_popup_prompts, "order")
     return M.show_on_main_popup_prompts
 end
 
