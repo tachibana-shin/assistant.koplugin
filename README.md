@@ -65,6 +65,7 @@ You'll need API keys for the AI service you want to use:
    - Kindle: `koreader/plugins/`
    - PocketBook: `applications/koreader/plugins/`
    - Android: `koreader/plugins/`
+   - Mac: `KOReader.app/Contents/koreader/plugins/` (Right-click on `KOReader.app` in Finder, and click **Show Package Contents** to open it as a folder.)
 3. Create/modify `configuration.lua` as needed.
 
 #### Using A Stable Release:
@@ -74,6 +75,7 @@ You'll need API keys for the AI service you want to use:
    - Kindle: `koreader/plugins/`
    - PocketBook: `applications/koreader/plugins/`
    - Android: `koreader/plugins/`
+   - Mac: `KOReader.app/Contents/koreader/plugins/` (Right-click on `KOReader.app` in Finder, and click **Show Package Contents** to open it as a folder.)
 3. Create/modify `configuration.lua` as needed.
 
 ### 3. Configure the Plugin
