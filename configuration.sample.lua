@@ -38,14 +38,14 @@ local CONFIGURATION = {
             }
         },
         gemini = {
-            model = "gemini-2.0-flash-001", -- model list: https://ai.google.dev/gemini-api/docs/models/gemini , ex: gemini-1.5-pro-latest , gemini-2.0-flash-001
+            model = "gemini-2.5-flash", -- model list: https://ai.google.dev/gemini-api/docs/models , ex: gemini-2.5-pro , gemini-2.5-flash
             base_url = "https://generativelanguage.googleapis.com/v1beta/models/",
             api_key = "your-gemini-api-key",
             additional_parameters = {
                 temperature = 0.7,
-                max_tokens = 4096,
+                max_tokens = 1048576,
                 -- Set to 0 to disable thinking. Recommended for gemini-2.5-* and newer, where thinking is enabled by default.
-                thinking_budget = nil
+                thinking_budget = 0
             }
         },
         openrouter = {
