@@ -15,6 +15,7 @@ local _ = require("gettext")
 
 local AssistantDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
+local Prompts = require("prompts")
 
 local Assistant = InputContainer:new {
   name = "Assistant",
@@ -308,44 +309,28 @@ function Assistant:init()
   end
 
   -- Add Custom buttons to main select popup menu
-  -- prompts with `show_on_main_popup = true`
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
-    -- Create a sorted list of prompts
-    local sorted_prompts = {}
-    for prompt_idx, prompt in pairs(CONFIGURATION.features.prompts) do
-      if prompt.show_on_main_popup then
-        table.insert(sorted_prompts, {idx = prompt_idx, config = prompt})
-      end
-    end
-    
-    -- Sort by order value, default to 1000 if not specified
-    table.sort(sorted_prompts, function(a, b)
-      local order_a = a.config.order or 1000
-      local order_b = b.config.order or 1000
-      return order_a < order_b
-    end)
-    
-    -- Add buttons in sorted order
-    for _, tab in ipairs(sorted_prompts) do
-      -- Use order in the index for proper sorting (pad with zeros for consistent sorting)
-      self.ui.highlight:addToHighlightDialog(
-        string.format("assistant_%02d_%s", tab.config.order or 1000, tab.idx),
-        function(_reader_highlight_instance)
-          return {
-            text = tab.config.text.." (AI)",  -- append "(AI)" to identify as our function
-            enabled = Device:hasClipboard(),
-            callback = function()
-              NetworkMgr:runWhenOnline(function()
-                Trapper:wrap(function()
-                  self.assitant_dialog:showCustomPrompt(
-                    _reader_highlight_instance.selected_text.text,
-                    tab.idx)
-                end)
+  local showOnMain = Prompts.getShowOnMainPopupPrompts() or {}
+
+  -- Add buttons in sorted order
+  for _, tab in ipairs(showOnMain) do
+    -- Use order in the index for proper sorting (pad with zeros for consistent sorting)
+    self.ui.highlight:addToHighlightDialog(
+      string.format("assistant_%02d_%s", tab.order, tab.idx),
+      function(_reader_highlight_instance)
+        return {
+          text = tab.text .. " (AI)",  -- append "(AI)" to identify as our function
+          enabled = Device:hasClipboard(),
+          callback = function()
+            NetworkMgr:runWhenOnline(function()
+              Trapper:wrap(function()
+                self.assitant_dialog:showCustomPrompt(
+                  _reader_highlight_instance.selected_text.text,
+                  tab.idx)
               end)
-            end,
-          }
-        end)
-    end
+            end)
+          end,
+        }
+      end)
   end
 end
 

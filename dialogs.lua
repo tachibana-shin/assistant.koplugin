@@ -5,6 +5,7 @@ local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
 local _ = require("gettext")
 local Trapper = require("ui/trapper")
+local Prompts = require("prompts")
 
 -- main dialog class
 local AssitantDialog = {
@@ -249,7 +250,7 @@ function AssitantDialog:show(highlightedText)
 
   -- Handle regular dialog (user input prompt, other buttons)
   local book = self:_getBookContext()
-  local system_prompt = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.system_prompt or "You are a helpful assistant for reading comprehension."
+  local system_prompt = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.system_prompt or Prompts.assitant_prompts.default.system_prompt
   local message_history = {{
     role = "system",
     content = system_prompt
@@ -321,32 +322,18 @@ function AssitantDialog:show(highlightedText)
       })  
     end
 
-    -- Add custom prompt buttons
-    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
-      -- Create a sorted list of prompts
-      local sorted_prompts = {}
-      for prompt_index, prompt in pairs(CONFIGURATION.features.prompts) do
-        table.insert(sorted_prompts, {idx = prompt_index, config = prompt})
-      end
-      -- Sort by order value, default to 1000 if not specified
-      table.sort(sorted_prompts, function(a, b)
-        local order_a = a.config.order or 1000
-        local order_b = b.config.order or 1000
-        return order_a < order_b
-      end)
-      
-      -- Add buttons in sorted order
-      for _, tab in ipairs(sorted_prompts) do
-        table.insert(all_buttons, {
-          text = tab.config.text,
-          callback = function()
-            self:_close()
-            Trapper:wrap(function()
-              self:showCustomPrompt(highlightedText, tab.idx)
-            end)
-          end
-        })
-      end
+    local sorted_prompts = Prompts.getSortedCustomPrompts() or {}
+    -- Add buttons in sorted order
+    for _, tab in ipairs(sorted_prompts) do
+      table.insert(all_buttons, {
+        text = tab.text,
+        callback = function()
+          self:_close()
+          Trapper:wrap(function()
+            self:showCustomPrompt(highlightedText, tab.idx)
+          end)
+        end
+      })
     end
   end
   
@@ -389,22 +376,14 @@ end
 -- ( custom prompts from configuration )
 function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
 
-  local CONFIGURATION = self.config
-  if not CONFIGURATION or not CONFIGURATION.features or not CONFIGURATION.features.prompts then
-    return nil, "No prompts configured"
-  end
+  local prompt_config = Prompts.getMergedCustomPrompts()[prompt_index]
 
-  local prompt = CONFIGURATION.features.prompts[prompt_index]
-  if not prompt then
-    return nil, string.format("Prompt %s not found", prompt_index)
-  end
-
-  local title = self.config.features.prompts[prompt_index].text or prompt_index
-  local user_content = self:_formatUserPrompt(prompt.user_prompt, highlightedText)
+  local title = prompt_config.text or prompt_index
+  local user_content = self:_formatUserPrompt(prompt_config.user_prompt, highlightedText)
   local message_history = {
     {
       role = "system",
-      content = prompt.system_prompt or "You are a helpful assistant."
+      content = prompt_config.system_prompt or Prompts.assitant_prompts.default.system_prompt,
     },
     {
       role = "user",
