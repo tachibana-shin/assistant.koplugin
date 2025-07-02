@@ -137,6 +137,7 @@ Answer this whole response in {language} language. Only show the replies, do not
 "- *Conjugation*. Vocabulary in original conjugation if its different than the form in the sentence."
 "- *Synonyms*. 3 synonyms for the word if available."
 "- *Meaning*. Meaning of the expression without reference to context. Answer this part in {language} language."
+"- *Translate*. Translation of the the whole sentence with word. Highlight in bold the word that is being translated. Answer this part in {language} language."
 "- *Explanation*. Explanation of the content according to context. Answer this part in {language} language."
 "- *Example*. Another example sentence. Answer this part in the original language of the sentence."
 "- *Origin*. Origin of that word, tracing it back to its ancient roots. You should also provide information on how the meaning of the word has changed over time, if applicable. Answer this part in {language} language." ..
