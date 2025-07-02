@@ -63,15 +63,54 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
         },
     }
     
-    -- Try to get context, but handle cases where no text is selected
+    -- Try to get context for the selected word.
+    -- By default, we prefer the full sentence as context.
+    -- If the sentence provides less than 10 words of context on both sides of the word,
+    -- we switch to getting a context of at least 10 words on each side as a fallback.
     local prev_context, next_context = "", ""
     if ui.highlight and ui.highlight.getSelectedWordContext then
-        local success, prev, next = pcall(function()
-            return ui.highlight:getSelectedWordContext(10)
-        end)
-        if success then
-            prev_context = prev or ""
-            next_context = next or ""
+        -- Helper function to count words in a string.
+        local function countWords(str)
+            if not str or str == "" then return 0 end
+            local _, count = string.gsub(str, "%S+", "")
+            return count
+        end
+
+        local use_fallback_context = true
+        -- Try to get the full sentence containing the word. If `getSelectedSentence()` doesn't exist,
+        -- the code will gracefully use the fallback method.
+        if ui.highlight.getSelectedSentence then
+            local success, sentence = pcall(function() return ui.highlight:getSelectedSentence() end)
+            if success and sentence then
+                -- Find the selected word in the sentence to split it.
+                local word_start, word_end = string.find(sentence, highlightedText, 1, true)
+                if word_start then
+                    local prev_part = string.sub(sentence, 1, word_start - 1)
+                    local next_part = string.sub(sentence, word_end + 1)
+
+                    -- Check if the sentence context is too short on both sides.
+                    if countWords(prev_part) < 10 and countWords(next_part) < 10 then
+                        -- The sentence is short, so we'll use the fallback to get more context.
+                        use_fallback_context = true
+                    else
+                        -- The sentence provides enough context, so we'll use it.
+                        prev_context = prev_part
+                        next_context = next_part
+                        use_fallback_context = false
+                    end
+                end
+            end
+        end
+
+        -- Use the fallback method (word count) if we couldn't get a good sentence context.
+        if use_fallback_context then
+            local success, prev, next = pcall(function()
+                return ui.highlight:getSelectedWordContext(10)
+            end)
+            if success then
+                prev_context = prev or ""
+                next_context = next or ""
+            end
         end
     end
     
