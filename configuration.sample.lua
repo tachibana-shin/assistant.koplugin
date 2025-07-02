@@ -154,16 +154,19 @@ local CONFIGURATION = {
         -- The `order` determines the position in the main popup.
         -- The `show_on_main_popup` determines if the prompt is shown in the main popup
         prompts = {
-            translate          = { order = 1, show_on_main_popup = true, },
-            simplify           = { order = 2, show_on_main_popup = false, },
-            explain            = { order = 3, show_on_main_popup = false, },
-            summarize          = { order = 4, show_on_main_popup = false, },
-            key_points         = { order = 5, show_on_main_popup = false, },
-            historical_context = { order = 6, show_on_main_popup = false, },
-            ELI5               = { order = 7, show_on_main_popup = false, },
-            grammar            = { order = 8, show_on_main_popup = false, },
-            vocabulary         = { order = 9, show_on_main_popup = true, },
-            wikipedia          = { order = 10, show_on_main_popup = true, },
+            translate          = { show_on_main_popup = true, },
+            vocabulary         = { show_on_main_popup = true, },
+            wikipedia          = { show_on_main_popup = true, },
+
+            -- simplify           = { show_on_main_popup = true, },
+            -- explain            = { show_on_main_popup = true, },
+            -- summarize          = { show_on_main_popup = true, },
+            -- key_points         = { show_on_main_popup = true, },
+            -- historical_context = { show_on_main_popup = true, },
+            -- ELI5               = { show_on_main_popup = true, },
+            -- grammar            = { show_on_main_popup = true, },
+            --
+            --
             -- example of adding a custom prompt:
             -- myprompt = { system_prompt = "you are a helpful assitant.", user_prompt = "...", order = 50, show_on_main_popup = true, },
         },
