@@ -354,19 +354,26 @@ function AssitantDialog:show(highlightedText)
   -- Show the dialog with the button rows
   local dialog_title = is_highlighted and 
     _("Ask a question about the highlighted text") or 
-    _("Ask a question about this book")
+    string.format(_("Ask a question about this book:\n%s by %s"), book.title, book.author)
   
   local input_hint = is_highlighted and 
     _("Type your question here...") or 
     _("Ask anything about this book...")
   
   self.input_dialog = InputDialog:new{
-    title = dialog_title,
+    title = _("AI Assistant"),
+    description = dialog_title,
     input_hint = input_hint,
     buttons = button_rows,
+    title_bar_left_icon = "appbar.settings",
+    title_bar_left_icon_tap_callback = function ()
+        self.input_dialog:onCloseKeyboard()
+        self.assitant:showProviderSwitch()
+    end,
     close_callback = function () self:_close() end,
     dismiss_callback = function () self:_close() end
   }
+  self.input_dialog.title_bar.title_multilines = false
   
   UIManager:show(self.input_dialog)
   self.input_dialog:onShowKeyboard() -- Show keyboard immediately
