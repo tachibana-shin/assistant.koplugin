@@ -153,11 +153,18 @@ local CONFIGURATION = {
         -- each prompt shown as a button in the main dialog.
         -- The `order` determines the position in the main popup.
         -- The `show_on_main_popup` determines if the prompt is shown in the main popup
+        -- Set `visible = false` to hide the prompt from all popups.
         prompts = {
+
+            -- set the most frequently used prompts useable in the highlighted popup
             translate          = { show_on_main_popup = true, },
             vocabulary         = { show_on_main_popup = true, },
             wikipedia          = { show_on_main_popup = true, },
 
+            -- hide some prompts to keep the UI clean
+            -- simplify           = { visible = false, }, -- hide from everywhere
+
+            -- all other prompts are available by clicking the "Assitant" button without any configuration.
             -- simplify           = { show_on_main_popup = true, },
             -- explain            = { show_on_main_popup = true, },
             -- summarize          = { show_on_main_popup = true, },
@@ -166,9 +173,9 @@ local CONFIGURATION = {
             -- ELI5               = { show_on_main_popup = true, },
             -- grammar            = { show_on_main_popup = true, },
             --
-            --
             -- example of adding a custom prompt:
             -- myprompt = { system_prompt = "you are a helpful assitant.", user_prompt = "...", order = 50, show_on_main_popup = true, },
+
         },
 
         -- AI Recap configuration
