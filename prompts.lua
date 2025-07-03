@@ -217,8 +217,9 @@ end
 
 -- Func description:
 -- This function returns a list of custom prompts sorted by their order.
+-- filter_func: optional function to filter prompts, if it returns false, the prompt will be skipped.
 -- return list item: {idx, order, text}
-M.getSortedCustomPrompts = function()
+M.getSortedCustomPrompts = function(filter_func)
     if M.sorted_custom_prompts then
         return M.sorted_custom_prompts
     end
@@ -229,36 +230,15 @@ M.getSortedCustomPrompts = function()
     -- Sort the merged prompts by order
     local sorted_prompts = {}
     for prompt_index, prompt in pairs(M.merged_prompts) do
+        if filter_func and filter_func(prompt) == false then
+            goto continue
+        end
         table.insert(sorted_prompts, {idx = prompt_index, order = prompt.order or 1000, text = prompt.text or prompt_index})
+        ::continue::
     end
     table_sort(sorted_prompts, "order")
     
     return sorted_prompts
-end
-
--- Func description:
--- This function returns a list of prompts that should be shown on the main popup dialog.
--- Filtered with `show_on_main_popup = true`
--- return list item: {idx, order, text}
-M.getShowOnMainPopupPrompts = function()
-    if M.show_on_main_popup_prompts then
-        return M.show_on_main_popup_prompts
-    end
-    
-    if M.merged_prompts == nil then
-        M.getMergedCustomPrompts() -- Ensure merged prompts are loaded
-    end
-    
-    -- Filter prompts that should be shown on the main popup
-    M.show_on_main_popup_prompts = {}
-    for prompt_index, prompt in pairs(M.merged_prompts) do
-        if prompt.show_on_main_popup then
-            table.insert(M.show_on_main_popup_prompts, {idx = prompt_index, order = prompt.order or 1000, text = prompt.text or prompt_index})
-        end
-    end
-    
-    table_sort(M.show_on_main_popup_prompts, "order")
-    return M.show_on_main_popup_prompts
 end
 
 return M
