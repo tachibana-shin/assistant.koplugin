@@ -309,7 +309,15 @@ function Assistant:init()
   end
 
   -- Add Custom buttons to main select popup menu
-  local showOnMain = Prompts.getShowOnMainPopupPrompts() or {}
+  local showOnMain = Prompts.getSortedCustomPrompts(function (prompt)
+    if prompt.visible == false then
+      return false
+    end
+    if prompt.show_on_main_popup then
+      return true
+    end
+    return false -- only show if `show_on_main_popup` is true
+  end) or {}
 
   -- Add buttons in sorted order
   for _, tab in ipairs(showOnMain) do

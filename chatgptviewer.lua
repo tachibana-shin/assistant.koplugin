@@ -530,20 +530,25 @@ function ChatGPTViewer:askAnotherQuestion()
   local default_options = {}
   
   -- Load additional prompts from configuration if available
-  local sorted_prompts = Prompts.getSortedCustomPrompts() or {}
+  local sorted_prompts = Prompts.getSortedCustomPrompts(function (prompt)
+    if prompt.visible == false then
+      return false
+    end
+    return true
+  end) or {}
   local merged_prompts = Prompts.getMergedCustomPrompts() or {}
     
-    -- Add buttons in sorted order
-    for _, tab in ipairs(sorted_prompts) do
-      table.insert(default_options, {
-        text = tab.text,
-        callback = function(self)
-          if self.onAskQuestion then
-            self.onAskQuestion(self, merged_prompts[tab.idx]) -- question is table (custom prompt)
-          end
+  -- Add buttons in sorted order
+  for _, tab in ipairs(sorted_prompts) do
+    table.insert(default_options, {
+      text = tab.text,
+      callback = function(self)
+        if self.onAskQuestion then
+          self.onAskQuestion(self, merged_prompts[tab.idx]) -- question is table (custom prompt)
         end
-      })
-    end
+      end
+    })
+  end
 
   -- Prepare buttons
   local buttons = {

@@ -322,7 +322,14 @@ function AssitantDialog:show(highlightedText)
       })  
     end
 
-    local sorted_prompts = Prompts.getSortedCustomPrompts() or {}
+    local sorted_prompts = Prompts.getSortedCustomPrompts(function (prompt)
+      if prompt.visible == false then
+        return false
+      end
+      return true
+    end) or {}
+
+    -- logger.warn("Sorted prompts: ", sorted_prompts)
     -- Add buttons in sorted order
     for _, tab in ipairs(sorted_prompts) do
       table.insert(all_buttons, {
