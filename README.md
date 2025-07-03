@@ -59,30 +59,28 @@ You'll need API keys for the AI service you want to use:
 
 ### 2. Installation:
 
-#### 1. Download the plugin
+#### 2.1. Download the plugin
 
-Choose one of the following methods:
+Choose one of the following:
 
 *   **Stable Release:**
     1.  Download a [release](https://www.github.com/omer-faruq/assistant.koplugin/releases) from GitHub.
     2.  Extract the `assistant.koplugin` directory from the downloaded archive.
 *   **Latest Version (from source):**
     1.  Clone the repository: `git clone https://github.com/omer-faruq/assistant.koplugin.git`
-    2.  Rename the cloned directory from `assistant.koplugin.git` (or similar, depending on your git version) to `assistant.koplugin`.
+    2.  Rename the cloned directory to `assistant.koplugin`.
 
-#### 2. Move `assistant.koplugin` to the platform-specific folder
+#### 2.2. Move `assistant.koplugin` to the platform-specific folder
 
-Copy the `assistant.koplugin` directory (obtained from step 1) to your KOReader plugins directory. The location depends on your device:
+Copy the `assistant.koplugin` directory (obtained from step 2.1) to your KOReader plugins directory. The location depends on your device:
 
 *   **Kobo:** `.adds/koreader/plugins/`
 *   **Kindle:** `koreader/plugins/`
 *   **PocketBook:** `applications/koreader/plugins/`
-*   **Android:** `koreader/plugins/` (usually located in internal storage or SD card, e.g., `/sdcard/koreader/plugins/` or `/storage/emulated/0/koreader/plugins/`)
+*   **Android:** `koreader/plugins/`
 *   **Mac:** `KOReader.app/Contents/koreader/plugins/` (Right-click on `KOReader.app` in Finder, and click **Show Package Contents** to open it as a folder.)
 
-#### 3. Create/modify configuration.lua as needed
-
-After installing the plugin, you need to configure it. This step is detailed in the "Configure the Plugin" section below.
+#### 2.3. Create/modify configuration.lua as needed
 
 ### 3. Configure the Plugin
 
