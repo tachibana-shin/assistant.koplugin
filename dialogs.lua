@@ -373,7 +373,6 @@ function AssitantDialog:show(highlightedText)
     close_callback = function () self:_close() end,
     dismiss_callback = function () self:_close() end
   }
-  self.input_dialog.title_bar.title_multilines = false
   
   UIManager:show(self.input_dialog)
   self.input_dialog:onShowKeyboard() -- Show keyboard immediately
