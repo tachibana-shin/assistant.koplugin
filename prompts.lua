@@ -230,11 +230,10 @@ M.getSortedCustomPrompts = function(filter_func)
     -- Sort the merged prompts by order
     local sorted_prompts = {}
     for prompt_index, prompt in pairs(M.merged_prompts) do
-        if filter_func and filter_func(prompt) ~= true then
-            goto continue
+        -- Only add the prompt if there is no filter, or if the filter function returns true.
+        if not filter_func or filter_func(prompt) == true then
+            table.insert(sorted_prompts, {idx = prompt_index, order = prompt.order or 1000, text = prompt.text or prompt_index})
         end
-        table.insert(sorted_prompts, {idx = prompt_index, order = prompt.order or 1000, text = prompt.text or prompt_index})
-        ::continue::
     end
     table_sort(sorted_prompts, "order")
     
