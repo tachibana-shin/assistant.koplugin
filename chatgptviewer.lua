@@ -101,7 +101,6 @@ local ChatGPTViewer = InputContainer:extend {
   onShowSwitchModel = nil, -- callback when the Switch Model button is pressed
   onAskQuestion = nil, -- callback when the Ask Another Question button is pressed
   input_dialog = nil,
-  showAskQuestion = true,
 }
 
 -- Global variables
@@ -235,7 +234,7 @@ function ChatGPTViewer:init()
   local default_buttons = {}
   
   -- Only add Ask Another Question button if showAskQuestion is true
-  if self.showAskQuestion ~= false then
+  if self.onAskQuestion then
     table.insert(default_buttons, {
       text = _("Ask Another Question"),
       id = "ask_another_question",
@@ -246,15 +245,19 @@ function ChatGPTViewer:init()
   end
 
   -- Add switch model button
-  table.insert(default_buttons, {
-    text = _("Switch Model"),
-    id = "switch_model",
-    callback = function()
-      if self.onShowSwitchModel then
-        self.onShowSwitchModel()
-      end
-    end,
-  })
+  if self.onShowSwitchModel then
+    -- Only add if the callback is defined
+    -- This allows the button to be optional
+    table.insert(default_buttons, {
+      text = _("Switch Model"),
+      id = "switch_model",
+      callback = function()
+        if self.onShowSwitchModel then
+          self.onShowSwitchModel()
+        end
+      end,
+    })
+  end
   
   -- Add the rest of the default buttons
   table.insert(default_buttons, {

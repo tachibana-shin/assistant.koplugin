@@ -174,7 +174,6 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
         ui = ui,
         title = _("Dictionary"),
         text = result_text,
-        showAskQuestion = false,
         onAddToNote = handleAddToNote,
     }
 

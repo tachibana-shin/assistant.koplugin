@@ -67,7 +67,6 @@ local function showRecapDialog(assitant, title, author, progress_percent, messag
       ui = ui,
       title = _("Recap"),
       text = createResultText(answer),
-      showAskQuestion = false
     }
 
     UIManager:show(chatgpt_viewer)
