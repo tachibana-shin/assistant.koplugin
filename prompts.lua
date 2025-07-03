@@ -211,7 +211,7 @@ M.getMergedCustomPrompts = function()
     else
         M.merged_prompts = custom_prompts
     end
-    
+
     return M.merged_prompts
 end
 
@@ -230,7 +230,7 @@ M.getSortedCustomPrompts = function(filter_func)
     -- Sort the merged prompts by order
     local sorted_prompts = {}
     for prompt_index, prompt in pairs(M.merged_prompts) do
-        if filter_func and filter_func(prompt) == false then
+        if filter_func and filter_func(prompt) ~= true then
             goto continue
         end
         table.insert(sorted_prompts, {idx = prompt_index, order = prompt.order or 1000, text = prompt.text or prompt_index})
