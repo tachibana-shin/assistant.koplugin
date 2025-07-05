@@ -58,25 +58,29 @@ You'll need API keys for the AI service you want to use:
 | Ollama                                                            | Local AI models. use placeholder value.<br>(ex: `ollama`) |
 
 ### 2. Installation:
-#### Using The Latest Version:
-1. Clone the repository
-2. Rename the directory as  `assistant.koplugin` and copy it to your KOReader plugins directory:
-   - Kobo: `.adds/koreader/plugins/`
-   - Kindle: `koreader/plugins/`
-   - PocketBook: `applications/koreader/plugins/`
-   - Android: `koreader/plugins/`
-   - Mac: `KOReader.app/Contents/koreader/plugins/` (Right-click on `KOReader.app` in Finder, and click **Show Package Contents** to open it as a folder.)
-3. Create/modify `configuration.lua` as needed.
 
-#### Using A Stable Release:
-1. Download a [release](https://www.github.com/omer-faruq/assistant.koplugin/releases) from GitHub 
-2. Extract `assistant.koplugin` to your KOReader plugins directory:
-   - Kobo: `.adds/koreader/plugins/`
-   - Kindle: `koreader/plugins/`
-   - PocketBook: `applications/koreader/plugins/`
-   - Android: `koreader/plugins/`
-   - Mac: `KOReader.app/Contents/koreader/plugins/` (Right-click on `KOReader.app` in Finder, and click **Show Package Contents** to open it as a folder.)
-3. Create/modify `configuration.lua` as needed.
+#### 2.1. Download the plugin
+
+Choose one of the following:
+
+*   **Stable Release:**
+    1.  Download a [release](https://www.github.com/omer-faruq/assistant.koplugin/releases) from GitHub.
+    2.  Extract the `assistant.koplugin` directory from the downloaded archive.
+*   **Latest Version (from source):**
+    1.  Clone the repository: `git clone https://github.com/omer-faruq/assistant.koplugin.git`
+    2.  Rename the cloned directory to `assistant.koplugin`.
+
+#### 2.2. Move `assistant.koplugin` to the platform-specific folder
+
+Copy the `assistant.koplugin` directory (obtained from step 2.1) to your KOReader plugins directory. The location depends on your device:
+
+*   **Kobo:** `.adds/koreader/plugins/`
+*   **Kindle:** `koreader/plugins/`
+*   **PocketBook:** `applications/koreader/plugins/`
+*   **Android:** `koreader/plugins/`
+*   **Mac:** `KOReader.app/Contents/koreader/plugins/` (Right-click on `KOReader.app` in Finder, and click **Show Package Contents** to open it as a folder.)
+
+#### 2.3. Create/modify configuration.lua as needed
 
 ### 3. Configure the Plugin
 
