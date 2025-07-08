@@ -94,7 +94,7 @@ function Querier:query(message_history, title)
     local infomsg = InfoMessage:new{
       icon = "book.opened",
       text = string.format("%s\n️☁️ %s\n⚡ %s", title or _("Querying AI ..."),
-            self.handler_name, self.provider_settings.model),
+            self.provider_name, self.provider_settings.model),
     }
 
     UIManager:show(infomsg)
