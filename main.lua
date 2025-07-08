@@ -59,20 +59,43 @@ function Assistant:onDispatcherRegisterActions()
     })
   end
   
-  -- Note: Dictionary and custom prompt actions are not registered as they require highlighted text
+  -- Note: AI Dictionary is integrated by overriding the translate() method in ReaderHighlight
+  -- Users can select "Translate" in Long press on text gestures to use AI Dictionary
+  
+  -- Note: Custom prompt actions are not registered as they require highlighted text
   -- They remain available through the highlight dialog and main AI dialog
 end
 
 function Assistant:addToMainMenu(menu_items)
-    menu_items.assitant = {
-        text = "Assitant Provider Switch",
-        -- in which menu this should be appended
+    menu_items.assitant_provider_switch = {
+        text = _("Assistant Provider Switch"),
         sorting_hint = "more_tools",
-        -- a callback when tapping
         callback = function ()
           self:showProviderSwitch()
         end
     }
+
+    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to then
+      menu_items.assitant_dictionary_override = {
+          text = _("Use AI Dictionary for 'Translate'"),
+          checked_func = function()
+              return self.settings:readSetting("ai_dictionary_override") or false
+          end,
+          callback = function()
+              local current_setting = self.settings:readSetting("ai_dictionary_override") or false
+              local new_setting = not current_setting
+              self.settings:saveSetting("ai_dictionary_override", new_setting)
+              self.updated = true
+
+              UIManager:show(InfoMessage:new{
+                  text = new_setting and _("AI Dictionary override enabled.") or _("AI Dictionary override disabled.")
+              })
+
+              self:applyOrRemoveTranslateOverride()
+          end,
+          sorting_hint = "more_tools",
+      }
+    end
 end
 
 function Assistant:showProviderSwitch()
@@ -228,6 +251,9 @@ function Assistant:init()
     logger.warn("Configuration not found. Please set up configuration.lua first.")
     return
   end
+
+  -- Conditionally override translate method based on user setting
+  self:applyOrRemoveTranslateOverride()
 
   -- Load the model provider from settings or default configuration
   self.querier = require("gpt_query"):new()
@@ -421,6 +447,87 @@ function Assistant:onAskAIRecap()
     end)
   end)
   return true
+end
+
+-- Override the translate method in ReaderHighlight to use AI Dictionary
+function Assistant:applyOrRemoveTranslateOverride()
+  if not self.ui.highlight then
+    logger.warn("ReaderHighlight not available, cannot apply or remove override")
+    return
+  end
+
+  local reader_highlight = self.ui.highlight
+
+  -- Store original translate method if not already stored
+  if not reader_highlight._original_translate then
+    reader_highlight._original_translate = reader_highlight.translate
+  end
+
+  local should_override = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and self.settings:readSetting("ai_dictionary_override")
+
+  if should_override then
+    -- Apply the override
+    if reader_highlight.translate == reader_highlight._original_translate then
+      self:overrideTranslateMethod()
+    end
+  else
+    -- Remove the override
+    if reader_highlight.translate ~= reader_highlight._original_translate then
+      reader_highlight.translate = reader_highlight._original_translate
+      logger.info("Assistant: translate method restored to original")
+    end
+  end
+end
+
+function Assistant:overrideTranslateMethod()
+  if not self.ui.highlight then
+    logger.warn("ReaderHighlight not available, cannot override translate method")
+    return
+  end
+  
+  local reader_highlight = self.ui.highlight
+  
+  -- Override translate method with AI Dictionary
+  reader_highlight.translate = function(rh_self, index)
+    if not CONFIGURATION then
+      UIManager:show(InfoMessage:new{
+        icon = "notice-warning",
+        text = _("Configuration not found. Please set up configuration.lua first.")
+      })
+      return
+    end
+    
+
+    
+    NetworkMgr:runWhenOnline(function()
+      local selected_text = nil
+      
+      -- Get selected text from ReaderHighlight
+      if rh_self.selected_text and rh_self.selected_text.text then
+        selected_text = rh_self.selected_text.text
+      end
+      
+      -- If no text is selected, show info message
+      if not selected_text or selected_text == "" then
+        UIManager:show(InfoMessage:new{
+          icon = "notice-warning",
+          text = _("No text selected. Please try selecting text first.")
+        })
+        return
+      end
+      
+      -- Show AI Dictionary dialog
+      local showDictionaryDialog = require("dictdialog")
+      Trapper:wrap(function()
+        showDictionaryDialog(self, selected_text)
+      end)
+      
+      -- Close highlight selection after showing dialog
+      rh_self:onClose()
+    end)
+  end
+  
+  logger.info("Assistant: translate method overridden with AI Dictionary")
 end
 
 return Assistant
