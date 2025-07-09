@@ -148,7 +148,7 @@ local CONFIGURATION = {
         render_markdown = true, -- Set to true to render markdown in the AI responses
         markdown_font_size = 20, -- Default normal text font size of rendered markdown.
         updater_disabled = false, -- Set to true to disable update check.
-        auto_copy_asked_question  = true, --Set true to automatically copy the question you send using "Ask" button
+        auto_copy_asked_question  = false, --Set to true to automatically copy the question you send using "Ask" button
 
         -- These are prompts defined in `prompts.lua`, can be overriden here.
         -- each prompt shown as a button in the main dialog.
