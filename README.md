@@ -154,6 +154,7 @@ local CONFIGURATION = {
         render_markdown = true, -- Set to true to render markdown in the AI responses
         markdown_font_size = 20, -- Default normal text font size of rendered markdown.
         updater_disabled = false, -- Set to true to disable update check.
+        auto_copy_asked_question  = true, --Set true to automatically copy the question you send using "Ask" button
 
         -- AI Recap configuration (optional)
         recap_config = {
@@ -199,7 +200,7 @@ return CONFIGURATION
 
 #### Using AI Dictionary with Gestures
 
-You can set up a long-press gesture to open the AI Dictionary instantly, bypassing the highlight menu. This is done by overriding KOReader's built-in "Translate" action.
+You can set up a long-press gesture to open the AI Dictionary instantly, bypassing the highlight menu. This is done by overriding KOReader's built-in "Translate" action. (thanks to [Ilia Reutov](https://github.com/Agnesor))
 
 1.  **Enable the Override**:
     *   Navigate to the top menu `Tools (🔧) > More tools`.
@@ -215,6 +216,7 @@ Now, when you long-press a word, the AI Dictionary will open directly. To use th
 ### Tips
 
 - Use **Long-tap** (tap & hold for 3+ secs) on a single word to popup the highlight menu
+- Use **Select** button on the highlight menu to use text from multiple pages
 - Draw a multiswipe to **CLOSE** the dialog (eg: swipe ⮠  or ⮡  or circle ↺)
 - Keep highlights reasonably sized for best results
 - Use **"Ask"** for specific questions about the text

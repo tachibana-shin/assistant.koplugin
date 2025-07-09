@@ -574,6 +574,11 @@ function ChatGPTViewer:askAnotherQuestion()
           })
           return
         end
+        if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.auto_copy_asked_question then
+            if Device:hasClipboard() then
+                Device.input.setClipboardText(question)
+            end
+        end
         UIManager:close(self.input_dialog)
         self.input_dialog = nil
         

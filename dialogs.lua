@@ -6,6 +6,7 @@ local InfoMessage = require("ui/widget/infomessage")
 local _ = require("gettext")
 local Trapper = require("ui/trapper")
 local Prompts = require("prompts")
+local Device = require("device")
 
 -- main dialog class
 local AssitantDialog = {
@@ -277,6 +278,11 @@ function AssitantDialog:show(highlightedText)
             timeout = 3
           })
           return
+        end
+        if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.auto_copy_asked_question then
+            if Device:hasClipboard() then
+                Device.input.setClipboardText(user_question)
+            end
         end
         self:_close()
         self:_prepareMessageHistoryForUserQuery(message_history, highlightedText, user_question)
