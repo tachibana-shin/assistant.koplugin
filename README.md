@@ -31,6 +31,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 - **"Add to Note" and "Copy to Clipboard"**: Easily add whole dialog as a note to highlighted text or copy to use for later.
 - **Quick Access** : Ability to access some of custom prompts directly from the main highlight menu (Configurable).
 - **Gesture-Enabled Prompts**: You can assign gestures to **Ask** and **Recap**. This enables the user to ask anything about the book without needing to highlight text first. It also enables triggering the recap at any time. Additionally, you can access these prompts through a [quick menu](https://koreader.rocks/user_guide/#L1-qmandprofiles) as well. (thanks to [Jayphen](https://github.com/Jayphen))
+- **AI Dictionary Gesture**: Override the default "Translate" long-press gesture to use the AI Dictionary directly for instant definitions and context.
 
 ## Basic Requirements
 
@@ -185,6 +186,8 @@ return CONFIGURATION
 
 ### 4. Using the Plugin
 
+#### Standard Usage
+
 1. Open any book in KOReader
 2. Highlight text you want to analyze
 3. Tap the highlight and select "Assistant"
@@ -193,6 +196,21 @@ return CONFIGURATION
    - **Custom Actions**: Use any prompts you've configured
        - **Translate**: Convert text to your configured language
 5. **Additional Questions**: Ask additional questions about the highlighted text using your custom prompts
+
+#### Using AI Dictionary with Gestures
+
+You can set up a long-press gesture to open the AI Dictionary instantly, bypassing the highlight menu. This is done by overriding KOReader's built-in "Translate" action.
+
+1.  **Enable the Override**:
+    *   Navigate to the top menu `Tools (🔧) > More tools`.
+    *   Find and enable **Use AI Dictionary for 'Translate'**.
+
+2.  **Set the Gesture**:
+    *   Go to KOReader's main menu -> `Taps and gestures` -> `Gesture manager`.
+    *   Select `Long-press on text`.
+    *   Choose **"Translate"** from the list of actions.
+
+Now, when you long-press a word, the AI Dictionary will open directly. To use the standard translation feature again, simply uncheck the override option in the Assistant plugin's menu.
 
 ### Tips
 
