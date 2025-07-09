@@ -81,7 +81,7 @@ Copy the `assistant.koplugin` directory (obtained from step 2.1) to your KOReade
 *   **Kindle:** `koreader/plugins/`
 *   **PocketBook:** `applications/koreader/plugins/`
 *   **Android:** `koreader/plugins/`
-*   **Mac:** `KOReader.app/Contents/koreader/plugins/` (Right-click on `KOReader.app` in Finder, and click **Show Package Contents** to open it as a folder.)
+*   **Mac:** `~/Library/Application Support/koreader/plugins/`
 
 #### 2.3. Create/modify configuration.lua as needed
 
