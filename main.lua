@@ -12,6 +12,7 @@ local RadioButtonWidget = require("ui/widget/radiobuttonwidget")
 local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
 local _ = require("gettext")
+local FrontendUtil = require("util")
 
 local AssistantDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
@@ -77,7 +78,7 @@ function Assistant:addToMainMenu(menu_items)
 
     if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to then
       menu_items.assitant_dictionary_override = {
-          text = _("Use AI Dictionary for 'Translate'"),
+          text = _("Use AI Assistant for 'Translate'"),
           checked_func = function()
               return self.settings:readSetting("ai_dictionary_override") or false
           end,
@@ -88,7 +89,7 @@ function Assistant:addToMainMenu(menu_items)
               self.updated = true
 
               UIManager:show(InfoMessage:new{
-                  text = new_setting and _("AI Dictionary override enabled.") or _("AI Dictionary override disabled.")
+                  text = new_setting and _("AI Assistant override enabled.") or _("AI Assistant override disabled.")
               })
 
               self:applyOrRemoveTranslateOverride()
@@ -449,7 +450,7 @@ function Assistant:onAskAIRecap()
   return true
 end
 
--- Override the translate method in ReaderHighlight to use AI Dictionary
+-- Override the translate method in ReaderHighlight to use AI Assistant
 function Assistant:applyOrRemoveTranslateOverride()
   if not self.ui.highlight then
     logger.warn("ReaderHighlight not available, cannot apply or remove override")
@@ -487,7 +488,7 @@ function Assistant:overrideTranslateMethod()
   
   local reader_highlight = self.ui.highlight
   
-  -- Override translate method with AI Dictionary
+  -- Override translate method with AI Assistant
   reader_highlight.translate = function(rh_self, index)
     if not CONFIGURATION then
       UIManager:show(InfoMessage:new{
@@ -516,11 +517,22 @@ function Assistant:overrideTranslateMethod()
         return
       end
       
-      -- Show AI Dictionary dialog
-      local showDictionaryDialog = require("dictdialog")
-      Trapper:wrap(function()
-        showDictionaryDialog(self, selected_text)
-      end)
+      -- If selected text has 3 or more words, show translate dialog
+      if #(FrontendUtil.splitToWords(selected_text)) >= 3 then
+        NetworkMgr:runWhenOnline(function()
+          Trapper:wrap(function()
+            self.assitant_dialog:showCustomPrompt(selected_text, "translate")
+          end)
+        end)
+      else
+        -- Show AI Dictionary dialog
+        local showDictionaryDialog = require("dictdialog")
+        NetworkMgr:runWhenOnline(function()
+          Trapper:wrap(function()
+            showDictionaryDialog(self, selected_text)
+          end)
+        end)
+      end
       
       -- Close highlight selection after showing dialog
       rh_self:onClose()
