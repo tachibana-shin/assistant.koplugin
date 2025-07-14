@@ -470,7 +470,6 @@ function Assistant:applyOrRemoveTranslateOverride()
     -- Apply the override
     if Translator.showTranslation == Translator._original_showTranslation then
       self:_overrideTranslateMethod()
-      logger.info("Assistant: translate method overridden with AI Assistant")
     end
   else
     -- Remove the override
@@ -494,10 +493,10 @@ function Assistant:_overrideTranslateMethod()
       })
       return
     end
-    
+
+    local words = FrontendUtil.splitToWords(text)
     NetworkMgr:runWhenOnline(function()
       Trapper:wrap(function()
-        local words = FrontendUtil.splitToWords(text)
         -- splitToWords result like this: { "The", " ", "good", " ", "news" }
         if #words > 5 then
             self.assitant_dialog:showCustomPrompt(text, "translate")
@@ -509,7 +508,7 @@ function Assistant:_overrideTranslateMethod()
       end)
     end)
   end
-  logger.info("Assistant: translate method overridden with AI Dictionary")
+  logger.info("Assistant: translate method overridden with AI Assistant")
 end
 
 return Assistant
