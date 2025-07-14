@@ -76,23 +76,21 @@ function Assistant:addToMainMenu(menu_items)
         end
     }
 
-    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to then
-      menu_items.assitant_dictionary_override = {
+    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language then
+      menu_items.assitant_translate_override = {
           text = _("Use AI Assistant for 'Translate'"),
           checked_func = function()
-              return self.settings:readSetting("ai_dictionary_override") or false
+              return self.settings:readSetting("ai_translate_override") or false
           end,
           callback = function()
-              local current_setting = self.settings:readSetting("ai_dictionary_override") or false
+              local current_setting = self.settings:readSetting("ai_translate_override") or false
               local new_setting = not current_setting
-              self.settings:saveSetting("ai_dictionary_override", new_setting)
+              self.settings:saveSetting("ai_translate_override", new_setting)
               self.updated = true
-
+              self:applyOrRemoveTranslateOverride()
               UIManager:show(InfoMessage:new{
                   text = new_setting and _("AI Assistant override enabled.") or _("AI Assistant override disabled.")
               })
-
-              self:applyOrRemoveTranslateOverride()
           end,
           sorting_hint = "more_tools",
       }
@@ -452,19 +450,15 @@ end
 
 -- Override the translate method in ReaderHighlight to use AI Assistant
 function Assistant:applyOrRemoveTranslateOverride()
-  if not self.ui.highlight then
-    logger.warn("ReaderHighlight not available, cannot apply or remove override")
-    return
-  end
 
   local Translator = require("ui/translator")
-
   -- Store original translate method if not already stored
   if not Translator._original_showTranslation then
     Translator._original_showTranslation = Translator.showTranslation
   end
 
-  local should_override = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and self.settings:readSetting("ai_dictionary_override")
+  local should_override = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language and
+      self.settings:readSetting("ai_translate_override")
 
   if should_override then
     -- Apply the override
