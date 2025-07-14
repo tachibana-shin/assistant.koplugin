@@ -12,6 +12,7 @@ local RadioButtonWidget = require("ui/widget/radiobuttonwidget")
 local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
 local _ = require("gettext")
+local FrontendUtil = require("util")
 
 local AssistantDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
@@ -75,23 +76,21 @@ function Assistant:addToMainMenu(menu_items)
         end
     }
 
-    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to then
-      menu_items.assitant_dictionary_override = {
-          text = _("Use AI Dictionary for 'Translate'"),
+    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language then
+      menu_items.assitant_translate_override = {
+          text = _("Use AI Assistant for 'Translate'"),
           checked_func = function()
-              return self.settings:readSetting("ai_dictionary_override") or false
+              return self.settings:readSetting("ai_translate_override") or false
           end,
           callback = function()
-              local current_setting = self.settings:readSetting("ai_dictionary_override") or false
+              local current_setting = self.settings:readSetting("ai_translate_override") or false
               local new_setting = not current_setting
-              self.settings:saveSetting("ai_dictionary_override", new_setting)
+              self.settings:saveSetting("ai_translate_override", new_setting)
               self.updated = true
-
-              UIManager:show(InfoMessage:new{
-                  text = new_setting and _("AI Dictionary override enabled.") or _("AI Dictionary override disabled.")
-              })
-
               self:applyOrRemoveTranslateOverride()
+              UIManager:show(InfoMessage:new{
+                  text = new_setting and _("AI Assistant override enabled.") or _("AI Assistant override disabled.")
+              })
           end,
           sorting_hint = "more_tools",
       }
@@ -449,46 +448,38 @@ function Assistant:onAskAIRecap()
   return true
 end
 
--- Override the translate method in ReaderHighlight to use AI Dictionary
+-- Override the translate method in ReaderHighlight to use AI Assistant
 function Assistant:applyOrRemoveTranslateOverride()
-  if not self.ui.highlight then
-    logger.warn("ReaderHighlight not available, cannot apply or remove override")
-    return
-  end
 
-  local reader_highlight = self.ui.highlight
-
+  local Translator = require("ui/translator")
   -- Store original translate method if not already stored
-  if not reader_highlight._original_translate then
-    reader_highlight._original_translate = reader_highlight.translate
+  if not Translator._original_showTranslation then
+    Translator._original_showTranslation = Translator.showTranslation
   end
 
-  local should_override = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and self.settings:readSetting("ai_dictionary_override")
+  local should_override = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language and
+      self.settings:readSetting("ai_translate_override")
 
   if should_override then
     -- Apply the override
-    if reader_highlight.translate == reader_highlight._original_translate then
-      self:overrideTranslateMethod()
+    if Translator.showTranslation == Translator._original_showTranslation then
+      self:_overrideTranslateMethod()
     end
   else
     -- Remove the override
-    if reader_highlight.translate ~= reader_highlight._original_translate then
-      reader_highlight.translate = reader_highlight._original_translate
-      logger.info("Assistant: translate method restored to original")
+    if Translator.showTranslation ~= Translator._original_showTranslation then
+      -- Restore the original method
+      Translator.showTranslation = Translator._original_showTranslation
+      logger.info("Assistant: translate method restored")
     end
   end
 end
 
-function Assistant:overrideTranslateMethod()
-  if not self.ui.highlight then
-    logger.warn("ReaderHighlight not available, cannot override translate method")
-    return
-  end
+function Assistant:_overrideTranslateMethod()
   
-  local reader_highlight = self.ui.highlight
-  
-  -- Override translate method with AI Dictionary
-  reader_highlight.translate = function(rh_self, index)
+  local Translator = require("ui/translator")
+  -- Override translate method with AI Assistant
+  Translator.showTranslation = function(ts_self, text, detailed_view, source_lang, target_lang, from_highlight, index)
     if not CONFIGURATION then
       UIManager:show(InfoMessage:new{
         icon = "notice-warning",
@@ -496,38 +487,22 @@ function Assistant:overrideTranslateMethod()
       })
       return
     end
-    
 
-    
+    local words = FrontendUtil.splitToWords(text)
     NetworkMgr:runWhenOnline(function()
-      local selected_text = nil
-      
-      -- Get selected text from ReaderHighlight
-      if rh_self.selected_text and rh_self.selected_text.text then
-        selected_text = rh_self.selected_text.text
-      end
-      
-      -- If no text is selected, show info message
-      if not selected_text or selected_text == "" then
-        UIManager:show(InfoMessage:new{
-          icon = "notice-warning",
-          text = _("No text selected. Please try selecting text first.")
-        })
-        return
-      end
-      
-      -- Show AI Dictionary dialog
-      local showDictionaryDialog = require("dictdialog")
       Trapper:wrap(function()
-        showDictionaryDialog(self, selected_text)
+        -- splitToWords result like this: { "The", " ", "good", " ", "news" }
+        if #words > 5 then
+            self.assitant_dialog:showCustomPrompt(text, "translate")
+        else
+          -- Show AI Dictionary dialog
+          local showDictionaryDialog = require("dictdialog")
+          showDictionaryDialog(self, text)
+        end
       end)
-      
-      -- Close highlight selection after showing dialog
-      rh_self:onClose()
     end)
   end
-  
-  logger.info("Assistant: translate method overridden with AI Dictionary")
+  logger.info("Assistant: translate method overridden with AI Assistant")
 end
 
 return Assistant

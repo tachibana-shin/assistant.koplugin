@@ -133,20 +133,21 @@ Answer this whole response in {language} language. Only show the replies, do not
     dict = {
         system_prompt = "You are a dictionary with high quality detail vocabulary definitions and examples. Always respond in Markdown format.",
         user_prompt = [[
-"Explain vocabulary or content with the focus word with following information:"
-"- *Conjugation*. Vocabulary in original conjugation if its different than the form in the sentence."
-"- *Synonyms*. 3 synonyms for the word if available."
-"- *Meaning*. Meaning of the expression without reference to context. Answer this part in {language} language."
-"- *Translate*. Translation of the the whole sentence with word. Highlight in bold the word that is being translated. Answer this part in {language} language."
-"- *Explanation*. Explanation of the content according to context. Answer this part in {language} language."
-"- *Example*. Another example sentence. Answer this part in the original language of the sentence."
-"- *Origin*. Origin of that word, tracing it back to its ancient roots. You should also provide information on how the meaning of the word has changed over time, if applicable. Answer this part in {language} language." ..
-"Only show the requested replies, do not give a description, answer in markdown list format."
+"Explain vocabulary or content with the focus text with following information:"
+"- *Conjugation*: Vocabulary in original conjugation if its different than the form in the sentence."
+"- *Synonyms*: 3 synonyms for the word if available."
+"- *Meaning*: Meaning of the expression without reference to context. Answer this part in {language} language."
+"- *Translation*: Translation of the the whole sentence with word. Highlight in bold the word that is being translated. Answer this part in {language} language."
+"- *Explanation*: Explanation of the content according to context. Answer this part in {language} language."
+"- *Example*: Another example sentence. Answer this part in the original language of the sentence."
+"- *Word Origin*: Origin of that word, tracing it back to its ancient roots. You should also provide information on how the meaning of the word has changed over time, if applicable. Answer this part in {language} language." ..
+
+"Only show the requested replies, do not give a description."
 
 [CONTEXT]
 {context}
 
-[FOCUS WORD]
+[FOCUS TEXT]
 {word}]]
     }
 }

@@ -398,6 +398,8 @@ function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
   local prompt_config = Prompts.getMergedCustomPrompts()[prompt_index]
 
   local title = prompt_config.text or prompt_index
+
+  highlightedText = highlightedText:gsub("\n", "\n\n") -- ensure newlines are doubled (LLM presumes markdown input)
   local user_content = self:_formatUserPrompt(prompt_config.user_prompt, highlightedText)
   local message_history = {
     {
