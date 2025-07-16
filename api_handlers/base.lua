@@ -39,14 +39,13 @@ function BaseHandler:query(message_history, provider_setting)
 end
 
 --- Post URL content with optional headers and body with timeout setting
---- func code references frontend/ui/wikipedia.lua `getURLContent`
---- TODO: to support user abort interruption.
----@param url any
----@param headers any
----@param body any
----@param timeout any blocking timtout
----@param maxtime any total response finished max time
----@return boolean success, string status_code, string content
+--- code references: KOReader/frontend/ui/wikipedia.lua `getURLContent`
+--- @param url any
+--- @param headers any
+--- @param body any
+--- @param timeout any blocking timtout
+--- @param maxtime any total response finished max time
+--- @return boolean success, string status_code, string content
 local function postURLContent(url, headers, body, timeout, maxtime)
     if string.sub(url, 1, 8) == "https://" then
         https.cert_verify = false  -- disable CA verify
