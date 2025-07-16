@@ -47,4 +47,4 @@ jobs:
           # Mark this release as a pre-release. Set to 'false' to create a full release.
           prerelease: true
           # The files to upload as release assets.
-          files: assistant.koplugin-${GITHUB_REF_NAME#v}.zip
+          files: assistant.koplugin-${{ github.ref_name }}
