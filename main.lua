@@ -452,57 +452,50 @@ end
 function Assistant:applyOrRemoveTranslateOverride()
 
   local Translator = require("ui/translator")
-  -- Store original translate method if not already stored
-  if not Translator._original_showTranslation then
-    Translator._original_showTranslation = Translator.showTranslation
-  end
 
   local should_override = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language and
       self.settings:readSetting("ai_translate_override")
 
   if should_override then
-    -- Apply the override
-    if Translator.showTranslation == Translator._original_showTranslation then
-      self:_overrideTranslateMethod()
+    -- Store original translate method if not already stored
+    if not Translator._original_showTranslation then
+      Translator._original_showTranslation = Translator.showTranslation
     end
+
+    -- Override translate method with AI Assistant
+    Translator.showTranslation = function(ts_self, text, detailed_view, source_lang, target_lang, from_highlight, index)
+      if not CONFIGURATION then
+        UIManager:show(InfoMessage:new{
+          icon = "notice-warning",
+          text = _("Configuration not found. Please set up configuration.lua first.")
+        })
+        return
+      end
+
+      local words = FrontendUtil.splitToWords(text)
+      NetworkMgr:runWhenOnline(function()
+        Trapper:wrap(function()
+          -- splitToWords result like this: { "The", " ", "good", " ", "news" }
+          if #words > 5 then
+              self.assitant_dialog:showCustomPrompt(text, "translate")
+          else
+            -- Show AI Dictionary dialog
+            local showDictionaryDialog = require("dictdialog")
+            showDictionaryDialog(self, text)
+          end
+        end)
+      end)
+    end
+    logger.info("Assistant: translate method overridden with AI Assistant")
   else
-    -- Remove the override
-    if Translator.showTranslation ~= Translator._original_showTranslation then
+    -- Restore the override
+    if Translator._original_showTranslation then
       -- Restore the original method
       Translator.showTranslation = Translator._original_showTranslation
+      Translator._original_showTranslation = nil
       logger.info("Assistant: translate method restored")
     end
   end
-end
-
-function Assistant:_overrideTranslateMethod()
-  
-  local Translator = require("ui/translator")
-  -- Override translate method with AI Assistant
-  Translator.showTranslation = function(ts_self, text, detailed_view, source_lang, target_lang, from_highlight, index)
-    if not CONFIGURATION then
-      UIManager:show(InfoMessage:new{
-        icon = "notice-warning",
-        text = _("Configuration not found. Please set up configuration.lua first.")
-      })
-      return
-    end
-
-    local words = FrontendUtil.splitToWords(text)
-    NetworkMgr:runWhenOnline(function()
-      Trapper:wrap(function()
-        -- splitToWords result like this: { "The", " ", "good", " ", "news" }
-        if #words > 5 then
-            self.assitant_dialog:showCustomPrompt(text, "translate")
-        else
-          -- Show AI Dictionary dialog
-          local showDictionaryDialog = require("dictdialog")
-          showDictionaryDialog(self, text)
-        end
-      end)
-    end)
-  end
-  logger.info("Assistant: translate method overridden with AI Assistant")
 end
 
 return Assistant
