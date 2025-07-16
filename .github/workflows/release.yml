@@ -31,14 +31,14 @@ jobs:
       # The '--prefix' option ensures all files are inside a top-level directory named 'assistant.koplugin/'.
       - name: Archive project source
         run: |
-          git archive -o assistant.koplugin-${GITHUB_REF_NAME#v}.zip --prefix=assistant.koplugin/ ${GITHUB_REF_NAME} \
+          git archive -o assistant.koplugin-${GITHUB_REF_NAME}.zip --prefix=assistant.koplugin/ ${GITHUB_REF_NAME} \
             ":(exclude).github" \
             ":(exclude).gitignore" \
             ":(exclude).all-contributorsrc"
       
       # Step 2.1: List files in the created zip file for debugging purposes
       - name: List zip file contents
-        run: unzip -l assistant.koplugin-${GITHUB_REF_NAME#v}.zip
+        run: unzip -l assistant.koplugin-${GITHUB_REF_NAME}.zip
 
       # Step 3: Create a GitHub Release and upload the zip file as a release asset.
       - name: Create Release and Upload Asset
@@ -47,4 +47,4 @@ jobs:
           # Mark this release as a pre-release. Set to 'false' to create a full release.
           prerelease: true
           # The files to upload as release assets.
-          files: assistant.koplugin-${{ github.ref_name }}
+          files: assistant.koplugin-${{ github.ref_name }}.zip
