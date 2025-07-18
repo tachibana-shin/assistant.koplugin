@@ -66,12 +66,11 @@ Choose one of the following:
 
 *   **Stable Release:**
     1.  Download a [release](https://www.github.com/omer-faruq/assistant.koplugin/releases) from GitHub.
+        - Choose the `assistant.koplugin-VERSION.zip` file, not the Source code.
     2.  Extract the `assistant.koplugin` directory from the downloaded archive.
-*   **Latest Version (from source):**
-    1.  Clone the repository, via either: 
-        * first "<> Code" , then  "Download ZIP" buttons
-        * `git clone https://github.com/omer-faruq/assistant.koplugin.git`
-    2.  Rename the cloned directory to `assistant.koplugin`.
+*   **Developing Version:**
+    1.  Download the [source code](https://github.com/omer-faruq/assistant.koplugin/archive/refs/heads/main.zip) as a zip file.
+    2.  Extract, and rename the directory from `assistant.koplugin-main` to `assistant.koplugin`.
 
 #### 2.2. Move `assistant.koplugin` to the platform-specific folder
 
