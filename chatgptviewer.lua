@@ -35,7 +35,7 @@ local util = require("util")
 local _ = require("gettext")
 local InfoMessage = require("ui/widget/infomessage")
 local Screen = Device.screen
-local MD = require("apps/filemanager/lib/md")
+local MD = require("mdparser")
 
 local Prompts = require("prompts")
 
@@ -49,18 +49,42 @@ local VIEWER_CSS = [[
 
 body {
     margin: 0;
-    line-height: 1.3;
-    text-align: justify;
+    line-height: 1.25;
     padding: 0;
 }
 
-blockquote, dd {
+blockquote, dd, pre {
     margin: 0 1em;
 }
 
 ol, ul, menu {
     margin: 0;
-    padding-left: 1.7em;
+    padding-left: 1.5em;
+}
+
+ul {
+    list-style-type: square;
+}
+
+ul ul {
+    list-style-type: circle;
+}
+
+ul ul ul {
+    list-style-type: disc;
+}
+
+table {
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.8em;
+}
+
+table td, table th {
+    border: 1px solid black;
+    padding: 0;
 }
 ]]
 
