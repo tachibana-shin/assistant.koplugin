@@ -1,3 +1,4 @@
 /configuration.lua
 /apikeys.lua
+lib/*.so.*
 .DS_Store
