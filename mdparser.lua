@@ -5,26 +5,30 @@ local Parser = nil
 
 local logger = require("logger")
 local DataStorage = require("datastorage")
-local lfs = require("libs/libkoreader-lfs")
 local plugin_lib_dir = DataStorage:getDataDir() .. "/plugins/assistant.koplugin/lib"
 local ffi = require("ffi")
 local LibHoedown = nil
 
 -- check if hoedown is natively available
+-- mostly it's unavailable on KOReader, but available on some other platforms
 local ok, _lib = pcall(ffi.loadlib, "hoedown", 3)
 if ok then Libhoedown = _lib end 
 
 -- check if hoedown is available in the plugin directory
+-- in order to use native hoedown, a "lib" directory containing "libhoedown.so.3" and resty-hoedown 
+-- should be present in the plugin directory, see documents for more details
 if not LibHoedown then
     local ok, _lib = pcall(ffi.load, plugin_lib_dir .. "/libhoedown.so.3")
     if ok then LibHoedown = _lib end
 end
 
 if LibHoedown then
+    -- hook the C binding of hoedown to the resty.hoedown library
     package.preload["resty.hoedown.library"] = function()
         return LibHoedown
     end
 
+    -- load the resty.hoedown library from the plugin's libs directory
     package.path = string.format("%s;%s/?.lua", package.path, plugin_lib_dir)
     local ok, hoedownMD = pcall(require, "resty.hoedown")
     if ok then
@@ -42,8 +46,8 @@ if LibHoedown then
     end
 end
 
+-- fallback to pure Lua implementation
 if not Parser then
-    -- fallback to pure Lua implementation
     Parser = require("apps/filemanager/lib/md")
     logger.info("Using markdown.lua (pure Lua) for markdown parsing")
 end
