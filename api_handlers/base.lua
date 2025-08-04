@@ -12,7 +12,7 @@ local BaseHandler = {
 }
 
 BaseHandler.CODE_CANCELLED = "USER_CANCELED"
-BaseHandler.CODE_NETWORK_UNAVAILABLE = "NETWORK_UNAVAILABLE"
+BaseHandler.CODE_NETWORK_ERROR = "NETWORK_ERROR"
 
 function BaseHandler:new(o)
     o = o or {}
@@ -60,20 +60,25 @@ local function postURLContent(url, headers, body, timeout, maxtime)
         source = ltn12.source.string(body or ""),
         sink = maxtime and socketutil.table_sink(sink) or ltn12.sink.table(sink),
     }
-    local code, headers, status = socket.skip(1, http.request(request)) -- receiving the 1st byte
+    local code, headers, status = socket.skip(1, http.request(request)) -- skip the first return value, not needed
     socketutil:reset_timeout()
-    local content = table.concat(sink)  -- empty or content accumulated till now
+    local content = table.concat(sink)  -- response body
 
+    -- check for timeouts
     if code == socketutil.TIMEOUT_CODE or
        code == socketutil.SSL_HANDSHAKE_CODE or
        code == socketutil.SINK_TIMEOUT_CODE then
         logger.warn("request interrupted/timed out:", code)
         return false, code, "Request interrupted/timed out"
     end
+
+    -- check for network errors
     if headers == nil then
         logger.warn("No HTTP headers:", status or code or "network unreachable")
-        return false, BaseHandler.CODE_NETWORK_UNAVAILABLE, "Network or remote server unavailable"
+        return false, BaseHandler.CODE_NETWORK_ERROR, "Network Error: " .. status or code
     end
+
+    -- check response length
     if headers and headers["content-length"] then
         -- Check we really got the announced content size
         local content_length = tonumber(headers["content-length"])
