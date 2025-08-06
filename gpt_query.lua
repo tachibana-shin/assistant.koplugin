@@ -1,12 +1,19 @@
 --- Querier module for handling AI queries with dynamic provider loading
 local _ = require("gettext")
 local InfoMessage = require("ui/widget/infomessage")
+local InputText = require("ui/widget/inputtext")
 local UIManager = require("ui/uimanager")
 local logger = require("logger")
 local json = require("json")
 local ffi = require("ffi")
 local ffiutil = require("ffi/util")
-local C = ffi.C
+
+-- InputText class for handling streaming input text
+-- ignores tap events
+local StreamInputText = InputText:extend{}
+function StreamInputText:init() InputText.init(self) end
+function StreamInputText:onTapTextBox(arg, ges) return true end
+
 local Querier = {
     handler = nil,
     handler_name = nil,
@@ -114,12 +121,15 @@ function Querier:query(message_history, title)
         self:reset_interrupt()  -- Reset interrupt state before starting a stream
         local InputDialog = require("ui/widget/inputdialog")
         local streamDialog = InputDialog:new{
-            -- readonly = true,
+            inputtext_class = StreamInputText,
+            readonly = false,
             skip_first_show_keyboard = true,
             keyboard_visible = false,
             fullscreen = false,
             allow_newline = true,
             add_nav_bar = false,
+            cursor_at_end = true,
+            add_scroll_buttons = true,
             deny_keyboard_hiding = true,
             use_available_height = true,
             condensed   = true,
@@ -139,6 +149,10 @@ function Querier:query(message_history, title)
                 }
             }
         }
+        streamDialog.onShowKeyboard = function()
+            -- Prevent the dialog from closing on button press
+            return
+        end
         UIManager:show(streamDialog)
         streamDialog:addTextToInput(infomsg.text .. "\n\n")
         res = self:processStream(res, function (content) -- replace with result from stream
@@ -171,7 +185,7 @@ function Querier:processStream(bgQuery, trunk_callback)
         return nil,  "Failed to start subprocess for request"
     end
 
-    logger.info("Background query process started with PID:", pid)
+    -- logger.info("Background query process started with PID:", pid)
     local _coroutine = coroutine.running()  
   
     self.interrupt_stream = function()  
@@ -180,10 +194,10 @@ function Querier:processStream(bgQuery, trunk_callback)
   
     local collect_interval_sec = 5 -- collect cancelled cmd every 5 second, no hurry
     local check_interval_sec = 0.125 -- Initial check interval: 125ms  
-    local chunksize = 1024 * 4
-    local completed = false  
-    local buffer = ffi.new('char[?]', chunksize, {0})
-    local result_buffer = {}  -- 
+    local chunksize = 1024 * 4 -- 4KB buffer size for reading data
+    local completed = false     -- Flag to indicate if the reading is completed
+    local buffer = ffi.new('char[?]', chunksize, {0}) -- Buffer for reading data
+    local result_buffer = {}  -- Buffer for storing results
     local partial_data = ""   -- Buffer for incomplete line data
 
     while true do  
@@ -206,10 +220,10 @@ function Querier:processStream(bgQuery, trunk_callback)
         local readsize = ffiutil.getNonBlockingReadSize(parent_read_fd) 
         -- logger.info("Read size:", readsize)
         if readsize > 0 then
-            local bytes_read = tonumber(C.read(parent_read_fd, ffi.cast('void*', buffer), chunksize))
+            local bytes_read = tonumber(ffi.C.read(parent_read_fd, ffi.cast('void*', buffer), chunksize))
             if bytes_read < 0 then
                 local err = ffi.errno()
-                logger.warn("readAllFromFD() error: " .. ffi.string(C.strerror(err)))
+                logger.warn("readAllFromFD() error: " .. ffi.string(ffi.C.strerror(err)))
                 break
             elseif bytes_read == 0 then -- EOF, no more data to read
                 completed = true
