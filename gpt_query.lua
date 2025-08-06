@@ -3,6 +3,7 @@ local _ = require("gettext")
 local InfoMessage = require("ui/widget/infomessage")
 local InputText = require("ui/widget/inputtext")
 local UIManager = require("ui/uimanager")
+local Font = require("ui/font")
 local logger = require("logger")
 local json = require("json")
 local ffi = require("ffi")
@@ -121,6 +122,7 @@ function Querier:query(message_history, title)
         self:reset_interrupt()  -- Reset interrupt state before starting a stream
         local InputDialog = require("ui/widget/inputdialog")
         local streamDialog = InputDialog:new{
+            face = Font:getFace("smallffont"),
             inputtext_class = StreamInputText,
             readonly = false,
             skip_first_show_keyboard = true,

@@ -9,7 +9,6 @@ local Trapper = require("ui/trapper")
 
 local ffi = require("ffi")
 local ffiutil = require("ffi/util")
-local C = ffi.C
 
 local BaseHandler = {
     trap_widget = nil,  -- widget to trap the request
@@ -120,23 +119,14 @@ end
 local function wrap_fd(fd)
     local file_object = {}
     function file_object:write(chunk)
-        if chunk and #chunk > 0 then
-            local written = ffi.C.write(fd, chunk, #chunk)
-            if written < 0 then
-                local err = ffi.errno()
-                logger.warn("wrap_fd write error:", err, ffi.string(ffi.C.strerror(err)))
-                return nil, ffi.string(ffi.C.strerror(err)), err
-            elseif written ~= #chunk then
-                logger.warn("wrap_fd incomplete write:", written, #chunk)
-                return nil, "incomplete write"
-            end
-        end
+        ffiutil.writeToFD(fd, chunk)
         return self
     end
 
     function file_object:close()
-        -- a null close op, we need to use the fd, don't close it
-        return
+        -- null close op,
+        -- we need to use the fd later, then close manually
+        return true
     end
 
     return file_object
