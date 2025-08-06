@@ -31,7 +31,7 @@ function groqHandler:query(message_history, groq_settings)
     if groq_settings.additional_parameters then
         --- available req body args: https://console.groq.com/docs/api-reference
         for _, option in ipairs({"temperature", "top_p", "max_completion_tokens", "max_tokens", 
-                                    "reasoning_effort", "reasoning_format", "search_settings", }) do
+                                    "reasoning_effort", "reasoning_format", "search_settings", "stream"}) do
             if groq_settings.additional_parameters[option] then
                 requestBodyTable[option] = groq_settings.additional_parameters[option]
             end
@@ -44,6 +44,12 @@ function groqHandler:query(message_history, groq_settings)
         ["Authorization"] = "Bearer " .. (groq_settings.api_key)
     }
 
+    if requestBodyTable.stream then
+        -- For streaming responses, we need to handle the response differently
+        headers["Accept"] = "text/event-stream"
+        return self:backgroudRequest(groq_settings.base_url, headers, requestBody)
+    end
+    
     local status, code, response = self:makeRequest(groq_settings.base_url, headers, requestBody)
     if status then
         local success, responseData = pcall(json.decode, response)

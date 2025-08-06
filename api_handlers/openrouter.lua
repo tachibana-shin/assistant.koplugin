@@ -10,7 +10,8 @@ function OpenRouterProvider:query(message_history, openrouter_settings)
         model = openrouter_settings.model,
         messages = message_history,
         max_tokens = openrouter_settings.max_tokens,
-        temperature = openrouter_settings.temperature
+        temperature = openrouter_settings.temperature,
+        stream = (openrouter_settings.additional_parameters and openrouter_settings.additional_parameters.stream) or false,
     }
     
     -- Handle reasoning tokens configuration
@@ -35,6 +36,12 @@ function OpenRouterProvider:query(message_history, openrouter_settings)
         ["X-Title"] = "assistant.koplugin"
     }
 
+    if requestBodyTable.stream then
+        -- For streaming responses, we need to handle the response differently
+        headers["Accept"] = "text/event-stream"
+        return self:backgroudRequest(openrouter_settings.base_url, headers, requestBody)
+    end
+    
     local status, code, response = self:makeRequest(openrouter_settings.base_url, headers, requestBody)
 
     if status then

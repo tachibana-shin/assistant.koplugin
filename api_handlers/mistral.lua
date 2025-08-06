@@ -26,7 +26,8 @@ function MistralHandler:query(message_history, mistral_settings)
         model = mistral_settings.model,
         messages = cloned_history,
         max_tokens = mistral_settings.max_tokens,
-        temperature = mistral_settings.temperature
+        temperature = mistral_settings.temperature,
+        stream = mistral_settings.stream or false,
     }
 
     local requestBody = json.encode(requestBodyTable)
@@ -34,6 +35,13 @@ function MistralHandler:query(message_history, mistral_settings)
         ["Content-Type"] = "application/json",
         ["Authorization"] = "Bearer " .. (mistral_settings.api_key)
     }
+
+    if requestBodyTable.stream then
+        -- For streaming responses, we need to handle the response differently
+        headers["Accept"] = "text/event-stream"
+        return self:backgroudRequest(mistral_settings.base_url, headers, requestBody)
+    end
+    
 
     local status, code, response = self:makeRequest(mistral_settings.base_url, headers, requestBody)
 
