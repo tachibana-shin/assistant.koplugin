@@ -13,6 +13,7 @@ local Querier = {
     provider_settings = nil,
     provider_name = nil,
     interrupt_stream = nil,  -- function to interrupt the stream query
+    interrupted = false,  -- flag to indicate if the stream was interrupted
 }
 
 function Querier:new(o)
@@ -108,9 +109,47 @@ function Querier:query(message_history, title)
     self.handler:resetTrapWidget()
     UIManager:close(infomsg)
 
+    -- If the response is a function, it means it's a streaming response
     if type(res) == "function" then
-        -- If the response is a function, it means it's a streaming response
-        res = self:processStream(res)
+        self:reset_interrupt()  -- Reset interrupt state before starting a stream
+        local InputDialog = require("ui/widget/inputdialog")
+        local streamDialog = InputDialog:new{
+            -- readonly = true,
+            skip_first_show_keyboard = true,
+            keyboard_visible = false,
+            fullscreen = false,
+            allow_newline = true,
+            add_nav_bar = false,
+            deny_keyboard_hiding = true,
+            use_available_height = true,
+            condensed   = true,
+            title = _("Stream Response"),
+            buttons = {
+                {
+                    {
+                        text = _("Cancel"),
+                        id = "close",
+                        callback = function()
+                            self.interrupted = true
+                            if self.interrupt_stream then
+                                self.interrupt_stream()
+                            end
+                        end,
+                    },
+                }
+            }
+        }
+        UIManager:show(streamDialog)
+        streamDialog:addTextToInput(infomsg.text .. "\n\n")
+        res = self:processStream(res, function (content) -- replace with result from stream
+            streamDialog:addTextToInput(content)
+        end)
+        UIManager:close(streamDialog)
+    end
+
+    if self.interrupted then
+        self:reset_interrupt()  -- Reset interrupt state after processing
+        return "", _("Stream interrupted by user.")
     end
 
     if err ~= nil then
@@ -119,10 +158,12 @@ function Querier:query(message_history, title)
     return res
 end
 
+function Querier:reset_interrupt()
+    self.interrupted = false
+    self.interrupt_stream = nil
+end
 
-
-function Querier:processStream(bgQuery)
-    
+function Querier:processStream(bgQuery, trunk_callback)
     local pid, parent_read_fd = ffiutil.runInSubProcess(bgQuery, true) -- pipe: true
 
     if not pid then
@@ -139,7 +180,7 @@ function Querier:processStream(bgQuery)
   
     local collect_interval_sec = 5 -- collect cancelled cmd every 5 second, no hurry
     local check_interval_sec = 0.125 -- Initial check interval: 125ms  
-    local chunksize = 1024
+    local chunksize = 1024 * 4
     local completed = false  
     local buffer = ffi.new('char[?]', chunksize, {0})
     local result_buffer = {}  -- 
@@ -201,8 +242,9 @@ function Querier:processStream(bgQuery)
                             if content then
                                 table.insert(result_buffer, content)
                             end
-                            -- logger.info("Parsed content:", content)
-                            io.stdout:write(content)  -- Output to console
+                            if trunk_callback then
+                                trunk_callback(content)  -- Output to trunk callback
+                            end
                         end
                     elseif line:sub(1, 7) == "ERROR: " then
                         -- If we encounter an error line, log it and break
@@ -239,7 +281,6 @@ function Querier:processStream(bgQuery)
         end
     end
     UIManager:scheduleIn(collect_interval_sec, collect_and_clean)
-
     return table.concat(result_buffer) 
 end
 
