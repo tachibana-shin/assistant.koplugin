@@ -113,85 +113,32 @@ function BaseHandler:makeRequest(url, headers, body, timeout, maxtime)
     return success, code, content
 end
 
-ffi.cdef[[
-    typedef struct _IO_FILE FILE;
-    FILE *fdopen(int fd, const char *mode);
-    int fclose(FILE *stream);
-    size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
-    size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
-    int fflush(FILE *stream);
-]]
-
-local function wrap_fd(fd, mode)
-    local cfile = ffi.C.fdopen(fd, mode)
-    if cfile == nil then
-        return nil, "fdopen failed"
-    end
-
-    -- Define methods separately to avoid circular references
-    local methods = {}
-
-    function methods:close()
-        if self._cfile ~= nil then
-            ffi.C.fclose(self._cfile)
-            self._cfile = nil
-        end
-    end
-
-    function methods:write(...)
-        if self._cfile == nil then error("file is closed") end
-        for i = 1, select("#", ...) do
-            local str = tostring(select(i, ...))
-            ffi.C.fwrite(str, 1, #str, self._cfile)
+--- Wrap a file descriptor into a Lua file-like object
+--- that has :write() and :close() methods, suitable for ltn12.
+--- @param fd integer file descriptor
+--- @return table file-like object
+local function wrap_fd(fd)
+    local file_object = {}
+    function file_object:write(chunk)
+        if chunk and #chunk > 0 then
+            local written = ffi.C.write(fd, chunk, #chunk)
+            if written < 0 then
+                local err = ffi.errno()
+                logger.warn("wrap_fd write error:", err, ffi.string(ffi.C.strerror(err)))
+                return nil, ffi.string(ffi.C.strerror(err)), err
+            elseif written ~= #chunk then
+                logger.warn("wrap_fd incomplete write:", written, #chunk)
+                return nil, "incomplete write"
+            end
         end
         return self
     end
 
-    function methods:read(format)
-        if self._cfile == nil then error("file is closed") end
-        local buf = ffi.new("char[4096]")
-        if format == "*a" then
-            local chunks = {}
-            while true do
-                local n = ffi.C.fread(buf, 1, 4096, self._cfile)
-                if n == 0 then break end
-                table.insert(chunks, ffi.string(buf, n))
-            end
-            return table.concat(chunks)
-        elseif format == "*l" then
-            local line = ffi.new("char[?]", 4096)
-            if ffi.C.fgets(line, 4096, self._cfile) ~= nil then
-                return ffi.string(line):gsub("[\r\n]+$", "")
-            end
-            return nil
-        else
-            error("unsupported read format: " .. tostring(format))
-        end
+    function file_object:close()
+        return ffi.C.close(fd) == 0
     end
 
-    function methods:flush()
-        if self._cfile == nil then error("file is closed") end
-        ffi.C.fflush(self._cfile)
-        return self
-    end
-
-    -- Create the file object
-    local file_obj = {
-        _cfile = cfile,
-    }
-
-    -- Attach methods via metatable (avoiding circular references)
-    setmetatable(file_obj, {
-        __index = methods,
-        __gc = function(obj)
-            if obj._cfile ~= nil then
-                ffi.C.fclose(obj._cfile)
-            end
-        end,
-        __tostring = function() return string.format("FILE*(fd=%d)", fd) end,
-    })
-
-    return file_obj
+    return file_object
 end
 
 function BaseHandler:backgroudRequest(url, headers, body)
@@ -201,7 +148,7 @@ function BaseHandler:backgroudRequest(url, headers, body)
             return
         end
 
-        local pipe_w = wrap_fd(child_write_fd, "w")  -- wrap the write end of the pipe
+        local pipe_w = wrap_fd(child_write_fd)  -- wrap the write end of the pipe
         local request = {
             url = url,
             method = "POST",
@@ -211,10 +158,11 @@ function BaseHandler:backgroudRequest(url, headers, body)
         }
         local code, headers, status = socket.skip(1, http.request(request)) -- skip the first return value
 
+        logger.info("Background request completed:", url, "Code:", code, "Status:", status)
         if code ~= 200 then -- non-200 response code, write error to pipe
-            ffiutil.writeToFD(child_write_fd, string.format("ERROR: %d %s\r\n", code, status))
+            pipe_w:write(string.format("ERROR: %d %s\r\n", code, status))
         end
-        C.close(child_write_fd)
+        pipe_w:close()  -- close the pipe write end
     end
 end
 

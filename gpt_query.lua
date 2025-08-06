@@ -202,10 +202,7 @@ function Querier:processStream(bgQuery, trunk_callback)
 
     while true do  
 
-        if ffiutil.isSubProcessDone(pid) or completed then
-            logger.info("Subprocess completed, exiting loop")
-            break
-        end
+        if completed then break end
   
         -- Schedule next check and yield control  
         local go_on_func = function() coroutine.resume(_coroutine, true) end  
@@ -213,6 +210,7 @@ function Querier:processStream(bgQuery, trunk_callback)
         local go_on = coroutine.yield()  
   
         if not go_on then -- User interruption  
+            logger.info("User interrupted the stream processing")
             UIManager:unschedule(go_on_func)  
             break  
         end  
@@ -255,9 +253,9 @@ function Querier:processStream(bgQuery, trunk_callback)
                             local content = event.choices[1].delta.content
                             if content then
                                 table.insert(result_buffer, content)
-                            end
-                            if trunk_callback then
-                                trunk_callback(content)  -- Output to trunk callback
+                                if trunk_callback then
+                                    trunk_callback(content)  -- Output to trunk callback
+                                end
                             end
                         end
                     elseif line:sub(1, 7) == "ERROR: " then
@@ -269,6 +267,17 @@ function Querier:processStream(bgQuery, trunk_callback)
                     end
                 end
             end
+        elseif readsize == 0 then
+            -- No data to read, check if subprocess is done
+            if ffiutil.isSubProcessDone(pid) then
+                completed = true
+                logger.info("Subprocess done, exiting read loop")
+            end
+        else
+            -- Error reading from the file descriptor
+            local err = ffi.errno()
+            logger.warn("Error reading from parent_read_fd:", err, ffi.string(ffi.C.strerror(err)))
+            break
         end
     end
 
