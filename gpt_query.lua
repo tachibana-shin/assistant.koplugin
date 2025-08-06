@@ -278,12 +278,16 @@ function Querier:processStream(bgQuery, trunk_callback)
                         end
                     elseif line:sub(1, 1) == "{" then
                         -- If the line starts with '{', it might be a JSON object
-                        local ok, event = pcall(json.decode, line)
+                        local ok, j = pcall(json.decode, line)
                         if ok then
                             -- log the json
-                            table.insert(result_buffer, line)
+                            if j.error and j.error.message then
+                                logger.warn("Error in JSON response:", j.error.message)
+                                table.insert(result_buffer, j.error.message)
+                            end
                             if trunk_callback then
                                 trunk_callback(line)  -- Output to trunk callback
+                                logger.info("JSON object received:", line)
                             end
                         else
                             logger.warn("Unexpected JSON object:", line)
