@@ -148,9 +148,9 @@ function BaseHandler:backgroudRequest(url, headers, body)
             sink = ltn12.sink.file(pipe_w),  -- response body write to pipe
         }
         local code, headers, status = socket.skip(1, http.request(request)) -- skip the first return value
-        logger.info("Background request completed:", url, "Code:", code, "Status:", status)
         if code ~= 200 then -- non-200 response code, write error to pipe
-            pipe_w:write(string.format("ERROR: %d %s\r\n", code, status))
+            logger.info("Background request failed with code:", code, "Status:", status, "url:", url)
+            ffiutil.writeToFD(child_write_fd, string.format("\r\nERROR: %s %d %s\r\n", url, code, status))  -- write end of response
         end
         ffi.C.close(child_write_fd)  -- close the write end of the pipe
     end

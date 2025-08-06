@@ -3,6 +3,7 @@ local _ = require("gettext")
 local InfoMessage = require("ui/widget/infomessage")
 local InputText = require("ui/widget/inputtext")
 local UIManager = require("ui/uimanager")
+local koutil = require("util")
 local Font = require("ui/font")
 local logger = require("logger")
 local json = require("json")
@@ -275,12 +276,36 @@ function Querier:processStream(bgQuery, trunk_callback)
                                 end
                             end
                         end
+                    elseif line:sub(1, 1) == "{" then
+                        -- If the line starts with '{', it might be a JSON object
+                        local ok, event = pcall(json.decode, line)
+                        if ok then
+                            -- log the json
+                            table.insert(result_buffer, line)
+                            if trunk_callback then
+                                trunk_callback(line)  -- Output to trunk callback
+                            end
+                        else
+                            logger.warn("Unexpected JSON object:", line)
+                        end
+                    elseif line:sub(1, 1) == ":" then
+                        -- empty events, show as info message
+                        -- but do not append to result_buffer
+                        if trunk_callback then
+                            trunk_callback(line:sub(2) .. "\n")  -- Output to trunk callback
+                        end
                     elseif line:sub(1, 7) == "ERROR: " then
                         -- If we encounter an error line, log it and break
                         local error_message = line:sub(8)
                         logger.warn("Error from subprocess:", error_message)
                         table.insert(result_buffer, error_message)
                         break
+                    else
+                        if #koutil.trim(line) > 0 then
+                            -- If the line is not empty, log it as a warning
+                            -- logger.warn(string.format("Unrecognized line format: `%s`", line:sub(1,2)))
+                            logger.warn("Unrecognized line format:", line)
+                        end
                     end
                 end
             end
@@ -288,7 +313,6 @@ function Querier:processStream(bgQuery, trunk_callback)
             -- No data to read, check if subprocess is done
             if ffiutil.isSubProcessDone(pid) then
                 completed = true
-                logger.info("Subprocess done, exiting read loop")
             end
         else
             -- Error reading from the file descriptor
