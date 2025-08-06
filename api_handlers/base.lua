@@ -7,6 +7,10 @@ local https = require("ssl.https")
 local Device = require("device")
 local Trapper = require("ui/trapper")
 
+local ffi = require("ffi")
+local ffiutil = require("ffi/util")
+local C = ffi.C
+
 local BaseHandler = {
     trap_widget = nil,  -- widget to trap the request
 }
@@ -107,6 +111,111 @@ function BaseHandler:makeRequest(url, headers, body, timeout, maxtime)
     end
 
     return success, code, content
+end
+
+ffi.cdef[[
+    typedef struct _IO_FILE FILE;
+    FILE *fdopen(int fd, const char *mode);
+    int fclose(FILE *stream);
+    size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
+    size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
+    int fflush(FILE *stream);
+]]
+
+local function wrap_fd(fd, mode)
+    local cfile = ffi.C.fdopen(fd, mode)
+    if cfile == nil then
+        return nil, "fdopen failed"
+    end
+
+    -- Define methods separately to avoid circular references
+    local methods = {}
+
+    function methods:close()
+        if self._cfile ~= nil then
+            ffi.C.fclose(self._cfile)
+            self._cfile = nil
+        end
+    end
+
+    function methods:write(...)
+        if self._cfile == nil then error("file is closed") end
+        for i = 1, select("#", ...) do
+            local str = tostring(select(i, ...))
+            ffi.C.fwrite(str, 1, #str, self._cfile)
+        end
+        return self
+    end
+
+    function methods:read(format)
+        if self._cfile == nil then error("file is closed") end
+        local buf = ffi.new("char[4096]")
+        if format == "*a" then
+            local chunks = {}
+            while true do
+                local n = ffi.C.fread(buf, 1, 4096, self._cfile)
+                if n == 0 then break end
+                table.insert(chunks, ffi.string(buf, n))
+            end
+            return table.concat(chunks)
+        elseif format == "*l" then
+            local line = ffi.new("char[?]", 4096)
+            if ffi.C.fgets(line, 4096, self._cfile) ~= nil then
+                return ffi.string(line):gsub("[\r\n]+$", "")
+            end
+            return nil
+        else
+            error("unsupported read format: " .. tostring(format))
+        end
+    end
+
+    function methods:flush()
+        if self._cfile == nil then error("file is closed") end
+        ffi.C.fflush(self._cfile)
+        return self
+    end
+
+    -- Create the file object
+    local file_obj = {
+        _cfile = cfile,
+    }
+
+    -- Attach methods via metatable (avoiding circular references)
+    setmetatable(file_obj, {
+        __index = methods,
+        __gc = function(obj)
+            if obj._cfile ~= nil then
+                ffi.C.fclose(obj._cfile)
+            end
+        end,
+        __tostring = function() return string.format("FILE*(fd=%d)", fd) end,
+    })
+
+    return file_obj
+end
+
+function BaseHandler:backgroudRequest(url, headers, body)
+    return function(pid, child_write_fd)
+        if not pid or not child_write_fd then
+            logger.warn("Invalid parameters for background request")
+            return
+        end
+
+        local pipe_w = wrap_fd(child_write_fd, "w")  -- wrap the write end of the pipe
+        local request = {
+            url = url,
+            method = "POST",
+            headers = headers or {},
+            source = ltn12.source.string(body or ""),
+            sink = ltn12.sink.file(pipe_w),  -- response body write to pipe
+        }
+        local code, headers, status = socket.skip(1, http.request(request)) -- skip the first return value
+
+        if code ~= 200 then -- non-200 response code, write error to pipe
+            ffiutil.writeToFD(child_write_fd, string.format("ERROR: %d %s\r\n", code, status))
+        end
+        C.close(child_write_fd)
+    end
 end
 
 return BaseHandler
