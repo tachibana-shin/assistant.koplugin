@@ -249,8 +249,23 @@ function Querier:processStream(bgQuery, trunk_callback)
                         if json_str == '[DONE]' then break end
                         -- Safely parse the JSON
                         local ok, event = pcall(json.decode, json_str)
-                        if ok and event and event.choices and #event.choices > 0 and event.choices[1].delta then
-                            local content = event.choices[1].delta.content
+                        if ok and event then
+                        
+                            local content
+                            if event.choices and #event.choices > 0 and event.choices[1].delta then
+                                -- openai API
+                                content = event.choices[1].delta.content
+                            elseif event.candidates and #event.candidates > 0 and event.candidates[1].content then 
+                                -- gemini API
+                                content = event.candidates[1].content.parts[1].text
+                            elseif event.content and #event.content > 0 and event.content[1] then
+                                -- Anthropic Claude (Messages API)
+                                content = event.content[1].text
+                            else
+                                logger.warn("Unexpected event format:", json_str)
+                                content = json_str
+                            end
+                                
                             if content then
                                 table.insert(result_buffer, content)
                                 if trunk_callback then

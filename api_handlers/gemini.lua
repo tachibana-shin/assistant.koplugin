@@ -66,7 +66,7 @@ function GeminiHandler:query(message_history, gemini_settings)
     local model = gemini_settings.model or "gemini-1.5-pro-latest"
     local base_url = gemini_settings.base_url or "https://generativelanguage.googleapis.com/v1beta/models/"
     
-    local url = string.format(stream and "%s%s:streamingGenerateContent?alt=sse" or "%s%s:generateContent",
+    local url = string.format(stream and "%s%s:streamGenerateContent?alt=sse" or "%s%s:generateContent",
                 base_url, model)
     logger.dbg("Making Gemini API request to model:", model)
 
