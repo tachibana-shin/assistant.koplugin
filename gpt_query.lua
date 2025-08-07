@@ -12,6 +12,7 @@ local ffi = require("ffi")
 local ffiutil = require("ffi/util")
 
 local Querier = {
+    settings = nil,
     handler = nil,
     handler_name = nil,
     provider_settings = nil,
@@ -108,6 +109,13 @@ function StreamText:onTapTextBox(arg, ges) return true end
 function Querier:query(message_history, title)
     if not self:is_inited() then
         return "", "Assitant: not configured."
+    end
+
+    if self.settings:readSetting("forced_stream_mode") then
+        if not self.provider_settings.additional_parameters then
+            self.provider_settings.additional_parameters = {}
+        end
+        self.provider_settings.additional_parameters["stream"] = true
     end
 
     self.stream_interrupted = false -- reset the stream interrupted flag

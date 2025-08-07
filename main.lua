@@ -17,6 +17,7 @@ local FrontendUtil = require("util")
 local AssistantDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
 local Prompts = require("prompts")
+local ConfigDialog = require("configdialog")
 
 local Assistant = InputContainer:new {
   name = "Assistant",
@@ -128,29 +129,43 @@ function Assistant:showProviderSwitch()
       }})
     end
 
-    -- Show the RadioButtonWidget dialog for selecting AI provider
-    UIManager:show(RadioButtonWidget:new{
-      title_text = _("Select AI Provider Profile"),
-      info_text = _("Use the selected provider (overrides the provider in configuration.lua)"),
-      cancel_text = _("Close"),
-      ok_text = _("OK"),
-      width_factor = 0.9,
+    local configDialog
+    configDialog = ConfigDialog:new{
+      forced_stream_mode = self.settings:readSetting("forced_stream_mode") or false,
+      title = _("Select AI Provider"),
       radio_buttons = radio_buttons,
-      callback = function(radio)
-        if radio.provider ~= current_provider then
-          self.settings:saveSetting("provider", radio.provider)
-          self.updated = true
-          self.querier:load_model(radio.provider)
-          UIManager:show(InfoMessage:new{
-            timeout = 3,
-            icon = "notice-info",
-            text = string.format(_("AI provider changed to: \n☁ %s (%s)"),
-                                radio.provider,
-                                provider_settings[radio.provider].model),
-          })
-        end
-      end,
-    })
+      buttons = {
+        {
+            {
+              text="Cancel",
+              callback=function ()
+                UIManager:close(configDialog)
+              end
+            },
+            {
+              text="OK",
+              callback=function ()
+                local radio = configDialog.radio_button_table.checked_button
+                if radio.provider ~= current_provider then
+                  self.settings:saveSetting("provider", radio.provider)
+                  self.updated = true
+                  self.querier:load_model(radio.provider)
+                end
+
+                local forced_stream_mode = configDialog.check_btn_forced_stream_mode.checked
+                if self.settings:readSetting("forced_stream_mode") ~= forced_stream_mode then
+                  self.settings:saveSetting("forced_stream_mode", forced_stream_mode)
+                  self.updated = true
+                end
+
+                UIManager:close(configDialog)
+              end
+            },
+        },
+      },  
+    }
+
+    UIManager:show(configDialog)
 end
 
 function Assistant:getModelProvider()
@@ -256,7 +271,9 @@ function Assistant:init()
   self:applyOrRemoveTranslateOverride()
 
   -- Load the model provider from settings or default configuration
-  self.querier = require("gpt_query"):new()
+  self.querier = require("gpt_query"):new({
+    settings = self.settings,
+  })
   self.querier:load_model(self:getModelProvider())
 
   self.assitant_dialog = AssistantDialog:new(self, CONFIGURATION)
