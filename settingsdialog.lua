@@ -18,9 +18,9 @@ local VerticalSpan = require("ui/widget/verticalspan")
 local _ = require("gettext")
 local Screen = require("device").screen
 
-local ConfigDialog = InputDialog:extend{}
+local SettingsDialog = InputDialog:extend{}
 
-function ConfigDialog:init()
+function SettingsDialog:init()
     -- init title and buttons in base class
     InputDialog.init(self)
     self.element_width = math.floor(self.width * 0.9)
@@ -102,10 +102,10 @@ function ConfigDialog:init()
     self:refocusWidget()
 end
 
-function ConfigDialog:onCloseWidget()
+function SettingsDialog:onCloseWidget()
     UIManager:setDirty(nil, function()
         return "ui", self.dialog_frame.dimen
     end)
 end
 
-return ConfigDialog
+return SettingsDialog
