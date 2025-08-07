@@ -1,20 +1,15 @@
 --- Querier module for handling AI queries with dynamic provider loading
 local _ = require("gettext")
 local InfoMessage = require("ui/widget/infomessage")
+local InputDialog = require("ui/widget/inputdialog")
 local InputText = require("ui/widget/inputtext")
 local UIManager = require("ui/uimanager")
-local koutil = require("util")
 local Font = require("ui/font")
+local koutil = require("util")
 local logger = require("logger")
 local json = require("json")
 local ffi = require("ffi")
 local ffiutil = require("ffi/util")
-
--- InputText class for handling streaming input text
--- ignores tap events
-local StreamInputText = InputText:extend{}
-function StreamInputText:init() InputText.init(self) end
-function StreamInputText:onTapTextBox(arg, ges) return true end
 
 local Querier = {
     handler = nil,
@@ -121,7 +116,6 @@ function Querier:query(message_history, title)
     -- If the response is a function, it means it's a streaming response
     if type(res) == "function" then
         self:reset_interrupt()  -- Reset interrupt state before starting a stream
-        local InputDialog = require("ui/widget/inputdialog")
         local streamDialog = InputDialog:new{
             face = Font:getFace("smallffont"),
             inputtext_class = StreamInputText,
@@ -180,6 +174,11 @@ function Querier:reset_interrupt()
     self.interrupt_stream = nil
 end
 
+-- InputText class for handling streaming input text
+-- ignores tap events
+local StreamInputText = InputText:extend{}
+function StreamInputText:onTapTextBox(arg, ges) return true end
+
 function Querier:processStream(bgQuery, trunk_callback)
     local pid, parent_read_fd = ffiutil.runInSubProcess(bgQuery, true) -- pipe: true
 
@@ -188,7 +187,6 @@ function Querier:processStream(bgQuery, trunk_callback)
         return nil,  "Failed to start subprocess for request"
     end
 
-    -- logger.info("Background query process started with PID:", pid)
     local _coroutine = coroutine.running()  
   
     self.interrupt_stream = function()  
@@ -197,11 +195,11 @@ function Querier:processStream(bgQuery, trunk_callback)
   
     local collect_interval_sec = 5 -- collect cancelled cmd every 5 second, no hurry
     local check_interval_sec = 0.125 -- Initial check interval: 125ms  
-    local chunksize = 1024 * 4 -- 4KB buffer size for reading data
-    local completed = false     -- Flag to indicate if the reading is completed
+    local chunksize = 1024 * 16 -- buffer size for reading data
     local buffer = ffi.new('char[?]', chunksize, {0}) -- Buffer for reading data
-    local result_buffer = {}  -- Buffer for storing results
+    local completed = false     -- Flag to indicate if the reading is completed
     local partial_data = ""   -- Buffer for incomplete line data
+    local result_buffer = {}  -- Buffer for storing results
 
     while true do  
 
@@ -219,7 +217,6 @@ function Querier:processStream(bgQuery, trunk_callback)
         end  
 
         local readsize = ffiutil.getNonBlockingReadSize(parent_read_fd) 
-        -- logger.info("Read size:", readsize)
         if readsize > 0 then
             local bytes_read = tonumber(ffi.C.read(parent_read_fd, ffi.cast('void*', buffer), chunksize))
             if bytes_read < 0 then
@@ -247,9 +244,9 @@ function Querier:processStream(bgQuery, trunk_callback)
                     -- Check if this is an SSE data line
                     if line:sub(1, 6) == "data: " then
                         -- Clean up the JSON string (remove "data:" prefix and trim whitespace)
-                        local json_str = line:sub(7):gsub("^%s+", ""):gsub("%s+$", "")
+                        local json_str = koutil.trim(line:sub(7))
+                        if json_str == '[DONE]' then break end -- end of stream
 
-                        if json_str == '[DONE]' then break end
                         -- Safely parse the JSON
                         local ok, event = pcall(json.decode, json_str)
                         if ok and event then
@@ -282,7 +279,6 @@ function Querier:processStream(bgQuery, trunk_callback)
                         if ok then
                             -- log the json
                             if j.error and j.error.message then
-                                logger.warn("Error in JSON response:", j.error.message)
                                 table.insert(result_buffer, j.error.message)
                             end
                             if trunk_callback then
@@ -298,16 +294,14 @@ function Querier:processStream(bgQuery, trunk_callback)
                         if trunk_callback then
                             trunk_callback(line:sub(2) .. "\n")  -- Output to trunk callback
                         end
-                    elseif line:sub(1, 7) == "ERROR: " then
-                        -- If we encounter an error line, log it and break
-                        local error_message = line:sub(8)
-                        logger.warn("Error from subprocess:", error_message)
-                        table.insert(result_buffer, error_message)
+                    elseif line:sub(1, 8) == "NON200: " then
+                        -- child write a non-200 response 
+                        logger.warn("Non-200 response from subprocess:", line)
+                        table.insert(result_buffer, "\n\n" .. line:sub(8))
                         break
                     else
                         if #koutil.trim(line) > 0 then
                             -- If the line is not empty, log it as a warning
-                            -- logger.warn(string.format("Unrecognized line format: `%s`", line:sub(1,2)))
                             logger.warn("Unrecognized line format:", line)
                         end
                     end
@@ -315,9 +309,7 @@ function Querier:processStream(bgQuery, trunk_callback)
             end
         elseif readsize == 0 then
             -- No data to read, check if subprocess is done
-            if ffiutil.isSubProcessDone(pid) then
-                completed = true
-            end
+            completed = ffiutil.isSubProcessDone(pid)
         else
             -- Error reading from the file descriptor
             local err = ffi.errno()
@@ -326,8 +318,8 @@ function Querier:processStream(bgQuery, trunk_callback)
         end
     end
 
+    ffiutil.terminateSubProcess(pid) -- Terminate the subprocess when user interrupted 
     -- read loop ended, clean up subprocess
-    ffiutil.terminateSubProcess(pid)
     local collect_and_clean
     collect_and_clean = function()
         if ffiutil.isSubProcessDone(pid) then

@@ -150,7 +150,7 @@ function BaseHandler:backgroudRequest(url, headers, body)
         local code, headers, status = socket.skip(1, http.request(request)) -- skip the first return value
         if code ~= 200 then -- non-200 response code, write error to pipe
             logger.info("Background request failed with code:", code, "Status:", status, "url:", url)
-            ffiutil.writeToFD(child_write_fd, string.format("\r\nERROR: %s %d %s\r\n", url, code, status))  -- write end of response
+            ffiutil.writeToFD(child_write_fd, string.format("\r\nNON200: %s %d %s\r\n", url, code, status))  -- write end of response
         end
         ffi.C.close(child_write_fd)  -- close the write end of the pipe
     end
