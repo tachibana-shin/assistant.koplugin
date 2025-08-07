@@ -13,6 +13,7 @@ local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
 local _ = require("gettext")
 local FrontendUtil = require("util")
+local ffiutil = require("ffi/util")
 
 local AssistantDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
@@ -111,20 +112,11 @@ function Assistant:showProviderSwitch()
     local current_provider = self.querier.provider_name
     local provider_settings = CONFIGURATION and CONFIGURATION.provider_settings or {}
 
-    -- sort keys of provider_settings
-    local provider_keys = {}
-    for key, tab in pairs(provider_settings) do
-      if tab.visible ~= false then
-        table.insert(provider_keys, key)
-      end
-    end
-    table.sort(provider_keys)
-
     local radio_buttons = {}
-    for _, key in ipairs(provider_keys) do
+    for key, tab in ffiutil.orderedPairs(provider_settings) do
       table.insert(radio_buttons, {{
-        text = string.format("%s (%s)", key, provider_settings[key].model),
-        provider = key, -- note: this `provider` field belongs to the RadioButtonWidget, not our AI Model provider.
+        text = string.format("%s (%s)", key, tab.model),
+        provider = key, -- note: this `provider` field belongs to the RadioButton, not our AI Model provider.
         checked = (key == current_provider),
       }})
     end
