@@ -188,11 +188,11 @@ function Querier:processStream(bgQuery, trunk_callback)
         coroutine.resume(_coroutine, false)  
     end  
   
-    local collect_interval_sec = 5 -- collect cancelled cmd every 5 second, no hurry
-    local check_interval_sec = 0.125 -- Initial check interval: 125ms  
+    local check_interval_sec = 0.125 -- loop check interval: 125ms  
     local chunksize = 1024 * 16 -- buffer size for reading data
     local buffer = ffi.new('char[?]', chunksize, {0}) -- Buffer for reading data
-    local completed = false     -- Flag to indicate if the reading is completed
+    local buffer_ptr = ffi.cast('void*', buffer)
+    local completed = false   -- Flag to indicate if the reading is completed
     local partial_data = ""   -- Buffer for incomplete line data
     local result_buffer = {}  -- Buffer for storing results
 
@@ -203,8 +203,7 @@ function Querier:processStream(bgQuery, trunk_callback)
         -- Schedule next check and yield control  
         local go_on_func = function() coroutine.resume(_coroutine, true) end  
         UIManager:scheduleIn(check_interval_sec, go_on_func)  
-        local go_on = coroutine.yield()  
-  
+        local go_on = coroutine.yield()  -- Wait for the next check or user interruption
         if not go_on then -- User interruption  
             self.stream_interrupted = true
             logger.info("User interrupted the stream processing")
@@ -214,7 +213,7 @@ function Querier:processStream(bgQuery, trunk_callback)
 
         local readsize = ffiutil.getNonBlockingReadSize(parent_read_fd) 
         if readsize > 0 then
-            local bytes_read = tonumber(ffi.C.read(parent_read_fd, ffi.cast('void*', buffer), chunksize))
+            local bytes_read = tonumber(ffi.C.read(parent_read_fd, buffer_ptr, chunksize))
             if bytes_read < 0 then
                 local err = ffi.errno()
                 logger.warn("readAllFromFD() error: " .. ffi.string(ffi.C.strerror(err)))
@@ -318,6 +317,7 @@ function Querier:processStream(bgQuery, trunk_callback)
     self.interrupt_stream = nil  -- Clear the interrupt function
 
     -- read loop ended, clean up subprocess
+    local collect_interval_sec = 5 -- collect cancelled cmd every 5 second, no hurry
     local collect_and_clean
     collect_and_clean = function()
         if ffiutil.isSubProcessDone(pid) then
