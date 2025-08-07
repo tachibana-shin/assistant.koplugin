@@ -142,8 +142,9 @@ function Assistant:showProviderSwitch()
           self.updated = true
           self.querier:load_model(radio.provider)
           UIManager:show(InfoMessage:new{
+            timeout = 3,
             icon = "notice-info",
-            text = string.format(_("AI provider changed to: %s (%s)"),
+            text = string.format(_("AI provider changed to: \n☁ %s (%s)"),
                                 radio.provider,
                                 provider_settings[radio.provider].model),
           })
