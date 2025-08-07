@@ -132,6 +132,9 @@ local function wrap_fd(fd)
     return file_object
 end
 
+-- Background request function
+--- This function is used to make a request in the background,
+--- typically in a subprocess, and write the response to a pipe.
 function BaseHandler:backgroudRequest(url, headers, body)
     return function(pid, child_write_fd)
         if not pid or not child_write_fd then

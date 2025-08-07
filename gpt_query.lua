@@ -124,7 +124,8 @@ function Querier:query(message_history, title)
     self.handler:resetTrapWidget()
     UIManager:close(infomsg)
 
-    -- If the response is a function, it means it's a streaming response
+    -- when res is a function, it means we are in streaming mode
+    -- open a stream dialog and run the background query in a subprocess
     if type(res) == "function" then
         local streamDialog = InputDialog:new{
             face = Font:getFace("smallffont"),
@@ -170,8 +171,9 @@ function Querier:query(message_history, title)
     return res
 end
 
---- func description: Process the stream from the background query
---- This function reads from a subprocess and processes the stream of data.
+--- func description: run the stream request in the background 
+--  and process the response in realtime, output to the trunk callback
+-- return the full response content when the stream ends
 function Querier:processStream(bgQuery, trunk_callback)
     local pid, parent_read_fd = ffiutil.runInSubProcess(bgQuery, true) -- pipe: true
 
