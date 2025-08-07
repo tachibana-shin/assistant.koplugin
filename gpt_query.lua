@@ -128,12 +128,14 @@ function Querier:query(message_history, title)
     if type(res) == "function" then
         local streamDialog = InputDialog:new{
             face = Font:getFace("smallffont"),
-            title = _("AI Response") .. " - " .. self.provider_settings.model,
+            title = _("AI Responding"),
+            description = string.format(
+                _("☁ %s/%s"), self.provider_name, self.provider_settings.model),
             inputtext_class = StreamText, -- use our custom InputText class
 
             readonly = false, skip_first_show_keyboard = true, keyboard_visible = false, fullscreen = false,
             allow_newline = true, add_nav_bar = false, cursor_at_end = true, add_scroll_buttons = true,
-            deny_keyboard_hiding = true, use_available_height = true, condensed = true,
+            deny_keyboard_hiding = false, use_available_height = true, condensed = true, auto_para_direction = true,
             buttons = {
                 {
                     {
@@ -149,23 +151,20 @@ function Querier:query(message_history, title)
             }
         }
         UIManager:show(streamDialog)
-        streamDialog:addTextToInput(infomsg.text .. "\n\n")
         local content, err = self:processStream(res, function (content)
             streamDialog:addTextToInput(content)
         end)
         UIManager:close(streamDialog)
 
-        if content then
-            res = content
+        if self.stream_interrupted then
+            return nil, _("Stream interrupted by user.")
         end
-    end
 
-    if self.stream_interrupted then
-        err = _("Stream interrupted by user.")
+        res = content
     end
 
     if err ~= nil then
-        return "", tostring(err)
+        return nil, tostring(err)
     end
 
     return res
