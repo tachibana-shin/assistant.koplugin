@@ -94,6 +94,15 @@ function Querier:load_model(provider_name)
     return true
 end
 
+-- InputText class for showing streaming responses
+-- ignores all input events
+local StreamText = InputText:extend{}
+function StreamText:initInputEvents() end
+function StreamText:initKeyboard() end
+function StreamText:onKeyPress() end
+function StreamText:onTextInput(text) end
+function StreamText:onTapTextBox(arg, ges) return true end
+
 --- Query the AI with the provided message history
 --- return: answer, error (if any)
 function Querier:query(message_history, title)
@@ -118,7 +127,7 @@ function Querier:query(message_history, title)
         self:reset_interrupt()  -- Reset interrupt state before starting a stream
         local streamDialog = InputDialog:new{
             face = Font:getFace("smallffont"),
-            inputtext_class = StreamInputText,
+            inputtext_class = StreamText,
             readonly = false,
             skip_first_show_keyboard = true,
             keyboard_visible = false,
@@ -173,11 +182,6 @@ function Querier:reset_interrupt()
     self.interrupted = false
     self.interrupt_stream = nil
 end
-
--- InputText class for handling streaming input text
--- ignores tap events
-local StreamInputText = InputText:extend{}
-function StreamInputText:onTapTextBox(arg, ges) return true end
 
 function Querier:processStream(bgQuery, trunk_callback)
     local pid, parent_read_fd = ffiutil.runInSubProcess(bgQuery, true) -- pipe: true
