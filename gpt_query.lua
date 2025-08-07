@@ -16,8 +16,8 @@ local Querier = {
     handler_name = nil,
     provider_settings = nil,
     provider_name = nil,
-    interrupt_stream = nil,  -- function to interrupt the stream query
-    interrupted = false,  -- flag to indicate if the stream was interrupted
+    interrupt_stream = nil,      -- function to interrupt the stream query
+    stream_interrupted = false,  -- flag to indicate if the stream was interrupted
 }
 
 function Querier:new(o)
@@ -110,6 +110,8 @@ function Querier:query(message_history, title)
         return "", "Assitant: not configured."
     end
 
+    self.stream_interrupted = false -- reset the stream interrupted flag
+
     local infomsg = InfoMessage:new{
       icon = "book.opened",
       text = string.format("%s\n️☁️ %s\n⚡ %s", title or _("Querying AI ..."),
@@ -124,29 +126,20 @@ function Querier:query(message_history, title)
 
     -- If the response is a function, it means it's a streaming response
     if type(res) == "function" then
-        self:reset_interrupt()  -- Reset interrupt state before starting a stream
         local streamDialog = InputDialog:new{
             face = Font:getFace("smallffont"),
-            inputtext_class = StreamText,
-            readonly = false,
-            skip_first_show_keyboard = true,
-            keyboard_visible = false,
-            fullscreen = false,
-            allow_newline = true,
-            add_nav_bar = false,
-            cursor_at_end = true,
-            add_scroll_buttons = true,
-            deny_keyboard_hiding = true,
-            use_available_height = true,
-            condensed   = true,
-            title = _("Stream Response"),
+            title = _("AI Response") .. " - " .. self.provider_settings.model,
+            inputtext_class = StreamText, -- use our custom InputText class
+
+            readonly = false, skip_first_show_keyboard = true, keyboard_visible = false, fullscreen = false,
+            allow_newline = true, add_nav_bar = false, cursor_at_end = true, add_scroll_buttons = true,
+            deny_keyboard_hiding = true, use_available_height = true, condensed = true,
             buttons = {
                 {
                     {
-                        text = _("Cancel"),
-                        id = "close",
+                        text = _("⏹ Stop"),
+                        id = "close", -- id:close response to default cancel action (esc key ...)
                         callback = function()
-                            self.interrupted = true
                             if self.interrupt_stream then
                                 self.interrupt_stream()
                             end
@@ -155,34 +148,31 @@ function Querier:query(message_history, title)
                 }
             }
         }
-        streamDialog.onShowKeyboard = function()
-            -- Prevent the dialog from closing on button press
-            return
-        end
         UIManager:show(streamDialog)
         streamDialog:addTextToInput(infomsg.text .. "\n\n")
-        res = self:processStream(res, function (content) -- replace with result from stream
+        local content, err = self:processStream(res, function (content)
             streamDialog:addTextToInput(content)
         end)
         UIManager:close(streamDialog)
+
+        if content then
+            res = content
+        end
     end
 
-    if self.interrupted then
-        self:reset_interrupt()  -- Reset interrupt state after processing
-        return "", _("Stream interrupted by user.")
+    if self.stream_interrupted then
+        err = _("Stream interrupted by user.")
     end
 
     if err ~= nil then
         return "", tostring(err)
     end
+
     return res
 end
 
-function Querier:reset_interrupt()
-    self.interrupted = false
-    self.interrupt_stream = nil
-end
-
+--- func description: Process the stream from the background query
+--- This function reads from a subprocess and processes the stream of data.
 function Querier:processStream(bgQuery, trunk_callback)
     local pid, parent_read_fd = ffiutil.runInSubProcess(bgQuery, true) -- pipe: true
 
@@ -215,6 +205,7 @@ function Querier:processStream(bgQuery, trunk_callback)
         local go_on = coroutine.yield()  
   
         if not go_on then -- User interruption  
+            self.stream_interrupted = true
             logger.info("User interrupted the stream processing")
             UIManager:unschedule(go_on_func)  
             break  
@@ -323,6 +314,8 @@ function Querier:processStream(bgQuery, trunk_callback)
     end
 
     ffiutil.terminateSubProcess(pid) -- Terminate the subprocess when user interrupted 
+    self.interrupt_stream = nil  -- Clear the interrupt function
+
     -- read loop ended, clean up subprocess
     local collect_and_clean
     collect_and_clean = function()
