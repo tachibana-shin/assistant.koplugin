@@ -25,10 +25,17 @@ function MistralHandler:query(message_history, mistral_settings)
     local requestBodyTable = {
         model = mistral_settings.model,
         messages = cloned_history,
-        max_tokens = mistral_settings.max_tokens,
-        temperature = mistral_settings.temperature,
-        stream = mistral_settings.stream or false,
     }
+
+    -- Handle configuration
+    if mistral_settings.additional_parameters then
+        --- available req body args: https://docs.mistral.ai/api/
+        for _, option in ipairs({"temperature", "top_p", "n", "max_tokens", "stream"}) do
+            if mistral_settings.additional_parameters[option] then
+                requestBodyTable[option] = mistral_settings.additional_parameters[option]
+            end
+        end
+    end
 
     local requestBody = json.encode(requestBodyTable)
     local headers = {
@@ -54,7 +61,7 @@ function MistralHandler:query(message_history, mistral_settings)
         -- server response error message
         logger.warn("API Error", code, response)
         if success and responseData and responseData.message then
-            return nil, responseData.message 
+            return nil,  "API Error: " .. responseData.message 
         end
     end
     
