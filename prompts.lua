@@ -101,9 +101,9 @@ Please provide a concise and clear summary of the following text in its own lang
                                 *   Convert it to its base form (e.g., "go", "dog", "good", "kick the bucket").
                                 *   List up to 3 simple synonyms (suitable for B1+ learners). Do not reuse the original word.
                                 *   Explain its meaning simply **in {language}**, considering its context in the text. Do not reuse the original word in the explanation.
-                            2.  **Format:** Create a numbered list using this exact structure for each item:
-                                `index. base form : synonym1, synonym2, synonym3 : {language} explanation`
-                            3.  **Output Content:** **ONLY** provide the numbered list. Do not include the original text, titles, or any extra sentences.
+                            2.  Format: Create a numbered list using this exact structure for each item:
+                                `index. __base form__: synonym1, synonym2, synonym3 : {language} explanation`
+                            3.  Output Content: **ONLY** provide the numbered list. Do not include the original text, titles, or any extra sentences.
 
                             **Input Text:** {highlight} ]], 
         },
