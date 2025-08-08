@@ -3,6 +3,7 @@ local InputDialog = require("ui/widget/inputdialog")
 local ChatGPTViewer = require("chatgptviewer")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
+local ConfirmBox = require("ui/widget/confirmbox")
 local _ = require("gettext")
 local Trapper = require("ui/trapper")
 local Prompts = require("prompts")
@@ -334,24 +335,36 @@ function AssitantDialog:show(highlightedText)
         hold_callback = function()
           local menukey = string.format("assistant_%02d_%s", tab.order, tab.idx)
           local settingkey = "showOnMain_" .. menukey
-          self.assitant.settings:toggle(settingkey)
-          self.assitant.updated = true
 
-          local noticetext
-          if self.assitant.settings:isTrue(settingkey) then
-            self.assitant:addMainButton(tab.idx, tab)
-            -- logger.info("Added custom prompt button: ", tab.text, " with index: ", tab.idx)
-            noticetext = string.format(_("Added [%s (AI)] to Main Highlight Menu."), tab.text)
-          else
-            self.assitant:removeMainButton(tab.idx, tab)
-            noticetext = string.format(_("Removed [%s (AI)] from Main Highlight Menu."), tab.text)
-          end
+          local is_shown = self.assitant.settings:isTrue(settingkey) 
+          local button_text = is_shown and _("Remove") or _("Add")
+          local action_desc = is_shown and _("Remove this button from the Main Highlight Menu?") or _("Add this button to the Main Highlight Menu?")  
+          UIManager:show(ConfirmBox:new{
+            text = tab.desc .. "\n\n" .. action_desc,
+            ok_text = button_text,
+            ok_callback = function()
+              self.assitant.settings:toggle(settingkey)
+              self.assitant.updated = true
 
-          UIManager:show(InfoMessage:new{
-            text = noticetext,
-            icon = "notice-info",
-            timeout = 3
+              local noticetext
+              if self.assitant.settings:isTrue(settingkey) then
+                self.assitant:addMainButton(tab.idx, tab)
+                -- logger.info("Added custom prompt button: ", tab.text, " with index: ", tab.idx)
+                noticetext = string.format(_("Added [%s (AI)] to Main Highlight Menu."), tab.text)
+              else
+                self.assitant:removeMainButton(tab.idx, tab)
+                noticetext = string.format(_("Removed [%s (AI)] from Main Highlight Menu."), tab.text)
+              end
+
+              UIManager:show(InfoMessage:new{
+                text = noticetext,
+                icon = "notice-info",
+                timeout = 3
+              })
+            end,
           })
+
+
         end
       })
     end
