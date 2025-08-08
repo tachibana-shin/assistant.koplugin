@@ -26,6 +26,7 @@ function AzureOpenAIHandler:query(message_history, azure_settings )
     local requestBodyTable = {
         messages = message_history,
         max_tokens = azure_settings.max_tokens,
+        stream = azure_settings.stream or false,
         temperature = azure_settings.temperature or 0.7
     }
     
@@ -36,6 +37,11 @@ function AzureOpenAIHandler:query(message_history, azure_settings )
         ["HTTP-Referer"] = "https://github.com/omer-faruq/assistant.koplugin",
         ["X-Title"] = "assistant.koplugin"
     }
+    if requestBodyTable.stream then
+        -- For streaming responses, we need to handle the response differently
+        headers["Accept"] = "text/event-stream"
+        return self:backgroudRequest(api_url, headers, requestBody)
+    end
     
     local status, code, response = self:makeRequest(api_url, headers, requestBody)
     

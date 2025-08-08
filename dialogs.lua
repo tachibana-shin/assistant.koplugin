@@ -3,6 +3,7 @@ local InputDialog = require("ui/widget/inputdialog")
 local ChatGPTViewer = require("chatgptviewer")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
+local ConfirmBox = require("ui/widget/confirmbox")
 local t = require("i18n")
 local Trapper = require("ui/trapper")
 local Prompts = require("prompts")
@@ -141,10 +142,8 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
   local chatgpt_viewer = ChatGPTViewer:new {
     title = title,
     text = result_text,
+    assitant = self.assitant,
     ui = self.assitant.ui,
-    onShowSwitchModel = function() -- callback for switch model button
-      self.assitant:showProviderSwitch()
-    end,
     onAskQuestion = function(viewer, user_question) -- callback for user entered question
         -- Use viewer's own highlighted_text value
         local current_highlight = viewer.highlighted_text or highlightedText
@@ -193,11 +192,6 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
   }
   
   UIManager:show(chatgpt_viewer)
-  
-  -- Refresh the screen after displaying the results
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.refresh_screen_after_displaying_results then
-    UIManager:setDirty(nil, "full")
-  end
 end
 
 
@@ -327,7 +321,6 @@ function AssitantDialog:show(highlightedText)
         end
       })  
     end
-
     local sorted_prompts = Prompts.getSortedCustomPrompts(function (prompt)
       if prompt.visible == false then
         return false
@@ -337,14 +330,54 @@ function AssitantDialog:show(highlightedText)
 
     -- logger.warn("Sorted prompts: ", sorted_prompts)
     -- Add buttons in sorted order
-    for _, tab in ipairs(sorted_prompts) do
+    for i, tab in ipairs(sorted_prompts) do
       table.insert(all_buttons, {
         text = tab.text,
         callback = function()
           self:_close()
           Trapper:wrap(function()
-            self:showCustomPrompt(highlightedText, tab.idx)
+            if tab.order == -10 and tab.idx == "dictionary" then
+              -- Special case for dictionary prompt
+              local showDictionaryDialog = require("dictdialog")
+              showDictionaryDialog(self.assitant, highlightedText)
+            else
+              self:showCustomPrompt(highlightedText, tab.idx)
+            end
           end)
+        end,
+        hold_callback = function()
+          local menukey = string.format("assistant_%02d_%s", tab.order, tab.idx)
+          local settingkey = "showOnMain_" .. menukey
+
+          local is_shown = self.assitant.settings:isTrue(settingkey) 
+          local button_text = is_shown and _("Remove") or _("Add")
+          local action_desc = is_shown and _("Remove this button from the Main Highlight Menu?") or _("Add this button to the Main Highlight Menu?")  
+          UIManager:show(ConfirmBox:new{
+            text = string.format("%s: %s\n\n%s", tab.text, tab.desc, action_desc),
+            ok_text = button_text,
+            ok_callback = function()
+              self.assitant.settings:toggle(settingkey)
+              self.assitant.updated = true
+
+              local noticetext
+              if self.assitant.settings:isTrue(settingkey) then
+                self.assitant:addMainButton(tab.idx, tab)
+                -- logger.info("Added custom prompt button: ", tab.text, " with index: ", tab.idx)
+                noticetext = string.format(_("Added [%s (AI)] to Main Highlight Menu."), tab.text)
+              else
+                self.assitant:removeMainButton(tab.idx, tab)
+                noticetext = string.format(_("Removed [%s (AI)] from Main Highlight Menu."), tab.text)
+              end
+
+              UIManager:show(InfoMessage:new{
+                text = noticetext,
+                icon = "notice-info",
+                timeout = 3
+              })
+            end,
+          })
+
+
         end
       })
     end
@@ -375,20 +408,19 @@ function AssitantDialog:show(highlightedText)
   
   self.input_dialog = InputDialog:new{
     title = t("ai_assistant"),
-    description = dialog_title,
+    description = dialog_hint,
     input_hint = input_hint,
     buttons = button_rows,
     title_bar_left_icon = "appbar.settings",
     title_bar_left_icon_tap_callback = function ()
         self.input_dialog:onCloseKeyboard()
-        self.assitant:showProviderSwitch()
+        self.assitant:showSettings()
     end,
     close_callback = function () self:_close() end,
     dismiss_callback = function () self:_close() end
   }
   
   UIManager:show(self.input_dialog)
-  self.input_dialog:onShowKeyboard() -- Show keyboard immediately
 end
 
 -- Process main select popup buttons

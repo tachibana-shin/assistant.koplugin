@@ -67,15 +67,9 @@ local function showRecapDialog(assitant, title, author, progress_percent, messag
       ui = ui,
       title = t("recap"),
       text = createResultText(answer),
-      onShowSwitchModel = function()
-        assitant:showProviderSwitch()
-      end,
     }
 
     UIManager:show(chatgpt_viewer)
-    if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
-      UIManager:setDirty(nil, "full")
-    end
 end
 
 return showRecapDialog

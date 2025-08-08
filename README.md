@@ -139,15 +139,13 @@ local CONFIGURATION = {
     
     -- Optional features
     features = {
-        dictionary_translate_to = "Turkish", -- Set language for the dictionary response, nil to disable dictionary.
         response_language = "Turkish", --  Set language for the other responses, nil to English response. 
+        -- dictionary_translate_to = "German", -- if you want the language of the dictionary to be different from the response language, set it here.
         hide_highlighted_text = false,  -- Set to true to hide the highlighted text at the top
         hide_long_highlights = true,    -- Hide highlighted text if longer than threshold
         long_highlight_threshold = 500,  -- Number of characters considered "long"
         max_display_user_prompt_length = 100,  -- Maximum number of characters of user_prompt to show in result window  (0 or nil for no limit)
         system_prompt = "You are a helpful assistant that provides clear explanations.", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
-        refresh_screen_after_displaying_results = true, -- Set to true to refresh the screen after displaying the results
-        show_dictionary_button_in_main_popup = true, -- Set to true to show the dictionary button in the main popup
         show_dictionary_button_in_dictionary_popup = true, -- Set to true to show the Dictionary (AI) button in the dictionary popup
         enable_AI_recap = true, -- Set to true to allow for a popup on a book you haven't read in a while to give you a quick AI recap
         render_markdown = true, -- Set to true to render markdown in the AI responses
@@ -174,7 +172,6 @@ local CONFIGURATION = {
                 order = 1, -- give order to buttons to fix the order of them
                 system_prompt = "You are a helpful assistant that ....",
                 user_prompt = "Please ...  in {language}: ",
-                show_on_main_popup = false -- Show the button in main popup    
             },
             -- ... other prompts
         }

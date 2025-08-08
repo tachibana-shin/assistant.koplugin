@@ -23,7 +23,8 @@ function AnthropicHandler:query(message_history, anthropic_settings)
     local requestBodyTable = {
         model = anthropic_settings.model,
         messages = messages,
-        max_tokens = (anthropic_settings.additional_parameters and anthropic_settings.additional_parameters.max_tokens)
+        max_tokens = (anthropic_settings.additional_parameters and anthropic_settings.additional_parameters.max_tokens),
+        stream = (anthropic_settings.additional_parameters and anthropic_settings.additional_parameters.stream) or false,
     }
 
     local requestBody = json.encode(requestBodyTable)
@@ -32,6 +33,11 @@ function AnthropicHandler:query(message_history, anthropic_settings)
         ["x-api-key"] = anthropic_settings.api_key,
         ["anthropic-version"] = (anthropic_settings.additional_parameters and anthropic_settings.additional_parameters.anthropic_version)
     }
+    if requestBodyTable.stream then
+        -- For streaming responses, we need to handle the response differently
+        headers["Accept"] = "text/event-stream"
+        return self:backgroudRequest(anthropic_settings.base_url, headers, requestBody)
+    end
 
     local success, code, response = self:makeRequest(anthropic_settings.base_url, headers, requestBody)
 

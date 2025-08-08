@@ -1,3 +1,4 @@
+local _ = require("gettext")
 -- preconfigured prompts for various tasks
 
 -- Custom prompts for the AI
@@ -13,9 +14,16 @@
 
 -- prompts attributes can be overridden in the configuration file.
 local custom_prompts = {
+        dictionary = {
+            order = -10,
+            text = _("Dictionary"),
+            desc = _("This prompt act as a dictionary for the highlighted text, to a word or phrase."),
+            -- this prompt is a stub -- it will be replaced by the actual prompt in the code below
+        },
         translate = {
             order = 100,
-            text = "Translate",
+            text = _("Translate"),
+            desc = _("This prompt translates the highlighted text to another language."),
             user_prompt = [[You are a helpful translation assistant. Provide direct translations without additional commentary. 
 You are a skilled translator tasked with translating text from one language to another. Your goal is to provide an accurate and natural-sounding translation that preserves the meaning, tone, and style of the original text.
 [TEXT TO BE TRANSLATED]
@@ -37,8 +45,9 @@ Follow these steps to complete the translation:
 Output only the translated text without any further explanation.]],
         },
         simplify = {
-            text = "Simplify",
+            text = _("Simplify"),
             order = 110,
+            desc = _("This prompt simplifies the highlighted text to make it easier to understand."),
             user_prompt = [[You are an experienced linguistic expert and an effective communicator, skilled at transforming complex content into clear, easily understandable expressions.
 I have a piece of text that I need you to simplify using its original language. 
 Please ensure that during the simplification process, you do not alter the text's original meaning or omit any critical information. 
@@ -48,8 +57,9 @@ Your goal is to enhance the text's readability and clarity, making it accessible
 {highlight}]],
         },
         explain = {
-            text = "Explain",
+            text = _("Explain"),
             order = 120,
+            desc = _("This prompt explains the highlighted text in detail, ensuring clarity and understanding."),
             user_prompt = [[You are an expert Explainer and a highly skilled Cross-Cultural Communicator.
 Your task is to accurately and comprehensively explain any given text. 
 When I provide you with text, regardless of its original language, your primary goal is to fully grasp its meaning, including all complex terms, underlying concepts, and implicit details. 
@@ -60,8 +70,9 @@ Ensure your {language} explanation is precise, captures all nuances of the origi
 {highlight}]],
         },
         summarize = {
-            text = "Summarize",
+            text = _("Summarize"),
             order = 130,
+            desc = _("This prompt summarizes the highlighted text, capturing its main points and essential details."),
             user_prompt = [[
 You are an exceptionally skilled summarization expert and a master of linguistic precision. 
 Your core competency is to distill extensive information into its most essential form while rigorously adhering to the original language of the input text. 
@@ -70,29 +81,34 @@ This summary must accurately capture every main point and crucial detail, elimin
 Please provide a concise and clear summary of the following text in its own language: {highlight}]],
         },
         historical_context = {
-            text = "Historical Context",
+            text = _("Historical Context"),
             order = 140,
+            desc = _("This prompt provides a detailed historical context for the highlighted text, explaining its significance and background."),
             user_prompt = "You are a distinguished Historical Context Expert with profound knowledge of global history, socio-political movements, and cultural evolution. You possess an exceptional ability to place any given text within its precise historical framework. When I provide you with a text, your primary task is to meticulously uncover and articulate its relevant historical background, including the significant events, prevailing ideologies, societal structures, scientific advancements, and cultural environment that shaped its creation and meaning. Beyond merely listing facts, you must forge clear, insightful connections between these historical elements and the text's content, themes, and underlying messages. Furthermore, your comprehensive explanation must be delivered entirely in the language specified by me. Please provide a detailed and insightful explanation of the historical context of the following text, rendered completely in {language}: {highlight}",
         },
         key_points = {
-            text = "Key Points",
+            text = _("Key Points"),
             order = 150,
+            desc = _("This prompt extracts and lists the key points from the highlighted text, ensuring clarity and organization."),
             user_prompt = "You are a highly analytical and extremely efficient Key Points Expert, adept at distilling any given text into its fundamental essence. Your primary function is to meticulously identify and extract all the critical insights, core arguments, essential facts, and conclusive statements from the provided content. Your goal is to produce a summary that is not just concise but also remarkably comprehensive in its coverage of the main points, leaving out all superfluous information. You must then present these key points in a meticulously organized and easy-to-read list, ensuring each point is clear, independent, and directly addresses a central idea of the original text. All output must be exclusively in the language I specify. Please provide a concise and clear list of key points from the following text, and rendered entirely in {language}: {highlight}",
         },
         ELI5 = {
-            text = "ELI5",
+            text = _("ELI5"),
             order = 160,
+            desc = _("This prompt explains the highlighted text as if to a five-year-old, simplifying complex concepts into easily understandable terms."),
             user_prompt = "You are an exceptional ELI5 (Explain Like I'm 5) Expert, mastering the art of simplifying the most intricate concepts. Your unique talent lies in transforming complex terms or ideas into effortlessly understandable explanations, as if speaking to a curious five-year-old. When I provide you with a concept, your task is to strip away all jargon, technicalities, and unnecessary complexities, focusing solely on the fundamental essence. You must use only plain, everyday language, simple analogies, and concise sentences to ensure immediate comprehension for anyone, regardless of their background knowledge. Your explanation should be direct, clear, and perfectly accessible. All output must be delivered exclusively in the language I specify. Please provide a concise, simple, and crystal-clear ELI5 explanation of the following, rendered entirely in {language}: {highlight}.",
         },
         grammar = {
-            text = "Grammar",
+            text = _("Grammar"),
             order = 170,
+            desc = _("This prompt analyzes the grammar of the highlighted text, providing a detailed explanation of its structure and any grammatical errors."),
             system_prompt = "You are a helpful AI assistant. Always respond in Markdown format, but use markdown lists to present comparisons instead of tables.",
             user_prompt = "You are a meticulous and highly knowledgeable Grammar Expert with an encyclopedic understanding of syntax, morphology, punctuation, and linguistic structures across various languages. When presented with a text, your expertise lies in thoroughly dissecting its grammatical composition and providing a comprehensive, insightful explanation. Your task is to analyze the provided text, elucidating its sentence structures, parts of speech, verb tenses, clause relationships, and any other relevant grammatical elements. If present, you should also identify and clearly explain any grammatical errors, along with their corrections and the underlying rules. Your explanation should be didactic, detailed, and easy to understand, formatted clearly to highlight specific points. All explanations must be rendered exclusively in the language I specify. Please provide a detailed and comprehensive explanation of the grammar of the following text, rendered entirely in {language}: {highlight}",
         },
         vocabulary = {
-            text = "Vocabulary",
+            text = _("Vocabulary"),
             order = 180,
+            desc = _("This prompt analyzes the vocabulary of the highlighted text, identifying complex words and providing definitions, synonyms, and usage examples."),
             user_prompt = [[**Your Task:** Analyze the Input Text below. Find words/phrases that are B2 level or higher. Ignore common words (B1 level) and proper nouns.
 
                             **Output Requirements:**
@@ -101,17 +117,18 @@ Please provide a concise and clear summary of the following text in its own lang
                                 *   Convert it to its base form (e.g., "go", "dog", "good", "kick the bucket").
                                 *   List up to 3 simple synonyms (suitable for B1+ learners). Do not reuse the original word.
                                 *   Explain its meaning simply **in {language}**, considering its context in the text. Do not reuse the original word in the explanation.
-                            2.  **Format:** Create a numbered list using this exact structure for each item:
-                                `index. base form : synonym1, synonym2, synonym3 : {language} explanation`
-                            3.  **Output Content:** **ONLY** provide the numbered list. Do not include the original text, titles, or any extra sentences.
+                            2.  Format: Create a numbered list using this exact structure for each item:
+                                `index. __base form__: synonym1, synonym2, synonym3 : {language} explanation`
+                            3.  Output Content: **ONLY** provide the numbered list. Do not include the original text, titles, or any extra sentences.
 
                             **Input Text:** {highlight} ]], 
         },
         wikipedia = {
-            text = "Wikipedia",
+            text = _("Wikipedia"),
             order = 190,
+            desc = _("This prompt generates a comprehensive Wikipedia-style article based on the highlighted text, ensuring factual accuracy and neutrality."),
             user_prompt = "You are an exceptionally thorough and objective Informative Assistant designed to emulate the structure and content quality of a Wikipedia page. Your extensive knowledge base allows you to act as a definitive source for factual and unbiased information. When I provide you with a topic, your core task is to research and synthesize the most critical and universally accepted information about that subject. You must then present this information in the comprehensive, encyclopedic format of a Wikipedia article. Begin with a concise, overview introductory paragraph that defines the topic and summarizes its essence. Subsequently, elaborate on the most important facets, key historical events, fundamental concepts, or significant applications, ensuring every piece of information is factual, neutral, and devoid of opinion. All content generated should strictly adhere to Wikipedia's tone and style, and the entire response must be delivered exclusively in the language I specify. Please act as a Wikipedia page for the following topic, starting with an introductory paragraph and thoroughly covering its most important aspects, delivered entirely in {language}: {highlight}",
-    }
+        },
 }
 
 
@@ -232,8 +249,8 @@ M.getSortedCustomPrompts = function(filter_func)
     local sorted_prompts = {}
     for prompt_index, prompt in pairs(M.merged_prompts) do
         -- Only add the prompt if there is no filter, or if the filter function returns true.
-        if not filter_func or filter_func(prompt) == true then
-            table.insert(sorted_prompts, {idx = prompt_index, order = prompt.order or 1000, text = prompt.text or prompt_index})
+        if not filter_func or filter_func(prompt, prompt_index) == true then
+            table.insert(sorted_prompts, {idx = prompt_index, order = prompt.order or 1000, text = prompt.text or prompt_index, desc = prompt.desc or ""})
         end
     end
     table_sort(sorted_prompts, "order")

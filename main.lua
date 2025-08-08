@@ -13,10 +13,12 @@ local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
 local t = require("i18n")
 local FrontendUtil = require("util")
+local ffiutil = require("ffi/util")
 
 local AssistantDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
 local Prompts = require("prompts")
+local SettingsDialog = require("settingsdialog")
 
 local Assistant = InputContainer:new {
   name = "Assistant",
@@ -59,96 +61,23 @@ function Assistant:onDispatcherRegisterActions()
       separator = true
     })
   end
-  
-  -- Note: AI Dictionary is integrated by overriding the translate() method in ReaderHighlight
-  -- Users can select "Translate" in Long press on text gestures to use AI Dictionary
-  
-  -- Note: Custom prompt actions are not registered as they require highlighted text
-  -- They remain available through the highlight dialog and main AI dialog
 end
 
 function Assistant:addToMainMenu(menu_items)
     menu_items.assitant_provider_switch = {
-        text = t("assistant_provider_switch"),
+        text = t("assistant_settings"),
         sorting_hint = "more_tools",
         callback = function ()
-          self:showProviderSwitch()
+          self:showSettings()
         end
     }
-
-    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language then
-      menu_items.assitant_translate_override = {
-          text = t("use_ai_assistant_for_translate"),
-          checked_func = function()
-              return self.settings:readSetting("ai_translate_override") or false
-          end,
-          callback = function()
-              local current_setting = self.settings:readSetting("ai_translate_override") or false
-              local new_setting = not current_setting
-              self.settings:saveSetting("ai_translate_override", new_setting)
-              self.updated = true
-              self:applyOrRemoveTranslateOverride()
-              UIManager:show(InfoMessage:new{
-                  text = new_setting and t("ai_assistant_override_enabled") or t("ai_assistant_override_disabled")
-              })
-          end,
-          sorting_hint = "more_tools",
-      }
-    end
 end
 
-function Assistant:showProviderSwitch()
-
-    if not CONFIGURATION or not CONFIGURATION.provider_settings then
-      UIManager:show(InfoMessage:new{
-        icon = "notice-warning",
-        text = t("configuration_not_found_or_provider_settings_missing")
-      })
-      return
-    end
-
-    local current_provider = self.querier.provider_name
-    local provider_settings = CONFIGURATION and CONFIGURATION.provider_settings or {}
-
-    -- sort keys of provider_settings
-    local provider_keys = {}
-    for key, tab in pairs(provider_settings) do
-      if tab.visible ~= false then
-        table.insert(provider_keys, key)
-      end
-    end
-    table.sort(provider_keys)
-
-    local radio_buttons = {}
-    for _, key in ipairs(provider_keys) do
-      table.insert(radio_buttons, {{
-        text = string.format("%s (%s)", key, provider_settings[key].model),
-        provider = key, -- note: this `provider` field belongs to the RadioButtonWidget, not our AI Model provider.
-        checked = (key == current_provider),
-      }})
-    end
-
-    -- Show the RadioButtonWidget dialog for selecting AI provider
-    UIManager:show(RadioButtonWidget:new{
-      title_text = t("select_ai_provider_profile"),
-      info_text = t("use_selected_provider_overrides_configuration"),
-      cancel_text = t("close"),
-      ok_text = t("OK"),
-      width_factor = 0.9,
-      radio_buttons = radio_buttons,
-      callback = function(radio)
-        if radio.provider ~= current_provider then
-          self.settings:saveSetting("provider", radio.provider)
-          self.updated = true
-          self.querier:load_model(radio.provider)
-          UIManager:show(InfoMessage:new{
-            icon = "notice-info",
-            text = string.format(t("ai_provider_changed_to"),
-                                radio.provider,
-                                provider_settings[radio.provider].model),
-          })
-        end
-      end,
+function Assistant:showSettings()
+    UIManager:show(SettingsDialog:new{
+        assitant = self,
+        CONFIGURATION = CONFIGURATION,
+        settings = self.settings,
     })
 end
 
@@ -255,29 +184,14 @@ function Assistant:init()
   self:applyOrRemoveTranslateOverride()
 
   -- Load the model provider from settings or default configuration
-  self.querier = require("gpt_query"):new()
+  self.querier = require("gpt_query"):new({
+    assitant = self,
+    settings = self.settings,
+  })
   self.querier:load_model(self:getModelProvider())
 
   self.assitant_dialog = AssistantDialog:new(self, CONFIGURATION)
-
-  -- Dictionary button
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and CONFIGURATION.features.show_dictionary_button_in_main_popup then
-    self.ui.highlight:addToHighlightDialog("dictionary", function(_reader_highlight_instance)
-      return {
-          text = t("dictionary").." (AI)",
-          enabled = Device:hasClipboard(),
-          callback = function()
-              NetworkMgr:runWhenOnline(function()
-                local showDictionaryDialog = require("dictdialog")
-                Trapper:wrap(function()
-                  showDictionaryDialog(self, _reader_highlight_instance.selected_text.text)
-                end)
-              end)
-          end,
-      }
-    end)
-  end
-  
+ 
   -- Recap Feature
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.enable_AI_recap then
     local ReaderUI    = require("apps/reader/readerui")
@@ -334,37 +248,58 @@ function Assistant:init()
   end
 
   -- Add Custom buttons to main select popup menu
-  local showOnMain = Prompts.getSortedCustomPrompts(function (prompt)
+  local showOnMain = Prompts.getSortedCustomPrompts(function (prompt, idx)
     if prompt.visible == false then
       return false
     end
+
+    --  set in runtime settings (by holding the prompt button)
+    local menukey = string.format("assistant_%02d_%s", prompt.order, idx)
+    local settingkey = "showOnMain_" .. menukey
+    if self.settings:has(settingkey) then
+      return self.settings:isTrue(settingkey)
+    end
+
+    -- set in configure file
     if prompt.show_on_main_popup then
       return true
     end
+
     return false -- only show if `show_on_main_popup` is true
   end) or {}
 
   -- Add buttons in sorted order
   for _, tab in ipairs(showOnMain) do
-    -- Use order in the index for proper sorting (pad with zeros for consistent sorting)
-    self.ui.highlight:addToHighlightDialog(
-      string.format("assistant_%02d_%s", tab.order, tab.idx),
-      function(_reader_highlight_instance)
-        return {
-          text = tab.text .. " (AI)",  -- append "(AI)" to identify as our function
-          enabled = Device:hasClipboard(),
-          callback = function()
-            NetworkMgr:runWhenOnline(function()
-              Trapper:wrap(function()
-                self.assitant_dialog:showCustomPrompt(
-                  _reader_highlight_instance.selected_text.text,
-                  tab.idx)
-              end)
-            end)
-          end,
-        }
-      end)
+    self:addMainButton(tab.idx, tab)
   end
+end
+
+function Assistant:addMainButton(prompt_idx, prompt)
+  local menukey = string.format("assistant_%02d_%s", prompt.order, prompt_idx)
+  self.ui.highlight:addToHighlightDialog(menukey, function(_reader_highlight_instance)
+    return {
+      text = prompt.text .. " (AI)",  -- append "(AI)" to identify as our function
+      callback = function()
+        NetworkMgr:runWhenOnline(function()
+          Trapper:wrap(function()
+            if prompt.order == -10 and prompt_idx == "dictionary" then
+              -- Dictionary prompt, show dictionary dialog
+              local showDictionaryDialog = require("dictdialog")
+              showDictionaryDialog(self, _reader_highlight_instance.selected_text.text)
+            else
+              -- For other prompts, show the custom prompt dialog
+              self.assitant_dialog:showCustomPrompt(_reader_highlight_instance.selected_text.text, prompt_idx)
+            end
+          end)
+        end)
+      end,
+    }
+  end)
+end
+
+function Assistant:removeMainButton(prompt_idx, prompt)
+  local menukey = string.format("assistant_%02d_%s", prompt.order, prompt_idx)
+  self.ui.highlight:removeFromHighlightDialog(menukey)
 end
 
 function Assistant:onDictButtonsReady(dict_popup, buttons)

@@ -114,7 +114,7 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
         end
     end
     
-    local dict_language = configuration.features and configuration.features.dictionary_translate_to or "English"
+    local dict_language = configuration.features.dictionary_translate_to or configuration.features.response_language or "English"
     local context_message = {
         role = "user",
         content = string.gsub(dict_prompts.user_prompt, "{(%w+)}", {
@@ -175,15 +175,9 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
         title = t("dictionary"),
         text = result_text,
         onAddToNote = handleAddToNote,
-        onShowSwitchModel = function()
-            assitant:showProviderSwitch()
-        end,
     }
 
     UIManager:show(chatgpt_viewer)
-    if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
-        UIManager:setDirty(nil, "full")
-    end
 end
 
 return showDictionaryDialog

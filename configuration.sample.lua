@@ -137,15 +137,13 @@ local CONFIGURATION = {
 
     -- Optional features 
     features = {
-        dictionary_translate_to = "Turkish", -- Set language for the dictionary response, nil to disable dictionary.
         response_language = "Turkish", --  Set language for the other responses, nil to English response. 
+        -- dictionary_translate_to = "Turkish", -- if you want the language of the dictionary to be different from the response language, set it here.
         hide_highlighted_text = false,  -- Set to true to hide the highlighted text at the top
         hide_long_highlights = true,    -- Hide highlighted text if longer than threshold
         long_highlight_threshold = 500,  -- Number of characters considered "long"
         max_display_user_prompt_length = 100,  -- Maximum number of characters of user_prompt to show in result window  (0 or nil for no limit)
         system_prompt = "You are a helpful AI assistant. Always respond in Markdown format.", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
-        refresh_screen_after_displaying_results = true, -- Set to true to refresh the screen after displaying the results
-        show_dictionary_button_in_main_popup = true, -- Set to true to show the dictionary button in the main popup
         show_dictionary_button_in_dictionary_popup = true, -- Set to true to show the Dictionary (AI) button in the dictionary popup
         enable_AI_recap = true, -- Set to true to allow for a popup on a book you haven't read in a while to give you a quick AI recap
         render_markdown = true, -- Set to true to render markdown in the AI responses
@@ -160,22 +158,9 @@ local CONFIGURATION = {
         -- Set `visible = false` to hide the prompt from all popups.
         prompts = {
 
-            -- set the most frequently used prompts useable in the highlighted popup
-            translate          = { show_on_main_popup = true, },
-            vocabulary         = { show_on_main_popup = true, },
-            wikipedia          = { show_on_main_popup = true, },
-
             -- hide some prompts to keep the UI clean
             -- simplify           = { visible = false, }, -- hide from everywhere
 
-            -- all other prompts are available by clicking the "Assitant" button without any configuration.
-            -- simplify           = { show_on_main_popup = true, },
-            -- explain            = { show_on_main_popup = true, },
-            -- summarize          = { show_on_main_popup = true, },
-            -- key_points         = { show_on_main_popup = true, },
-            -- historical_context = { show_on_main_popup = true, },
-            -- ELI5               = { show_on_main_popup = true, },
-            -- grammar            = { show_on_main_popup = true, },
             --
             -- example of adding a custom prompt:
             -- myprompt = { system_prompt = "you are a helpful assitant.", user_prompt = "...", order = 50, show_on_main_popup = true, },

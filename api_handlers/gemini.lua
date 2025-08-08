@@ -42,6 +42,9 @@ function GeminiHandler:query(message_history, gemini_settings)
         generationConfig.thinkingConfig.thinkingBudget = thinking_budget
     end
 
+    local stream = (gemini_settings and gemini_settings.additional_parameters and
+                            gemini_settings.additional_parameters.stream) or false
+
     local requestBodyTable = {
         contents = contents,
         safety_settings = {
@@ -56,14 +59,22 @@ function GeminiHandler:query(message_history, gemini_settings)
     local requestBody = json.encode(requestBodyTable)
     
     local headers = {
-        ["Content-Type"] = "application/json"
+        ["Content-Type"] = "application/json",
+        ["x-goog-api-key"] = gemini_settings.api_key,
     }
 
     local model = gemini_settings.model or "gemini-1.5-pro-latest"
     local base_url = gemini_settings.base_url or "https://generativelanguage.googleapis.com/v1beta/models/"
     
-    local url = string.format("%s%s:generateContent?key=%s", base_url, model, gemini_settings.api_key)
+    local url = string.format(stream and "%s%s:streamGenerateContent?alt=sse" or "%s%s:generateContent",
+                base_url, model)
     logger.dbg("Making Gemini API request to model:", model)
+
+    if stream then
+        -- For streaming responses, we need to handle the response differently
+        headers["Accept"] = "text/event-stream"
+        return self:backgroudRequest(url, headers, requestBody)
+    end
     
     local success, code, response = self:makeRequest(url, headers, requestBody)
     if not success then
