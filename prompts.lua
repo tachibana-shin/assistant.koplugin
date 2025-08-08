@@ -13,6 +13,11 @@
 
 -- prompts attributes can be overridden in the configuration file.
 local custom_prompts = {
+        dictionary = {
+            order = -10,
+            text = "Dictionary",
+            -- this prompt is a stub -- it will be replaced by the actual prompt in the code below
+        },
         translate = {
             order = 100,
             text = "Translate",

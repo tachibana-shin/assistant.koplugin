@@ -307,20 +307,6 @@ function AssitantDialog:show(highlightedText)
   
   -- Only add additional buttons if there's highlighted text
   if is_highlighted then
-    -- Add Dictionary button
-    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to then
-      table.insert(all_buttons, {
-        text = _("Dictionary"),
-        callback = function()
-          self:_close()
-          local showDictionaryDialog = require("dictdialog")
-          Trapper:wrap(function()
-            showDictionaryDialog(self.assitant, highlightedText)
-          end)
-        end
-      })  
-    end
-
     local sorted_prompts = Prompts.getSortedCustomPrompts(function (prompt)
       if prompt.visible == false then
         return false
@@ -336,7 +322,13 @@ function AssitantDialog:show(highlightedText)
         callback = function()
           self:_close()
           Trapper:wrap(function()
-            self:showCustomPrompt(highlightedText, tab.idx)
+            if tab.order == -10 and tab.idx == "dictionary" then
+              -- Special case for dictionary prompt
+              local showDictionaryDialog = require("dictdialog")
+              showDictionaryDialog(self.assitant, highlightedText)
+            else
+              self:showCustomPrompt(highlightedText, tab.idx)
+            end
           end)
         end,
         hold_callback = function()

@@ -191,24 +191,6 @@ function Assistant:init()
   self.querier:load_model(self:getModelProvider())
 
   self.assitant_dialog = AssistantDialog:new(self, CONFIGURATION)
-
-  -- Dictionary button
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and CONFIGURATION.features.show_dictionary_button_in_main_popup then
-    self.ui.highlight:addToHighlightDialog("dictionary", function(_reader_highlight_instance)
-      return {
-          text = _("Dictionary").." (AI)",
-          enabled = Device:hasClipboard(),
-          callback = function()
-              NetworkMgr:runWhenOnline(function()
-                local showDictionaryDialog = require("dictdialog")
-                Trapper:wrap(function()
-                  showDictionaryDialog(self, _reader_highlight_instance.selected_text.text)
-                end)
-              end)
-          end,
-      }
-    end)
-  end
   
   -- Recap Feature
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.enable_AI_recap then
@@ -317,7 +299,14 @@ function Assistant:addMainButton(prompt_idx, prompt)
       callback = function()
         NetworkMgr:runWhenOnline(function()
           Trapper:wrap(function()
-            self.assitant_dialog:showCustomPrompt(_reader_highlight_instance.selected_text.text, prompt_idx)
+            if prompt.order == -10 and prompt_idx == "dictionary" then
+              -- Dictionary prompt, show dictionary dialog
+              local showDictionaryDialog = require("dictdialog")
+              showDictionaryDialog(self, _reader_highlight_instance.selected_text.text)
+            else
+              -- For other prompts, show the custom prompt dialog
+              self.assitant_dialog:showCustomPrompt(_reader_highlight_instance.selected_text.text, prompt_idx)
+            end
           end)
         end)
       end,
