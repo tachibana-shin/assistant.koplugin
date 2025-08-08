@@ -219,6 +219,10 @@ function ChatGPTViewer:init()
     title_multilines = self.title_multilines,
     title_shrink_font_to_fit = self.title_shrink_font_to_fit,
     close_callback = function() self:onClose() end,
+    left_icon = "appbar.settings",
+    left_icon_tap_callback = function()
+      self.assitant:showSettings()
+    end,
     show_parent = self,
   }
 

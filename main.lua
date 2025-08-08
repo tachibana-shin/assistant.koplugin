@@ -61,12 +61,6 @@ function Assistant:onDispatcherRegisterActions()
       separator = true
     })
   end
-  
-  -- Note: AI Dictionary is integrated by overriding the translate() method in ReaderHighlight
-  -- Users can select "Translate" in Long press on text gestures to use AI Dictionary
-  
-  -- Note: Custom prompt actions are not registered as they require highlighted text
-  -- They remain available through the highlight dialog and main AI dialog
 end
 
 function Assistant:addToMainMenu(menu_items)
@@ -191,6 +185,7 @@ function Assistant:init()
 
   -- Load the model provider from settings or default configuration
   self.querier = require("gpt_query"):new({
+    assitant = self,
     settings = self.settings,
   })
   self.querier:load_model(self:getModelProvider())

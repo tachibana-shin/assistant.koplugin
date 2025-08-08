@@ -12,6 +12,7 @@ local ffi = require("ffi")
 local ffiutil = require("ffi/util")
 
 local Querier = {
+    assitant = nil, -- reference to the main assistant object
     settings = nil,
     handler = nil,
     handler_name = nil,
@@ -141,6 +142,10 @@ function Querier:query(message_history, title)
             description = string.format(
                 _("☁ %s/%s"), self.provider_name, self.provider_settings.model),
             inputtext_class = StreamText, -- use our custom InputText class
+            title_bar_left_icon = "appbar.settings",
+            title_bar_left_icon_tap_callback = function ()
+                self.assitant:showSettings()
+            end,
 
             readonly = false, skip_first_show_keyboard = true, keyboard_visible = false, fullscreen = false,
             allow_newline = true, add_nav_bar = false, cursor_at_end = true, add_scroll_buttons = true,

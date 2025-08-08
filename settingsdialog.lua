@@ -21,9 +21,10 @@ local VerticalSpan = require("ui/widget/verticalspan")
 local _ = require("gettext")
 local Screen = require("device").screen
 local ffiutil = require("ffi/util")
+local meta = require("_meta")
 
 local SettingsDialog = InputDialog:extend{
-    title = _("AI Assitant Settings"),
+    title = _("Assitant Settings"),
 
     -- inited variables
     assitant = nil, -- reference to the main assistant object
@@ -35,6 +36,17 @@ local SettingsDialog = InputDialog:extend{
     radio_buttons = nil,
     check_buttons = {},
 
+    title_bar_left_icon = "notice-info",
+    title_bar_left_icon_tap_callback = function ()
+        UIManager:show(InfoMessage:new{
+            alignment = "center",
+            show_icon = false,
+            text = string.format(
+                _("%s %s\n\n%s"), meta.fullname, meta.version,
+                [[💡 Enjoy KOReader with AI Power ! ]]
+            )
+        })
+    end,
 }
 
 function SettingsDialog:init()

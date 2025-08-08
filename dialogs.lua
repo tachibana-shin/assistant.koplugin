@@ -141,6 +141,7 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
   local chatgpt_viewer = ChatGPTViewer:new {
     title = title,
     text = result_text,
+    assitant = self.assitant,
     ui = self.assitant.ui,
     onAskQuestion = function(viewer, user_question) -- callback for user entered question
         -- Use viewer's own highlighted_text value
