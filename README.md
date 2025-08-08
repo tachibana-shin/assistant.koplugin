@@ -139,8 +139,8 @@ local CONFIGURATION = {
     
     -- Optional features
     features = {
-        dictionary_translate_to = "Turkish", -- Set language for the dictionary response, nil to disable dictionary.
         response_language = "Turkish", --  Set language for the other responses, nil to English response. 
+        -- dictionary_translate_to = "German", -- if you want the language of the dictionary to be different from the response language, set it here.
         hide_highlighted_text = false,  -- Set to true to hide the highlighted text at the top
         hide_long_highlights = true,    -- Hide highlighted text if longer than threshold
         long_highlight_threshold = 500,  -- Number of characters considered "long"
