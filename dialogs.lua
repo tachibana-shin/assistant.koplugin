@@ -395,7 +395,6 @@ function AssitantDialog:show(highlightedText)
   }
   
   UIManager:show(self.input_dialog)
-  self.input_dialog:onShowKeyboard() -- Show keyboard immediately
 end
 
 -- Process main select popup buttons
