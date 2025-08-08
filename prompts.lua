@@ -232,7 +232,7 @@ M.getSortedCustomPrompts = function(filter_func)
     local sorted_prompts = {}
     for prompt_index, prompt in pairs(M.merged_prompts) do
         -- Only add the prompt if there is no filter, or if the filter function returns true.
-        if not filter_func or filter_func(prompt) == true then
+        if not filter_func or filter_func(prompt, prompt_index) == true then
             table.insert(sorted_prompts, {idx = prompt_index, order = prompt.order or 1000, text = prompt.text or prompt_index})
         end
     end

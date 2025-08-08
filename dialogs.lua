@@ -330,7 +330,7 @@ function AssitantDialog:show(highlightedText)
 
     -- logger.warn("Sorted prompts: ", sorted_prompts)
     -- Add buttons in sorted order
-    for _, tab in ipairs(sorted_prompts) do
+    for i, tab in ipairs(sorted_prompts) do
       table.insert(all_buttons, {
         text = tab.text,
         callback = function()
@@ -338,6 +338,28 @@ function AssitantDialog:show(highlightedText)
           Trapper:wrap(function()
             self:showCustomPrompt(highlightedText, tab.idx)
           end)
+        end,
+        hold_callback = function()
+          local menukey = string.format("assistant_%02d_%s", tab.order, tab.idx)
+          local settingkey = "showOnMain_" .. menukey
+          self.assitant.settings:toggle(settingkey)
+          self.assitant.updated = true
+
+          local noticetext
+          if self.assitant.settings:isTrue(settingkey) then
+            self.assitant:addMainButton(tab.idx, tab)
+            -- logger.info("Added custom prompt button: ", tab.text, " with index: ", tab.idx)
+            noticetext = string.format(_("Added [%s (AI)] to Main Highlight Menu."), tab.text)
+          else
+            self.assitant:removeMainButton(tab.idx, tab)
+            noticetext = string.format(_("Removed [%s (AI)] from Main Highlight Menu."), tab.text)
+          end
+
+          UIManager:show(InfoMessage:new{
+            text = noticetext,
+            icon = "notice-info",
+            timeout = 3
+          })
         end
       })
     end
@@ -358,7 +380,7 @@ function AssitantDialog:show(highlightedText)
   end
 
   -- Show the dialog with the button rows
-  local dialog_title = is_highlighted and 
+  local dialog_hint = is_highlighted and 
     _("Ask a question about the highlighted text") or 
     string.format(_("Ask a question about this book:\n%s by %s"), book.title, book.author)
   
@@ -368,7 +390,7 @@ function AssitantDialog:show(highlightedText)
   
   self.input_dialog = InputDialog:new{
     title = _("AI Assistant"),
-    description = dialog_title,
+    description = dialog_hint,
     input_hint = input_hint,
     buttons = button_rows,
     title_bar_left_icon = "appbar.settings",

@@ -266,13 +266,23 @@ function Assistant:init()
   end
 
   -- Add Custom buttons to main select popup menu
-  local showOnMain = Prompts.getSortedCustomPrompts(function (prompt)
+  local showOnMain = Prompts.getSortedCustomPrompts(function (prompt, idx)
     if prompt.visible == false then
       return false
     end
+
+    --  set in runtime settings (by holding the prompt button)
+    local menukey = string.format("assistant_%02d_%s", prompt.order, idx)
+    local settingkey = "showOnMain_" .. menukey
+    if self.settings:has(settingkey) then
+      return self.settings:isTrue(settingkey)
+    end
+
+    -- set in configure file
     if prompt.show_on_main_popup then
       return true
     end
+
     return false -- only show if `show_on_main_popup` is true
   end) or {}
 
@@ -297,6 +307,27 @@ function Assistant:init()
         }
       end)
   end
+end
+
+function Assistant:addMainButton(prompt_idx, prompt)
+  local menukey = string.format("assistant_%02d_%s", prompt.order, prompt_idx)
+  self.ui.highlight:addToHighlightDialog(menukey, function(_reader_highlight_instance)
+    return {
+      text = prompt.text .. " (AI)",  -- append "(AI)" to identify as our function
+      callback = function()
+        NetworkMgr:runWhenOnline(function()
+          Trapper:wrap(function()
+            self.assitant_dialog:showCustomPrompt(_reader_highlight_instance.selected_text.text, prompt_idx)
+          end)
+        end)
+      end,
+    }
+  end)
+end
+
+function Assistant:removeMainButton(prompt_idx, prompt)
+  local menukey = string.format("assistant_%02d_%s", prompt.order, prompt_idx)
+  self.ui.highlight:removeFromHighlightDialog(menukey)
 end
 
 function Assistant:onDictButtonsReady(dict_popup, buttons)
