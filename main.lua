@@ -270,24 +270,7 @@ function Assistant:init()
 
   -- Add buttons in sorted order
   for _, tab in ipairs(showOnMain) do
-    -- Use order in the index for proper sorting (pad with zeros for consistent sorting)
-    self.ui.highlight:addToHighlightDialog(
-      string.format("assistant_%02d_%s", tab.order, tab.idx),
-      function(_reader_highlight_instance)
-        return {
-          text = tab.text .. " (AI)",  -- append "(AI)" to identify as our function
-          enabled = Device:hasClipboard(),
-          callback = function()
-            NetworkMgr:runWhenOnline(function()
-              Trapper:wrap(function()
-                self.assitant_dialog:showCustomPrompt(
-                  _reader_highlight_instance.selected_text.text,
-                  tab.idx)
-              end)
-            end)
-          end,
-        }
-      end)
+    self:addMainButton(tab.idx, tab)
   end
 end
 
