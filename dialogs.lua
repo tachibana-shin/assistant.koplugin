@@ -141,10 +141,8 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
   local chatgpt_viewer = ChatGPTViewer:new {
     title = title,
     text = result_text,
+    assitant = self.assitant,
     ui = self.assitant.ui,
-    onShowSwitchModel = function() -- callback for switch model button
-      self.assitant:showProviderSwitch()
-    end,
     onAskQuestion = function(viewer, user_question) -- callback for user entered question
         -- Use viewer's own highlighted_text value
         local current_highlight = viewer.highlighted_text or highlightedText
@@ -193,11 +191,6 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
   }
   
   UIManager:show(chatgpt_viewer)
-  
-  -- Refresh the screen after displaying the results
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.refresh_screen_after_displaying_results then
-    UIManager:setDirty(nil, "full")
-  end
 end
 
 
@@ -381,7 +374,7 @@ function AssitantDialog:show(highlightedText)
     title_bar_left_icon = "appbar.settings",
     title_bar_left_icon_tap_callback = function ()
         self.input_dialog:onCloseKeyboard()
-        self.assitant:showProviderSwitch()
+        self.assitant:showSettings()
     end,
     close_callback = function () self:_close() end,
     dismiss_callback = function () self:_close() end

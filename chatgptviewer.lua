@@ -122,7 +122,6 @@ local ChatGPTViewer = InputContainer:extend {
   default_hold_callback = nil,   -- on each default button
   find_centered_lines_count = 5, -- line with find results to be not far from the center
 
-  onShowSwitchModel = nil, -- callback when the Switch Model button is pressed
   onAskQuestion = nil, -- callback when the Ask Another Question button is pressed
   input_dialog = nil,
 }
@@ -220,6 +219,10 @@ function ChatGPTViewer:init()
     title_multilines = self.title_multilines,
     title_shrink_font_to_fit = self.title_shrink_font_to_fit,
     close_callback = function() self:onClose() end,
+    left_icon = "appbar.settings",
+    left_icon_tap_callback = function()
+      self.assitant:showSettings()
+    end,
     show_parent = self,
   }
 
@@ -264,21 +267,6 @@ function ChatGPTViewer:init()
       id = "ask_another_question",
       callback = function()
         self:askAnotherQuestion()
-      end,
-    })
-  end
-
-  -- Add switch model button
-  if self.onShowSwitchModel then
-    -- Only add if the callback is defined
-    -- This allows the button to be optional
-    table.insert(default_buttons, {
-      text = _("Switch Model"),
-      id = "switch_model",
-      callback = function()
-        if self.onShowSwitchModel then
-          self.onShowSwitchModel()
-        end
       end,
     })
   end

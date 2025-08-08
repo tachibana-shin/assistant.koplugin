@@ -14,6 +14,7 @@ function DeepSeekHandler:query(message_history, deepseek_settings)
     local requestBodyTable = {
         model = deepseek_settings.model,
         messages = message_history,
+        stream = (deepseek_settings.additional_parameters and deepseek_settings.additional_parameters.stream) or false,
         max_tokens = (deepseek_settings.additional_parameters and deepseek_settings.additional_parameters.max_tokens)
     }
 
@@ -22,6 +23,12 @@ function DeepSeekHandler:query(message_history, deepseek_settings)
         ["Content-Type"] = "application/json",
         ["Authorization"] = "Bearer " .. deepseek_settings.api_key
     }
+
+    if requestBodyTable.stream then
+        -- For streaming responses, we need to handle the response differently
+        headers["Accept"] = "text/event-stream"
+        return self:backgroudRequest(deepseek_settings.base_url, headers, requestBody)
+    end
 
     local success, code, response = self:makeRequest(
         deepseek_settings.base_url,

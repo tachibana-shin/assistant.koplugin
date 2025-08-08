@@ -13,10 +13,12 @@ local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
 local _ = require("gettext")
 local FrontendUtil = require("util")
+local ffiutil = require("ffi/util")
 
 local AssistantDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
 local Prompts = require("prompts")
+local SettingsDialog = require("settingsdialog")
 
 local Assistant = InputContainer:new {
   name = "Assistant",
@@ -59,96 +61,23 @@ function Assistant:onDispatcherRegisterActions()
       separator = true
     })
   end
-  
-  -- Note: AI Dictionary is integrated by overriding the translate() method in ReaderHighlight
-  -- Users can select "Translate" in Long press on text gestures to use AI Dictionary
-  
-  -- Note: Custom prompt actions are not registered as they require highlighted text
-  -- They remain available through the highlight dialog and main AI dialog
 end
 
 function Assistant:addToMainMenu(menu_items)
     menu_items.assitant_provider_switch = {
-        text = _("Assistant Provider Switch"),
+        text = _("Assistant Settings"),
         sorting_hint = "more_tools",
         callback = function ()
-          self:showProviderSwitch()
+          self:showSettings()
         end
     }
-
-    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language then
-      menu_items.assitant_translate_override = {
-          text = _("Use AI Assistant for 'Translate'"),
-          checked_func = function()
-              return self.settings:readSetting("ai_translate_override") or false
-          end,
-          callback = function()
-              local current_setting = self.settings:readSetting("ai_translate_override") or false
-              local new_setting = not current_setting
-              self.settings:saveSetting("ai_translate_override", new_setting)
-              self.updated = true
-              self:applyOrRemoveTranslateOverride()
-              UIManager:show(InfoMessage:new{
-                  text = new_setting and _("AI Assistant override enabled.") or _("AI Assistant override disabled.")
-              })
-          end,
-          sorting_hint = "more_tools",
-      }
-    end
 end
 
-function Assistant:showProviderSwitch()
-
-    if not CONFIGURATION or not CONFIGURATION.provider_settings then
-      UIManager:show(InfoMessage:new{
-        icon = "notice-warning",
-        text = _("Configuration not found or provider settings are missing.")
-      })
-      return
-    end
-
-    local current_provider = self.querier.provider_name
-    local provider_settings = CONFIGURATION and CONFIGURATION.provider_settings or {}
-
-    -- sort keys of provider_settings
-    local provider_keys = {}
-    for key, tab in pairs(provider_settings) do
-      if tab.visible ~= false then
-        table.insert(provider_keys, key)
-      end
-    end
-    table.sort(provider_keys)
-
-    local radio_buttons = {}
-    for _, key in ipairs(provider_keys) do
-      table.insert(radio_buttons, {{
-        text = string.format("%s (%s)", key, provider_settings[key].model),
-        provider = key, -- note: this `provider` field belongs to the RadioButtonWidget, not our AI Model provider.
-        checked = (key == current_provider),
-      }})
-    end
-
-    -- Show the RadioButtonWidget dialog for selecting AI provider
-    UIManager:show(RadioButtonWidget:new{
-      title_text = _("Select AI Provider Profile"),
-      info_text = _("Use the selected provider (overrides the provider in configuration.lua)"),
-      cancel_text = _("Close"),
-      ok_text = _("OK"),
-      width_factor = 0.9,
-      radio_buttons = radio_buttons,
-      callback = function(radio)
-        if radio.provider ~= current_provider then
-          self.settings:saveSetting("provider", radio.provider)
-          self.updated = true
-          self.querier:load_model(radio.provider)
-          UIManager:show(InfoMessage:new{
-            icon = "notice-info",
-            text = string.format(_("AI provider changed to: %s (%s)"),
-                                radio.provider,
-                                provider_settings[radio.provider].model),
-          })
-        end
-      end,
+function Assistant:showSettings()
+    UIManager:show(SettingsDialog:new{
+        assitant = self,
+        CONFIGURATION = CONFIGURATION,
+        settings = self.settings,
     })
 end
 
@@ -255,7 +184,10 @@ function Assistant:init()
   self:applyOrRemoveTranslateOverride()
 
   -- Load the model provider from settings or default configuration
-  self.querier = require("gpt_query"):new()
+  self.querier = require("gpt_query"):new({
+    assitant = self,
+    settings = self.settings,
+  })
   self.querier:load_model(self:getModelProvider())
 
   self.assitant_dialog = AssistantDialog:new(self, CONFIGURATION)

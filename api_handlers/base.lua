@@ -7,6 +7,9 @@ local https = require("ssl.https")
 local Device = require("device")
 local Trapper = require("ui/trapper")
 
+local ffi = require("ffi")
+local ffiutil = require("ffi/util")
+
 local BaseHandler = {
     trap_widget = nil,  -- widget to trap the request
 }
@@ -107,6 +110,53 @@ function BaseHandler:makeRequest(url, headers, body, timeout, maxtime)
     end
 
     return success, code, content
+end
+
+--- Wrap a file descriptor into a Lua file-like object
+--- that has :write() and :close() methods, suitable for ltn12.
+--- @param fd integer file descriptor
+--- @return table file-like object
+local function wrap_fd(fd)
+    local file_object = {}
+    function file_object:write(chunk)
+        ffiutil.writeToFD(fd, chunk)
+        return self
+    end
+
+    function file_object:close()
+        -- null close op,
+        -- we need to use the fd later, then close manually
+        return true
+    end
+
+    return file_object
+end
+
+-- Background request function
+--- This function is used to make a request in the background,
+--- typically in a subprocess, and write the response to a pipe.
+function BaseHandler:backgroudRequest(url, headers, body)
+    return function(pid, child_write_fd)
+        if not pid or not child_write_fd then
+            logger.warn("Invalid parameters for background request")
+            return
+        end
+
+        local pipe_w = wrap_fd(child_write_fd)  -- wrap the write end of the pipe
+        local request = {
+            url = url,
+            method = "POST",
+            headers = headers or {},
+            source = ltn12.source.string(body or ""),
+            sink = ltn12.sink.file(pipe_w),  -- response body write to pipe
+        }
+        local code, headers, status = socket.skip(1, http.request(request)) -- skip the first return value
+        if code ~= 200 then -- non-200 response code, write error to pipe
+            logger.info("Background request failed with code:", code, "Status:", status, "url:", url)
+            ffiutil.writeToFD(child_write_fd, string.format("\r\nNON200: %s %d %s\r\n", url, code, status))  -- write end of response
+        end
+        ffi.C.close(child_write_fd)  -- close the write end of the pipe
+    end
 end
 
 return BaseHandler

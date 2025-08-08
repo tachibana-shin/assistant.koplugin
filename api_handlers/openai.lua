@@ -9,7 +9,8 @@ function OpenAIHandler:query(message_history, openai_settings)
     local requestBodyTable = {
         model = openai_settings.model,
         messages = message_history,
-        max_tokens = openai_settings.max_tokens
+        max_tokens = openai_settings.max_tokens,
+        stream = (openai_settings.additional_parameters and openai_settings.additional_parameters.stream) or false,
     }
 
     local requestBody = json.encode(requestBodyTable)
@@ -17,6 +18,13 @@ function OpenAIHandler:query(message_history, openai_settings)
         ["Content-Type"] = "application/json",
         ["Authorization"] = "Bearer " .. (openai_settings.api_key)
     }
+
+    if requestBodyTable.stream then
+        -- For streaming responses, we need to handle the response differently
+        headers["Accept"] = "text/event-stream"
+        return self:backgroudRequest(openai_settings.base_url, headers, requestBody)
+    end
+    
 
     local status, code, response = self:makeRequest(openai_settings.base_url, headers, requestBody)
 
