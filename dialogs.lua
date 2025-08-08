@@ -340,7 +340,7 @@ function AssitantDialog:show(highlightedText)
           local button_text = is_shown and _("Remove") or _("Add")
           local action_desc = is_shown and _("Remove this button from the Main Highlight Menu?") or _("Add this button to the Main Highlight Menu?")  
           UIManager:show(ConfirmBox:new{
-            text = tab.desc .. "\n\n" .. action_desc,
+            text = string.format("%s: %s\n\n%s", tab.text, tab.desc, action_desc),
             ok_text = button_text,
             ok_callback = function()
               self.assitant.settings:toggle(settingkey)
