@@ -1,5 +1,5 @@
 --[[--
-This widget displays a config dialog.
+This widget displays a setting dialog.
 ]]
 
 local Blitbuffer = require("ffi/blitbuffer")
@@ -8,7 +8,6 @@ local CheckButton = require("ui/widget/checkbutton")
 local FrameContainer = require("ui/widget/container/framecontainer")
 local Geom = require("ui/geometry")
 local InfoMessage = require("ui/widget/infomessage")
-local TextWidget = require("ui/widget/textwidget")
 local Font = require("ui/font")
 local InputDialog = require("ui/widget/inputdialog")
 local LineWidget = require("ui/widget/linewidget")

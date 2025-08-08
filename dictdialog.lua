@@ -178,9 +178,6 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
     }
 
     UIManager:show(chatgpt_viewer)
-    if configuration and configuration.features and configuration.features.refresh_screen_after_displaying_results then
-        UIManager:setDirty(nil, "full")
-    end
 end
 
 return showDictionaryDialog

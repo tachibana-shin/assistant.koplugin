@@ -191,11 +191,6 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
   }
   
   UIManager:show(chatgpt_viewer)
-  
-  -- Refresh the screen after displaying the results
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.refresh_screen_after_displaying_results then
-    UIManager:setDirty(nil, "full")
-  end
 end
 
 
