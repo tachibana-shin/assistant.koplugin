@@ -3,8 +3,8 @@ Displays some text in a scrollable view.
 
 @usage
     local chatgptviewer = ChatGPTViewer:new{
-        title = _("I can scroll!"),
-        text = _("I'll need to be longer than this example to scroll."),
+        title = t("I can scroll!"),
+        text = t("I'll need to be longer than this example to scroll."),
     }
     UIManager:show(chatgptviewer)
 ]]
@@ -32,7 +32,7 @@ local VerticalGroup = require("ui/widget/verticalgroup")
 local WidgetContainer = require("ui/widget/container/widgetcontainer")
 local T = require("ffi/util").template
 local util = require("util")
-local _ = require("gettext")
+local t = require("i18n")
 local InfoMessage = require("ui/widget/infomessage")
 local Screen = Device.screen
 local MD = require("mdparser")
@@ -260,7 +260,7 @@ function ChatGPTViewer:init()
   -- Only add Ask Another Question button if showAskQuestion is true
   if self.onAskQuestion then
     table.insert(default_buttons, {
-      text = _("Ask Another Question"),
+      text = t("ask_another_question"),
       id = "ask_another_question",
       callback = function()
         self:askAnotherQuestion()
@@ -273,7 +273,7 @@ function ChatGPTViewer:init()
     -- Only add if the callback is defined
     -- This allows the button to be optional
     table.insert(default_buttons, {
-      text = _("Switch Model"),
+      text = t("switch_model"),
       id = "switch_model",
       callback = function()
         if self.onShowSwitchModel then
@@ -315,7 +315,7 @@ function ChatGPTViewer:init()
   })
   
   table.insert(default_buttons, {
-    text = _("Close"),
+    text = t("close"),
     id = "close",
     callback = function()
       self:onClose()
@@ -330,12 +330,12 @@ function ChatGPTViewer:init()
   
   -- Add a copy button to the bottom button row
   local copy_button = {
-      text = _("Copy"),
+      text = t("copy"),
       callback = function()
           if self.text and self.text ~= "" then
               Device.input.setClipboardText(self.text)
               UIManager:show(InfoMessage:new{
-                  text = _("Text copied to clipboard"),
+                  text = t("text_copied_to_clipboard"),
                   timeout = 3,
               })
           end
@@ -349,14 +349,14 @@ function ChatGPTViewer:init()
   -- Add a button to add notes
   local function createAddNoteButton(self)
       return {
-          text = _("Add Note"),
+          text = t("add_note"),
           callback = function()
               -- Check if ui is available in self
               local ui = self.ui
               if not ui or not ui.highlight then
                   UIManager:show(InfoMessage:new{
                       icon = "notice-warning",
-                      text = _("Highlight functionality not available"),
+                      text = t("highlight_functionality_not_available"),
                       timeout = 2
                   })
                   return
@@ -365,7 +365,7 @@ function ChatGPTViewer:init()
               if not self.text or self.text == "" then
                   UIManager:show(InfoMessage:new{
                       icon = "notice-warning",
-                      text = _("No text to add as note"),
+                      text = t("no_text_to_add_as_note"),
                       timeout = 2
                   })
                   return
@@ -394,7 +394,7 @@ function ChatGPTViewer:init()
               if note_text == "" then
                   UIManager:show(InfoMessage:new{
                       icon = "notice-warning",
-                      text = _("No text left to add as note"),
+                      text = t("no_text_left_to_add_as_note"),
                       timeout = 2
                   })
                   return
@@ -407,7 +407,7 @@ function ChatGPTViewer:init()
                                       { a, nb_highlights_added = -1, nb_notes_added = 1 }))
               
               UIManager:show(InfoMessage:new{
-                  text = _("Note added successfully"),
+                  text = t("note_added_successfully"),
                   timeout = 2
               })
           end
@@ -577,7 +577,7 @@ function ChatGPTViewer:askAnotherQuestion()
   -- Prepare buttons
   local buttons = {
     {
-      text = _("Cancel"),
+      text = t("cancel"),
       id = "close",
       callback = function()
         if self.input_dialog then
@@ -587,13 +587,13 @@ function ChatGPTViewer:askAnotherQuestion()
       end
     },
     {
-      text = _("Ask"),
+      text = t("ask"),
       is_enter_default = true,
       callback = function()
         local question = self.input_dialog:getInputText()
         if not question or question == "" then
           UIManager:show(InfoMessage:new{
-            text = _("Enter a question before proceeding."),
+            text = t("enter_a_question_before_proceeding"),
             timeout = 3
           })
           return
@@ -639,9 +639,9 @@ function ChatGPTViewer:askAnotherQuestion()
 
   -- Create input dialog
   self.input_dialog = InputDialog:new {
-    title = _("Ask Another Question"),
+    title = t("ask_another_question"),
     input = "",
-    input_hint = _("Type your question here"),
+    input_hint = t("type_your_question_here"),
     input_type = "text",
     width = Screen:getWidth() * 0.8,
     height = Screen:getHeight() * 0.4,
@@ -792,8 +792,8 @@ function ChatGPTViewer:handleTextSelection(text, hold_duration, start_idx, end_i
   if Device:hasClipboard() then
     -- translator.copyToClipboard(text)
     UIManager:show(Notification:new {
-      text = start_idx == end_idx and _("Word copied to clipboard.")
-          or _("Selection copied to clipboard."),
+      text = start_idx == end_idx and t("word_copied_to_clipboard")
+          or t("selection_copied_to_clipboard"),
     })
   end
 end
