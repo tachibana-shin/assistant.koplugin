@@ -191,24 +191,6 @@ function Assistant:init()
   self.querier:load_model(self:getModelProvider())
 
   self.assitant_dialog = AssistantDialog:new(self, CONFIGURATION)
-
-  -- Dictionary button
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to and CONFIGURATION.features.show_dictionary_button_in_main_popup then
-    self.ui.highlight:addToHighlightDialog("dictionary", function(_reader_highlight_instance)
-      return {
-          text = _("Dictionary").." (AI)",
-          enabled = Device:hasClipboard(),
-          callback = function()
-              NetworkMgr:runWhenOnline(function()
-                local showDictionaryDialog = require("dictdialog")
-                Trapper:wrap(function()
-                  showDictionaryDialog(self, _reader_highlight_instance.selected_text.text)
-                end)
-              end)
-          end,
-      }
-    end)
-  end
   
   -- Recap Feature
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.enable_AI_recap then
@@ -266,37 +248,58 @@ function Assistant:init()
   end
 
   -- Add Custom buttons to main select popup menu
-  local showOnMain = Prompts.getSortedCustomPrompts(function (prompt)
+  local showOnMain = Prompts.getSortedCustomPrompts(function (prompt, idx)
     if prompt.visible == false then
       return false
     end
+
+    --  set in runtime settings (by holding the prompt button)
+    local menukey = string.format("assistant_%02d_%s", prompt.order, idx)
+    local settingkey = "showOnMain_" .. menukey
+    if self.settings:has(settingkey) then
+      return self.settings:isTrue(settingkey)
+    end
+
+    -- set in configure file
     if prompt.show_on_main_popup then
       return true
     end
+
     return false -- only show if `show_on_main_popup` is true
   end) or {}
 
   -- Add buttons in sorted order
   for _, tab in ipairs(showOnMain) do
-    -- Use order in the index for proper sorting (pad with zeros for consistent sorting)
-    self.ui.highlight:addToHighlightDialog(
-      string.format("assistant_%02d_%s", tab.order, tab.idx),
-      function(_reader_highlight_instance)
-        return {
-          text = tab.text .. " (AI)",  -- append "(AI)" to identify as our function
-          enabled = Device:hasClipboard(),
-          callback = function()
-            NetworkMgr:runWhenOnline(function()
-              Trapper:wrap(function()
-                self.assitant_dialog:showCustomPrompt(
-                  _reader_highlight_instance.selected_text.text,
-                  tab.idx)
-              end)
-            end)
-          end,
-        }
-      end)
+    self:addMainButton(tab.idx, tab)
   end
+end
+
+function Assistant:addMainButton(prompt_idx, prompt)
+  local menukey = string.format("assistant_%02d_%s", prompt.order, prompt_idx)
+  self.ui.highlight:addToHighlightDialog(menukey, function(_reader_highlight_instance)
+    return {
+      text = prompt.text .. " (AI)",  -- append "(AI)" to identify as our function
+      callback = function()
+        NetworkMgr:runWhenOnline(function()
+          Trapper:wrap(function()
+            if prompt.order == -10 and prompt_idx == "dictionary" then
+              -- Dictionary prompt, show dictionary dialog
+              local showDictionaryDialog = require("dictdialog")
+              showDictionaryDialog(self, _reader_highlight_instance.selected_text.text)
+            else
+              -- For other prompts, show the custom prompt dialog
+              self.assitant_dialog:showCustomPrompt(_reader_highlight_instance.selected_text.text, prompt_idx)
+            end
+          end)
+        end)
+      end,
+    }
+  end)
+end
+
+function Assistant:removeMainButton(prompt_idx, prompt)
+  local menukey = string.format("assistant_%02d_%s", prompt.order, prompt_idx)
+  self.ui.highlight:removeFromHighlightDialog(menukey)
 end
 
 function Assistant:onDictButtonsReady(dict_popup, buttons)
