@@ -107,6 +107,7 @@ function SettingsDialog:init()
     self.radio_button_table = RadioButtonTable:new{
         radio_buttons = self.radio_buttons,
         width = self.element_width,
+        face = Font:getFace("cfont", 18),
         focused = true,
         scroll = false,
         parent = self,
@@ -153,15 +154,10 @@ function SettingsDialog:init()
         }
     }
 
-    self:addWidget(TextWidget:new{
-        text = "Assitant Features",
-        face = Font:getFace('cfont', 18),
-        -- bold = true,
-    })
-
     for _, btn in ipairs(self.check_button_init_list) do
         self.check_buttons[btn.key] = CheckButton:new{
             text = btn.text,
+            face = Font:getFace("cfont", 18),
             checked = self.settings:readSetting(btn.key, false),
             parent = self,
         }
