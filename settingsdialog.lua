@@ -7,6 +7,9 @@ local CenterContainer = require("ui/widget/container/centercontainer")
 local CheckButton = require("ui/widget/checkbutton")
 local FrameContainer = require("ui/widget/container/framecontainer")
 local Geom = require("ui/geometry")
+local InfoMessage = require("ui/widget/infomessage")
+local TextWidget = require("ui/widget/textwidget")
+local Font = require("ui/font")
 local InputDialog = require("ui/widget/inputdialog")
 local LineWidget = require("ui/widget/linewidget")
 local MovableContainer = require("ui/widget/container/movablecontainer")
@@ -17,10 +20,86 @@ local VerticalGroup = require("ui/widget/verticalgroup")
 local VerticalSpan = require("ui/widget/verticalspan")
 local _ = require("gettext")
 local Screen = require("device").screen
+local ffiutil = require("ffi/util")
 
-local SettingsDialog = InputDialog:extend{}
+local SettingsDialog = InputDialog:extend{
+    title = _("AI Assitant Settings"),
+
+    -- inited variables
+    assitant = nil, -- reference to the main assistant object
+    CONFIGURATION = nil,
+    settings = nil,
+
+    -- widgets
+    buttons = nil,
+    radio_buttons = nil,
+    check_buttons = {},
+
+}
 
 function SettingsDialog:init()
+
+    self.check_button_init_list = {
+        {
+            key = "forced_stream_mode",
+            text = _("Always use stream mode"),
+        },
+        {
+            key = "ai_translate_override",
+            text = _("Use AI Assistant for 'Translate'"),
+            changed_callback = function(checked)
+                self.assitant:applyOrRemoveTranslateOverride()
+                UIManager:show(InfoMessage:new{
+                    timeout = 3,
+                    text = checked and _("AI Assistant override enabled.") or _("AI Assistant override disabled.")
+                })
+            end,
+        },
+    }
+
+    -- action buttons
+    self.buttons = {{
+        {
+            text="Cancel",
+            callback=function () UIManager:close(self) end
+        },
+        {
+            text="OK",
+            callback=function ()
+                local radio = self.radio_button_table.checked_button
+                if radio.provider ~= self.assitant.querier.provider_name then
+                    self.settings:saveSetting("provider", radio.provider)
+                    self.assitant.updated = true
+                    self.assitant.querier:load_model(radio.provider)
+                end
+
+                for _, btn in ipairs(self.check_button_init_list) do
+                    local checked = self.check_buttons[btn.key].checked
+                    if self.settings:readSetting(btn.key, false) ~= checked then
+                        self.settings:saveSetting(btn.key, checked)
+                        self.assitant.updated = true
+                        if btn.changed_callback then
+                            btn.changed_callback(checked)
+                        end
+                    end
+                end
+
+                UIManager:close(self)
+            end
+        },
+    }}  
+
+    -- init radio buttons for selecting AI Model provider
+    self.radio_buttons = {} -- init radio buttons table
+    self.description = _("Select the AI Model provider.")
+    for key, tab in ffiutil.orderedPairs(self.CONFIGURATION.provider_settings) do
+      table.insert(self.radio_buttons, {{
+        text = string.format("%s (%s)", key, tab.model),
+        provider = key, -- note: this `provider` field belongs to the RadioButton, not our AI Model provider.
+        checked = (key == self.assitant.querier.provider_name),
+      }})
+    end
+
     -- init title and buttons in base class
     InputDialog.init(self)
     self.element_width = math.floor(self.width * 0.9)
@@ -74,12 +153,20 @@ function SettingsDialog:init()
         }
     }
 
-    self.check_btn_forced_stream_mode = CheckButton:new{
-        text = _("Always use stream mode"),
-        checked = self.forced_stream_mode, 
-        parent = self,
-    }
-    self:addWidget(self.check_btn_forced_stream_mode)
+    self:addWidget(TextWidget:new{
+        text = "Assitant Features",
+        face = Font:getFace('cfont', 18),
+        -- bold = true,
+    })
+
+    for _, btn in ipairs(self.check_button_init_list) do
+        self.check_buttons[btn.key] = CheckButton:new{
+            text = btn.text,
+            checked = self.settings:readSetting(btn.key, false),
+            parent = self,
+        }
+        self:addWidget(self.check_buttons[btn.key])
+    end
 
     self.dialog_frame = FrameContainer:new{
         radius = Size.radius.window,

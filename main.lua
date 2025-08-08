@@ -71,91 +71,20 @@ end
 
 function Assistant:addToMainMenu(menu_items)
     menu_items.assitant_provider_switch = {
-        text = _("Assistant Provider Switch"),
+        text = _("Assistant Settings"),
         sorting_hint = "more_tools",
         callback = function ()
-          self:showProviderSwitch()
+          self:showSettings()
         end
     }
-
-    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language then
-      menu_items.assitant_translate_override = {
-          text = _("Use AI Assistant for 'Translate'"),
-          checked_func = function()
-              return self.settings:readSetting("ai_translate_override") or false
-          end,
-          callback = function()
-              local current_setting = self.settings:readSetting("ai_translate_override") or false
-              local new_setting = not current_setting
-              self.settings:saveSetting("ai_translate_override", new_setting)
-              self.updated = true
-              self:applyOrRemoveTranslateOverride()
-              UIManager:show(InfoMessage:new{
-                  text = new_setting and _("AI Assistant override enabled.") or _("AI Assistant override disabled.")
-              })
-          end,
-          sorting_hint = "more_tools",
-      }
-    end
 end
 
-function Assistant:showProviderSwitch()
-
-    if not CONFIGURATION or not CONFIGURATION.provider_settings then
-      UIManager:show(InfoMessage:new{
-        icon = "notice-warning",
-        text = _("Configuration not found or provider settings are missing.")
-      })
-      return
-    end
-
-    local current_provider = self.querier.provider_name
-    local provider_settings = CONFIGURATION and CONFIGURATION.provider_settings or {}
-
-    local radio_buttons = {}
-    for key, tab in ffiutil.orderedPairs(provider_settings) do
-      table.insert(radio_buttons, {{
-        text = string.format("%s (%s)", key, tab.model),
-        provider = key, -- note: this `provider` field belongs to the RadioButton, not our AI Model provider.
-        checked = (key == current_provider),
-      }})
-    end
-
-    local settingsDialog
-    settingsDialog = SettingsDialog:new{
-      forced_stream_mode = self.settings:readSetting("forced_stream_mode") or false,
-      title = _("Select AI Provider"),
-      radio_buttons = radio_buttons,
-      buttons = {
-        {
-            {
-              text="Cancel",
-              callback=function () UIManager:close(settingsDialog) end
-            },
-            {
-              text="OK",
-              callback=function ()
-                local radio = settingsDialog.radio_button_table.checked_button
-                if radio.provider ~= current_provider then
-                  self.settings:saveSetting("provider", radio.provider)
-                  self.updated = true
-                  self.querier:load_model(radio.provider)
-                end
-
-                local forced_stream_mode = settingsDialog.check_btn_forced_stream_mode.checked
-                if self.settings:readSetting("forced_stream_mode") ~= forced_stream_mode then
-                  self.settings:saveSetting("forced_stream_mode", forced_stream_mode)
-                  self.updated = true
-                end
-
-                UIManager:close(settingsDialog)
-              end
-            },
-        },
-      },  
-    }
-
-    UIManager:show(settingsDialog)
+function Assistant:showSettings()
+    UIManager:show(SettingsDialog:new{
+        assitant = self,
+        CONFIGURATION = CONFIGURATION,
+        settings = self.settings,
+    })
 end
 
 function Assistant:getModelProvider()

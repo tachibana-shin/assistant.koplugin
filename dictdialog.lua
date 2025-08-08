@@ -175,9 +175,6 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
         title = _("Dictionary"),
         text = result_text,
         onAddToNote = handleAddToNote,
-        onShowSwitchModel = function()
-            assitant:showProviderSwitch()
-        end,
     }
 
     UIManager:show(chatgpt_viewer)
