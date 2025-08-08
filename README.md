@@ -172,7 +172,6 @@ local CONFIGURATION = {
                 order = 1, -- give order to buttons to fix the order of them
                 system_prompt = "You are a helpful assistant that ....",
                 user_prompt = "Please ...  in {language}: ",
-                show_on_main_popup = false -- Show the button in main popup    
             },
             -- ... other prompts
         }
