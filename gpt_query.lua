@@ -297,11 +297,7 @@ function Querier:processStream(bgQuery, trunk_callback)
                             logger.warn("Unexpected JSON object:", line)
                         end
                     elseif line:sub(1, 1) == ":" then
-                        -- empty events, show as info message
-                        -- but do not append to result_buffer
-                        if trunk_callback then
-                            trunk_callback(line:sub(2) .. "\n")  -- Output to trunk callback
-                        end
+                        -- empty events, nothing to do
                     elseif line:sub(1, 8) == "NON200: " then
                         -- child write a non-200 response 
                         logger.warn("Non-200 response from subprocess:", line)
