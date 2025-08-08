@@ -166,7 +166,10 @@ function Querier:query(message_history, title)
         }
         UIManager:show(streamDialog)
         local content, err = self:processStream(res, function (content)
-            streamDialog:addTextToInput(content)
+            UIManager:nextTick(function ()
+                -- schedule the text update in the UIManager task queue
+                streamDialog:addTextToInput(content)
+            end)
         end)
         UIManager:close(streamDialog)
 
