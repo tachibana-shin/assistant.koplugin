@@ -12,116 +12,116 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: zh_CN\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
 msgid "Ask Another Question"
-msgstr "再问一个问题"
+msgstr "別の質問を入力"
 
 #: ../chatgptviewer.lua:306
 msgid "Close"
-msgstr "关闭"
+msgstr "閉じる"
 
 #: ../chatgptviewer.lua:321
 msgid "Copy"
-msgstr "复制"
+msgstr "コピー"
 
 #: ../chatgptviewer.lua:326
 msgid "Text copied to clipboard"
-msgstr "已复制文本到剪贴板"
+msgstr "テキストをクリップボードにコピーしました"
 
 #: ../chatgptviewer.lua:340
 msgid "Add Note"
-msgstr "添加笔记"
+msgstr "ノートを追加"
 
 #: ../chatgptviewer.lua:347
 msgid "Highlight functionality not available"
-msgstr "高亮功能不可用"
+msgstr "ハイライト機能は利用できません"
 
 #: ../chatgptviewer.lua:356
 msgid "No text to add as note"
-msgstr "没有文本可添加为笔记"
+msgstr "ノートとして追加するテキストがありません"
 
 #: ../chatgptviewer.lua:385
 msgid "No text left to add as note"
-msgstr "剩余文本已无法继续添加为笔记"
+msgstr "残りのテキストがなく、ノートに追加できません"
 
 #: ../chatgptviewer.lua:398
 msgid "Note added successfully"
-msgstr "笔记添加成功"
+msgstr "ノートを追加しました"
 
 #: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
 msgid "Cancel"
-msgstr "取消"
+msgstr "キャンセル"
 
 #: ../chatgptviewer.lua:578 ../dialogs.lua:265
 msgid "Ask"
-msgstr "提问"
+msgstr "質問する"
 
 #: ../chatgptviewer.lua:584 ../dialogs.lua:271
 msgid "Enter a question before proceeding."
-msgstr "请先输入问题再执行下一步"
+msgstr "続行する前に質問を入力してください。"
 
 #: ../chatgptviewer.lua:632
 msgid "Type your question here"
-msgstr "在此输入你的问题"
+msgstr "ここに質問を入力"
 
 #: ../chatgptviewer.lua:783
 msgid "Word copied to clipboard."
-msgstr "单词已复制到剪贴板"
+msgstr "単語をクリップボードにコピーしました。"
 
 #: ../chatgptviewer.lua:784
 msgid "Selection copied to clipboard."
-msgstr "选中文本已复制到剪贴板"
+msgstr "選択範囲をクリップボードにコピーしました。"
 
 #: ../dialogs.lua:81
 msgid "(Empty message)"
-msgstr "（空消息）"
+msgstr "(空のメッセージ)"
 
 #: ../dialogs.lua:85
 msgid "(No response)"
-msgstr "（无响应）"
+msgstr "(応答なし)"
 
 #: ../dialogs.lua:115
 msgid "Highlighted text:"
-msgstr "高亮文本："
+msgstr "ハイライトしたテキスト:"
 
 #: ../dialogs.lua:302
 msgid "Book Analysis"
-msgstr "全书分析"
+msgstr "書籍分析"
 
 #: ../dialogs.lua:340
 msgid "Remove"
-msgstr "移除"
+msgstr "削除"
 
 #: ../dialogs.lua:340
 msgid "Add"
-msgstr "添加"
+msgstr "追加"
 
 #: ../dialogs.lua:341
 msgid "Remove this button from the Main Highlight Menu?"
-msgstr "要将此按钮从主菜单中移除吗？"
+msgstr "このボタンをメイン・ハイライトメニューから削除しますか？"
 
 #: ../dialogs.lua:341
 msgid "Add this button to the Main Highlight Menu?"
-msgstr "要将此按钮添加到主菜单吗？"
+msgstr "このボタンをメイン・ハイライトメニューに追加しますか？"
 
 #: ../dialogs.lua:353
 #, lua-format
 msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "已将 [%s (AI)] 添加至主菜单"
+msgstr "[%s (AI)] をメイン・ハイライトメニューに追加しました。"
 
 #: ../dialogs.lua:356
 #, lua-format
 msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "已将 [%s (AI)] 从主菜单移除"
+msgstr "[%s (AI)] をメイン・ハイライトメニューから削除しました。"
 
 #: ../dialogs.lua:389
 msgid "Ask a question about the highlighted text"
-msgstr "就高亮文本提问"
+msgstr "ハイライトしたテキストについて質問する"
 
 #: ../dialogs.lua:390
 #, lua-format
@@ -129,73 +129,79 @@ msgid ""
 "Ask a question about this book:\n"
 "%s by %s"
 msgstr ""
-"问关于本书的问题：\n"
-"%s（作者 %s）"
+"この書籍について質問してください:\n"
+"%s（作者：%s）"
 
 #: ../dialogs.lua:393
 msgid "Type your question here..."
-msgstr "在此输入你的问题…"
+msgstr "ここに質問を入力してください..."
 
 #: ../dialogs.lua:394
 msgid "Ask anything about this book..."
-msgstr "问关于本书的任何问题…"
+msgstr "この書籍について何でも質問してください..."
 
 #: ../dialogs.lua:397 ../_meta.lua:4
 msgid "AI Assistant"
-msgstr "AI 助手"
+msgstr "AIアシスタント"
 
 #: ../dialogs.lua:448
 msgid "Error: No response received"
-msgstr "错误：未收到响应"
+msgstr "エラー: 応答を受信できませんでした"
 
 #: ../dictdialog.lua:28
 msgid "AI Dictionary"
-msgstr "AI 词典"
+msgstr "AI辞書"
 
 #: ../dictdialog.lua:29
 msgid "Enter a word to look up..."
-msgstr "输入要查找的单词…"
+msgstr "検索する単語を入力..."
 
 #: ../dictdialog.lua:40
 msgid "Look Up"
-msgstr "查询"
+msgstr "検索"
 
 #: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
 msgid "Dictionary"
-msgstr "词典"
+msgstr "辞書"
 
 #: ../gpt_query.lua:46
 msgid "No configuration found. Please set up configuration.lua"
-msgstr "未找到配置。请设置 configuration.lua"
+msgstr "設定ファイルが見つかりません。configuration.lua を設定してください。"
 
 #: ../gpt_query.lua:56
 #, lua-format
 msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
-msgstr "找不到 %s 的供应商配置，请检查 configuration.lua 文件"
+msgstr ""
+"プロバイダー設定 %s が見つかりません。configuration.lua "
+"ファイルをご確認ください。"
 
 #: ../gpt_query.lua:78
 #, lua-format
 msgid ""
 "Handler not found for: %s. Please ensure the handler exists in api_handlers "
 "directory."
-msgstr "找不到 %s 的处理程序，请确认 api_handlers 目录中已存在相应文件"
+msgstr ""
+"ハンドラー %s が見つかりません。api_handlers "
+"ディレクトリにハンドラーが存在することを確認してください。"
 
 #: ../gpt_query.lua:82
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
-msgstr "configuration.lua 中未设置提供商，请为 %s 配置 provider 与 provider_settings"
+msgstr ""
+"configuration.lua にプロバイダーが設定されていません。%s のためのプロバイダーと "
+"provider_settings を設定してください。"
 
 #: ../gpt_query.lua:126
 msgid "Querying AI ..."
-msgstr "正在查询 AI…"
+msgstr "AIへ問い合わせ中..."
 
 #: ../gpt_query.lua:141
 msgid "AI Responding"
-msgstr "AI 回复中"
+msgstr "AIが応答中"
 
 #: ../gpt_query.lua:143
 #, lua-format
@@ -208,27 +214,27 @@ msgstr "⏹ 停止"
 
 #: ../gpt_query.lua:177
 msgid "Stream interrupted by user."
-msgstr "用户已中断数据流"
+msgstr "ストリームがユーザーにより中断されました。"
 
 #: ../main.lua:50
 msgid "Ask AI Question"
-msgstr "向 AI 提问"
+msgstr "AIに質問する"
 
 #: ../main.lua:59
 msgid "AI Recap"
-msgstr "AI 回顾"
+msgstr "AIリキャップ"
 
 #: ../main.lua:68
 msgid "Assistant Settings"
-msgstr "助手设置"
+msgstr "アシスタント設定"
 
 #: ../main.lua:163
 msgid "Assistant"
-msgstr "助手"
+msgstr "アシスタント"
 
 #: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
 msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "未找到配置，请先设置 configuration.lua"
+msgstr "設定ファイルが見つかりません。最初に configuration.lua を設定してください。"
 
 #: ../main.lua:237
 #, lua-format
@@ -237,166 +243,184 @@ msgid ""
 "For %s by %s.\n"
 "Last read %.0f hours ago."
 msgstr ""
-"要进行 AI 回顾吗？\n"
-"书名：《%s》 作者：%s\n"
-"上次阅读于 %.0f 小时前。"
+"AIリキャップを実行しますか？\n"
+"%s（作者：%s）について。\n"
+"最終読書時刻は %.0f 時間前。"
 
 #: ../main.lua:242
 msgid "Yes"
-msgstr "是"
+msgstr "はい"
 
 #: ../main.lua:251
 msgid "No"
-msgstr "否"
+msgstr "いいえ"
 
 #: ../main.lua:368
 msgid "AI Recap feature is not enabled in configuration."
-msgstr "配置中未启用 AI 回顾功能"
+msgstr "AIリキャップ機能は設定で無効になっています。"
 
 #: ../_meta.lua:5
 msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "用 AI 之力，提升 KOReader 阅读体验。"
+msgstr "KOReaderの読書体験をAIパワーで向上させましょう。"
 
 #: ../prompts.lua:20
 msgid ""
 "This prompt act as a dictionary for the highlighted text, to a word or "
 "phrase."
-msgstr "该提示将高亮的文本、单词或短语当词典使用"
+msgstr ""
+"このプロンプトは、ハイライトしたテキスト（単語またはフレーズ）に対する辞書的な"
+"役割を果たします。"
 
 #: ../prompts.lua:25
 msgid "Translate"
-msgstr "翻译"
+msgstr "翻訳"
 
 #: ../prompts.lua:26
 msgid "This prompt translates the highlighted text to another language."
-msgstr "该提示将高亮文本翻译成其他语言"
+msgstr "このプロンプトはハイライトしたテキストを別言語に翻訳します。"
 
 #: ../prompts.lua:48
 msgid "Simplify"
-msgstr "简化"
+msgstr "簡略化"
 
 #: ../prompts.lua:50
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "该提示将高亮文本简化，使其更易理解"
+msgstr ""
+"このプロンプトはハイライトしたテキストを簡略化して理解しやすくします。"
 
 #: ../prompts.lua:60
 msgid "Explain"
-msgstr "解释"
+msgstr "説明"
 
 #: ../prompts.lua:62
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
-msgstr "该提示将详细解释高亮文本，确保清晰易懂"
+msgstr ""
+"このプロンプトはハイライトしたテキストを詳細に説明し、理解を確実にします。"
 
 #: ../prompts.lua:73
 msgid "Summarize"
-msgstr "总结"
+msgstr "要約"
 
 #: ../prompts.lua:75
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
-msgstr "该提示将概括高亮文本的主要观点和要点"
+msgstr ""
+"このプロンプトはハイライトしたテキストを要約し、主要なポイントと重要な詳細を"
+"押さえます。"
 
 #: ../prompts.lua:84
 msgid "Historical Context"
-msgstr "历史背景"
+msgstr "歴史的背景"
 
 #: ../prompts.lua:86
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
-msgstr "该提示将提供高亮文本的详细历史背景，解释其意义与来龙去脉"
+msgstr ""
+"このプロンプトはハイライトしたテキストの詳細な歴史的背景を提供し、その重要性と"
+"背景を説明します。"
 
 #: ../prompts.lua:90
 msgid "Key Points"
-msgstr "要点提取"
+msgstr "要点"
 
 #: ../prompts.lua:92
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
-msgstr "该提示将从高亮文本提取并列出要点，确保条理清晰"
+msgstr ""
+"このプロンプトはハイライトしたテキストから要点を抽出し、リスト化して明確に"
+"整理します。"
 
 #: ../prompts.lua:96
 msgid "ELI5"
-msgstr "通俗讲解（ELI5）"
+msgstr "ELI5（５歳児向けに）"
 
 #: ../prompts.lua:98
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
-msgstr "该提示将用五岁孩子都能听懂的方式解释高亮文本，化繁为简"
+msgstr ""
+"このプロンプトはハイライトしたテキストを５歳児にもわかるように説明し、複雑な概念を"
+"わかりやすく簡略化します。"
 
 #: ../prompts.lua:102
 msgid "Grammar"
-msgstr "语法分析"
+msgstr "文法"
 
 #: ../prompts.lua:104
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
-msgstr "该提示将分析高亮文本的语法，详细说明结构及可能存在的语法错误"
+msgstr ""
+"このプロンプトはハイライトしたテキストの文法を分析し、構造や不正確な文法について"
+"詳しく説明します。"
 
 #: ../prompts.lua:109
 msgid "Vocabulary"
-msgstr "词汇分析"
+msgstr "語彙"
 
 #: ../prompts.lua:111
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
-msgstr "该提示将分析高亮文本的词汇，识别难词并给出释义、同义词及用法示例"
+msgstr ""
+"このプロンプトはハイライトしたテキストの語彙を分析し、難しい単語を特定して"
+"定義・類義語・使用例を提供します。"
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
-msgstr "维基百科"
+msgstr "Wikipedia風"
 
 #: ../prompts.lua:129
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
-msgstr "该提示将基于高亮文本生成一篇全面的维基百科风格文章，保证事实准确且中立"
+msgstr ""
+"このプロンプトはハイライトしたテキストに基づき、事実に基づいた中立かつ包括的な"
+"Wikipedia風記事を生成します。"
 
 #: ../recapdialog.lua:68
 msgid "Recap"
-msgstr "回顾"
+msgstr "要約"
 
 #: ../settingsdialog.lua:26
 msgid "Assitant Settings"
-msgstr "助手设置"
+msgstr "アシスタント設定"
 
 #: ../settingsdialog.lua:43
 msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 尽情享受 AI 加持的 KOReader！"
+msgstr "💡 AIパワーで KOReader を楽しもう！"
 
 #: ../settingsdialog.lua:53
 msgid "Always use stream mode"
-msgstr "始终使用流式模式"
+msgstr "常にストリームモードを使用"
 
 #: ../settingsdialog.lua:57
 msgid "Use AI Assistant for 'Translate'"
-msgstr "将 AI 助手用于“翻译”功能"
+msgstr "「翻訳」にAIアシスタントを使用"
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override enabled."
-msgstr "已启用 AI 助手覆盖"
+msgstr "AIアシスタント上書き：有効"
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override disabled."
-msgstr "已禁用 AI 助手覆盖"
+msgstr "AIアシスタント上書き：無効"
 
 #: ../settingsdialog.lua:102
 msgid "Select the AI Model provider."
-msgstr "选择 AI 模型供应商"
+msgstr "AIモデルプロバイダーを選択"
 
 #: ../update_checker.lua:21
 msgid "Checking for updates..."
-msgstr "正在检查更新…"
+msgstr "アップデートを確認中..."
 
 #: ../update_checker.lua:55
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "有新版本的 %s 插件（%s），请及时更新！"
+msgstr "%s プラグインの新バージョン (%s) があります。アップデートしてください！"

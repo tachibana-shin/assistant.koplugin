@@ -12,116 +12,116 @@ msgstr ""
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: zh_CN\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
 msgid "Ask Another Question"
-msgstr "再问一个问题"
+msgstr "다른 질문하기"
 
 #: ../chatgptviewer.lua:306
 msgid "Close"
-msgstr "关闭"
+msgstr "닫기"
 
 #: ../chatgptviewer.lua:321
 msgid "Copy"
-msgstr "复制"
+msgstr "복사"
 
 #: ../chatgptviewer.lua:326
 msgid "Text copied to clipboard"
-msgstr "已复制文本到剪贴板"
+msgstr "텍스트가 클립보드에 복사되었습니다"
 
 #: ../chatgptviewer.lua:340
 msgid "Add Note"
-msgstr "添加笔记"
+msgstr "노트 추가"
 
 #: ../chatgptviewer.lua:347
 msgid "Highlight functionality not available"
-msgstr "高亮功能不可用"
+msgstr "하이라이트 기능을 사용할 수 없습니다"
 
 #: ../chatgptviewer.lua:356
 msgid "No text to add as note"
-msgstr "没有文本可添加为笔记"
+msgstr "노트로 추가할 텍스트가 없습니다"
 
 #: ../chatgptviewer.lua:385
 msgid "No text left to add as note"
-msgstr "剩余文本已无法继续添加为笔记"
+msgstr "더 이상 노트로 추가할 텍스트가 없습니다"
 
 #: ../chatgptviewer.lua:398
 msgid "Note added successfully"
-msgstr "笔记添加成功"
+msgstr "노트가 성공적으로 추가되었습니다"
 
 #: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
 msgid "Cancel"
-msgstr "取消"
+msgstr "취소"
 
 #: ../chatgptviewer.lua:578 ../dialogs.lua:265
 msgid "Ask"
-msgstr "提问"
+msgstr "질문하기"
 
 #: ../chatgptviewer.lua:584 ../dialogs.lua:271
 msgid "Enter a question before proceeding."
-msgstr "请先输入问题再执行下一步"
+msgstr "진행하기 전에 질문을 입력해주세요."
 
 #: ../chatgptviewer.lua:632
 msgid "Type your question here"
-msgstr "在此输入你的问题"
+msgstr "여기에 질문을 입력하세요"
 
 #: ../chatgptviewer.lua:783
 msgid "Word copied to clipboard."
-msgstr "单词已复制到剪贴板"
+msgstr "단어가 클립보드에 복사되었습니다."
 
 #: ../chatgptviewer.lua:784
 msgid "Selection copied to clipboard."
-msgstr "选中文本已复制到剪贴板"
+msgstr "선택 영역이 클립보드에 복사되었습니다."
 
 #: ../dialogs.lua:81
 msgid "(Empty message)"
-msgstr "（空消息）"
+msgstr "(메시지 없음)"
 
 #: ../dialogs.lua:85
 msgid "(No response)"
-msgstr "（无响应）"
+msgstr "(응답 없음)"
 
 #: ../dialogs.lua:115
 msgid "Highlighted text:"
-msgstr "高亮文本："
+msgstr "하이라이트된 텍스트:"
 
 #: ../dialogs.lua:302
 msgid "Book Analysis"
-msgstr "全书分析"
+msgstr "책 분석"
 
 #: ../dialogs.lua:340
 msgid "Remove"
-msgstr "移除"
+msgstr "제거"
 
 #: ../dialogs.lua:340
 msgid "Add"
-msgstr "添加"
+msgstr "추가"
 
 #: ../dialogs.lua:341
 msgid "Remove this button from the Main Highlight Menu?"
-msgstr "要将此按钮从主菜单中移除吗？"
+msgstr "이 버튼을 메인 하이라이트 메뉴에서 제거하시겠습니까?"
 
 #: ../dialogs.lua:341
 msgid "Add this button to the Main Highlight Menu?"
-msgstr "要将此按钮添加到主菜单吗？"
+msgstr "이 버튼을 메인 하이라이트 메뉴에 추가하시겠습니까?"
 
 #: ../dialogs.lua:353
 #, lua-format
 msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "已将 [%s (AI)] 添加至主菜单"
+msgstr "[%s (AI)]를 메인 하이라이트 메뉴에 추가했습니다."
 
 #: ../dialogs.lua:356
 #, lua-format
 msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "已将 [%s (AI)] 从主菜单移除"
+msgstr "[%s (AI)]를 메인 하이라이트 메뉴에서 제거했습니다."
 
 #: ../dialogs.lua:389
 msgid "Ask a question about the highlighted text"
-msgstr "就高亮文本提问"
+msgstr "하이라이트된 텍스트에 대해 질문하기"
 
 #: ../dialogs.lua:390
 #, lua-format
@@ -129,73 +129,79 @@ msgid ""
 "Ask a question about this book:\n"
 "%s by %s"
 msgstr ""
-"问关于本书的问题：\n"
-"%s（作者 %s）"
+"이 책에 대해 질문하기:\n"
+"%s 저자: %s"
 
 #: ../dialogs.lua:393
 msgid "Type your question here..."
-msgstr "在此输入你的问题…"
+msgstr "여기에 질문을 입력하세요..."
 
 #: ../dialogs.lua:394
 msgid "Ask anything about this book..."
-msgstr "问关于本书的任何问题…"
+msgstr "이 책에 대해 무엇이든 질문하기..."
 
 #: ../dialogs.lua:397 ../_meta.lua:4
 msgid "AI Assistant"
-msgstr "AI 助手"
+msgstr "AI 도우미"
 
 #: ../dialogs.lua:448
 msgid "Error: No response received"
-msgstr "错误：未收到响应"
+msgstr "오류: 응답을 받지 못했습니다"
 
 #: ../dictdialog.lua:28
 msgid "AI Dictionary"
-msgstr "AI 词典"
+msgstr "AI 사전"
 
 #: ../dictdialog.lua:29
 msgid "Enter a word to look up..."
-msgstr "输入要查找的单词…"
+msgstr "찾을 단어를 입력하세요..."
 
 #: ../dictdialog.lua:40
 msgid "Look Up"
-msgstr "查询"
+msgstr "찾기"
 
 #: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
 msgid "Dictionary"
-msgstr "词典"
+msgstr "사전"
 
 #: ../gpt_query.lua:46
 msgid "No configuration found. Please set up configuration.lua"
-msgstr "未找到配置。请设置 configuration.lua"
+msgstr "설정을 찾을 수 없습니다. configuration.lua를 설정해 주세요."
 
 #: ../gpt_query.lua:56
 #, lua-format
 msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
-msgstr "找不到 %s 的供应商配置，请检查 configuration.lua 文件"
+msgstr ""
+"%s에 대한 제공자 설정을 찾을 수 없습니다. configuration.lua 파일을 확인해 "
+"주세요."
 
 #: ../gpt_query.lua:78
 #, lua-format
 msgid ""
 "Handler not found for: %s. Please ensure the handler exists in api_handlers "
 "directory."
-msgstr "找不到 %s 的处理程序，请确认 api_handlers 目录中已存在相应文件"
+msgstr ""
+"%s에 대한 핸들러를 찾을 수 없습니다. api_handlers 디렉터리에 이 핸들러가 "
+"존재하는지 확인하세요."
 
 #: ../gpt_query.lua:82
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
-msgstr "configuration.lua 中未设置提供商，请为 %s 配置 provider 与 provider_settings"
+msgstr ""
+"configuration.lua에 제공자가 설정되지 않았습니다. %s에 대한 provider 및 "
+"provider_settings를 설정하세요."
 
 #: ../gpt_query.lua:126
 msgid "Querying AI ..."
-msgstr "正在查询 AI…"
+msgstr "AI에 문의 중..."
 
 #: ../gpt_query.lua:141
 msgid "AI Responding"
-msgstr "AI 回复中"
+msgstr "AI 응답 중"
 
 #: ../gpt_query.lua:143
 #, lua-format
@@ -204,31 +210,31 @@ msgstr "☁ %s/%s"
 
 #: ../gpt_query.lua:156
 msgid "⏹ Stop"
-msgstr "⏹ 停止"
+msgstr "⏹ 중지"
 
 #: ../gpt_query.lua:177
 msgid "Stream interrupted by user."
-msgstr "用户已中断数据流"
+msgstr "사용자에 의해 스트림이 중단되었습니다."
 
 #: ../main.lua:50
 msgid "Ask AI Question"
-msgstr "向 AI 提问"
+msgstr "AI에게 질문하기"
 
 #: ../main.lua:59
 msgid "AI Recap"
-msgstr "AI 回顾"
+msgstr "AI 요약"
 
 #: ../main.lua:68
 msgid "Assistant Settings"
-msgstr "助手设置"
+msgstr "도우미 설정"
 
 #: ../main.lua:163
 msgid "Assistant"
-msgstr "助手"
+msgstr "도우미"
 
 #: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
 msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "未找到配置，请先设置 configuration.lua"
+msgstr "설정을 찾을 수 없습니다. 먼저 configuration.lua를 설정해 주세요."
 
 #: ../main.lua:237
 #, lua-format
@@ -237,166 +243,173 @@ msgid ""
 "For %s by %s.\n"
 "Last read %.0f hours ago."
 msgstr ""
-"要进行 AI 回顾吗？\n"
-"书名：《%s》 作者：%s\n"
-"上次阅读于 %.0f 小时前。"
+"AI 요약을 원하십니까?\n"
+"%s 저자: %s.\n"
+"마지막으로 %.0f시간 전에 읽었습니다."
 
 #: ../main.lua:242
 msgid "Yes"
-msgstr "是"
+msgstr "예"
 
 #: ../main.lua:251
 msgid "No"
-msgstr "否"
+msgstr "아니오"
 
 #: ../main.lua:368
 msgid "AI Recap feature is not enabled in configuration."
-msgstr "配置中未启用 AI 回顾功能"
+msgstr "AI 요약 기능이 설정에서 활성화되지 않았습니다."
 
 #: ../_meta.lua:5
 msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "用 AI 之力，提升 KOReader 阅读体验。"
+msgstr "AI 파워로 KOReader의 독서 경험을 한층 강화하세요."
 
 #: ../prompts.lua:20
 msgid ""
 "This prompt act as a dictionary for the highlighted text, to a word or "
 "phrase."
-msgstr "该提示将高亮的文本、单词或短语当词典使用"
+msgstr "이 프롬프트는 하이라이트된 텍스트, 단어나 문구에 대한 사전 역할을 합니다."
 
 #: ../prompts.lua:25
 msgid "Translate"
-msgstr "翻译"
+msgstr "번역"
 
 #: ../prompts.lua:26
 msgid "This prompt translates the highlighted text to another language."
-msgstr "该提示将高亮文本翻译成其他语言"
+msgstr "이 프롬프트는 하이라이트된 텍스트를 다른 언어로 번역합니다."
 
 #: ../prompts.lua:48
 msgid "Simplify"
-msgstr "简化"
+msgstr "간소화"
 
 #: ../prompts.lua:50
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "该提示将高亮文本简化，使其更易理解"
+msgstr "이 프롬프트는 하이라이트된 텍스트를 이해하기 쉽게 간소화합니다."
 
 #: ../prompts.lua:60
 msgid "Explain"
-msgstr "解释"
+msgstr "설명"
 
 #: ../prompts.lua:62
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
-msgstr "该提示将详细解释高亮文本，确保清晰易懂"
+msgstr "이 프롬프트는 하이라이트된 텍스트를 자세히 설명하여 명확하게 이해할 수 "
+"있게 합니다."
 
 #: ../prompts.lua:73
 msgid "Summarize"
-msgstr "总结"
+msgstr "요약"
 
 #: ../prompts.lua:75
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
-msgstr "该提示将概括高亮文本的主要观点和要点"
+msgstr "이 프롬프트는 하이라이트된 텍스트의 주요 내용과 핵심 사항을 요약합니다."
 
 #: ../prompts.lua:84
 msgid "Historical Context"
-msgstr "历史背景"
+msgstr "역사적 배경"
 
 #: ../prompts.lua:86
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
-msgstr "该提示将提供高亮文本的详细历史背景，解释其意义与来龙去脉"
+msgstr "이 프롬프트는 하이라이트된 텍스트에 대한 상세한 역사적 배경을 제공하여 그 "
+"의미와 배경을 설명합니다."
 
 #: ../prompts.lua:90
 msgid "Key Points"
-msgstr "要点提取"
+msgstr "핵심 포인트"
 
 #: ../prompts.lua:92
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
-msgstr "该提示将从高亮文本提取并列出要点，确保条理清晰"
+msgstr "이 프롬프트는 하이라이트된 텍스트에서 핵심 포인트를 추출하고 목록화하여 "
+"명확하게 정리합니다."
 
 #: ../prompts.lua:96
 msgid "ELI5"
-msgstr "通俗讲解（ELI5）"
+msgstr "ELI5(5세에게 설명하듯)"
 
 #: ../prompts.lua:98
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
-msgstr "该提示将用五岁孩子都能听懂的方式解释高亮文本，化繁为简"
+msgstr "이 프롬프트는 하이라이트된 텍스트를 다섯 살 아이에게 설명하듯, 복잡한 개념을 쉽게 "
+"이해할 수 있게 풀어줍니다."
 
 #: ../prompts.lua:102
 msgid "Grammar"
-msgstr "语法分析"
+msgstr "문법"
 
 #: ../prompts.lua:104
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
-msgstr "该提示将分析高亮文本的语法，详细说明结构及可能存在的语法错误"
+msgstr "이 프롬프트는 하이라이트된 텍스트의 문법을 분석하여 구조 및 모든 문법 오류를 "
+"자세히 설명합니다."
 
 #: ../prompts.lua:109
 msgid "Vocabulary"
-msgstr "词汇分析"
+msgstr "어휘"
 
 #: ../prompts.lua:111
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
-msgstr "该提示将分析高亮文本的词汇，识别难词并给出释义、同义词及用法示例"
+msgstr "이 프롬프트는 하이라이트된 텍스트의 어휘를 분석하여 복잡한 단어를 "
+"분류하고 정의, 동의어, 사용 예시를 제공합니다."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
-msgstr "维基百科"
+msgstr "위키백과"
 
 #: ../prompts.lua:129
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
-msgstr "该提示将基于高亮文本生成一篇全面的维基百科风格文章，保证事实准确且中立"
+msgstr "이 프롬프트는 하이라이트된 텍스트를 기반으로 종합적인 위키백과 스타일 "
+"글을 생성하며, 사실 정확성과 중립성을 보장합니다."
 
 #: ../recapdialog.lua:68
 msgid "Recap"
-msgstr "回顾"
+msgstr "돌아보기"
 
 #: ../settingsdialog.lua:26
 msgid "Assitant Settings"
-msgstr "助手设置"
+msgstr "도우미 설정"
 
 #: ../settingsdialog.lua:43
 msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 尽情享受 AI 加持的 KOReader！"
+msgstr "💡 AI 파워로 KOReader를 즐기세요!"
 
 #: ../settingsdialog.lua:53
 msgid "Always use stream mode"
-msgstr "始终使用流式模式"
+msgstr "항상 스트림 모드 사용"
 
 #: ../settingsdialog.lua:57
 msgid "Use AI Assistant for 'Translate'"
-msgstr "将 AI 助手用于“翻译”功能"
+msgstr "'번역'에 AI 도우미 사용"
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override enabled."
-msgstr "已启用 AI 助手覆盖"
+msgstr "AI 도우미 오버라이드가 활성화되었습니다."
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override disabled."
-msgstr "已禁用 AI 助手覆盖"
+msgstr "AI 도우미 오버라이드가 비활성화되었습니다."
 
 #: ../settingsdialog.lua:102
 msgid "Select the AI Model provider."
-msgstr "选择 AI 模型供应商"
+msgstr "AI 모델 제공자를 선택하세요."
 
 #: ../update_checker.lua:21
 msgid "Checking for updates..."
-msgstr "正在检查更新…"
+msgstr "업데이트 확인 중..."
 
 #: ../update_checker.lua:55
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "有新版本的 %s 插件（%s），请及时更新！"
+msgstr "%s 플러그인의 새 버전(%s)을 사용할 수 있습니다. 업데이트해 주세요!"
