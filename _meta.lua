@@ -1,7 +1,7 @@
 local _ = require("owngettext")
 return {
-    name = "assistant",
-    fullname = "Assistant",
-    description = _([[Allows the user to query an AI API for answers to questions about highlighted text.]]),
+    name = "ai_assistant",
+    fullname = _("AI Assistant"),
+    description = _([[Enhance KOReader's reading exerience with AI Power.]]),
     version = 1.07,
 }

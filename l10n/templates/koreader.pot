@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-11 16:04+0800\n"
+"POT-Creation-Date: 2025-08-11 16:20+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,12 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: _meta.lua:5
-msgid ""
-"Allows the user to query an AI API for answers to questions about "
-"highlighted text."
-msgstr ""
 
 #: chatgptviewer.lua:266 chatgptviewer.lua:630
 msgid "Ask Another Question"
@@ -144,7 +138,7 @@ msgstr ""
 msgid "Ask anything about this book..."
 msgstr ""
 
-#: dialogs.lua:397
+#: dialogs.lua:397 _meta.lua:4
 msgid "AI Assistant"
 msgstr ""
 
@@ -260,6 +254,10 @@ msgstr ""
 
 #: main.lua:385
 msgid "Unknown Author"
+msgstr ""
+
+#: _meta.lua:5
+msgid "Enhance KOReader's reading exerience with AI Power."
 msgstr ""
 
 #: prompts.lua:20
