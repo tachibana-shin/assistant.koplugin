@@ -74,11 +74,21 @@ function Assistant:addToMainMenu(menu_items)
 end
 
 function Assistant:showSettings()
-    UIManager:show(SettingsDialog:new{
-        assitant = self,
-        CONFIGURATION = CONFIGURATION,
-        settings = self.settings,
-    })
+
+  if self._settings_dialog then
+    -- If settings dialog is already open, just show it again
+    UIManager:show(self._settings_dialog)
+    return
+  end
+
+  local settingDlg = SettingsDialog:new{
+      assitant = self,
+      CONFIGURATION = CONFIGURATION,
+      settings = self.settings,
+  }
+
+  self._settings_dialog = settingDlg -- store reference to the dialog
+  UIManager:show(settingDlg)
 end
 
 function Assistant:getModelProvider()

@@ -197,9 +197,8 @@ function SettingsDialog:init()
 end
 
 function SettingsDialog:onCloseWidget()
-    UIManager:setDirty(nil, function()
-        return "ui", self.dialog_frame.dimen
-    end)
+    InputDialog.onCloseWidget(self)
+    self.assitant._settings_dialog = nil
 end
 
 return SettingsDialog
