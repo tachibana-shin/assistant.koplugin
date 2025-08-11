@@ -227,8 +227,8 @@ end
 function AssitantDialog:_getBookContext()
   local prop = self.assitant.ui.document:getProps()
   return {
-    title = prop.title or _("Unknown Title"),
-    author = prop.authors or _("Unknown Author")
+    title = prop.title or "Unknown Title",
+    author = prop.authors or "Unknown Author"
   }
 end
 
