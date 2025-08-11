@@ -1,0 +1,407 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-11 16:04+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: _meta.lua:5
+msgid ""
+"Allows the user to query an AI API for answers to questions about "
+"highlighted text."
+msgstr ""
+
+#: chatgptviewer.lua:266 chatgptviewer.lua:630
+msgid "Ask Another Question"
+msgstr ""
+
+#: chatgptviewer.lua:306
+msgid "Close"
+msgstr ""
+
+#: chatgptviewer.lua:321
+msgid "Copy"
+msgstr ""
+
+#: chatgptviewer.lua:326
+msgid "Text copied to clipboard"
+msgstr ""
+
+#: chatgptviewer.lua:340
+msgid "Add Note"
+msgstr ""
+
+#: chatgptviewer.lua:347
+msgid "Highlight functionality not available"
+msgstr ""
+
+#: chatgptviewer.lua:356
+msgid "No text to add as note"
+msgstr ""
+
+#: chatgptviewer.lua:385
+msgid "No text left to add as note"
+msgstr ""
+
+#: chatgptviewer.lua:398
+msgid "Note added successfully"
+msgstr ""
+
+#: chatgptviewer.lua:568 dialogs.lua:258 dictdialog.lua:34
+msgid "Cancel"
+msgstr ""
+
+#: chatgptviewer.lua:578 dialogs.lua:265
+msgid "Ask"
+msgstr ""
+
+#: chatgptviewer.lua:584 dialogs.lua:271
+msgid "Enter a question before proceeding."
+msgstr ""
+
+#: chatgptviewer.lua:632
+msgid "Type your question here"
+msgstr ""
+
+#: chatgptviewer.lua:783
+msgid "Word copied to clipboard."
+msgstr ""
+
+#: chatgptviewer.lua:784
+msgid "Selection copied to clipboard."
+msgstr ""
+
+#: dialogs.lua:81
+msgid "(Empty message)"
+msgstr ""
+
+#: dialogs.lua:85
+msgid "(No response)"
+msgstr ""
+
+#: dialogs.lua:115
+msgid "Highlighted text:"
+msgstr ""
+
+#: dialogs.lua:302
+msgid "Book Analysis"
+msgstr ""
+
+#: dialogs.lua:340
+msgid "Remove"
+msgstr ""
+
+#: dialogs.lua:340
+msgid "Add"
+msgstr ""
+
+#: dialogs.lua:341
+msgid "Remove this button from the Main Highlight Menu?"
+msgstr ""
+
+#: dialogs.lua:341
+msgid "Add this button to the Main Highlight Menu?"
+msgstr ""
+
+#: dialogs.lua:353
+#, lua-format
+msgid "Added [%s (AI)] to Main Highlight Menu."
+msgstr ""
+
+#: dialogs.lua:356
+#, lua-format
+msgid "Removed [%s (AI)] from Main Highlight Menu."
+msgstr ""
+
+#: dialogs.lua:389
+msgid "Ask a question about the highlighted text"
+msgstr ""
+
+#: dialogs.lua:390
+#, lua-format
+msgid ""
+"Ask a question about this book:\n"
+"%s by %s"
+msgstr ""
+
+#: dialogs.lua:393
+msgid "Type your question here..."
+msgstr ""
+
+#: dialogs.lua:394
+msgid "Ask anything about this book..."
+msgstr ""
+
+#: dialogs.lua:397
+msgid "AI Assistant"
+msgstr ""
+
+#: dialogs.lua:448
+msgid "Error: No response received"
+msgstr ""
+
+#: dictdialog.lua:28
+msgid "AI Dictionary"
+msgstr ""
+
+#: dictdialog.lua:29
+msgid "Enter a word to look up..."
+msgstr ""
+
+#: dictdialog.lua:40
+msgid "Look Up"
+msgstr ""
+
+#: dictdialog.lua:175 main.lua:319 prompts.lua:19
+msgid "Dictionary"
+msgstr ""
+
+#: gpt_query.lua:46
+msgid "No configuration found. Please set up configuration.lua"
+msgstr ""
+
+#: gpt_query.lua:56
+#, lua-format
+msgid ""
+"Provider settings not found for: %s. Please check your configuration.lua "
+"file."
+msgstr ""
+
+#: gpt_query.lua:78
+#, lua-format
+msgid ""
+"Handler not found for: %s. Please ensure the handler exists in api_handlers "
+"directory."
+msgstr ""
+
+#: gpt_query.lua:82
+#, lua-format
+msgid ""
+"No provider set in configuration.lua. Please set the provider and "
+"provider_settings for %s."
+msgstr ""
+
+#: gpt_query.lua:126
+msgid "Querying AI ..."
+msgstr ""
+
+#: gpt_query.lua:141
+msgid "AI Responding"
+msgstr ""
+
+#: gpt_query.lua:143
+#, lua-format
+msgid "☁ %s/%s"
+msgstr ""
+
+#: gpt_query.lua:156
+msgid "⏹ Stop"
+msgstr ""
+
+#: gpt_query.lua:177
+msgid "Stream interrupted by user."
+msgstr ""
+
+#: main.lua:50
+msgid "Ask AI Question"
+msgstr ""
+
+#: main.lua:59
+msgid "AI Recap"
+msgstr ""
+
+#: main.lua:68
+msgid "Assistant Settings"
+msgstr ""
+
+#: main.lua:163
+msgid "Assistant"
+msgstr ""
+
+#: main.lua:169 main.lua:338 main.lua:360 main.lua:415
+msgid "Configuration not found. Please set up configuration.lua first."
+msgstr ""
+
+#: main.lua:237
+#, lua-format
+msgid ""
+"Do you want an AI Recap?\n"
+"For %s by %s.\n"
+"Last read %.0f hours ago."
+msgstr ""
+
+#: main.lua:242
+msgid "Yes"
+msgstr ""
+
+#: main.lua:251
+msgid "No"
+msgstr ""
+
+#: main.lua:368
+msgid "AI Recap feature is not enabled in configuration."
+msgstr ""
+
+#: main.lua:384
+msgid "Unknown Title"
+msgstr ""
+
+#: main.lua:385
+msgid "Unknown Author"
+msgstr ""
+
+#: prompts.lua:20
+msgid ""
+"This prompt act as a dictionary for the highlighted text, to a word or "
+"phrase."
+msgstr ""
+
+#: prompts.lua:25
+msgid "Translate"
+msgstr ""
+
+#: prompts.lua:26
+msgid "This prompt translates the highlighted text to another language."
+msgstr ""
+
+#: prompts.lua:48
+msgid "Simplify"
+msgstr ""
+
+#: prompts.lua:50
+msgid ""
+"This prompt simplifies the highlighted text to make it easier to understand."
+msgstr ""
+
+#: prompts.lua:60
+msgid "Explain"
+msgstr ""
+
+#: prompts.lua:62
+msgid ""
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
+msgstr ""
+
+#: prompts.lua:73
+msgid "Summarize"
+msgstr ""
+
+#: prompts.lua:75
+msgid ""
+"This prompt summarizes the highlighted text, capturing its main points and "
+"essential details."
+msgstr ""
+
+#: prompts.lua:84
+msgid "Historical Context"
+msgstr ""
+
+#: prompts.lua:86
+msgid ""
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
+msgstr ""
+
+#: prompts.lua:90
+msgid "Key Points"
+msgstr ""
+
+#: prompts.lua:92
+msgid ""
+"This prompt extracts and lists the key points from the highlighted text, "
+"ensuring clarity and organization."
+msgstr ""
+
+#: prompts.lua:96
+msgid "ELI5"
+msgstr ""
+
+#: prompts.lua:98
+msgid ""
+"This prompt explains the highlighted text as if to a five-year-old, "
+"simplifying complex concepts into easily understandable terms."
+msgstr ""
+
+#: prompts.lua:102
+msgid "Grammar"
+msgstr ""
+
+#: prompts.lua:104
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr ""
+
+#: prompts.lua:109
+msgid "Vocabulary"
+msgstr ""
+
+#: prompts.lua:111
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr ""
+
+#: prompts.lua:127
+msgid "Wikipedia"
+msgstr ""
+
+#: prompts.lua:129
+msgid ""
+"This prompt generates a comprehensive Wikipedia-style article based on the "
+"highlighted text, ensuring factual accuracy and neutrality."
+msgstr ""
+
+#: recapdialog.lua:68
+msgid "Recap"
+msgstr ""
+
+#: settingsdialog.lua:26
+msgid "Assitant Settings"
+msgstr ""
+
+#: settingsdialog.lua:43
+msgid "💡 Enjoy KOReader with AI Power !"
+msgstr ""
+
+#: settingsdialog.lua:53
+msgid "Always use stream mode"
+msgstr ""
+
+#: settingsdialog.lua:57
+msgid "Use AI Assistant for 'Translate'"
+msgstr ""
+
+#: settingsdialog.lua:62
+msgid "AI Assistant override enabled."
+msgstr ""
+
+#: settingsdialog.lua:62
+msgid "AI Assistant override disabled."
+msgstr ""
+
+#: settingsdialog.lua:102
+msgid "Select the AI Model provider."
+msgstr ""
+
+#: update_checker.lua:21
+msgid "Checking for updates..."
+msgstr ""
+
+#: update_checker.lua:55
+#, lua-format
+msgid "A new version of the %s plugin (%s) is available. Please update!"
+msgstr ""

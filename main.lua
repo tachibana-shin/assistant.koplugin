@@ -11,7 +11,7 @@ local DataStorage = require("datastorage")
 local RadioButtonWidget = require("ui/widget/radiobuttonwidget")
 local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
-local _ = require("gettext")
+local _ = require("owngettext")
 local FrontendUtil = require("util")
 local ffiutil = require("ffi/util")
 

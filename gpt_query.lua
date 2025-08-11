@@ -1,5 +1,5 @@
 --- Querier module for handling AI queries with dynamic provider loading
-local _ = require("gettext")
+local _ = require("owngettext")
 local InfoMessage = require("ui/widget/infomessage")
 local InputDialog = require("ui/widget/inputdialog")
 local InputText = require("ui/widget/inputtext")

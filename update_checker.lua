@@ -6,7 +6,7 @@ local InfoMessage = require("ui/widget/infomessage")
 local UIManager = require("ui/uimanager")
 local Trapper = require("ui/trapper")
 local logger = require("logger")
-local _ = require("gettext")
+local _ = require("owngettext")
 
 local update_url = "https://api.github.com/repos/omer-faruq/assistant.koplugin/releases/latest"
 

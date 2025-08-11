@@ -1,4 +1,4 @@
-local _ = require("gettext")
+local _ = require("owngettext")
 -- preconfigured prompts for various tasks
 
 -- Custom prompts for the AI
