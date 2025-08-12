@@ -10,6 +10,8 @@ local logger = require("logger")
 local json = require("json")
 local ffi = require("ffi")
 local ffiutil = require("ffi/util")
+local Device = require("device")
+local Screen = Device.screen
 
 local Querier = {
     assitant = nil, -- reference to the main assistant object
@@ -138,6 +140,7 @@ function Querier:query(message_history, title)
     if type(res) == "function" then
         local streamDialog = InputDialog:new{
             face = Font:getFace("smallffont"),
+            width = Screen:getWidth() - Screen:scaleBySize(30),
             title = _("AI Responding"),
             description = string.format(
                 _("☁ %s/%s"), self.provider_name, self.provider_settings.model),
