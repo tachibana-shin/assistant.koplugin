@@ -6,6 +6,7 @@ local Dispatcher = require("dispatcher")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
 local Trapper = require("ui/trapper")
+local Language = require("ui/language")
 local LuaSettings = require("luasettings")
 local DataStorage = require("datastorage")
 local RadioButtonWidget = require("ui/widget/radiobuttonwidget")
@@ -397,9 +398,7 @@ end
 function Assistant:applyOrRemoveTranslateOverride()
 
   local Translator = require("ui/translator")
-
-  local should_override = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language and
-      self.settings:readSetting("ai_translate_override")
+  local should_override = self.settings:readSetting("ai_translate_override", false)
 
   if should_override then
     -- Store original translate method if not already stored
@@ -441,6 +440,11 @@ function Assistant:applyOrRemoveTranslateOverride()
       logger.info("Assistant: translate method restored")
     end
   end
+end
+
+function Assistant:getUILanguage()
+  local language = G_reader_settings:readSetting("language") or "en"
+  return Language:getLanguageName(language) or "English"
 end
 
 return Assistant

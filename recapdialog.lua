@@ -6,7 +6,7 @@ local InfoMessage = require("ui/widget/infomessage")
 local Event = require("ui/event")
 local _ = require("owngettext")
 local ChatGPTViewer = require("chatgptviewer")
-local configuration = require("configuration")
+local CONFIGURATION = require("CONFIGURATION")
 local recap_prompts = require("prompts").assitant_prompts.recap
 
 local function showRecapDialog(assitant, title, author, progress_percent, message_history)
@@ -22,11 +22,11 @@ local function showRecapDialog(assitant, title, author, progress_percent, messag
 
     local formatted_progress_percent = string.format("%.2f", progress_percent * 100)
     
-    -- Get recap configuration with fallbacks
-    local recap_config = configuration.features and configuration.features.recap_config or {}
+    -- Get recap CONFIGURATION with fallbacks
+    local recap_config = CONFIGURATION.features and CONFIGURATION.features.recap_config or {}
     local system_prompt = recap_config.system_prompt or recap_prompts.system_prompt
     local user_prompt_template = recap_config.user_prompt or recap_prompts.user_prompt
-    local language = configuration.features and configuration.features.response_language or "English"
+    local language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant:getUILanguage()
     
     local message_history = message_history or {
         {
