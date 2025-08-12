@@ -11,117 +11,117 @@ msgstr ""
 "POT-Creation-Date: 2025-08-11 16:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: AI Generated (OpenAI GPT-4o 2024-05-13)\n"
-"Language: ro\n"
+"Language-Team: AI Generated (Model: gpt-4o, Version: 2024-05-13)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
 msgid "Ask Another Question"
-msgstr "Pune o altă întrebare"
+msgstr "Tegyél fel egy újabb kérdést"
 
 #: ../chatgptviewer.lua:306
 msgid "Close"
-msgstr "Închide"
+msgstr "Bezárás"
 
 #: ../chatgptviewer.lua:321
 msgid "Copy"
-msgstr "Copiază"
+msgstr "Másolás"
 
 #: ../chatgptviewer.lua:326
 msgid "Text copied to clipboard"
-msgstr "Text copiat în clipboard"
+msgstr "Szöveg vágólapra másolva"
 
 #: ../chatgptviewer.lua:340
 msgid "Add Note"
-msgstr "Adaugă notă"
+msgstr "Jegyzet hozzáadása"
 
 #: ../chatgptviewer.lua:347
 msgid "Highlight functionality not available"
-msgstr "Funcționalitatea de evidențiere nu este disponibilă"
+msgstr "A kiemelés funkció nem érhető el"
 
 #: ../chatgptviewer.lua:356
 msgid "No text to add as note"
-msgstr "Niciun text de adăugat ca notă"
+msgstr "Nincs szöveg a jegyzetként való hozzáadáshoz"
 
 #: ../chatgptviewer.lua:385
 msgid "No text left to add as note"
-msgstr "Nu a mai rămas text de adăugat ca notă"
+msgstr "Nincs több szöveg a jegyzetként való hozzáadáshoz"
 
 #: ../chatgptviewer.lua:398
 msgid "Note added successfully"
-msgstr "Notă adăugată cu succes"
+msgstr "Jegyzet sikeresen hozzáadva"
 
 #: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
 msgid "Cancel"
-msgstr "Anulează"
+msgstr "Mégse"
 
 #: ../chatgptviewer.lua:578 ../dialogs.lua:265
 msgid "Ask"
-msgstr "Întreabă"
+msgstr "Kérdez"
 
 #: ../chatgptviewer.lua:584 ../dialogs.lua:271
 msgid "Enter a question before proceeding."
-msgstr "Introduceți o întrebare înainte de a continua."
+msgstr "Adj meg egy kérdést a folytatáshoz."
 
 #: ../chatgptviewer.lua:632
 msgid "Type your question here"
-msgstr "Introduceți întrebarea aici"
+msgstr "Írd ide a kérdésedet"
 
 #: ../chatgptviewer.lua:783
 msgid "Word copied to clipboard."
-msgstr "Cuvânt copiat în clipboard."
+msgstr "Szó vágólapra másolva."
 
 #: ../chatgptviewer.lua:784
 msgid "Selection copied to clipboard."
-msgstr "Selecție copiată în clipboard."
+msgstr "Kijelölés vágólapra másolva."
 
 #: ../dialogs.lua:81
 msgid "(Empty message)"
-msgstr "(Mesaj gol)"
+msgstr "(Üres üzenet)"
 
 #: ../dialogs.lua:85
 msgid "(No response)"
-msgstr "(Fără răspuns)"
+msgstr "(Nincs válasz)"
 
 #: ../dialogs.lua:115
 msgid "Highlighted text:"
-msgstr "Text evidențiat:"
+msgstr "Kiemelt szöveg:"
 
 #: ../dialogs.lua:302
 msgid "Book Analysis"
-msgstr "Analiza cărții"
+msgstr "Könyvelemzés"
 
 #: ../dialogs.lua:340
 msgid "Remove"
-msgstr "Elimină"
+msgstr "Eltávolítás"
 
 #: ../dialogs.lua:340
 msgid "Add"
-msgstr "Adaugă"
+msgstr "Hozzáadás"
 
 #: ../dialogs.lua:341
 msgid "Remove this button from the Main Highlight Menu?"
-msgstr "Eliminați acest buton din Meniul Principal de Evidențiere?"
+msgstr "Eltávolítod ezt a gombot a Fő Kiemelés Menüből?"
 
 #: ../dialogs.lua:341
 msgid "Add this button to the Main Highlight Menu?"
-msgstr "Adăugați acest buton în Meniul Principal de Evidențiere?"
+msgstr "Hozzáadod ezt a gombot a Fő Kiemelés Menühöz?"
 
 #: ../dialogs.lua:353
 #, lua-format
 msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "Adăugat [%s (AI)] în Meniul Principal de Evidențiere."
+msgstr "[%s (AI)] hozzáadva a Fő Kiemelés Menühöz."
 
 #: ../dialogs.lua:356
 #, lua-format
 msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "Eliminat [%s (AI)] din Meniul Principal de Evidențiere."
+msgstr "[%s (AI)] eltávolítva a Fő Kiemelés Menüből."
 
 #: ../dialogs.lua:389
 msgid "Ask a question about the highlighted text"
-msgstr "Puneți o întrebare despre textul evidențiat"
+msgstr "Tegyél fel egy kérdést a kiemelt szövegről"
 
 #: ../dialogs.lua:390
 #, lua-format
@@ -129,44 +129,44 @@ msgid ""
 "Ask a question about this book:\n"
 "%s by %s"
 msgstr ""
-"Puneți o întrebare despre această carte:\n"
-"%s de %s"
+"Tegyél fel egy kérdést erről a könyvről:\n"
+"%s, szerző: %s"
 
 #: ../dialogs.lua:393
 msgid "Type your question here..."
-msgstr "Introduceți întrebarea aici..."
+msgstr "Írd ide a kérdésedet..."
 
 #: ../dialogs.lua:394
 msgid "Ask anything about this book..."
-msgstr "Puneți orice întrebare despre această carte..."
+msgstr "Kérdezz bármit erről a könyvről..."
 
 #: ../dialogs.lua:397 ../_meta.lua:4
 msgid "AI Assistant"
-msgstr "Asistent AI"
+msgstr "AI Asszisztens"
 
 #: ../dialogs.lua:448
 msgid "Error: No response received"
-msgstr "Eroare: Nu s-a primit niciun răspuns"
+msgstr "Hiba: Nem érkezett válasz"
 
 #: ../dictdialog.lua:28
 msgid "AI Dictionary"
-msgstr "Dicționar AI"
+msgstr "AI Szótár"
 
 #: ../dictdialog.lua:29
 msgid "Enter a word to look up..."
-msgstr "Introduceți un cuvânt de căutat..."
+msgstr "Add meg a keresendő szót..."
 
 #: ../dictdialog.lua:40
 msgid "Look Up"
-msgstr "Caută"
+msgstr "Keresés"
 
 #: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
 msgid "Dictionary"
-msgstr "Dicționar"
+msgstr "Szótár"
 
 #: ../gpt_query.lua:46
 msgid "No configuration found. Please set up configuration.lua"
-msgstr "Nu s-a găsit nicio configurație. Vă rugăm să configurați configuration.lua"
+msgstr "Nincs konfiguráció. Kérjük, állítsd be a configuration.lua fájlt."
 
 #: ../gpt_query.lua:56
 #, lua-format
@@ -174,8 +174,8 @@ msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
 msgstr ""
-"Setările furnizorului nu au fost găsite pentru: %s. Vă rugăm să verificați "
-"fișierul configuration.lua."
+"Szolgáltatói beállítások nem találhatók ehhez: %s. Kérjük, ellenőrizd a "
+"configuration.lua fájlt."
 
 #: ../gpt_query.lua:78
 #, lua-format
@@ -183,8 +183,8 @@ msgid ""
 "Handler not found for: %s. Please ensure the handler exists in api_handlers "
 "directory."
 msgstr ""
-"Handler-ul nu a fost găsit pentru: %s. Vă rugăm să vă asigurați că handler-ul "
-"există în directorul api_handlers."
+"Kezelő nem található ehhez: %s. Kérjük, győződj meg róla, hogy létezik az "
+"api_handlers könyvtárban."
 
 #: ../gpt_query.lua:82
 #, lua-format
@@ -192,16 +192,16 @@ msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"Niciun furnizor setat în configuration.lua. Vă rugăm să setați furnizorul și "
-"provider_settings pentru %s."
+"Nincs szolgáltató beállítva a configuration.lua fájlban. Kérjük, állítsd be a "
+"szolgáltatót és a provider_settings értéket ehhez: %s."
 
 #: ../gpt_query.lua:126
 msgid "Querying AI ..."
-msgstr "Se interoghează AI-ul..."
+msgstr "Lekérdezés az AI-tól..."
 
 #: ../gpt_query.lua:141
 msgid "AI Responding"
-msgstr "AI răspunde"
+msgstr "AI válaszol"
 
 #: ../gpt_query.lua:143
 #, lua-format
@@ -210,31 +210,31 @@ msgstr "☁ %s/%s"
 
 #: ../gpt_query.lua:156
 msgid "⏹ Stop"
-msgstr "⏹ Oprește"
+msgstr "⏹ Leállítás"
 
 #: ../gpt_query.lua:177
 msgid "Stream interrupted by user."
-msgstr "Flux întrerupt de utilizator."
+msgstr "Az adatfolyam megszakítva a felhasználó által."
 
 #: ../main.lua:50
 msgid "Ask AI Question"
-msgstr "Pune o întrebare AI"
+msgstr "Kérdés az AI-tól"
 
 #: ../main.lua:59
 msgid "AI Recap"
-msgstr "Recapitulare AI"
+msgstr "AI Összefoglaló"
 
 #: ../main.lua:68
 msgid "Assistant Settings"
-msgstr "Setări asistent"
+msgstr "Asszisztens beállításai"
 
 #: ../main.lua:163
 msgid "Assistant"
-msgstr "Asistent"
+msgstr "Asszisztens"
 
 #: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
 msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "Configurația nu a fost găsită. Vă rugăm să configurați mai întâi configuration.lua."
+msgstr "Konfiguráció nem található. Kérjük, először állítsd be a configuration.lua fájlt."
 
 #: ../main.lua:237
 #, lua-format
@@ -243,99 +243,95 @@ msgid ""
 "For %s by %s.\n"
 "Last read %.0f hours ago."
 msgstr ""
-"Doriți o recapitulare AI?\n"
-"Pentru %s de %s.\n"
-"Citit ultima dată acum %.0f ore."
+"Szeretnél egy AI összefoglalót?\n"
+"A(z) %s című könyvhöz, szerző: %s.\n"
+"Utoljára %.0f órája olvastad."
 
 #: ../main.lua:242
 msgid "Yes"
-msgstr "Da"
+msgstr "Igen"
 
 #: ../main.lua:251
 msgid "No"
-msgstr "Nu"
+msgstr "Nem"
 
 #: ../main.lua:368
 msgid "AI Recap feature is not enabled in configuration."
-msgstr "Funcția de recapitulare AI nu este activată în configurație."
+msgstr "Az AI összefoglaló funkció nincs engedélyezve a konfigurációban."
 
 #: ../_meta.lua:5
 msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "Îmbunătățiți experiența de citire în KOReader cu puterea AI."
+msgstr "Fokozd a KOReader olvasási élményét AI támogatással."
 
 #: ../prompts.lua:20
 msgid ""
 "This prompt act as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr ""
-"Acest prompt acționează ca un dicționar pentru textul evidențiat, pentru un "
-"cuvânt sau o expresie."
+"Ez az utasítás szótárként működik a kiemelt szöveg, szó vagy kifejezés "
+"számára."
 
 #: ../prompts.lua:25
 msgid "Translate"
-msgstr "Traduceți"
+msgstr "Fordítás"
 
 #: ../prompts.lua:26
 msgid "This prompt translates the highlighted text to another language."
-msgstr "Acest prompt traduce textul evidențiat în altă limbă."
+msgstr "Ez az utasítás lefordítja a kiemelt szöveget egy másik nyelvre."
 
 #: ../prompts.lua:48
 msgid "Simplify"
-msgstr "Simplifică"
+msgstr "Egyszerűsítés"
 
 #: ../prompts.lua:50
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
-msgstr ""
-"Acest prompt simplifică textul evidențiat pentru a-l face mai ușor de înțeles."
+msgstr "Ez az utasítás egyszerűsíti a kiemelt szöveget, hogy könnyebben "
+"érthető legyen."
 
 #: ../prompts.lua:60
 msgid "Explain"
-msgstr "Explică"
+msgstr "Magyarázat"
 
 #: ../prompts.lua:62
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
-msgstr ""
-"Acest prompt explică textul evidențiat în detaliu, asigurând claritate și "
-"înțelegere."
+msgstr "Ez az utasítás részletesen elmagyarázza a kiemelt szöveget, "
+"hogy világos és érthető legyen."
 
 #: ../prompts.lua:73
 msgid "Summarize"
-msgstr "Rezumă"
+msgstr "Összefoglalás"
 
 #: ../prompts.lua:75
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
-msgstr ""
-"Acest prompt rezumă textul evidențiat, captând punctele principale și "
-"detaliile esențiale."
+msgstr "Ez az utasítás összefoglalja a kiemelt szöveget, kiemelve a fő "
+"pontokat és a lényeges részleteket."
 
 #: ../prompts.lua:84
 msgid "Historical Context"
-msgstr "Context istoric"
+msgstr "Történelmi kontextus"
 
 #: ../prompts.lua:86
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
-msgstr ""
-"Acest prompt oferă un context istoric detaliat pentru textul evidențiat, "
-"explicând semnificația și fundalul său."
+msgstr "Ez az utasítás részletes történelmi kontextust nyújt a kiemelt "
+"szöveghez, elmagyarázva annak jelentőségét és hátterét."
 
 #: ../prompts.lua:90
 msgid "Key Points"
-msgstr "Puncte cheie"
+msgstr "Fő pontok"
 
 #: ../prompts.lua:92
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
-msgstr ""
-"Acest prompt extrage și listează punctele cheie din textul evidențiat, "
-"asigurând claritate și organizare."
+msgstr "Ez az utasítás kinyeri és felsorolja a kiemelt szöveg fő pontjait, "
+"hogy világos és rendezett legyen."
 
 #: ../prompts.lua:96
 msgid "ELI5"
@@ -345,33 +341,32 @@ msgstr "ELI5"
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
-msgstr ""
-"Acest prompt explică textul evidențiat ca și cum ar fi adresat unui copil de "
-"cinci ani, simplificând conceptele complexe în termeni ușor de înțeles."
+msgstr "Ez az utasítás úgy magyarázza el a kiemelt szöveget, mintha egy "
+"ötévesnek beszélnénk, egyszerűsítve a bonyolult fogalmakat könnyen "
+"érthető kifejezésekre."
 
 #: ../prompts.lua:102
 msgid "Grammar"
-msgstr "Gramatică"
+msgstr "Nyelvtan"
 
 #: ../prompts.lua:104
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
-msgstr ""
-"Acest prompt analizează gramatica textului evidențiat, oferind o explicație "
-"detaliată a structurii și a eventualelor erori gramaticale."
+msgstr "Ez az utasítás elemzi a kiemelt szöveg nyelvtanát, részletes "
+"magyarázatot adva a szerkezetéről és az esetleges nyelvtani hibákról."
 
 #: ../prompts.lua:109
 msgid "Vocabulary"
-msgstr "Vocabular"
+msgstr "Szókincs"
 
 #: ../prompts.lua:111
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
-msgstr ""
-"Acest prompt analizează vocabularul textului evidențiat, identificând cuvinte "
-"complexe și oferind definiții, sinonime și exemple de utilizare."
+msgstr "Ez az utasítás elemzi a kiemelt szöveg szókincsét, azonosítja a "
+"bonyolult szavakat, és meghatározásokat, szinonimákat és használati "
+"példákat ad."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
@@ -381,47 +376,46 @@ msgstr "Wikipedia"
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
-msgstr ""
-"Acest prompt generează un articol complet în stil Wikipedia bazat pe textul "
-"evidențiat, asigurând acuratețea faptică și neutralitatea."
+msgstr "Ez az utasítás egy átfogó, Wikipedia-stílusú cikket generál a "
+"kiemelt szöveg alapján, biztosítva a ténybeli pontosságot és semlegességet."
 
 #: ../recapdialog.lua:68
 msgid "Recap"
-msgstr "Recapitulare"
+msgstr "Összefoglaló"
 
 #: ../settingsdialog.lua:26
 msgid "Assitant Settings"
-msgstr "Setări asistent"
+msgstr "Asszisztens beállításai"
 
 #: ../settingsdialog.lua:43
 msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 Bucurați-vă de KOReader cu puterea AI!"
+msgstr "💡 Élvezd a KOReadert AI támogatással!"
 
 #: ../settingsdialog.lua:53
 msgid "Always use stream mode"
-msgstr "Utilizați întotdeauna modul flux"
+msgstr "Mindig használja az adatfolyam módot"
 
 #: ../settingsdialog.lua:57
 msgid "Use AI Assistant for 'Translate'"
-msgstr "Utilizați asistentul AI pentru „Traducere”"
+msgstr "AI Asszisztens használata a 'Fordítás' funkcióhoz"
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override enabled."
-msgstr "Suprascrierea asistentului AI activată."
+msgstr "AI Asszisztens felülbírálása engedélyezve."
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override disabled."
-msgstr "Suprascrierea asistentului AI dezactivată."
+msgstr "AI Asszisztens felülbírálása letiltva."
 
 #: ../settingsdialog.lua:102
 msgid "Select the AI Model provider."
-msgstr "Selectați furnizorul modelului AI."
+msgstr "Válassz AI modell szolgáltatót."
 
 #: ../update_checker.lua:21
 msgid "Checking for updates..."
-msgstr "Se verifică actualizările..."
+msgstr "Frissítések keresése..."
 
 #: ../update_checker.lua:55
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "O nouă versiune a plugin-ului %s (%s) este disponibilă. Vă rugăm să actualizați!"
+msgstr "Elérhető a(z) %s bővítmény új verziója (%s). Kérjük, frissíts!"

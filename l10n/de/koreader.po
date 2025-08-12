@@ -11,7 +11,7 @@ msgstr ""
 "POT-Creation-Date: 2025-08-11 16:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: AI Generated (OpenAI GPT-4o)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
 msgid "Ask Another Question"
-msgstr "Neue Frage stellen"
+msgstr "Weitere Frage stellen"
 
 #: ../chatgptviewer.lua:306
 msgid "Close"
@@ -47,7 +47,7 @@ msgstr "Kein Text zum Hinzufügen als Notiz vorhanden"
 
 #: ../chatgptviewer.lua:385
 msgid "No text left to add as note"
-msgstr "Kein Text übrig, der als Notiz hinzugefügt werden könnte"
+msgstr "Kein Text mehr zum Hinzufügen als Notiz vorhanden"
 
 #: ../chatgptviewer.lua:398
 msgid "Note added successfully"
@@ -63,11 +63,11 @@ msgstr "Fragen"
 
 #: ../chatgptviewer.lua:584 ../dialogs.lua:271
 msgid "Enter a question before proceeding."
-msgstr "Geben Sie zunächst eine Frage ein."
+msgstr "Geben Sie eine Frage ein, bevor Sie fortfahren."
 
 #: ../chatgptviewer.lua:632
 msgid "Type your question here"
-msgstr "Frage hier eingeben"
+msgstr "Geben Sie hier Ihre Frage ein"
 
 #: ../chatgptviewer.lua:783
 msgid "Word copied to clipboard."
@@ -107,21 +107,21 @@ msgstr "Diese Schaltfläche aus dem Haupt-Hervorheben-Menü entfernen?"
 
 #: ../dialogs.lua:341
 msgid "Add this button to the Main Highlight Menu?"
-msgstr "Diese Schaltfläche ins Haupt-Hervorheben-Menü hinzufügen?"
+msgstr "Diese Schaltfläche dem Haupt-Hervorheben-Menü hinzufügen?"
 
 #: ../dialogs.lua:353
 #, lua-format
 msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "[%s (KI)] wurde dem Haupt-Hervorheben-Menü hinzugefügt."
+msgstr "[%s (KI)] dem Haupt-Hervorheben-Menü hinzugefügt."
 
 #: ../dialogs.lua:356
 #, lua-format
 msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "[%s (KI)] wurde aus dem Haupt-Hervorheben-Menü entfernt."
+msgstr "[%s (KI)] aus dem Haupt-Hervorheben-Menü entfernt."
 
 #: ../dialogs.lua:389
 msgid "Ask a question about the highlighted text"
-msgstr "Frage zum hervorgehobenen Text stellen"
+msgstr "Eine Frage zum hervorgehobenen Text stellen"
 
 #: ../dialogs.lua:390
 #, lua-format
@@ -134,11 +134,11 @@ msgstr ""
 
 #: ../dialogs.lua:393
 msgid "Type your question here..."
-msgstr "Frage hier eingeben..."
+msgstr "Geben Sie hier Ihre Frage ein..."
 
 #: ../dialogs.lua:394
 msgid "Ask anything about this book..."
-msgstr "Etwas zu diesem Buch fragen..."
+msgstr "Stellen Sie alles zu diesem Buch..."
 
 #: ../dialogs.lua:397 ../_meta.lua:4
 msgid "AI Assistant"
@@ -154,7 +154,7 @@ msgstr "KI-Wörterbuch"
 
 #: ../dictdialog.lua:29
 msgid "Enter a word to look up..."
-msgstr "Einen Begriff zum Nachschlagen eingeben..."
+msgstr "Geben Sie ein Wort zum Nachschlagen ein..."
 
 #: ../dictdialog.lua:40
 msgid "Look Up"
@@ -166,7 +166,7 @@ msgstr "Wörterbuch"
 
 #: ../gpt_query.lua:46
 msgid "No configuration found. Please set up configuration.lua"
-msgstr "Keine Konfiguration gefunden. Bitte legen Sie configuration.lua an."
+msgstr "Keine Konfiguration gefunden. Bitte richten Sie configuration.lua ein"
 
 #: ../gpt_query.lua:56
 #, lua-format
@@ -174,7 +174,8 @@ msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
 msgstr ""
-"Provider-Einstellungen nicht gefunden für: %s. Bitte configuration.lua prüfen."
+"Anbieter-Einstellungen nicht gefunden für: %s. Bitte überprüfen Sie Ihre "
+"configuration.lua-Datei."
 
 #: ../gpt_query.lua:78
 #, lua-format
@@ -182,8 +183,8 @@ msgid ""
 "Handler not found for: %s. Please ensure the handler exists in api_handlers "
 "directory."
 msgstr ""
-"Handler nicht gefunden für: %s. Stellen Sie sicher, dass der Handler im api_handlers "
-"Ordner liegt."
+"Handler nicht gefunden für: %s. Bitte stellen Sie sicher, dass der Handler im "
+"api_handlers-Verzeichnis existiert."
 
 #: ../gpt_query.lua:82
 #, lua-format
@@ -191,16 +192,16 @@ msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"Kein Provider in configuration.lua gesetzt. Bitte Provider und "
-"provider_settings für %s festlegen."
+"Kein Anbieter in configuration.lua gesetzt. Bitte setzen Sie den Anbieter und "
+"die provider_settings für %s."
 
 #: ../gpt_query.lua:126
 msgid "Querying AI ..."
-msgstr "KI wird abgefragt …"
+msgstr "KI wird abgefragt ..."
 
 #: ../gpt_query.lua:141
 msgid "AI Responding"
-msgstr "KI antwortet …"
+msgstr "KI antwortet"
 
 #: ../gpt_query.lua:143
 #, lua-format
@@ -209,7 +210,7 @@ msgstr "☁ %s/%s"
 
 #: ../gpt_query.lua:156
 msgid "⏹ Stop"
-msgstr "⏹ Stop"
+msgstr "⏹ Stoppen"
 
 #: ../gpt_query.lua:177
 msgid "Stream interrupted by user."
@@ -217,7 +218,7 @@ msgstr "Stream vom Benutzer unterbrochen."
 
 #: ../main.lua:50
 msgid "Ask AI Question"
-msgstr "KI fragen"
+msgstr "KI-Frage stellen"
 
 #: ../main.lua:59
 msgid "AI Recap"
@@ -233,7 +234,7 @@ msgstr "Assistent"
 
 #: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
 msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "Konfiguration nicht gefunden. Bitte configuration.lua anlegen."
+msgstr "Konfiguration nicht gefunden. Bitte richten Sie zuerst configuration.lua ein."
 
 #: ../main.lua:237
 #, lua-format
@@ -243,7 +244,7 @@ msgid ""
 "Last read %.0f hours ago."
 msgstr ""
 "Möchten Sie eine KI-Zusammenfassung?\n"
-"für %s von %s.\n"
+"Für %s von %s.\n"
 "Zuletzt vor %.0f Stunden gelesen."
 
 #: ../main.lua:242
@@ -267,8 +268,8 @@ msgid ""
 "This prompt act as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr ""
-"Diese Eingabe fungiert als Wörterbuch für den hervorgehobenen Text, ein Wort oder "
-"eine Phrase."
+"Diese Eingabe fungiert als Wörterbuch für den hervorgehobenen Text, zu einem "
+"Wort oder Ausdruck."
 
 #: ../prompts.lua:25
 msgid "Translate"
@@ -285,7 +286,9 @@ msgstr "Vereinfachen"
 #: ../prompts.lua:50
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Diese Eingabe vereinfacht den hervorgehobenen Text, um ihn leichter zu verstehen."
+msgstr ""
+"Diese Eingabe vereinfacht den hervorgehobenen Text, um ihn leichter "
+"verständlich zu machen."
 
 #: ../prompts.lua:60
 msgid "Explain"
@@ -296,8 +299,8 @@ msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
 msgstr ""
-"Diese Eingabe erklärt den hervorgehobenen Text ausführlich, um Klarheit und "
-"Verständnis zu gewährleisten."
+"Diese Eingabe erklärt den hervorgehobenen Text detailliert und sorgt für "
+"Klarheit und Verständnis."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -308,8 +311,8 @@ msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
 msgstr ""
-"Diese Eingabe fasst den hervorgehobenen Text zusammen und fasst die wichtigsten "
-"Punkte und wesentlichen Details zusammen."
+"Diese Eingabe fasst den hervorgehobenen Text zusammen und erfasst die "
+"Hauptpunkte und wesentlichen Details."
 
 #: ../prompts.lua:84
 msgid "Historical Context"
@@ -321,7 +324,7 @@ msgid ""
 "explaining its significance and background."
 msgstr ""
 "Diese Eingabe liefert einen detaillierten historischen Kontext für den "
-"hervorgehobenen Text und erklärt dessen Bedeutung und Hintergrund."
+"hervorgehobenen Text und erklärt seine Bedeutung und Hintergrund."
 
 #: ../prompts.lua:90
 msgid "Key Points"
@@ -332,8 +335,8 @@ msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
 msgstr ""
-"Diese Eingabe extrahiert die Kernpunkte aus dem hervorgehobenen Text und listet "
-"sie klar strukturiert auf."
+"Diese Eingabe extrahiert und listet die Schlüsselpunkte aus dem "
+"hervorgehobenen Text auf und sorgt für Klarheit und Struktur."
 
 #: ../prompts.lua:96
 msgid "ELI5"
@@ -344,8 +347,9 @@ msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
 msgstr ""
-"Diese Eingabe erklärt den hervorgehobenen Text so, als wären Sie fünf Jahre alt, "
-"und vereinfacht komplexe Konzepte in leicht verständliche Begriffe."
+"Diese Eingabe erklärt den hervorgehobenen Text so, als würde man es einem "
+"Fünfjährigen erklären, und vereinfacht komplexe Konzepte in leicht "
+"verständliche Begriffe."
 
 #: ../prompts.lua:102
 msgid "Grammar"
@@ -356,8 +360,9 @@ msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
 msgstr ""
-"Diese Eingabe analysiert die Grammatik des hervorgehobenen Texts und liefert eine "
-"detaillierte Erklärung der Struktur sowie etwaiger Fehler."
+"Diese Eingabe analysiert die Grammatik des hervorgehobenen Textes und liefert "
+"eine detaillierte Erklärung seiner Struktur und etwaiger grammatikalischer "
+"Fehler."
 
 #: ../prompts.lua:109
 msgid "Vocabulary"
@@ -366,10 +371,11 @@ msgstr "Wortschatz"
 #: ../prompts.lua:111
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, Synonyme, and usage examples."
+"complex words and providing definitions, synonyms, and usage examples."
 msgstr ""
-"Diese Eingabe analysiert den Wortschatz des hervorgehobenen Texts, identifiziert "
-"komplexe Wörter und liefert Definitionen, Synonyme und Gebrauchsbeispiele."
+"Diese Eingabe analysiert den Wortschatz des hervorgehobenen Textes, identifiziert "
+"komplexe Wörter und liefert Definitionen, Synonyme und "
+"Verwendungsbeispiele."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
@@ -380,8 +386,9 @@ msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
 msgstr ""
-"Diese Eingabe erstellt einen umfassenden Wikipedia-ähnlichen Artikel basierend auf dem "
-"hervorgehobenen Text und gewährleistet Faktentreue und Neutralität."
+"Diese Eingabe erstellt einen umfassenden Wikipedia-artigen Artikel basierend "
+"auf dem hervorgehobenen Text und gewährleistet sachliche Genauigkeit und "
+"Neutralität."
 
 #: ../recapdialog.lua:68
 msgid "Recap"
@@ -397,11 +404,11 @@ msgstr "💡 Genießen Sie KOReader mit KI-Power!"
 
 #: ../settingsdialog.lua:53
 msgid "Always use stream mode"
-msgstr "Immer im Stream-Modus"
+msgstr "Immer Stream-Modus verwenden"
 
 #: ../settingsdialog.lua:57
 msgid "Use AI Assistant for 'Translate'"
-msgstr "KI-Assistent für „Übersetzen“ nutzen"
+msgstr "KI-Assistent für „Übersetzen“ verwenden"
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override enabled."
@@ -413,11 +420,11 @@ msgstr "KI-Assistent-Überschreibung deaktiviert."
 
 #: ../settingsdialog.lua:102
 msgid "Select the AI Model provider."
-msgstr "KI-Modell-Provider auswählen."
+msgstr "KI-Modell-Anbieter auswählen."
 
 #: ../update_checker.lua:21
 msgid "Checking for updates..."
-msgstr "Auf Updates wird geprüft…"
+msgstr "Nach Updates suchen..."
 
 #: ../update_checker.lua:55
 #, lua-format

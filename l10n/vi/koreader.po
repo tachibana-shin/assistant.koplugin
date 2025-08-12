@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2025-08-11 16:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: AI Generated (Model: GPT-4o, Version: 2024-05-13)\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +43,7 @@ msgstr "Chức năng đánh dấu không khả dụng"
 
 #: ../chatgptviewer.lua:356
 msgid "No text to add as note"
-msgstr "Không có văn bản nào để thêm làm ghi chú"
+msgstr "Không có văn bản để thêm làm ghi chú"
 
 #: ../chatgptviewer.lua:385
 msgid "No text left to add as note"
@@ -87,7 +87,7 @@ msgstr "(Không có phản hồi)"
 
 #: ../dialogs.lua:115
 msgid "Highlighted text:"
-msgstr "Văn bản đã đánh dấu:"
+msgstr "Văn bản được đánh dấu:"
 
 #: ../dialogs.lua:302
 msgid "Book Analysis"
@@ -103,25 +103,25 @@ msgstr "Thêm"
 
 #: ../dialogs.lua:341
 msgid "Remove this button from the Main Highlight Menu?"
-msgstr "Bạn có muốn xóa nút này khỏi Menu Đánh Dấu Chính không?"
+msgstr "Xóa nút này khỏi Menu Đánh dấu chính?"
 
 #: ../dialogs.lua:341
 msgid "Add this button to the Main Highlight Menu?"
-msgstr "Bạn có muốn thêm nút này vào Menu Đánh Dấu Chính không?"
+msgstr "Thêm nút này vào Menu Đánh dấu chính?"
 
 #: ../dialogs.lua:353
 #, lua-format
 msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "Đã thêm [%s (AI)] vào Menu Đánh Dấu Chính."
+msgstr "Đã thêm [%s (AI)] vào Menu Đánh dấu chính."
 
 #: ../dialogs.lua:356
 #, lua-format
 msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "Đã xóa [%s (AI)] khỏi Menu Đánh Dấu Chính."
+msgstr "Đã xóa [%s (AI)] khỏi Menu Đánh dấu chính."
 
 #: ../dialogs.lua:389
 msgid "Ask a question about the highlighted text"
-msgstr "Đặt câu hỏi về văn bản đã đánh dấu"
+msgstr "Đặt câu hỏi về văn bản được đánh dấu"
 
 #: ../dialogs.lua:390
 #, lua-format
@@ -129,7 +129,7 @@ msgid ""
 "Ask a question about this book:\n"
 "%s by %s"
 msgstr ""
-"Hãy đặt câu hỏi về cuốn sách này:\n"
+"Đặt câu hỏi về cuốn sách này:\n"
 "%s của %s"
 
 #: ../dialogs.lua:393
@@ -138,7 +138,7 @@ msgstr "Nhập câu hỏi của bạn tại đây..."
 
 #: ../dialogs.lua:394
 msgid "Ask anything about this book..."
-msgstr "Đặt bất kỳ câu hỏi nào về cuốn sách này..."
+msgstr "Hỏi bất cứ điều gì về cuốn sách này..."
 
 #: ../dialogs.lua:397 ../_meta.lua:4
 msgid "AI Assistant"
@@ -182,7 +182,7 @@ msgid ""
 "Handler not found for: %s. Please ensure the handler exists in api_handlers "
 "directory."
 msgstr ""
-"Không tìm thấy handler cho: %s. Vui lòng đảm bảo handler tồn tại trong thư mục api_handlers."
+"Không tìm thấy trình xử lý cho: %s. Vui lòng đảm bảo trình xử lý tồn tại trong thư mục api_handlers."
 
 #: ../gpt_query.lua:82
 #, lua-format
@@ -190,7 +190,7 @@ msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"Chưa thiết lập nhà cung cấp trong configuration.lua. Vui lòng thiết lập provider và provider_settings cho %s."
+"Không có nhà cung cấp nào được thiết lập trong configuration.lua. Vui lòng thiết lập provider và provider_settings cho %s."
 
 #: ../gpt_query.lua:126
 msgid "Querying AI ..."
@@ -211,11 +211,11 @@ msgstr "⏹ Dừng"
 
 #: ../gpt_query.lua:177
 msgid "Stream interrupted by user."
-msgstr "Luồng đã bị người dùng ngắt."
+msgstr "Luồng bị ngắt bởi người dùng."
 
 #: ../main.lua:50
 msgid "Ask AI Question"
-msgstr "Hỏi Trợ lý AI"
+msgstr "Đặt câu hỏi AI"
 
 #: ../main.lua:59
 msgid "AI Recap"
@@ -240,9 +240,9 @@ msgid ""
 "For %s by %s.\n"
 "Last read %.0f hours ago."
 msgstr ""
-"Bạn có muốn nhận Tóm tắt AI?\n"
-"Cho cuốn %s của %s.\n"
-"Lần đọc trước cách đây %.0f giờ."
+"Bạn có muốn Tóm tắt AI?\n"
+"Cho %s của %s.\n"
+"Đọc lần cuối cách đây %.0f giờ."
 
 #: ../main.lua:242
 msgid "Yes"
@@ -264,7 +264,7 @@ msgstr "Nâng cao trải nghiệm đọc KOReader với sức mạnh AI."
 msgid ""
 "This prompt act as a dictionary for the highlighted text, to a word or "
 "phrase."
-msgstr "Mẫu câu này hoạt động như từ điển cho văn bản được đánh dấu, tra cứu từ hay cụm từ."
+msgstr "Lời nhắc này hoạt động như từ điển cho văn bản được đánh dấu, cho một từ hoặc cụm từ."
 
 #: ../prompts.lua:25
 msgid "Translate"
@@ -272,7 +272,7 @@ msgstr "Dịch"
 
 #: ../prompts.lua:26
 msgid "This prompt translates the highlighted text to another language."
-msgstr "Mẫu câu này dịch văn bản được đánh dấu sang ngôn ngữ khác."
+msgstr "Lời nhắc này dịch văn bản được đánh dấu sang ngôn ngữ khác."
 
 #: ../prompts.lua:48
 msgid "Simplify"
@@ -280,9 +280,8 @@ msgstr "Đơn giản hóa"
 
 #: ../prompts.lua:50
 msgid ""
-"This prompt simplifies the highlighted text to make it easier to "
-"understand."
-msgstr "Mẫu câu này đơn giản hóa văn bản được đánh dấu để dễ hiểu hơn."
+"This prompt simplifies the highlighted text to make it easier to understand."
+msgstr "Lời nhắc này đơn giản hóa văn bản được đánh dấu để dễ hiểu hơn."
 
 #: ../prompts.lua:60
 msgid "Explain"
@@ -292,7 +291,7 @@ msgstr "Giải thích"
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
-msgstr "Mẫu câu này giải thích chi tiết văn bản được đánh dấu, đảm bảo rõ ràng và dễ hiểu."
+msgstr "Lời nhắc này giải thích chi tiết văn bản được đánh dấu, đảm bảo rõ ràng và dễ hiểu."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -302,7 +301,7 @@ msgstr "Tóm tắt"
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
-msgstr "Mẫu câu này tóm tắt văn bản được đánh dấu, nêu bật những điểm chính và chi tiết quan trọng."
+msgstr "Lời nhắc này tóm tắt văn bản được đánh dấu, nắm bắt các ý chính và chi tiết cần thiết."
 
 #: ../prompts.lua:84
 msgid "Historical Context"
@@ -310,9 +309,9 @@ msgstr "Bối cảnh lịch sử"
 
 #: ../prompts.lua:86
 msgid ""
-"This prompt provides a detailed historical context for the highlighted "
-"text, explaining its significance and background."
-msgstr "Mẫu câu này cung cấp bối cảnh lịch sử chi tiết cho văn bản được đánh dấu, giải thích ý nghĩa và xuất xứ của nó."
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
+msgstr "Lời nhắc này cung cấp bối cảnh lịch sử chi tiết cho văn bản được đánh dấu, giải thích ý nghĩa và nền tảng của nó."
 
 #: ../prompts.lua:90
 msgid "Key Points"
@@ -322,17 +321,17 @@ msgstr "Điểm chính"
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
-msgstr "Mẫu câu này trích xuất và liệt kê các điểm chính từ văn bản được đánh dấu, đảm bảo rõ ràng và có tổ chức."
+msgstr "Lời nhắc này trích xuất và liệt kê các điểm chính từ văn bản được đánh dấu, đảm bảo rõ ràng và có tổ chức."
 
 #: ../prompts.lua:96
 msgid "ELI5"
-msgstr "ELI5"
+msgstr "Giải thích như cho trẻ 5 tuổi"
 
 #: ../prompts.lua:98
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
-msgstr "Mẫu câu này giải thích văn bản được đánh dấu như đang nói với một đứa trẻ năm tuổi, đơn giản hóa khái niệm phức tạp thành dễ hiểu."
+msgstr "Lời nhắc này giải thích văn bản được đánh dấu như thể cho một đứa trẻ 5 tuổi, đơn giản hóa các khái niệm phức tạp thành dễ hiểu."
 
 #: ../prompts.lua:102
 msgid "Grammar"
@@ -342,7 +341,7 @@ msgstr "Ngữ pháp"
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
-msgstr "Mẫu câu này phân tích ngữ pháp của văn bản được đánh dấu, cung cấp giải thích chi tiết về cấu trúc và lỗi ngữ pháp (nếu có)."
+msgstr "Lời nhắc này phân tích ngữ pháp của văn bản được đánh dấu, cung cấp giải thích chi tiết về cấu trúc và các lỗi ngữ pháp."
 
 #: ../prompts.lua:109
 msgid "Vocabulary"
@@ -352,7 +351,7 @@ msgstr "Từ vựng"
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
-msgstr "Mẫu câu này phân tích từ vựng trong văn bản được đánh dấu, chỉ ra các từ khó, đồng thời cung cấp định nghĩa, từ đồng nghĩa và ví dụ sử dụng."
+msgstr "Lời nhắc này phân tích từ vựng của văn bản được đánh dấu, xác định các từ phức tạp và cung cấp định nghĩa, từ đồng nghĩa và ví dụ sử dụng."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
@@ -362,7 +361,7 @@ msgstr "Wikipedia"
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
-msgstr "Mẫu câu này tạo bài viết phong cách Wikipedia toàn diện dựa trên văn bản được đánh dấu, đảm bảo tính chính xác và trung lập."
+msgstr "Lời nhắc này tạo ra một bài viết theo phong cách Wikipedia toàn diện dựa trên văn bản được đánh dấu, đảm bảo tính chính xác và trung lập."
 
 #: ../recapdialog.lua:68
 msgid "Recap"
@@ -382,7 +381,7 @@ msgstr "Luôn dùng chế độ luồng"
 
 #: ../settingsdialog.lua:57
 msgid "Use AI Assistant for 'Translate'"
-msgstr "Dùng Trợ lý AI cho chức năng ‘Dịch’"
+msgstr "Dùng Trợ lý AI cho 'Dịch'"
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override enabled."

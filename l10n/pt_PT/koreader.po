@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2025-08-11 16:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: AI Generated (Model: GPT-4o, 2024-06-13)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,7 +39,7 @@ msgstr "Adicionar Nota"
 
 #: ../chatgptviewer.lua:347
 msgid "Highlight functionality not available"
-msgstr "Função de realçar não disponível"
+msgstr "Funcionalidade de destaque não disponível"
 
 #: ../chatgptviewer.lua:356
 msgid "No text to add as note"
@@ -87,7 +87,7 @@ msgstr "(Sem resposta)"
 
 #: ../dialogs.lua:115
 msgid "Highlighted text:"
-msgstr "Texto realçado:"
+msgstr "Texto destacado:"
 
 #: ../dialogs.lua:302
 msgid "Book Analysis"
@@ -103,25 +103,25 @@ msgstr "Adicionar"
 
 #: ../dialogs.lua:341
 msgid "Remove this button from the Main Highlight Menu?"
-msgstr "Remover este botão do Menu Principal de Realce?"
+msgstr "Remover este botão do Menu Principal de Destaque?"
 
 #: ../dialogs.lua:341
 msgid "Add this button to the Main Highlight Menu?"
-msgstr "Adicionar este botão ao Menu Principal de Realce?"
+msgstr "Adicionar este botão ao Menu Principal de Destaque?"
 
 #: ../dialogs.lua:353
 #, lua-format
 msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "Adicionado [%s (IA)] ao Menu Principal de Realce."
+msgstr "Adicionado [%s (IA)] ao Menu Principal de Destaque."
 
 #: ../dialogs.lua:356
 #, lua-format
 msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "Removido [%s (IA)] do Menu Principal de Realce."
+msgstr "Removido [%s (IA)] do Menu Principal de Destaque."
 
 #: ../dialogs.lua:389
 msgid "Ask a question about the highlighted text"
-msgstr "Fazer uma pergunta sobre o texto realçado"
+msgstr "Faça uma pergunta sobre o texto destacado"
 
 #: ../dialogs.lua:390
 #, lua-format
@@ -154,7 +154,7 @@ msgstr "Dicionário de IA"
 
 #: ../dictdialog.lua:29
 msgid "Enter a word to look up..."
-msgstr "Introduza uma palavra para consultar..."
+msgstr "Introduza uma palavra para pesquisar..."
 
 #: ../dictdialog.lua:40
 msgid "Look Up"
@@ -166,7 +166,7 @@ msgstr "Dicionário"
 
 #: ../gpt_query.lua:46
 msgid "No configuration found. Please set up configuration.lua"
-msgstr "Configuração não encontrada. Por favor configure configuration.lua"
+msgstr "Configuração não encontrada. Por favor, configure configuration.lua"
 
 #: ../gpt_query.lua:56
 #, lua-format
@@ -174,7 +174,7 @@ msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
 msgstr ""
-"Configurações do fornecedor não encontradas para: %s. Por favor verifique o "
+"Configurações do fornecedor não encontradas para: %s. Por favor, verifique o "
 "ficheiro configuration.lua."
 
 #: ../gpt_query.lua:78
@@ -183,8 +183,8 @@ msgid ""
 "Handler not found for: %s. Please ensure the handler exists in api_handlers "
 "directory."
 msgstr ""
-"Handler não encontrado para: %s. Por favor garanta que o handler existe no "
-"diretório api_handlers."
+"Handler não encontrado para: %s. Por favor, certifique-se de que o handler "
+"existe no diretório api_handlers."
 
 #: ../gpt_query.lua:82
 #, lua-format
@@ -192,8 +192,8 @@ msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"Nenhum fornecedor definido em configuration.lua. Por favor defina o provider "
-"e provider_settings para %s."
+"Nenhum fornecedor definido em configuration.lua. Por favor, defina o "
+"fornecedor e provider_settings para %s."
 
 #: ../gpt_query.lua:126
 msgid "Querying AI ..."
@@ -214,7 +214,7 @@ msgstr "⏹ Parar"
 
 #: ../gpt_query.lua:177
 msgid "Stream interrupted by user."
-msgstr "Stream interrompido pelo utilizador."
+msgstr "Transmissão interrompida pelo utilizador."
 
 #: ../main.lua:50
 msgid "Ask AI Question"
@@ -234,7 +234,7 @@ msgstr "Assistente"
 
 #: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
 msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "Configuração não encontrada. Por favor configure configuration.lua primeiro."
+msgstr "Configuração não encontrada. Por favor, configure configuration.lua primeiro."
 
 #: ../main.lua:237
 #, lua-format
@@ -244,7 +244,7 @@ msgid ""
 "Last read %.0f hours ago."
 msgstr ""
 "Deseja uma Recapitulação de IA?\n"
-"Para %s de %s.\n" 
+"Para %s de %s.\n"
 "Última leitura há %.0f horas."
 
 #: ../main.lua:242
@@ -268,7 +268,7 @@ msgid ""
 "This prompt act as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr ""
-"Este prompt funciona como um dicionário para o texto realçado, para uma "
+"Este prompt funciona como um dicionário para o texto destacado, para uma "
 "palavra ou frase."
 
 #: ../prompts.lua:25
@@ -277,7 +277,7 @@ msgstr "Traduzir"
 
 #: ../prompts.lua:26
 msgid "This prompt translates the highlighted text to another language."
-msgstr "Este prompt traduz o texto realçado para outro idioma."
+msgstr "Este prompt traduz o texto destacado para outro idioma."
 
 #: ../prompts.lua:48
 msgid "Simplify"
@@ -286,7 +286,9 @@ msgstr "Simplificar"
 #: ../prompts.lua:50
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Este prompt simplifica o texto realçado para facilitar a compreensão."
+msgstr ""
+"Este prompt simplifica o texto destacado para torná-lo mais fácil de "
+"entender."
 
 #: ../prompts.lua:60
 msgid "Explain"
@@ -297,7 +299,7 @@ msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
 msgstr ""
-"Este prompt explica o texto realçado em detalhe, garantindo clareza e "
+"Este prompt explica o texto destacado em detalhe, garantindo clareza e "
 "compreensão."
 
 #: ../prompts.lua:73
@@ -309,7 +311,7 @@ msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
 msgstr ""
-"Este prompt resume o texto realçado, capturando os seus pontos principais e "
+"Este prompt resume o texto destacado, capturando os seus pontos principais e "
 "detalhes essenciais."
 
 #: ../prompts.lua:84
@@ -321,8 +323,8 @@ msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
 msgstr ""
-"Este prompt fornece um contexto histórico detalhado para o texto realçado, "
-"explicando a sua importância e origem."
+"Este prompt fornece um contexto histórico detalhado para o texto destacado, "
+"explicando a sua importância e contexto."
 
 #: ../prompts.lua:90
 msgid "Key Points"
@@ -333,7 +335,7 @@ msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
 msgstr ""
-"Este prompt extrai e enumera os pontos-chave do texto realçado, garantindo "
+"Este prompt extrai e lista os pontos-chave do texto destacado, garantindo "
 "clareza e organização."
 
 #: ../prompts.lua:96
@@ -345,8 +347,8 @@ msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
 msgstr ""
-"Este prompt explica o texto realçado como se fosse para uma criança de "
-"cinco anos, simplificando conceitos complexos em termos fáceis de entender."
+"Este prompt explica o texto destacado como se a uma criança de cinco anos, "
+"simplificando conceitos complexos em termos facilmente compreensíveis."
 
 #: ../prompts.lua:102
 msgid "Grammar"
@@ -357,7 +359,7 @@ msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
 msgstr ""
-"Este prompt analisa a gramática do texto realçado, fornecendo uma explicação "
+"Este prompt analisa a gramática do texto destacado, fornecendo uma explicação "
 "detalhada da sua estrutura e quaisquer erros gramaticais."
 
 #: ../prompts.lua:109
@@ -369,8 +371,8 @@ msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
 msgstr ""
-"Este prompt analisa o vocabulário do texto realçado, identificando "
-"palavras complexas e fornecendo definições, sinónimos e exemplos de uso."
+"Este prompt analisa o vocabulário do texto destacado, identificando palavras "
+"complexas e fornecendo definições, sinónimos e exemplos de uso."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
@@ -381,12 +383,12 @@ msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
 msgstr ""
-"Este prompt gera um artigo estilo Wikipedia abrangente baseado no texto "
-"realçado, garantindo exactidão factual e neutralidade."
+"Este prompt gera um artigo abrangente no estilo da Wikipedia baseado no "
+"texto destacado, garantindo precisão factual e neutralidade."
 
 #: ../recapdialog.lua:68
 msgid "Recap"
-msgstr "Recapitular"
+msgstr "Recapitulação"
 
 #: ../settingsdialog.lua:26
 msgid "Assitant Settings"
@@ -402,7 +404,7 @@ msgstr "Usar sempre o modo stream"
 
 #: ../settingsdialog.lua:57
 msgid "Use AI Assistant for 'Translate'"
-msgstr "Usar o Assistente de IA para „Traduzir“"
+msgstr "Usar Assistente de IA para 'Traduzir'"
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override enabled."
@@ -418,9 +420,9 @@ msgstr "Selecione o fornecedor do modelo de IA."
 
 #: ../update_checker.lua:21
 msgid "Checking for updates..."
-msgstr "A verificar por actualizações..."
+msgstr "A verificar atualizações..."
 
 #: ../update_checker.lua:55
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "Está disponível uma nova versão do plugin %s (%s). Por favor actualize!"
+msgstr "Uma nova versão do plugin %s (%s) está disponível. Por favor, atualize!"

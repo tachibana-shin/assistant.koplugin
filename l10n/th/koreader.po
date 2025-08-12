@@ -1,0 +1,405 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-11 16:48+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: AI Generated (Model: GPT-4o, Version: 2024-05-13)\n"
+"Language: th\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
+msgid "Ask Another Question"
+msgstr "ถามคำถามอื่น"
+
+#: ../chatgptviewer.lua:306
+msgid "Close"
+msgstr "ปิด"
+
+#: ../chatgptviewer.lua:321
+msgid "Copy"
+msgstr "คัดลอก"
+
+#: ../chatgptviewer.lua:326
+msgid "Text copied to clipboard"
+msgstr "คัดลอกข้อความไปยังคลิปบอร์ดแล้ว"
+
+#: ../chatgptviewer.lua:340
+msgid "Add Note"
+msgstr "เพิ่มโน้ต"
+
+#: ../chatgptviewer.lua:347
+msgid "Highlight functionality not available"
+msgstr "ฟังก์ชันไฮไลต์ไม่พร้อมใช้งาน"
+
+#: ../chatgptviewer.lua:356
+msgid "No text to add as note"
+msgstr "ไม่มีข้อความที่จะเพิ่มเป็นโน้ต"
+
+#: ../chatgptviewer.lua:385
+msgid "No text left to add as note"
+msgstr "ไม่มีข้อความเหลือที่จะเพิ่มเป็นโน้ต"
+
+#: ../chatgptviewer.lua:398
+msgid "Note added successfully"
+msgstr "เพิ่มโน้ตสำเร็จ"
+
+#: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#: ../chatgptviewer.lua:578 ../dialogs.lua:265
+msgid "Ask"
+msgstr "ถาม"
+
+#: ../chatgptviewer.lua:584 ../dialogs.lua:271
+msgid "Enter a question before proceeding."
+msgstr "กรุณาป้อนคำถามก่อนดำเนินการต่อ"
+
+#: ../chatgptviewer.lua:632
+msgid "Type your question here"
+msgstr "พิมพ์คำถามของคุณที่นี่"
+
+#: ../chatgptviewer.lua:783
+msgid "Word copied to clipboard."
+msgstr "คัดลอกคำไปยังคลิปบอร์ดแล้ว"
+
+#: ../chatgptviewer.lua:784
+msgid "Selection copied to clipboard."
+msgstr "คัดลอกส่วนที่เลือกไปยังคลิปบอร์ดแล้ว"
+
+#: ../dialogs.lua:81
+msgid "(Empty message)"
+msgstr "(ข้อความว่างเปล่า)"
+
+#: ../dialogs.lua:85
+msgid "(No response)"
+msgstr "(ไม่มีการตอบกลับ)"
+
+#: ../dialogs.lua:115
+msgid "Highlighted text:"
+msgstr "ข้อความที่ไฮไลต์:"
+
+#: ../dialogs.lua:302
+msgid "Book Analysis"
+msgstr "วิเคราะห์หนังสือ"
+
+#: ../dialogs.lua:340
+msgid "Remove"
+msgstr "ลบ"
+
+#: ../dialogs.lua:340
+msgid "Add"
+msgstr "เพิ่ม"
+
+#: ../dialogs.lua:341
+msgid "Remove this button from the Main Highlight Menu?"
+msgstr "ลบปุ่มนี้ออกจากเมนูไฮไลต์หลักหรือไม่?"
+
+#: ../dialogs.lua:341
+msgid "Add this button to the Main Highlight Menu?"
+msgstr "เพิ่มปุ่มนี้ไปยังเมนูไฮไลต์หลักหรือไม่?"
+
+#: ../dialogs.lua:353
+#, lua-format
+msgid "Added [%s (AI)] to Main Highlight Menu."
+msgstr "เพิ่ม [%s (AI)] ไปยังเมนูไฮไลต์หลักแล้ว"
+
+#: ../dialogs.lua:356
+#, lua-format
+msgid "Removed [%s (AI)] from Main Highlight Menu."
+msgstr "ลบ [%s (AI)] ออกจากเมนูไฮไลต์หลักแล้ว"
+
+#: ../dialogs.lua:389
+msgid "Ask a question about the highlighted text"
+msgstr "ถามคำถามเกี่ยวกับข้อความที่ไฮไลต์"
+
+#: ../dialogs.lua:390
+#, lua-format
+msgid ""
+"Ask a question about this book:\n"
+"%s by %s"
+msgstr ""
+"ถามคำถามเกี่ยวกับหนังสือเล่มนี้:\n"
+"%s โดย %s"
+
+#: ../dialogs.lua:393
+msgid "Type your question here..."
+msgstr "พิมพ์คำถามของคุณที่นี่..."
+
+#: ../dialogs.lua:394
+msgid "Ask anything about this book..."
+msgstr "ถามอะไรก็ได้เกี่ยวกับหนังสือเล่มนี้..."
+
+#: ../dialogs.lua:397 ../_meta.lua:4
+msgid "AI Assistant"
+msgstr "ผู้ช่วย AI"
+
+#: ../dialogs.lua:448
+msgid "Error: No response received"
+msgstr "ข้อผิดพลาด: ไม่ได้รับการตอบกลับ"
+
+#: ../dictdialog.lua:28
+msgid "AI Dictionary"
+msgstr "พจนานุกรม AI"
+
+#: ../dictdialog.lua:29
+msgid "Enter a word to look up..."
+msgstr "ป้อนคำที่ต้องการค้นหา..."
+
+#: ../dictdialog.lua:40
+msgid "Look Up"
+msgstr "ค้นหา"
+
+#: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
+msgid "Dictionary"
+msgstr "พจนานุกรม"
+
+#: ../gpt_query.lua:46
+msgid "No configuration found. Please set up configuration.lua"
+msgstr "ไม่พบการตั้งค่า กรุณาตั้งค่า configuration.lua"
+
+#: ../gpt_query.lua:56
+#, lua-format
+msgid ""
+"Provider settings not found for: %s. Please check your configuration.lua "
+"file."
+msgstr ""
+"ไม่พบการตั้งค่าผู้ให้บริการสำหรับ: %s กรุณาตรวจสอบไฟล์ configuration.lua ของคุณ"
+
+#: ../gpt_query.lua:78
+#, lua-format
+msgid ""
+"Handler not found for: %s. Please ensure the handler exists in api_handlers "
+"directory."
+msgstr ""
+"ไม่พบตัวจัดการสำหรับ: %s กรุณาตรวจสอบว่ามีตัวจัดการในไดเรกทอรี api_handlers"
+
+#: ../gpt_query.lua:82
+#, lua-format
+msgid ""
+"No provider set in configuration.lua. Please set the provider and "
+"provider_settings for %s."
+msgstr ""
+"ไม่ได้ตั้งค่าผู้ให้บริการใน configuration.lua กรุณาตั้งค่า provider และ provider_settings สำหรับ %s"
+
+#: ../gpt_query.lua:126
+msgid "Querying AI ..."
+msgstr "กำลังสอบถาม AI..."
+
+#: ../gpt_query.lua:141
+msgid "AI Responding"
+msgstr "AI กำลังตอบ"
+
+#: ../gpt_query.lua:143
+#, lua-format
+msgid "☁ %s/%s"
+msgstr "☁ %s/%s"
+
+#: ../gpt_query.lua:156
+msgid "⏹ Stop"
+msgstr "⏹ หยุด"
+
+#: ../gpt_query.lua:177
+msgid "Stream interrupted by user."
+msgstr "สตรีมถูกขัดจังหวะโดยผู้ใช้"
+
+#: ../main.lua:50
+msgid "Ask AI Question"
+msgstr "ถามคำถาม AI"
+
+#: ../main.lua:59
+msgid "AI Recap"
+msgstr "สรุป AI"
+
+#: ../main.lua:68
+msgid "Assistant Settings"
+msgstr "การตั้งค่าผู้ช่วย"
+
+#: ../main.lua:163
+msgid "Assistant"
+msgstr "ผู้ช่วย"
+
+#: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
+msgid "Configuration not found. Please set up configuration.lua first."
+msgstr "ไม่พบการตั้งค่า กรุณาตั้งค่า configuration.lua ก่อน"
+
+#: ../main.lua:237
+#, lua-format
+msgid ""
+"Do you want an AI Recap?\n"
+"For %s by %s.\n"
+"Last read %.0f hours ago."
+msgstr ""
+"คุณต้องการสรุป AI หรือไม่?\n"
+"สำหรับ %s โดย %s\n"
+"อ่านครั้งล่าสุดเมื่อ %.0f ชั่วโมงที่แล้ว"
+
+#: ../main.lua:242
+msgid "Yes"
+msgstr "ใช่"
+
+#: ../main.lua:251
+msgid "No"
+msgstr "ไม่"
+
+#: ../main.lua:368
+msgid "AI Recap feature is not enabled in configuration."
+msgstr "ฟีเจอร์สรุป AI ไม่ได้เปิดใช้งานในการตั้งค่า"
+
+#: ../_meta.lua:5
+msgid "Enhance KOReader's reading exerience with AI Power."
+msgstr "เพิ่มประสบการณ์การอ่าน KOReader ด้วยพลัง AI"
+
+#: ../prompts.lua:20
+msgid ""
+"This prompt act as a dictionary for the highlighted text, to a word or "
+"phrase."
+msgstr "พรอมป์นี้ทำหน้าที่เป็นพจนานุกรมสำหรับข้อความที่ไฮไลต์ คำหรือวลี"
+
+#: ../prompts.lua:25
+msgid "Translate"
+msgstr "แปล"
+
+#: ../prompts.lua:26
+msgid "This prompt translates the highlighted text to another language."
+msgstr "พรอมป์นี้แปลข้อความที่ไฮไลต์เป็นภาษาอื่น"
+
+#: ../prompts.lua:48
+msgid "Simplify"
+msgstr "ทำให้ง่าย"
+
+#: ../prompts.lua:50
+msgid ""
+"This prompt simplifies the highlighted text to make it easier to understand."
+msgstr "พรอมป์นี้ทำให้ข้อความที่ไฮไลต์ง่ายขึ้นเพื่อให้เข้าใจได้ง่ายขึ้น"
+
+#: ../prompts.lua:60
+msgid "Explain"
+msgstr "อธิบาย"
+
+#: ../prompts.lua:62
+msgid ""
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
+msgstr "พรอมป์นี้อธิบายข้อความที่ไฮไลต์อย่างละเอียด เพื่อให้เข้าใจชัดเจน"
+
+#: ../prompts.lua:73
+msgid "Summarize"
+msgstr "สรุป"
+
+#: ../prompts.lua:75
+msgid ""
+"This prompt summarizes the highlighted text, capturing its main points and "
+"essential details."
+msgstr "พรอมป์นี้สรุปข้อความที่ไฮไลต์ โดยดึงประเด็นหลักและรายละเอียดสำคัญ"
+
+#: ../prompts.lua:84
+msgid "Historical Context"
+msgstr "บริบททางประวัติศาสตร์"
+
+#: ../prompts.lua:86
+msgid ""
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
+msgstr "พรอมป์นี้ให้บริบททางประวัติศาสตร์อย่างละเอียดสำหรับข้อความที่ไฮไลต์ โดยอธิบายความสำคัญและพื้นหลัง"
+
+#: ../prompts.lua:90
+msgid "Key Points"
+msgstr "ประเด็นสำคัญ"
+
+#: ../prompts.lua:92
+msgid ""
+"This prompt extracts and lists the key points from the highlighted text, "
+"ensuring clarity and organization."
+msgstr "พรอมป์นี้ดึงและแสดงรายการประเด็นสำคัญจากข้อความที่ไฮไลต์ เพื่อให้ชัดเจนและเป็นระเบียบ"
+
+#: ../prompts.lua:96
+msgid "ELI5"
+msgstr "อธิบายเหมือนอธิบายให้เด็ก 5 ขวบฟัง"
+
+#: ../prompts.lua:98
+msgid ""
+"This prompt explains the highlighted text as if to a five-year-old, "
+"simplifying complex concepts into easily understandable terms."
+msgstr "พรอมป์นี้อธิบายข้อความที่ไฮไลต์เหมือนกับอธิบายให้เด็ก 5 ขวบฟัง โดยทำให้แนวคิดซับซ้อนกลายเป็นเรื่องง่าย"
+
+#: ../prompts.lua:102
+msgid "Grammar"
+msgstr "ไวยากรณ์"
+
+#: ../prompts.lua:104
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr "พรอมป์นี้วิเคราะห์ไวยากรณ์ของข้อความที่ไฮไลต์ โดยอธิบายโครงสร้างและข้อผิดพลาดทางไวยากรณ์อย่างละเอียด"
+
+#: ../prompts.lua:109
+msgid "Vocabulary"
+msgstr "คำศัพท์"
+
+#: ../prompts.lua:111
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr "พรอมป์นี้วิเคราะห์คำศัพท์ของข้อความที่ไฮไลต์ โดยระบุคำยากและให้คำนิยาม คำพ้องรูป และตัวอย่างการใช้งาน"
+
+#: ../prompts.lua:127
+msgid "Wikipedia"
+msgstr "วิกิพีเดีย"
+
+#: ../prompts.lua:129
+msgid ""
+"This prompt generates a comprehensive Wikipedia-style article based on the "
+"highlighted text, ensuring factual accuracy and neutrality."
+msgstr "พรอมป์นี้สร้างบทความสไตล์วิกิพีเดียที่ครอบคลุมจากข้อความที่ไฮไลต์ โดยรับประกันความถูกต้องและความเป็นกลาง"
+
+#: ../recapdialog.lua:68
+msgid "Recap"
+msgstr "สรุป"
+
+#: ../settingsdialog.lua:26
+msgid "Assitant Settings"
+msgstr "การตั้งค่าผู้ช่วย"
+
+#: ../settingsdialog.lua:43
+msgid "💡 Enjoy KOReader with AI Power !"
+msgstr "💡 เพลิดเพลินกับ KOReader ด้วยพลัง AI!"
+
+#: ../settingsdialog.lua:53
+msgid "Always use stream mode"
+msgstr "ใช้โหมดสตรีมเสมอ"
+
+#: ../settingsdialog.lua:57
+msgid "Use AI Assistant for 'Translate'"
+msgstr "ใช้ผู้ช่วย AI สำหรับ 'แปล'"
+
+#: ../settingsdialog.lua:62
+msgid "AI Assistant override enabled."
+msgstr "เปิดใช้งานการแทนที่ผู้ช่วย AI แล้ว"
+
+#: ../settingsdialog.lua:62
+msgid "AI Assistant override disabled."
+msgstr "ปิดการแทนที่ผู้ช่วย AI แล้ว"
+
+#: ../settingsdialog.lua:102
+msgid "Select the AI Model provider."
+msgstr "เลือกผู้ให้บริการโมเดล AI"
+
+#: ../update_checker.lua:21
+msgid "Checking for updates..."
+msgstr "กำลังตรวจสอบการอัปเดต..."
+
+#: ../update_checker.lua:55
+#, lua-format
+msgid "A new version of the %s plugin (%s) is available. Please update!"
+msgstr "มีเวอร์ชันใหม่ของปลั๊กอิน %s (%s) พร้อมใช้งาน กรุณาอัปเดต!"

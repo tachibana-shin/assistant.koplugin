@@ -11,7 +11,7 @@ msgstr ""
 "POT-Creation-Date: 2025-08-11 16:48+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: AI Generated (Model: gpt-4o, 2024-06-13)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -47,7 +47,7 @@ msgstr "Nessun testo da aggiungere come nota"
 
 #: ../chatgptviewer.lua:385
 msgid "No text left to add as note"
-msgstr "Nessun testo rimanente da aggiungere come nota"
+msgstr "Nessun testo rimasto da aggiungere come nota"
 
 #: ../chatgptviewer.lua:398
 msgid "Note added successfully"
@@ -67,7 +67,7 @@ msgstr "Inserisci una domanda prima di procedere."
 
 #: ../chatgptviewer.lua:632
 msgid "Type your question here"
-msgstr "Scrivi qui la tua domanda"
+msgstr "Digita qui la tua domanda"
 
 #: ../chatgptviewer.lua:783
 msgid "Word copied to clipboard."
@@ -134,15 +134,15 @@ msgstr ""
 
 #: ../dialogs.lua:393
 msgid "Type your question here..."
-msgstr "Scrivi qui la tua domanda..."
+msgstr "Digita qui la tua domanda..."
 
 #: ../dialogs.lua:394
 msgid "Ask anything about this book..."
-msgstr "Fai qualunque domanda su questo libro..."
+msgstr "Fai qualsiasi domanda su questo libro..."
 
 #: ../dialogs.lua:397 ../_meta.lua:4
 msgid "AI Assistant"
-msgstr "Assistente IA"
+msgstr "Assistente AI"
 
 #: ../dialogs.lua:448
 msgid "Error: No response received"
@@ -150,7 +150,7 @@ msgstr "Errore: nessuna risposta ricevuta"
 
 #: ../dictdialog.lua:28
 msgid "AI Dictionary"
-msgstr "Dizionario IA"
+msgstr "Dizionario AI"
 
 #: ../dictdialog.lua:29
 msgid "Enter a word to look up..."
@@ -166,7 +166,7 @@ msgstr "Dizionario"
 
 #: ../gpt_query.lua:46
 msgid "No configuration found. Please set up configuration.lua"
-msgstr "Nessuna configurazione trovata. Configura configuration.lua"
+msgstr "Nessuna configurazione trovata. Si prega di configurare configuration.lua"
 
 #: ../gpt_query.lua:56
 #, lua-format
@@ -174,7 +174,7 @@ msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
 msgstr ""
-"Impostazioni provider non trovate per: %s. Controlla il tuo file configuration.lua."
+"Impostazioni del provider non trovate per: %s. Controlla il file configuration.lua."
 
 #: ../gpt_query.lua:78
 #, lua-format
@@ -182,7 +182,7 @@ msgid ""
 "Handler not found for: %s. Please ensure the handler exists in api_handlers "
 "directory."
 msgstr ""
-"Handler non trovato per: %s. Assicurati che l’handler esista nella directory api_handlers."
+"Handler non trovato per: %s. Assicurati che l'handler esista nella directory api_handlers."
 
 #: ../gpt_query.lua:82
 #, lua-format
@@ -190,15 +190,15 @@ msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"Nessun provider impostato in configuration.lua. Imposta il provider e provider_settings per %s."
+"Nessun provider impostato in configuration.lua. Imposta il provider e le provider_settings per %s."
 
 #: ../gpt_query.lua:126
 msgid "Querying AI ..."
-msgstr "Interrogazione IA..."
+msgstr "Interrogazione AI..."
 
 #: ../gpt_query.lua:141
 msgid "AI Responding"
-msgstr "IA in risposta"
+msgstr "Risposta AI"
 
 #: ../gpt_query.lua:143
 #, lua-format
@@ -211,15 +211,15 @@ msgstr "⏹ Ferma"
 
 #: ../gpt_query.lua:177
 msgid "Stream interrupted by user."
-msgstr "Flusso interrotto dall’utente."
+msgstr "Flusso interrotto dall'utente."
 
 #: ../main.lua:50
 msgid "Ask AI Question"
-msgstr "Fai una domanda all’IA"
+msgstr "Fai una domanda all'AI"
 
 #: ../main.lua:59
 msgid "AI Recap"
-msgstr "Riassunto IA"
+msgstr "Riassunto AI"
 
 #: ../main.lua:68
 msgid "Assistant Settings"
@@ -231,7 +231,7 @@ msgstr "Assistente"
 
 #: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
 msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "Configurazione non trovata. Configura prima configuration.lua."
+msgstr "Configurazione non trovata. Si prega di configurare prima configuration.lua."
 
 #: ../main.lua:237
 #, lua-format
@@ -240,7 +240,7 @@ msgid ""
 "For %s by %s.\n"
 "Last read %.0f hours ago."
 msgstr ""
-"Desideri un Riassunto IA?\n"
+"Desideri un Riassunto AI?\n"
 "Per %s di %s.\n"
 "Ultima lettura %.0f ore fa."
 
@@ -254,19 +254,18 @@ msgstr "No"
 
 #: ../main.lua:368
 msgid "AI Recap feature is not enabled in configuration."
-msgstr "La funzione Riassunto IA non è abilitata nella configurazione."
+msgstr "La funzione Riassunto AI non è abilitata nella configurazione."
 
 #: ../_meta.lua:5
 msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "Migliora l'esperienza di lettura di KOReader con il potere dell’IA."
+msgstr "Migliora l'esperienza di lettura di KOReader con la potenza dell'AI."
 
 #: ../prompts.lua:20
 msgid ""
 "This prompt act as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr ""
-"Questo prompt funge da dizionario per il testo evidenziato, una parola o una "
-"frase."
+"Questo prompt funge da dizionario per il testo evidenziato, per una parola o frase."
 
 #: ../prompts.lua:25
 msgid "Translate"
@@ -283,7 +282,7 @@ msgstr "Semplifica"
 #: ../prompts.lua:50
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Questo prompt semplifica il testo evidenziato per renderlo più facile da comprendere."
+msgstr "Questo prompt semplifica il testo evidenziato per renderlo più comprensibile."
 
 #: ../prompts.lua:60
 msgid "Explain"
@@ -293,7 +292,7 @@ msgstr "Spiega"
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
-msgstr "Questo prompt spiega il testo evidenziato in dettaglio, garantendo chiarezza e comprensione."
+msgstr "Questo prompt spiega in dettaglio il testo evidenziato, garantendo chiarezza e comprensione."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -303,7 +302,7 @@ msgstr "Riassumi"
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
-msgstr "Questo prompt riassume il testo evidenziato, cogliendo i punti principali e i dettagli essenziali."
+msgstr "Questo prompt riassume il testo evidenziato, catturandone i punti principali e i dettagli essenziali."
 
 #: ../prompts.lua:84
 msgid "Historical Context"
@@ -313,7 +312,7 @@ msgstr "Contesto storico"
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
-msgstr "Questo prompt fornisce un contesto storico dettagliato per il testo evidenziato, spiegandone importanza e retroscena."
+msgstr "Questo prompt fornisce un contesto storico dettagliato per il testo evidenziato, spiegandone l'importanza e lo sfondo."
 
 #: ../prompts.lua:90
 msgid "Key Points"
@@ -323,7 +322,7 @@ msgstr "Punti chiave"
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
-msgstr "Questo prompt estrae e elenca i punti chiave dal testo evidenziato, garantendo chiarezza e ordine."
+msgstr "Questo prompt estrae e elenca i punti chiave dal testo evidenziato, garantendo chiarezza e organizzazione."
 
 #: ../prompts.lua:96
 msgid "ELI5"
@@ -343,7 +342,7 @@ msgstr "Grammatica"
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
-msgstr "Questo prompt analizza la grammatica del testo evidenziato, fornendo una spiegazione dettagliata della sua struttura e di eventuali errori grammaticali."
+msgstr "Questo prompt analizza la grammatica del testo evidenziato, fornendo una spiegazione dettagliata della struttura e di eventuali errori grammaticali."
 
 #: ../prompts.lua:109
 msgid "Vocabulary"
@@ -353,7 +352,7 @@ msgstr "Vocabolario"
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
-msgstr "Questo prompt analizza il vocabolario del testo evidenziato, individuando parole complesse e fornendo definizioni, sinonimi ed esempi d’uso."
+msgstr "Questo prompt analizza il vocabolario del testo evidenziato, identificando parole complesse e fornendo definizioni, sinonimi ed esempi d'uso."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
@@ -375,7 +374,7 @@ msgstr "Impostazioni Assistente"
 
 #: ../settingsdialog.lua:43
 msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 Goditi KOReader con il potere dell’IA!"
+msgstr "💡 Goditi KOReader con la potenza dell'AI!"
 
 #: ../settingsdialog.lua:53
 msgid "Always use stream mode"
@@ -383,23 +382,23 @@ msgstr "Usa sempre la modalità stream"
 
 #: ../settingsdialog.lua:57
 msgid "Use AI Assistant for 'Translate'"
-msgstr "Usa Assistente IA per 'Traduci'"
+msgstr "Usa Assistente AI per 'Traduci'"
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override enabled."
-msgstr "Override Assistente IA abilitato."
+msgstr "Override Assistente AI abilitato."
 
 #: ../settingsdialog.lua:62
 msgid "AI Assistant override disabled."
-msgstr "Override Assistente IA disabilitato."
+msgstr "Override Assistente AI disabilitato."
 
 #: ../settingsdialog.lua:102
 msgid "Select the AI Model provider."
-msgstr "Seleziona il provider del modello IA."
+msgstr "Seleziona il provider del modello AI."
 
 #: ../update_checker.lua:21
 msgid "Checking for updates..."
-msgstr "Controllo aggiornamenti in corso..."
+msgstr "Controllo aggiornamenti..."
 
 #: ../update_checker.lua:55
 #, lua-format
