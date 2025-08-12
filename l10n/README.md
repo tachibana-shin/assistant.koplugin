@@ -12,6 +12,12 @@ Translate: `template/koreader.pot` -> `LANG/koreader.po`
 3. copy `template/koreader.pot` to `LANG_CODE/koreader.po`
 4. Translate `LANG_CODE/koreader.po`
 
+## Updates
+
+When source changes, run `make` under this dir.
+
+`template/koreader.pot` will be regenerated, and other language translations will merge the result with the new template.
+
 #### Use AI
 
 Use the following prompt to translate your language, attach `template/koreader.pot` 
