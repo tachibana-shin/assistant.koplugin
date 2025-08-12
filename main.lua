@@ -11,7 +11,7 @@ local DataStorage = require("datastorage")
 local RadioButtonWidget = require("ui/widget/radiobuttonwidget")
 local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
-local _ = require("gettext")
+local _ = require("owngettext")
 local FrontendUtil = require("util")
 local ffiutil = require("ffi/util")
 
@@ -21,8 +21,8 @@ local Prompts = require("prompts")
 local SettingsDialog = require("settingsdialog")
 
 local Assistant = InputContainer:new {
-  name = "Assistant",
-  is_doc_only = true,
+  name = "assistant",
+  is_doc_only = true,   -- only available in doc model
   settings_file = DataStorage:getSettingsDir() .. "/assistant.lua",
   settings = nil,
   querier = nil,
@@ -160,7 +160,7 @@ function Assistant:init()
   -- Assistant button
   self.ui.highlight:addToHighlightDialog("assistant", function(_reader_highlight_instance)
     return {
-      text = _("Assistant"),
+      text = _("AI Assistant"),
       enabled = Device:hasClipboard(),
       callback = function()
         if not CONFIGURATION then
@@ -381,8 +381,8 @@ function Assistant:onAskAIRecap()
     local doc_settings = DocSettings:open(self.ui.document.file)
     local percent_finished = doc_settings:readSetting("percent_finished") or 0
     local doc_props = doc_settings:child("doc_props")
-    local title = doc_props:readSetting("title") or self.ui.document:getProps().title or _("Unknown Title")
-    local authors = doc_props:readSetting("authors") or self.ui.document:getProps().authors or _("Unknown Author")
+    local title = doc_props:readSetting("title") or self.ui.document:getProps().title or "Unknown Title"
+    local authors = doc_props:readSetting("authors") or self.ui.document:getProps().authors or "Unknown Author"
     
     -- Show recap dialog
     local showRecapDialog = require("recapdialog")
