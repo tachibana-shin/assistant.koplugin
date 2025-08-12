@@ -6,7 +6,7 @@ local InfoMessage = require("ui/widget/infomessage")
 local TextBoxWidget = require("ui/widget/textboxwidget")
 local _ = require("owngettext")
 local Event = require("ui/event")
-local configuration = require("configuration")
+local CONFIGURATION = require("CONFIGURATION")
 local dict_prompts = require("prompts").assitant_prompts.dict
 
 local function showDictionaryDialog(assitant, highlightedText, message_history)
@@ -114,14 +114,16 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
         end
     end
     
-    local dict_language = configuration.features.dictionary_translate_to or configuration.features.response_language or "English"
+    local resp_language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant:getUILanguage()
+    local dict_language = CONFIGURATION.features.dictionary_translate_to or resp_language
     local context_message = {
         role = "user",
         content = string.gsub(dict_prompts.user_prompt, "{(%w+)}", {
-    language = dict_language,
-    context = prev_context .. highlightedText .. next_context,
-    word = highlightedText
-    })}
+                language = dict_language,
+                context = prev_context .. highlightedText .. next_context,
+                word = highlightedText
+        })
+    }
 
     table.insert(message_history, context_message)
 
@@ -134,7 +136,7 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
 
     local function createResultText(highlightedText, answer)
         local result_text
-        if configuration and configuration.features and (configuration.features.render_markdown or configuration.features.render_markdown == nil) then
+        if CONFIGURATION and CONFIGURATION.features and (CONFIGURATION.features.render_markdown or CONFIGURATION.features.render_markdown == nil) then
         -- in markdown mode, outputs markdown formated highlighted text
         result_text = "... " .. prev_context .. " **" .. highlightedText ..  "** " ..  next_context ..  " ...\n\n" ..  answer
         else

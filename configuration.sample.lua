@@ -134,13 +134,13 @@ local CONFIGURATION = {
 
     -- Optional features 
     features = {
-        response_language = "Turkish", --  Set language for the other responses, nil to English response. 
-        -- dictionary_translate_to = "Turkish", -- if you want the language of the dictionary to be different from the response language, set it here.
+        -- response_language = "Turkish", --  Set language for all AI responses, unset to use the UI language.
+        -- dictionary_translate_to = "Deutsch", -- Set the dictionary response language, unset to follow the `response_language`.
         hide_highlighted_text = false,  -- Set to true to hide the highlighted text at the top
         hide_long_highlights = true,    -- Hide highlighted text if longer than threshold
         long_highlight_threshold = 500,  -- Number of characters considered "long"
         max_display_user_prompt_length = 100,  -- Maximum number of characters of user_prompt to show in result window  (0 or nil for no limit)
-        system_prompt = "You are a helpful AI assistant. Always respond in Markdown format.", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
+        -- system_prompt = "You are a helpful AI assistant. Always respond in Markdown format.", -- Custom system prompt for the AI ("Ask" button) to override the default, to disable set to nil
         show_dictionary_button_in_dictionary_popup = true, -- Set to true to show the Dictionary (AI) button in the dictionary popup
         enable_AI_recap = true, -- Set to true to allow for a popup on a book you haven't read in a while to give you a quick AI recap
         render_markdown = true, -- Set to true to render markdown in the AI responses
