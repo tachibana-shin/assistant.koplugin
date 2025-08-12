@@ -160,7 +160,7 @@ function Assistant:init()
   -- Assistant button
   self.ui.highlight:addToHighlightDialog("assistant", function(_reader_highlight_instance)
     return {
-      text = _("Assistant"),
+      text = _("AI Assistant"),
       enabled = Device:hasClipboard(),
       callback = function()
         if not CONFIGURATION then
