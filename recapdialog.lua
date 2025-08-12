@@ -6,7 +6,7 @@ local InfoMessage = require("ui/widget/infomessage")
 local Event = require("ui/event")
 local _ = require("owngettext")
 local ChatGPTViewer = require("chatgptviewer")
-local CONFIGURATION = require("CONFIGURATION")
+local CONFIGURATION = require("configuration") 
 local recap_prompts = require("prompts").assitant_prompts.recap
 
 local function showRecapDialog(assitant, title, author, progress_percent, message_history)

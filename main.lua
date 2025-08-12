@@ -1,5 +1,6 @@
 local Device = require("device")
 local logger = require("logger")
+local Event = require("ui/event")
 local InputContainer = require("ui/widget/container/inputcontainer")
 local NetworkMgr = require("ui/network/manager")
 local Dispatcher = require("dispatcher")
@@ -287,9 +288,11 @@ end
 
 function Assistant:addMainButton(prompt_idx, prompt)
   local menukey = string.format("assistant_%02d_%s", prompt.order, prompt_idx)
+  self.ui.highlight:removeFromHighlightDialog(menukey) -- avoid duplication
   self.ui.highlight:addToHighlightDialog(menukey, function(_reader_highlight_instance)
+    local btntext = prompt.text .. " (AI)"  -- append "(AI)" to identify as our function
     return {
-      text = prompt.text .. " (AI)",  -- append "(AI)" to identify as our function
+      text = btntext,
       callback = function()
         NetworkMgr:runWhenOnline(function()
           Trapper:wrap(function()
@@ -304,13 +307,19 @@ function Assistant:addMainButton(prompt_idx, prompt)
           end)
         end)
       end,
+      hold_callback = function() -- hold to remove
+        UIManager:nextTick(function()
+          UIManager:show(ConfirmBox:new{
+            text = string.format(_("Remove [%s] from the Main Highlight Menu?"), btntext),
+            ok_text = _("Remove"),
+            ok_callback = function()
+              UIManager:broadcastEvent(Event:new("AssitantSetButton", {order=prompt.order, idx=prompt_idx}, "remove"))
+            end
+          })
+        end)
+      end,
     }
   end)
-end
-
-function Assistant:removeMainButton(prompt_idx, prompt)
-  local menukey = string.format("assistant_%02d_%s", prompt.order, prompt_idx)
-  self.ui.highlight:removeFromHighlightDialog(menukey)
 end
 
 function Assistant:onDictButtonsReady(dict_popup, buttons)
@@ -445,6 +454,38 @@ end
 function Assistant:getUILanguage()
   local language = G_reader_settings:readSetting("language") or "en"
   return Language:getLanguageName(language) or "English"
+end
+
+function Assistant:onAssitantSetButton(btnconf, action)
+  local menukey = string.format("assistant_%02d_%s", btnconf.order, btnconf.idx)
+  local settingkey = "showOnMain_" .. menukey
+
+  local idx = btnconf.idx
+  local prompt = Prompts.custom_prompts[idx]
+
+  if action == "add" then
+    self.settings:makeTrue(settingkey)
+    self.updated = true
+    self:addMainButton(idx, prompt)
+    UIManager:show(InfoMessage:new{
+      text = T(_("Added [%1 (AI)] to Main Highlight Menu."), prompt.text),
+      icon = "notice-info",
+      timeout = 3
+    })
+  elseif action == "remove" then
+    self.settings:makeFalse(settingkey)
+    self.updated = true
+    self.ui.highlight:removeFromHighlightDialog(menukey)
+    UIManager:show(InfoMessage:new{
+      text = string.format(_("Removed [%s (AI)] from Main Highlight Menu."), prompt.text),
+      icon = "notice-info",
+      timeout = 3
+    })
+  else
+    logger.warn("wrong event args", menukey, action)
+  end
+
+  return true
 end
 
 return Assistant

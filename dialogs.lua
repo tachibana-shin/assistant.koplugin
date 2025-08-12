@@ -4,7 +4,9 @@ local ChatGPTViewer = require("chatgptviewer")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
 local ConfirmBox = require("ui/widget/confirmbox")
+local Event = require("ui/event")
 local _ = require("owngettext")
+local T = require("ffi/util").template
 local Trapper = require("ui/trapper")
 local Prompts = require("prompts")
 local Device = require("device")
@@ -335,32 +337,11 @@ function AssitantDialog:show(highlightedText)
         hold_callback = function()
           local menukey = string.format("assistant_%02d_%s", tab.order, tab.idx)
           local settingkey = "showOnMain_" .. menukey
-
-          local is_shown = self.assitant.settings:isTrue(settingkey) 
-          local button_text = is_shown and _("Remove") or _("Add")
-          local action_desc = is_shown and _("Remove this button from the Main Highlight Menu?") or _("Add this button to the Main Highlight Menu?")  
           UIManager:show(ConfirmBox:new{
-            text = string.format("%s: %s\n\n%s", tab.text, tab.desc, action_desc),
-            ok_text = button_text,
+            text = string.format("%s: %s\n\n%s", tab.text, tab.desc, _("Add this button to the Main Highlight Menu?")),
+            ok_text = _("Add"),
             ok_callback = function()
-              self.assitant.settings:toggle(settingkey)
-              self.assitant.updated = true
-
-              local noticetext
-              if self.assitant.settings:isTrue(settingkey) then
-                self.assitant:addMainButton(tab.idx, tab)
-                -- logger.info("Added custom prompt button: ", tab.text, " with index: ", tab.idx)
-                noticetext = string.format(_("Added [%s (AI)] to Main Highlight Menu."), tab.text)
-              else
-                self.assitant:removeMainButton(tab.idx, tab)
-                noticetext = string.format(_("Removed [%s (AI)] from Main Highlight Menu."), tab.text)
-              end
-
-              UIManager:show(InfoMessage:new{
-                text = noticetext,
-                icon = "notice-info",
-                timeout = 3
-              })
+              UIManager:broadcastEvent(Event:new("AssitantSetButton", {order=tab.order, idx=tab.idx}, "add"))
             end,
           })
 
