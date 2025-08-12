@@ -1,4 +1,5 @@
 # Multi-language support
+
 The plugin use the same language tranlate logic with KOReader.
 
 ## How it Works
@@ -23,17 +24,17 @@ When source changes, run `make` under this dir.
 Use the following prompt to translate your language, attach `template/koreader.pot` 
 
 ```
-Translate the following gettext .po file content to {{YOUR LANGUAGE}}.  Preserve the .po file structure, including msgid, msgstr, and other metadata.  Ensure accurate and context-aware translation. Do not modify the file structure.  Here is the file content:
+Translate the following gettext .po file content to {{YOUR LANGUAGE}}.  Preserve the .po file structure, including msgid, msgstr, and other metadata.  Ensure accurate and context-aware translation. The first message is a metadata message.  Fill in the `Language` arrtibute with current tranlating language. Fill `Language-Team` with AI Generated info includeing your model name. Do not modify other file structure. Here is the file content:
 ```
 
 Save the generated file content to `LANG_CODE/koreader.ko`
 
+Most translation files in the directory are generated with a script `AI_TRANSLATE.sh` with an API, which automates the above process.
 
 ## Language abbr TABLE
 
 ```lua
     language_names = {
-        C = "English",
         en = "English",
         en_GB = "English (United Kingdom)",
         ca = "Catalá",
@@ -82,6 +83,5 @@ Save the generated file content to `LANG_CODE/koreader.ko`
         zh = "中文",
         zh_CN = "简体中文",
         zh_TW = "中文（台灣)",
-        ["zh_TW.Big5"] = "中文（台灣）（Big5）",
     }
 ```
