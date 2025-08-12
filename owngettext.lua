@@ -1,3 +1,6 @@
+-- this model is copied from koreader frontend/gettext.lua with a few lines of hacks
+-- see the last lines of the this file.
+--
 --[[--
 A pure Lua implementation of a gettext subset.
 
@@ -395,33 +398,34 @@ function GetText_mt.__index.pgettext(msgctxt, msgid)
 end
 
 setmetatable(GetText, GetText_mt)
-
--- if os.getenv("LANGUAGE") then
---     GetText.changeLang(os.getenv("LANGUAGE"))
--- elseif os.getenv("LC_ALL") then
---     GetText.changeLang(os.getenv("LC_ALL"))
--- elseif os.getenv("LC_MESSAGES") then
---     GetText.changeLang(os.getenv("LC_MESSAGES"))
--- elseif os.getenv("LANG") then
---     GetText.changeLang(os.getenv("LANG"))
--- end
-
--- if isAndroid then
---     local ffi = require("ffi")
---     local buf = ffi.new("char[?]", 16)
---     android.lib.AConfiguration_getLanguage(android.app.config, buf)
---     local lang = ffi.string(buf)
---     android.lib.AConfiguration_getCountry(android.app.config, buf)
---     local country = ffi.string(buf)
---     if lang and country then
---         GetText.changeLang(lang.."_"..country)
---     end
--- end
-
 -- assistant.koplugin hacks
-local DataStorage = require("datastorage")
-GetText.dirname = DataStorage:getDataDir() .. "/plugins/assistant.koplugin/l10n"
-local kogettext = require("gettext")
-GetText.changeLang(kogettext.current_lang)
+
+-- skip loading on env
+--[[
+if os.getenv("LANGUAGE") then
+    GetText.changeLang(os.getenv("LANGUAGE"))
+elseif os.getenv("LC_ALL") then
+    GetText.changeLang(os.getenv("LC_ALL"))
+elseif os.getenv("LC_MESSAGES") then
+    GetText.changeLang(os.getenv("LC_MESSAGES"))
+elseif os.getenv("LANG") then
+    GetText.changeLang(os.getenv("LANG"))
+end
+
+if isAndroid then
+    local ffi = require("ffi")
+    local buf = ffi.new("char[?]", 16)
+    android.lib.AConfiguration_getLanguage(android.app.config, buf)
+    local lang = ffi.string(buf)
+    android.lib.AConfiguration_getCountry(android.app.config, buf)
+    local country = ffi.string(buf)
+    if lang and country then
+        GetText.changeLang(lang.."_"..country)
+    end
+end
+]]-- 
+
+GetText.dirname = require("datastorage"):getDataDir() .. "/plugins/assistant.koplugin/l10n"  -- use our l10n dir
+GetText.changeLang(require("gettext").current_lang) -- load the translation based on the koreader's gettext.current_lang
 
 return GetText

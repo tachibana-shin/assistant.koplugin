@@ -21,8 +21,8 @@ local Prompts = require("prompts")
 local SettingsDialog = require("settingsdialog")
 
 local Assistant = InputContainer:new {
-  name = "Assistant",
-  is_doc_only = true,
+  name = "assistant",
+  is_doc_only = true,   -- only available in doc model
   settings_file = DataStorage:getSettingsDir() .. "/assistant.lua",
   settings = nil,
   querier = nil,
