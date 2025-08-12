@@ -398,7 +398,7 @@ end
 function Assistant:applyOrRemoveTranslateOverride()
 
   local Translator = require("ui/translator")
-  local should_override = self.settings:readSetting("ai_translate_override")
+  local should_override = self.settings:readSetting("ai_translate_override", false)
 
   if should_override then
     -- Store original translate method if not already stored

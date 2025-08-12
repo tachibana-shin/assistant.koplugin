@@ -112,7 +112,7 @@ function Querier:query(message_history, title)
         return "", "Assitant: not configured."
     end
 
-    if self.settings:readSetting("forced_stream_mode") then
+    if self.settings:readSetting("forced_stream_mode", true) then -- defalut true
         if not self.provider_settings.additional_parameters then
             self.provider_settings.additional_parameters = {}
         end

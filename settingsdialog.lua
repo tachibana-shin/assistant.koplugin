@@ -51,10 +51,12 @@ function SettingsDialog:init()
         {
             key = "forced_stream_mode",
             text = _("Always use stream mode"),
+            checked = self.settings:readSetting("forced_stream_mode", true),
         },
         {
             key = "ai_translate_override",
             text = _("Use AI Assistant for 'Translate'"),
+            checked = self.settings:readSetting("ai_translate_override", false),
             changed_callback = function(checked)
                 self.assitant:applyOrRemoveTranslateOverride()
                 UIManager:show(InfoMessage:new{
@@ -166,7 +168,7 @@ function SettingsDialog:init()
         self.check_buttons[btn.key] = CheckButton:new{
             text = btn.text,
             face = Font:getFace("cfont", 18),
-            checked = self.settings:readSetting(btn.key, false),
+            checked = btn.checked,
             parent = self,
         }
         self:addWidget(self.check_buttons[btn.key])
