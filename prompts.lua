@@ -209,23 +209,14 @@ local M = {
 -- It merges the custom prompts with the configuration prompts, if available.
 -- return table of merged prompts
 -- Example: { translate = { text = "Translate", user_prompt = "...", order = 1, show_on_main_popup = true }, ... }
-M.getMergedCustomPrompts = function()
+M.getMergedCustomPrompts = function(conf_prompts)
     if M.merged_prompts then
         return M.merged_prompts
     end
 
-    -- Load Configuration
-    local CONFIGURATION = nil
-    local success, result = pcall(function() return require("configuration") end)
-    if success then
-        CONFIGURATION = result
-    else
-        error("configuration.lua not found, skipping...")
-    end
-
     -- Merge custom prompts with configuration prompts
-    if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts then
-        M.merged_prompts = table_merge(custom_prompts, CONFIGURATION.features.prompts)
+    if conf_prompts then
+        M.merged_prompts = table_merge(custom_prompts, conf_prompts)
     else
         M.merged_prompts = custom_prompts
     end
@@ -242,12 +233,9 @@ M.getSortedCustomPrompts = function(filter_func)
         return M.sorted_custom_prompts
     end
     
-    if M.merged_prompts == nil then
-        M.getMergedCustomPrompts() -- Ensure merged prompts are loaded
-    end
     -- Sort the merged prompts by order
     local sorted_prompts = {}
-    for prompt_index, prompt in pairs(M.merged_prompts) do
+    for prompt_index, prompt in pairs(M.merged_prompts or custom_prompts) do
         -- Only add the prompt if there is no filter, or if the filter function returns true.
         if not filter_func or filter_func(prompt, prompt_index) == true then
             table.insert(sorted_prompts, {idx = prompt_index, order = prompt.order or 1000, text = prompt.text or prompt_index, desc = prompt.desc or ""})

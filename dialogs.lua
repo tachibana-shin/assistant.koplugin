@@ -393,7 +393,7 @@ end
 -- ( custom prompts from configuration )
 function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
 
-  local prompt_config = Prompts.getMergedCustomPrompts()[prompt_index]
+  local prompt_config = Prompts.getMergedCustomPrompts(self.assitant.CONFIGURATION.features.prompts)[prompt_index]
 
   local title = prompt_config.text or prompt_index
 

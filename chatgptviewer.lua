@@ -420,8 +420,8 @@ function ChatGPTViewer:init()
 
 
   -- load configuration
-  local success, CONFIGURATION = pcall(function() return require("configuration") end)
-  if success and CONFIGURATION.features.render_markdown ~= nil then
+  local CONFIGURATION = self.assitant.CONFIGURATION
+  if CONFIGURATION.features.render_markdown ~= nil then
     -- defaults to true, if user omits the option (nil)
     self.render_markdown = CONFIGURATION.features.render_markdown
   end
@@ -535,8 +535,7 @@ function ChatGPTViewer:askAnotherQuestion()
     return
   end
 
-  -- Attempt to load configuration
-  local success, CONFIGURATION = pcall(function() return require("configuration") end)
+  local CONFIGURATION = self.assitant.CONFIGURATION
   
   -- Initialize default options
   local default_options = {}
@@ -548,7 +547,7 @@ function ChatGPTViewer:askAnotherQuestion()
     end
     return true
   end) or {}
-  local merged_prompts = Prompts.getMergedCustomPrompts() or {}
+  local merged_prompts = Prompts.getMergedCustomPrompts(CONFIGURATION.features.prompts) or {}
     
   -- Add buttons in sorted order
   for _, tab in ipairs(sorted_prompts) do

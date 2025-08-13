@@ -10,10 +10,11 @@ local _ = require("owngettext")
 
 local update_url = "https://api.github.com/repos/omer-faruq/assistant.koplugin/releases/latest"
 
+local CONFIGURATION = nil
+
 local function checkForUpdates()
 
-  local success, CONFIGURATION = pcall(function() return require("configuration") end)
-  if success and CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.updater_disabled then
+  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.updater_disabled then
     return
   end
 
@@ -65,7 +66,8 @@ local function checkForUpdates()
 end
 
 return {
-  checkForUpdates = function()
+  checkForUpdates = function(_conf)
+    if _conf then CONFIGURATION = _conf end
     Trapper:wrap(checkForUpdates)
   end
 }
