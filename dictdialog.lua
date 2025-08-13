@@ -114,7 +114,7 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
         end
     end
     
-    local resp_language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant:getUILanguage()
+    local resp_language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant.ui_language
     local dict_language = CONFIGURATION.features.dictionary_translate_to or resp_language
     local context_message = {
         role = "user",

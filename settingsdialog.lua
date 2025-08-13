@@ -58,7 +58,7 @@ function SettingsDialog:init()
             text = _("Use AI Assistant for 'Translate'"),
             checked = self.settings:readSetting("ai_translate_override", false),
             changed_callback = function(checked)
-                self.assitant:applyOrRemoveTranslateOverride()
+                self.assitant:syncTranslateOverride()
                 UIManager:show(InfoMessage:new{
                     timeout = 3,
                     text = checked and _("AI Assistant override enabled.") or _("AI Assistant override disabled.")

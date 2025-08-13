@@ -30,6 +30,7 @@ local Assistant = InputContainer:new {
   querier = nil,
   updated = false, -- flag to track if settings were updated
   assitant_dialog = nil, -- reference to the main dialog instance
+  ui_language = nil,
 }
 
 -- Load Configuration
@@ -192,8 +193,11 @@ function Assistant:init()
     return
   end
 
+  -- store the UI language
+  self.ui_language = Language:getLanguageName(G_reader_settings:readSetting("language") or "en") or "English"
+
   -- Conditionally override translate method based on user setting
-  self:applyOrRemoveTranslateOverride()
+  self:syncTranslateOverride()
 
   -- Load the model provider from settings or default configuration
   self.querier = require("gpt_query"):new({
@@ -403,11 +407,11 @@ function Assistant:onAskAIRecap()
   return true
 end
 
--- Override the translate method in ReaderHighlight to use AI Assistant
-function Assistant:applyOrRemoveTranslateOverride()
+-- Sync Overriding translate method with setting
+function Assistant:syncTranslateOverride()
 
   local Translator = require("ui/translator")
-  local should_override = self.settings:readSetting("ai_translate_override", false)
+  local should_override = self.settings:readSetting("ai_translate_override", false) -- default to false
 
   if should_override then
     -- Store original translate method if not already stored
@@ -449,11 +453,6 @@ function Assistant:applyOrRemoveTranslateOverride()
       logger.info("Assistant: translate method restored")
     end
   end
-end
-
-function Assistant:getUILanguage()
-  local language = G_reader_settings:readSetting("language") or "en"
-  return Language:getLanguageName(language) or "English"
 end
 
 function Assistant:onAssitantSetButton(btnconf, action)
