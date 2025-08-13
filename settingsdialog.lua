@@ -40,7 +40,7 @@ local SettingsDialog = InputDialog:extend{
         UIManager:show(InfoMessage:new{
             alignment = "center",
             show_icon = false,
-            text = string.format("%s %s\n\n%s", meta.fullname, meta.version, _("💡 Enjoy KOReader with AI Power !"))
+            text = string.format("%s %s\n\n%s", meta.fullname, meta.version, meta.description)
         })
     end,
 }

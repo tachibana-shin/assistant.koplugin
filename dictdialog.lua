@@ -6,10 +6,10 @@ local InfoMessage = require("ui/widget/infomessage")
 local TextBoxWidget = require("ui/widget/textboxwidget")
 local _ = require("owngettext")
 local Event = require("ui/event")
-local CONFIGURATION = require("configuration") 
 local dict_prompts = require("prompts").assitant_prompts.dict
 
 local function showDictionaryDialog(assitant, highlightedText, message_history)
+    local CONFIGURATION = assitant.CONFIGURATION
     local Querier = assitant.querier
     local ui = assitant.ui
 
