@@ -341,11 +341,9 @@ function AssitantDialog:show(highlightedText)
             text = string.format("%s: %s\n\n%s", tab.text, tab.desc, _("Add this button to the Main Highlight Menu?")),
             ok_text = _("Add"),
             ok_callback = function()
-              UIManager:broadcastEvent(Event:new("AssitantSetButton", {order=tab.order, idx=tab.idx}, "add"))
+              self.assitant:handleEvent(Event:new("AssitantSetButton", {order=tab.order, idx=tab.idx}, "add"))
             end,
           })
-
-
         end
       })
     end

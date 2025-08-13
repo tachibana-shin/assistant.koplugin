@@ -313,7 +313,7 @@ function Assistant:addMainButton(prompt_idx, prompt)
             text = string.format(_("Remove [%s] from the Main Highlight Menu?"), btntext),
             ok_text = _("Remove"),
             ok_callback = function()
-              UIManager:broadcastEvent(Event:new("AssitantSetButton", {order=prompt.order, idx=prompt_idx}, "remove"))
+              self:handleEvent(Event:new("AssitantSetButton", {order=prompt.order, idx=prompt_idx}, "remove"))
             end
           })
         end)
