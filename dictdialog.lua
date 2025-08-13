@@ -6,10 +6,10 @@ local InfoMessage = require("ui/widget/infomessage")
 local TextBoxWidget = require("ui/widget/textboxwidget")
 local _ = require("owngettext")
 local Event = require("ui/event")
-local CONFIGURATION = require("configuration") 
 local dict_prompts = require("prompts").assitant_prompts.dict
 
 local function showDictionaryDialog(assitant, highlightedText, message_history)
+    local CONFIGURATION = assitant.CONFIGURATION
     local Querier = assitant.querier
     local ui = assitant.ui
 
@@ -114,7 +114,7 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
         end
     end
     
-    local resp_language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant:getUILanguage()
+    local resp_language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant.ui_language
     local dict_language = CONFIGURATION.features.dictionary_translate_to or resp_language
     local context_message = {
         role = "user",

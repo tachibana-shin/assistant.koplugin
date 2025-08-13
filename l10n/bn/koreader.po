@@ -4,403 +4,417 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-11 16:48+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: AI Generated (Model: Kimi 1.5)\n"
-"Language: bn\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgid   ""
+msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
+        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: AI Generated (Model: Kimi 1.5)\n"
+        "Language: bn\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
-msgid "Ask Another Question"
-msgstr "আরেকটি প্রশ্ন জিজ্ঞাসা করুন"
+#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
+msgid   "AI Assistant"
+msgstr  "AI সহকারী"
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance KOReader's reading with AI Power."
+msgstr  "💡 AI-এর শক্তি দিয়ে KOReader-এর পড়াশোনা উন্নত করুন।"
+
+#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
+msgid   "Ask Another Question"
+msgstr  "আরেকটি প্রশ্ন জিজ্ঞাসা করুন"
 
 #: ../chatgptviewer.lua:306
-msgid "Close"
-msgstr "বন্ধ করুন"
+msgid   "Close"
+msgstr  "বন্ধ করুন"
 
 #: ../chatgptviewer.lua:321
-msgid "Copy"
-msgstr "কপি করুন"
+msgid   "Copy"
+msgstr  "কপি করুন"
 
 #: ../chatgptviewer.lua:326
-msgid "Text copied to clipboard"
-msgstr "টেক্সট ক্লিপবোর্ডে কপি করা হয়েছে"
+msgid   "Text copied to clipboard"
+msgstr  "টেক্সট ক্লিপবোর্ডে কপি করা হয়েছে"
 
 #: ../chatgptviewer.lua:340
-msgid "Add Note"
-msgstr "নোট যোগ করুন"
+msgid   "Add Note"
+msgstr  "নোট যোগ করুন"
 
 #: ../chatgptviewer.lua:347
-msgid "Highlight functionality not available"
-msgstr "হাইলাইট ফাংশনটি উপলব্ধ নয়"
+msgid   "Highlight functionality not available"
+msgstr  "হাইলাইট ফাংশনটি উপলব্ধ নয়"
 
 #: ../chatgptviewer.lua:356
-msgid "No text to add as note"
-msgstr "নোট হিসেবে যোগ করার জন্য কোনো টেক্সট নেই"
+msgid   "No text to add as note"
+msgstr  "নোট হিসেবে যোগ করার জন্য কোনো টেক্সট নেই"
 
 #: ../chatgptviewer.lua:385
-msgid "No text left to add as note"
-msgstr "নোট হিসেবে যোগ করার জন্য আর কোনো টেক্সট অবশিষ্ট নেই"
+msgid   "No text left to add as note"
+msgstr  "নোট হিসেবে যোগ করার জন্য আর কোনো টেক্সট অবশিষ্ট নেই"
 
 #: ../chatgptviewer.lua:398
-msgid "Note added successfully"
-msgstr "নোট সফলভাবে যোগ করা হয়েছে"
+msgid   "Note added successfully"
+msgstr  "নোট সফলভাবে যোগ করা হয়েছে"
 
-#: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
-msgid "Cancel"
-msgstr "বাতিল"
+#: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
+msgid   "Cancel"
+msgstr  "বাতিল"
 
-#: ../chatgptviewer.lua:578 ../dialogs.lua:265
-msgid "Ask"
-msgstr "জিজ্ঞাসা করুন"
+#: ../chatgptviewer.lua:577 ../dialogs.lua:267
+msgid   "Ask"
+msgstr  "জিজ্ঞাসা করুন"
 
-#: ../chatgptviewer.lua:584 ../dialogs.lua:271
-msgid "Enter a question before proceeding."
-msgstr "এগোনোর আগে একটি প্রশ্ন লিখুন।"
+#: ../chatgptviewer.lua:583 ../dialogs.lua:273
+msgid   "Enter a question before proceeding."
+msgstr  "এগোনোর আগে একটি প্রশ্ন লিখুন।"
 
-#: ../chatgptviewer.lua:632
-msgid "Type your question here"
-msgstr "আপনার প্রশ্ন এখানে লিখুন"
+#: ../chatgptviewer.lua:631
+msgid   "Type your question here"
+msgstr  "আপনার প্রশ্ন এখানে লিখুন"
+
+#: ../chatgptviewer.lua:782
+msgid   "Word copied to clipboard."
+msgstr  "শব্দ ক্লিপবোর্ডে কপি করা হয়েছে।"
 
 #: ../chatgptviewer.lua:783
-msgid "Word copied to clipboard."
-msgstr "শব্দ ক্লিপবোর্ডে কপি করা হয়েছে।"
+msgid   "Selection copied to clipboard."
+msgstr  "নির্বাচিত অংশ ক্লিপবোর্ডে কপি করা হয়েছে।"
 
-#: ../chatgptviewer.lua:784
-msgid "Selection copied to clipboard."
-msgstr "নির্বাচিত অংশ ক্লিপবোর্ডে কপি করা হয়েছে।"
+#: ../dialogs.lua:83
+msgid   "(Empty message)"
+msgstr  "(খালি বার্তা)"
 
-#: ../dialogs.lua:81
-msgid "(Empty message)"
-msgstr "(খালি বার্তা)"
+#: ../dialogs.lua:87
+msgid   "(No response)"
+msgstr  "(কোনো উত্তর নেই)"
 
-#: ../dialogs.lua:85
-msgid "(No response)"
-msgstr "(কোনো উত্তর নেই)"
+#: ../dialogs.lua:117
+msgid   "Highlighted text:"
+msgstr  "হাইলাইট করা টেক্সট:"
 
-#: ../dialogs.lua:115
-msgid "Highlighted text:"
-msgstr "হাইলাইট করা টেক্সট:"
-
-#: ../dialogs.lua:302
-msgid "Book Analysis"
-msgstr "বই বিশ্লেষণ"
-
-#: ../dialogs.lua:340
-msgid "Remove"
-msgstr "সরান"
-
-#: ../dialogs.lua:340
-msgid "Add"
-msgstr "যোগ করুন"
+#: ../dialogs.lua:304
+msgid   "Book Analysis"
+msgstr  "বই বিশ্লেষণ"
 
 #: ../dialogs.lua:341
-msgid "Remove this button from the Main Highlight Menu?"
-msgstr "এই বোতামটি মূল হাইলাইট মেনু থেকে সরানো হবে?"
+msgid   "Add this button to the Main Highlight Menu?"
+msgstr  "এই বোতামটি মূল হাইলাইট মেনুতে যোগ করা হবে?"
 
-#: ../dialogs.lua:341
-msgid "Add this button to the Main Highlight Menu?"
-msgstr "এই বোতামটি মূল হাইলাইট মেনুতে যোগ করা হবে?"
+#: ../dialogs.lua:342
+msgid   "Add"
+msgstr  "যোগ করুন"
 
-#: ../dialogs.lua:353
+#: ../dialogs.lua:368
+msgid   "Ask a question about the highlighted text"
+msgstr  "হাইলাইট করা টেক্সট সম্পর্কে একটি প্রশ্ন জিজ্ঞাসা করুন"
+
+#: ../dialogs.lua:369
 #, lua-format
-msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "[%s (AI)] মূল হাইলাইট মেনুতে যোগ করা হয়েছে।"
+msgid   "Ask a question about this book:\n"
+        "%s by %s"
+msgstr  "এই বই সম্পর্কে একটি প্রশ্ন জিজ্ঞাসা করুন:\n"
+        "%s লিখেছেন %s"
 
-#: ../dialogs.lua:356
-#, lua-format
-msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "[%s (AI)] মূল হাইলাইট মেনু থেকে সরানো হয়েছে।"
+#: ../dialogs.lua:372
+msgid   "Type your question here..."
+msgstr  "আপনার প্রশ্ন এখানে লিখুন..."
 
-#: ../dialogs.lua:389
-msgid "Ask a question about the highlighted text"
-msgstr "হাইলাইট করা টেক্সট সম্পর্কে একটি প্রশ্ন জিজ্ঞাসা করুন"
+#: ../dialogs.lua:373
+msgid   "Ask anything about this book..."
+msgstr  "এই বই সম্পর্কে যেকোনো কিছু জিজ্ঞাসা করুন..."
 
-#: ../dialogs.lua:390
-#, lua-format
-msgid ""
-"Ask a question about this book:\n"
-"%s by %s"
-msgstr ""
-"এই বই সম্পর্কে একটি প্রশ্ন জিজ্ঞাসা করুন:\n"
-"%s লিখেছেন %s"
-
-#: ../dialogs.lua:393
-msgid "Type your question here..."
-msgstr "আপনার প্রশ্ন এখানে লিখুন..."
-
-#: ../dialogs.lua:394
-msgid "Ask anything about this book..."
-msgstr "এই বই সম্পর্কে যেকোনো কিছু জিজ্ঞাসা করুন..."
-
-#: ../dialogs.lua:397 ../_meta.lua:4
-msgid "AI Assistant"
-msgstr "AI সহকারী"
-
-#: ../dialogs.lua:448
-msgid "Error: No response received"
-msgstr "ত্রুটি: কোনো উত্তর পাওয়া যায়নি"
+#: ../dialogs.lua:427
+msgid   "Error: No response received"
+msgstr  "ত্রুটি: কোনো উত্তর পাওয়া যায়নি"
 
 #: ../dictdialog.lua:28
-msgid "AI Dictionary"
-msgstr "AI অভিধান"
+msgid   "AI Dictionary"
+msgstr  "AI অভিধান"
 
 #: ../dictdialog.lua:29
-msgid "Enter a word to look up..."
-msgstr "খোঁজার জন্য একটি শব্দ লিখুন..."
+msgid   "Enter a word to look up..."
+msgstr  "খোঁজার জন্য একটি শব্দ লিখুন..."
 
 #: ../dictdialog.lua:40
-msgid "Look Up"
-msgstr "খুঁজুন"
+msgid   "Look Up"
+msgstr  "খুঁজুন"
 
-#: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
-msgid "Dictionary"
-msgstr "অভিধান"
+#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+msgid   "Dictionary"
+msgstr  "অভিধান"
 
-#: ../gpt_query.lua:46
-msgid "No configuration found. Please set up configuration.lua"
-msgstr "কোনো কনফিগারেশন পাওয়া যায়নি। অনুগ্রহ করে configuration.lua সেট আপ করুন"
-
-#: ../gpt_query.lua:56
+#: ../gpt_query.lua:52
 #, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"%s-এর জন্য প্রোভাইডার সেটিংস পাওয়া যায়নি। অনুগ্রহ করে আপনার configuration.lua ফাইলটি পরীক্ষা করুন।"
+msgid   "Provider settings not found for: %s. Please check your configuration."
+        "lua file."
+msgstr  "%s-এর জন্য প্রোভাইডার সেটিংস পাওয়া যায়নি। অনুগ্রহ করে আপনার "
+        "configuration.lua ফাইলটি পরীক্ষা করুন।"
+
+#: ../gpt_query.lua:74
+#, lua-format
+msgid   "Handler not found for: %s. Please ensure the handler exists in "
+        "api_handlers directory."
+msgstr  "%s-এর জন্য হ্যান্ডলার পাওয়া যায়নি। অনুগ্রহ করে নিশ্চিত করুন যে এটি "
+        "api_handlers ডিরেক্টরিতে বিদ্যমান।"
 
 #: ../gpt_query.lua:78
 #, lua-format
-msgid ""
-"Handler not found for: %s. Please ensure the handler exists in api_handlers "
-"directory."
-msgstr ""
-"%s-এর জন্য হ্যান্ডলার পাওয়া যায়নি। অনুগ্রহ করে নিশ্চিত করুন যে এটি api_handlers ডিরেক্টরিতে বিদ্যমান।"
+msgid   "No provider set in configuration.lua. Please set the provider and "
+        "provider_settings for %s."
+msgstr  "configuration.lua-তে কোনো প্রোভাইডার সেট করা নেই। অনুগ্রহ করে %s-এর জন্য "
+        "provider এবং provider_settings সেট করুন।"
 
-#: ../gpt_query.lua:82
+#: ../gpt_query.lua:122
+msgid   "Querying AI ..."
+msgstr  "AI জিজ্ঞাসা করা হচ্ছে..."
+
+#: ../gpt_query.lua:138
+msgid   "AI Responding"
+msgstr  "AI উত্তর দিচ্ছে"
+
+#: ../gpt_query.lua:140
 #, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"configuration.lua-তে কোনো প্রোভাইডার সেট করা নেই। অনুগ্রহ করে %s-এর জন্য provider এবং provider_settings সেট করুন।"
+msgid   "☁ %s/%s"
+msgstr  "☁ %s/%s"
 
-#: ../gpt_query.lua:126
-msgid "Querying AI ..."
-msgstr "AI জিজ্ঞাসা করা হচ্ছে..."
+#: ../gpt_query.lua:153
+msgid   "⏹ Stop"
+msgstr  "⏹ থামুন"
 
-#: ../gpt_query.lua:141
-msgid "AI Responding"
-msgstr "AI উত্তর দিচ্ছে"
+#: ../gpt_query.lua:174
+msgid   "Stream interrupted by user."
+msgstr  "স্ট্রিম ব্যবহারকারীর দ্বারা বাধাপ্রাপ্ত হয়েছে।"
 
-#: ../gpt_query.lua:143
+#: ../main.lua:73
+msgid   "Ask AI Question"
+msgstr  "AI-কে প্রশ্ন জিজ্ঞাসা করুন"
+
+#: ../main.lua:82
+msgid   "AI Recap"
+msgstr  "AI রিক্যাপ"
+
+#: ../main.lua:91
+msgid   "Assistant Settings"
+msgstr  "সহকারী সেটিংস"
+
+#: ../main.lua:190
+msgid   "Configuration Error.\n"
+        "Please set up configuration.lua.\n"
+        "\n"
+msgstr  "কনফিগারেশন ত্রুটি।\n"
+        "অনুগ্রহ করে configuration.lua সেট আপ করুন।\n"
+        "\n"
+
+#: ../main.lua:217
+msgid   "Useful Tips:\n"
+        "\n"
+        "Long Press:\n"
+        "- On a Prompt Button: Add to the main highlight menu.\n"
+        "- On a main highlight menu button to remove it.\n"
+        "\n"
+        "Very Long Press (more than 3 seconds):\n"
+        "On a single word to show the highlight menu (instead of the "
+        "dictionary).\n"
+        "\n"
+        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "On the result dialog to close (as the Close button is far to "
+        "reach).\n"
+msgstr  "দরকারি টিপস:\n"
+        "\n"
+        "দীর্ঘ চাপ:\n"
+        "- একটি প্রম্পট বোতামে: প্রধান হাইলাইট মেনুতে যোগ করুন।\n"
+        "- প্রধান হাইলাইট মেনুর বোতামে: এটি সরাতে।\n"
+        "\n"
+        "অত্যন্ত দীর্ঘ চাপ (৩ সেকেন্ডের বেশি):\n"
+        "একটি একক শব্দে হাইলাইট মেনু দেখানোর জন্য (ডিকশনারির পরিবর্তে)।\n"
+        "\n"
+        "মাল্টি-সোয়াইপ (যেমন, ⮠, ⮡, ↺):\n"
+        "ফলাফল ডায়ালগ বন্ধ করতে (Close বোতাম দূরে থাকায়)।\n"
+
+#: ../main.lua:290
 #, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
+msgid   "Do you want an AI Recap?\n"
+        "For %s by %s.\n"
+        "Last read %.0f hours ago."
+msgstr  "আপনি কি AI রিক্যাপ চান?\n"
+        "%s লিখেছেন %s-এর জন্য।\n"
+        "শেষবার পড়া হয়েছে %.0f ঘণ্টা আগে।"
 
-#: ../gpt_query.lua:156
-msgid "⏹ Stop"
-msgstr "⏹ থামুন"
+#: ../main.lua:295
+msgid   "Yes"
+msgstr  "হ্যাঁ"
 
-#: ../gpt_query.lua:177
-msgid "Stream interrupted by user."
-msgstr "স্ট্রিম ব্যবহারকারীর দ্বারা বাধাপ্রাপ্ত হয়েছে।"
+#: ../main.lua:304
+msgid   "No"
+msgstr  "না"
 
-#: ../main.lua:50
-msgid "Ask AI Question"
-msgstr "AI-কে প্রশ্ন জিজ্ঞাসা করুন"
-
-#: ../main.lua:59
-msgid "AI Recap"
-msgstr "AI রিক্যাপ"
-
-#: ../main.lua:68
-msgid "Assistant Settings"
-msgstr "সহকারী সেটিংস"
-
-#: ../main.lua:163
-msgid "Assistant"
-msgstr "সহকারী"
-
-#: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
-msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "কনফিগারেশন পাওয়া যায়নি। অনুগ্রহ করে প্রথমে configuration.lua সেট আপ করুন।"
-
-#: ../main.lua:237
+#: ../main.lua:364
 #, lua-format
-msgid ""
-"Do you want an AI Recap?\n"
-"For %s by %s.\n"
-"Last read %.0f hours ago."
-msgstr ""
-"আপনি কি AI রিক্যাপ চান?\n"
-"%s লিখেছেন %s-এর জন্য।\n"
-"শেষবার পড়া হয়েছে %.0f ঘণ্টা আগে।"
+msgid   "Remove [%s] from the Main Highlight Menu?"
+msgstr  "প্রধান হাইলাইট মেনু থেকে [%s] সরাবেন?"
 
-#: ../main.lua:242
-msgid "Yes"
-msgstr "হ্যাঁ"
+#: ../main.lua:365
+msgid   "Remove"
+msgstr  "সরান"
 
-#: ../main.lua:251
-msgid "No"
-msgstr "না"
+#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+msgid   "Configuration not found. Please set up configuration.lua first."
+msgstr  "কনফিগারেশন পাওয়া যায়নি। অনুগ্রহ করে প্রথমে configuration.lua সেট আপ করুন।"
 
-#: ../main.lua:368
-msgid "AI Recap feature is not enabled in configuration."
-msgstr "AI রিক্যাপ ফিচারটি কনফিগারেশনে সক্রিয় নয়।"
+#: ../main.lua:429
+msgid   "AI Recap feature is not enabled in configuration."
+msgstr  "AI রিক্যাপ ফিচারটি কনফিগারেশনে সক্রিয় নয়।"
 
-#: ../_meta.lua:5
-msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "AI-এর শক্তি দিয়ে KOReader-এর পড়ার অভিজ্ঞতা উন্নত করুন।"
+#: ../main.lua:517
+msgid   "Added [%1 (AI)] to Main Highlight Menu."
+msgstr  "প্রধান হাইলাইট মেনুতে [%1 (AI)] যোগ করা হয়েছে।"
+
+#: ../main.lua:526
+#, lua-format
+msgid   "Removed [%s (AI)] from Main Highlight Menu."
+msgstr  "[%s (AI)] মূল হাইলাইট মেনু থেকে সরানো হয়েছে।"
 
 #: ../prompts.lua:20
-msgid ""
-"This prompt act as a dictionary for the highlighted text, to a word or "
-"phrase."
-msgstr ""
-"এই প্রম্পট হাইলাইট করা টেক্সটের জন্য একটি অভিধান হিসেবে কাজ করে, একটি শব্দ বা বাক্যাংশের জন্য।"
+msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+        "or phrase."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সটের জন্য একটি অভিধান হিসেবে কাজ করে, একটি "
+        "শব্দ বা বাক্যাংশের জন্য।"
 
 #: ../prompts.lua:25
-msgid "Translate"
-msgstr "অনুবাদ"
+msgid   "Translate"
+msgstr  "অনুবাদ"
 
 #: ../prompts.lua:26
-msgid "This prompt translates the highlighted text to another language."
-msgstr "এই প্রম্পট হাইলাইট করা টেক্সটটি অন্য ভাষায় অনুবাদ করে।"
+msgid   "This prompt translates the highlighted text to another language."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সটটি অন্য ভাষায় অনুবাদ করে।"
 
 #: ../prompts.lua:48
-msgid "Simplify"
-msgstr "সরলীকরণ"
+msgid   "Simplify"
+msgstr  "সরলীকরণ"
 
 #: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "এই প্রম্পট হাইলাইট করা টেক্সটটি সহজে বোঝার জন্য সরল করে।"
+msgid   "This prompt simplifies the highlighted text to make it easier to "
+        "understand."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সটটি সহজে বোঝার জন্য সরল করে।"
 
 #: ../prompts.lua:60
-msgid "Explain"
-msgstr "ব্যাখ্যা"
+msgid   "Explain"
+msgstr  "ব্যাখ্যা"
 
 #: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr "এই প্রম্পট হাইলাইট করা টেক্সটটি বিস্তারিতভাবে ব্যাখ্যা করে, স্পষ্টতা ও বোধগম্যতা নিশ্চিত করে।"
+msgid   "This prompt explains the highlighted text in detail, ensuring "
+        "clarity and understanding."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সটটি বিস্তারিতভাবে ব্যাখ্যা করে, স্পষ্টতা ও "
+        "বোধগম্যতা নিশ্চিত করে।"
 
 #: ../prompts.lua:73
-msgid "Summarize"
-msgstr "সারাংশ"
+msgid   "Summarize"
+msgstr  "সারাংশ"
 
 #: ../prompts.lua:75
-msgid ""
-"This prompt summarizes the highlighted text, capturing its main points and "
-"essential details."
-msgstr "এই প্রম্পট হাইলাইট করা টেক্সটের সারাংশ দেয়, এর প্রধান বিষয়বস্তু ও গুরুত্বপূর্ণ বিবরণ তুলে ধরে।"
+msgid   "This prompt summarizes the highlighted text, capturing its main "
+        "points and essential details."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সটের সারাংশ দেয়, এর প্রধান বিষয়বস্তু ও গুরুত্বপূর্ণ "
+        "বিবরণ তুলে ধরে।"
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "ঐতিহাসিক প্রেক্ষাপট"
+msgid   "Historical Context"
+msgstr  "ঐতিহাসিক প্রেক্ষাপট"
 
 #: ../prompts.lua:86
-msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
-msgstr "এই প্রম্পট হাইলাইট করা টেক্সটের জন্য বিস্তারিত ঐতিহাসিক প্রেক্ষাপট দেয়, এর তাৎপর্য ও পটভূমি ব্যাখ্যা করে।"
+msgid   "This prompt provides a detailed historical context for the "
+        "highlighted text, explaining its significance and background."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সটের জন্য বিস্তারিত ঐতিহাসিক প্রেক্ষাপট দেয়, এর "
+        "তাৎপর্য ও পটভূমি ব্যাখ্যা করে।"
 
 #: ../prompts.lua:90
-msgid "Key Points"
-msgstr "মূল বিষয়বস্তু"
+msgid   "Key Points"
+msgstr  "মূল বিষয়বস্তু"
 
 #: ../prompts.lua:92
-msgid ""
-"This prompt extracts and lists the key points from the highlighted text, "
-"ensuring clarity and organization."
-msgstr "এই প্রম্পট হাইলাইট করা টেক্সট থেকে মূল বিষয়বস্তু বের করে তালিকাভুক্ত করে, স্পষ্টতা ও সংগঠন নিশ্চিত করে।"
+msgid   "This prompt extracts and lists the key points from the highlighted "
+        "text, ensuring clarity and organization."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সট থেকে মূল বিষয়বস্তু বের করে তালিকাভুক্ত করে, "
+        "স্পষ্টতা ও সংগঠন নিশ্চিত করে।"
 
 #: ../prompts.lua:96
-msgid "ELI5"
-msgstr "ELI5"
+msgid   "ELI5"
+msgstr  "ELI5"
 
 #: ../prompts.lua:98
-msgid ""
-"This prompt explains the highlighted text as if to a five-year-old, "
-"simplifying complex concepts into easily understandable terms."
-msgstr "এই প্রম্পট হাইলাইট করা টেক্সটটি পাঁচ বছর বয়সী শিশুর মতো ব্যাখ্যা করে, জটিল ধারণাগুলো সহজে বোধগম্য করে তোলে।"
+msgid   "This prompt explains the highlighted text as if to a five-year-old, "
+        "simplifying complex concepts into easily understandable terms."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সটটি পাঁচ বছর বয়সী শিশুর মতো ব্যাখ্যা করে, জটিল "
+        "ধারণাগুলো সহজে বোধগম্য করে তোলে।"
 
 #: ../prompts.lua:102
-msgid "Grammar"
-msgstr "ব্যাকরণ"
+msgid   "Grammar"
+msgstr  "ব্যাকরণ"
 
 #: ../prompts.lua:104
-msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
-msgstr "এই প্রম্পট হাইলাইট করা টেক্সটের ব্যাকরণ বিশ্লেষণ করে, এর গঠন ও যেকোনো ব্যাকরণগত ত্রুটির বিস্তারিত ব্যাখ্যা দেয়।"
+msgid   "This prompt analyzes the grammar of the highlighted text, providing "
+        "a detailed explanation of its structure and any grammatical errors."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সটের ব্যাকরণ বিশ্লেষণ করে, এর গঠন ও যেকোনো "
+        "ব্যাকরণগত ত্রুটির বিস্তারিত ব্যাখ্যা দেয়।"
 
 #: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "শব্দভান্ডার"
+msgid   "Vocabulary"
+msgstr  "শব্দভান্ডার"
 
 #: ../prompts.lua:111
-msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
-msgstr "এই প্রম্পট হাইলাইট করা টেক্সটের শব্দভান্ডার বিশ্লেষণ করে, জটিল শব্দ চিহ্নিত করে সংজ্ঞা, প্রতিশব্দ ও ব্যবহার উদাহরণ দেয়।"
+msgid   "This prompt analyzes the vocabulary of the highlighted text, "
+        "identifying complex words and providing definitions, synonyms, and "
+        "usage examples."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সটের শব্দভান্ডার বিশ্লেষণ করে, জটিল শব্দ চিহ্নিত "
+        "করে সংজ্ঞা, প্রতিশব্দ ও ব্যবহার উদাহরণ দেয়।"
 
 #: ../prompts.lua:127
-msgid "Wikipedia"
-msgstr "উইকিপিডিয়া"
+msgid   "Wikipedia"
+msgstr  "উইকিপিডিয়া"
 
 #: ../prompts.lua:129
-msgid ""
-"This prompt generates a comprehensive Wikipedia-style article based on the "
-"highlighted text, ensuring factual accuracy and neutrality."
-msgstr "এই প্রম্পট হাইলাইট করা টেক্সটের ভিত্তিতে একটি বিস্তারিত উইকিপিডিয়া-স্টাইলের নিবন্ধ তৈরি করে, তথ্যগত নির্ভুলতা ও নিরপেক্ষতা নিশ্চিত করে।"
+msgid   "This prompt generates a comprehensive Wikipedia-style article based "
+        "on the highlighted text, ensuring factual accuracy and neutrality."
+msgstr  "এই প্রম্পট হাইলাইট করা টেক্সটের ভিত্তিতে একটি বিস্তারিত উইকিপিডিয়া-"
+        "স্টাইলের নিবন্ধ তৈরি করে, তথ্যগত নির্ভুলতা ও নিরপেক্ষতা নিশ্চিত করে।"
 
 #: ../recapdialog.lua:68
-msgid "Recap"
-msgstr "রিক্যাপ"
+msgid   "Recap"
+msgstr  "রিক্যাপ"
 
 #: ../settingsdialog.lua:26
-msgid "Assitant Settings"
-msgstr "সহকারী সেটিংস"
-
-#: ../settingsdialog.lua:43
-msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 AI-এর শক্তি দিয়ে KOReader উপভোগ করুন!"
+msgid   "Assitant Settings"
+msgstr  "সহকারী সেটিংস"
 
 #: ../settingsdialog.lua:53
-msgid "Always use stream mode"
-msgstr "সবসময় স্ট্রিম মোড ব্যবহার করুন"
+msgid   "Always use stream mode"
+msgstr  "সবসময় স্ট্রিম মোড ব্যবহার করুন"
 
-#: ../settingsdialog.lua:57
-msgid "Use AI Assistant for 'Translate'"
-msgstr "'অনুবাদ'-এর জন্য AI সহকারী ব্যবহার করুন"
+#: ../settingsdialog.lua:58
+msgid   "Use AI Assistant for 'Translate'"
+msgstr  "'অনুবাদ'-এর জন্য AI সহকারী ব্যবহার করুন"
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override enabled."
-msgstr "AI সহকারী ওভাররাইড সক্রিয় করা হয়েছে।"
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override enabled."
+msgstr  "AI সহকারী ওভাররাইড সক্রিয় করা হয়েছে।"
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override disabled."
-msgstr "AI সহকারী ওভাররাইড নিষ্ক্রিয় করা হয়েছে।"
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override disabled."
+msgstr  "AI সহকারী ওভাররাইড নিষ্ক্রিয় করা হয়েছে।"
 
-#: ../settingsdialog.lua:102
-msgid "Select the AI Model provider."
-msgstr "AI মডেল প্রোভাইডার নির্বাচন করুন।"
+#: ../settingsdialog.lua:104
+msgid   "Select the AI Model provider."
+msgstr  "AI মডেল প্রোভাইডার নির্বাচন করুন।"
 
-#: ../update_checker.lua:21
-msgid "Checking for updates..."
-msgstr "আপডেট পরীক্ষা করা হচ্ছে..."
+#: ../update_checker.lua:22
+msgid   "Checking for updates..."
+msgstr  "আপডেট পরীক্ষা করা হচ্ছে..."
 
-#: ../update_checker.lua:55
+#: ../update_checker.lua:56
 #, lua-format
-msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "%s প্লাগইনের একটি নতুন সংস্করণ (%s) উপলব্ধ। অনুগ্রহ করে আপডেট করুন!"
+msgid   "A new version of the %s plugin (%s) is available. Please update!"
+msgstr  "%s প্লাগইনের একটি নতুন সংস্করণ (%s) উপলব্ধ। অনুগ্রহ করে আপডেট করুন!"

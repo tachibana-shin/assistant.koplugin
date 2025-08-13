@@ -56,7 +56,7 @@ function AssitantDialog:_formatUserPrompt(user_prompt, highlightedText)
   
   -- Handle case where no text is highlighted (gesture-triggered)
   local text_to_use = highlightedText and highlightedText ~= "" and highlightedText or ""
-  local language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant:getUILanguage()
+  local language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant.ui_language
   
   -- replace placeholders in the user prompt
   return user_prompt:gsub("{(%w+)}", {
@@ -341,11 +341,9 @@ function AssitantDialog:show(highlightedText)
             text = string.format("%s: %s\n\n%s", tab.text, tab.desc, _("Add this button to the Main Highlight Menu?")),
             ok_text = _("Add"),
             ok_callback = function()
-              UIManager:broadcastEvent(Event:new("AssitantSetButton", {order=tab.order, idx=tab.idx}, "add"))
+              self.assitant:handleEvent(Event:new("AssitantSetButton", {order=tab.order, idx=tab.idx}, "add"))
             end,
           })
-
-
         end
       })
     end
@@ -395,7 +393,7 @@ end
 -- ( custom prompts from configuration )
 function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
 
-  local prompt_config = Prompts.getMergedCustomPrompts()[prompt_index]
+  local prompt_config = Prompts.getMergedCustomPrompts(self.assitant.CONFIGURATION.features.prompts)[prompt_index]
 
   local title = prompt_config.text or prompt_index
 

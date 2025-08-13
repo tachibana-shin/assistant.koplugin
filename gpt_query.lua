@@ -40,13 +40,7 @@ end
 --- return: nil on success, or an error message if initialization fails.
 function Querier:init(provider_name)
 
-    local CONFIGURATION
-    local success, result = pcall(function() return require("configuration") end)
-    if success then
-        CONFIGURATION = result
-    else
-        return _("No configuration found. Please set up configuration.lua")
-    end
+    local CONFIGURATION = self.assitant.CONFIGURATION
 
     if CONFIGURATION and CONFIGURATION.provider_settings then
 

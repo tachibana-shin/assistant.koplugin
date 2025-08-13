@@ -6,6 +6,7 @@ local NetworkMgr = require("ui/network/manager")
 local Dispatcher = require("dispatcher")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
+local Font = require("ui/font")
 local Trapper = require("ui/trapper")
 local Language = require("ui/language")
 local LuaSettings = require("luasettings")
@@ -13,14 +14,15 @@ local DataStorage = require("datastorage")
 local RadioButtonWidget = require("ui/widget/radiobuttonwidget")
 local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
-local _ = require("owngettext")
 local FrontendUtil = require("util")
 local ffiutil = require("ffi/util")
 
+local _ = require("owngettext")
 local AssistantDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
 local Prompts = require("prompts")
 local SettingsDialog = require("settingsdialog")
+local meta = require("_meta")
 
 local Assistant = InputContainer:new {
   name = "assistant",
@@ -30,16 +32,35 @@ local Assistant = InputContainer:new {
   querier = nil,
   updated = false, -- flag to track if settings were updated
   assitant_dialog = nil, -- reference to the main dialog instance
+  ui_language = nil,
+  CONFIGURATION = nil,  -- reference to the main configuration
 }
 
--- Load Configuration
-local CONFIGURATION = nil
-local success, result = pcall(function() return require("configuration") end)
-if success then
-  CONFIGURATION = result
-else
-  logger.warn("configuration.lua not found, skipping...")
+local function loadConfigFile(filePath)
+    local env = {}
+    setmetatable(env, {__index = _G})
+    local chunk, err = loadfile(filePath, "t", env) -- test mode to loadfile, check syntax errors
+    if not chunk then return nil, err end
+    local success, result = pcall(chunk) -- run the code, checks runtime errors
+    if not success then return nil, result end
+    return env
 end
+
+-- configuration locations
+local CONFIG_FILE_PATH = string.format("%s/plugins/%s.koplugin/configuration.lua",
+                                      DataStorage:getDataDir(), meta.name)
+local CONFIG_LOAD_ERROR = nil
+local CONFIGURATION = nil
+
+-- try the configuration.lua and store the error message if any
+local e, err = loadConfigFile(CONFIG_FILE_PATH)
+if e == nil then CONFIG_LOAD_ERROR = err end
+
+-- Load Configuration
+if CONFIG_LOAD_ERROR then logger.warn(CONFIG_LOAD_ERROR) end
+local success, result = pcall(function() return require("configuration") end)
+if success then CONFIGURATION = result
+else logger.warn("configuration.lua not found, skipping...") end
 
 -- Flag to ensure the update message is shown only once per session
 local updateMessageShown = false
@@ -166,10 +187,15 @@ function Assistant:init()
       enabled = Device:hasClipboard(),
       callback = function()
         if not CONFIGURATION then
-          UIManager:show(InfoMessage:new{
-            icon = "notice-warning",
-            text = _("Configuration not found. Please set up configuration.lua first.")
-          })
+          local err_text = _("Configuration Error.\nPlease set up configuration.lua.\n\n")
+          if CONFIG_LOAD_ERROR ~= nil then
+            -- keep the error message clean
+            local cut = CONFIG_LOAD_ERROR:find("configuration.lua")
+            if cut > 0 then err_text = err_text .. CONFIG_LOAD_ERROR:sub(cut)
+            else err_text = err_text .. CONFIG_LOAD_ERROR
+            end
+          end
+          UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err_text })
           return
         end
         NetworkMgr:runWhenOnline(function()
@@ -183,6 +209,25 @@ function Assistant:init()
           end)
         end)
       end,
+      hold_callback = function()
+        UIManager:show(InfoMessage:new{
+            -- alignment = "center",
+            text_face = Font:getFace("x_smallinfofont"),
+            show_icon = false,
+            text = string.format("%s %s\n\n", meta.fullname, meta.version) .. _([[Useful Tips:
+
+Long Press:
+- On a Prompt Button: Add to the main highlight menu.
+- On a main highlight menu button to remove it.
+
+Very Long Press (more than 3 seconds):
+On a single word to show the highlight menu (instead of the dictionary).
+
+Multi-Swipe (like, ⮠, ⮡, ↺):
+On the result dialog to close (as the Close button is far to reach).
+]])
+        })
+      end,
     }
   end)
 
@@ -192,8 +237,14 @@ function Assistant:init()
     return
   end
 
+  -- keep the reference
+  self.CONFIGURATION = CONFIGURATION
+
+  -- store the UI language
+  self.ui_language = Language:getLanguageName(G_reader_settings:readSetting("language") or "en") or "English"
+
   -- Conditionally override translate method based on user setting
-  self:applyOrRemoveTranslateOverride()
+  self:syncTranslateOverride()
 
   -- Load the model provider from settings or default configuration
   self.querier = require("gpt_query"):new({
@@ -313,7 +364,7 @@ function Assistant:addMainButton(prompt_idx, prompt)
             text = string.format(_("Remove [%s] from the Main Highlight Menu?"), btntext),
             ok_text = _("Remove"),
             ok_callback = function()
-              UIManager:broadcastEvent(Event:new("AssitantSetButton", {order=prompt.order, idx=prompt_idx}, "remove"))
+              self:handleEvent(Event:new("AssitantSetButton", {order=prompt.order, idx=prompt_idx}, "remove"))
             end
           })
         end)
@@ -403,11 +454,11 @@ function Assistant:onAskAIRecap()
   return true
 end
 
--- Override the translate method in ReaderHighlight to use AI Assistant
-function Assistant:applyOrRemoveTranslateOverride()
+-- Sync Overriding translate method with setting
+function Assistant:syncTranslateOverride()
 
   local Translator = require("ui/translator")
-  local should_override = self.settings:readSetting("ai_translate_override", false)
+  local should_override = self.settings:readSetting("ai_translate_override", false) -- default to false
 
   if should_override then
     -- Store original translate method if not already stored
@@ -449,11 +500,6 @@ function Assistant:applyOrRemoveTranslateOverride()
       logger.info("Assistant: translate method restored")
     end
   end
-end
-
-function Assistant:getUILanguage()
-  local language = G_reader_settings:readSetting("language") or "en"
-  return Language:getLanguageName(language) or "English"
 end
 
 function Assistant:onAssitantSetButton(btnconf, action)

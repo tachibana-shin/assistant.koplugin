@@ -4,402 +4,417 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-11 16:48+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Українська <LL@li.org>\n"
-"Language: uk\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgid   ""
+msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
+        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: Українська <LL@li.org>\n"
+        "Language: uk\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
-msgid "Ask Another Question"
-msgstr "Задати ще одне запитання"
+#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
+msgid   "AI Assistant"
+msgstr  "Асистент ШІ"
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance KOReader's reading with AI Power."
+msgstr  "💡 Покращіть читання в KOReader за допомогою штучного інтелекту."
+
+#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
+msgid   "Ask Another Question"
+msgstr  "Задати ще одне запитання"
 
 #: ../chatgptviewer.lua:306
-msgid "Close"
-msgstr "Закрити"
+msgid   "Close"
+msgstr  "Закрити"
 
 #: ../chatgptviewer.lua:321
-msgid "Copy"
-msgstr "Копіювати"
+msgid   "Copy"
+msgstr  "Копіювати"
 
 #: ../chatgptviewer.lua:326
-msgid "Text copied to clipboard"
-msgstr "Текст скопійовано до буфера обміну"
+msgid   "Text copied to clipboard"
+msgstr  "Текст скопійовано до буфера обміну"
 
 #: ../chatgptviewer.lua:340
-msgid "Add Note"
-msgstr "Додати нотатку"
+msgid   "Add Note"
+msgstr  "Додати нотатку"
 
 #: ../chatgptviewer.lua:347
-msgid "Highlight functionality not available"
-msgstr "Функція виділення недоступна"
+msgid   "Highlight functionality not available"
+msgstr  "Функція виділення недоступна"
 
 #: ../chatgptviewer.lua:356
-msgid "No text to add as note"
-msgstr "Немає тексту для додавання як нотатку"
+msgid   "No text to add as note"
+msgstr  "Немає тексту для додавання як нотатку"
 
 #: ../chatgptviewer.lua:385
-msgid "No text left to add as note"
-msgstr "Не залишилося тексту для додавання як нотатку"
+msgid   "No text left to add as note"
+msgstr  "Не залишилося тексту для додавання як нотатку"
 
 #: ../chatgptviewer.lua:398
-msgid "Note added successfully"
-msgstr "Нотатку успішно додано"
+msgid   "Note added successfully"
+msgstr  "Нотатку успішно додано"
 
-#: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
-msgid "Cancel"
-msgstr "Скасувати"
+#: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
+msgid   "Cancel"
+msgstr  "Скасувати"
 
-#: ../chatgptviewer.lua:578 ../dialogs.lua:265
-msgid "Ask"
-msgstr "Запитати"
+#: ../chatgptviewer.lua:577 ../dialogs.lua:267
+msgid   "Ask"
+msgstr  "Запитати"
 
-#: ../chatgptviewer.lua:584 ../dialogs.lua:271
-msgid "Enter a question before proceeding."
-msgstr "Введіть запитання перед продовженням."
+#: ../chatgptviewer.lua:583 ../dialogs.lua:273
+msgid   "Enter a question before proceeding."
+msgstr  "Введіть запитання перед продовженням."
 
-#: ../chatgptviewer.lua:632
-msgid "Type your question here"
-msgstr "Введіть своє запитання тут"
+#: ../chatgptviewer.lua:631
+msgid   "Type your question here"
+msgstr  "Введіть своє запитання тут"
+
+#: ../chatgptviewer.lua:782
+msgid   "Word copied to clipboard."
+msgstr  "Слово скопійовано до буфера обміну."
 
 #: ../chatgptviewer.lua:783
-msgid "Word copied to clipboard."
-msgstr "Слово скопійовано до буфера обміну."
+msgid   "Selection copied to clipboard."
+msgstr  "Виділення скопійовано до буфера обміну."
 
-#: ../chatgptviewer.lua:784
-msgid "Selection copied to clipboard."
-msgstr "Виділення скопійовано до буфера обміну."
+#: ../dialogs.lua:83
+msgid   "(Empty message)"
+msgstr  "(Порожнє повідомлення)"
 
-#: ../dialogs.lua:81
-msgid "(Empty message)"
-msgstr "(Порожнє повідомлення)"
+#: ../dialogs.lua:87
+msgid   "(No response)"
+msgstr  "(Немає відповіді)"
 
-#: ../dialogs.lua:85
-msgid "(No response)"
-msgstr "(Немає відповіді)"
+#: ../dialogs.lua:117
+msgid   "Highlighted text:"
+msgstr  "Виділений текст:"
 
-#: ../dialogs.lua:115
-msgid "Highlighted text:"
-msgstr "Виділений текст:"
-
-#: ../dialogs.lua:302
-msgid "Book Analysis"
-msgstr "Аналіз книги"
-
-#: ../dialogs.lua:340
-msgid "Remove"
-msgstr "Видалити"
-
-#: ../dialogs.lua:340
-msgid "Add"
-msgstr "Додати"
+#: ../dialogs.lua:304
+msgid   "Book Analysis"
+msgstr  "Аналіз книги"
 
 #: ../dialogs.lua:341
-msgid "Remove this button from the Main Highlight Menu?"
-msgstr "Видалити цю кнопку з головного меню виділення?"
+msgid   "Add this button to the Main Highlight Menu?"
+msgstr  "Додати цю кнопку до головного меню виділення?"
 
-#: ../dialogs.lua:341
-msgid "Add this button to the Main Highlight Menu?"
-msgstr "Додати цю кнопку до головного меню виділення?"
+#: ../dialogs.lua:342
+msgid   "Add"
+msgstr  "Додати"
 
-#: ../dialogs.lua:353
+#: ../dialogs.lua:368
+msgid   "Ask a question about the highlighted text"
+msgstr  "Задати запитання щодо виділеного тексту"
+
+#: ../dialogs.lua:369
 #, lua-format
-msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "Додано [%s (AI)] до головного меню виділення."
+msgid   "Ask a question about this book:\n"
+        "%s by %s"
+msgstr  "Задати запитання щодо цієї книги:\n"
+        "%s від %s"
 
-#: ../dialogs.lua:356
-#, lua-format
-msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "Видалено [%s (AI)] з головного меню виділення."
+#: ../dialogs.lua:372
+msgid   "Type your question here..."
+msgstr  "Введіть своє запитання тут..."
 
-#: ../dialogs.lua:389
-msgid "Ask a question about the highlighted text"
-msgstr "Задати запитання щодо виділеного тексту"
+#: ../dialogs.lua:373
+msgid   "Ask anything about this book..."
+msgstr  "Запитайте що завгодно про цю книгу..."
 
-#: ../dialogs.lua:390
-#, lua-format
-msgid ""
-"Ask a question about this book:\n"
-"%s by %s"
-msgstr ""
-"Задати запитання щодо цієї книги:\n"
-"%s від %s"
-
-#: ../dialogs.lua:393
-msgid "Type your question here..."
-msgstr "Введіть своє запитання тут..."
-
-#: ../dialogs.lua:394
-msgid "Ask anything about this book..."
-msgstr "Запитайте що завгодно про цю книгу..."
-
-#: ../dialogs.lua:397 ../_meta.lua:4
-msgid "AI Assistant"
-msgstr "Асистент ШІ"
-
-#: ../dialogs.lua:448
-msgid "Error: No response received"
-msgstr "Помилка: не отримано відповідь"
+#: ../dialogs.lua:427
+msgid   "Error: No response received"
+msgstr  "Помилка: не отримано відповідь"
 
 #: ../dictdialog.lua:28
-msgid "AI Dictionary"
-msgstr "Словник ШІ"
+msgid   "AI Dictionary"
+msgstr  "Словник ШІ"
 
 #: ../dictdialog.lua:29
-msgid "Enter a word to look up..."
-msgstr "Введіть слово для пошуку..."
+msgid   "Enter a word to look up..."
+msgstr  "Введіть слово для пошуку..."
 
 #: ../dictdialog.lua:40
-msgid "Look Up"
-msgstr "Пошук"
+msgid   "Look Up"
+msgstr  "Пошук"
 
-#: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
-msgid "Dictionary"
-msgstr "Словник"
+#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+msgid   "Dictionary"
+msgstr  "Словник"
 
-#: ../gpt_query.lua:46
-msgid "No configuration found. Please set up configuration.lua"
-msgstr "Конфігурацію не знайдено. Будь ласка, налаштуйте configuration.lua"
-
-#: ../gpt_query.lua:56
+#: ../gpt_query.lua:52
 #, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"Налаштування провайдера не знайдено для: %s. Перевірте ваш файл configuration.lua."
+msgid   "Provider settings not found for: %s. Please check your configuration."
+        "lua file."
+msgstr  "Налаштування провайдера не знайдено для: %s. Перевірте ваш файл "
+        "configuration.lua."
+
+#: ../gpt_query.lua:74
+#, lua-format
+msgid   "Handler not found for: %s. Please ensure the handler exists in "
+        "api_handlers directory."
+msgstr  "Обробник не знайдено для: %s. Переконайтеся, що обробник існує в "
+        "каталозі api_handlers."
 
 #: ../gpt_query.lua:78
 #, lua-format
-msgid ""
-"Handler not found for: %s. Please ensure the handler exists in api_handlers "
-"directory."
-msgstr ""
-"Обробник не знайдено для: %s. Переконайтеся, що обробник існує в каталозі api_handlers."
+msgid   "No provider set in configuration.lua. Please set the provider and "
+        "provider_settings for %s."
+msgstr  "Не вказано провайдера в configuration.lua. Будь ласка, встановіть "
+        "провайдера та provider_settings для %s."
 
-#: ../gpt_query.lua:82
+#: ../gpt_query.lua:122
+msgid   "Querying AI ..."
+msgstr  "Запит до ШІ..."
+
+#: ../gpt_query.lua:138
+msgid   "AI Responding"
+msgstr  "ШІ відповідає"
+
+#: ../gpt_query.lua:140
 #, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"Не вказано провайдера в configuration.lua. Будь ласка, встановіть провайдера та provider_settings для %s."
+msgid   "☁ %s/%s"
+msgstr  "☁ %s/%s"
 
-#: ../gpt_query.lua:126
-msgid "Querying AI ..."
-msgstr "Запит до ШІ..."
+#: ../gpt_query.lua:153
+msgid   "⏹ Stop"
+msgstr  "⏹ Зупинити"
 
-#: ../gpt_query.lua:141
-msgid "AI Responding"
-msgstr "ШІ відповідає"
+#: ../gpt_query.lua:174
+msgid   "Stream interrupted by user."
+msgstr  "Потік перервано користувачем."
 
-#: ../gpt_query.lua:143
+#: ../main.lua:73
+msgid   "Ask AI Question"
+msgstr  "Запитати ШІ"
+
+#: ../main.lua:82
+msgid   "AI Recap"
+msgstr  "Підсумок ШІ"
+
+#: ../main.lua:91
+msgid   "Assistant Settings"
+msgstr  "Налаштування асистента"
+
+#: ../main.lua:190
+msgid   "Configuration Error.\n"
+        "Please set up configuration.lua.\n"
+        "\n"
+msgstr  "Помилка конфігурації.\n"
+        "Будь ласка, налаштуйте configuration.lua.\n"
+        "\n"
+
+#: ../main.lua:217
+msgid   "Useful Tips:\n"
+        "\n"
+        "Long Press:\n"
+        "- On a Prompt Button: Add to the main highlight menu.\n"
+        "- On a main highlight menu button to remove it.\n"
+        "\n"
+        "Very Long Press (more than 3 seconds):\n"
+        "On a single word to show the highlight menu (instead of the "
+        "dictionary).\n"
+        "\n"
+        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "On the result dialog to close (as the Close button is far to "
+        "reach).\n"
+msgstr  "Корисні поради:\n"
+        "\n"
+        "Довге натискання:\n"
+        "- На кнопку підказки: додати до головного меню виділення.\n"
+        "- На кнопку головного меню виділення, щоб видалити її.\n"
+        "\n"
+        "Дуже довге натискання (понад 3 секунди):\n"
+        "На окреме слово, щоб показати меню виділення (замість словника).\n"
+        "\n"
+        "Мульти-свайп (наприклад, ⮠, ⮡, ↺):\n"
+        "На діалог результату, щоб закрити його (оскільки кнопка Закрити "
+        "далеко).\n"
+
+#: ../main.lua:290
 #, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
+msgid   "Do you want an AI Recap?\n"
+        "For %s by %s.\n"
+        "Last read %.0f hours ago."
+msgstr  "Хочете підсумок від ШІ?\n"
+        "Для %s від %s.\n"
+        "Останнє читання було %.0f годин тому."
 
-#: ../gpt_query.lua:156
-msgid "⏹ Stop"
-msgstr "⏹ Зупинити"
+#: ../main.lua:295
+msgid   "Yes"
+msgstr  "Так"
 
-#: ../gpt_query.lua:177
-msgid "Stream interrupted by user."
-msgstr "Потік перервано користувачем."
+#: ../main.lua:304
+msgid   "No"
+msgstr  "Ні"
 
-#: ../main.lua:50
-msgid "Ask AI Question"
-msgstr "Запитати ШІ"
-
-#: ../main.lua:59
-msgid "AI Recap"
-msgstr "Підсумок ШІ"
-
-#: ../main.lua:68
-msgid "Assistant Settings"
-msgstr "Налаштування асистента"
-
-#: ../main.lua:163
-msgid "Assistant"
-msgstr "Асистент"
-
-#: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
-msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "Конфігурацію не знайдено. Спочатку налаштуйте configuration.lua."
-
-#: ../main.lua:237
+#: ../main.lua:364
 #, lua-format
-msgid ""
-"Do you want an AI Recap?\n"
-"For %s by %s.\n"
-"Last read %.0f hours ago."
-msgstr ""
-"Хочете підсумок від ШІ?\n"
-"Для %s від %s.\n"
-"Останнє читання було %.0f годин тому."
+msgid   "Remove [%s] from the Main Highlight Menu?"
+msgstr  "Видалити [%s] з головного меню виділення?"
 
-#: ../main.lua:242
-msgid "Yes"
-msgstr "Так"
+#: ../main.lua:365
+msgid   "Remove"
+msgstr  "Видалити"
 
-#: ../main.lua:251
-msgid "No"
-msgstr "Ні"
+#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+msgid   "Configuration not found. Please set up configuration.lua first."
+msgstr  "Конфігурацію не знайдено. Спочатку налаштуйте configuration.lua."
 
-#: ../main.lua:368
-msgid "AI Recap feature is not enabled in configuration."
-msgstr "Функція підсумку ШІ не ввімкнена в конфігурації."
+#: ../main.lua:429
+msgid   "AI Recap feature is not enabled in configuration."
+msgstr  "Функція підсумку ШІ не ввімкнена в конфігурації."
 
-#: ../_meta.lua:5
-msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "Покращіть читання в KOReader за допомогою ШІ."
+#: ../main.lua:517
+msgid   "Added [%1 (AI)] to Main Highlight Menu."
+msgstr  "Додано [%1 (AI)] до головного меню виділення."
+
+#: ../main.lua:526
+#, lua-format
+msgid   "Removed [%s (AI)] from Main Highlight Menu."
+msgstr  "Видалено [%s (AI)] з головного меню виділення."
 
 #: ../prompts.lua:20
-msgid ""
-"This prompt act as a dictionary for the highlighted text, to a word or "
-"phrase."
-msgstr "Цей запит діє як словник для виділеного тексту, слова чи фрази."
+msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+        "or phrase."
+msgstr  "Цей запит діє як словник для виділеного тексту, слова чи фрази."
 
 #: ../prompts.lua:25
-msgid "Translate"
-msgstr "Перекласти"
+msgid   "Translate"
+msgstr  "Перекласти"
 
 #: ../prompts.lua:26
-msgid "This prompt translates the highlighted text to another language."
-msgstr "Цей запит перекладає виділений текст іншою мовою."
+msgid   "This prompt translates the highlighted text to another language."
+msgstr  "Цей запит перекладає виділений текст іншою мовою."
 
 #: ../prompts.lua:48
-msgid "Simplify"
-msgstr "Спростити"
+msgid   "Simplify"
+msgstr  "Спростити"
 
 #: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Цей запит спрощує виділений текст, щоб його було легше зрозуміти."
+msgid   "This prompt simplifies the highlighted text to make it easier to "
+        "understand."
+msgstr  "Цей запит спрощує виділений текст, щоб його було легше зрозуміти."
 
 #: ../prompts.lua:60
-msgid "Explain"
-msgstr "Пояснити"
+msgid   "Explain"
+msgstr  "Пояснити"
 
 #: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr "Цей запит детально пояснює виділений текст, забезпечуючи ясність і розуміння."
+msgid   "This prompt explains the highlighted text in detail, ensuring "
+        "clarity and understanding."
+msgstr  "Цей запит детально пояснює виділений текст, забезпечуючи ясність і "
+        "розуміння."
 
 #: ../prompts.lua:73
-msgid "Summarize"
-msgstr "Підсумувати"
+msgid   "Summarize"
+msgstr  "Підсумувати"
 
 #: ../prompts.lua:75
-msgid ""
-"This prompt summarizes the highlighted text, capturing its main points and "
-"essential details."
-msgstr "Цей запит підсумовує виділений текст, визначаючи головні моменти та важливі деталі."
+msgid   "This prompt summarizes the highlighted text, capturing its main "
+        "points and essential details."
+msgstr  "Цей запит підсумовує виділений текст, визначаючи головні моменти та "
+        "важливі деталі."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "Історичний контекст"
+msgid   "Historical Context"
+msgstr  "Історичний контекст"
 
 #: ../prompts.lua:86
-msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
-msgstr "Цей запит надає детальний історичний контекст для виділеного тексту, пояснюючи його значення та походження."
+msgid   "This prompt provides a detailed historical context for the "
+        "highlighted text, explaining its significance and background."
+msgstr  "Цей запит надає детальний історичний контекст для виділеного тексту, "
+        "пояснюючи його значення та походження."
 
 #: ../prompts.lua:90
-msgid "Key Points"
-msgstr "Ключові моменти"
+msgid   "Key Points"
+msgstr  "Ключові моменти"
 
 #: ../prompts.lua:92
-msgid ""
-"This prompt extracts and lists the key points from the highlighted text, "
-"ensuring clarity and organization."
-msgstr "Цей запит витягує та перераховує ключові моменти з виділеного тексту, забезпечуючи ясність і структуру."
+msgid   "This prompt extracts and lists the key points from the highlighted "
+        "text, ensuring clarity and organization."
+msgstr  "Цей запит витягує та перераховує ключові моменти з виділеного "
+        "тексту, забезпечуючи ясність і структуру."
 
 #: ../prompts.lua:96
-msgid "ELI5"
-msgstr "ELI5"
+msgid   "ELI5"
+msgstr  "ELI5"
 
 #: ../prompts.lua:98
-msgid ""
-"This prompt explains the highlighted text as if to a five-year-old, "
-"simplifying complex concepts into easily understandable terms."
-msgstr "Цей запит пояснює виділений текст, ніби п’ятирічному, спрощуючи складні поняття до зрозумілих слів."
+msgid   "This prompt explains the highlighted text as if to a five-year-old, "
+        "simplifying complex concepts into easily understandable terms."
+msgstr  "Цей запит пояснює виділений текст, ніби п’ятирічному, спрощуючи "
+        "складні поняття до зрозумілих слів."
 
 #: ../prompts.lua:102
-msgid "Grammar"
-msgstr "Граматика"
+msgid   "Grammar"
+msgstr  "Граматика"
 
 #: ../prompts.lua:104
-msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
-msgstr "Цей запит аналізує граматику виділеного тексту, надаючи детальне пояснення структури та можливих помилок."
+msgid   "This prompt analyzes the grammar of the highlighted text, providing "
+        "a detailed explanation of its structure and any grammatical errors."
+msgstr  "Цей запит аналізує граматику виділеного тексту, надаючи детальне "
+        "пояснення структури та можливих помилок."
 
 #: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "Словниковий запас"
+msgid   "Vocabulary"
+msgstr  "Словниковий запас"
 
 #: ../prompts.lua:111
-msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
-msgstr "Цей запит аналізує словниковий запас виділеного тексту, визначаючи складні слова та надаючи визначення, синоніми й приклади вживання."
+msgid   "This prompt analyzes the vocabulary of the highlighted text, "
+        "identifying complex words and providing definitions, synonyms, and "
+        "usage examples."
+msgstr  "Цей запит аналізує словниковий запас виділеного тексту, визначаючи "
+        "складні слова та надаючи визначення, синоніми й приклади вживання."
 
 #: ../prompts.lua:127
-msgid "Wikipedia"
-msgstr "Вікіпедія"
+msgid   "Wikipedia"
+msgstr  "Вікіпедія"
 
 #: ../prompts.lua:129
-msgid ""
-"This prompt generates a comprehensive Wikipedia-style article based on the "
-"highlighted text, ensuring factual accuracy and neutrality."
-msgstr "Цей запит створює вичерпну статтю у стилі Вікіпедії на основі виділеного тексту, забезпечуючи фактичну точність і нейтральність."
+msgid   "This prompt generates a comprehensive Wikipedia-style article based "
+        "on the highlighted text, ensuring factual accuracy and neutrality."
+msgstr  "Цей запит створює вичерпну статтю у стилі Вікіпедії на основі "
+        "виділеного тексту, забезпечуючи фактичну точність і нейтральність."
 
 #: ../recapdialog.lua:68
-msgid "Recap"
-msgstr "Підсумок"
+msgid   "Recap"
+msgstr  "Підсумок"
 
 #: ../settingsdialog.lua:26
-msgid "Assitant Settings"
-msgstr "Налаштування асистента"
-
-#: ../settingsdialog.lua:43
-msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 Насолоджуйтеся KOReader з потужністю ШІ!"
+msgid   "Assitant Settings"
+msgstr  "Налаштування асистента"
 
 #: ../settingsdialog.lua:53
-msgid "Always use stream mode"
-msgstr "Завжди використовувати потоковий режим"
+msgid   "Always use stream mode"
+msgstr  "Завжди використовувати потоковий режим"
 
-#: ../settingsdialog.lua:57
-msgid "Use AI Assistant for 'Translate'"
-msgstr "Використовувати асистента ШІ для «Перекладу»"
+#: ../settingsdialog.lua:58
+msgid   "Use AI Assistant for 'Translate'"
+msgstr  "Використовувати асистента ШІ для «Перекладу»"
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override enabled."
-msgstr "Перевизначення асистента ШІ ввімкнено."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override enabled."
+msgstr  "Перевизначення асистента ШІ ввімкнено."
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override disabled."
-msgstr "Перевизначення асистента ШІ вимкнено."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override disabled."
+msgstr  "Перевизначення асистента ШІ вимкнено."
 
-#: ../settingsdialog.lua:102
-msgid "Select the AI Model provider."
-msgstr "Оберіть постачальника моделі ШІ."
+#: ../settingsdialog.lua:104
+msgid   "Select the AI Model provider."
+msgstr  "Оберіть постачальника моделі ШІ."
 
-#: ../update_checker.lua:21
-msgid "Checking for updates..."
-msgstr "Перевірка оновлень..."
+#: ../update_checker.lua:22
+msgid   "Checking for updates..."
+msgstr  "Перевірка оновлень..."
 
-#: ../update_checker.lua:55
+#: ../update_checker.lua:56
 #, lua-format
-msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "Доступна нова версія плагіна %s (%s). Будь ласка, оновіться!"
+msgid   "A new version of the %s plugin (%s) is available. Please update!"
+msgstr  "Доступна нова версія плагіна %s (%s). Будь ласка, оновіться!"

@@ -4,403 +4,422 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-11 16:48+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: AI Generated (Model: gpt-4o, 2024-06-13)\n"
-"Language: fi\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgid   ""
+msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
+        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: AI Generated (Model: gpt-4o, 2024-06-13)\n"
+        "Language: fi\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
-msgid "Ask Another Question"
-msgstr "Kysy toinen kysymys"
+#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
+msgid   "AI Assistant"
+msgstr  "Tekoälyavustaja"
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance KOReader's reading with AI Power."
+msgstr  "💡 Paranna KOReader-lukukokemusta tekoälyn avulla."
+
+#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
+msgid   "Ask Another Question"
+msgstr  "Kysy toinen kysymys"
 
 #: ../chatgptviewer.lua:306
-msgid "Close"
-msgstr "Sulje"
+msgid   "Close"
+msgstr  "Sulje"
 
 #: ../chatgptviewer.lua:321
-msgid "Copy"
-msgstr "Kopioi"
+msgid   "Copy"
+msgstr  "Kopioi"
 
 #: ../chatgptviewer.lua:326
-msgid "Text copied to clipboard"
-msgstr "Teksti kopioitu leikepöydälle"
+msgid   "Text copied to clipboard"
+msgstr  "Teksti kopioitu leikepöydälle"
 
 #: ../chatgptviewer.lua:340
-msgid "Add Note"
-msgstr "Lisää muistiinpano"
+msgid   "Add Note"
+msgstr  "Lisää muistiinpano"
 
 #: ../chatgptviewer.lua:347
-msgid "Highlight functionality not available"
-msgstr "Korostustoiminto ei ole käytettävissä"
+msgid   "Highlight functionality not available"
+msgstr  "Korostustoiminto ei ole käytettävissä"
 
 #: ../chatgptviewer.lua:356
-msgid "No text to add as note"
-msgstr "Ei tekstiä lisättäväksi muistiinpanoksi"
+msgid   "No text to add as note"
+msgstr  "Ei tekstiä lisättäväksi muistiinpanoksi"
 
 #: ../chatgptviewer.lua:385
-msgid "No text left to add as note"
-msgstr "Ei jäljellä olevaa tekstiä lisättäväksi muistiinpanoksi"
+msgid   "No text left to add as note"
+msgstr  "Ei jäljellä olevaa tekstiä lisättäväksi muistiinpanoksi"
 
 #: ../chatgptviewer.lua:398
-msgid "Note added successfully"
-msgstr "Muistiinpano lisätty onnistuneesti"
+msgid   "Note added successfully"
+msgstr  "Muistiinpano lisätty onnistuneesti"
 
-#: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
-msgid "Cancel"
-msgstr "Peruuta"
+#: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
+msgid   "Cancel"
+msgstr  "Peruuta"
 
-#: ../chatgptviewer.lua:578 ../dialogs.lua:265
-msgid "Ask"
-msgstr "Kysy"
+#: ../chatgptviewer.lua:577 ../dialogs.lua:267
+msgid   "Ask"
+msgstr  "Kysy"
 
-#: ../chatgptviewer.lua:584 ../dialogs.lua:271
-msgid "Enter a question before proceeding."
-msgstr "Kirjoita kysymys ennen jatkamista."
+#: ../chatgptviewer.lua:583 ../dialogs.lua:273
+msgid   "Enter a question before proceeding."
+msgstr  "Kirjoita kysymys ennen jatkamista."
 
-#: ../chatgptviewer.lua:632
-msgid "Type your question here"
-msgstr "Kirjoita kysymyksesi tähän"
+#: ../chatgptviewer.lua:631
+msgid   "Type your question here"
+msgstr  "Kirjoita kysymyksesi tähän"
+
+#: ../chatgptviewer.lua:782
+msgid   "Word copied to clipboard."
+msgstr  "Sana kopioitu leikepöydälle."
 
 #: ../chatgptviewer.lua:783
-msgid "Word copied to clipboard."
-msgstr "Sana kopioitu leikepöydälle."
+msgid   "Selection copied to clipboard."
+msgstr  "Valinta kopioitu leikepöydälle."
 
-#: ../chatgptviewer.lua:784
-msgid "Selection copied to clipboard."
-msgstr "Valinta kopioitu leikepöydälle."
+#: ../dialogs.lua:83
+msgid   "(Empty message)"
+msgstr  "(Tyhjä viesti)"
 
-#: ../dialogs.lua:81
-msgid "(Empty message)"
-msgstr "(Tyhjä viesti)"
+#: ../dialogs.lua:87
+msgid   "(No response)"
+msgstr  "(Ei vastausta)"
 
-#: ../dialogs.lua:85
-msgid "(No response)"
-msgstr "(Ei vastausta)"
+#: ../dialogs.lua:117
+msgid   "Highlighted text:"
+msgstr  "Korostettu teksti:"
 
-#: ../dialogs.lua:115
-msgid "Highlighted text:"
-msgstr "Korostettu teksti:"
-
-#: ../dialogs.lua:302
-msgid "Book Analysis"
-msgstr "Kirjan analyysi"
-
-#: ../dialogs.lua:340
-msgid "Remove"
-msgstr "Poista"
-
-#: ../dialogs.lua:340
-msgid "Add"
-msgstr "Lisää"
+#: ../dialogs.lua:304
+msgid   "Book Analysis"
+msgstr  "Kirjan analyysi"
 
 #: ../dialogs.lua:341
-msgid "Remove this button from the Main Highlight Menu?"
-msgstr "Poistetaanko tämä painike pääkorostusvalikosta?"
+msgid   "Add this button to the Main Highlight Menu?"
+msgstr  "Lisätäänkö tämä painike pääkorostusvalikkoon?"
 
-#: ../dialogs.lua:341
-msgid "Add this button to the Main Highlight Menu?"
-msgstr "Lisätäänkö tämä painike pääkorostusvalikkoon?"
+#: ../dialogs.lua:342
+msgid   "Add"
+msgstr  "Lisää"
 
-#: ../dialogs.lua:353
+#: ../dialogs.lua:368
+msgid   "Ask a question about the highlighted text"
+msgstr  "Kysy kysymys korostetusta tekstistä"
+
+#: ../dialogs.lua:369
 #, lua-format
-msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "Lisätty [%s (AI)] pääkorostusvalikkoon."
+msgid   "Ask a question about this book:\n"
+        "%s by %s"
+msgstr  "Kysy kysymys tästä kirjasta:\n"
+        "%s, kirjoittanut %s"
 
-#: ../dialogs.lua:356
-#, lua-format
-msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "Poistettu [%s (AI)] pääkorostusvalikosta."
+#: ../dialogs.lua:372
+msgid   "Type your question here..."
+msgstr  "Kirjoita kysymyksesi tähän..."
 
-#: ../dialogs.lua:389
-msgid "Ask a question about the highlighted text"
-msgstr "Kysy kysymys korostetusta tekstistä"
+#: ../dialogs.lua:373
+msgid   "Ask anything about this book..."
+msgstr  "Kysy mitä tahansa tästä kirjasta..."
 
-#: ../dialogs.lua:390
-#, lua-format
-msgid ""
-"Ask a question about this book:\n"
-"%s by %s"
-msgstr ""
-"Kysy kysymys tästä kirjasta:\n"
-"%s, kirjoittanut %s"
-
-#: ../dialogs.lua:393
-msgid "Type your question here..."
-msgstr "Kirjoita kysymyksesi tähän..."
-
-#: ../dialogs.lua:394
-msgid "Ask anything about this book..."
-msgstr "Kysy mitä tahansa tästä kirjasta..."
-
-#: ../dialogs.lua:397 ../_meta.lua:4
-msgid "AI Assistant"
-msgstr "Tekoälyavustaja"
-
-#: ../dialogs.lua:448
-msgid "Error: No response received"
-msgstr "Virhe: Vastausta ei saatu"
+#: ../dialogs.lua:427
+msgid   "Error: No response received"
+msgstr  "Virhe: Vastausta ei saatu"
 
 #: ../dictdialog.lua:28
-msgid "AI Dictionary"
-msgstr "Tekoälysanakirja"
+msgid   "AI Dictionary"
+msgstr  "Tekoälysanakirja"
 
 #: ../dictdialog.lua:29
-msgid "Enter a word to look up..."
-msgstr "Kirjoita haettava sana..."
+msgid   "Enter a word to look up..."
+msgstr  "Kirjoita haettava sana..."
 
 #: ../dictdialog.lua:40
-msgid "Look Up"
-msgstr "Hae"
+msgid   "Look Up"
+msgstr  "Hae"
 
-#: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
-msgid "Dictionary"
-msgstr "Sanakirja"
+#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+msgid   "Dictionary"
+msgstr  "Sanakirja"
 
-#: ../gpt_query.lua:46
-msgid "No configuration found. Please set up configuration.lua"
-msgstr "Asetuksia ei löytynyt. Määritä configuration.lua"
-
-#: ../gpt_query.lua:56
+#: ../gpt_query.lua:52
 #, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"Palvelinasetuksia ei löytynyt: %s. Tarkista configuration.lua-tiedostosi."
+msgid   "Provider settings not found for: %s. Please check your configuration."
+        "lua file."
+msgstr  "Palvelinasetuksia ei löytynyt: %s. Tarkista configuration.lua-"
+        "tiedostosi."
+
+#: ../gpt_query.lua:74
+#, lua-format
+msgid   "Handler not found for: %s. Please ensure the handler exists in "
+        "api_handlers directory."
+msgstr  "Käsittelijää ei löytynyt: %s. Varmista, että käsittelijä on olemassa "
+        "api_handlers-hakemistossa."
 
 #: ../gpt_query.lua:78
 #, lua-format
-msgid ""
-"Handler not found for: %s. Please ensure the handler exists in api_handlers "
-"directory."
-msgstr ""
-"Käsittelijää ei löytynyt: %s. Varmista, että käsittelijä on olemassa api_handlers-hakemistossa."
+msgid   "No provider set in configuration.lua. Please set the provider and "
+        "provider_settings for %s."
+msgstr  "Palvelinta ei ole asetettu configuration.lua-tiedostossa. Aseta "
+        "provider ja provider_settings kohteelle %s."
 
-#: ../gpt_query.lua:82
+#: ../gpt_query.lua:122
+msgid   "Querying AI ..."
+msgstr  "Kysytään tekoälyltä..."
+
+#: ../gpt_query.lua:138
+msgid   "AI Responding"
+msgstr  "Tekoäly vastaa"
+
+#: ../gpt_query.lua:140
 #, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"Palvelinta ei ole asetettu configuration.lua-tiedostossa. Aseta provider ja provider_settings kohteelle %s."
+msgid   "☁ %s/%s"
+msgstr  "☁ %s/%s"
 
-#: ../gpt_query.lua:126
-msgid "Querying AI ..."
-msgstr "Kysytään tekoälyltä..."
+#: ../gpt_query.lua:153
+msgid   "⏹ Stop"
+msgstr  "⏹ Pysäytä"
 
-#: ../gpt_query.lua:141
-msgid "AI Responding"
-msgstr "Tekoäly vastaa"
+#: ../gpt_query.lua:174
+msgid   "Stream interrupted by user."
+msgstr  "Virta keskeytetty käyttäjän toimesta."
 
-#: ../gpt_query.lua:143
+#: ../main.lua:73
+msgid   "Ask AI Question"
+msgstr  "Kysy tekoälyltä"
+
+#: ../main.lua:82
+msgid   "AI Recap"
+msgstr  "Tekoäly-yhteenveto"
+
+#: ../main.lua:91
+msgid   "Assistant Settings"
+msgstr  "Avustajan asetukset"
+
+#: ../main.lua:190
+msgid   "Configuration Error.\n"
+        "Please set up configuration.lua.\n"
+        "\n"
+msgstr  "Asetusvirhe.\n"
+        "Aseta configuration.lua.\n"
+        "\n"
+
+#: ../main.lua:217
+msgid   "Useful Tips:\n"
+        "\n"
+        "Long Press:\n"
+        "- On a Prompt Button: Add to the main highlight menu.\n"
+        "- On a main highlight menu button to remove it.\n"
+        "\n"
+        "Very Long Press (more than 3 seconds):\n"
+        "On a single word to show the highlight menu (instead of the "
+        "dictionary).\n"
+        "\n"
+        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "On the result dialog to close (as the Close button is far to "
+        "reach).\n"
+msgstr  "Hyödyllisiä vinkkejä:\n"
+        "\n"
+        "Pitkä painallus:\n"
+        "- Kehotepainikkeessa: lisää pääkorostusvalikkoon.\n"
+        "- Pääkorostusvalikon painikkeessa poistaaksesi sen.\n"
+        "\n"
+        "Erittäin pitkä painallus (yli 3 sekuntia):\n"
+        "Yksittäisellä sanalla näyttääksesi korostusvalikon (sanakirjan "
+        "sijaan).\n"
+        "\n"
+        "Monikosketus (esim. ⮠, ⮡, ↺):\n"
+        "Tulosikkunassa sulkeaksesi sen (kun Sulje-painike on kaukana).\n"
+
+#: ../main.lua:290
 #, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
+msgid   "Do you want an AI Recap?\n"
+        "For %s by %s.\n"
+        "Last read %.0f hours ago."
+msgstr  "Haluatko tekoäly-yhteenvedon?\n"
+        "Kirjasta %s, kirjoittanut %s.\n"
+        "Luettu viimeksi %.0f tuntia sitten."
 
-#: ../gpt_query.lua:156
-msgid "⏹ Stop"
-msgstr "⏹ Pysäytä"
+#: ../main.lua:295
+msgid   "Yes"
+msgstr  "Kyllä"
 
-#: ../gpt_query.lua:177
-msgid "Stream interrupted by user."
-msgstr "Virta keskeytetty käyttäjän toimesta."
+#: ../main.lua:304
+msgid   "No"
+msgstr  "Ei"
 
-#: ../main.lua:50
-msgid "Ask AI Question"
-msgstr "Kysy tekoälyltä"
-
-#: ../main.lua:59
-msgid "AI Recap"
-msgstr "Tekoäly-yhteenveto"
-
-#: ../main.lua:68
-msgid "Assistant Settings"
-msgstr "Avustajan asetukset"
-
-#: ../main.lua:163
-msgid "Assistant"
-msgstr "Avustaja"
-
-#: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
-msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "Asetuksia ei löytynyt. Määritä configuration.lua ensin."
-
-#: ../main.lua:237
+#: ../main.lua:364
 #, lua-format
-msgid ""
-"Do you want an AI Recap?\n"
-"For %s by %s.\n"
-"Last read %.0f hours ago."
-msgstr ""
-"Haluatko tekoäly-yhteenvedon?\n"
-"Kirjasta %s, kirjoittanut %s.\n"
-"Luettu viimeksi %.0f tuntia sitten."
+msgid   "Remove [%s] from the Main Highlight Menu?"
+msgstr  "Poistetaanko [%s] pääkorostusvalikosta?"
 
-#: ../main.lua:242
-msgid "Yes"
-msgstr "Kyllä"
+#: ../main.lua:365
+msgid   "Remove"
+msgstr  "Poista"
 
-#: ../main.lua:251
-msgid "No"
-msgstr "Ei"
+#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+msgid   "Configuration not found. Please set up configuration.lua first."
+msgstr  "Asetuksia ei löytynyt. Määritä configuration.lua ensin."
 
-#: ../main.lua:368
-msgid "AI Recap feature is not enabled in configuration."
-msgstr "Tekoäly-yhteenveto ei ole käytössä asetuksissa."
+#: ../main.lua:429
+msgid   "AI Recap feature is not enabled in configuration."
+msgstr  "Tekoäly-yhteenveto ei ole käytössä asetuksissa."
 
-#: ../_meta.lua:5
-msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "Paranna KOReaderin lukukokemusta tekoälyn avulla."
+#: ../main.lua:517
+msgid   "Added [%1 (AI)] to Main Highlight Menu."
+msgstr  "Lisätty [%1 (AI)] pääkorostusvalikkoon."
+
+#: ../main.lua:526
+#, lua-format
+msgid   "Removed [%s (AI)] from Main Highlight Menu."
+msgstr  "Poistettu [%s (AI)] pääkorostusvalikosta."
 
 #: ../prompts.lua:20
-msgid ""
-"This prompt act as a dictionary for the highlighted text, to a word or "
-"phrase."
-msgstr ""
-"Tämä kehote toimii sanakirjana korostetulle tekstille, sanalle tai lauseelle."
+msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+        "or phrase."
+msgstr  "Tämä kehote toimii sanakirjana korostetulle tekstille, sanalle tai "
+        "lauseelle."
 
 #: ../prompts.lua:25
-msgid "Translate"
-msgstr "Käännä"
+msgid   "Translate"
+msgstr  "Käännä"
 
 #: ../prompts.lua:26
-msgid "This prompt translates the highlighted text to another language."
-msgstr "Tämä kehote kääntää korostetun tekstin toiselle kielelle."
+msgid   "This prompt translates the highlighted text to another language."
+msgstr  "Tämä kehote kääntää korostetun tekstin toiselle kielelle."
 
 #: ../prompts.lua:48
-msgid "Simplify"
-msgstr "Yksinkertaista"
+msgid   "Simplify"
+msgstr  "Yksinkertaista"
 
 #: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Tämä kehote yksinkertaistaa korostetun tekstin helpommin ymmärrettäväksi."
+msgid   "This prompt simplifies the highlighted text to make it easier to "
+        "understand."
+msgstr  "Tämä kehote yksinkertaistaa korostetun tekstin helpommin "
+        "ymmärrettäväksi."
 
 #: ../prompts.lua:60
-msgid "Explain"
-msgstr "Selitä"
+msgid   "Explain"
+msgstr  "Selitä"
 
 #: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr "Tämä kehote selittää korostetun tekstin yksityiskohtaisesti varmistaen selkeyden ja ymmärryksen."
+msgid   "This prompt explains the highlighted text in detail, ensuring "
+        "clarity and understanding."
+msgstr  "Tämä kehote selittää korostetun tekstin yksityiskohtaisesti "
+        "varmistaen selkeyden ja ymmärryksen."
 
 #: ../prompts.lua:73
-msgid "Summarize"
-msgstr "Yhteenveto"
+msgid   "Summarize"
+msgstr  "Yhteenveto"
 
 #: ../prompts.lua:75
-msgid ""
-"This prompt summarizes the highlighted text, capturing its main points and "
-"essential details."
-msgstr "Tämä kehote tiivistää korostetun tekstin poimien sen pääkohdat ja olennaiset yksityiskohdat."
+msgid   "This prompt summarizes the highlighted text, capturing its main "
+        "points and essential details."
+msgstr  "Tämä kehote tiivistää korostetun tekstin poimien sen pääkohdat ja "
+        "olennaiset yksityiskohdat."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "Historiallinen konteksti"
+msgid   "Historical Context"
+msgstr  "Historiallinen konteksti"
 
 #: ../prompts.lua:86
-msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
-msgstr "Tämä kehote antaa yksityiskohtaisen historiallisen kontekstin korostetulle tekstille selittäen sen merkityksen ja taustan."
+msgid   "This prompt provides a detailed historical context for the "
+        "highlighted text, explaining its significance and background."
+msgstr  "Tämä kehote antaa yksityiskohtaisen historiallisen kontekstin "
+        "korostetulle tekstille selittäen sen merkityksen ja taustan."
 
 #: ../prompts.lua:90
-msgid "Key Points"
-msgstr "Pääkohdat"
+msgid   "Key Points"
+msgstr  "Pääkohdat"
 
 #: ../prompts.lua:92
-msgid ""
-"This prompt extracts and lists the key points from the highlighted text, "
-"ensuring clarity and organization."
-msgstr "Tämä kehote poimii ja listaa korostetun tekstin pääkohdat varmistaen selkeyden ja järjestyksen."
+msgid   "This prompt extracts and lists the key points from the highlighted "
+        "text, ensuring clarity and organization."
+msgstr  "Tämä kehote poimii ja listaa korostetun tekstin pääkohdat varmistaen "
+        "selkeyden ja järjestyksen."
 
 #: ../prompts.lua:96
-msgid "ELI5"
-msgstr "ELI5"
+msgid   "ELI5"
+msgstr  "ELI5"
 
 #: ../prompts.lua:98
-msgid ""
-"This prompt explains the highlighted text as if to a five-year-old, "
-"simplifying complex concepts into easily understandable terms."
-msgstr "Tämä kehote selittää korostetun tekstin kuin viisivuotiaalle yksinkertaistaen monimutkaiset käsitteet helposti ymmärrettäviksi."
+msgid   "This prompt explains the highlighted text as if to a five-year-old, "
+        "simplifying complex concepts into easily understandable terms."
+msgstr  "Tämä kehote selittää korostetun tekstin kuin viisivuotiaalle "
+        "yksinkertaistaen monimutkaiset käsitteet helposti ymmärrettäviksi."
 
 #: ../prompts.lua:102
-msgid "Grammar"
-msgstr "Kielioppi"
+msgid   "Grammar"
+msgstr  "Kielioppi"
 
 #: ../prompts.lua:104
-msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
-msgstr "Tämä kehote analysoi korostetun tekstin kieliopin antaen yksityiskohtaisen selityksen sen rakenteesta ja mahdollisista kielioppivirheistä."
+msgid   "This prompt analyzes the grammar of the highlighted text, providing "
+        "a detailed explanation of its structure and any grammatical errors."
+msgstr  "Tämä kehote analysoi korostetun tekstin kieliopin antaen "
+        "yksityiskohtaisen selityksen sen rakenteesta ja mahdollisista "
+        "kielioppivirheistä."
 
 #: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "Sanasto"
+msgid   "Vocabulary"
+msgstr  "Sanasto"
 
 #: ../prompts.lua:111
-msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
-msgstr "Tämä kehote analysoi korostetun tekstin sanaston tunnistaen monimutkaiset sanat ja antaen määritelmiä, synonyymejä ja käyttöesimerkkejä."
+msgid   "This prompt analyzes the vocabulary of the highlighted text, "
+        "identifying complex words and providing definitions, synonyms, and "
+        "usage examples."
+msgstr  "Tämä kehote analysoi korostetun tekstin sanaston tunnistaen "
+        "monimutkaiset sanat ja antaen määritelmiä, synonyymejä ja "
+        "käyttöesimerkkejä."
 
 #: ../prompts.lua:127
-msgid "Wikipedia"
-msgstr "Wikipedia"
+msgid   "Wikipedia"
+msgstr  "Wikipedia"
 
 #: ../prompts.lua:129
-msgid ""
-"This prompt generates a comprehensive Wikipedia-style article based on the "
-"highlighted text, ensuring factual accuracy and neutrality."
-msgstr "Tämä kehote luo kattavan Wikipedia-tyylisen artikkelin korostetun tekstin perusteella varmistaen faktuaalisen tarkkuuden ja neutraaliuden."
+msgid   "This prompt generates a comprehensive Wikipedia-style article based "
+        "on the highlighted text, ensuring factual accuracy and neutrality."
+msgstr  "Tämä kehote luo kattavan Wikipedia-tyylisen artikkelin korostetun "
+        "tekstin perusteella varmistaen faktuaalisen tarkkuuden ja "
+        "neutraaliuden."
 
 #: ../recapdialog.lua:68
-msgid "Recap"
-msgstr "Yhteenveto"
+msgid   "Recap"
+msgstr  "Yhteenveto"
 
 #: ../settingsdialog.lua:26
-msgid "Assitant Settings"
-msgstr "Avustajan asetukset"
-
-#: ../settingsdialog.lua:43
-msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 Nauti KOReaderista tekoälyn voimalla!"
+msgid   "Assitant Settings"
+msgstr  "Avustajan asetukset"
 
 #: ../settingsdialog.lua:53
-msgid "Always use stream mode"
-msgstr "Käytä aina suoratoistotilaa"
+msgid   "Always use stream mode"
+msgstr  "Käytä aina suoratoistotilaa"
 
-#: ../settingsdialog.lua:57
-msgid "Use AI Assistant for 'Translate'"
-msgstr "Käytä tekoälyavustajaa 'Käännä'-toiminnossa"
+#: ../settingsdialog.lua:58
+msgid   "Use AI Assistant for 'Translate'"
+msgstr  "Käytä tekoälyavustajaa 'Käännä'-toiminnossa"
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override enabled."
-msgstr "Tekoälyavustajan ohitus käytössä."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override enabled."
+msgstr  "Tekoälyavustajan ohitus käytössä."
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override disabled."
-msgstr "Tekoälyavustajan ohitus pois käytöstä."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override disabled."
+msgstr  "Tekoälyavustajan ohitus pois käytöstä."
 
-#: ../settingsdialog.lua:102
-msgid "Select the AI Model provider."
-msgstr "Valitse tekoälymallin tarjoaja."
+#: ../settingsdialog.lua:104
+msgid   "Select the AI Model provider."
+msgstr  "Valitse tekoälymallin tarjoaja."
 
-#: ../update_checker.lua:21
-msgid "Checking for updates..."
-msgstr "Tarkistetaan päivityksiä..."
+#: ../update_checker.lua:22
+msgid   "Checking for updates..."
+msgstr  "Tarkistetaan päivityksiä..."
 
-#: ../update_checker.lua:55
+#: ../update_checker.lua:56
 #, lua-format
-msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "Uusi versio %s-liitännäisestä (%s) on saatavilla. Päivitä!"
+msgid   "A new version of the %s plugin (%s) is available. Please update!"
+msgstr  "Uusi versio %s-liitännäisestä (%s) on saatavilla. Päivitä!"

@@ -4,404 +4,421 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-11 16:48+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: AI Generated (GPT-4o 2024-05-13)\n"
-"Language: lt\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgid   ""
+msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
+        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: AI Generated (GPT-4o 2024-05-13)\n"
+        "Language: lt\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
-msgid "Ask Another Question"
-msgstr "Užduoti kitą klausimą"
+#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
+msgid   "AI Assistant"
+msgstr  "AI asistentas"
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance KOReader's reading with AI Power."
+msgstr  "💡 Pagerinkite KOReader skaitymą su AI galia."
+
+#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
+msgid   "Ask Another Question"
+msgstr  "Užduoti kitą klausimą"
 
 #: ../chatgptviewer.lua:306
-msgid "Close"
-msgstr "Užverti"
+msgid   "Close"
+msgstr  "Užverti"
 
 #: ../chatgptviewer.lua:321
-msgid "Copy"
-msgstr "Kopijuoti"
+msgid   "Copy"
+msgstr  "Kopijuoti"
 
 #: ../chatgptviewer.lua:326
-msgid "Text copied to clipboard"
-msgstr "Tekstas nukopijuotas į iškarpinę"
+msgid   "Text copied to clipboard"
+msgstr  "Tekstas nukopijuotas į iškarpinę"
 
 #: ../chatgptviewer.lua:340
-msgid "Add Note"
-msgstr "Pridėti pastabą"
+msgid   "Add Note"
+msgstr  "Pridėti pastabą"
 
 #: ../chatgptviewer.lua:347
-msgid "Highlight functionality not available"
-msgstr "Pažymėjimo funkcija nepasiekiama"
+msgid   "Highlight functionality not available"
+msgstr  "Pažymėjimo funkcija nepasiekiama"
 
 #: ../chatgptviewer.lua:356
-msgid "No text to add as note"
-msgstr "Nėra teksto, kurį būtų galima pridėti kaip pastabą"
+msgid   "No text to add as note"
+msgstr  "Nėra teksto, kurį būtų galima pridėti kaip pastabą"
 
 #: ../chatgptviewer.lua:385
-msgid "No text left to add as note"
-msgstr "Neliko teksto, kurį būtų galima pridėti kaip pastabą"
+msgid   "No text left to add as note"
+msgstr  "Neliko teksto, kurį būtų galima pridėti kaip pastabą"
 
 #: ../chatgptviewer.lua:398
-msgid "Note added successfully"
-msgstr "Pastaba sėkmingai pridėta"
+msgid   "Note added successfully"
+msgstr  "Pastaba sėkmingai pridėta"
 
-#: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
-msgid "Cancel"
-msgstr "Atšaukti"
+#: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
+msgid   "Cancel"
+msgstr  "Atšaukti"
 
-#: ../chatgptviewer.lua:578 ../dialogs.lua:265
-msgid "Ask"
-msgstr "Klausti"
+#: ../chatgptviewer.lua:577 ../dialogs.lua:267
+msgid   "Ask"
+msgstr  "Klausti"
 
-#: ../chatgptviewer.lua:584 ../dialogs.lua:271
-msgid "Enter a question before proceeding."
-msgstr "Prieš tęsiant įveskite klausimą."
+#: ../chatgptviewer.lua:583 ../dialogs.lua:273
+msgid   "Enter a question before proceeding."
+msgstr  "Prieš tęsiant įveskite klausimą."
 
-#: ../chatgptviewer.lua:632
-msgid "Type your question here"
-msgstr "Įveskite savo klausimą čia"
+#: ../chatgptviewer.lua:631
+msgid   "Type your question here"
+msgstr  "Įveskite savo klausimą čia"
+
+#: ../chatgptviewer.lua:782
+msgid   "Word copied to clipboard."
+msgstr  "Žodis nukopijuotas į iškarpinę."
 
 #: ../chatgptviewer.lua:783
-msgid "Word copied to clipboard."
-msgstr "Žodis nukopijuotas į iškarpinę."
+msgid   "Selection copied to clipboard."
+msgstr  "Pasirinkimas nukopijuotas į iškarpinę."
 
-#: ../chatgptviewer.lua:784
-msgid "Selection copied to clipboard."
-msgstr "Pasirinkimas nukopijuotas į iškarpinę."
+#: ../dialogs.lua:83
+msgid   "(Empty message)"
+msgstr  "(Tuščia žinutė)"
 
-#: ../dialogs.lua:81
-msgid "(Empty message)"
-msgstr "(Tuščia žinutė)"
+#: ../dialogs.lua:87
+msgid   "(No response)"
+msgstr  "(Nėra atsakymo)"
 
-#: ../dialogs.lua:85
-msgid "(No response)"
-msgstr "(Nėra atsakymo)"
+#: ../dialogs.lua:117
+msgid   "Highlighted text:"
+msgstr  "Pažymėtas tekstas:"
 
-#: ../dialogs.lua:115
-msgid "Highlighted text:"
-msgstr "Pažymėtas tekstas:"
-
-#: ../dialogs.lua:302
-msgid "Book Analysis"
-msgstr "Knygos analizė"
-
-#: ../dialogs.lua:340
-msgid "Remove"
-msgstr "Pašalinti"
-
-#: ../dialogs.lua:340
-msgid "Add"
-msgstr "Pridėti"
+#: ../dialogs.lua:304
+msgid   "Book Analysis"
+msgstr  "Knygos analizė"
 
 #: ../dialogs.lua:341
-msgid "Remove this button from the Main Highlight Menu?"
-msgstr "Pašalinti šį mygtuką iš pagrindinio pažymėjimo meniu?"
+msgid   "Add this button to the Main Highlight Menu?"
+msgstr  "Pridėti šį mygtuką į pagrindinį pažymėjimo meniu?"
 
-#: ../dialogs.lua:341
-msgid "Add this button to the Main Highlight Menu?"
-msgstr "Pridėti šį mygtuką į pagrindinį pažymėjimo meniu?"
+#: ../dialogs.lua:342
+msgid   "Add"
+msgstr  "Pridėti"
 
-#: ../dialogs.lua:353
+#: ../dialogs.lua:368
+msgid   "Ask a question about the highlighted text"
+msgstr  "Užduoti klausimą apie pažymėtą tekstą"
+
+#: ../dialogs.lua:369
 #, lua-format
-msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "Pridėta [%s (AI)] į pagrindinį pažymėjimo meniu."
+msgid   "Ask a question about this book:\n"
+        "%s by %s"
+msgstr  "Užduoti klausimą apie šią knygą:\n"
+        "%s autoriaus %s"
 
-#: ../dialogs.lua:356
-#, lua-format
-msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "Pašalinta [%s (AI)] iš pagrindinio pažymėjimo meniu."
+#: ../dialogs.lua:372
+msgid   "Type your question here..."
+msgstr  "Įveskite savo klausimą čia..."
 
-#: ../dialogs.lua:389
-msgid "Ask a question about the highlighted text"
-msgstr "Užduoti klausimą apie pažymėtą tekstą"
+#: ../dialogs.lua:373
+msgid   "Ask anything about this book..."
+msgstr  "Užduokite bet kokį klausimą apie šią knygą..."
 
-#: ../dialogs.lua:390
-#, lua-format
-msgid ""
-"Ask a question about this book:\n"
-"%s by %s"
-msgstr ""
-"Užduoti klausimą apie šią knygą:\n"
-"%s autoriaus %s"
-
-#: ../dialogs.lua:393
-msgid "Type your question here..."
-msgstr "Įveskite savo klausimą čia..."
-
-#: ../dialogs.lua:394
-msgid "Ask anything about this book..."
-msgstr "Užduokite bet kokį klausimą apie šią knygą..."
-
-#: ../dialogs.lua:397 ../_meta.lua:4
-msgid "AI Assistant"
-msgstr "AI asistentas"
-
-#: ../dialogs.lua:448
-msgid "Error: No response received"
-msgstr "Klaida: nebuvo gautas atsakymas"
+#: ../dialogs.lua:427
+msgid   "Error: No response received"
+msgstr  "Klaida: nebuvo gautas atsakymas"
 
 #: ../dictdialog.lua:28
-msgid "AI Dictionary"
-msgstr "AI žodynas"
+msgid   "AI Dictionary"
+msgstr  "AI žodynas"
 
 #: ../dictdialog.lua:29
-msgid "Enter a word to look up..."
-msgstr "Įveskite žodį, kurį norite ištirti..."
+msgid   "Enter a word to look up..."
+msgstr  "Įveskite žodį, kurį norite ištirti..."
 
 #: ../dictdialog.lua:40
-msgid "Look Up"
-msgstr "Ieškoti"
+msgid   "Look Up"
+msgstr  "Ieškoti"
 
-#: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
-msgid "Dictionary"
-msgstr "Žodynas"
+#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+msgid   "Dictionary"
+msgstr  "Žodynas"
 
-#: ../gpt_query.lua:46
-msgid "No configuration found. Please set up configuration.lua"
-msgstr "Konfigūracija nerasta. Prašome sukurti configuration.lua"
-
-#: ../gpt_query.lua:56
+#: ../gpt_query.lua:52
 #, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"Tiekėjo nustatymai nerasti: %s. Prašome patikrinti configuration.lua failą."
+msgid   "Provider settings not found for: %s. Please check your configuration."
+        "lua file."
+msgstr  "Tiekėjo nustatymai nerasti: %s. Prašome patikrinti configuration.lua "
+        "failą."
+
+#: ../gpt_query.lua:74
+#, lua-format
+msgid   "Handler not found for: %s. Please ensure the handler exists in "
+        "api_handlers directory."
+msgstr  "Tvarkyklė nerasta: %s. Įsitikinkite, kad tvarkyklė yra api_handlers "
+        "kataloge."
 
 #: ../gpt_query.lua:78
 #, lua-format
-msgid ""
-"Handler not found for: %s. Please ensure the handler exists in api_handlers "
-"directory."
-msgstr ""
-"Tvarkyklė nerasta: %s. Įsitikinkite, kad tvarkyklė yra api_handlers kataloge."
+msgid   "No provider set in configuration.lua. Please set the provider and "
+        "provider_settings for %s."
+msgstr  "configuration.lua nenustatytas tiekėjas. Prašome nustatyti tiekėją "
+        "ir provider_settings %s."
 
-#: ../gpt_query.lua:82
+#: ../gpt_query.lua:122
+msgid   "Querying AI ..."
+msgstr  "Kreipiamasi į AI..."
+
+#: ../gpt_query.lua:138
+msgid   "AI Responding"
+msgstr  "AI atsako"
+
+#: ../gpt_query.lua:140
 #, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"configuration.lua nenustatytas tiekėjas. Prašome nustatyti tiekėją ir "
-"provider_settings %s."
+msgid   "☁ %s/%s"
+msgstr  "☁ %s/%s"
 
-#: ../gpt_query.lua:126
-msgid "Querying AI ..."
-msgstr "Kreipiamasi į AI..."
+#: ../gpt_query.lua:153
+msgid   "⏹ Stop"
+msgstr  "⏹ Stabdyti"
 
-#: ../gpt_query.lua:141
-msgid "AI Responding"
-msgstr "AI atsako"
+#: ../gpt_query.lua:174
+msgid   "Stream interrupted by user."
+msgstr  "Srautas nutrauktas naudotojo."
 
-#: ../gpt_query.lua:143
+#: ../main.lua:73
+msgid   "Ask AI Question"
+msgstr  "Užduoti klausimą AI"
+
+#: ../main.lua:82
+msgid   "AI Recap"
+msgstr  "AI santrauka"
+
+#: ../main.lua:91
+msgid   "Assistant Settings"
+msgstr  "Asistento nustatymai"
+
+#: ../main.lua:190
+msgid   "Configuration Error.\n"
+        "Please set up configuration.lua.\n"
+        "\n"
+msgstr  "Konfigūracijos klaida.\n"
+        "Prašome sukonfigūruoti configuration.lua.\n"
+        "\n"
+
+#: ../main.lua:217
+msgid   "Useful Tips:\n"
+        "\n"
+        "Long Press:\n"
+        "- On a Prompt Button: Add to the main highlight menu.\n"
+        "- On a main highlight menu button to remove it.\n"
+        "\n"
+        "Very Long Press (more than 3 seconds):\n"
+        "On a single word to show the highlight menu (instead of the "
+        "dictionary).\n"
+        "\n"
+        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "On the result dialog to close (as the Close button is far to "
+        "reach).\n"
+msgstr  "Naudingi patarimai:\n"
+        "\n"
+        "Ilgas paspaudimas:\n"
+        "- Ant „Prompt“ mygtuko: pridėti prie pagrindinio paryškinimo meniu.\n"
+        "- Ant pagrindinio paryškinimo meniu mygtuko, kad pašalintumėte jį.\n"
+        "\n"
+        "Labai ilgas paspaudimas (daugiau nei 3 sekundės):\n"
+        "Ant vieno žodžio, kad parodytumėte paryškinimo meniu (vietoj "
+        "žodyno).\n"
+        "\n"
+        "Keletas brūkšnių (pvz., ⮠, ⮡, ↺):\n"
+        "Rezultatų dialoge, kad uždarytumėte (nes „Uždaryti“ mygtukas sunkiai "
+        "pasiekiamas).\n"
+
+#: ../main.lua:290
 #, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
+msgid   "Do you want an AI Recap?\n"
+        "For %s by %s.\n"
+        "Last read %.0f hours ago."
+msgstr  "Ar norite AI santraukos?\n"
+        "Knygos %s autoriaus %s.\n"
+        "Paskutinį kartą skaityta prieš %.0f val."
 
-#: ../gpt_query.lua:156
-msgid "⏹ Stop"
-msgstr "⏹ Stabdyti"
+#: ../main.lua:295
+msgid   "Yes"
+msgstr  "Taip"
 
-#: ../gpt_query.lua:177
-msgid "Stream interrupted by user."
-msgstr "Srautas nutrauktas naudotojo."
+#: ../main.lua:304
+msgid   "No"
+msgstr  "Ne"
 
-#: ../main.lua:50
-msgid "Ask AI Question"
-msgstr "Užduoti klausimą AI"
-
-#: ../main.lua:59
-msgid "AI Recap"
-msgstr "AI santrauka"
-
-#: ../main.lua:68
-msgid "Assistant Settings"
-msgstr "Asistento nustatymai"
-
-#: ../main.lua:163
-msgid "Assistant"
-msgstr "Asistentas"
-
-#: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
-msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "Konfigūracija nerasta. Pirmiausia sukurkite configuration.lua."
-
-#: ../main.lua:237
+#: ../main.lua:364
 #, lua-format
-msgid ""
-"Do you want an AI Recap?\n"
-"For %s by %s.\n"
-"Last read %.0f hours ago."
-msgstr ""
-"Ar norite AI santraukos?\n"
-"Knygos %s autoriaus %s.\n"
-"Paskutinį kartą skaityta prieš %.0f val."
+msgid   "Remove [%s] from the Main Highlight Menu?"
+msgstr  "Pašalinti [%s] iš pagrindinio paryškinimo meniu?"
 
-#: ../main.lua:242
-msgid "Yes"
-msgstr "Taip"
+#: ../main.lua:365
+msgid   "Remove"
+msgstr  "Pašalinti"
 
-#: ../main.lua:251
-msgid "No"
-msgstr "Ne"
+#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+msgid   "Configuration not found. Please set up configuration.lua first."
+msgstr  "Konfigūracija nerasta. Pirmiausia sukurkite configuration.lua."
 
-#: ../main.lua:368
-msgid "AI Recap feature is not enabled in configuration."
-msgstr "AI santraukos funkcija konfigūracijoje išjungta."
+#: ../main.lua:429
+msgid   "AI Recap feature is not enabled in configuration."
+msgstr  "AI santraukos funkcija konfigūracijoje išjungta."
 
-#: ../_meta.lua:5
-msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "Pagerinkite KOReader skaitymo patirtį su AI galia."
+#: ../main.lua:517
+msgid   "Added [%1 (AI)] to Main Highlight Menu."
+msgstr  "Pridėta [%1 (AI)] prie pagrindinio paryškinimo meniu."
+
+#: ../main.lua:526
+#, lua-format
+msgid   "Removed [%s (AI)] from Main Highlight Menu."
+msgstr  "Pašalinta [%s (AI)] iš pagrindinio pažymėjimo meniu."
 
 #: ../prompts.lua:20
-msgid ""
-"This prompt act as a dictionary for the highlighted text, to a word or "
-"phrase."
-msgstr ""
-"Šis nurodymas veikia kaip žodynas pažymėtam tekstui, žodžiui ar frazėms."
+msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+        "or phrase."
+msgstr  "Šis nurodymas veikia kaip žodynas pažymėtam tekstui, žodžiui ar "
+        "frazėms."
 
 #: ../prompts.lua:25
-msgid "Translate"
-msgstr "Versti"
+msgid   "Translate"
+msgstr  "Versti"
 
 #: ../prompts.lua:26
-msgid "This prompt translates the highlighted text to another language."
-msgstr "Šis nurodymas verčia pažymėtą tekstą į kitą kalbą."
+msgid   "This prompt translates the highlighted text to another language."
+msgstr  "Šis nurodymas verčia pažymėtą tekstą į kitą kalbą."
 
 #: ../prompts.lua:48
-msgid "Simplify"
-msgstr "Supaprastinti"
+msgid   "Simplify"
+msgstr  "Supaprastinti"
 
 #: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Šis nurodymas supaprastina pažymėtą tekstą, kad būtų lengviau suprasti."
+msgid   "This prompt simplifies the highlighted text to make it easier to "
+        "understand."
+msgstr  "Šis nurodymas supaprastina pažymėtą tekstą, kad būtų lengviau "
+        "suprasti."
 
 #: ../prompts.lua:60
-msgid "Explain"
-msgstr "Paaiškinti"
+msgid   "Explain"
+msgstr  "Paaiškinti"
 
 #: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr "Šis nurodymas išsamiai paaiškina pažymėtą tekstą, užtikrindamas aiškumą ir supratimą."
+msgid   "This prompt explains the highlighted text in detail, ensuring "
+        "clarity and understanding."
+msgstr  "Šis nurodymas išsamiai paaiškina pažymėtą tekstą, užtikrindamas "
+        "aiškumą ir supratimą."
 
 #: ../prompts.lua:73
-msgid "Summarize"
-msgstr "Santrauka"
+msgid   "Summarize"
+msgstr  "Santrauka"
 
 #: ../prompts.lua:75
-msgid ""
-"This prompt summarizes the highlighted text, capturing its main points and "
-"essential details."
-msgstr "Šis nurodymas apibendrina pažymėtą tekstą, išryškindamas pagrindines mintis ir esminius faktus."
+msgid   "This prompt summarizes the highlighted text, capturing its main "
+        "points and essential details."
+msgstr  "Šis nurodymas apibendrina pažymėtą tekstą, išryškindamas pagrindines "
+        "mintis ir esminius faktus."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "Istorinis kontekstas"
+msgid   "Historical Context"
+msgstr  "Istorinis kontekstas"
 
 #: ../prompts.lua:86
-msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
-msgstr "Šis nurodymas pateikia išsamų istorinį kontekstą pažymėtam tekstui, paaiškindamas jo reikšmę ir foną."
+msgid   "This prompt provides a detailed historical context for the "
+        "highlighted text, explaining its significance and background."
+msgstr  "Šis nurodymas pateikia išsamų istorinį kontekstą pažymėtam tekstui, "
+        "paaiškindamas jo reikšmę ir foną."
 
 #: ../prompts.lua:90
-msgid "Key Points"
-msgstr "Pagrindiniai taškai"
+msgid   "Key Points"
+msgstr  "Pagrindiniai taškai"
 
 #: ../prompts.lua:92
-msgid ""
-"This prompt extracts and lists the key points from the highlighted text, "
-"ensuring clarity and organization."
-msgstr "Šis nurodymas išskiria ir išvardija pagrindinius taškus iš pažymėto teksto, užtikrindamas aiškumą ir tvarką."
+msgid   "This prompt extracts and lists the key points from the highlighted "
+        "text, ensuring clarity and organization."
+msgstr  "Šis nurodymas išskiria ir išvardija pagrindinius taškus iš pažymėto "
+        "teksto, užtikrindamas aiškumą ir tvarką."
 
 #: ../prompts.lua:96
-msgid "ELI5"
-msgstr "Paaiškinti kaip penkmečiui"
+msgid   "ELI5"
+msgstr  "Paaiškinti kaip penkmečiui"
 
 #: ../prompts.lua:98
-msgid ""
-"This prompt explains the highlighted text as if to a five-year-old, "
-"simplifying complex concepts into easily understandable terms."
-msgstr "Šis nurodymas paaiškina pažymėtą tekstą taip, kaip penkmečiui, supaprastindamas sudėtingas sąvokas į lengvai suprantamas."
+msgid   "This prompt explains the highlighted text as if to a five-year-old, "
+        "simplifying complex concepts into easily understandable terms."
+msgstr  "Šis nurodymas paaiškina pažymėtą tekstą taip, kaip penkmečiui, "
+        "supaprastindamas sudėtingas sąvokas į lengvai suprantamas."
 
 #: ../prompts.lua:102
-msgid "Grammar"
-msgstr "Gramatika"
+msgid   "Grammar"
+msgstr  "Gramatika"
 
 #: ../prompts.lua:104
-msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
-msgstr "Šis nurodymas analizuoja pažymėto teksto gramatiką, pateikdamas išsamų struktūros paaiškinimą ir galimas klaidas."
+msgid   "This prompt analyzes the grammar of the highlighted text, providing "
+        "a detailed explanation of its structure and any grammatical errors."
+msgstr  "Šis nurodymas analizuoja pažymėto teksto gramatiką, pateikdamas "
+        "išsamų struktūros paaiškinimą ir galimas klaidas."
 
 #: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "Žodynas"
+msgid   "Vocabulary"
+msgstr  "Žodynas"
 
 #: ../prompts.lua:111
-msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
-msgstr "Šis nurodymas analizuoja pažymėto teksto žodyną, nustatydamas sudėtingus žodžius ir pateikdamas apibrėžimus, sinonimus bei naudojimo pavyzdžius."
+msgid   "This prompt analyzes the vocabulary of the highlighted text, "
+        "identifying complex words and providing definitions, synonyms, and "
+        "usage examples."
+msgstr  "Šis nurodymas analizuoja pažymėto teksto žodyną, nustatydamas "
+        "sudėtingus žodžius ir pateikdamas apibrėžimus, sinonimus bei "
+        "naudojimo pavyzdžius."
 
 #: ../prompts.lua:127
-msgid "Wikipedia"
-msgstr "Vikipedija"
+msgid   "Wikipedia"
+msgstr  "Vikipedija"
 
 #: ../prompts.lua:129
-msgid ""
-"This prompt generates a comprehensive Wikipedia-style article based on the "
-"highlighted text, ensuring factual accuracy and neutrality."
-msgstr "Šis nurodymas sukuria išsamų Vikipedijos stiliaus straipsnį, paremtą pažymėtu tekstu, užtikrindamas faktinį tikslumą ir neutralumą."
+msgid   "This prompt generates a comprehensive Wikipedia-style article based "
+        "on the highlighted text, ensuring factual accuracy and neutrality."
+msgstr  "Šis nurodymas sukuria išsamų Vikipedijos stiliaus straipsnį, paremtą "
+        "pažymėtu tekstu, užtikrindamas faktinį tikslumą ir neutralumą."
 
 #: ../recapdialog.lua:68
-msgid "Recap"
-msgstr "Santrauka"
+msgid   "Recap"
+msgstr  "Santrauka"
 
 #: ../settingsdialog.lua:26
-msgid "Assitant Settings"
-msgstr "Asistento nustatymai"
-
-#: ../settingsdialog.lua:43
-msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 Mėgaukitės KOReader su AI galia!"
+msgid   "Assitant Settings"
+msgstr  "Asistento nustatymai"
 
 #: ../settingsdialog.lua:53
-msgid "Always use stream mode"
-msgstr "Visada naudoti srauto režimą"
+msgid   "Always use stream mode"
+msgstr  "Visada naudoti srauto režimą"
 
-#: ../settingsdialog.lua:57
-msgid "Use AI Assistant for 'Translate'"
-msgstr "Naudoti AI asistentą „Versti“"
+#: ../settingsdialog.lua:58
+msgid   "Use AI Assistant for 'Translate'"
+msgstr  "Naudoti AI asistentą „Versti“"
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override enabled."
-msgstr "AI asistento perrašymas įjungtas."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override enabled."
+msgstr  "AI asistento perrašymas įjungtas."
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override disabled."
-msgstr "AI asistento perrašymas išjungtas."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override disabled."
+msgstr  "AI asistento perrašymas išjungtas."
 
-#: ../settingsdialog.lua:102
-msgid "Select the AI Model provider."
-msgstr "Pasirinkite AI modelio tiekėją."
+#: ../settingsdialog.lua:104
+msgid   "Select the AI Model provider."
+msgstr  "Pasirinkite AI modelio tiekėją."
 
-#: ../update_checker.lua:21
-msgid "Checking for updates..."
-msgstr "Tikrinami atnaujinimai..."
+#: ../update_checker.lua:22
+msgid   "Checking for updates..."
+msgstr  "Tikrinami atnaujinimai..."
 
-#: ../update_checker.lua:55
+#: ../update_checker.lua:56
 #, lua-format
-msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "Prieinama nauja %s įskiepio versija (%s). Prašome atnaujinti!"
+msgid   "A new version of the %s plugin (%s) is available. Please update!"
+msgstr  "Prieinama nauja %s įskiepio versija (%s). Prašome atnaujinti!"

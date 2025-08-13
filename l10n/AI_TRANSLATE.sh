@@ -88,8 +88,8 @@ LANG_CODE="$1"
   exit 1
 }
 
-[[ -v OPENAI_API_KEY ]] || {
-  echo "Error: OPENAI_API_KEY environment variable not set." >&2
+[[ -v API_KEY ]] || {
+  echo "Error: API_KEY environment variable not set." >&2
   exit 1
 }
 
@@ -97,12 +97,30 @@ LANG_FULLNAME="${LANG_MAP["$LANG_CODE"]}"
 PROMPT="${PROMPT_TEMPLATE//__YOUR_LANGUAGE__/$LANG_FULLNAME}"
 # -------------------- Create directory --------------------
 mkdir -p "$LANG_CODE"
+TRANSLATED_FILE="$LANG_CODE/koreader.po"
+UNTRANSLATED_FILE="$LANG_CODE/untranslated.po"
+UPDATED_TRANSLATED_FILE="$LANG_CODE/updated_translated.po"
+
+INPUTFILE=
+OUTPUTFILE=
+
+if [[ ! -f "$TRANSLATED_FILE" ]]; then
+  OUTPUTFILE=$TRANSLATED_FILE
+  INPUTFILE=$TEMPLATE_FILE
+elif [[ -f $TRANSLATED_FILE ]] && [[ -f $UNTRANSLATED_FILE ]]; then
+  OUTPUTFILE=$UPDATED_TRANSLATED_FILE
+  INPUTFILE=$UNTRANSLATED_FILE
+else
+  echo "file incorrect"
+  exit 1
+fi
+
 
 # -------------------- Build payload for API request --------------------
 PAYLOAD=$(jq -n \
   --arg model "${API_MODEL}" \
   --arg content "$PROMPT" \
-  --rawfile file_content "$TEMPLATE_FILE" \
+  --rawfile file_content "$INPUTFILE" \
   '{
      model: $model,
      messages: [
@@ -119,6 +137,6 @@ RESPONSE=$(curl -sSf -X POST "$API_ENDPOINT" \
 
 # -------------------- Extract and save result --------------------
 echo "$RESPONSE" | jq -r '.choices[0].message.content' \
-  > "$LANG_CODE/koreader.po"
+  > "$OUTPUTFILE"
 
 echo "Translation completed for $LANG_CODE ($LANG_FULLNAME)."

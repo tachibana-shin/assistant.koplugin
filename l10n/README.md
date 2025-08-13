@@ -31,6 +31,20 @@ Save the generated file content to `LANG_CODE/koreader.ko`
 
 Most translation files in the directory are generated with a script `AI_TRANSLATE.sh` with an API, which automates the above process.
 
+### Update
+
+When source code changes, update the template, then generate the untranslated file, feed to the AI, merge the reuslt.
+
+```bash
+make pot
+make merge
+make genuntranslated
+make ai
+make mergeuntranslated
+make check
+make clean
+```
+
 ## Language abbr TABLE
 
 ```lua

@@ -4,405 +4,417 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-11 16:48+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: AI Generated (Model: GPT-4o, Version: 2024-05-13)\n"
-"Language: fa\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgid   ""
+msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
+        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: AI Generated (Model: GPT-4o, Version: 2024-05-13)\n"
+        "Language: fa\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
-msgid "Ask Another Question"
-msgstr "سؤال دیگری بپرسید"
+#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
+msgid   "AI Assistant"
+msgstr  "دستیار هوش مصنوعی"
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance KOReader's reading with AI Power."
+msgstr  "💡 خواندن در KOReader را با قدرت هوش مصنوعی ارتقا دهید."
+
+#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
+msgid   "Ask Another Question"
+msgstr  "سؤال دیگری بپرسید"
 
 #: ../chatgptviewer.lua:306
-msgid "Close"
-msgstr "بستن"
+msgid   "Close"
+msgstr  "بستن"
 
 #: ../chatgptviewer.lua:321
-msgid "Copy"
-msgstr "کپی"
+msgid   "Copy"
+msgstr  "کپی"
 
 #: ../chatgptviewer.lua:326
-msgid "Text copied to clipboard"
-msgstr "متن در حافظهٔ موقت کپی شد"
+msgid   "Text copied to clipboard"
+msgstr  "متن در حافظهٔ موقت کپی شد"
 
 #: ../chatgptviewer.lua:340
-msgid "Add Note"
-msgstr "افزودن یادداشت"
+msgid   "Add Note"
+msgstr  "افزودن یادداشت"
 
 #: ../chatgptviewer.lua:347
-msgid "Highlight functionality not available"
-msgstr "عملکرد برجسته‌سازی در دسترس نیست"
+msgid   "Highlight functionality not available"
+msgstr  "عملکرد برجسته‌سازی در دسترس نیست"
 
 #: ../chatgptviewer.lua:356
-msgid "No text to add as note"
-msgstr "متنی برای افزودن به‌عنوان یادداشت وجود ندارد"
+msgid   "No text to add as note"
+msgstr  "متنی برای افزودن به‌عنوان یادداشت وجود ندارد"
 
 #: ../chatgptviewer.lua:385
-msgid "No text left to add as note"
-msgstr "متن باقی‌مانده‌ای برای افزودن به‌عنوان یادداشت وجود ندارد"
+msgid   "No text left to add as note"
+msgstr  "متن باقی‌مانده‌ای برای افزودن به‌عنوان یادداشت وجود ندارد"
 
 #: ../chatgptviewer.lua:398
-msgid "Note added successfully"
-msgstr "یادداشت با موفقیت افزوده شد"
+msgid   "Note added successfully"
+msgstr  "یادداشت با موفقیت افزوده شد"
 
-#: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
-msgid "Cancel"
-msgstr "لغو"
+#: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
+msgid   "Cancel"
+msgstr  "لغو"
 
-#: ../chatgptviewer.lua:578 ../dialogs.lua:265
-msgid "Ask"
-msgstr "بپرس"
+#: ../chatgptviewer.lua:577 ../dialogs.lua:267
+msgid   "Ask"
+msgstr  "بپرس"
 
-#: ../chatgptviewer.lua:584 ../dialogs.lua:271
-msgid "Enter a question before proceeding."
-msgstr "قبل از ادامه یک سؤال وارد کنید."
+#: ../chatgptviewer.lua:583 ../dialogs.lua:273
+msgid   "Enter a question before proceeding."
+msgstr  "قبل از ادامه یک سؤال وارد کنید."
 
-#: ../chatgptviewer.lua:632
-msgid "Type your question here"
-msgstr "سؤال خود را اینجا بنویسید"
+#: ../chatgptviewer.lua:631
+msgid   "Type your question here"
+msgstr  "سؤال خود را اینجا بنویسید"
+
+#: ../chatgptviewer.lua:782
+msgid   "Word copied to clipboard."
+msgstr  "کلمه در حافظهٔ موقت کپی شد."
 
 #: ../chatgptviewer.lua:783
-msgid "Word copied to clipboard."
-msgstr "کلمه در حافظهٔ موقت کپی شد."
+msgid   "Selection copied to clipboard."
+msgstr  "انتخاب‌شده در حافظهٔ موقت کپی شد."
 
-#: ../chatgptviewer.lua:784
-msgid "Selection copied to clipboard."
-msgstr "انتخاب‌شده در حافظهٔ موقت کپی شد."
+#: ../dialogs.lua:83
+msgid   "(Empty message)"
+msgstr  "(پیام خالی)"
 
-#: ../dialogs.lua:81
-msgid "(Empty message)"
-msgstr "(پیام خالی)"
+#: ../dialogs.lua:87
+msgid   "(No response)"
+msgstr  "(بدون پاسخ)"
 
-#: ../dialogs.lua:85
-msgid "(No response)"
-msgstr "(بدون پاسخ)"
+#: ../dialogs.lua:117
+msgid   "Highlighted text:"
+msgstr  "متن برجسته‌شده:"
 
-#: ../dialogs.lua:115
-msgid "Highlighted text:"
-msgstr "متن برجسته‌شده:"
-
-#: ../dialogs.lua:302
-msgid "Book Analysis"
-msgstr "تحلیل کتاب"
-
-#: ../dialogs.lua:340
-msgid "Remove"
-msgstr "حذف"
-
-#: ../dialogs.lua:340
-msgid "Add"
-msgstr "افزودن"
+#: ../dialogs.lua:304
+msgid   "Book Analysis"
+msgstr  "تحلیل کتاب"
 
 #: ../dialogs.lua:341
-msgid "Remove this button from the Main Highlight Menu?"
-msgstr "آیا این دکمه از منوی برجسته‌سازی اصلی حذف شود؟"
+msgid   "Add this button to the Main Highlight Menu?"
+msgstr  "آیا این دکمه به منوی برجسته‌سازی اصلی افزوده شود؟"
 
-#: ../dialogs.lua:341
-msgid "Add this button to the Main Highlight Menu?"
-msgstr "آیا این دکمه به منوی برجسته‌سازی اصلی افزوده شود؟"
+#: ../dialogs.lua:342
+msgid   "Add"
+msgstr  "افزودن"
 
-#: ../dialogs.lua:353
+#: ../dialogs.lua:368
+msgid   "Ask a question about the highlighted text"
+msgstr  "دربارهٔ متن برجسته‌شده سؤال بپرسید"
+
+#: ../dialogs.lua:369
 #, lua-format
-msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "[%s (AI)] به منوی برجسته‌سازی اصلی افزوده شد."
+msgid   "Ask a question about this book:\n"
+        "%s by %s"
+msgstr  "دربارهٔ این کتاب سؤال بپرسید:\n"
+        "%s نوشتهٔ %s"
 
-#: ../dialogs.lua:356
-#, lua-format
-msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "[%s (AI)] از منوی برجسته‌سازی اصلی حذف شد."
+#: ../dialogs.lua:372
+msgid   "Type your question here..."
+msgstr  "سؤال خود را اینجا بنویسید..."
 
-#: ../dialogs.lua:389
-msgid "Ask a question about the highlighted text"
-msgstr "دربارهٔ متن برجسته‌شده سؤال بپرسید"
+#: ../dialogs.lua:373
+msgid   "Ask anything about this book..."
+msgstr  "هر چیزی دربارهٔ این کتاب بپرسید..."
 
-#: ../dialogs.lua:390
-#, lua-format
-msgid ""
-"Ask a question about this book:\n"
-"%s by %s"
-msgstr ""
-"دربارهٔ این کتاب سؤال بپرسید:\n"
-"%s نوشتهٔ %s"
-
-#: ../dialogs.lua:393
-msgid "Type your question here..."
-msgstr "سؤال خود را اینجا بنویسید..."
-
-#: ../dialogs.lua:394
-msgid "Ask anything about this book..."
-msgstr "هر چیزی دربارهٔ این کتاب بپرسید..."
-
-#: ../dialogs.lua:397 ../_meta.lua:4
-msgid "AI Assistant"
-msgstr "دستیار هوش مصنوعی"
-
-#: ../dialogs.lua:448
-msgid "Error: No response received"
-msgstr "خطا: پاسخی دریافت نشد"
+#: ../dialogs.lua:427
+msgid   "Error: No response received"
+msgstr  "خطا: پاسخی دریافت نشد"
 
 #: ../dictdialog.lua:28
-msgid "AI Dictionary"
-msgstr "فرهنگ لغت هوش مصنوعی"
+msgid   "AI Dictionary"
+msgstr  "فرهنگ لغت هوش مصنوعی"
 
 #: ../dictdialog.lua:29
-msgid "Enter a word to look up..."
-msgstr "کلمه‌ای را برای جست‌وجو وارد کنید..."
+msgid   "Enter a word to look up..."
+msgstr  "کلمه‌ای را برای جست‌وجو وارد کنید..."
 
 #: ../dictdialog.lua:40
-msgid "Look Up"
-msgstr "جست‌وجو"
+msgid   "Look Up"
+msgstr  "جست‌وجو"
 
-#: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
-msgid "Dictionary"
-msgstr "فرهنگ لغت"
+#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+msgid   "Dictionary"
+msgstr  "فرهنگ لغت"
 
-#: ../gpt_query.lua:46
-msgid "No configuration found. Please set up configuration.lua"
-msgstr "پیکربندی‌ای یافت نشد. لطفاً configuration.lua را تنظیم کنید"
-
-#: ../gpt_query.lua:56
+#: ../gpt_query.lua:52
 #, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"تنظیمات ارائه‌دهنده برای %s یافت نشد. لطفاً فایل configuration.lua را بررسی "
-"کنید."
+msgid   "Provider settings not found for: %s. Please check your configuration."
+        "lua file."
+msgstr  "تنظیمات ارائه‌دهنده برای %s یافت نشد. لطفاً فایل configuration.lua را "
+        "بررسی کنید."
+
+#: ../gpt_query.lua:74
+#, lua-format
+msgid   "Handler not found for: %s. Please ensure the handler exists in "
+        "api_handlers directory."
+msgstr  "Handler برای %s یافت نشد. لطفاً مطمئن شوید که در پوشهٔ api_handlers "
+        "وجود دارد."
 
 #: ../gpt_query.lua:78
 #, lua-format
-msgid ""
-"Handler not found for: %s. Please ensure the handler exists in api_handlers "
-"directory."
-msgstr ""
-"Handler برای %s یافت نشد. لطفاً مطمئن شوید که در پوشهٔ api_handlers وجود دارد."
+msgid   "No provider set in configuration.lua. Please set the provider and "
+        "provider_settings for %s."
+msgstr  "هیچ ارائه‌دهنده‌ای در configuration.lua تنظیم نشده است. لطفاً provider "
+        "و provider_settings را برای %s تنظیم کنید."
 
-#: ../gpt_query.lua:82
+#: ../gpt_query.lua:122
+msgid   "Querying AI ..."
+msgstr  "در حال پرس‌وجو از هوش مصنوعی..."
+
+#: ../gpt_query.lua:138
+msgid   "AI Responding"
+msgstr  "هوش مصنوعی در حال پاسخ‌گویی"
+
+#: ../gpt_query.lua:140
 #, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"هیچ ارائه‌دهنده‌ای در configuration.lua تنظیم نشده است. لطفاً provider و "
-"provider_settings را برای %s تنظیم کنید."
+msgid   "☁ %s/%s"
+msgstr  "☁ %s/%s"
 
-#: ../gpt_query.lua:126
-msgid "Querying AI ..."
-msgstr "در حال پرس‌وجو از هوش مصنوعی..."
+#: ../gpt_query.lua:153
+msgid   "⏹ Stop"
+msgstr  "⏹ توقف"
 
-#: ../gpt_query.lua:141
-msgid "AI Responding"
-msgstr "هوش مصنوعی در حال پاسخ‌گویی"
+#: ../gpt_query.lua:174
+msgid   "Stream interrupted by user."
+msgstr  "استریم توسط کاربر قطع شد."
 
-#: ../gpt_query.lua:143
+#: ../main.lua:73
+msgid   "Ask AI Question"
+msgstr  "سؤال از هوش مصنوعی بپرسید"
+
+#: ../main.lua:82
+msgid   "AI Recap"
+msgstr  "خلاصهٔ هوش مصنوعی"
+
+#: ../main.lua:91
+msgid   "Assistant Settings"
+msgstr  "تنظیمات دستیار"
+
+#: ../main.lua:190
+msgid   "Configuration Error.\n"
+        "Please set up configuration.lua.\n"
+        "\n"
+msgstr  "خطای پیکربندی.\n"
+        "لطفاً فایل configuration.lua را تنظیم کنید.\n"
+        "\n"
+
+#: ../main.lua:217
+msgid   "Useful Tips:\n"
+        "\n"
+        "Long Press:\n"
+        "- On a Prompt Button: Add to the main highlight menu.\n"
+        "- On a main highlight menu button to remove it.\n"
+        "\n"
+        "Very Long Press (more than 3 seconds):\n"
+        "On a single word to show the highlight menu (instead of the "
+        "dictionary).\n"
+        "\n"
+        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "On the result dialog to close (as the Close button is far to "
+        "reach).\n"
+msgstr  "نکات مفید:\n"
+        "\n"
+        "فشار طولانی:\n"
+        "- روی دکمهٔ درخواست: افزودن به منوی برجستهٔ اصلی.\n"
+        "- روی دکمهٔ منوی برجستهٔ اصلی برای حذف آن.\n"
+        "\n"
+        "فشار بسیار طولانی (بیش از ۳ ثانیه):\n"
+        "روی یک کلمهٔ واحد برای نمایش منوی برجسته (به‌جای فرهنگ‌نامه).\n"
+        "\n"
+        "سوایپ چندگانه (مانند ⮠، ⮡، ↺):\n"
+        "روی پنجرهٔ نتیجه برای بستن (چون دکمهٔ بستن دور است).\n"
+
+#: ../main.lua:290
 #, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
+msgid   "Do you want an AI Recap?\n"
+        "For %s by %s.\n"
+        "Last read %.0f hours ago."
+msgstr  "آیا می‌خواهید خلاصهٔ هوش مصنوعی دریافت کنید؟\n"
+        "برای %s نوشتهٔ %s.\n"
+        "آخرین بار %.0f ساعت پیش خوانده شده است."
 
-#: ../gpt_query.lua:156
-msgid "⏹ Stop"
-msgstr "⏹ توقف"
+#: ../main.lua:295
+msgid   "Yes"
+msgstr  "بله"
 
-#: ../gpt_query.lua:177
-msgid "Stream interrupted by user."
-msgstr "استریم توسط کاربر قطع شد."
+#: ../main.lua:304
+msgid   "No"
+msgstr  "خیر"
 
-#: ../main.lua:50
-msgid "Ask AI Question"
-msgstr "سؤال از هوش مصنوعی بپرسید"
-
-#: ../main.lua:59
-msgid "AI Recap"
-msgstr "خلاصهٔ هوش مصنوعی"
-
-#: ../main.lua:68
-msgid "Assistant Settings"
-msgstr "تنظیمات دستیار"
-
-#: ../main.lua:163
-msgid "Assistant"
-msgstr "دستیار"
-
-#: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
-msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "پیکربندی یافت نشد. لطفاً ابتدا configuration.lua را تنظیم کنید."
-
-#: ../main.lua:237
+#: ../main.lua:364
 #, lua-format
-msgid ""
-"Do you want an AI Recap?\n"
-"For %s by %s.\n"
-"Last read %.0f hours ago."
-msgstr ""
-"آیا می‌خواهید خلاصهٔ هوش مصنوعی دریافت کنید؟\n"
-"برای %s نوشتهٔ %s.\n"
-"آخرین بار %.0f ساعت پیش خوانده شده است."
+msgid   "Remove [%s] from the Main Highlight Menu?"
+msgstr  "[%s] از منوی برجستهٔ اصلی حذف شود؟"
 
-#: ../main.lua:242
-msgid "Yes"
-msgstr "بله"
+#: ../main.lua:365
+msgid   "Remove"
+msgstr  "حذف"
 
-#: ../main.lua:251
-msgid "No"
-msgstr "خیر"
+#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+msgid   "Configuration not found. Please set up configuration.lua first."
+msgstr  "پیکربندی یافت نشد. لطفاً ابتدا configuration.lua را تنظیم کنید."
 
-#: ../main.lua:368
-msgid "AI Recap feature is not enabled in configuration."
-msgstr "ویژگی خلاصهٔ هوش مصنوعی در پیکربندی فعال نشده است."
+#: ../main.lua:429
+msgid   "AI Recap feature is not enabled in configuration."
+msgstr  "ویژگی خلاصهٔ هوش مصنوعی در پیکربندی فعال نشده است."
 
-#: ../_meta.lua:5
-msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "تجربهٔ خواندن KOReader را با قدرت هوش مصنوعی ارتقا دهید."
+#: ../main.lua:517
+msgid   "Added [%1 (AI)] to Main Highlight Menu."
+msgstr  "[%1 (AI)] به منوی برجستهٔ اصلی افزوده شد."
+
+#: ../main.lua:526
+#, lua-format
+msgid   "Removed [%s (AI)] from Main Highlight Menu."
+msgstr  "[%s (AI)] از منوی برجسته‌سازی اصلی حذف شد."
 
 #: ../prompts.lua:20
-msgid ""
-"This prompt act as a dictionary for the highlighted text, to a word or "
-"phrase."
-msgstr ""
-"این پرامپت مانند یک فرهنگ لغت برای متن برجسته‌شده، یک کلمه یا عبارت عمل می‌کند."
+msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+        "or phrase."
+msgstr  "این پرامپت مانند یک فرهنگ لغت برای متن برجسته‌شده، یک کلمه یا عبارت "
+        "عمل می‌کند."
 
 #: ../prompts.lua:25
-msgid "Translate"
-msgstr "ترجمه"
+msgid   "Translate"
+msgstr  "ترجمه"
 
 #: ../prompts.lua:26
-msgid "This prompt translates the highlighted text to another language."
-msgstr "این پرامپت متن برجسته‌شده را به زبان دیگری ترجمه می‌کند."
+msgid   "This prompt translates the highlighted text to another language."
+msgstr  "این پرامپت متن برجسته‌شده را به زبان دیگری ترجمه می‌کند."
 
 #: ../prompts.lua:48
-msgid "Simplify"
-msgstr "ساده‌سازی"
+msgid   "Simplify"
+msgstr  "ساده‌سازی"
 
 #: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "این پرامپت متن برجسته‌شده را ساده می‌کند تا درک آن آسان‌تر شود."
+msgid   "This prompt simplifies the highlighted text to make it easier to "
+        "understand."
+msgstr  "این پرامپت متن برجسته‌شده را ساده می‌کند تا درک آن آسان‌تر شود."
 
 #: ../prompts.lua:60
-msgid "Explain"
-msgstr "توضیح"
+msgid   "Explain"
+msgstr  "توضیح"
 
 #: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr "این پرامپت متن برجسته‌شده را به‌طور مفصل توضیح می‌دهد تا وضوح و درک حاصل شود."
+msgid   "This prompt explains the highlighted text in detail, ensuring "
+        "clarity and understanding."
+msgstr  "این پرامپت متن برجسته‌شده را به‌طور مفصل توضیح می‌دهد تا وضوح و درک "
+        "حاصل شود."
 
 #: ../prompts.lua:73
-msgid "Summarize"
-msgstr "خلاصه‌سازی"
+msgid   "Summarize"
+msgstr  "خلاصه‌سازی"
 
 #: ../prompts.lua:75
-msgid ""
-"This prompt summarizes the highlighted text, capturing its main points and "
-"essential details."
-msgstr "این پرامپت متن برجسته‌شده را خلاصه می‌کند و نکات اصلی و جزئیات ضروری را در بر می‌گیرد."
+msgid   "This prompt summarizes the highlighted text, capturing its main "
+        "points and essential details."
+msgstr  "این پرامپت متن برجسته‌شده را خلاصه می‌کند و نکات اصلی و جزئیات ضروری "
+        "را در بر می‌گیرد."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "زمینهٔ تاریخی"
+msgid   "Historical Context"
+msgstr  "زمینهٔ تاریخی"
 
 #: ../prompts.lua:86
-msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
-msgstr "این پرامپت زمینهٔ تاریخی دقیقی برای متن برجسته‌شده فراهم می‌کند و اهمیت و پیشینهٔ آن را توضیح می‌دهد."
+msgid   "This prompt provides a detailed historical context for the "
+        "highlighted text, explaining its significance and background."
+msgstr  "این پرامپت زمینهٔ تاریخی دقیقی برای متن برجسته‌شده فراهم می‌کند و اهمیت "
+        "و پیشینهٔ آن را توضیح می‌دهد."
 
 #: ../prompts.lua:90
-msgid "Key Points"
-msgstr "نکات کلیدی"
+msgid   "Key Points"
+msgstr  "نکات کلیدی"
 
 #: ../prompts.lua:92
-msgid ""
-"This prompt extracts and lists the key points from the highlighted text, "
-"ensuring clarity and organization."
-msgstr "این پرامپت نکات کلیدی را از متن برجسته‌شده استخراج کرده و به‌صورت منظم فهرست می‌کند."
+msgid   "This prompt extracts and lists the key points from the highlighted "
+        "text, ensuring clarity and organization."
+msgstr  "این پرامپت نکات کلیدی را از متن برجسته‌شده استخراج کرده و به‌صورت منظم "
+        "فهرست می‌کند."
 
 #: ../prompts.lua:96
-msgid "ELI5"
-msgstr "توضیح ساده"
+msgid   "ELI5"
+msgstr  "توضیح ساده"
 
 #: ../prompts.lua:98
-msgid ""
-"This prompt explains the highlighted text as if to a five-year-old, "
-"simplifying complex concepts into easily understandable terms."
-msgstr "این پرامپت متن برجسته‌شده را طوری توضیح می‌دهد که انگار برای یک کودک پنج‌ساله است؛ مفاهیم پیچیده را به زبان ساده بیان می‌کند."
+msgid   "This prompt explains the highlighted text as if to a five-year-old, "
+        "simplifying complex concepts into easily understandable terms."
+msgstr  "این پرامپت متن برجسته‌شده را طوری توضیح می‌دهد که انگار برای یک کودک "
+        "پنج‌ساله است؛ مفاهیم پیچیده را به زبان ساده بیان می‌کند."
 
 #: ../prompts.lua:102
-msgid "Grammar"
-msgstr "دستور زبان"
+msgid   "Grammar"
+msgstr  "دستور زبان"
 
 #: ../prompts.lua:104
-msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
-msgstr "این پرامپت دستور زبان متن برجسته‌شده را تحلیل کرده و ساختار و هرگونه خطای دستوری را به‌طور مفصل توضیح می‌دهد."
+msgid   "This prompt analyzes the grammar of the highlighted text, providing "
+        "a detailed explanation of its structure and any grammatical errors."
+msgstr  "این پرامپت دستور زبان متن برجسته‌شده را تحلیل کرده و ساختار و هرگونه "
+        "خطای دستوری را به‌طور مفصل توضیح می‌دهد."
 
 #: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "واژگان"
+msgid   "Vocabulary"
+msgstr  "واژگان"
 
 #: ../prompts.lua:111
-msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
-msgstr "این پرامپت واژگان متن برجسته‌شده را تحلیل کرده، کلمات پیچیده را شناسایی کرده و تعاریف، مترادف‌ها و مثال‌های کاربردی ارائه می‌دهد."
+msgid   "This prompt analyzes the vocabulary of the highlighted text, "
+        "identifying complex words and providing definitions, synonyms, and "
+        "usage examples."
+msgstr  "این پرامپت واژگان متن برجسته‌شده را تحلیل کرده، کلمات پیچیده را "
+        "شناسایی کرده و تعاریف، مترادف‌ها و مثال‌های کاربردی ارائه می‌دهد."
 
 #: ../prompts.lua:127
-msgid "Wikipedia"
-msgstr "ویکی‌پدیا"
+msgid   "Wikipedia"
+msgstr  "ویکی‌پدیا"
 
 #: ../prompts.lua:129
-msgid ""
-"This prompt generates a comprehensive Wikipedia-style article based on the "
-"highlighted text, ensuring factual accuracy and neutrality."
-msgstr "این پرامپت مقاله‌ای جامع به سبک ویکی‌پدیا بر اساس متن برجسته‌شده تولید می‌کند و دقت حقایق و بی‌طرفی را تضمین می‌کند."
+msgid   "This prompt generates a comprehensive Wikipedia-style article based "
+        "on the highlighted text, ensuring factual accuracy and neutrality."
+msgstr  "این پرامپت مقاله‌ای جامع به سبک ویکی‌پدیا بر اساس متن برجسته‌شده تولید "
+        "می‌کند و دقت حقایق و بی‌طرفی را تضمین می‌کند."
 
 #: ../recapdialog.lua:68
-msgid "Recap"
-msgstr "خلاصه"
+msgid   "Recap"
+msgstr  "خلاصه"
 
 #: ../settingsdialog.lua:26
-msgid "Assitant Settings"
-msgstr "تنظیمات دستیار"
-
-#: ../settingsdialog.lua:43
-msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 از KOReader با قدرت هوش مصنوعی لذت ببرید!"
+msgid   "Assitant Settings"
+msgstr  "تنظیمات دستیار"
 
 #: ../settingsdialog.lua:53
-msgid "Always use stream mode"
-msgstr "همیشه از حالت استریم استفاده شود"
+msgid   "Always use stream mode"
+msgstr  "همیشه از حالت استریم استفاده شود"
 
-#: ../settingsdialog.lua:57
-msgid "Use AI Assistant for 'Translate'"
-msgstr "استفاده از دستیار هوش مصنوعی برای 'ترجمه'"
+#: ../settingsdialog.lua:58
+msgid   "Use AI Assistant for 'Translate'"
+msgstr  "استفاده از دستیار هوش مصنوعی برای 'ترجمه'"
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override enabled."
-msgstr "لغو دستیار هوش مصنوعی فعال شد."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override enabled."
+msgstr  "لغو دستیار هوش مصنوعی فعال شد."
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override disabled."
-msgstr "لغو دستیار هوش مصنوعی غیرفعال شد."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override disabled."
+msgstr  "لغو دستیار هوش مصنوعی غیرفعال شد."
 
-#: ../settingsdialog.lua:102
-msgid "Select the AI Model provider."
-msgstr "ارائه‌دهندهٔ مدل هوش مصنوعی را انتخاب کنید."
+#: ../settingsdialog.lua:104
+msgid   "Select the AI Model provider."
+msgstr  "ارائه‌دهندهٔ مدل هوش مصنوعی را انتخاب کنید."
 
-#: ../update_checker.lua:21
-msgid "Checking for updates..."
-msgstr "در حال بررسی به‌روزرسانی‌ها..."
+#: ../update_checker.lua:22
+msgid   "Checking for updates..."
+msgstr  "در حال بررسی به‌روزرسانی‌ها..."
 
-#: ../update_checker.lua:55
+#: ../update_checker.lua:56
 #, lua-format
-msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "نسخهٔ جدیدی از افزونهٔ %s (%s) در دسترس است. لطفاً به‌روزرسانی کنید!"
+msgid   "A new version of the %s plugin (%s) is available. Please update!"
+msgstr  "نسخهٔ جدیدی از افزونهٔ %s (%s) در دسترس است. لطفاً به‌روزرسانی کنید!"
