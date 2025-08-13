@@ -4,425 +4,423 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-11 16:48+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: AI Generated (Model: gpt-4o, Version: 2024-05-13)\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgid   ""
+msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
+        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: AI Generated (Model: gpt-4o, Version: 2024-05-13)\n"
+        "Language: nl\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
-msgid "Ask Another Question"
-msgstr "Stel nog een vraag"
+#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
+msgid   "AI Assistant"
+msgstr  "AI-assistent"
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance KOReader's reading with AI Power."
+msgstr  "💡 Verbeter het lezen in KOReader met AI-kracht."
+
+#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
+msgid   "Ask Another Question"
+msgstr  "Stel nog een vraag"
 
 #: ../chatgptviewer.lua:306
-msgid "Close"
-msgstr "Sluiten"
+msgid   "Close"
+msgstr  "Sluiten"
 
 #: ../chatgptviewer.lua:321
-msgid "Copy"
-msgstr "Kopiëren"
+msgid   "Copy"
+msgstr  "Kopiëren"
 
 #: ../chatgptviewer.lua:326
-msgid "Text copied to clipboard"
-msgstr "Tekst gekopieerd naar klembord"
+msgid   "Text copied to clipboard"
+msgstr  "Tekst gekopieerd naar klembord"
 
 #: ../chatgptviewer.lua:340
-msgid "Add Note"
-msgstr "Notitie toevoegen"
+msgid   "Add Note"
+msgstr  "Notitie toevoegen"
 
 #: ../chatgptviewer.lua:347
-msgid "Highlight functionality not available"
-msgstr "Markeerfunctie niet beschikbaar"
+msgid   "Highlight functionality not available"
+msgstr  "Markeerfunctie niet beschikbaar"
 
 #: ../chatgptviewer.lua:356
-msgid "No text to add as note"
-msgstr "Geen tekst om als notitie toe te voegen"
+msgid   "No text to add as note"
+msgstr  "Geen tekst om als notitie toe te voegen"
 
 #: ../chatgptviewer.lua:385
-msgid "No text left to add as note"
-msgstr "Geen tekst meer om als notitie toe te voegen"
+msgid   "No text left to add as note"
+msgstr  "Geen tekst meer om als notitie toe te voegen"
 
 #: ../chatgptviewer.lua:398
-msgid "Note added successfully"
-msgstr "Notitie succesvol toegevoegd"
+msgid   "Note added successfully"
+msgstr  "Notitie succesvol toegevoegd"
 
-#: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
-msgid "Cancel"
-msgstr "Annuleren"
+#: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
+msgid   "Cancel"
+msgstr  "Annuleren"
 
-#: ../chatgptviewer.lua:578 ../dialogs.lua:265
-msgid "Ask"
-msgstr "Vragen"
+#: ../chatgptviewer.lua:577 ../dialogs.lua:267
+msgid   "Ask"
+msgstr  "Vragen"
 
-#: ../chatgptviewer.lua:584 ../dialogs.lua:271
-msgid "Enter a question before proceeding."
-msgstr "Voer een vraag in voordat u verdergaat."
+#: ../chatgptviewer.lua:583 ../dialogs.lua:273
+msgid   "Enter a question before proceeding."
+msgstr  "Voer een vraag in voordat u verdergaat."
 
-#: ../chatgptviewer.lua:632
-msgid "Type your question here"
-msgstr "Typ hier uw vraag"
+#: ../chatgptviewer.lua:631
+msgid   "Type your question here"
+msgstr  "Typ hier uw vraag"
+
+#: ../chatgptviewer.lua:782
+msgid   "Word copied to clipboard."
+msgstr  "Woord gekopieerd naar klembord."
 
 #: ../chatgptviewer.lua:783
-msgid "Word copied to clipboard."
-msgstr "Woord gekopieerd naar klembord."
+msgid   "Selection copied to clipboard."
+msgstr  "Selectie gekopieerd naar klembord."
 
-#: ../chatgptviewer.lua:784
-msgid "Selection copied to clipboard."
-msgstr "Selectie gekopieerd naar klembord."
+#: ../dialogs.lua:83
+msgid   "(Empty message)"
+msgstr  "(Leeg bericht)"
 
-#: ../dialogs.lua:81
-msgid "(Empty message)"
-msgstr "(Leeg bericht)"
+#: ../dialogs.lua:87
+msgid   "(No response)"
+msgstr  "(Geen antwoord)"
 
-#: ../dialogs.lua:85
-msgid "(No response)"
-msgstr "(Geen antwoord)"
+#: ../dialogs.lua:117
+msgid   "Highlighted text:"
+msgstr  "Gemarkeerde tekst:"
 
-#: ../dialogs.lua:115
-msgid "Highlighted text:"
-msgstr "Gemarkeerde tekst:"
-
-#: ../dialogs.lua:302
-msgid "Book Analysis"
-msgstr "Boekanalyse"
-
-#: ../dialogs.lua:340
-msgid "Remove"
-msgstr "Verwijderen"
-
-#: ../dialogs.lua:340
-msgid "Add"
-msgstr "Toevoegen"
+#: ../dialogs.lua:304
+msgid   "Book Analysis"
+msgstr  "Boekanalyse"
 
 #: ../dialogs.lua:341
-msgid "Remove this button from the Main Highlight Menu?"
-msgstr "Deze knop verwijderen uit het Hoofdmarkeermenu?"
+msgid   "Add this button to the Main Highlight Menu?"
+msgstr  "Deze knop toevoegen aan het Hoofdmarkeermenu?"
 
-#: ../dialogs.lua:341
-msgid "Add this button to the Main Highlight Menu?"
-msgstr "Deze knop toevoegen aan het Hoofdmarkeermenu?"
+#: ../dialogs.lua:342
+msgid   "Add"
+msgstr  "Toevoegen"
 
-#: ../dialogs.lua:353
+#: ../dialogs.lua:368
+msgid   "Ask a question about the highlighted text"
+msgstr  "Stel een vraag over de gemarkeerde tekst"
+
+#: ../dialogs.lua:369
 #, lua-format
-msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "[%s (AI)] toegevoegd aan het Hoofdmarkeermenu."
+msgid   "Ask a question about this book:\n"
+        "%s by %s"
+msgstr  "Stel een vraag over dit boek:\n"
+        "%s van %s"
 
-#: ../dialogs.lua:356
-#, lua-format
-msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "[%s (AI)] verwijderd uit het Hoofdmarkeermenu."
+#: ../dialogs.lua:372
+msgid   "Type your question here..."
+msgstr  "Typ hier uw vraag..."
 
-#: ../dialogs.lua:389
-msgid "Ask a question about the highlighted text"
-msgstr "Stel een vraag over de gemarkeerde tekst"
+#: ../dialogs.lua:373
+msgid   "Ask anything about this book..."
+msgstr  "Stel alles over dit boek..."
 
-#: ../dialogs.lua:390
-#, lua-format
-msgid ""
-"Ask a question about this book:\n"
-"%s by %s"
-msgstr ""
-"Stel een vraag over dit boek:\n"
-"%s van %s"
-
-#: ../dialogs.lua:393
-msgid "Type your question here..."
-msgstr "Typ hier uw vraag..."
-
-#: ../dialogs.lua:394
-msgid "Ask anything about this book..."
-msgstr "Stel alles over dit boek..."
-
-#: ../dialogs.lua:397 ../_meta.lua:4
-msgid "AI Assistant"
-msgstr "AI-assistent"
-
-#: ../dialogs.lua:448
-msgid "Error: No response received"
-msgstr "Fout: geen antwoord ontvangen"
+#: ../dialogs.lua:427
+msgid   "Error: No response received"
+msgstr  "Fout: geen antwoord ontvangen"
 
 #: ../dictdialog.lua:28
-msgid "AI Dictionary"
-msgstr "AI-woordenboek"
+msgid   "AI Dictionary"
+msgstr  "AI-woordenboek"
 
 #: ../dictdialog.lua:29
-msgid "Enter a word to look up..."
-msgstr "Voer een woord in om op te zoeken..."
+msgid   "Enter a word to look up..."
+msgstr  "Voer een woord in om op te zoeken..."
 
 #: ../dictdialog.lua:40
-msgid "Look Up"
-msgstr "Opzoeken"
+msgid   "Look Up"
+msgstr  "Opzoeken"
 
-#: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
-msgid "Dictionary"
-msgstr "Woordenboek"
+#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+msgid   "Dictionary"
+msgstr  "Woordenboek"
 
-#: ../gpt_query.lua:46
-msgid "No configuration found. Please set up configuration.lua"
-msgstr "Geen configuratie gevonden. Stel configuration.lua in."
-
-#: ../gpt_query.lua:56
+#: ../gpt_query.lua:52
 #, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"Providerinstellingen niet gevonden voor: %s. Controleer uw configuration.lua-"
-"bestand."
+msgid   "Provider settings not found for: %s. Please check your configuration."
+        "lua file."
+msgstr  "Providerinstellingen niet gevonden voor: %s. Controleer uw "
+        "configuration.lua-bestand."
+
+#: ../gpt_query.lua:74
+#, lua-format
+msgid   "Handler not found for: %s. Please ensure the handler exists in "
+        "api_handlers directory."
+msgstr  "Handler niet gevonden voor: %s. Zorg dat de handler bestaat in de "
+        "api_handlers-map."
 
 #: ../gpt_query.lua:78
 #, lua-format
-msgid ""
-"Handler not found for: %s. Please ensure the handler exists in api_handlers "
-"directory."
-msgstr ""
-"Handler niet gevonden voor: %s. Zorg dat de handler bestaat in de api_handlers-"
-"map."
+msgid   "No provider set in configuration.lua. Please set the provider and "
+        "provider_settings for %s."
+msgstr  "Geen provider ingesteld in configuration.lua. Stel de provider en "
+        "provider_settings in voor %s."
 
-#: ../gpt_query.lua:82
+#: ../gpt_query.lua:122
+msgid   "Querying AI ..."
+msgstr  "AI opvragen ..."
+
+#: ../gpt_query.lua:138
+msgid   "AI Responding"
+msgstr  "AI antwoordt"
+
+#: ../gpt_query.lua:140
 #, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"Geen provider ingesteld in configuration.lua. Stel de provider en "
-"provider_settings in voor %s."
+msgid   "☁ %s/%s"
+msgstr  "☁ %s/%s"
 
-#: ../gpt_query.lua:126
-msgid "Querying AI ..."
-msgstr "AI opvragen ..."
+#: ../gpt_query.lua:153
+msgid   "⏹ Stop"
+msgstr  "⏹ Stoppen"
 
-#: ../gpt_query.lua:141
-msgid "AI Responding"
-msgstr "AI antwoordt"
+#: ../gpt_query.lua:174
+msgid   "Stream interrupted by user."
+msgstr  "Stream onderbroken door gebruiker."
 
-#: ../gpt_query.lua:143
+#: ../main.lua:73
+msgid   "Ask AI Question"
+msgstr  "AI-vraag stellen"
+
+#: ../main.lua:82
+msgid   "AI Recap"
+msgstr  "AI-samenvatting"
+
+#: ../main.lua:91
+msgid   "Assistant Settings"
+msgstr  "Assistentinstellingen"
+
+#: ../main.lua:190
+msgid   "Configuration Error.\n"
+        "Please set up configuration.lua.\n"
+        "\n"
+msgstr  "Configuratiefout.\n"
+        "Stel configuration.lua in.\n"
+        "\n"
+
+#: ../main.lua:217
+msgid   "Useful Tips:\n"
+        "\n"
+        "Long Press:\n"
+        "- On a Prompt Button: Add to the main highlight menu.\n"
+        "- On a main highlight menu button to remove it.\n"
+        "\n"
+        "Very Long Press (more than 3 seconds):\n"
+        "On a single word to show the highlight menu (instead of the "
+        "dictionary).\n"
+        "\n"
+        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "On the result dialog to close (as the Close button is far to "
+        "reach).\n"
+msgstr  "Handige tips:\n"
+        "\n"
+        "Lange druk:\n"
+        "- Op een promptknop: toevoegen aan het hoofdmarkeermenu.\n"
+        "- Op een knop in het hoofdmarkeermenu om deze te verwijderen.\n"
+        "\n"
+        "Zeer lange druk (meer dan 3 seconden):\n"
+        "Op een enkel woord om het markeermenu te tonen (in plaats van het "
+        "woordenboek).\n"
+        "\n"
+        "Multi-swipe (zoals ⮠, ⮡, ↺):\n"
+        "Op het resultaatvenster om dit te sluiten (omdat de Sluit-knop "
+        "moeilijk bereikbaar is).\n"
+
+#: ../main.lua:290
 #, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
+msgid   "Do you want an AI Recap?\n"
+        "For %s by %s.\n"
+        "Last read %.0f hours ago."
+msgstr  "Wilt u een AI-samenvatting?\n"
+        "Voor %s van %s.\n"
+        "Laatst gelezen %.0f uur geleden."
 
-#: ../gpt_query.lua:156
-msgid "⏹ Stop"
-msgstr "⏹ Stoppen"
+#: ../main.lua:295
+msgid   "Yes"
+msgstr  "Ja"
 
-#: ../gpt_query.lua:177
-msgid "Stream interrupted by user."
-msgstr "Stream onderbroken door gebruiker."
+#: ../main.lua:304
+msgid   "No"
+msgstr  "Nee"
 
-#: ../main.lua:50
-msgid "Ask AI Question"
-msgstr "AI-vraag stellen"
-
-#: ../main.lua:59
-msgid "AI Recap"
-msgstr "AI-samenvatting"
-
-#: ../main.lua:68
-msgid "Assistant Settings"
-msgstr "Assistentinstellingen"
-
-#: ../main.lua:163
-msgid "Assistant"
-msgstr "Assistent"
-
-#: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
-msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "Configuratie niet gevonden. Stel eerst configuration.lua in."
-
-#: ../main.lua:237
+#: ../main.lua:364
 #, lua-format
-msgid ""
-"Do you want an AI Recap?\n"
-"For %s by %s.\n"
-"Last read %.0f hours ago."
-msgstr ""
-"Wilt u een AI-samenvatting?\n"
-"Voor %s van %s.\n"
-"Laatst gelezen %.0f uur geleden."
+msgid   "Remove [%s] from the Main Highlight Menu?"
+msgstr  "[%s] uit het hoofdmarkeermenu verwijderen?"
 
-#: ../main.lua:242
-msgid "Yes"
-msgstr "Ja"
+#: ../main.lua:365
+msgid   "Remove"
+msgstr  "Verwijderen"
 
-#: ../main.lua:251
-msgid "No"
-msgstr "Nee"
+#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+msgid   "Configuration not found. Please set up configuration.lua first."
+msgstr  "Configuratie niet gevonden. Stel eerst configuration.lua in."
 
-#: ../main.lua:368
-msgid "AI Recap feature is not enabled in configuration."
-msgstr "AI-samenvattingsfunctie is niet ingeschakeld in de configuratie."
+#: ../main.lua:429
+msgid   "AI Recap feature is not enabled in configuration."
+msgstr  "AI-samenvattingsfunctie is niet ingeschakeld in de configuratie."
 
-#: ../_meta.lua:5
-msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "Verbeter de leeservaring van KOReader met AI-kracht."
+#: ../main.lua:517
+msgid   "Added [%1 (AI)] to Main Highlight Menu."
+msgstr  "[%1 (AI)] toegevoegd aan het hoofdmarkeermenu."
+
+#: ../main.lua:526
+#, lua-format
+msgid   "Removed [%s (AI)] from Main Highlight Menu."
+msgstr  "[%s (AI)] verwijderd uit het Hoofdmarkeermenu."
 
 #: ../prompts.lua:20
-msgid ""
-"This prompt act as a dictionary for the highlighted text, to a word or "
-"phrase."
-msgstr ""
-"Deze prompt werkt als een woordenboek voor de gemarkeerde tekst, voor een "
-"woord of zinsdeel."
+msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+        "or phrase."
+msgstr  "Deze prompt werkt als een woordenboek voor de gemarkeerde tekst, "
+        "voor een woord of zinsdeel."
 
 #: ../prompts.lua:25
-msgid "Translate"
-msgstr "Vertalen"
+msgid   "Translate"
+msgstr  "Vertalen"
 
 #: ../prompts.lua:26
-msgid "This prompt translates the highlighted text to another language."
-msgstr "Deze prompt vertaalt de gemarkeerde tekst naar een andere taal."
+msgid   "This prompt translates the highlighted text to another language."
+msgstr  "Deze prompt vertaalt de gemarkeerde tekst naar een andere taal."
 
 #: ../prompts.lua:48
-msgid "Simplify"
-msgstr "Vereenvoudigen"
+msgid   "Simplify"
+msgstr  "Vereenvoudigen"
 
 #: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr ""
-"Deze prompt vereenvoudigt de gemarkeerde tekst om hem beter te begrijpen."
+msgid   "This prompt simplifies the highlighted text to make it easier to "
+        "understand."
+msgstr  "Deze prompt vereenvoudigt de gemarkeerde tekst om hem beter te "
+        "begrijpen."
 
 #: ../prompts.lua:60
-msgid "Explain"
-msgstr "Uitleggen"
+msgid   "Explain"
+msgstr  "Uitleggen"
 
 #: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr ""
-"Deze prompt legt de gemarkeerde tekst uitgebreid uit, met helderheid en "
-"begrip."
+msgid   "This prompt explains the highlighted text in detail, ensuring "
+        "clarity and understanding."
+msgstr  "Deze prompt legt de gemarkeerde tekst uitgebreid uit, met helderheid "
+        "en begrip."
 
 #: ../prompts.lua:73
-msgid "Summarize"
-msgstr "Samenvatten"
+msgid   "Summarize"
+msgstr  "Samenvatten"
 
 #: ../prompts.lua:75
-msgid ""
-"This prompt summarizes the highlighted text, capturing its main points and "
-"essential details."
-msgstr ""
-"Deze prompt vat de gemarkeerde tekst samen, met de belangrijkste punten en "
-"essentiële details."
+msgid   "This prompt summarizes the highlighted text, capturing its main "
+        "points and essential details."
+msgstr  "Deze prompt vat de gemarkeerde tekst samen, met de belangrijkste "
+        "punten en essentiële details."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "Historische context"
+msgid   "Historical Context"
+msgstr  "Historische context"
 
 #: ../prompts.lua:86
-msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
-msgstr ""
-"Deze prompt geeft een gedetailleerde historische context voor de "
-"gemarkeerde tekst, inclusief betekenis en achtergrond."
+msgid   "This prompt provides a detailed historical context for the "
+        "highlighted text, explaining its significance and background."
+msgstr  "Deze prompt geeft een gedetailleerde historische context voor de "
+        "gemarkeerde tekst, inclusief betekenis en achtergrond."
 
 #: ../prompts.lua:90
-msgid "Key Points"
-msgstr "Kernpunten"
+msgid   "Key Points"
+msgstr  "Kernpunten"
 
 #: ../prompts.lua:92
-msgid ""
-"This prompt extracts and lists the key points from the highlighted text, "
-"ensuring clarity and organization."
-msgstr ""
-"Deze prompt haalt de kernpunten uit de gemarkeerde tekst en zet ze op een "
-"rij, met helderheid en overzicht."
+msgid   "This prompt extracts and lists the key points from the highlighted "
+        "text, ensuring clarity and organization."
+msgstr  "Deze prompt haalt de kernpunten uit de gemarkeerde tekst en zet ze "
+        "op een rij, met helderheid en overzicht."
 
 #: ../prompts.lua:96
-msgid "ELI5"
-msgstr "ELI5"
+msgid   "ELI5"
+msgstr  "ELI5"
 
 #: ../prompts.lua:98
-msgid ""
-"This prompt explains the highlighted text as if to a five-year-old, "
-"simplifying complex concepts into easily understandable terms."
-msgstr ""
-"Deze prompt legt de gemarkeerde tekst uit alsof aan een vijfjarige, met "
-"eenvoudige termen voor complexe begrippen."
+msgid   "This prompt explains the highlighted text as if to a five-year-old, "
+        "simplifying complex concepts into easily understandable terms."
+msgstr  "Deze prompt legt de gemarkeerde tekst uit alsof aan een vijfjarige, "
+        "met eenvoudige termen voor complexe begrippen."
 
 #: ../prompts.lua:102
-msgid "Grammar"
-msgstr "Grammatica"
+msgid   "Grammar"
+msgstr  "Grammatica"
 
 #: ../prompts.lua:104
-msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
-msgstr ""
-"Deze prompt analyseert de grammatica van de gemarkeerde tekst en geeft een "
-"gedetailleerde uitleg van de structuur en eventuele grammaticale fouten."
+msgid   "This prompt analyzes the grammar of the highlighted text, providing "
+        "a detailed explanation of its structure and any grammatical errors."
+msgstr  "Deze prompt analyseert de grammatica van de gemarkeerde tekst en "
+        "geeft een gedetailleerde uitleg van de structuur en eventuele "
+        "grammaticale fouten."
 
 #: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "Woordenschat"
+msgid   "Vocabulary"
+msgstr  "Woordenschat"
 
 #: ../prompts.lua:111
-msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
-msgstr ""
-"Deze prompt analyseert de woordenschat van de gemarkeerde tekst, "
-"identificeert moeilijke woorden en geeft definities, synoniemen en "
-"gebruiksvoorbeelden."
+msgid   "This prompt analyzes the vocabulary of the highlighted text, "
+        "identifying complex words and providing definitions, synonyms, and "
+        "usage examples."
+msgstr  "Deze prompt analyseert de woordenschat van de gemarkeerde tekst, "
+        "identificeert moeilijke woorden en geeft definities, synoniemen en "
+        "gebruiksvoorbeelden."
 
 #: ../prompts.lua:127
-msgid "Wikipedia"
-msgstr "Wikipedia"
+msgid   "Wikipedia"
+msgstr  "Wikipedia"
 
 #: ../prompts.lua:129
-msgid ""
-"This prompt generates a comprehensive Wikipedia-style article based on the "
-"highlighted text, ensuring factual accuracy and neutrality."
-msgstr ""
-"Deze prompt genereert een uitgebreid Wikipedia-achtig artikel op basis van "
-"de gemarkeerde tekst, met feitelijke juistheid en neutraliteit."
+msgid   "This prompt generates a comprehensive Wikipedia-style article based "
+        "on the highlighted text, ensuring factual accuracy and neutrality."
+msgstr  "Deze prompt genereert een uitgebreid Wikipedia-achtig artikel op "
+        "basis van de gemarkeerde tekst, met feitelijke juistheid en "
+        "neutraliteit."
 
 #: ../recapdialog.lua:68
-msgid "Recap"
-msgstr "Samenvatting"
+msgid   "Recap"
+msgstr  "Samenvatting"
 
 #: ../settingsdialog.lua:26
-msgid "Assitant Settings"
-msgstr "Assistentinstellingen"
-
-#: ../settingsdialog.lua:43
-msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 Geniet van KOReader met AI-kracht!"
+msgid   "Assitant Settings"
+msgstr  "Assistentinstellingen"
 
 #: ../settingsdialog.lua:53
-msgid "Always use stream mode"
-msgstr "Altijd streammodus gebruiken"
+msgid   "Always use stream mode"
+msgstr  "Altijd streammodus gebruiken"
 
-#: ../settingsdialog.lua:57
-msgid "Use AI Assistant for 'Translate'"
-msgstr "AI-assistent gebruiken voor 'Vertalen'"
+#: ../settingsdialog.lua:58
+msgid   "Use AI Assistant for 'Translate'"
+msgstr  "AI-assistent gebruiken voor 'Vertalen'"
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override enabled."
-msgstr "AI-assistent-overschrijving ingeschakeld."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override enabled."
+msgstr  "AI-assistent-overschrijving ingeschakeld."
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override disabled."
-msgstr "AI-assistent-overschrijving uitgeschakeld."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override disabled."
+msgstr  "AI-assistent-overschrijving uitgeschakeld."
 
-#: ../settingsdialog.lua:102
-msgid "Select the AI Model provider."
-msgstr "Selecteer de AI-modelprovider."
+#: ../settingsdialog.lua:104
+msgid   "Select the AI Model provider."
+msgstr  "Selecteer de AI-modelprovider."
 
-#: ../update_checker.lua:21
-msgid "Checking for updates..."
-msgstr "Controleren op updates..."
+#: ../update_checker.lua:22
+msgid   "Checking for updates..."
+msgstr  "Controleren op updates..."
 
-#: ../update_checker.lua:55
+#: ../update_checker.lua:56
 #, lua-format
-msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "Er is een nieuwe versie van de %s-plug-in (%s) beschikbaar. Werk bij!"
+msgid   "A new version of the %s plugin (%s) is available. Please update!"
+msgstr  "Er is een nieuwe versie van de %s-plug-in (%s) beschikbaar. Werk bij!"

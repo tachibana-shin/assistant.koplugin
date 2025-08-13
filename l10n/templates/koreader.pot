@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-11 16:48+0800\n"
+"POT-Creation-Date: 2025-08-13 17:27+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
+#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
+msgid "AI Assistant"
+msgstr ""
+
+#: ../_meta.lua:5
+msgid "💡 Enhance KOReader's reading with AI Power."
+msgstr ""
+
+#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
 msgid "Ask Another Question"
 msgstr ""
 
@@ -53,96 +61,74 @@ msgstr ""
 msgid "Note added successfully"
 msgstr ""
 
-#: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
 msgid "Cancel"
 msgstr ""
 
-#: ../chatgptviewer.lua:578 ../dialogs.lua:265
+#: ../chatgptviewer.lua:577 ../dialogs.lua:267
 msgid "Ask"
 msgstr ""
 
-#: ../chatgptviewer.lua:584 ../dialogs.lua:271
+#: ../chatgptviewer.lua:583 ../dialogs.lua:273
 msgid "Enter a question before proceeding."
 msgstr ""
 
-#: ../chatgptviewer.lua:632
+#: ../chatgptviewer.lua:631
 msgid "Type your question here"
 msgstr ""
 
-#: ../chatgptviewer.lua:783
+#: ../chatgptviewer.lua:782
 msgid "Word copied to clipboard."
 msgstr ""
 
-#: ../chatgptviewer.lua:784
+#: ../chatgptviewer.lua:783
 msgid "Selection copied to clipboard."
 msgstr ""
 
-#: ../dialogs.lua:81
+#: ../dialogs.lua:83
 msgid "(Empty message)"
 msgstr ""
 
-#: ../dialogs.lua:85
+#: ../dialogs.lua:87
 msgid "(No response)"
 msgstr ""
 
-#: ../dialogs.lua:115
+#: ../dialogs.lua:117
 msgid "Highlighted text:"
 msgstr ""
 
-#: ../dialogs.lua:302
+#: ../dialogs.lua:304
 msgid "Book Analysis"
-msgstr ""
-
-#: ../dialogs.lua:340
-msgid "Remove"
-msgstr ""
-
-#: ../dialogs.lua:340
-msgid "Add"
-msgstr ""
-
-#: ../dialogs.lua:341
-msgid "Remove this button from the Main Highlight Menu?"
 msgstr ""
 
 #: ../dialogs.lua:341
 msgid "Add this button to the Main Highlight Menu?"
 msgstr ""
 
-#: ../dialogs.lua:353
-#, lua-format
-msgid "Added [%s (AI)] to Main Highlight Menu."
+#: ../dialogs.lua:342
+msgid "Add"
 msgstr ""
 
-#: ../dialogs.lua:356
-#, lua-format
-msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr ""
-
-#: ../dialogs.lua:389
+#: ../dialogs.lua:368
 msgid "Ask a question about the highlighted text"
 msgstr ""
 
-#: ../dialogs.lua:390
+#: ../dialogs.lua:369
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
 "%s by %s"
 msgstr ""
 
-#: ../dialogs.lua:393
+#: ../dialogs.lua:372
 msgid "Type your question here..."
 msgstr ""
 
-#: ../dialogs.lua:394
+#: ../dialogs.lua:373
 msgid "Ask anything about this book..."
 msgstr ""
 
-#: ../dialogs.lua:397 ../_meta.lua:4
-msgid "AI Assistant"
-msgstr ""
-
-#: ../dialogs.lua:448
+#: ../dialogs.lua:427
 msgid "Error: No response received"
 msgstr ""
 
@@ -158,77 +144,87 @@ msgstr ""
 msgid "Look Up"
 msgstr ""
 
-#: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
 msgid "Dictionary"
 msgstr ""
 
-#: ../gpt_query.lua:46
-msgid "No configuration found. Please set up configuration.lua"
-msgstr ""
-
-#: ../gpt_query.lua:56
+#: ../gpt_query.lua:52
 #, lua-format
 msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
 msgstr ""
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:74
 #, lua-format
 msgid ""
 "Handler not found for: %s. Please ensure the handler exists in api_handlers "
 "directory."
 msgstr ""
 
-#: ../gpt_query.lua:82
+#: ../gpt_query.lua:78
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
 
-#: ../gpt_query.lua:126
+#: ../gpt_query.lua:122
 msgid "Querying AI ..."
 msgstr ""
 
-#: ../gpt_query.lua:141
+#: ../gpt_query.lua:138
 msgid "AI Responding"
 msgstr ""
 
-#: ../gpt_query.lua:143
+#: ../gpt_query.lua:140
 #, lua-format
 msgid "☁ %s/%s"
 msgstr ""
 
-#: ../gpt_query.lua:156
+#: ../gpt_query.lua:153
 msgid "⏹ Stop"
 msgstr ""
 
-#: ../gpt_query.lua:177
+#: ../gpt_query.lua:174
 msgid "Stream interrupted by user."
 msgstr ""
 
-#: ../main.lua:50
+#: ../main.lua:73
 msgid "Ask AI Question"
 msgstr ""
 
-#: ../main.lua:59
+#: ../main.lua:82
 msgid "AI Recap"
 msgstr ""
 
-#: ../main.lua:68
+#: ../main.lua:91
 msgid "Assistant Settings"
 msgstr ""
 
-#: ../main.lua:163
-msgid "Assistant"
+#: ../main.lua:190
+msgid ""
+"Configuration Error.\n"
+"Please set up configuration.lua.\n"
+"\n"
 msgstr ""
 
-#: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
-msgid "Configuration not found. Please set up configuration.lua first."
+#: ../main.lua:217
+msgid ""
+"Useful Tips:\n"
+"\n"
+"Long Press:\n"
+"- On a Prompt Button: Add to the main highlight menu.\n"
+"- On a main highlight menu button to remove it.\n"
+"\n"
+"Very Long Press (more than 3 seconds):\n"
+"On a single word to show the highlight menu (instead of the dictionary).\n"
+"\n"
+"Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+"On the result dialog to close (as the Close button is far to reach).\n"
 msgstr ""
 
-#: ../main.lua:237
+#: ../main.lua:290
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -236,20 +232,38 @@ msgid ""
 "Last read %.0f hours ago."
 msgstr ""
 
-#: ../main.lua:242
+#: ../main.lua:295
 msgid "Yes"
 msgstr ""
 
-#: ../main.lua:251
+#: ../main.lua:304
 msgid "No"
 msgstr ""
 
-#: ../main.lua:368
+#: ../main.lua:364
+#, lua-format
+msgid "Remove [%s] from the Main Highlight Menu?"
+msgstr ""
+
+#: ../main.lua:365
+msgid "Remove"
+msgstr ""
+
+#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+msgid "Configuration not found. Please set up configuration.lua first."
+msgstr ""
+
+#: ../main.lua:429
 msgid "AI Recap feature is not enabled in configuration."
 msgstr ""
 
-#: ../_meta.lua:5
-msgid "Enhance KOReader's reading exerience with AI Power."
+#: ../main.lua:517
+msgid "Added [%1 (AI)] to Main Highlight Menu."
+msgstr ""
+
+#: ../main.lua:526
+#, lua-format
+msgid "Removed [%s (AI)] from Main Highlight Menu."
 msgstr ""
 
 #: ../prompts.lua:20
@@ -363,35 +377,31 @@ msgstr ""
 msgid "Assitant Settings"
 msgstr ""
 
-#: ../settingsdialog.lua:43
-msgid "💡 Enjoy KOReader with AI Power !"
-msgstr ""
-
 #: ../settingsdialog.lua:53
 msgid "Always use stream mode"
 msgstr ""
 
-#: ../settingsdialog.lua:57
+#: ../settingsdialog.lua:58
 msgid "Use AI Assistant for 'Translate'"
 msgstr ""
 
-#: ../settingsdialog.lua:62
+#: ../settingsdialog.lua:64
 msgid "AI Assistant override enabled."
 msgstr ""
 
-#: ../settingsdialog.lua:62
+#: ../settingsdialog.lua:64
 msgid "AI Assistant override disabled."
 msgstr ""
 
-#: ../settingsdialog.lua:102
+#: ../settingsdialog.lua:104
 msgid "Select the AI Model provider."
 msgstr ""
 
-#: ../update_checker.lua:21
+#: ../update_checker.lua:22
 msgid "Checking for updates..."
 msgstr ""
 
-#: ../update_checker.lua:55
+#: ../update_checker.lua:56
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
 msgstr ""

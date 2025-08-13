@@ -4,402 +4,421 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
-msgid ""
-msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-11 16:48+0800\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: AI Generated (Model: gpt-4o, 2024-06-13)\n"
-"Language: ka\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+msgid   ""
+msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+        "Report-Msgid-Bugs-To: \n"
+        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
+        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+        "Language-Team: AI Generated (Model: gpt-4o, 2024-06-13)\n"
+        "Language: ka\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=UTF-8\n"
+        "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:630
-msgid "Ask Another Question"
-msgstr "დაისვით კიდევ ერთი კითხვა"
+#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
+msgid   "AI Assistant"
+msgstr  "KI ასისტენტი"
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance KOReader's reading with AI Power."
+msgstr  "💡 გააუმჯობესეთ KOReader-ის კითხვა AI-ის ძალით."
+
+#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
+msgid   "Ask Another Question"
+msgstr  "დაისვით კიდევ ერთი კითხვა"
 
 #: ../chatgptviewer.lua:306
-msgid "Close"
-msgstr "დახურვა"
+msgid   "Close"
+msgstr  "დახურვა"
 
 #: ../chatgptviewer.lua:321
-msgid "Copy"
-msgstr "კოპირება"
+msgid   "Copy"
+msgstr  "კოპირება"
 
 #: ../chatgptviewer.lua:326
-msgid "Text copied to clipboard"
-msgstr "ტექსტი დაკოპირებულია ბუფერში"
+msgid   "Text copied to clipboard"
+msgstr  "ტექსტი დაკოპირებულია ბუფერში"
 
 #: ../chatgptviewer.lua:340
-msgid "Add Note"
-msgstr "შენიშვნის დამატება"
+msgid   "Add Note"
+msgstr  "შენიშვნის დამატება"
 
 #: ../chatgptviewer.lua:347
-msgid "Highlight functionality not available"
-msgstr "გამოკვეთის ფუნქცია არ არის ხელმისაწვდომი"
+msgid   "Highlight functionality not available"
+msgstr  "გამოკვეთის ფუნქცია არ არის ხელმისაწვდომი"
 
 #: ../chatgptviewer.lua:356
-msgid "No text to add as note"
-msgstr "არ არის ტექსტი შენიშვნის დასამატებლად"
+msgid   "No text to add as note"
+msgstr  "არ არის ტექსტი შენიშვნის დასამატებლად"
 
 #: ../chatgptviewer.lua:385
-msgid "No text left to add as note"
-msgstr "არ დარჩა ტექსტი შენიშვნის დასამატებლად"
+msgid   "No text left to add as note"
+msgstr  "არ დარჩა ტექსტი შენიშვნის დასამატებლად"
 
 #: ../chatgptviewer.lua:398
-msgid "Note added successfully"
-msgstr "შენიშვნა წარმატებით დაემატა"
+msgid   "Note added successfully"
+msgstr  "შენიშვნა წარმატებით დაემატა"
 
-#: ../chatgptviewer.lua:568 ../dialogs.lua:258 ../dictdialog.lua:34
-msgid "Cancel"
-msgstr "გაუქმება"
+#: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
+msgid   "Cancel"
+msgstr  "გაუქმება"
 
-#: ../chatgptviewer.lua:578 ../dialogs.lua:265
-msgid "Ask"
-msgstr "კითხვა"
+#: ../chatgptviewer.lua:577 ../dialogs.lua:267
+msgid   "Ask"
+msgstr  "კითხვა"
 
-#: ../chatgptviewer.lua:584 ../dialogs.lua:271
-msgid "Enter a question before proceeding."
-msgstr "შეიყვანეთ კითხვა გაგრძელებამდე."
+#: ../chatgptviewer.lua:583 ../dialogs.lua:273
+msgid   "Enter a question before proceeding."
+msgstr  "შეიყვანეთ კითხვა გაგრძელებამდე."
 
-#: ../chatgptviewer.lua:632
-msgid "Type your question here"
-msgstr "აკრიფეთ თქვენი კითხვა აქ"
+#: ../chatgptviewer.lua:631
+msgid   "Type your question here"
+msgstr  "აკრიფეთ თქვენი კითხვა აქ"
+
+#: ../chatgptviewer.lua:782
+msgid   "Word copied to clipboard."
+msgstr  "სიტყვა დაკოპირებულია ბუფერში."
 
 #: ../chatgptviewer.lua:783
-msgid "Word copied to clipboard."
-msgstr "სიტყვა დაკოპირებულია ბუფერში."
+msgid   "Selection copied to clipboard."
+msgstr  "მონიშნული დაკოპირებულია ბუფერში."
 
-#: ../chatgptviewer.lua:784
-msgid "Selection copied to clipboard."
-msgstr "მონიშნული დაკოპირებულია ბუფერში."
+#: ../dialogs.lua:83
+msgid   "(Empty message)"
+msgstr  "(ცარიელი შეტყობინება)"
 
-#: ../dialogs.lua:81
-msgid "(Empty message)"
-msgstr "(ცარიელი შეტყობინება)"
+#: ../dialogs.lua:87
+msgid   "(No response)"
+msgstr  "(პასუხი არ არის)"
 
-#: ../dialogs.lua:85
-msgid "(No response)"
-msgstr "(პასუხი არ არის)"
+#: ../dialogs.lua:117
+msgid   "Highlighted text:"
+msgstr  "გამოკვეთილი ტექსტი:"
 
-#: ../dialogs.lua:115
-msgid "Highlighted text:"
-msgstr "გამოკვეთილი ტექსტი:"
-
-#: ../dialogs.lua:302
-msgid "Book Analysis"
-msgstr "წიგნის ანალიზი"
-
-#: ../dialogs.lua:340
-msgid "Remove"
-msgstr "წაშლა"
-
-#: ../dialogs.lua:340
-msgid "Add"
-msgstr "დამატება"
+#: ../dialogs.lua:304
+msgid   "Book Analysis"
+msgstr  "წიგნის ანალიზი"
 
 #: ../dialogs.lua:341
-msgid "Remove this button from the Main Highlight Menu?"
-msgstr "წავშალოთ ეს ღილაკი მთავარი გამოკვეთის მენიუდან?"
+msgid   "Add this button to the Main Highlight Menu?"
+msgstr  "დავამატოთ ეს ღილაკი მთავარ გამოკვეთის მენიუში?"
 
-#: ../dialogs.lua:341
-msgid "Add this button to the Main Highlight Menu?"
-msgstr "დავამატოთ ეს ღილაკი მთავარ გამოკვეთის მენიუში?"
+#: ../dialogs.lua:342
+msgid   "Add"
+msgstr  "დამატება"
 
-#: ../dialogs.lua:353
+#: ../dialogs.lua:368
+msgid   "Ask a question about the highlighted text"
+msgstr  "დაისვით კითხვა გამოკვეთილ ტექსტთან დაკავშირებით"
+
+#: ../dialogs.lua:369
 #, lua-format
-msgid "Added [%s (AI)] to Main Highlight Menu."
-msgstr "[%s (AI)] დაემატა მთავარ გამოკვეთის მენიუში."
+msgid   "Ask a question about this book:\n"
+        "%s by %s"
+msgstr  "დაისვით კითხვა ამ წიგნთან დაკავშირებით:\n"
+        "%s — %s"
 
-#: ../dialogs.lua:356
-#, lua-format
-msgid "Removed [%s (AI)] from Main Highlight Menu."
-msgstr "[%s (AI)] წაიშალა მთავარი გამოკვეთის მენიუდან."
+#: ../dialogs.lua:372
+msgid   "Type your question here..."
+msgstr  "აკრიფეთ თქვენი კითხვა აქ..."
 
-#: ../dialogs.lua:389
-msgid "Ask a question about the highlighted text"
-msgstr "დაისვით კითხვა გამოკვეთილ ტექსტთან დაკავშირებით"
+#: ../dialogs.lua:373
+msgid   "Ask anything about this book..."
+msgstr  "დაისვით ნებისმიერი კითხვა ამ წიგნთან დაკავშირებით..."
 
-#: ../dialogs.lua:390
-#, lua-format
-msgid ""
-"Ask a question about this book:\n"
-"%s by %s"
-msgstr ""
-"დაისვით კითხვა ამ წიგნთან დაკავშირებით:\n"
-"%s — %s"
-
-#: ../dialogs.lua:393
-msgid "Type your question here..."
-msgstr "აკრიფეთ თქვენი კითხვა აქ..."
-
-#: ../dialogs.lua:394
-msgid "Ask anything about this book..."
-msgstr "დაისვით ნებისმიერი კითხვა ამ წიგნთან დაკავშირებით..."
-
-#: ../dialogs.lua:397 ../_meta.lua:4
-msgid "AI Assistant"
-msgstr "KI ასისტენტი"
-
-#: ../dialogs.lua:448
-msgid "Error: No response received"
-msgstr "შეცდომა: პასუხი არ მიღებულა"
+#: ../dialogs.lua:427
+msgid   "Error: No response received"
+msgstr  "შეცდომა: პასუხი არ მიღებულა"
 
 #: ../dictdialog.lua:28
-msgid "AI Dictionary"
-msgstr "KI ლექსიკონი"
+msgid   "AI Dictionary"
+msgstr  "KI ლექსიკონი"
 
 #: ../dictdialog.lua:29
-msgid "Enter a word to look up..."
-msgstr "შეიყვანეთ სიტყვა მოსაძებნად..."
+msgid   "Enter a word to look up..."
+msgstr  "შეიყვანეთ სიტყვა მოსაძებნად..."
 
 #: ../dictdialog.lua:40
-msgid "Look Up"
-msgstr "ძებნა"
+msgid   "Look Up"
+msgstr  "ძებნა"
 
-#: ../dictdialog.lua:175 ../main.lua:319 ../prompts.lua:19
-msgid "Dictionary"
-msgstr "ლექსიკონი"
+#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+msgid   "Dictionary"
+msgstr  "ლექსიკონი"
 
-#: ../gpt_query.lua:46
-msgid "No configuration found. Please set up configuration.lua"
-msgstr "კონფიგურაცია არ მოიძებნა. გთხოვთ, მოამზადეთ configuration.lua"
-
-#: ../gpt_query.lua:56
+#: ../gpt_query.lua:52
 #, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"მომწოდებლის პარამეტრები არ მოიძებნა: %s. გთხოვთ, შეამოწმოთ თქვენი configuration.lua ფაილი."
+msgid   "Provider settings not found for: %s. Please check your configuration."
+        "lua file."
+msgstr  "მომწოდებლის პარამეტრები არ მოიძებნა: %s. გთხოვთ, შეამოწმოთ თქვენი "
+        "configuration.lua ფაილი."
+
+#: ../gpt_query.lua:74
+#, lua-format
+msgid   "Handler not found for: %s. Please ensure the handler exists in "
+        "api_handlers directory."
+msgstr  "მომლოდინე არ მოიძებნა: %s. გთხოვთ, დარწმუნდეთ, რომ ის არსებობს "
+        "api_handlers დირექტორიაში."
 
 #: ../gpt_query.lua:78
 #, lua-format
-msgid ""
-"Handler not found for: %s. Please ensure the handler exists in api_handlers "
-"directory."
-msgstr ""
-"მომლოდინე არ მოიძებნა: %s. გთხოვთ, დარწმუნდეთ, რომ ის არსებობს api_handlers დირექტორიაში."
+msgid   "No provider set in configuration.lua. Please set the provider and "
+        "provider_settings for %s."
+msgstr  "configuration.lua-ში არ არის მითითებული მომწოდებელი. გთხოვთ, "
+        "მიუთითეთ provider და provider_settings %s-სთვის."
 
-#: ../gpt_query.lua:82
+#: ../gpt_query.lua:122
+msgid   "Querying AI ..."
+msgstr  "KI-სთვის მიმართვა..."
+
+#: ../gpt_query.lua:138
+msgid   "AI Responding"
+msgstr  "KI პასუხობს"
+
+#: ../gpt_query.lua:140
 #, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"configuration.lua-ში არ არის მითითებული მომწოდებელი. გთხოვთ, მიუთითეთ provider და provider_settings %s-სთვის."
+msgid   "☁ %s/%s"
+msgstr  "☁ %s/%s"
 
-#: ../gpt_query.lua:126
-msgid "Querying AI ..."
-msgstr "KI-სთვის მიმართვა..."
+#: ../gpt_query.lua:153
+msgid   "⏹ Stop"
+msgstr  "⏹ გაჩერება"
 
-#: ../gpt_query.lua:141
-msgid "AI Responding"
-msgstr "KI პასუხობს"
+#: ../gpt_query.lua:174
+msgid   "Stream interrupted by user."
+msgstr  "ნაკადი შეწყდა მომხმარებლის მიერ."
 
-#: ../gpt_query.lua:143
+#: ../main.lua:73
+msgid   "Ask AI Question"
+msgstr  "დაისვით KI-ს კითხვა"
+
+#: ../main.lua:82
+msgid   "AI Recap"
+msgstr  "KI შეჯამება"
+
+#: ../main.lua:91
+msgid   "Assistant Settings"
+msgstr  "ასისტენტის პარამეტრები"
+
+#: ../main.lua:190
+msgid   "Configuration Error.\n"
+        "Please set up configuration.lua.\n"
+        "\n"
+msgstr  "კონფიგურაციის შეცდომა.\n"
+        "გთხოვთ, მოირგეთ configuration.lua.\n"
+        "\n"
+
+#: ../main.lua:217
+msgid   "Useful Tips:\n"
+        "\n"
+        "Long Press:\n"
+        "- On a Prompt Button: Add to the main highlight menu.\n"
+        "- On a main highlight menu button to remove it.\n"
+        "\n"
+        "Very Long Press (more than 3 seconds):\n"
+        "On a single word to show the highlight menu (instead of the "
+        "dictionary).\n"
+        "\n"
+        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "On the result dialog to close (as the Close button is far to "
+        "reach).\n"
+msgstr  "სასარგებლო რჩევები:\n"
+        "\n"
+        "გრძელი დაჭერა:\n"
+        "- ღილკაზე „Prompt“: დაამატეთ მთავარ გამოკვეთის მენიუში.\n"
+        "- მთავარ გამოკვეთის მენიუს ღილკაზე მისი წასაშლელად.\n"
+        "\n"
+        "ძალიან გრძელი დაჭერა (3 წამზე მეტი):\n"
+        "ერთ ერთზე სიტყვაზე გამოკვეთის მენიუს საჩვენებლად (ლექსიკონის "
+        "ნაცვლად).\n"
+        "\n"
+        "მრავალ-სვაიპი (მაგ. ⮠, ⮡, ↺):\n"
+        "შედეგის დიალოგის დასახურად (რადგან Close ღილკა შორსაა).\n"
+
+#: ../main.lua:290
 #, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
+msgid   "Do you want an AI Recap?\n"
+        "For %s by %s.\n"
+        "Last read %.0f hours ago."
+msgstr  "გსურთ KI შეჯამება?\n"
+        "%s — %s.\n"
+        "ბოლოს წაკითხულია %.0f საათის წინ."
 
-#: ../gpt_query.lua:156
-msgid "⏹ Stop"
-msgstr "⏹ გაჩერება"
+#: ../main.lua:295
+msgid   "Yes"
+msgstr  "დიახ"
 
-#: ../gpt_query.lua:177
-msgid "Stream interrupted by user."
-msgstr "ნაკადი შეწყდა მომხმარებლის მიერ."
+#: ../main.lua:304
+msgid   "No"
+msgstr  "არა"
 
-#: ../main.lua:50
-msgid "Ask AI Question"
-msgstr "დაისვით KI-ს კითხვა"
-
-#: ../main.lua:59
-msgid "AI Recap"
-msgstr "KI შეჯამება"
-
-#: ../main.lua:68
-msgid "Assistant Settings"
-msgstr "ასისტენტის პარამეტრები"
-
-#: ../main.lua:163
-msgid "Assistant"
-msgstr "ასისტენტი"
-
-#: ../main.lua:169 ../main.lua:338 ../main.lua:360 ../main.lua:415
-msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "კონფიგურაცია არ მოიძებნა. გთხოვთ, ჯერ მოამზადეთ configuration.lua."
-
-#: ../main.lua:237
+#: ../main.lua:364
 #, lua-format
-msgid ""
-"Do you want an AI Recap?\n"
-"For %s by %s.\n"
-"Last read %.0f hours ago."
-msgstr ""
-"გსურთ KI შეჯამება?\n"
-"%s — %s.\n"
-"ბოლოს წაკითხულია %.0f საათის წინ."
+msgid   "Remove [%s] from the Main Highlight Menu?"
+msgstr  "წავშალოთ [%s] მთავარი გამოკვეთის მენიუდან?"
 
-#: ../main.lua:242
-msgid "Yes"
-msgstr "დიახ"
+#: ../main.lua:365
+msgid   "Remove"
+msgstr  "წაშლა"
 
-#: ../main.lua:251
-msgid "No"
-msgstr "არა"
+#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+msgid   "Configuration not found. Please set up configuration.lua first."
+msgstr  "კონფიგურაცია არ მოიძებნა. გთხოვთ, ჯერ მოამზადეთ configuration.lua."
 
-#: ../main.lua:368
-msgid "AI Recap feature is not enabled in configuration."
-msgstr "KI შეჯამების ფუნქცია არ არის ჩართული კონფიგურაციაში."
+#: ../main.lua:429
+msgid   "AI Recap feature is not enabled in configuration."
+msgstr  "KI შეჯამების ფუნქცია არ არის ჩართული კონფიგურაციაში."
 
-#: ../_meta.lua:5
-msgid "Enhance KOReader's reading exerience with AI Power."
-msgstr "გააუმჯობესეთ KOReader-ის კითხვის გამოცდილება KI-ის ძალით."
+#: ../main.lua:517
+msgid   "Added [%1 (AI)] to Main Highlight Menu."
+msgstr  "დაემატა [%1 (AI)] მთავარ გამოკვეთის მენიუში."
+
+#: ../main.lua:526
+#, lua-format
+msgid   "Removed [%s (AI)] from Main Highlight Menu."
+msgstr  "[%s (AI)] წაიშალა მთავარი გამოკვეთის მენიუდან."
 
 #: ../prompts.lua:20
-msgid ""
-"This prompt act as a dictionary for the highlighted text, to a word or "
-"phrase."
-msgstr "ეს მითითება მოქმედებს როგორც ლექსიკონი გამოკვეთილი ტექსტის, სიტყვის ან ფრაზისთვის."
+msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+        "or phrase."
+msgstr  "ეს მითითება მოქმედებს როგორც ლექსიკონი გამოკვეთილი ტექსტის, სიტყვის "
+        "ან ფრაზისთვის."
 
 #: ../prompts.lua:25
-msgid "Translate"
-msgstr "თარგმნა"
+msgid   "Translate"
+msgstr  "თარგმნა"
 
 #: ../prompts.lua:26
-msgid "This prompt translates the highlighted text to another language."
-msgstr "ეს მითითება თარგმნის გამოკვეთილ ტექსტს სხვა ენაზე."
+msgid   "This prompt translates the highlighted text to another language."
+msgstr  "ეს მითითება თარგმნის გამოკვეთილ ტექსტს სხვა ენაზე."
 
 #: ../prompts.lua:48
-msgid "Simplify"
-msgstr "გამარტივება"
+msgid   "Simplify"
+msgstr  "გამარტივება"
 
 #: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "ეს მითითება ამარტივებს გამოკვეთილ ტექსტს, რათა იგი უფრო ადვილად გასაგები იყოს."
+msgid   "This prompt simplifies the highlighted text to make it easier to "
+        "understand."
+msgstr  "ეს მითითება ამარტივებს გამოკვეთილ ტექსტს, რათა იგი უფრო ადვილად "
+        "გასაგები იყოს."
 
 #: ../prompts.lua:60
-msgid "Explain"
-msgstr "აღწერა"
+msgid   "Explain"
+msgstr  "აღწერა"
 
 #: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr "ეს მითითება დეტალურად ხსნის გამოკვეთილ ტექსტს, უზრუნველყოფს სიცხადესა და გაგებას."
+msgid   "This prompt explains the highlighted text in detail, ensuring "
+        "clarity and understanding."
+msgstr  "ეს მითითება დეტალურად ხსნის გამოკვეთილ ტექსტს, უზრუნველყოფს "
+        "სიცხადესა და გაგებას."
 
 #: ../prompts.lua:73
-msgid "Summarize"
-msgstr "შეჯამება"
+msgid   "Summarize"
+msgstr  "შეჯამება"
 
 #: ../prompts.lua:75
-msgid ""
-"This prompt summarizes the highlighted text, capturing its main points and "
-"essential details."
-msgstr "ეს მითითება აჯამებს გამოკვეთილ ტექსტს, ასახავს მის მთავარ აზრებსა და არსებით დეტალებს."
+msgid   "This prompt summarizes the highlighted text, capturing its main "
+        "points and essential details."
+msgstr  "ეს მითითება აჯამებს გამოკვეთილ ტექსტს, ასახავს მის მთავარ აზრებსა და "
+        "არსებით დეტალებს."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "ისტორიული კონტექსტი"
+msgid   "Historical Context"
+msgstr  "ისტორიული კონტექსტი"
 
 #: ../prompts.lua:86
-msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
-msgstr "ეს მითითება აწვდის დეტალურ ისტორიულ კონტექსტს გამოკვეთილი ტექსტისთვის, ხსნის მის მნიშვნელობასა და ფონს."
+msgid   "This prompt provides a detailed historical context for the "
+        "highlighted text, explaining its significance and background."
+msgstr  "ეს მითითება აწვდის დეტალურ ისტორიულ კონტექსტს გამოკვეთილი "
+        "ტექსტისთვის, ხსნის მის მნიშვნელობასა და ფონს."
 
 #: ../prompts.lua:90
-msgid "Key Points"
-msgstr "მთავარი პუნქტები"
+msgid   "Key Points"
+msgstr  "მთავარი პუნქტები"
 
 #: ../prompts.lua:92
-msgid ""
-"This prompt extracts and lists the key points from the highlighted text, "
-"ensuring clarity and organization."
-msgstr "ეს მითითება გამოჰყოფს და ჩამოთვლის მთავარ პუნქტებს გამოკვეთილი ტექსტიდან, უზრუნველყოფს სიცხადესა და ორგანიზებას."
+msgid   "This prompt extracts and lists the key points from the highlighted "
+        "text, ensuring clarity and organization."
+msgstr  "ეს მითითება გამოჰყოფს და ჩამოთვლის მთავარ პუნქტებს გამოკვეთილი "
+        "ტექსტიდან, უზრუნველყოფს სიცხადესა და ორგანიზებას."
 
 #: ../prompts.lua:96
-msgid "ELI5"
-msgstr "ELI5"
+msgid   "ELI5"
+msgstr  "ELI5"
 
 #: ../prompts.lua:98
-msgid ""
-"This prompt explains the highlighted text as if to a five-year-old, "
-"simplifying complex concepts into easily understandable terms."
-msgstr "ეს მითითება ხსნის გამოკვეთილ ტექსტს ისე, თითქოს ხუთი წლის ბავშვს ეუბნებიან, ამარტივებს რთულ კონცეფციებს მარტივად გასაგებ ტერმინებად."
+msgid   "This prompt explains the highlighted text as if to a five-year-old, "
+        "simplifying complex concepts into easily understandable terms."
+msgstr  "ეს მითითება ხსნის გამოკვეთილ ტექსტს ისე, თითქოს ხუთი წლის ბავშვს "
+        "ეუბნებიან, ამარტივებს რთულ კონცეფციებს მარტივად გასაგებ ტერმინებად."
 
 #: ../prompts.lua:102
-msgid "Grammar"
-msgstr "გრამატიკა"
+msgid   "Grammar"
+msgstr  "გრამატიკა"
 
 #: ../prompts.lua:104
-msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
-msgstr "ეს მითითება ანალიზს უკეთებს გამოკვეთილი ტექსტის გრამატიკას, აწვდის დეტალურ აღწერას მისი სტრუქტურისა და ნებისმიერი გრამატიკული შეცდომების."
+msgid   "This prompt analyzes the grammar of the highlighted text, providing "
+        "a detailed explanation of its structure and any grammatical errors."
+msgstr  "ეს მითითება ანალიზს უკეთებს გამოკვეთილი ტექსტის გრამატიკას, აწვდის "
+        "დეტალურ აღწერას მისი სტრუქტურისა და ნებისმიერი გრამატიკული "
+        "შეცდომების."
 
 #: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "ლექსიკა"
+msgid   "Vocabulary"
+msgstr  "ლექსიკა"
 
 #: ../prompts.lua:111
-msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
-msgstr "ეს მითითება ანალიზს უკეთებს გამოკვეთილი ტექსტის ლექსიკას, ამოწმებს რთულ სიტყვებს და აწვდის განმარტებებს, სინონიმებსა და გამოყენების მაგალითებს."
+msgid   "This prompt analyzes the vocabulary of the highlighted text, "
+        "identifying complex words and providing definitions, synonyms, and "
+        "usage examples."
+msgstr  "ეს მითითება ანალიზს უკეთებს გამოკვეთილი ტექსტის ლექსიკას, ამოწმებს "
+        "რთულ სიტყვებს და აწვდის განმარტებებს, სინონიმებსა და გამოყენების "
+        "მაგალითებს."
 
 #: ../prompts.lua:127
-msgid "Wikipedia"
-msgstr "ვიკიპედია"
+msgid   "Wikipedia"
+msgstr  "ვიკიპედია"
 
 #: ../prompts.lua:129
-msgid ""
-"This prompt generates a comprehensive Wikipedia-style article based on the "
-"highlighted text, ensuring factual accuracy and neutrality."
-msgstr "ეს მითითება ქმნის მთლიან ვიკიპედიის სტილის სტატიას გამოკვეთილი ტექსტის საფუძველზე, უზრუნველყოფს ფაქტების სიზუსტესა და ნეიტრალურობას."
+msgid   "This prompt generates a comprehensive Wikipedia-style article based "
+        "on the highlighted text, ensuring factual accuracy and neutrality."
+msgstr  "ეს მითითება ქმნის მთლიან ვიკიპედიის სტილის სტატიას გამოკვეთილი "
+        "ტექსტის საფუძველზე, უზრუნველყოფს ფაქტების სიზუსტესა და ნეიტრალურობას."
 
 #: ../recapdialog.lua:68
-msgid "Recap"
-msgstr "შეჯამება"
+msgid   "Recap"
+msgstr  "შეჯამება"
 
 #: ../settingsdialog.lua:26
-msgid "Assitant Settings"
-msgstr "ასისტენტის პარამეტრები"
-
-#: ../settingsdialog.lua:43
-msgid "💡 Enjoy KOReader with AI Power !"
-msgstr "💡 ისიამოვნეთ KOReader-ით KI-ის ძალით!"
+msgid   "Assitant Settings"
+msgstr  "ასისტენტის პარამეტრები"
 
 #: ../settingsdialog.lua:53
-msgid "Always use stream mode"
-msgstr "ყოველთვის გამოიყენეთ ნაკადის რეჟიმი"
+msgid   "Always use stream mode"
+msgstr  "ყოველთვის გამოიყენეთ ნაკადის რეჟიმი"
 
-#: ../settingsdialog.lua:57
-msgid "Use AI Assistant for 'Translate'"
-msgstr "გამოიყენეთ KI ასისტენტი 'თარგმნისთვის'"
+#: ../settingsdialog.lua:58
+msgid   "Use AI Assistant for 'Translate'"
+msgstr  "გამოიყენეთ KI ასისტენტი 'თარგმნისთვის'"
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override enabled."
-msgstr "KI ასისტენტის გადაფარვა ჩართულია."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override enabled."
+msgstr  "KI ასისტენტის გადაფარვა ჩართულია."
 
-#: ../settingsdialog.lua:62
-msgid "AI Assistant override disabled."
-msgstr "KI ასისტენტის გადაფარვა გამორთულია."
+#: ../settingsdialog.lua:64
+msgid   "AI Assistant override disabled."
+msgstr  "KI ასისტენტის გადაფარვა გამორთულია."
 
-#: ../settingsdialog.lua:102
-msgid "Select the AI Model provider."
-msgstr "აირჩიეთ KI მოდელის მომწოდებელი."
+#: ../settingsdialog.lua:104
+msgid   "Select the AI Model provider."
+msgstr  "აირჩიეთ KI მოდელის მომწოდებელი."
 
-#: ../update_checker.lua:21
-msgid "Checking for updates..."
-msgstr "მიმდინარეობს განახლებების შემოწმება..."
+#: ../update_checker.lua:22
+msgid   "Checking for updates..."
+msgstr  "მიმდინარეობს განახლებების შემოწმება..."
 
-#: ../update_checker.lua:55
+#: ../update_checker.lua:56
 #, lua-format
-msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "ხელმისაწვდომია %s დამატების ახალი ვერსია (%s). გთხოვთ, განაახლოთ!"
+msgid   "A new version of the %s plugin (%s) is available. Please update!"
+msgstr  "ხელმისაწვდომია %s დამატების ახალი ვერსია (%s). გთხოვთ, განაახლოთ!"
