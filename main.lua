@@ -121,41 +121,59 @@ function Assistant:getModelProvider()
   end
 
   local provider_settings = CONFIGURATION.provider_settings -- provider settings table from configuration.lua
-  local setting_provider = nil -- provider name from LuaSettings
-  
-  -- settings may not be initialized, so check if self.settings exists
-  if self.settings and next(self.settings.data) ~= nil then
-    setting_provider = self.settings:readSetting("provider")
+  local setting_provider = self.settings:readSetting("provider")
+
+  local function is_provider_valid(key)
+    if key and provider_settings[key] and 
+        provider_settings[key].model and 
+        provider_settings[key].base_url and 
+        provider_settings[key].api_key then
+          return true
+    end
+    return false
   end
 
-  if setting_provider and provider_settings[setting_provider] then
+  local function find_setting_provider(filter_func)
+    for key, tab in pairs(provider_settings) do
+      if is_provider_valid(key) then
+        if filter_func and filter_func(key, tab) then return key end
+        if not filter_func then return key end
+      end
+    end
+    return nil
+  end
+
+  if is_provider_valid(setting_provider) then
     -- If the setting provider is valid, use it
+    logger.info("found valid provider", setting_provider)
     return setting_provider
   else
-    -- If the setting provider is invalid, try to find one from configuration
+    logger.info("invalid provider, delete", setting_provider)
+    -- If the setting provider is invalid, delete this selection
+    self.settings:delSetting("provider")
 
     local conf_provider = CONFIGURATION.provider -- provider name from configuration.lua
-
-    if provider_settings[conf_provider] then
+    if is_provider_valid(conf_provider) then
       -- if the configuration provider is valid, use it
+      logger.info("found default provider", conf_provider)
       setting_provider = conf_provider
     else
-      -- still invalid, try to find the one defined with `default = true`
-      for key, tab in pairs(CONFIGURATION.provider_settings) do
-        if tab.default then
-          setting_provider = key
-          break
-        end
-      end
+      -- try to find the one defined with `default = true`
+      setting_provider = find_setting_provider(function(tab, key)
+        return tab.default and tab.default == true
+      end)
       
       -- still invalid (none of them defined `default`)
       if not setting_provider then
-        -- log a warning and use a random one available provider
-        local function first_key(t) for k, _ in pairs(t) do return k end end
-        setting_provider = first_key(CONFIGURATION.provider_settings)
+        setting_provider = find_setting_provider()
         logger.warn("Invalid provider setting found, using a random one: ", setting_provider)
       end
     end
+
+    if not setting_provider then
+      CONFIG_LOAD_ERROR = _("No valid model provider is found in the configuration.lua")
+      return nil
+    end -- if still not found, the configuration is wrong
     self.settings:saveSetting("provider", setting_provider)
     self.updated = true -- mark settings as updated
   end
@@ -186,15 +204,12 @@ function Assistant:init()
       text = _("AI Assistant"),
       enabled = Device:hasClipboard(),
       callback = function()
-        if not CONFIGURATION then
-          local err_text = _("Configuration Error.\nPlease set up configuration.lua.\n\n")
-          if CONFIG_LOAD_ERROR ~= nil then
-            -- keep the error message clean
-            local cut = CONFIG_LOAD_ERROR:find("configuration.lua")
-            if cut > 0 then err_text = err_text .. CONFIG_LOAD_ERROR:sub(cut)
-            else err_text = err_text .. CONFIG_LOAD_ERROR
-            end
-          end
+        if CONFIG_LOAD_ERROR and type(CONFIG_LOAD_ERROR) == "string" then
+          local err_text = _("Configuration Error.\nPlease set up configuration.lua.")
+          -- keep the error message clean
+          local cut = CONFIG_LOAD_ERROR:find("configuration.lua")
+          err_text = string.format("%s\n\n%s", err_text, 
+                  (cut > 0) and CONFIG_LOAD_ERROR:sub(cut) or CONFIG_LOAD_ERROR)
           UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err_text })
           return
         end
@@ -236,9 +251,27 @@ On the result dialog to close (as the Close button is far to reach).
     logger.warn("Configuration not found. Please set up configuration.lua first.")
     return
   end
-
   -- keep the reference
   self.CONFIGURATION = CONFIGURATION
+
+  local model_provider = self:getModelProvider()
+  if not model_provider then
+    CONFIG_LOAD_ERROR = _("configuration.lua: model providers are invalid.")
+    return
+  end
+
+  -- Load the model provider from settings or default configuration
+  self.querier = require("gpt_query"):new({
+    assitant = self,
+    settings = self.settings,
+  })
+
+  local ok, err = self.querier:load_model(model_provider)
+  if not ok then
+    CONFIG_LOAD_ERROR = err
+    UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
+    return
+  end
 
   -- store the UI language
   self.ui_language = Language:getLanguageName(G_reader_settings:readSetting("language") or "en") or "English"
@@ -246,12 +279,6 @@ On the result dialog to close (as the Close button is far to reach).
   -- Conditionally override translate method based on user setting
   self:syncTranslateOverride()
 
-  -- Load the model provider from settings or default configuration
-  self.querier = require("gpt_query"):new({
-    assitant = self,
-    settings = self.settings,
-  })
-  self.querier:load_model(self:getModelProvider())
 
   self.assitant_dialog = AssistantDialog:new(self, CONFIGURATION)
   
