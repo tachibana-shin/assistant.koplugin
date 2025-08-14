@@ -24,26 +24,21 @@ When source changes, run `make` under this dir.
 Use the following prompt to translate your language, attach `template/koreader.pot` 
 
 ```
-Translate the following gettext .po file content to {{YOUR LANGUAGE}}.  Preserve the .po file structure, including msgid, msgstr, and other metadata.  Ensure accurate and context-aware translation. The first message is a metadata message.  Fill in the `Language` arrtibute with current tranlating language. Fill `Language-Team` with AI Generated info includeing your model name. Do not modify other file structure. Here is the file content:
+Translate the following gettext .po file content to __YOUR_LANGUAGE__.
+Preserve the .po file structure, including msgid, msgstr, and other metadata.
+Ensure accurate and context-aware translation.
+The message will display on UI, keep the translation clean and short and easy understanding.
+The first message is the metadata for the PO file. Make the necessary updates to the metadata.
+The project is named `assitant.koplugin`.  Fill the Project-Id-Version attribute.
+Fill in the `Language` attribute with current translating language and the language code.
+Fill in the `Language-Team` and `Last-Translator` with your model name and versions.
+Do not modify other file structure.
+Only output the translated file content, do not use markdown format.
 ```
 
 Save the generated file content to `LANG_CODE/koreader.ko`
 
 Most translation files in the directory are generated with a script `AI_TRANSLATE.sh` with an API, which automates the above process.
-
-### Update
-
-When source code changes, update the template, then generate the untranslated file, feed to the AI, merge the reuslt.
-
-```bash
-make pot
-make merge
-make genuntranslated
-make ai
-make mergeuntranslated
-make check
-make clean
-```
 
 ## Language abbr TABLE
 

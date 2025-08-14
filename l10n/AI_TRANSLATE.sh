@@ -11,11 +11,12 @@ AUTH_HEADER="Authorization: Bearer ${API_KEY}"
 PROMPT_TEMPLATE="Translate the following gettext .po file content to __YOUR_LANGUAGE__. \
 Preserve the .po file structure, including msgid, msgstr, and other metadata. \
 Ensure accurate and context-aware translation.  \
-The message will display on a UI, keep the translation clean and short and easy understanding. \
-The first message is a po file metadata message. \
-The project is named \`assitant.koplugin\`.  Fill the Project-Id-Version attribute. \
-The time now is `date`, fill in the PO-Revision-Date attribute. \
-Fill in the \`Language\` attribute with current translating language: __YOUR_LANGUAGE__ and the language code. \
+The commented text in the first lines are descriptive text for the file, update it as necessary.
+The message will display on UI, keep the translation clean and short and easy understanding. \
+The first message is the metadata for the PO file. Make the necessary updates to the metadata. \
+The project is named \`assitant.koplugin\`. Fill the Project-Id-Version field. \
+The time now is `date`, fill the PO-Revision-Date field. \
+Fill in the \`Language\` with current translating language: __YOUR_LANGUAGE__ and the language code. \
 Fill in the \`Language-Team\` and \`Last-Translator\` with your model name and versions. \
 Do not modify other file structure. \
 Only output the translated file content, do not use markdown format. \
@@ -98,6 +99,8 @@ LANG_CODE="$1"
 
 LANG_FULLNAME="${LANG_MAP["$LANG_CODE"]}"
 PROMPT="${PROMPT_TEMPLATE//__YOUR_LANGUAGE__/$LANG_FULLNAME}"
+echo "Translation in progress for $LANG_CODE ($LANG_FULLNAME)."
+
 # -------------------- Create directory --------------------
 mkdir -p "$LANG_CODE"
 TRANSLATED_FILE="$LANG_CODE/koreader.po"
@@ -117,7 +120,7 @@ elif [[ -f "$TRANSLATED_FILE" && -f "$UNTRANSLATED_FILE" ]] then
   INPUTFILE=$UNTRANSLATED_FILE
   OUTPUTFILE=$UPDATED_TRANSLATED_FILE
 else
-  echo "file incorrect"
+  echo "translate file not ready for $LANG_CODE ($LANG_FULLNAME)"
   exit 1
 fi
 

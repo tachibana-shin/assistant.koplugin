@@ -69,8 +69,9 @@ clean:
 	@find . -type f \( -name "untranslated.po" -o -name "updated_translated.po" -o -name "updated.po" \) -print -delete
 
 ai-translate:
-	@for LANG in $(LANGS); do \
-		./AI_TRANSLATE.sh $$LANG; sleep 10; \
+	@set -e; for LANG in $(LANGS); do \
+		echo "Call AI translation for $$LANG..."; \
+		./AI_TRANSLATE.sh $$LANG && echo "... wait sometime due to API's limited" && sleep 20; \
 	done
 
 template:
