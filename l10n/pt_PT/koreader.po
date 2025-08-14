@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assitant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:36+0800\n"
 "Last-Translator: AI-Model <ai@example.com>\n"
 "Language-Team: Português <pt@li.org>\n"
@@ -122,7 +122,7 @@ msgstr "Digite sua pergunta..."
 msgid "Ask anything about this book..."
 msgstr "Pergunte qualquer coisa sobre este livro..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Assistente IA"
 
@@ -142,7 +142,7 @@ msgstr "Digite uma palavra para pesquisar..."
 msgid "Look Up"
 msgstr "Pesquisar"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Dicionário"
 
@@ -164,7 +164,7 @@ msgstr ""
 "Handler para %s não encontrado. Certifique-se de que existe na pasta "
 "api_handlers."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
@@ -173,24 +173,24 @@ msgstr ""
 "Nenhum provedor definido em configuration.lua. Defina o provedor e "
 "provider_settings para %s."
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "Consultando IA..."
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "IA respondendo"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ Parar"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "Resposta interrompida."
 
@@ -206,16 +206,19 @@ msgstr "Resumos IA"
 msgid "Assistant Settings"
 msgstr "Configurações do Assistente"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "Nenhum fornecedor de modelo válido foi encontrado em configuration.lua"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
-"Erro de configuração.\n"
-"Configure o arquivo configuration.lua.\n"
+"Erro de Configuração.\n"
+"Configure o ficheiro configuration.lua."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -243,7 +246,11 @@ msgstr ""
 "Gestos múltiplos (ex.: ⮠, ⮡, ↺):\n"
 "No diálogo de resultados para fechar (o botão Fechar pode estar distante).\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: os fornecedores de modelo são inválidos."
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -254,36 +261,36 @@ msgstr ""
 "Para %s de %s.\n"
 "Última leitura há %.0f h."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "Sim"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "Não"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Remover [%s] do menu de destaque?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "Remover"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Configuração não encontrada. Configure o configuration.lua primeiro."
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "O recurso de resumo da IA não está habilitado na configuração."
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "[%1 (IA)] adicionado ao menu de destaque."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "[%s (IA)] removido do menu de destaque."
@@ -377,8 +384,7 @@ msgstr "Gramática"
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
-msgstr ""
-"Analisa a gramática do texto destacado, explicando estrutura e erros."
+msgstr "Analisa a gramática do texto destacado, explicando estrutura e erros."
 
 #: ../prompts.lua:109
 msgid "Vocabulary"

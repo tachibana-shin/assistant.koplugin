@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 2025.08.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 12:09+0800\n"
 "Last-Translator: k1nky 1.0\n"
 "Language-Team: k1nky 1.0\n"
@@ -120,7 +120,7 @@ msgstr "Scrieți întrebarea aici..."
 msgid "Ask anything about this book..."
 msgstr "Întreabă orice despre această carte..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Asistent IA"
 
@@ -140,7 +140,7 @@ msgstr "Introduceți un cuvânt de căutat..."
 msgid "Look Up"
 msgstr "Caută"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Dicționar"
 
@@ -150,7 +150,8 @@ msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
 msgstr ""
-"Setările furnizorului nu au fost găsite pentru: %s. Verificați fișierul configuration.lua."
+"Setările furnizorului nu au fost găsite pentru: %s. Verificați fișierul "
+"configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
@@ -158,34 +159,36 @@ msgid ""
 "The handler for %s was not found. Please ensure the handler exists in "
 "api_handlers directory."
 msgstr ""
-"Handler-ul pentru %s nu a fost găsit. Asigurați-vă că există în directorul api_handlers."
+"Handler-ul pentru %s nu a fost găsit. Asigurați-vă că există în directorul "
+"api_handlers."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"Niciun furnizor setat în configuration.lua. Setați furnizorul și provider_settings pentru %s."
+"Niciun furnizor setat în configuration.lua. Setați furnizorul și "
+"provider_settings pentru %s."
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "Se interoghează IA..."
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "IA răspunde"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ Oprește"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "Răspuns întrerupt."
 
@@ -201,16 +204,19 @@ msgstr "Rezumate IA"
 msgid "Assistant Settings"
 msgstr "Setări asistent"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "Niciun furnizor de model valid în configuration.lua"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "Eroare de configurare.\n"
-"Configurați configuration.lua.\n"
+"Configurați configuration.lua."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -235,9 +241,14 @@ msgstr ""
 "Pe un cuvânt pentru a afișa meniul de evidențiere (în locul dicționarului).\n"
 "\n"
 "Glisare multiplă (e.g., ⮠, ⮡, ↺):\n"
-"În dialogul de rezultate pentru a-l închide (butonul Închide e greu de atins).\n"
+"În dialogul de rezultate pentru a-l închide (butonul Închide e greu de "
+"atins).\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: furnizorii de model sunt invalizi."
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -248,36 +259,36 @@ msgstr ""
 "Pentru %s de %s.\n"
 "Citit ultima dată acum %.0f oră(e)."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "Da"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "Nu"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Elimin [%s] din meniul de evidențiere?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "Elimină"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Configurarea nu a fost găsită. Setați configuration.lua mai întâi."
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "Funcția Rezumat IA nu este activată în configurare."
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "Adăugat [%1 (IA)] în meniul de evidențiere."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "Eliminat [%s (IA)] din meniul de evidențiere."
@@ -291,7 +302,8 @@ msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr ""
-"Acest prompt funcționează ca dicționar pentru textul evidențiat, un cuvânt sau expresie."
+"Acest prompt funcționează ca dicționar pentru textul evidențiat, un cuvânt "
+"sau expresie."
 
 #: ../prompts.lua:25
 msgid "Translate"
@@ -308,7 +320,9 @@ msgstr "Simplifică"
 #: ../prompts.lua:50
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Acest prompt simplifică textul evidențiat pentru a-l face mai ușor de înțeles."
+msgstr ""
+"Acest prompt simplifică textul evidențiat pentru a-l face mai ușor de "
+"înțeles."
 
 #: ../prompts.lua:60
 msgid "Explain"
@@ -318,7 +332,9 @@ msgstr "Explică"
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
-msgstr "Acest prompt explică textul evidențiat în detaliu, asigurând claritate și înțelegere."
+msgstr ""
+"Acest prompt explică textul evidențiat în detaliu, asigurând claritate și "
+"înțelegere."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -328,7 +344,9 @@ msgstr "Rezumă"
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
-msgstr "Acest prompt rezumă textul evidențiat, surprinzând ideile principale și detaliile esențiale."
+msgstr ""
+"Acest prompt rezumă textul evidențiat, surprinzând ideile principale și "
+"detaliile esențiale."
 
 #: ../prompts.lua:84
 msgid "Historical Context"
@@ -338,7 +356,9 @@ msgstr "Context istoric"
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
-msgstr "Acest prompt oferă un context istoric detaliat pentru textul evidențiat, explicând semnificația și fundalul."
+msgstr ""
+"Acest prompt oferă un context istoric detaliat pentru textul evidențiat, "
+"explicând semnificația și fundalul."
 
 #: ../prompts.lua:90
 msgid "Key Points"
@@ -348,7 +368,9 @@ msgstr "Puncte cheie"
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
-msgstr "Acest prompt extrage și listează punctele cheie din textul evidențiat, asigurând claritate și organizare."
+msgstr ""
+"Acest prompt extrage și listează punctele cheie din textul evidențiat, "
+"asigurând claritate și organizare."
 
 #: ../prompts.lua:96
 msgid "ELI5"
@@ -358,7 +380,9 @@ msgstr "ELI5"
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
-msgstr "Acest prompt explică textul evidențiat ca unui copil de cinci ani, simplificând conceptele complexe."
+msgstr ""
+"Acest prompt explică textul evidențiat ca unui copil de cinci ani, "
+"simplificând conceptele complexe."
 
 #: ../prompts.lua:102
 msgid "Grammar"
@@ -368,7 +392,9 @@ msgstr "Gramatică"
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
-msgstr "Acest prompt analizează gramatica textului evidențiat, oferind o explicație detaliată a structurii și a eventualelor greșeli."
+msgstr ""
+"Acest prompt analizează gramatica textului evidențiat, oferind o explicație "
+"detaliată a structurii și a eventualelor greșeli."
 
 #: ../prompts.lua:109
 msgid "Vocabulary"
@@ -378,7 +404,9 @@ msgstr "Vocabular"
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
-msgstr "Acest prompt analizează vocabularul textului evidențiat, identificând cuvinte complexe și oferind definiții, sinonime și exemple de utilizare."
+msgstr ""
+"Acest prompt analizează vocabularul textului evidențiat, identificând "
+"cuvinte complexe și oferind definiții, sinonime și exemple de utilizare."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
@@ -388,7 +416,9 @@ msgstr "Wikipedia"
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
-msgstr "Acest prompt generează un articol complet în stil Wikipedia bazat pe textul evidențiat, asigurând acuratețea și neutralitatea."
+msgstr ""
+"Acest prompt generează un articol complet în stil Wikipedia bazat pe textul "
+"evidențiat, asigurând acuratețea și neutralitatea."
 
 #: ../recapdialog.lua:68
 msgid "Recap"

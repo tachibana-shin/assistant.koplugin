@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:59+0800\n"
 "Last-Translator: Kimi 1.5 <kimi@moonshot.cn>\n"
 "Language-Team: Kimi 1.5 <kimi@moonshot.cn>\n"
@@ -121,7 +121,7 @@ msgstr "Idatzi zure galdera hemen..."
 msgid "Ask anything about this book..."
 msgstr "Galdetu edozer liburu honi buruz..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI Laguntzailea"
 
@@ -141,7 +141,7 @@ msgstr "Idatzi hitz bat bilatzeko..."
 msgid "Look Up"
 msgstr "Bilatu"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Hiztegia"
 
@@ -151,7 +151,8 @@ msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
 msgstr ""
-"Hornitzailearen ezarpenak ez dira aurkitu: %s. Egiaztatu configuration.lua fitxategia."
+"Hornitzailearen ezarpenak ez dira aurkitu: %s. Egiaztatu configuration.lua "
+"fitxategia."
 
 #: ../gpt_query.lua:74
 #, lua-format
@@ -159,34 +160,36 @@ msgid ""
 "The handler for %s was not found. Please ensure the handler exists in "
 "api_handlers directory."
 msgstr ""
-"%s-rako kudeatzailea ez da aurkitu. Ziurtatu kudeatzailea api_handlers direktorioan dagoela."
+"%s-rako kudeatzailea ez da aurkitu. Ziurtatu kudeatzailea api_handlers "
+"direktorioan dagoela."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"Ez da hornitzailea ezarri configuration.lua-n. Ezarri hornitzailea eta hornitzaile-ezarpenak %s(r)entzat."
+"Ez da hornitzailea ezarri configuration.lua-n. Ezarri hornitzailea eta "
+"hornitzaile-ezarpenak %s(r)entzat."
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "AI kontsultatzen..."
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "AI erantzuten ari da"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ Gelditu"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "Erantzuna eten da."
 
@@ -202,17 +205,19 @@ msgstr "AI Laburpenak"
 msgid "Assistant Settings"
 msgstr "Laguntzailearen ezarpenak"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "Ez da baliozko modelo-hornitzailerik aurkitu configuration.lua-n"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "Konfigurazio-errorea.\n"
-"Konfiguratu configuration.lua.\n"
-"\n"
+"Konfiguratu configuration.lua."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -239,7 +244,11 @@ msgstr ""
 "Zirriborro anitzak (adib.: ⮠, ⮡, ↺):\n"
 "Emaitza elkarrizketan: Itxi (Itxi botoia urrun dagoelako).\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: modelo-hornitzaileak ez dira baliozkoak."
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -250,36 +259,36 @@ msgstr ""
 "%s (egilea: %s).\n"
 "Azken irakurketa %.0f ordu duela."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "Bai"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "Ez"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Kendu [%s] Nabarmendu menutik?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "Kendu"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Konfigurazioa ez da aurkitu. Lehenik konfiguratu configuration.lua."
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "AI Laburpen ezaugarria ez dago gaituta konfigurazioan."
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "[%1 (AI)] gehitu da Nabarmendu menuan."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "[%s (AI)] kendu da Nabarmendu menutik."
@@ -293,7 +302,8 @@ msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr ""
-"Galdetegi honek nabarmendutako testuaren hiztegi gisa jarduten du, hitz edo esaldi baterako."
+"Galdetegi honek nabarmendutako testuaren hiztegi gisa jarduten du, hitz edo "
+"esaldi baterako."
 
 #: ../prompts.lua:25
 msgid "Translate"
@@ -301,7 +311,8 @@ msgstr "Itzuli"
 
 #: ../prompts.lua:26
 msgid "This prompt translates the highlighted text to another language."
-msgstr "Galdetegi honek nabarmendutako testua beste hizkuntza batera itzultzen du."
+msgstr ""
+"Galdetegi honek nabarmendutako testua beste hizkuntza batera itzultzen du."
 
 #: ../prompts.lua:48
 msgid "Simplify"
@@ -310,7 +321,9 @@ msgstr "Sinplifikatu"
 #: ../prompts.lua:50
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Galdetegi honek nabarmendutako testua sinplifikatzen du ulertzeko errazagoa izan dadin."
+msgstr ""
+"Galdetegi honek nabarmendutako testua sinplifikatzen du ulertzeko errazagoa "
+"izan dadin."
 
 #: ../prompts.lua:60
 msgid "Explain"
@@ -320,7 +333,9 @@ msgstr "Azaldu"
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
-msgstr "Galdetegi honek nabarmendutako testua xehetasunez azaltzen du, argitasuna eta ulermena bermatuz."
+msgstr ""
+"Galdetegi honek nabarmendutako testua xehetasunez azaltzen du, argitasuna "
+"eta ulermena bermatuz."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -330,7 +345,9 @@ msgstr "Laburbildu"
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
-msgstr "Galdetegi honek nabarmendutako testua laburbiltzen du, puntu nagusiak eta xehetasun garrantzitsuak jasoz."
+msgstr ""
+"Galdetegi honek nabarmendutako testua laburbiltzen du, puntu nagusiak eta "
+"xehetasun garrantzitsuak jasoz."
 
 #: ../prompts.lua:84
 msgid "Historical Context"
@@ -340,7 +357,9 @@ msgstr "Testuinguru Historikoa"
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
-msgstr "Galdetegi honek nabarmendutako testuaren testuinguru historiko zehatza eskaintzen du, bere garrantzia eta atze-oinarria azalduz."
+msgstr ""
+"Galdetegi honek nabarmendutako testuaren testuinguru historiko zehatza "
+"eskaintzen du, bere garrantzia eta atze-oinarria azalduz."
 
 #: ../prompts.lua:90
 msgid "Key Points"
@@ -350,7 +369,9 @@ msgstr "Puntu Garrantzitsuak"
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
-msgstr "Galdetegi honek nabarmendutako testuko puntu garrantzitsuak ateratzen eta zerrendatzen ditu, argitasuna eta antolamendua bermatuz."
+msgstr ""
+"Galdetegi honek nabarmendutako testuko puntu garrantzitsuak ateratzen eta "
+"zerrendatzen ditu, argitasuna eta antolamendua bermatuz."
 
 #: ../prompts.lua:96
 msgid "ELI5"
@@ -360,7 +381,10 @@ msgstr "ELI5"
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
-msgstr "Galdetegi honek nabarmendutako testua bost urteko haur bati azaltzen duen moduan azaltzen du, kontzeptu konplexuak ulertzeko errazak diren terminoetan sinplifikatuz."
+msgstr ""
+"Galdetegi honek nabarmendutako testua bost urteko haur bati azaltzen duen "
+"moduan azaltzen du, kontzeptu konplexuak ulertzeko errazak diren terminoetan "
+"sinplifikatuz."
 
 #: ../prompts.lua:102
 msgid "Grammar"
@@ -370,7 +394,9 @@ msgstr "Gramatika"
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
-msgstr "Galdetegi honek nabarmendutako testuaren gramatika aztertzen du, bere egitura eta akats gramatikalen azalpen zehatza emanez."
+msgstr ""
+"Galdetegi honek nabarmendutako testuaren gramatika aztertzen du, bere "
+"egitura eta akats gramatikalen azalpen zehatza emanez."
 
 #: ../prompts.lua:109
 msgid "Vocabulary"
@@ -380,7 +406,10 @@ msgstr "Hiztegia"
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
-msgstr "Galdetegi honek nabarmendutako testuaren hiztegia aztertzen du, hitz konplexuak identifikatuz eta definizioak, sinonimoak eta erabilera-adibideak emanez."
+msgstr ""
+"Galdetegi honek nabarmendutako testuaren hiztegia aztertzen du, hitz "
+"konplexuak identifikatuz eta definizioak, sinonimoak eta erabilera-adibideak "
+"emanez."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
@@ -390,7 +419,9 @@ msgstr "Wikipedia"
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
-msgstr "Galdetegi honek nabarmendutako testuan oinarritutako Wikipedia estiloko artikulu oso bat sortzen du, fakto-zuzena eta neutrala izan dadin bermatuz."
+msgstr ""
+"Galdetegi honek nabarmendutako testuan oinarritutako Wikipedia estiloko "
+"artikulu oso bat sortzen du, fakto-zuzena eta neutrala izan dadin bermatuz."
 
 #: ../recapdialog.lua:68
 msgid "Recap"

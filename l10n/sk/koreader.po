@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:40+0800\n"
 "Last-Translator: Kimi 1.5 <kimi@example.com>\n"
 "Language-Team: Slovenčina <sk@example.com>\n"
@@ -121,7 +121,7 @@ msgstr "Sem napíšte svoju otázku..."
 msgid "Ask anything about this book..."
 msgstr "Spýtať sa čokoľvek o tejto knihe..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Asistent AI"
 
@@ -141,7 +141,7 @@ msgstr "Zadajte slovo na vyhľadanie..."
 msgid "Look Up"
 msgstr "Vyhľadať"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Slovník"
 
@@ -151,7 +151,8 @@ msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
 msgstr ""
-"Nastavenia poskytovateľa neboli nájdené pre: %s. Skontrolujte súbor configuration.lua."
+"Nastavenia poskytovateľa neboli nájdené pre: %s. Skontrolujte súbor "
+"configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
@@ -159,34 +160,36 @@ msgid ""
 "The handler for %s was not found. Please ensure the handler exists in "
 "api_handlers directory."
 msgstr ""
-"Handler pre %s nebol nájdený. Uistite sa, že existuje v priečinku api_handlers."
+"Handler pre %s nebol nájdený. Uistite sa, že existuje v priečinku "
+"api_handlers."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"V configuration.lua nie je nastavený žiadny poskytovateľ. Nastavte poskytovateľa a provider_settings pre %s."
+"V configuration.lua nie je nastavený žiadny poskytovateľ. Nastavte "
+"poskytovateľa a provider_settings pre %s."
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "Dotazujem AI..."
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "AI odpovedá"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ Zastaviť"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "Odpoveď prerušená."
 
@@ -202,17 +205,19 @@ msgstr "AI rekapitulácie"
 msgid "Assistant Settings"
 msgstr "Nastavenia asistenta"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "V configuration.lua nebol nájdený žiadny platný poskytovateľ modelu"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "Chyba konfigurácie.\n"
-"Prosím, nastavte configuration.lua.\n"
-"\n"
+"Prosím, nastavte configuration.lua."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -239,7 +244,11 @@ msgstr ""
 "Multi-swipe (napr. ⮠, ⮡, ↺):\n"
 "Na výsledkovom dialógu na zatvorenie (keď je tlačidlo Zavrieť ďaleko).\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: poskytovatelia modelu sú neplatní."
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -250,36 +259,36 @@ msgstr ""
 "Pre %s od %s.\n"
 "Naposledy čítané pred %.0f h."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "Áno"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "Nie"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Odstrániť [%s] z menu zvýraznenia?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "Odstrániť"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Konfigurácia nebola nájdená. Najskôr nastavte configuration.lua."
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "Funkcia AI rekapitulácie nie je v konfigurácii povolená."
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "Pridané [%1 (AI)] do menu zvýraznenia."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "Odstránené [%s (AI)] z menu zvýraznenia."
@@ -292,8 +301,7 @@ msgstr "💡 Vylepšite svoj KOReader pomocou AI"
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
-msgstr ""
-"Táto výzva funguje ako slovník pre zvýraznený text, slovo alebo frázu."
+msgstr "Táto výzva funguje ako slovník pre zvýraznený text, slovo alebo frázu."
 
 #: ../prompts.lua:25
 msgid "Translate"
@@ -330,7 +338,9 @@ msgstr "Zhrnúť"
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
-msgstr "Táto výzva zhrnie zvýraznený text a vyzdvihne hlavné body a podstatné detaily."
+msgstr ""
+"Táto výzva zhrnie zvýraznený text a vyzdvihne hlavné body a podstatné "
+"detaily."
 
 #: ../prompts.lua:84
 msgid "Historical Context"
@@ -340,7 +350,9 @@ msgstr "Historický kontext"
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
-msgstr "Táto výzva poskytne podrobný historický kontext zvýrazneného textu a vysvetlí jeho význam."
+msgstr ""
+"Táto výzva poskytne podrobný historický kontext zvýrazneného textu a "
+"vysvetlí jeho význam."
 
 #: ../prompts.lua:90
 msgid "Key Points"
@@ -350,7 +362,9 @@ msgstr "Kľúčové body"
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
-msgstr "Táto výzva vytiahne a zoradí kľúčové body zvýrazneného textu s jasnosťou a prehľadnosťou."
+msgstr ""
+"Táto výzva vytiahne a zoradí kľúčové body zvýrazneného textu s jasnosťou a "
+"prehľadnosťou."
 
 #: ../prompts.lua:96
 msgid "ELI5"
@@ -360,7 +374,9 @@ msgstr "Vysvetliť ako pre päťročného"
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
-msgstr "Táto výzva vysvetlí zvýraznený text tak, aby to pochopil aj päťročný, a zjednoduší zložité pojmy."
+msgstr ""
+"Táto výzva vysvetlí zvýraznený text tak, aby to pochopil aj päťročný, a "
+"zjednoduší zložité pojmy."
 
 #: ../prompts.lua:102
 msgid "Grammar"
@@ -370,7 +386,9 @@ msgstr "Gramatika"
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
-msgstr "Táto výzva analyzuje gramatiku zvýrazneného textu a podrobne vysvetlí jeho štruktúru a prípadné chyby."
+msgstr ""
+"Táto výzva analyzuje gramatiku zvýrazneného textu a podrobne vysvetlí jeho "
+"štruktúru a prípadné chyby."
 
 #: ../prompts.lua:109
 msgid "Vocabulary"
@@ -380,7 +398,9 @@ msgstr "Slovná zásoba"
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
-msgstr "Táto výzva analyzuje slovnú zásobu zvýrazneného textu, identifikuje zložité slová a poskytne definície, synonymá a príklady použitia."
+msgstr ""
+"Táto výzva analyzuje slovnú zásobu zvýrazneného textu, identifikuje zložité "
+"slová a poskytne definície, synonymá a príklady použitia."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
@@ -390,7 +410,9 @@ msgstr "Wikipedia"
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
-msgstr "Táto výzva vytvorí komplexný článok v štýle Wikipédie na základe zvýrazneného textu a zabezpečí faktickú správnosť a neutralitu."
+msgstr ""
+"Táto výzva vytvorí komplexný článok v štýle Wikipédie na základe "
+"zvýrazneného textu a zabezpečí faktickú správnosť a neutralitu."
 
 #: ../recapdialog.lua:68
 msgid "Recap"

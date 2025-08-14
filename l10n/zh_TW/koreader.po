@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assitant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:50+0800\n"
 "Last-Translator: GPT-4o 2025-08-14\n"
 "Language-Team: GPT-4o 2025-08-14\n"
@@ -122,7 +122,7 @@ msgstr "在此輸入問題…"
 msgid "Ask anything about this book..."
 msgstr "詢問本書相關問題…"
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI 助理"
 
@@ -142,7 +142,7 @@ msgstr "輸入欲查詢的字詞…"
 msgid "Look Up"
 msgstr "查詢"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "字典"
 
@@ -160,31 +160,32 @@ msgid ""
 "api_handlers directory."
 msgstr "找不到 %s 的處理器，請確認 api_handlers 目錄存在"
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
-msgstr "未在 configuration.lua 設定提供者，請為 %s 設定 provider 與 provider_settings"
+msgstr ""
+"未在 configuration.lua 設定提供者，請為 %s 設定 provider 與 provider_settings"
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "AI 查詢中…"
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "AI 回應中"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ 停止"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "回應已中斷"
 
@@ -200,16 +201,19 @@ msgstr "AI 回顧"
 msgid "Assistant Settings"
 msgstr "助理設定"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "configuration.lua 中找不到有效的模型提供者"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
-"設定錯誤\n"
-"請先設定 configuration.lua\n"
+"設定錯誤。\n"
+"請設定 configuration.lua。"
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -236,7 +240,11 @@ msgstr ""
 "多指手勢（如 ⮠、⮡、↺）：\n"
 "結果對話框：關閉（按鈕太遠時使用）\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua：模型提供者無效。"
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -247,36 +255,36 @@ msgstr ""
 "%s by %s\n"
 "上次閱讀已過 %.0f 小時"
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "是"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "否"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "從劃線選單移除 [%s]？"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "移除"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "找不到設定檔，請先建立 configuration.lua"
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "設定檔未啟用 AI 回顧功能"
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "已將 [%1 (AI)] 加入劃線選單"
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "已從劃線選單移除 [%s (AI)]"

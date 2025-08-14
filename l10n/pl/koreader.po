@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 12:09+0800\n"
 "Last-Translator: GPT-4.0 2025-08-14\n"
 "Language-Team: GPT-4.0 <gpt@openai.com>\n"
@@ -121,7 +121,7 @@ msgstr "Wpisz pytanie…"
 msgid "Ask anything about this book..."
 msgstr "Zadaj cokolwiek o tej książce…"
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Asystent AI"
 
@@ -141,7 +141,7 @@ msgstr "Wprowadź słowo do sprawdzenia…"
 msgid "Look Up"
 msgstr "Wyszukaj"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Słownik"
 
@@ -150,8 +150,7 @@ msgstr "Słownik"
 msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
-msgstr ""
-"Nie znaleziono ustawień dostawcy: %s. Sprawdź plik configuration.lua."
+msgstr "Nie znaleziono ustawień dostawcy: %s. Sprawdź plik configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
@@ -159,34 +158,36 @@ msgid ""
 "The handler for %s was not found. Please ensure the handler exists in "
 "api_handlers directory."
 msgstr ""
-"Brak modułu obsługującego %s. Upewnij się, że znajduje się w katalogu api_handlers."
+"Brak modułu obsługującego %s. Upewnij się, że znajduje się w katalogu "
+"api_handlers."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"Brak ustawionego dostawcy w configuration.lua. Ustaw provider i provider_settings dla %s."
+"Brak ustawionego dostawcy w configuration.lua. Ustaw provider i "
+"provider_settings dla %s."
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "Zapytanie do AI…"
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "AI odpowiada"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ Stop"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "Odpowiedź przerwana."
 
@@ -202,16 +203,19 @@ msgstr "Podsumowania AI"
 msgid "Assistant Settings"
 msgstr "Ustawienia asystenta"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "Brak prawidłowego dostawcy modelu w configuration.lua"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "Błąd konfiguracji.\n"
-"Ustaw plik configuration.lua.\n"
+"Ustaw configuration.lua."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -238,7 +242,11 @@ msgstr ""
 "Wielokrotne przesunięcie (np. ⮠, ⮡, ↺):\n"
 "Zamknięcie okna wyników (gdy przycisk Zamknij jest niedostępny).\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: dostawcy modelu są nieprawidłowi."
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -249,36 +257,36 @@ msgstr ""
 "Dla %s autorstwa %s.\n"
 "Ostatnio czytano %.0f h temu."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "Tak"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "Nie"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Usunąć [%s] z menu podświetlania?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "Usuń"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Brak konfiguracji. Najpierw ustaw configuration.lua."
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "Funkcja AI Recap nie jest włączona w konfiguracji."
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "Dodano [%1 (AI)] do menu podświetlania."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "Usunięto [%s (AI)] z menu podświetlania."
@@ -291,7 +299,8 @@ msgstr "💡 Ulepsz KOReader dzięki AI"
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
-msgstr "Ten prompt działa jak słownik dla podświetlonego tekstu, słowa lub frazy."
+msgstr ""
+"Ten prompt działa jak słownik dla podświetlonego tekstu, słowa lub frazy."
 
 #: ../prompts.lua:25
 msgid "Translate"
@@ -318,7 +327,9 @@ msgstr "Wyjaśnij"
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
-msgstr "Ten prompt szczegółowo wyjaśnia podświetlony tekst, zapewniając jasność i zrozumienie."
+msgstr ""
+"Ten prompt szczegółowo wyjaśnia podświetlony tekst, zapewniając jasność i "
+"zrozumienie."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -328,7 +339,9 @@ msgstr "Podsumuj"
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
-msgstr "Ten prompt podsumowuje podświetlony tekst, uwzględniając główne punkty i najważniejsze szczegóły."
+msgstr ""
+"Ten prompt podsumowuje podświetlony tekst, uwzględniając główne punkty i "
+"najważniejsze szczegóły."
 
 #: ../prompts.lua:84
 msgid "Historical Context"
@@ -338,7 +351,9 @@ msgstr "Kontekst historyczny"
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
-msgstr "Ten prompt dostarcza szczegółowego kontekstu historycznego dla podświetlonego tekstu, wyjaśniając jego znaczenie i tło."
+msgstr ""
+"Ten prompt dostarcza szczegółowego kontekstu historycznego dla "
+"podświetlonego tekstu, wyjaśniając jego znaczenie i tło."
 
 #: ../prompts.lua:90
 msgid "Key Points"
@@ -348,7 +363,9 @@ msgstr "Kluczowe punkty"
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
-msgstr "Ten prompt wydobywa i wypisuje kluczowe punkty z podświetlonego tekstu, zapewniając klarowność i porządek."
+msgstr ""
+"Ten prompt wydobywa i wypisuje kluczowe punkty z podświetlonego tekstu, "
+"zapewniając klarowność i porządek."
 
 #: ../prompts.lua:96
 msgid "ELI5"
@@ -358,7 +375,9 @@ msgstr "Wytłumacz jak 5-latkowi"
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
-msgstr "Ten prompt wyjaśnia podświetlony tekst tak, jakby rozmawiał z pięciolatkiem, upraszczając złożone pojęcia."
+msgstr ""
+"Ten prompt wyjaśnia podświetlony tekst tak, jakby rozmawiał z pięciolatkiem, "
+"upraszczając złożone pojęcia."
 
 #: ../prompts.lua:102
 msgid "Grammar"
@@ -368,7 +387,9 @@ msgstr "Gramatyka"
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
-msgstr "Ten prompt analizuje gramatykę podświetlonego tekstu, szczegółowo opisując jego strukturę i ewentualne błędy."
+msgstr ""
+"Ten prompt analizuje gramatykę podświetlonego tekstu, szczegółowo opisując "
+"jego strukturę i ewentualne błędy."
 
 #: ../prompts.lua:109
 msgid "Vocabulary"
@@ -378,7 +399,9 @@ msgstr "Słownictwo"
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
-msgstr "Ten prompt analizuje słownictwo podświetlonego tekstu, wskazując trudne słowa i podając definicje, synonimy i przykłady użycia."
+msgstr ""
+"Ten prompt analizuje słownictwo podświetlonego tekstu, wskazując trudne "
+"słowa i podając definicje, synonimy i przykłady użycia."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"
@@ -388,7 +411,9 @@ msgstr "Wikipedia"
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
-msgstr "Ten prompt tworzy obszerny artykuł w stylu Wikipedii na podstawie podświetlonego tekstu, zachowując faktograficzną dokładność i neutralność."
+msgstr ""
+"Ten prompt tworzy obszerny artykuł w stylu Wikipedii na podstawie "
+"podświetlonego tekstu, zachowując faktograficzną dokładność i neutralność."
 
 #: ../recapdialog.lua:68
 msgid "Recap"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,7 +120,7 @@ msgstr ""
 msgid "Ask anything about this book..."
 msgstr ""
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Look Up"
 msgstr ""
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr ""
 
@@ -158,31 +158,31 @@ msgid ""
 "api_handlers directory."
 msgstr ""
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr ""
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr ""
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr ""
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr ""
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr ""
 
@@ -198,14 +198,17 @@ msgstr ""
 msgid "Assistant Settings"
 msgstr ""
 
-#: ../main.lua:190
-msgid ""
-"Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
 msgstr ""
 
-#: ../main.lua:217
+#: ../main.lua:208
+msgid ""
+"Configuration Error.\n"
+"Please set up configuration.lua."
+msgstr ""
+
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -221,7 +224,11 @@ msgid ""
 "On the result dialog to close (as the Close button is far to reach).\n"
 msgstr ""
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr ""
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -229,36 +236,36 @@ msgid ""
 "Last read %.0f hour(s) ago."
 msgstr ""
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr ""
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr ""
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr ""
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr ""
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr ""
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr ""
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr ""
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr ""

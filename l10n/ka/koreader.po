@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assitant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 12:00+0800\n"
 "Last-Translator: k1.5 2025-08-14\n"
 "Language-Team: k1.5 2025-08-14\n"
@@ -121,7 +121,7 @@ msgstr "აკრიფეთ კითხვა აქ..."
 msgid "Ask anything about this book..."
 msgstr "დაუსვით ნებისმიერი კითხვა ამ წიგნზე..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "KI ასისტენტი"
 
@@ -141,7 +141,7 @@ msgstr "შეიყვანეთ სიტყვა მოსაძებნ�
 msgid "Look Up"
 msgstr "ძებნა"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "ლექსიკონი"
 
@@ -161,32 +161,33 @@ msgid ""
 msgstr ""
 "%s-ს დამმუშავებელი არ მოიძებნა. დარწმუნდით, რომ ის api_handlers-ში არსებობს."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"configuration.lua-ში მომწოდებელი არაა მითითებული. მიუთითეთ provider და provider_settings %s-სთვის."
+"configuration.lua-ში მომწოდებელი არაა მითითებული. მიუთითეთ provider და "
+"provider_settings %s-სთვის."
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "KI-ს მოთხოვნა..."
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "KI პასუხობს"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ შეჩერება"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "პასუხი შეწყდა."
 
@@ -202,16 +203,19 @@ msgstr "KI შეჯამება"
 msgid "Assistant Settings"
 msgstr "ასისტენტის პარამეტრები"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "configuration.lua-ში ვერ მოიძებნა ვალიდური მოდელის პროვაიდერი"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "კონფიგურაციის შეცდომა.\n"
-"მოწყვეთ configuration.lua.\n"
+"დააყენეთ configuration.lua."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -238,7 +242,11 @@ msgstr ""
 "მრავალ-გადატარება (მაგ. ⮠, ⮡, ↺):\n"
 "პასუხის ფანჯარაზე დასახურად (რადგან Close-ის ღილაკი შორს არის).\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: მოდელის პროვაიდერები არასწორია"
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -249,36 +257,36 @@ msgstr ""
 "%s — %s.\n"
 "ბოლოჯერ წავიკითხე %.0f საათის წინ."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "დიახ"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "არა"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "წავშალოთ [%s] გამოკვეთის მენიუდან?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "წაშლა"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "კონფიგურაცია არ მოიძებნა. ჯერ მოწყვეთ configuration.lua."
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "KI შეჯამების ფუნქცია გამორთულია კონფიგურაციაში."
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "დაემატა [%1 (KI)] გამოკვეთის მენიუში."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "წაიშალა [%s (KI)] გამოკვეთის მენიუდან."
@@ -291,7 +299,9 @@ msgstr "💡 გააუმჯობესე KOReader გამოცდილ
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
-msgstr "ეს ბრძანება მუშაობს როგორც ლექსიკონი გამოკვეთილი ტექსტის, სიტყვის თზ გამოთქმისთვის."
+msgstr ""
+"ეს ბრძანება მუშაობს როგორც ლექსიკონი გამოკვეთილი ტექსტის, სიტყვის თზ "
+"გამოთქმისთვის."
 
 #: ../prompts.lua:25
 msgid "Translate"
@@ -348,7 +358,8 @@ msgstr "მთავარი წერტილები"
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
-msgstr "ეს ბრძანება გამოყოფს და ჩამოთვლის მთავარ წერტილებს გამოკვეთილი ტექსტიდან."
+msgstr ""
+"ეს ბრძანება გამოყოფს და ჩამოთვლის მთავარ წერტილებს გამოკვეთილი ტექსტიდან."
 
 #: ../prompts.lua:96
 msgid "ELI5"
@@ -388,7 +399,8 @@ msgstr "ვიკიპედია"
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
-msgstr "ეს ბრძანება ქმნის სრულ ვიკიპედიის სტილის სტატიას გამოკვეთილი ტექსტისთვის."
+msgstr ""
+"ეს ბრძანება ქმნის სრულ ვიკიპედიის სტილის სტატიას გამოკვეთილი ტექსტისთვის."
 
 #: ../recapdialog.lua:68
 msgid "Recap"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assitant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:25+0800\n"
 "Last-Translator: Kimi 1.5 <k1.5@2025>\n"
 "Language-Team: 日本語 <ja@k1.5>\n"
@@ -121,7 +121,7 @@ msgstr "質問を入力..."
 msgid "Ask anything about this book..."
 msgstr "本について何でも質問..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AIアシスタント"
 
@@ -141,7 +141,7 @@ msgstr "単語を入力..."
 msgid "Look Up"
 msgstr "検索"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "辞書"
 
@@ -150,40 +150,45 @@ msgstr "辞書"
 msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
-msgstr "プロバイダー設定が見つかりません: %s。configuration.luaを確認してください。"
+msgstr ""
+"プロバイダー設定が見つかりません: %s。configuration.luaを確認してください。"
 
 #: ../gpt_query.lua:74
 #, lua-format
 msgid ""
 "The handler for %s was not found. Please ensure the handler exists in "
 "api_handlers directory."
-msgstr "ハンドラー %s が見つかりません。api_handlersディレクトリに存在するか確認してください。"
+msgstr ""
+"ハンドラー %s が見つかりません。api_handlersディレクトリに存在するか確認して"
+"ください。"
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
-msgstr "configuration.luaにプロバイダーが設定されていません。%s のプロバイダーと設定を追加してください。"
+msgstr ""
+"configuration.luaにプロバイダーが設定されていません。%s のプロバイダーと設定"
+"を追加してください。"
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "AI に問い合わせ中..."
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "AI が応答中"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ 停止"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "応答が中断されました"
 
@@ -199,16 +204,19 @@ msgstr "AI要約"
 msgid "Assistant Settings"
 msgstr "アシスタント設定"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "configuration.lua に有効なモデルプロバイダーが見つかりません"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "設定エラー。\n"
-"configuration.lua を設定してください。\n"
+"configuration.lua を設定してください。"
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -235,7 +243,11 @@ msgstr ""
 "マルチスワイプ（例: ⮠, ⮡, ↺）:\n"
 "結果ダイアログを閉じる（閉じるボタンが遠いとき）。\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua のモデルプロバイダーが無効です"
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -246,36 +258,36 @@ msgstr ""
 "『%s』（著者：%s）\n"
 "最終読書 %.0f 時間前"
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "はい"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "いいえ"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "ハイライトメニューから [%s] を削除しますか？"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "削除"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "設定が見つかりません。先に configuration.lua を設定してください。"
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "AI要約機能は設定で無効になっています。"
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "[%1 (AI)] をハイライトメニューに追加しました。"
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "[%s (AI)] をハイライトメニューから削除しました。"
@@ -385,7 +397,9 @@ msgstr "ウィキペディア"
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
-msgstr "ハイライトしたテキストを元に、ウィキペディア風の正確で中立な記事を生成します。"
+msgstr ""
+"ハイライトしたテキストを元に、ウィキペディア風の正確で中立な記事を生成しま"
+"す。"
 
 #: ../recapdialog.lua:68
 msgid "Recap"
@@ -418,4 +432,6 @@ msgstr "アップデートを確認中..."
 #: ../update_checker.lua:56
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
-msgstr "新しいバージョンの %s プラグイン (%s) が利用可能です。アップデートしてください！"
+msgstr ""
+"新しいバージョンの %s プラグイン (%s) が利用可能です。アップデートしてくださ"
+"い！"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assitant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:34+0800\n"
 "Last-Translator: GPT-4o 2025-08-14\n"
 "Language-Team: GPT-4o <gpt-4o@openai.com>\n"
@@ -121,7 +121,7 @@ msgstr "Typ hier uw vraag..."
 msgid "Ask anything about this book..."
 msgstr "Stel alles over dit boek..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI-assistent"
 
@@ -141,7 +141,7 @@ msgstr "Voer een woord in om op te zoeken..."
 msgid "Look Up"
 msgstr "Opzoeken"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Woordenboek"
 
@@ -161,7 +161,7 @@ msgid ""
 msgstr ""
 "Handler voor %s niet gevonden. Controleer of de handler in api_handlers zit."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
@@ -170,24 +170,24 @@ msgstr ""
 "Geen provider ingesteld in configuration.lua. Stel provider en "
 "provider_settings in voor %s."
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "Bezig met AI-opvraging …"
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "AI antwoordt"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ Stoppen"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "Antwoord onderbroken."
 
@@ -203,16 +203,19 @@ msgstr "AI-samenvattingen"
 msgid "Assistant Settings"
 msgstr "Assistentinstellingen"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "Geen geldige modelprovider gevonden in configuration.lua"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "Configuratiefout.\n"
-"Stel configuration.lua in.\n"
+"Stel configuration.lua in."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -239,7 +242,11 @@ msgstr ""
 "Multi-swipe (⮠, ⮡, ↺):\n"
 "Op resultaatdialoog om te sluiten (sluitknop is ver weg).\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: modelproviders zijn ongeldig."
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -250,36 +257,36 @@ msgstr ""
 "Voor %s van %s.\n"
 "Laatst %.0f uur geleden gelezen."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "Ja"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "Nee"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "[%s] uit markeermenu verwijderen?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "Verwijderen"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Configuratie niet gevonden. Stel eerst configuration.lua in."
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "AI-samenvatting is niet ingeschakeld in configuratie."
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "[%1 (AI)] toegevoegd aan markeermenu."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "[%s (AI)] verwijderd uit markeermenu."
