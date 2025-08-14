@@ -17,7 +17,7 @@ local custom_prompts = {
         dictionary = {
             order = -10,
             text = _("Dictionary"),
-            desc = _("This prompt act as a dictionary for the highlighted text, to a word or phrase."),
+            desc = _("This prompt acts as a dictionary for the highlighted text, to a word or phrase."),
             -- this prompt is a stub -- it will be replaced by the actual prompt in the code below
         },
         translate = {

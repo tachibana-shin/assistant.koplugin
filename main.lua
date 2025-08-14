@@ -70,7 +70,7 @@ function Assistant:onDispatcherRegisterActions()
   Dispatcher:registerAction("ai_ask_question", {
     category = "none", 
     event = "AskAIQuestion", 
-    title = _("Ask AI Question"), 
+    title = _("Ask the AI a question"), 
     general = true
   })
   
@@ -79,7 +79,7 @@ function Assistant:onDispatcherRegisterActions()
     Dispatcher:registerAction("ai_recap", {
       category = "none", 
       event = "AskAIRecap", 
-      title = _("AI Recap"), 
+      title = _("AI Recaps"), 
       general = true,
       separator = true
     })
@@ -217,13 +217,13 @@ function Assistant:init()
             text = string.format("%s %s\n\n", meta.fullname, meta.version) .. _([[Useful Tips:
 
 Long Press:
-- On a Prompt Button: Add to the main highlight menu.
-- On a main highlight menu button to remove it.
+- On a Prompt Button: Add to the highlight menu.
+- On a highlight menu button to remove it.
 
-Very Long Press (more than 3 seconds):
-On a single word to show the highlight menu (instead of the dictionary).
+Very-Long Press (over 3 seconds):
+On a single word in the book to show the highlight menu (instead of the dictionary).
 
-Multi-Swipe (like, ⮠, ⮡, ↺):
+Multi-Swipe (e.g., ⮠, ⮡, ↺):
 On the result dialog to close (as the Close button is far to reach).
 ]])
         })
@@ -287,7 +287,7 @@ On the result dialog to close (as the Close button is far to reach).
             local doc_props = doc_settings:child("doc_props")
             local title = doc_props:readSetting("title", "Unknown Title")
             local authors = doc_props:readSetting("authors", "Unknown Author")
-            local message = string.format(T(_("Do you want an AI Recap?\nFor %s by %s.\nLast read %.0f hours ago.")), title, authors, timeDiffHours) -- can add in percent_finished too
+            local message = string.format(T(_("Do you want an AI Recap?\nFor %s by %s.\nLast read %.0f hour(s) ago.")), title, authors, timeDiffHours) -- can add in percent_finished too
     
             -- Display the request popup using ConfirmBox.
             UIManager:show(ConfirmBox:new{
@@ -361,7 +361,7 @@ function Assistant:addMainButton(prompt_idx, prompt)
       hold_callback = function() -- hold to remove
         UIManager:nextTick(function()
           UIManager:show(ConfirmBox:new{
-            text = string.format(_("Remove [%s] from the Main Highlight Menu?"), btntext),
+            text = string.format(_("Remove [%s] from Highlight Menu?"), btntext),
             ok_text = _("Remove"),
             ok_callback = function()
               self:handleEvent(Event:new("AssitantSetButton", {order=prompt.order, idx=prompt_idx}, "remove"))
@@ -514,7 +514,7 @@ function Assistant:onAssitantSetButton(btnconf, action)
     self.updated = true
     self:addMainButton(idx, prompt)
     UIManager:show(InfoMessage:new{
-      text = T(_("Added [%1 (AI)] to Main Highlight Menu."), prompt.text),
+      text = T(_("Added [%1 (AI)] to Highlight Menu."), prompt.text),
       icon = "notice-info",
       timeout = 3
     })
@@ -523,7 +523,7 @@ function Assistant:onAssitantSetButton(btnconf, action)
     self.updated = true
     self.ui.highlight:removeFromHighlightDialog(menukey)
     UIManager:show(InfoMessage:new{
-      text = string.format(_("Removed [%s (AI)] from Main Highlight Menu."), prompt.text),
+      text = string.format(_("Removed [%s (AI)] from Highlight Menu."), prompt.text),
       icon = "notice-info",
       timeout = 3
     })

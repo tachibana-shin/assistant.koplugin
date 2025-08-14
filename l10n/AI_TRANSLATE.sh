@@ -5,16 +5,18 @@
 set -euo pipefail
 
 # -------------------- Configuration --------------------
-TEMPLATE_FILE="templates/koreader.pot"
 API_ENDPOINT=${API_ENDPOINT:-"https://api.openai.com/v1/chat/completions"}
 API_MODEL=${API_MODEL:-"gpt-4o-mini"}
 AUTH_HEADER="Authorization: Bearer ${API_KEY}"
 PROMPT_TEMPLATE="Translate the following gettext .po file content to __YOUR_LANGUAGE__. \
 Preserve the .po file structure, including msgid, msgstr, and other metadata. \
-Ensure accurate and context-aware translation. \
-The first message is a po tranlation file metadata message. \
-Fill in the \`Language\` attribute with current translating language. \
-Fill in the \`Language-Team\` with AI Generated info including your model name and versions. \
+Ensure accurate and context-aware translation.  \
+The message will display on a UI, keep the translation clean and short and easy understanding. \
+The first message is a po file metadata message. \
+The project is named \`assitant.koplugin\`.  Fill the Project-Id-Version attribute. \
+The time now is `date`, fill in the PO-Revision-Date attribute. \
+Fill in the \`Language\` attribute with current translating language: __YOUR_LANGUAGE__ and the language code. \
+Fill in the \`Language-Team\` and \`Last-Translator\` with your model name and versions. \
 Do not modify other file structure. \
 Only output the translated file content, do not use markdown format. \
 "
@@ -70,6 +72,7 @@ declare -A LANG_MAP=(
   ["zh_TW"]="中文（台灣)"
 )
 
+TEMPLATE_FILE="templates/koreader.pot"
 # -------------------- Validation --------------------
 if [[ $# -ne 1 ]]; then
   echo "Usage: $0 <LANGUAGE_CODE>" >&2
@@ -104,12 +107,15 @@ UPDATED_TRANSLATED_FILE="$LANG_CODE/updated_translated.po"
 INPUTFILE=
 OUTPUTFILE=
 
-if [[ ! -f "$TRANSLATED_FILE" ]]; then
-  OUTPUTFILE=$TRANSLATED_FILE
-  INPUTFILE=$TEMPLATE_FILE
-elif [[ -f $TRANSLATED_FILE ]] && [[ -f $UNTRANSLATED_FILE ]]; then
-  OUTPUTFILE=$UPDATED_TRANSLATED_FILE
+if [[ ! -f "$TRANSLATED_FILE" && ! -f "$UNTRANSLATED_FILE" ]] then
+  # when the target language is untranslated
+  cp "$TEMPLATE_FILE" "$UNTRANSLATED_FILE"
   INPUTFILE=$UNTRANSLATED_FILE
+  OUTPUTFILE=$TRANSLATED_FILE
+elif [[ -f "$TRANSLATED_FILE" && -f "$UNTRANSLATED_FILE" ]] then
+  # when target language is updated
+  INPUTFILE=$UNTRANSLATED_FILE
+  OUTPUTFILE=$UPDATED_TRANSLATED_FILE
 else
   echo "file incorrect"
   exit 1
@@ -127,11 +133,10 @@ PAYLOAD=$(jq -n \
        {role: "system", content: $content},
        {role: "user",    content: $file_content}
      ],
-     temperature: 0
    }')
 
 # -------------------- Request translation --------------------
-RESPONSE=$(curl -sSf -X POST "$API_ENDPOINT" \
+RESPONSE=$(curl -Sf -X POST "$API_ENDPOINT" \
   -H "$AUTH_HEADER" -H "Content-Type: application/json" \
   --data-raw "$PAYLOAD")
 

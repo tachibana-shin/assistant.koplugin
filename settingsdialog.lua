@@ -23,7 +23,7 @@ local ffiutil = require("ffi/util")
 local meta = require("_meta")
 
 local SettingsDialog = InputDialog:extend{
-    title = _("Assitant Settings"),
+    title = _("Assistant Settings"),
 
     -- inited variables
     assitant = nil, -- reference to the main assistant object
@@ -61,7 +61,7 @@ function SettingsDialog:init()
                 self.assitant:syncTranslateOverride()
                 UIManager:show(InfoMessage:new{
                     timeout = 3,
-                    text = checked and _("AI Assistant override enabled.") or _("AI Assistant override disabled.")
+                    text = checked and _("AI Assistant override is enabled.") or _("AI Assistant override is disabled.")
                 })
             end,
         },

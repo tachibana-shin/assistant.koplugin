@@ -338,7 +338,7 @@ function AssitantDialog:show(highlightedText)
           local menukey = string.format("assistant_%02d_%s", tab.order, tab.idx)
           local settingkey = "showOnMain_" .. menukey
           UIManager:show(ConfirmBox:new{
-            text = string.format("%s: %s\n\n%s", tab.text, tab.desc, _("Add this button to the Main Highlight Menu?")),
+            text = string.format("%s: %s\n\n%s", tab.text, tab.desc, _("Add this button to the Highlight Menu?")),
             ok_text = _("Add"),
             ok_callback = function()
               self.assitant:handleEvent(Event:new("AssitantSetButton", {order=tab.order, idx=tab.idx}, "add"))

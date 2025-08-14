@@ -71,7 +71,7 @@ function Querier:init(provider_name)
             self.handler = handler
         else
             return string.format(
-                _("Handler not found for: %s. Please ensure the handler exists in api_handlers directory."),
+                _("The handler for %s was not found. Please ensure the handler exists in api_handlers directory."),
                 self.handler_name)
         end
     else
@@ -135,7 +135,7 @@ function Querier:query(message_history, title)
         local streamDialog = InputDialog:new{
             face = Font:getFace("smallffont"),
             width = Screen:getWidth() - Screen:scaleBySize(30),
-            title = _("AI Responding"),
+            title = _("AI is responding"),
             description = string.format(
                 _("☁ %s/%s"), self.provider_name, self.provider_settings.model),
             inputtext_class = StreamText, -- use our custom InputText class
@@ -171,7 +171,7 @@ function Querier:query(message_history, title)
         UIManager:close(streamDialog)
 
         if self.stream_interrupted then
-            return nil, _("Stream interrupted by user.")
+            return nil, _("Response interrupted.")
         end
 
         res = content

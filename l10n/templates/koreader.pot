@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-13 17:27+0800\n"
+"POT-Creation-Date: 2025-08-14 10:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
-msgid "AI Assistant"
-msgstr ""
-
-#: ../_meta.lua:5
-msgid "💡 Enhance KOReader's reading with AI Power."
-msgstr ""
 
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
 msgid "Ask Another Question"
@@ -102,7 +94,7 @@ msgid "Book Analysis"
 msgstr ""
 
 #: ../dialogs.lua:341
-msgid "Add this button to the Main Highlight Menu?"
+msgid "Add this button to the Highlight Menu?"
 msgstr ""
 
 #: ../dialogs.lua:342
@@ -126,6 +118,10 @@ msgstr ""
 
 #: ../dialogs.lua:373
 msgid "Ask anything about this book..."
+msgstr ""
+
+#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+msgid "AI Assistant"
 msgstr ""
 
 #: ../dialogs.lua:427
@@ -158,8 +154,8 @@ msgstr ""
 #: ../gpt_query.lua:74
 #, lua-format
 msgid ""
-"Handler not found for: %s. Please ensure the handler exists in api_handlers "
-"directory."
+"The handler for %s was not found. Please ensure the handler exists in "
+"api_handlers directory."
 msgstr ""
 
 #: ../gpt_query.lua:78
@@ -174,7 +170,7 @@ msgid "Querying AI ..."
 msgstr ""
 
 #: ../gpt_query.lua:138
-msgid "AI Responding"
+msgid "AI is responding"
 msgstr ""
 
 #: ../gpt_query.lua:140
@@ -187,18 +183,18 @@ msgid "⏹ Stop"
 msgstr ""
 
 #: ../gpt_query.lua:174
-msgid "Stream interrupted by user."
+msgid "Response interrupted."
 msgstr ""
 
 #: ../main.lua:73
-msgid "Ask AI Question"
+msgid "Ask the AI a question"
 msgstr ""
 
 #: ../main.lua:82
-msgid "AI Recap"
+msgid "AI Recaps"
 msgstr ""
 
-#: ../main.lua:91
+#: ../main.lua:91 ../settingsdialog.lua:26
 msgid "Assistant Settings"
 msgstr ""
 
@@ -214,13 +210,14 @@ msgid ""
 "Useful Tips:\n"
 "\n"
 "Long Press:\n"
-"- On a Prompt Button: Add to the main highlight menu.\n"
-"- On a main highlight menu button to remove it.\n"
+"- On a Prompt Button: Add to the highlight menu.\n"
+"- On a highlight menu button to remove it.\n"
 "\n"
-"Very Long Press (more than 3 seconds):\n"
-"On a single word to show the highlight menu (instead of the dictionary).\n"
+"Very-Long Press (over 3 seconds):\n"
+"On a single word in the book to show the highlight menu (instead of the "
+"dictionary).\n"
 "\n"
-"Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+"Multi-Swipe (e.g., ⮠, ⮡, ↺):\n"
 "On the result dialog to close (as the Close button is far to reach).\n"
 msgstr ""
 
@@ -229,7 +226,7 @@ msgstr ""
 msgid ""
 "Do you want an AI Recap?\n"
 "For %s by %s.\n"
-"Last read %.0f hours ago."
+"Last read %.0f hour(s) ago."
 msgstr ""
 
 #: ../main.lua:295
@@ -242,7 +239,7 @@ msgstr ""
 
 #: ../main.lua:364
 #, lua-format
-msgid "Remove [%s] from the Main Highlight Menu?"
+msgid "Remove [%s] from Highlight Menu?"
 msgstr ""
 
 #: ../main.lua:365
@@ -258,17 +255,21 @@ msgid "AI Recap feature is not enabled in configuration."
 msgstr ""
 
 #: ../main.lua:517
-msgid "Added [%1 (AI)] to Main Highlight Menu."
+msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr ""
 
 #: ../main.lua:526
 #, lua-format
-msgid "Removed [%s (AI)] from Main Highlight Menu."
+msgid "Removed [%s (AI)] from Highlight Menu."
+msgstr ""
+
+#: ../_meta.lua:5
+msgid "💡 Enhance your KOReader experience with AI"
 msgstr ""
 
 #: ../prompts.lua:20
 msgid ""
-"This prompt act as a dictionary for the highlighted text, to a word or "
+"This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr ""
 
@@ -373,10 +374,6 @@ msgstr ""
 msgid "Recap"
 msgstr ""
 
-#: ../settingsdialog.lua:26
-msgid "Assitant Settings"
-msgstr ""
-
 #: ../settingsdialog.lua:53
 msgid "Always use stream mode"
 msgstr ""
@@ -386,11 +383,11 @@ msgid "Use AI Assistant for 'Translate'"
 msgstr ""
 
 #: ../settingsdialog.lua:64
-msgid "AI Assistant override enabled."
+msgid "AI Assistant override is enabled."
 msgstr ""
 
 #: ../settingsdialog.lua:64
-msgid "AI Assistant override disabled."
+msgid "AI Assistant override is disabled."
 msgstr ""
 
 #: ../settingsdialog.lua:104
