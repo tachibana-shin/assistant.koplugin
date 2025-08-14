@@ -212,7 +212,7 @@ function Assistant:init()
         end
         NetworkMgr:runWhenOnline(function()
           if not updateMessageShown then
-            UpdateChecker.checkForUpdates()
+            UpdateChecker.checkForUpdates(self.CONFIGURATION)
             updateMessageShown = true
           end
           Trapper:wrap(function()
@@ -426,10 +426,6 @@ function Assistant:onAskAIQuestion()
   end
   
   NetworkMgr:runWhenOnline(function()
-    if not updateMessageShown then
-      UpdateChecker.checkForUpdates()
-      updateMessageShown = true
-    end
     -- Show dialog without highlighted text
     Trapper:wrap(function()
       self.assitant_dialog:show()
@@ -456,10 +452,6 @@ function Assistant:onAskAIRecap()
   end
   
   NetworkMgr:runWhenOnline(function()
-    if not updateMessageShown then
-      UpdateChecker.checkForUpdates()
-      updateMessageShown = true
-    end
     
     -- Get current book information
     local DocSettings = require("docsettings")
