@@ -5,28 +5,20 @@
 #
 #, fuzzy
 msgid   ""
-msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+msgstr  "Project-Id-Version: assitant.koplugin 1.0\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
-        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-        "Language-Team: Esperanto <LL@li.org>\n"
-        "Language: eo\n"
+        "POT-Creation-Date: 2025-08-14 10:58+0800\n"
+        "PO-Revision-Date: 2025-08-14 11:03+0800\n"
+        "Last-Translator: ChatGPT 4.0\n"
+        "Language-Team: Esperanto <ChatGPT 4.0>\n"
+        "Language: Esperanto (eo)\n"
         "MIME-Version: 1.0\n"
         "Content-Type: text/plain; charset=UTF-8\n"
         "Content-Transfer-Encoding: 8bit\n"
 
-#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
-msgid   "AI Assistant"
-msgstr  "AI-asistanto"
-
-#: ../_meta.lua:5
-msgid   "💡 Enhance KOReader's reading with AI Power."
-msgstr  "💜 Plibonigu la legadon de KOReader per la forto de KI."
-
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
 msgid   "Ask Another Question"
-msgstr  "Demandu Alian Demandon"
+msgstr  "Demandi alian demandon"
 
 #: ../chatgptviewer.lua:306
 msgid   "Close"
@@ -38,27 +30,27 @@ msgstr  "Kopii"
 
 #: ../chatgptviewer.lua:326
 msgid   "Text copied to clipboard"
-msgstr  "Teksto kopiita al tondujo"
+msgstr  "Teksto kopita al tondejo"
 
 #: ../chatgptviewer.lua:340
 msgid   "Add Note"
-msgstr  "Aldoni Noton"
+msgstr  "Aldoni noton"
 
 #: ../chatgptviewer.lua:347
 msgid   "Highlight functionality not available"
-msgstr  "Marka funkcio ne disponeblas"
+msgstr  "Enŝovado ne disponebla"
 
 #: ../chatgptviewer.lua:356
 msgid   "No text to add as note"
-msgstr  "Neniu teksto por aldoni kiel noto"
+msgstr  "Neniu teksto por noti"
 
 #: ../chatgptviewer.lua:385
 msgid   "No text left to add as note"
-msgstr  "Neniu teksto restas por aldoni kiel noto"
+msgstr  "Neniu teksto pli por noti"
 
 #: ../chatgptviewer.lua:398
 msgid   "Note added successfully"
-msgstr  "Noto sukcese aldonita"
+msgstr  "Noto aldonita sukcese"
 
 #: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
 msgid   "Cancel"
@@ -78,11 +70,11 @@ msgstr  "Tajpu vian demandon ĉi tie"
 
 #: ../chatgptviewer.lua:782
 msgid   "Word copied to clipboard."
-msgstr  "Vorto kopiita al tondujo."
+msgstr  "Vorto kopita al tondejo."
 
 #: ../chatgptviewer.lua:783
 msgid   "Selection copied to clipboard."
-msgstr  "Elekto kopiita al tondujo."
+msgstr  "Selektita kopita al tondejo."
 
 #: ../dialogs.lua:83
 msgid   "(Empty message)"
@@ -94,15 +86,15 @@ msgstr  "(Neniu respondo)"
 
 #: ../dialogs.lua:117
 msgid   "Highlighted text:"
-msgstr  "Markita teksto:"
+msgstr  "Enŝovita teksto:"
 
 #: ../dialogs.lua:304
 msgid   "Book Analysis"
 msgstr  "Libroanalizo"
 
 #: ../dialogs.lua:341
-msgid   "Add this button to the Main Highlight Menu?"
-msgstr  "Ĉu aldoni ĉi tiun butonon al la ĉefa marka menuo?"
+msgid   "Add this button to the Highlight Menu?"
+msgstr  "Ĉu aldoni ĉi tiun butonon al Enŝovada menuo?"
 
 #: ../dialogs.lua:342
 msgid   "Add"
@@ -110,13 +102,13 @@ msgstr  "Aldoni"
 
 #: ../dialogs.lua:368
 msgid   "Ask a question about the highlighted text"
-msgstr  "Demandu pri la markita teksto"
+msgstr  "Demandi pri la enŝovita teksto"
 
 #: ../dialogs.lua:369
 #, lua-format
 msgid   "Ask a question about this book:\n"
         "%s by %s"
-msgstr  "Demandu pri ĉi tiu libro:\n"
+msgstr  "Demandi pri ĉi tiu libro:\n"
         "%s de %s"
 
 #: ../dialogs.lua:372
@@ -125,15 +117,19 @@ msgstr  "Tajpu vian demandon ĉi tie..."
 
 #: ../dialogs.lua:373
 msgid   "Ask anything about this book..."
-msgstr  "Demandu ion ajn pri ĉi tiu libro..."
+msgstr  "Demandu ĉion pri ĉi tiu libro..."
+
+#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+msgid   "AI Assistant"
+msgstr  "AI-Assistanto"
 
 #: ../dialogs.lua:427
 msgid   "Error: No response received"
-msgstr  "Eraro: Neniu respondo ricevita"
+msgstr  "Eraro: Neniu respondo ricevata"
 
 #: ../dictdialog.lua:28
 msgid   "AI Dictionary"
-msgstr  "AI-vortaro"
+msgstr  "AI-Listo"
 
 #: ../dictdialog.lua:29
 msgid   "Enter a word to look up..."
@@ -151,30 +147,30 @@ msgstr  "Vortaro"
 #, lua-format
 msgid   "Provider settings not found for: %s. Please check your configuration."
         "lua file."
-msgstr  "Agordoj de provizanto ne trovitaj por: %s. Bonvolu kontroli vian "
-        "dosieron configuration.lua."
+msgstr  "Provizoraj agordoj ne troviĝon por: %s. Bonvolu kontroli vian "
+        "configuration.lua dosieron."
 
 #: ../gpt_query.lua:74
 #, lua-format
-msgid   "Handler not found for: %s. Please ensure the handler exists in "
-        "api_handlers directory."
-msgstr  "Mastrumanto ne trovita por: %s. Bonvolu certigi, ke la mastrumanto "
-        "ekzistas en la dosierujo api_handlers."
+msgid   "The handler for %s was not found. Please ensure the handler exists "
+        "in api_handlers directory."
+msgstr  "La traktanto por %s ne troviĝis. Certigu ke la traktanto ekzistas en "
+        "dosierujo api_handlers."
 
 #: ../gpt_query.lua:78
 #, lua-format
 msgid   "No provider set in configuration.lua. Please set the provider and "
         "provider_settings for %s."
-msgstr  "Neniu provizanto agordita en configuration.lua. Bonvolu agordi la "
-        "provizanton kaj provider_settings por %s."
+msgstr  "Neniu provizoro agordita en configuration.lua. Bonvolu agordi "
+        "provizoron kaj provizorajn agordojn por %s."
 
 #: ../gpt_query.lua:122
 msgid   "Querying AI ..."
-msgstr  "Informpetas AI..."
+msgstr  "Demando al AI..."
 
 #: ../gpt_query.lua:138
-msgid   "AI Responding"
-msgstr  "AI respondas"
+msgid   "AI is responding"
+msgstr  "AI respondu"
 
 #: ../gpt_query.lua:140
 #, lua-format
@@ -186,26 +182,26 @@ msgid   "⏹ Stop"
 msgstr  "⏹ Halti"
 
 #: ../gpt_query.lua:174
-msgid   "Stream interrupted by user."
-msgstr  "Fluo interrompita de uzanto."
+msgid   "Response interrupted."
+msgstr  "Respondo interrompita."
 
 #: ../main.lua:73
-msgid   "Ask AI Question"
-msgstr  "Demandu AI-question"
+msgid   "Ask the AI a question"
+msgstr  "Demandu la AI por demando"
 
 #: ../main.lua:82
-msgid   "AI Recap"
-msgstr  "AI-resumo"
+msgid   "AI Recaps"
+msgstr  "AI-Recapŝo"
 
-#: ../main.lua:91
+#: ../main.lua:91 ../settingsdialog.lua:26
 msgid   "Assistant Settings"
-msgstr  "Asistantaj agordoj"
+msgstr  "Agordoj de asistanto"
 
 #: ../main.lua:190
 msgid   "Configuration Error.\n"
         "Please set up configuration.lua.\n"
         "\n"
-msgstr  "Agorda Eraro.\n"
+msgstr  "Agorda eraro.\n"
         "Bonvolu agordi configuration.lua.\n"
         "\n"
 
@@ -213,38 +209,37 @@ msgstr  "Agorda Eraro.\n"
 msgid   "Useful Tips:\n"
         "\n"
         "Long Press:\n"
-        "- On a Prompt Button: Add to the main highlight menu.\n"
-        "- On a main highlight menu button to remove it.\n"
+        "- On a Prompt Button: Add to the highlight menu.\n"
+        "- On a highlight menu button to remove it.\n"
         "\n"
-        "Very Long Press (more than 3 seconds):\n"
-        "On a single word to show the highlight menu (instead of the "
-        "dictionary).\n"
+        "Very-Long Press (over 3 seconds):\n"
+        "On a single word in the book to show the highlight menu (instead of "
+        "the dictionary).\n"
         "\n"
-        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "Multi-Swipe (e.g., ⮠, ⮡, ↺):\n"
         "On the result dialog to close (as the Close button is far to "
         "reach).\n"
-msgstr  "Utilaj Konsiloj:\n"
+msgstr  "Uzeblaj konsiletoj:\n"
         "\n"
-        "Longa Premo:\n"
-        "- Sur Demandbutono: Aldoni al la ĉefa emfaza menuo.\n"
-        "- Sur butono de la ĉefa emfaza menuo por forigi ĝin.\n"
+        "Lunga premado:\n"
+        "- Sur butono de prompto: Aldoni al la enŝovada menuo.\n"
+        "- Sur butono de menuo por forigi ĝin.\n"
         "\n"
-        "Tre Longa Premo (pli ol 3 sekundoj):\n"
-        "Sur unuopa vorto por montri la emfazan menuon (anstataŭ la "
-        "vortaron).\n"
+        "Tre longa premado (super 3 sekundoj):\n"
+        "Sur unu vorto en libro por montri la menuon de enŝovado (anstataŭ la "
+        "vortaro).\n"
         "\n"
-        "Plur-fingra gesto (kiel, ⮠, ⮡, ↺):\n"
-        "Sur la rezulta dialogo por fermi (ĉar la Fermi-butonon estas "
-        "malproksime atingebla).\n"
+        "Multi-swipe (ekz., ⮠, ⮡, ↺):\n"
+        "Sur la rezultdialogo por fermi ( ĉar la butono Fermi estas longe).\n"
 
 #: ../main.lua:290
 #, lua-format
 msgid   "Do you want an AI Recap?\n"
         "For %s by %s.\n"
-        "Last read %.0f hours ago."
-msgstr  "Ĉu vi volas AI-resumon?\n"
+        "Last read %.0f hour(s) ago."
+msgstr  "Ĉu vi volas AI Recap?\n"
         "Por %s de %s.\n"
-        "Lasta legado antaŭ %.0f horoj."
+        "Last read %.0f horojn antaŭe."
 
 #: ../main.lua:295
 msgid   "Yes"
@@ -256,8 +251,8 @@ msgstr  "Ne"
 
 #: ../main.lua:364
 #, lua-format
-msgid   "Remove [%s] from the Main Highlight Menu?"
-msgstr  "Ĉu forigi [%s] el la Ĉefa Emfaza Menuo?"
+msgid   "Remove [%s] from Highlight Menu?"
+msgstr  "Ĉu forigi [%s] de la menuo de enŝovado?"
 
 #: ../main.lua:365
 msgid   "Remove"
@@ -265,26 +260,30 @@ msgstr  "Forigi"
 
 #: ../main.lua:399 ../main.lua:421 ../main.lua:474
 msgid   "Configuration not found. Please set up configuration.lua first."
-msgstr  "Agordo ne trovita. Bonvolu unue agordi configuration.lua."
+msgstr  "Agordo ne trovita. Bonvolu antaŭe agordi configuration.lua."
 
 #: ../main.lua:429
 msgid   "AI Recap feature is not enabled in configuration."
-msgstr  "La funkcio AI-resumo ne estas ebligita en la agordo."
+msgstr  "AI Recap-funkcio ne ŝaltita en agordoj."
 
 #: ../main.lua:517
-msgid   "Added [%1 (AI)] to Main Highlight Menu."
-msgstr  "Aldonita [%1 (KI)] al la Ĉefa Emfaza Menuo."
+msgid   "Added [%1 (AI)] to Highlight Menu."
+msgstr  "Aldonita [%1 (AI)] al menuo de enŝovado."
 
 #: ../main.lua:526
 #, lua-format
-msgid   "Removed [%s (AI)] from Main Highlight Menu."
-msgstr  "Forigita [%s (AI)] el la ĉefa marka menuo."
+msgid   "Removed [%s (AI)] from Highlight Menu."
+msgstr  "Forigita [%s (AI)] de menuo de enŝovado."
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance your KOReader experience with AI"
+msgstr  "💡 Plibonigu vian KOReader-efikon per AI"
 
 #: ../prompts.lua:20
-msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+msgid   "This prompt acts as a dictionary for the highlighted text, to a word "
         "or phrase."
-msgstr  "Ĉi tiu prompto funkcias kiel vortaro por la markita teksto, al vorto "
-        "aŭ frazo."
+msgstr  "Ĉi tiu prompto agas kiel vortaro por la enŝovita teksto, al vorto aŭ "
+        "frazo."
 
 #: ../prompts.lua:25
 msgid   "Translate"
@@ -292,7 +291,7 @@ msgstr  "Traduki"
 
 #: ../prompts.lua:26
 msgid   "This prompt translates the highlighted text to another language."
-msgstr  "Ĉi tiu prompto tradukas la markitan tekston al alia lingvo."
+msgstr  "Ĉi tiu prompto tradukas la enŝovitan tekston al alia lingvo."
 
 #: ../prompts.lua:48
 msgid   "Simplify"
@@ -301,37 +300,38 @@ msgstr  "Simpligi"
 #: ../prompts.lua:50
 msgid   "This prompt simplifies the highlighted text to make it easier to "
         "understand."
-msgstr  "Ĉi tiu prompto simpligas la markitan tekston por pli facila kompreno."
+msgstr  "Ĉi tiu prompto simpligas la enŝovitan tekston por faciliĝi "
+        "kompreneble."
 
 #: ../prompts.lua:60
 msgid   "Explain"
-msgstr  "Klarigi"
+msgstr  "Ekplain"
 
 #: ../prompts.lua:62
 msgid   "This prompt explains the highlighted text in detail, ensuring "
         "clarity and understanding."
-msgstr  "Ĉi tiu prompto klarigas la markitan tekston detale, certigante "
-        "klarecon kaj komprenon."
+msgstr  "Ĉi tiu prompto klarigas la enŝovitan tekston detalie, certigante "
+        "klaron kaj komprenon."
 
 #: ../prompts.lua:73
 msgid   "Summarize"
-msgstr  "Resumi"
+msgstr  "Resumo"
 
 #: ../prompts.lua:75
 msgid   "This prompt summarizes the highlighted text, capturing its main "
         "points and essential details."
-msgstr  "Ĉi tiu prompto resumas la markitan tekston, kaptante ĝiajn "
-        "ĉefpunktojn kaj esencajn detalojn."
+msgstr  "Ĉi tiu prompto summarizas la enŝovitan tekston, kapte la ĉefajn "
+        "punktojn kaj esencajn detalojn."
 
 #: ../prompts.lua:84
 msgid   "Historical Context"
-msgstr  "Historia kunteksto"
+msgstr  "Historio"
 
 #: ../prompts.lua:86
 msgid   "This prompt provides a detailed historical context for the "
         "highlighted text, explaining its significance and background."
-msgstr  "Ĉi tiu prompto provizas detalan historian kuntekston por la markita "
-        "teksto, klarigante ĝian gravecon kaj fonon."
+msgstr  "Ĉi tiu prompto provizas detalan historian kuntekston por la enŝovita "
+        "teksto, klarigante ĝian signifon kaj fonon."
 
 #: ../prompts.lua:90
 msgid   "Key Points"
@@ -340,18 +340,18 @@ msgstr  "Ĉefpunktoj"
 #: ../prompts.lua:92
 msgid   "This prompt extracts and lists the key points from the highlighted "
         "text, ensuring clarity and organization."
-msgstr  "Ĉi tiu prompto eltiras kaj listigas la ĉefpunktojn el la markita "
-        "teksto, certigante klarecon kaj organizon."
+msgstr  "Ĉi tiu prompto ekstraktas kaj listigas la ĉefajn punktojn de la "
+        "enŝovita teksto, certigante klaron kaj organizon."
 
 #: ../prompts.lua:96
 msgid   "ELI5"
-msgstr  "Kiel al 5-jarulo"
+msgstr  "ELI5"
 
 #: ../prompts.lua:98
 msgid   "This prompt explains the highlighted text as if to a five-year-old, "
         "simplifying complex concepts into easily understandable terms."
-msgstr  "Ĉi tiu prompto klarigas la markitan tekston kvazaŭ al 5-jarulo, "
-        "simpligante kompleksajn konceptojn en facile kompreneblajn terminojn."
+msgstr  "Ĉi tiu prompto klarigas la enŝovitan tekston kiel al kvinjarlingvo, "
+        "simpligante kompleksajn konceptojn al facile kompreneblaj terminoj."
 
 #: ../prompts.lua:102
 msgid   "Grammar"
@@ -360,21 +360,21 @@ msgstr  "Gramatiko"
 #: ../prompts.lua:104
 msgid   "This prompt analyzes the grammar of the highlighted text, providing "
         "a detailed explanation of its structure and any grammatical errors."
-msgstr  "Ĉi tiu prompto analizas la gramatikon de la markita teksto, "
-        "provizante detalan klarigon de ĝia strukturo kaj iujn gramatikajn "
-        "erarojn."
+msgstr  "Ĉi tiu prompto analiziĝas la gramatikon de la enŝovita teksto, "
+        "provizante detalajn klarigojn pri ĝia strukturo kaj eventuaj "
+        "grammatika eraroj."
 
 #: ../prompts.lua:109
 msgid   "Vocabulary"
-msgstr  "Vortprovizo"
+msgstr  "Vokabularo"
 
 #: ../prompts.lua:111
 msgid   "This prompt analyzes the vocabulary of the highlighted text, "
         "identifying complex words and providing definitions, synonyms, and "
         "usage examples."
-msgstr  "Ĉi tiu prompto analizas la vortprovizon de la markita teksto, "
+msgstr  "Ĉi tiu prompto analiziĝas la vokabularon de la enŝovita teksto, "
         "identigante kompleksajn vortojn kaj provizante difinojn, sinonimojn "
-        "kaj uzekzemplojn."
+        "kaj uzajn ekzemplojn."
 
 #: ../prompts.lua:127
 msgid   "Wikipedia"
@@ -383,36 +383,32 @@ msgstr  "Vikipedio"
 #: ../prompts.lua:129
 msgid   "This prompt generates a comprehensive Wikipedia-style article based "
         "on the highlighted text, ensuring factual accuracy and neutrality."
-msgstr  "Ĉi tiu prompto kreas ampleksan Vikipedio-stilan artikolon bazitan "
-        "sur la markita teksto, certigante faktecan ĝustecon kaj neŭtralecon."
+msgstr  "Ĉi tiu prompto generas kompletan Vikipedio-stilan artikolon bazitan "
+        "sur la enŝovita teksto, certigante fakturnaĵon kaj neutralon."
 
 #: ../recapdialog.lua:68
 msgid   "Recap"
 msgstr  "Resumo"
 
-#: ../settingsdialog.lua:26
-msgid   "Assitant Settings"
-msgstr  "Asistantaj agordoj"
-
 #: ../settingsdialog.lua:53
 msgid   "Always use stream mode"
-msgstr  "Ĉiam uzi fluan reĝimon"
+msgstr  "Ĉiam uzi fluminan reĝimon"
 
 #: ../settingsdialog.lua:58
 msgid   "Use AI Assistant for 'Translate'"
-msgstr  "Uzi AI-asistanton por 'Traduki'"
+msgstr  "Uzi AI-Assistanto por 'Traduki'"
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override enabled."
-msgstr  "AI-asistanta anstataŭigo ebligita."
+msgid   "AI Assistant override is enabled."
+msgstr  "AI-Assistanto superregado estas ŝaltita."
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override disabled."
-msgstr  "AI-asistanta anstataŭigo malebligita."
+msgid   "AI Assistant override is disabled."
+msgstr  "AI-Assistanto superregado estas malŝaltita."
 
 #: ../settingsdialog.lua:104
 msgid   "Select the AI Model provider."
-msgstr  "Elektu la AI-modelan provizanton."
+msgstr  "Elektu la AI-Modelprovizoron."
 
 #: ../update_checker.lua:22
 msgid   "Checking for updates..."
@@ -421,5 +417,4 @@ msgstr  "Kontrolas ĝisdatigojn..."
 #: ../update_checker.lua:56
 #, lua-format
 msgid   "A new version of the %s plugin (%s) is available. Please update!"
-msgstr  "Nova versio de la kromprogramo %s (%s) disponeblas. Bonvolu "
-        "ĝisdatigi!"
+msgstr  "Nova versio de la %s-kromaĵo (%s) disponeblas. Bonvolu ĝisdatigi!"

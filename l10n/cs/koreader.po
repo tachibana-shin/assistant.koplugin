@@ -5,28 +5,20 @@
 #
 #, fuzzy
 msgid   ""
-msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+msgstr  "Project-Id-Version: assistant.koplugin\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
-        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-        "Language-Team: AI Generated (GPT-4o, 2025-06-25)\n"
+        "POT-Creation-Date: 2025-08-14 10:58+0800\n"
+        "PO-Revision-Date: 2025-08-14 10:59+0800\n"
+        "Last-Translator: ChatGPT 4.0 <chatgpt@openai.com>\n"
+        "Language-Team: Čeština <cs@openai.com>\n"
         "Language: cs\n"
         "MIME-Version: 1.0\n"
         "Content-Type: text/plain; charset=UTF-8\n"
         "Content-Transfer-Encoding: 8bit\n"
 
-#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
-msgid   "AI Assistant"
-msgstr  "AI Asistent"
-
-#: ../_meta.lua:5
-msgid   "💡 Enhance KOReader's reading with AI Power."
-msgstr  "💡 Vylepšete čtení v KOReaderu pomocí síly AI."
-
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
 msgid   "Ask Another Question"
-msgstr  "Zeptat se na další otázku"
+msgstr  "Zeptejte se na další otázku"
 
 #: ../chatgptviewer.lua:306
 msgid   "Close"
@@ -46,7 +38,7 @@ msgstr  "Přidat poznámku"
 
 #: ../chatgptviewer.lua:347
 msgid   "Highlight functionality not available"
-msgstr  "Funkce zvýraznění není k dispozici"
+msgstr  "Funkce zvýraznění není dostupná"
 
 #: ../chatgptviewer.lua:356
 msgid   "No text to add as note"
@@ -54,7 +46,7 @@ msgstr  "Žádný text k přidání jako poznámku"
 
 #: ../chatgptviewer.lua:385
 msgid   "No text left to add as note"
-msgstr  "Už žádný text k přidání jako poznámku"
+msgstr  "Žádný text zbylý k přidání jako poznámka"
 
 #: ../chatgptviewer.lua:398
 msgid   "Note added successfully"
@@ -70,11 +62,11 @@ msgstr  "Zeptat se"
 
 #: ../chatgptviewer.lua:583 ../dialogs.lua:273
 msgid   "Enter a question before proceeding."
-msgstr  "Než budete pokračovat, zadejte otázku."
+msgstr  "Před pokračováním zadejte otázku."
 
 #: ../chatgptviewer.lua:631
 msgid   "Type your question here"
-msgstr  "Zde napište svou otázku"
+msgstr  "Zadejte svou otázku zde"
 
 #: ../chatgptviewer.lua:782
 msgid   "Word copied to clipboard."
@@ -101,8 +93,8 @@ msgid   "Book Analysis"
 msgstr  "Analýza knihy"
 
 #: ../dialogs.lua:341
-msgid   "Add this button to the Main Highlight Menu?"
-msgstr  "Přidat toto tlačítko do hlavní nabídky zvýraznění?"
+msgid   "Add this button to the Highlight Menu?"
+msgstr  "Přidat toto tlačítko do nabídky zvýraznění?"
 
 #: ../dialogs.lua:342
 msgid   "Add"
@@ -110,26 +102,30 @@ msgstr  "Přidat"
 
 #: ../dialogs.lua:368
 msgid   "Ask a question about the highlighted text"
-msgstr  "Zeptat se na otázku ohledně zvýrazněného textu"
+msgstr  "Zeptejte se na zvýrazněný text"
 
 #: ../dialogs.lua:369
 #, lua-format
 msgid   "Ask a question about this book:\n"
         "%s by %s"
-msgstr  "Zeptat se na otázku ohledně této knihy:\n"
+msgstr  "Zeptejte se na tuto knihu:\n"
         "%s od %s"
 
 #: ../dialogs.lua:372
 msgid   "Type your question here..."
-msgstr  "Zde napište svou otázku..."
+msgstr  "Zadejte svou otázku..."
 
 #: ../dialogs.lua:373
 msgid   "Ask anything about this book..."
-msgstr  "Zeptat se na cokoli ohledně této knihy..."
+msgstr  "Zeptat se na cokoli o této knize..."
+
+#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+msgid   "AI Assistant"
+msgstr  "AI Asistent"
 
 #: ../dialogs.lua:427
 msgid   "Error: No response received"
-msgstr  "Chyba: Nebyla přijata žádná odpověď"
+msgstr  "Chyba: Není žádná odpověď"
 
 #: ../dictdialog.lua:28
 msgid   "AI Dictionary"
@@ -151,21 +147,21 @@ msgstr  "Slovník"
 #, lua-format
 msgid   "Provider settings not found for: %s. Please check your configuration."
         "lua file."
-msgstr  "Nastavení poskytovatele nenalezeno pro: %s. Zkontrolujte prosím "
+msgstr  "Nastavení poskytovatele nebyla nalezena pro: %s. Zkontrolujte prosím "
         "soubor configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
-msgid   "Handler not found for: %s. Please ensure the handler exists in "
-        "api_handlers directory."
-msgstr  "Handler nenalezen pro: %s. Ujistěte se, že handler existuje v "
+msgid   "The handler for %s was not found. Please ensure the handler exists "
+        "in api_handlers directory."
+msgstr  "Obslužná rutina pro %s nebyla nalezena. Ujistěte se, že existuje v "
         "adresáři api_handlers."
 
 #: ../gpt_query.lua:78
 #, lua-format
 msgid   "No provider set in configuration.lua. Please set the provider and "
         "provider_settings for %s."
-msgstr  "V configuration.lua není nastaven žádný poskytovatel. Nastavte "
+msgstr  "Žádný poskytovatel nebyl nastaven v configuration.lua. Nastavte "
         "prosím poskytovatele a provider_settings pro %s."
 
 #: ../gpt_query.lua:122
@@ -173,7 +169,7 @@ msgid   "Querying AI ..."
 msgstr  "Dotazování AI..."
 
 #: ../gpt_query.lua:138
-msgid   "AI Responding"
+msgid   "AI is responding"
 msgstr  "AI odpovídá"
 
 #: ../gpt_query.lua:140
@@ -186,18 +182,18 @@ msgid   "⏹ Stop"
 msgstr  "⏹ Zastavit"
 
 #: ../gpt_query.lua:174
-msgid   "Stream interrupted by user."
-msgstr  "Stream přerušen uživatelem."
+msgid   "Response interrupted."
+msgstr  "Odpověď přerušena."
 
 #: ../main.lua:73
-msgid   "Ask AI Question"
-msgstr  "Zeptat se AI na otázku"
+msgid   "Ask the AI a question"
+msgstr  "Zeptejte se AI otázky"
 
 #: ../main.lua:82
-msgid   "AI Recap"
-msgstr  "AI Shrnutí"
+msgid   "AI Recaps"
+msgstr  "AI Přehledy"
 
-#: ../main.lua:91
+#: ../main.lua:91 ../settingsdialog.lua:26
 msgid   "Assistant Settings"
 msgstr  "Nastavení asistenta"
 
@@ -206,45 +202,45 @@ msgid   "Configuration Error.\n"
         "Please set up configuration.lua.\n"
         "\n"
 msgstr  "Chyba konfigurace.\n"
-        "Nastavte prosím configuration.lua.\n"
+        "Nastavte configuration.lua.\n"
         "\n"
 
 #: ../main.lua:217
 msgid   "Useful Tips:\n"
         "\n"
         "Long Press:\n"
-        "- On a Prompt Button: Add to the main highlight menu.\n"
-        "- On a main highlight menu button to remove it.\n"
+        "- On a Prompt Button: Add to the highlight menu.\n"
+        "- On a highlight menu button to remove it.\n"
         "\n"
-        "Very Long Press (more than 3 seconds):\n"
-        "On a single word to show the highlight menu (instead of the "
-        "dictionary).\n"
+        "Very-Long Press (over 3 seconds):\n"
+        "On a single word in the book to show the highlight menu (instead of "
+        "the dictionary).\n"
         "\n"
-        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "Multi-Swipe (e.g., ⮠, ⮡, ↺):\n"
         "On the result dialog to close (as the Close button is far to "
         "reach).\n"
 msgstr  "Užitečné tipy:\n"
         "\n"
-        "Dlouhé podržení:\n"
-        "- Na tlačítku výzvy: Přidá do hlavní nabídky zvýraznění.\n"
-        "- Na tlačítku hlavní nabídky zvýraznění: Odebere ho.\n"
+        "Dlouhý stisk:\n"
+        "- Na tlačítko výzvy: Přidat do nabídky zvýraznění.\n"
+        "- Na tlačítko nabídky zvýraznění pro jeho odstranění.\n"
         "\n"
-        "Velmi dlouhé podržení (více než 3 sekundy):\n"
-        "Na jednotlivé slovo pro zobrazení nabídky zvýraznění (místo "
+        "Velmi dlouhý stisk (přes 3 sekundy):\n"
+        "Na jedno slovo v knize k zobrazení nabídky zvýraznění (místo "
         "slovníku).\n"
         "\n"
-        "Víceprsté přejetí (např. ⮠, ⮡, ↺):\n"
-        "Na výsledkovém dialogu pro zavření (protože tlačítko Zavřít je "
+        "Vícenásobný přejezd (např. ⮠, ⮡, ↺):\n"
+        "Na dialog výsledek zavřete (protože tlačítko Zavřít je příliš "
         "daleko).\n"
 
 #: ../main.lua:290
 #, lua-format
 msgid   "Do you want an AI Recap?\n"
         "For %s by %s.\n"
-        "Last read %.0f hours ago."
-msgstr  "Chcete AI shrnutí?\n"
+        "Last read %.0f hour(s) ago."
+msgstr  "Chcete AI Přehled?\n"
         "Pro %s od %s.\n"
-        "Naposledy čteno před %.0f hodinami."
+        "Poslední čtení %.0f hodiny(y) předtím."
 
 #: ../main.lua:295
 msgid   "Yes"
@@ -256,8 +252,8 @@ msgstr  "Ne"
 
 #: ../main.lua:364
 #, lua-format
-msgid   "Remove [%s] from the Main Highlight Menu?"
-msgstr  "Odebrat [%s] z hlavní nabídky zvýraznění?"
+msgid   "Remove [%s] from Highlight Menu?"
+msgstr  "Odebrat [%s] z nabídky zvýraznění?"
 
 #: ../main.lua:365
 msgid   "Remove"
@@ -265,25 +261,29 @@ msgstr  "Odebrat"
 
 #: ../main.lua:399 ../main.lua:421 ../main.lua:474
 msgid   "Configuration not found. Please set up configuration.lua first."
-msgstr  "Konfigurace nenalezena. Nejprve prosím nastavte configuration.lua."
+msgstr  "Konfigurace nenalezena. Nejprve nastavte configuration.lua."
 
 #: ../main.lua:429
 msgid   "AI Recap feature is not enabled in configuration."
-msgstr  "Funkce AI shrnutí není v konfiguraci povolena."
+msgstr  "Funkce AI Přehledu není v konfiguraci povolena."
 
 #: ../main.lua:517
-msgid   "Added [%1 (AI)] to Main Highlight Menu."
-msgstr  "Přidáno [%1 (AI)] do hlavní nabídky zvýraznění."
+msgid   "Added [%1 (AI)] to Highlight Menu."
+msgstr  "Přidáno [%1 (AI)] do nabídky zvýraznění."
 
 #: ../main.lua:526
 #, lua-format
-msgid   "Removed [%s (AI)] from Main Highlight Menu."
-msgstr  "[%s (AI)] odebráno z hlavní nabídky zvýraznění."
+msgid   "Removed [%s (AI)] from Highlight Menu."
+msgstr  "Odebráno [%s (AI)] z nabídky zvýraznění."
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance your KOReader experience with AI"
+msgstr  "💡 Zlepšete svůj zážitek s KOReader pomocí AI"
 
 #: ../prompts.lua:20
-msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+msgid   "This prompt acts as a dictionary for the highlighted text, to a word "
         "or phrase."
-msgstr  "Tento prompt funguje jako slovník pro zvýrazněný text, slovo nebo "
+msgstr  "Tato výzva funguje jako slovník pro zvýrazněný text, slovo nebo "
         "frázi."
 
 #: ../prompts.lua:25
@@ -292,7 +292,7 @@ msgstr  "Přeložit"
 
 #: ../prompts.lua:26
 msgid   "This prompt translates the highlighted text to another language."
-msgstr  "Tento prompt překládá zvýrazněný text do jiného jazyka."
+msgstr  "Tato výzva překládá zvýrazněný text do jiného jazyka."
 
 #: ../prompts.lua:48
 msgid   "Simplify"
@@ -301,8 +301,7 @@ msgstr  "Zjednodušit"
 #: ../prompts.lua:50
 msgid   "This prompt simplifies the highlighted text to make it easier to "
         "understand."
-msgstr  "Tento prompt zjednodušuje zvýrazněný text, aby byl snáze "
-        "srozumitelný."
+msgstr  "Tato výzva zjednodušuje zvýrazněný text, aby bylo snazší pochopit."
 
 #: ../prompts.lua:60
 msgid   "Explain"
@@ -311,18 +310,18 @@ msgstr  "Vysvětlit"
 #: ../prompts.lua:62
 msgid   "This prompt explains the highlighted text in detail, ensuring "
         "clarity and understanding."
-msgstr  "Tento prompt podrobně vysvětluje zvýrazněný text a zajišťuje jeho "
-        "srozumitelnost."
+msgstr  "Tato výzva detailně vysvětluje zvýrazněný text, zajišťujíc jasno a "
+        "pochopení."
 
 #: ../prompts.lua:73
 msgid   "Summarize"
-msgstr  "Shrnutí"
+msgstr  "Shrnout"
 
 #: ../prompts.lua:75
 msgid   "This prompt summarizes the highlighted text, capturing its main "
         "points and essential details."
-msgstr  "Tento prompt shrnuje zvýrazněný text a zachycuje jeho hlavní body a "
-        "podstatné detaily."
+msgstr  "Tato výzva shrnuje zvýrazněný text, zachycující hlavní body a "
+        "klíčové detaily."
 
 #: ../prompts.lua:84
 msgid   "Historical Context"
@@ -331,8 +330,8 @@ msgstr  "Historický kontext"
 #: ../prompts.lua:86
 msgid   "This prompt provides a detailed historical context for the "
         "highlighted text, explaining its significance and background."
-msgstr  "Tento prompt poskytuje podrobný historický kontext zvýrazněného "
-        "textu a vysvětluje jeho význam a pozadí."
+msgstr  "Tato výzva poskytuje podrobný historický kontext pro zvýrazněný "
+        "text, vysvětlující jeho význam a pozadí."
 
 #: ../prompts.lua:90
 msgid   "Key Points"
@@ -341,8 +340,8 @@ msgstr  "Klíčové body"
 #: ../prompts.lua:92
 msgid   "This prompt extracts and lists the key points from the highlighted "
         "text, ensuring clarity and organization."
-msgstr  "Tento prompt extrahuje a vypisuje klíčové body ze zvýrazněného textu "
-        "a zajišťuje jejich přehlednost a uspořádání."
+msgstr  "Tato výzva extrahuje a seznamuje klíčové body z zvýrazněného textu, "
+        "zajistí klaritu a organizaci."
 
 #: ../prompts.lua:96
 msgid   "ELI5"
@@ -351,9 +350,8 @@ msgstr  "ELI5"
 #: ../prompts.lua:98
 msgid   "This prompt explains the highlighted text as if to a five-year-old, "
         "simplifying complex concepts into easily understandable terms."
-msgstr  "Tento prompt vysvětluje zvýrazněný text, jako by byl určen "
-        "pětiletému dítěti, a zjednodušuje složité koncepty na snadno "
-        "srozumitelné výrazy."
+msgstr  "Tato výzva vysvětluje zvýrazněný text, jako by to dětem pěti let, "
+        "zjednodušuje složité koncepty na snadno pochopitelné výrazy."
 
 #: ../prompts.lua:102
 msgid   "Grammar"
@@ -362,8 +360,8 @@ msgstr  "Gramatika"
 #: ../prompts.lua:104
 msgid   "This prompt analyzes the grammar of the highlighted text, providing "
         "a detailed explanation of its structure and any grammatical errors."
-msgstr  "Tento prompt analyzuje gramatiku zvýrazněného textu a poskytuje "
-        "podrobné vysvětlení jeho struktury a případných gramatických chyb."
+msgstr  "Tato výzva analyzuje gramatiku zvýrazněného textu, poskytuje "
+        "detailní vysvětlení struktury a případných gramatických chyb."
 
 #: ../prompts.lua:109
 msgid   "Vocabulary"
@@ -373,9 +371,8 @@ msgstr  "Slovní zásoba"
 msgid   "This prompt analyzes the vocabulary of the highlighted text, "
         "identifying complex words and providing definitions, synonyms, and "
         "usage examples."
-msgstr  "Tento prompt analyzuje slovní zásobu zvýrazněného textu, "
-        "identifikuje složitá slova a poskytuje definice, synonyma a příklady "
-        "použití."
+msgstr  "Tato výzva analyzuje slovní zásobu zvýrazněného textu, identifikuje "
+        "složité slova a poskytuje definice, synonymá a příklady použití."
 
 #: ../prompts.lua:127
 msgid   "Wikipedia"
@@ -384,40 +381,36 @@ msgstr  "Wikipedia"
 #: ../prompts.lua:129
 msgid   "This prompt generates a comprehensive Wikipedia-style article based "
         "on the highlighted text, ensuring factual accuracy and neutrality."
-msgstr  "Tento prompt vytváří komplexní článek ve stylu Wikipedie na základě "
-        "zvýrazněného textu a zajišťuje faktickou přesnost a neutralitu."
+msgstr  "Tato výzva generuje komplexní článek stylu Wikipedie na základě "
+        "zvýrazněného textu, zajišťující faktickou přesnost a neutrality."
 
 #: ../recapdialog.lua:68
 msgid   "Recap"
-msgstr  "Shrnutí"
-
-#: ../settingsdialog.lua:26
-msgid   "Assitant Settings"
-msgstr  "Nastavení asistenta"
+msgstr  "Přehled"
 
 #: ../settingsdialog.lua:53
 msgid   "Always use stream mode"
-msgstr  "Vždy používat streamovací režim"
+msgstr  "Vždy používat režim streamu"
 
 #: ../settingsdialog.lua:58
 msgid   "Use AI Assistant for 'Translate'"
-msgstr  "Použít AI asistenta pro 'Překlad'"
+msgstr  "Používat AI Asistenta pro 'Přeložit'"
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override enabled."
-msgstr  "Přepsání AI asistenta povoleno."
+msgid   "AI Assistant override is enabled."
+msgstr  "Přepsání AI Asistenta je povoleno."
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override disabled."
-msgstr  "Přepsání AI asistenta zakázáno."
+msgid   "AI Assistant override is disabled."
+msgstr  "Přepsání AI Asistenta je zakázáno."
 
 #: ../settingsdialog.lua:104
 msgid   "Select the AI Model provider."
-msgstr  "Vyberte poskytovatele AI modelu."
+msgstr  "Vyberte poskytovatele modelu AI."
 
 #: ../update_checker.lua:22
 msgid   "Checking for updates..."
-msgstr  "Kontroluji aktualizace..."
+msgstr  "Kontrola aktualizací..."
 
 #: ../update_checker.lua:56
 #, lua-format

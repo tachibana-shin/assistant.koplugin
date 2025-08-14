@@ -1,428 +1,429 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# FITXER DESCRIPTIU PER AI Assistant (KOReader plugin).
+# Copyright (C) 2025 KOReader Contributors
+# This file is distributed under the same license as the assitant.koplugin package.
 #
 #, fuzzy
-msgid   ""
-msgstr  "Project-Id-Version: PACKAGE VERSION\n"
-        "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
-        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-        "Language-Team: AI Generated (Model: gpt-4o, Version: 2024-05-13)\n"
-        "Language: ca\n"
-        "MIME-Version: 1.0\n"
-        "Content-Type: text/plain; charset=UTF-8\n"
-        "Content-Transfer-Encoding: 8bit\n"
-
-#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
-msgid   "AI Assistant"
-msgstr  "Assistent IA"
-
-#: ../_meta.lua:5
-msgid   "💡 Enhance KOReader's reading with AI Power."
-msgstr  "💡 Millora la lectura de KOReader amb la potència de la IA."
+msgid ""
+msgstr ""
+"Project-Id-Version: assitant.koplugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"PO-Revision-Date: 2025-08-14 11:59+0800\n"
+"Last-Translator: gpt-4o (2025-08-14)\n"
+"Language-Team: Català <gpt-4o@openai.com>\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
-msgid   "Ask Another Question"
-msgstr  "Fer una altra pregunta"
+msgid "Ask Another Question"
+msgstr "Fer una altra pregunta"
 
 #: ../chatgptviewer.lua:306
-msgid   "Close"
-msgstr  "Tancar"
+msgid "Close"
+msgstr "Tancar"
 
 #: ../chatgptviewer.lua:321
-msgid   "Copy"
-msgstr  "Copiar"
+msgid "Copy"
+msgstr "Copiar"
 
 #: ../chatgptviewer.lua:326
-msgid   "Text copied to clipboard"
-msgstr  "Text copiat al porta-retalls"
+msgid "Text copied to clipboard"
+msgstr "Text copiat al porta-retalls"
 
 #: ../chatgptviewer.lua:340
-msgid   "Add Note"
-msgstr  "Afegir nota"
+msgid "Add Note"
+msgstr "Afegir nota"
 
 #: ../chatgptviewer.lua:347
-msgid   "Highlight functionality not available"
-msgstr  "La funció de ressaltat no està disponible"
+msgid "Highlight functionality not available"
+msgstr "Funció de ressaltar no disponible"
 
 #: ../chatgptviewer.lua:356
-msgid   "No text to add as note"
-msgstr  "No hi ha text per afegir com a nota"
+msgid "No text to add as note"
+msgstr "Cap text per afegir com a nota"
 
 #: ../chatgptviewer.lua:385
-msgid   "No text left to add as note"
-msgstr  "No queda text per afegir com a nota"
+msgid "No text left to add as note"
+msgstr "No queda text per afegir com a nota"
 
 #: ../chatgptviewer.lua:398
-msgid   "Note added successfully"
-msgstr  "Nota afegida correctament"
+msgid "Note added successfully"
+msgstr "Nota afegida correctament"
 
 #: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
-msgid   "Cancel"
-msgstr  "Cancel·lar"
+msgid "Cancel"
+msgstr "Cancel·lar"
 
 #: ../chatgptviewer.lua:577 ../dialogs.lua:267
-msgid   "Ask"
-msgstr  "Preguntar"
+msgid "Ask"
+msgstr "Preguntar"
 
 #: ../chatgptviewer.lua:583 ../dialogs.lua:273
-msgid   "Enter a question before proceeding."
-msgstr  "Introdueix una pregunta abans de continuar."
+msgid "Enter a question before proceeding."
+msgstr "Introdueix una pregunta abans de continuar."
 
 #: ../chatgptviewer.lua:631
-msgid   "Type your question here"
-msgstr  "Escriu la teva pregunta aquí"
+msgid "Type your question here"
+msgstr "Escriu la teva pregunta aquí"
 
 #: ../chatgptviewer.lua:782
-msgid   "Word copied to clipboard."
-msgstr  "Paraula copiada al porta-retalls."
+msgid "Word copied to clipboard."
+msgstr "Paraula copiada al porta-retalls."
 
 #: ../chatgptviewer.lua:783
-msgid   "Selection copied to clipboard."
-msgstr  "Selecció copiada al porta-retalls."
+msgid "Selection copied to clipboard."
+msgstr "Selecció copiada al porta-retalls."
 
 #: ../dialogs.lua:83
-msgid   "(Empty message)"
-msgstr  "(Missatge buit)"
+msgid "(Empty message)"
+msgstr "(Missatge buit)"
 
 #: ../dialogs.lua:87
-msgid   "(No response)"
-msgstr  "(Sense resposta)"
+msgid "(No response)"
+msgstr "(Sense resposta)"
 
 #: ../dialogs.lua:117
-msgid   "Highlighted text:"
-msgstr  "Text ressaltat:"
+msgid "Highlighted text:"
+msgstr "Text ressaltat:"
 
 #: ../dialogs.lua:304
-msgid   "Book Analysis"
-msgstr  "Anàlisi del llibre"
+msgid "Book Analysis"
+msgstr "Anàlisi del llibre"
 
 #: ../dialogs.lua:341
-msgid   "Add this button to the Main Highlight Menu?"
-msgstr  "Vols afegir aquest botó al menú principal de ressaltat?"
+msgid "Add this button to the Highlight Menu?"
+msgstr "Afegir aquest botó al menú de ressaltats?"
 
 #: ../dialogs.lua:342
-msgid   "Add"
-msgstr  "Afegir"
+msgid "Add"
+msgstr "Afegir"
 
 #: ../dialogs.lua:368
-msgid   "Ask a question about the highlighted text"
-msgstr  "Fer una pregunta sobre el text ressaltat"
+msgid "Ask a question about the highlighted text"
+msgstr "Fer una pregunta sobre el text ressaltat"
 
 #: ../dialogs.lua:369
 #, lua-format
-msgid   "Ask a question about this book:\n"
-        "%s by %s"
-msgstr  "Fer una pregunta sobre aquest llibre:\n"
-        "%s de %s"
+msgid ""
+"Ask a question about this book:\n"
+"%s by %s"
+msgstr ""
+"Fer una pregunta sobre aquest llibre:\n"
+"%s de %s"
 
 #: ../dialogs.lua:372
-msgid   "Type your question here..."
-msgstr  "Escriu la teva pregunta aquí..."
+msgid "Type your question here..."
+msgstr "Escriu la teva pregunta aquí..."
 
 #: ../dialogs.lua:373
-msgid   "Ask anything about this book..."
-msgstr  "Pregunta qualsevol cosa sobre aquest llibre..."
+msgid "Ask anything about this book..."
+msgstr "Pregunta qualsevol cosa sobre aquest llibre..."
+
+#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+msgid "AI Assistant"
+msgstr "Assistent IA"
 
 #: ../dialogs.lua:427
-msgid   "Error: No response received"
-msgstr  "Error: no s'ha rebut cap resposta"
+msgid "Error: No response received"
+msgstr "Error: no s’ha rebut resposta"
 
 #: ../dictdialog.lua:28
-msgid   "AI Dictionary"
-msgstr  "Diccionari IA"
+msgid "AI Dictionary"
+msgstr "Diccionari IA"
 
 #: ../dictdialog.lua:29
-msgid   "Enter a word to look up..."
-msgstr  "Introdueix una paraula per cercar..."
+msgid "Enter a word to look up..."
+msgstr "Introdueix una paraula per cercar..."
 
 #: ../dictdialog.lua:40
-msgid   "Look Up"
-msgstr  "Cercar"
+msgid "Look Up"
+msgstr "Cercar"
 
 #: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
-msgid   "Dictionary"
-msgstr  "Diccionari"
+msgid "Dictionary"
+msgstr "Diccionari"
 
 #: ../gpt_query.lua:52
 #, lua-format
-msgid   "Provider settings not found for: %s. Please check your configuration."
-        "lua file."
-msgstr  "No s'han trobat la configuració del proveïdor per: %s. Si us plau, "
-        "revisa el fitxer configuration.lua."
+msgid ""
+"Provider settings not found for: %s. Please check your configuration.lua "
+"file."
+msgstr ""
+"No s’han trobat configuracions del proveïdor per: %s. Revisa el fitxer "
+"configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
-msgid   "Handler not found for: %s. Please ensure the handler exists in "
-        "api_handlers directory."
-msgstr  "No s'ha trobat el gestor per: %s. Si us plau, assegura't que "
-        "existeix al directori api_handlers."
+msgid ""
+"The handler for %s was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"No s’ha trobat el gestor per a %s. Assegura’t que existeix al directori "
+"api_handlers."
 
 #: ../gpt_query.lua:78
 #, lua-format
-msgid   "No provider set in configuration.lua. Please set the provider and "
-        "provider_settings for %s."
-msgstr  "No s'ha establert cap proveïdor a configuration.lua. Si us plau, "
-        "estableix el proveïdor i provider_settings per %s."
+msgid ""
+"No provider set in configuration.lua. Please set the provider and "
+"provider_settings for %s."
+msgstr ""
+"No s’ha establert cap proveïdor a configuration.lua. Estableix el proveïdor i "
+"provider_settings per a %s."
 
 #: ../gpt_query.lua:122
-msgid   "Querying AI ..."
-msgstr  "Consultant la IA..."
+msgid "Querying AI ..."
+msgstr "Consultant IA..."
 
 #: ../gpt_query.lua:138
-msgid   "AI Responding"
-msgstr  "IA responent"
+msgid "AI is responding"
+msgstr "L’IA està responent"
 
 #: ../gpt_query.lua:140
 #, lua-format
-msgid   "☁ %s/%s"
-msgstr  "☁ %s/%s"
+msgid "☁ %s/%s"
+msgstr "☁ %s/%s"
 
 #: ../gpt_query.lua:153
-msgid   "⏹ Stop"
-msgstr  "⏹ Aturar"
+msgid "⏹ Stop"
+msgstr "⏹ Aturar"
 
 #: ../gpt_query.lua:174
-msgid   "Stream interrupted by user."
-msgstr  "Transmissió interrompuda per l'usuari."
+msgid "Response interrupted."
+msgstr "Resposta interrompuda."
 
 #: ../main.lua:73
-msgid   "Ask AI Question"
-msgstr  "Fer pregunta a la IA"
+msgid "Ask the AI a question"
+msgstr "Fer una pregunta a l’IA"
 
 #: ../main.lua:82
-msgid   "AI Recap"
-msgstr  "Resum IA"
+msgid "AI Recaps"
+msgstr "Resums IA"
 
-#: ../main.lua:91
-msgid   "Assistant Settings"
-msgstr  "Configuració de l'assistent"
+#: ../main.lua:91 ../settingsdialog.lua:26
+msgid "Assistant Settings"
+msgstr "Configuració de l’assistent"
 
 #: ../main.lua:190
-msgid   "Configuration Error.\n"
-        "Please set up configuration.lua.\n"
-        "\n"
-msgstr  "Error de configuració.\n"
-        "Si us plau, configura configuration.lua.\n"
-        "\n"
+msgid ""
+"Configuration Error.\n"
+"Please set up configuration.lua.\n"
+"\n"
+msgstr ""
+"Error de configuració.\n"
+"Configura configuration.lua.\n"
 
 #: ../main.lua:217
-msgid   "Useful Tips:\n"
-        "\n"
-        "Long Press:\n"
-        "- On a Prompt Button: Add to the main highlight menu.\n"
-        "- On a main highlight menu button to remove it.\n"
-        "\n"
-        "Very Long Press (more than 3 seconds):\n"
-        "On a single word to show the highlight menu (instead of the "
-        "dictionary).\n"
-        "\n"
-        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
-        "On the result dialog to close (as the Close button is far to "
-        "reach).\n"
-msgstr  "Consells útils:\n"
-        "\n"
-        "Pressió llarga:\n"
-        "- En un botó d’indicació: afegeix al menú principal de ressaltats.\n"
-        "- En un botó del menú principal de ressaltats per eliminar-lo.\n"
-        "\n"
-        "Pressió molt llarga (més de 3 segons):\n"
-        "En una paraula per mostrar el menú de ressaltats (en lloc del "
-        "diccionari).\n"
-        "\n"
-        "Gestos múltiples (com ⮠, ⮡, ↺):\n"
-        "Al diàleg de resultats per tancar-lo (ja que el botó Tancar és "
-        "lluny).\n"
+msgid ""
+"Useful Tips:\n"
+"\n"
+"Long Press:\n"
+"- On a Prompt Button: Add to the highlight menu.\n"
+"- On a highlight menu button to remove it.\n"
+"\n"
+"Very-Long Press (over 3 seconds):\n"
+"On a single word in the book to show the highlight menu (instead of the "
+"dictionary).\n"
+"\n"
+"Multi-Swipe (e.g., ⮠, ⮡, ↺):\n"
+"On the result dialog to close (as the Close button is far to reach).\n"
+msgstr ""
+"Consells útils:\n"
+"\n"
+"Pressió llarga:\n"
+"- En un botó d’ordre: afegir al menú de ressaltats.\n"
+"- En un botó del menú de ressaltats per eliminar-lo.\n"
+"\n"
+"Pressió molt llarga (més de 3 segons):\n"
+"Sobre una paraula del llibre per mostrar el menú de ressaltats (en lloc del "
+"diccionari).\n"
+"\n"
+"Gest multi (p. ex., ⮠, ⮡, ↺):\n"
+"Al diàleg de resultats per tancar (el botó Tancar és lluny).\n"
 
 #: ../main.lua:290
 #, lua-format
-msgid   "Do you want an AI Recap?\n"
-        "For %s by %s.\n"
-        "Last read %.0f hours ago."
-msgstr  "Vols un resum IA?\n"
-        "Per %s de %s.\n"
-        "Última lectura fa %.0f hores."
+msgid ""
+"Do you want an AI Recap?\n"
+"For %s by %s.\n"
+"Last read %.0f hour(s) ago."
+msgstr ""
+"Vols un resum IA?\n"
+"Per %s de %s.\n"
+"Última lectura fa %.0f hora/es."
 
 #: ../main.lua:295
-msgid   "Yes"
-msgstr  "Sí"
+msgid "Yes"
+msgstr "Sí"
 
 #: ../main.lua:304
-msgid   "No"
-msgstr  "No"
+msgid "No"
+msgstr "No"
 
 #: ../main.lua:364
 #, lua-format
-msgid   "Remove [%s] from the Main Highlight Menu?"
-msgstr  "Vols eliminar [%s] del menú principal de ressaltats?"
+msgid "Remove [%s] from Highlight Menu?"
+msgstr "Eliminar [%s] del menú de ressaltats?"
 
 #: ../main.lua:365
-msgid   "Remove"
-msgstr  "Eliminar"
+msgid "Remove"
+msgstr "Eliminar"
 
 #: ../main.lua:399 ../main.lua:421 ../main.lua:474
-msgid   "Configuration not found. Please set up configuration.lua first."
-msgstr  "Configuració no trobada. Si us plau, configura configuration.lua "
-        "primer."
+msgid "Configuration not found. Please set up configuration.lua first."
+msgstr "Configuració no trobada. Configura configuration.lua primer."
 
 #: ../main.lua:429
-msgid   "AI Recap feature is not enabled in configuration."
-msgstr  "La funció de resum IA no està habilitada a la configuració."
+msgid "AI Recap feature is not enabled in configuration."
+msgstr "La funció de resums IA no està habilitada a la configuració."
 
 #: ../main.lua:517
-msgid   "Added [%1 (AI)] to Main Highlight Menu."
-msgstr  "S’ha afegit [%1 (IA)] al menú principal de ressaltats."
+msgid "Added [%1 (AI)] to Highlight Menu."
+msgstr "Afegit [%1 (IA)] al menú de ressaltats."
 
 #: ../main.lua:526
 #, lua-format
-msgid   "Removed [%s (AI)] from Main Highlight Menu."
-msgstr  "Eliminat [%s (IA)] del menú principal de ressaltat."
+msgid "Removed [%s (AI)] from Highlight Menu."
+msgstr "Eliminat [%s (IA)] del menú de ressaltats."
+
+#: ../_meta.lua:5
+msgid "💡 Enhance your KOReader experience with AI"
+msgstr "💡 Millora l’experiència KOReader amb IA"
 
 #: ../prompts.lua:20
-msgid   "This prompt act as a dictionary for the highlighted text, to a word "
-        "or phrase."
-msgstr  "Aquesta ordre actua com un diccionari per al text ressaltat, per a "
-        "una paraula o frase."
+msgid ""
+"This prompt acts as a dictionary for the highlighted text, to a word or "
+"phrase."
+msgstr ""
+"Aquesta ordre fa de diccionari per al text ressaltat, paraula o frase."
 
 #: ../prompts.lua:25
-msgid   "Translate"
-msgstr  "Traduir"
+msgid "Translate"
+msgstr "Traduir"
 
 #: ../prompts.lua:26
-msgid   "This prompt translates the highlighted text to another language."
-msgstr  "Aquesta ordre tradueix el text ressaltat a un altre idioma."
+msgid "This prompt translates the highlighted text to another language."
+msgstr "Aquesta ordre tradueix el text ressaltat a un altre idioma."
 
 #: ../prompts.lua:48
-msgid   "Simplify"
-msgstr  "Simplificar"
+msgid "Simplify"
+msgstr "Simplificar"
 
 #: ../prompts.lua:50
-msgid   "This prompt simplifies the highlighted text to make it easier to "
-        "understand."
-msgstr  "Aquesta ordre simplifica el text ressaltat per facilitar-ne la "
-        "comprensió."
+msgid ""
+"This prompt simplifies the highlighted text to make it easier to understand."
+msgstr "Aquesta ordre simplifica el text ressaltat per facilitar-ne la comprensió."
 
 #: ../prompts.lua:60
-msgid   "Explain"
-msgstr  "Explicar"
+msgid "Explain"
+msgstr "Explicar"
 
 #: ../prompts.lua:62
-msgid   "This prompt explains the highlighted text in detail, ensuring "
-        "clarity and understanding."
-msgstr  "Aquesta ordre explica detalladament el text ressaltat, assegurant "
-        "claredat i comprensió."
+msgid ""
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
+msgstr "Aquesta ordre explica detalladament el text ressaltat per assegurar-ne la claredat."
 
 #: ../prompts.lua:73
-msgid   "Summarize"
-msgstr  "Resumir"
+msgid "Summarize"
+msgstr "Resumir"
 
 #: ../prompts.lua:75
-msgid   "This prompt summarizes the highlighted text, capturing its main "
-        "points and essential details."
-msgstr  "Aquesta ordre resumeix el text ressaltat, capturant els punts "
-        "principals i detalls essencials."
+msgid ""
+"This prompt summarizes the highlighted text, capturing its main points and "
+"essential details."
+msgstr "Aquesta ordre resumeix el text ressaltat recollint-ne els punts principals."
 
 #: ../prompts.lua:84
-msgid   "Historical Context"
-msgstr  "Context històric"
+msgid "Historical Context"
+msgstr "Context històric"
 
 #: ../prompts.lua:86
-msgid   "This prompt provides a detailed historical context for the "
-        "highlighted text, explaining its significance and background."
-msgstr  "Aquesta ordre proporciona un context històric detallat per al text "
-        "ressaltat, explicant la seva importància i antecedents."
+msgid ""
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
+msgstr "Aquesta ordre ofereix context històric detallat per al text ressaltat."
 
 #: ../prompts.lua:90
-msgid   "Key Points"
-msgstr  "Punts clau"
+msgid "Key Points"
+msgstr "Punts clau"
 
 #: ../prompts.lua:92
-msgid   "This prompt extracts and lists the key points from the highlighted "
-        "text, ensuring clarity and organization."
-msgstr  "Aquesta ordre extreu i llista els punts clau del text ressaltat, "
-        "assegurant claredat i organització."
+msgid ""
+"This prompt extracts and lists the key points from the highlighted text, "
+"ensuring clarity and organization."
+msgstr "Aquesta ordre extreu i llista els punts clau del text ressaltat."
 
 #: ../prompts.lua:96
-msgid   "ELI5"
-msgstr  "ELI5"
+msgid "ELI5"
+msgstr "ELI5"
 
 #: ../prompts.lua:98
-msgid   "This prompt explains the highlighted text as if to a five-year-old, "
-        "simplifying complex concepts into easily understandable terms."
-msgstr  "Aquesta ordre explica el text ressaltat com si fos per a un nen de "
-        "cinc anys, simplificant conceptes complexos en termes fàcils "
-        "d'entendre."
+msgid ""
+"This prompt explains the highlighted text as if to a five-year-old, "
+"simplifying complex concepts into easily understandable terms."
+msgstr "Aquesta ordre explica el text ressaltat com si fos per a un nini de 5 anys."
 
 #: ../prompts.lua:102
-msgid   "Grammar"
-msgstr  "Gramàtica"
+msgid "Grammar"
+msgstr "Gramàtica"
 
 #: ../prompts.lua:104
-msgid   "This prompt analyzes the grammar of the highlighted text, providing "
-        "a detailed explanation of its structure and any grammatical errors."
-msgstr  "Aquesta ordre analitza la gramàtica del text ressaltat, "
-        "proporcionant una explicació detallada de la seva estructura i "
-        "possibles errors gramaticals."
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr "Aquesta ordre analitza la gramàtica del text ressaltat i detalla errors."
 
 #: ../prompts.lua:109
-msgid   "Vocabulary"
-msgstr  "Vocabulari"
+msgid "Vocabulary"
+msgstr "Vocabulari"
 
 #: ../prompts.lua:111
-msgid   "This prompt analyzes the vocabulary of the highlighted text, "
-        "identifying complex words and providing definitions, synonyms, and "
-        "usage examples."
-msgstr  "Aquesta ordre analitza el vocabulari del text ressaltat, "
-        "identificant paraules complexes i proporcionant definicions, "
-        "sinònims i exemples d'ús."
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr "Aquesta ordre analitza el vocabulari del text ressaltat amb definicions i exemples."
 
 #: ../prompts.lua:127
-msgid   "Wikipedia"
-msgstr  "Viquipèdia"
+msgid "Wikipedia"
+msgstr "Wikipedia"
 
 #: ../prompts.lua:129
-msgid   "This prompt generates a comprehensive Wikipedia-style article based "
-        "on the highlighted text, ensuring factual accuracy and neutrality."
-msgstr  "Aquesta ordre genera un article complet d'estil Viquipèdia basat en "
-        "el text ressaltat, assegurant precisió factual i neutralitat."
+msgid ""
+"This prompt generates a comprehensive Wikipedia-style article based on the "
+"highlighted text, ensuring factual accuracy and neutrality."
+msgstr "Aquesta ordre genera un article estil Wikipedia basat en el text ressaltat."
 
 #: ../recapdialog.lua:68
-msgid   "Recap"
-msgstr  "Resum"
-
-#: ../settingsdialog.lua:26
-msgid   "Assitant Settings"
-msgstr  "Configuració de l'assistent"
+msgid "Recap"
+msgstr "Resum"
 
 #: ../settingsdialog.lua:53
-msgid   "Always use stream mode"
-msgstr  "Utilitzar sempre el mode de transmissió"
+msgid "Always use stream mode"
+msgstr "Sempre usar mode de transmissió"
 
 #: ../settingsdialog.lua:58
-msgid   "Use AI Assistant for 'Translate'"
-msgstr  "Utilitzar l'assistent IA per 'Traduir'"
+msgid "Use AI Assistant for 'Translate'"
+msgstr "Usar Assistent IA per ‘Traduir’"
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override enabled."
-msgstr  "Substitució de l'assistent IA habilitada."
+msgid "AI Assistant override is enabled."
+msgstr "Reemplaçament d’Assistent IA activat."
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override disabled."
-msgstr  "Substitució de l'assistent IA deshabilitada."
+msgid "AI Assistant override is disabled."
+msgstr "Reemplaçament d’Assistent IA desactivat."
 
 #: ../settingsdialog.lua:104
-msgid   "Select the AI Model provider."
-msgstr  "Selecciona el proveïdor del model IA."
+msgid "Select the AI Model provider."
+msgstr "Selecciona el proveïdor del model IA."
 
 #: ../update_checker.lua:22
-msgid   "Checking for updates..."
-msgstr  "Comprovant actualitzacions..."
+msgid "Checking for updates..."
+msgstr "Comprovant actualitzacions..."
 
 #: ../update_checker.lua:56
 #, lua-format
-msgid   "A new version of the %s plugin (%s) is available. Please update!"
-msgstr  "Hi ha disponible una nova versió del connector %s (%s). Si us plau, "
-        "actualitza!"
+msgid "A new version of the %s plugin (%s) is available. Please update!"
+msgstr "Hi ha una nova versió del connector %s (%s). Actualitza!"

@@ -1,425 +1,425 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Oversettelse til Norsk bokmål for assitant.koplugin
+# Copyright (C) 2025 assitant.koplugin
+# This file is distributed under the same license as the assitant.koplugin package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 #, fuzzy
-msgid   ""
-msgstr  "Project-Id-Version: PACKAGE VERSION\n"
-        "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
-        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-        "Language-Team: AI Generated (Model: gpt-4o, Version: 2024-05-13)\n"
-        "Language: nb\n"
-        "MIME-Version: 1.0\n"
-        "Content-Type: text/plain; charset=UTF-8\n"
-        "Content-Transfer-Encoding: 8bit\n"
-
-#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
-msgid   "AI Assistant"
-msgstr  "AI-assistent"
-
-#: ../_meta.lua:5
-msgid   "💡 Enhance KOReader's reading with AI Power."
-msgstr  "💡 Forbedre KOReader-lesingen med AI-kraft."
+msgid ""
+msgstr ""
+"Project-Id-Version: assitant.koplugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"PO-Revision-Date: 2025-08-14 11:32+0800\n"
+"Last-Translator: Kimi <kimi@example.com>\n"
+"Language-Team: Norsk bokmål <LL@li.org>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
-msgid   "Ask Another Question"
-msgstr  "Still et nytt spørsmål"
+msgid "Ask Another Question"
+msgstr "Still et nytt spørsmål"
 
 #: ../chatgptviewer.lua:306
-msgid   "Close"
-msgstr  "Lukk"
+msgid "Close"
+msgstr "Lukk"
 
 #: ../chatgptviewer.lua:321
-msgid   "Copy"
-msgstr  "Kopier"
+msgid "Copy"
+msgstr "Kopier"
 
 #: ../chatgptviewer.lua:326
-msgid   "Text copied to clipboard"
-msgstr  "Tekst kopiert til utklippstavlen"
+msgid "Text copied to clipboard"
+msgstr "Tekst kopiert til utklippstavlen"
 
 #: ../chatgptviewer.lua:340
-msgid   "Add Note"
-msgstr  "Legg til notat"
+msgid "Add Note"
+msgstr "Legg til notat"
 
 #: ../chatgptviewer.lua:347
-msgid   "Highlight functionality not available"
-msgstr  "Markeringsfunksjonen er ikke tilgjengelig"
+msgid "Highlight functionality not available"
+msgstr "Fremheving utilgjengelig"
 
 #: ../chatgptviewer.lua:356
-msgid   "No text to add as note"
-msgstr  "Ingen tekst å legge til som notat"
+msgid "No text to add as note"
+msgstr "Ingen tekst å legge til som notat"
 
 #: ../chatgptviewer.lua:385
-msgid   "No text left to add as note"
-msgstr  "Ingen tekst igjen å legge til som notat"
+msgid "No text left to add as note"
+msgstr "Ingen tekst igjen å legge til"
 
 #: ../chatgptviewer.lua:398
-msgid   "Note added successfully"
-msgstr  "Notat lagt til"
+msgid "Note added successfully"
+msgstr "Notat lagt til"
 
 #: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
-msgid   "Cancel"
-msgstr  "Avbryt"
+msgid "Cancel"
+msgstr "Avbryt"
 
 #: ../chatgptviewer.lua:577 ../dialogs.lua:267
-msgid   "Ask"
-msgstr  "Spør"
+msgid "Ask"
+msgstr "Spør"
 
 #: ../chatgptviewer.lua:583 ../dialogs.lua:273
-msgid   "Enter a question before proceeding."
-msgstr  "Skriv inn et spørsmål før du fortsetter."
+msgid "Enter a question before proceeding."
+msgstr "Skriv inn et spørsmål først."
 
 #: ../chatgptviewer.lua:631
-msgid   "Type your question here"
-msgstr  "Skriv spørsmålet ditt her"
+msgid "Type your question here"
+msgstr "Skriv spørsmålet her"
 
 #: ../chatgptviewer.lua:782
-msgid   "Word copied to clipboard."
-msgstr  "Ord kopiert til utklippstavlen."
+msgid "Word copied to clipboard."
+msgstr "Ord kopiert til utklippstavlen."
 
 #: ../chatgptviewer.lua:783
-msgid   "Selection copied to clipboard."
-msgstr  "Utvalg kopiert til utklippstavlen."
+msgid "Selection copied to clipboard."
+msgstr "Utvalg kopiert til utklippstavlen."
 
 #: ../dialogs.lua:83
-msgid   "(Empty message)"
-msgstr  "(Tom melding)"
+msgid "(Empty message)"
+msgstr "(Tom melding)"
 
 #: ../dialogs.lua:87
-msgid   "(No response)"
-msgstr  "(Ingen respons)"
+msgid "(No response)"
+msgstr "(Ingen respons)"
 
 #: ../dialogs.lua:117
-msgid   "Highlighted text:"
-msgstr  "Markert tekst:"
+msgid "Highlighted text:"
+msgstr "Fremhevet tekst:"
 
 #: ../dialogs.lua:304
-msgid   "Book Analysis"
-msgstr  "Bokanalyse"
+msgid "Book Analysis"
+msgstr "Bokanalyse"
 
 #: ../dialogs.lua:341
-msgid   "Add this button to the Main Highlight Menu?"
-msgstr  "Legge til denne knappen i hovedmarkeringsmenyen?"
+msgid "Add this button to the Highlight Menu?"
+msgstr "Legg til denne knappen i fremhevingsmenyen?"
 
 #: ../dialogs.lua:342
-msgid   "Add"
-msgstr  "Legg til"
+msgid "Add"
+msgstr "Legg til"
 
 #: ../dialogs.lua:368
-msgid   "Ask a question about the highlighted text"
-msgstr  "Still et spørsmål om den markerte teksten"
+msgid "Ask a question about the highlighted text"
+msgstr "Still et spørsmål om den fremhevede teksten"
 
 #: ../dialogs.lua:369
 #, lua-format
-msgid   "Ask a question about this book:\n"
-        "%s by %s"
-msgstr  "Still et spørsmål om denne boken:\n"
-        "%s av %s"
+msgid ""
+"Ask a question about this book:\n"
+"%s by %s"
+msgstr ""
+"Still et spørsmål om boken:\n"
+"%s av %s"
 
 #: ../dialogs.lua:372
-msgid   "Type your question here..."
-msgstr  "Skriv spørsmålet ditt her..."
+msgid "Type your question here..."
+msgstr "Skriv spørsmålet her..."
 
 #: ../dialogs.lua:373
-msgid   "Ask anything about this book..."
-msgstr  "Still hva som helst om denne boken..."
+msgid "Ask anything about this book..."
+msgstr "Spør om hva som helst om boken..."
+
+#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+msgid "AI Assistant"
+msgstr "AI-assistent"
 
 #: ../dialogs.lua:427
-msgid   "Error: No response received"
-msgstr  "Feil: Ingen respons mottatt"
+msgid "Error: No response received"
+msgstr "Feil: Ingen respons mottatt"
 
 #: ../dictdialog.lua:28
-msgid   "AI Dictionary"
-msgstr  "AI-ordbok"
+msgid "AI Dictionary"
+msgstr "AI-ordbok"
 
 #: ../dictdialog.lua:29
-msgid   "Enter a word to look up..."
-msgstr  "Skriv inn et ord du vil slå opp..."
+msgid "Enter a word to look up..."
+msgstr "Skriv inn et ord..."
 
 #: ../dictdialog.lua:40
-msgid   "Look Up"
-msgstr  "Slå opp"
+msgid "Look Up"
+msgstr "Slå opp"
 
 #: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
-msgid   "Dictionary"
-msgstr  "Ordbok"
+msgid "Dictionary"
+msgstr "Ordbok"
 
 #: ../gpt_query.lua:52
 #, lua-format
-msgid   "Provider settings not found for: %s. Please check your configuration."
-        "lua file."
-msgstr  "Provider-innstillinger ikke funnet for: %s. Sjekk configuration.lua-"
-        "filen din."
+msgid ""
+"Provider settings not found for: %s. Please check your configuration.lua "
+"file."
+msgstr ""
+"Innstillinger for %s mangler. Sjekk configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
-msgid   "Handler not found for: %s. Please ensure the handler exists in "
-        "api_handlers directory."
-msgstr  "Handler ikke funnet for: %s. Sørg for at handleren finnes i "
-        "api_handlers-mappen."
+msgid ""
+"The handler for %s was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"Håndterer for %s finnes ikke. Sjekk api_handlers-mappen."
 
 #: ../gpt_query.lua:78
 #, lua-format
-msgid   "No provider set in configuration.lua. Please set the provider and "
-        "provider_settings for %s."
-msgstr  "Ingen provider satt i configuration.lua. Angi provider og "
-        "provider_settings for %s."
+msgid ""
+"No provider set in configuration.lua. Please set the provider and "
+"provider_settings for %s."
+msgstr ""
+"Ingen leverandør satt i configuration.lua. Angi for %s."
 
 #: ../gpt_query.lua:122
-msgid   "Querying AI ..."
-msgstr  "Spør AI ..."
+msgid "Querying AI ..."
+msgstr "Spør AI ..."
 
 #: ../gpt_query.lua:138
-msgid   "AI Responding"
-msgstr  "AI svarer"
+msgid "AI is responding"
+msgstr "AI svarer"
 
 #: ../gpt_query.lua:140
 #, lua-format
-msgid   "☁ %s/%s"
-msgstr  "☁ %s/%s"
+msgid "☁ %s/%s"
+msgstr "☁ %s/%s"
 
 #: ../gpt_query.lua:153
-msgid   "⏹ Stop"
-msgstr  "⏹ Stopp"
+msgid "⏹ Stop"
+msgstr "⏹ Stopp"
 
 #: ../gpt_query.lua:174
-msgid   "Stream interrupted by user."
-msgstr  "Strøm avbrutt av bruker."
+msgid "Response interrupted."
+msgstr "Svar avbrutt."
 
 #: ../main.lua:73
-msgid   "Ask AI Question"
-msgstr  "Still AI et spørsmål"
+msgid "Ask the AI a question"
+msgstr "Still AI et spørsmål"
 
 #: ../main.lua:82
-msgid   "AI Recap"
-msgstr  "AI-oppsummering"
+msgid "AI Recaps"
+msgstr "AI-oppsummeringer"
 
-#: ../main.lua:91
-msgid   "Assistant Settings"
-msgstr  "Assistentinnstillinger"
+#: ../main.lua:91 ../settingsdialog.lua:26
+msgid "Assistant Settings"
+msgstr "Assistentinnstillinger"
 
 #: ../main.lua:190
-msgid   "Configuration Error.\n"
-        "Please set up configuration.lua.\n"
-        "\n"
-msgstr  "Konfigurasjonsfeil.\n"
-        "Vennligst konfigurer configuration.lua.\n"
-        "\n"
+msgid ""
+"Configuration Error.\n"
+"Please set up configuration.lua.\n"
+"\n"
+msgstr ""
+"Konfigurasjonsfeil.\n"
+"Sett opp configuration.lua.\n"
 
 #: ../main.lua:217
-msgid   "Useful Tips:\n"
-        "\n"
-        "Long Press:\n"
-        "- On a Prompt Button: Add to the main highlight menu.\n"
-        "- On a main highlight menu button to remove it.\n"
-        "\n"
-        "Very Long Press (more than 3 seconds):\n"
-        "On a single word to show the highlight menu (instead of the "
-        "dictionary).\n"
-        "\n"
-        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
-        "On the result dialog to close (as the Close button is far to "
-        "reach).\n"
-msgstr  "Nyttige tips:\n"
-        "\n"
-        "Langt trykk:\n"
-        "- På en spørreknapp: Legg til i hoveduthevningsmenyen.\n"
-        "- På en knapp i hoveduthevningsmenyen for å fjerne den.\n"
-        "\n"
-        "Ekstra langt trykk (mer enn 3 sekunder):\n"
-        "På et enkelt ord for å vise uthevningsmenyen (i stedet for "
-        "ordboken).\n"
-        "\n"
-        "Multi-sveip (f.eks. ⮠, ⮡, ↺):\n"
-        "På resultatdialogen for å lukke (siden Lukk-knappen er vanskelig å "
-        "nå).\n"
+msgid ""
+"Useful Tips:\n"
+"\n"
+"Long Press:\n"
+"- On a Prompt Button: Add to the highlight menu.\n"
+"- On a highlight menu button to remove it.\n"
+"\n"
+"Very-Long Press (over 3 seconds):\n"
+"On a single word in the book to show the highlight menu (instead of the "
+"dictionary).\n"
+"\n"
+"Multi-Swipe (e.g., ⮠, ⮡, ↺):\n"
+"On the result dialog to close (as the Close button is far to reach).\n"
+msgstr ""
+"Nyttige tips:\n"
+"\n"
+"Langt trykk:\n"
+"- På en knapp: Legg til i fremhevingsmenyen.\n"
+"- På en menyknapp for å fjerne.\n"
+"\n"
+"Ekstra-langt trykk (over 3 sek):\n"
+"Trykk på et ord for å vise fremhevingsmenyen.\n"
+"\n"
+"Sveip-kombinasjoner:\n"
+"På resultatet for å lukke raskt.\n"
 
 #: ../main.lua:290
 #, lua-format
-msgid   "Do you want an AI Recap?\n"
-        "For %s by %s.\n"
-        "Last read %.0f hours ago."
-msgstr  "Vil du ha en AI-oppsummering?\n"
-        "For %s av %s.\n"
-        "Sist lest for %.0f timer siden."
+msgid ""
+"Do you want an AI Recap?\n"
+"For %s by %s.\n"
+"Last read %.0f hour(s) ago."
+msgstr ""
+"Vil du ha AI-oppsummering?\n"
+"For %s av %s.\n"
+"Sist lest for %.0f time(r) siden."
 
 #: ../main.lua:295
-msgid   "Yes"
-msgstr  "Ja"
+msgid "Yes"
+msgstr "Ja"
 
 #: ../main.lua:304
-msgid   "No"
-msgstr  "Nei"
+msgid "No"
+msgstr "Nei"
 
 #: ../main.lua:364
 #, lua-format
-msgid   "Remove [%s] from the Main Highlight Menu?"
-msgstr  "Fjerne [%s] fra hoveduthevningsmenyen?"
+msgid "Remove [%s] from Highlight Menu?"
+msgstr "Fjern [%s] fra fremhevingsmenyen?"
 
 #: ../main.lua:365
-msgid   "Remove"
-msgstr  "Fjern"
+msgid "Remove"
+msgstr "Fjern"
 
 #: ../main.lua:399 ../main.lua:421 ../main.lua:474
-msgid   "Configuration not found. Please set up configuration.lua first."
-msgstr  "Konfigurasjon ikke funnet. Sett opp configuration.lua først."
+msgid "Configuration not found. Please set up configuration.lua first."
+msgstr "Konfigurasjon mangler. Sett opp configuration.lua først."
 
 #: ../main.lua:429
-msgid   "AI Recap feature is not enabled in configuration."
-msgstr  "AI-oppsummeringsfunksjonen er ikke aktivert i konfigurasjonen."
+msgid "AI Recap feature is not enabled in configuration."
+msgstr "AI-oppsummering er ikke aktivert."
 
 #: ../main.lua:517
-msgid   "Added [%1 (AI)] to Main Highlight Menu."
-msgstr  "La til [%1 (AI)] i hoveduthevningsmenyen."
+msgid "Added [%1 (AI)] to Highlight Menu."
+msgstr "Lagt til [%1 (AI)] i fremhevingsmenyen."
 
 #: ../main.lua:526
 #, lua-format
-msgid   "Removed [%s (AI)] from Main Highlight Menu."
-msgstr  "Fjernet [%s (AI)] fra hovedmarkeringsmenyen."
+msgid "Removed [%s (AI)] from Highlight Menu."
+msgstr "Fjernet [%s (AI)] fra fremhevingsmenyen."
+
+#: ../_meta.lua:5
+msgid "💡 Enhance your KOReader experience with AI"
+msgstr "💡 Forbedre KOReader med AI"
 
 #: ../prompts.lua:20
-msgid   "This prompt act as a dictionary for the highlighted text, to a word "
-        "or phrase."
-msgstr  "Denne prompten fungerer som en ordbok for den markerte teksten, til "
-        "et ord eller uttrykk."
+msgid ""
+"This prompt acts as a dictionary for the highlighted text, to a word or "
+"phrase."
+msgstr "Brukes som ordbok for fremhevet tekst eller ord."
 
 #: ../prompts.lua:25
-msgid   "Translate"
-msgstr  "Oversett"
+msgid "Translate"
+msgstr "Oversett"
 
 #: ../prompts.lua:26
-msgid   "This prompt translates the highlighted text to another language."
-msgstr  "Denne prompten oversetter den markerte teksten til et annet språk."
+msgid "This prompt translates the highlighted text to another language."
+msgstr "Oversetter den fremhevede teksten til et annet språk."
 
 #: ../prompts.lua:48
-msgid   "Simplify"
-msgstr  "Forenkle"
+msgid "Simplify"
+msgstr "Forenkle"
 
 #: ../prompts.lua:50
-msgid   "This prompt simplifies the highlighted text to make it easier to "
-        "understand."
-msgstr  "Denne prompten forenkler den markerte teksten for å gjøre den "
-        "lettere å forstå."
+msgid ""
+"This prompt simplifies the highlighted text to make it easier to understand."
+msgstr "Gjør teksten enklere å forstå."
 
 #: ../prompts.lua:60
-msgid   "Explain"
-msgstr  "Forklar"
+msgid "Explain"
+msgstr "Forklar"
 
 #: ../prompts.lua:62
-msgid   "This prompt explains the highlighted text in detail, ensuring "
-        "clarity and understanding."
-msgstr  "Denne prompten forklarer den markerte teksten i detalj, med klarhet "
-        "og forståelse."
+msgid ""
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
+msgstr "Forklarer teksten i detalj."
 
 #: ../prompts.lua:73
-msgid   "Summarize"
-msgstr  "Oppsummer"
+msgid "Summarize"
+msgstr "Oppsummer"
 
 #: ../prompts.lua:75
-msgid   "This prompt summarizes the highlighted text, capturing its main "
-        "points and essential details."
-msgstr  "Denne prompten oppsummerer den markerte teksten og fanger opp "
-        "hovedpunktene og viktige detaljer."
+msgid ""
+"This prompt summarizes the highlighted text, capturing its main points and "
+"essential details."
+msgstr "Oppsummerer hovedpunktene i teksten."
 
 #: ../prompts.lua:84
-msgid   "Historical Context"
-msgstr  "Historisk kontekst"
+msgid "Historical Context"
+msgstr "Historisk kontekst"
 
 #: ../prompts.lua:86
-msgid   "This prompt provides a detailed historical context for the "
-        "highlighted text, explaining its significance and background."
-msgstr  "Denne prompten gir en detaljert historisk kontekst for den markerte "
-        "teksten og forklarer dens betydning og bakgrunn."
+msgid ""
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
+msgstr "Gir historisk bakgrunn for teksten."
 
 #: ../prompts.lua:90
-msgid   "Key Points"
-msgstr  "Hovedpunkter"
+msgid "Key Points"
+msgstr "Hovedpunkter"
 
 #: ../prompts.lua:92
-msgid   "This prompt extracts and lists the key points from the highlighted "
-        "text, ensuring clarity and organization."
-msgstr  "Denne prompten trekker ut og lister hovedpunktene fra den markerte "
-        "teksten, med klarhet og organisering."
+msgid ""
+"This prompt extracts and lists the key points from the highlighted text, "
+"ensuring clarity and organization."
+msgstr "Fremhever og organiserer hovedpunktene."
 
 #: ../prompts.lua:96
-msgid   "ELI5"
-msgstr  "ELI5"
+msgid "ELI5"
+msgstr "ELI5"
 
 #: ../prompts.lua:98
-msgid   "This prompt explains the highlighted text as if to a five-year-old, "
-        "simplifying complex concepts into easily understandable terms."
-msgstr  "Denne prompten forklarer den markerte teksten som til et femåring, "
-        "og forenkler komplekse konsepter til lett forståelige termer."
+msgid ""
+"This prompt explains the highlighted text as if to a five-year-old, "
+"simplifying complex concepts into easily understandable terms."
+msgstr "Forklarer teksten enkelt, som til et barn."
 
 #: ../prompts.lua:102
-msgid   "Grammar"
-msgstr  "Grammatikk"
+msgid "Grammar"
+msgstr "Grammatikk"
 
 #: ../prompts.lua:104
-msgid   "This prompt analyzes the grammar of the highlighted text, providing "
-        "a detailed explanation of its structure and any grammatical errors."
-msgstr  "Denne prompten analyserer grammatikken i den markerte teksten og gir "
-        "en detaljert forklaring av strukturen og eventuelle grammatiske feil."
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr "Analyserer grammatikk og struktur i teksten."
 
 #: ../prompts.lua:109
-msgid   "Vocabulary"
-msgstr  "Vokabular"
+msgid "Vocabulary"
+msgstr "Vokabular"
 
 #: ../prompts.lua:111
-msgid   "This prompt analyzes the vocabulary of the highlighted text, "
-        "identifying complex words and providing definitions, synonyms, and "
-        "usage examples."
-msgstr  "Denne prompten analyserer vokabularet i den markerte teksten, "
-        "identifiserer komplekse ord og gir definisjoner, synonymer og "
-        "bruksmønstre."
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr "Analyserer ordforråd og gir definisjoner."
 
 #: ../prompts.lua:127
-msgid   "Wikipedia"
-msgstr  "Wikipedia"
+msgid "Wikipedia"
+msgstr "Wikipedia"
 
 #: ../prompts.lua:129
-msgid   "This prompt generates a comprehensive Wikipedia-style article based "
-        "on the highlighted text, ensuring factual accuracy and neutrality."
-msgstr  "Denne prompten genererer en omfattende Wikipedia-artikkel basert på "
-        "den markerte teksten, med faktisk nøyaktighet og nøytralitet."
+msgid ""
+"This prompt generates a comprehensive Wikipedia-style article based on the "
+"highlighted text, ensuring factual accuracy and neutrality."
+msgstr "Lager en Wikipedia-artikkel basert på teksten."
 
 #: ../recapdialog.lua:68
-msgid   "Recap"
-msgstr  "Oppsummering"
-
-#: ../settingsdialog.lua:26
-msgid   "Assitant Settings"
-msgstr  "Assistentinnstillinger"
+msgid "Recap"
+msgstr "Oppsummering"
 
 #: ../settingsdialog.lua:53
-msgid   "Always use stream mode"
-msgstr  "Bruk alltid strømmodus"
+msgid "Always use stream mode"
+msgstr "Bruk alltid strømmemodus"
 
 #: ../settingsdialog.lua:58
-msgid   "Use AI Assistant for 'Translate'"
-msgstr  "Bruk AI-assistent for 'Oversett'"
+msgid "Use AI Assistant for 'Translate'"
+msgstr "Bruk AI-assistent for 'Oversett'"
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override enabled."
-msgstr  "AI-assistent-overstyring aktivert."
+msgid "AI Assistant override is enabled."
+msgstr "AI-assistent-override aktivert."
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override disabled."
-msgstr  "AI-assistent-overstyring deaktivert."
+msgid "AI Assistant override is disabled."
+msgstr "AI-assistent-override deaktivert."
 
 #: ../settingsdialog.lua:104
-msgid   "Select the AI Model provider."
-msgstr  "Velg AI-modell-leverandør."
+msgid "Select the AI Model provider."
+msgstr "Velg AI-modell-leverandør."
 
 #: ../update_checker.lua:22
-msgid   "Checking for updates..."
-msgstr  "Sjekker etter oppdateringer..."
+msgid "Checking for updates..."
+msgstr "Sjekker etter oppdateringer..."
 
 #: ../update_checker.lua:56
 #, lua-format
-msgid   "A new version of the %s plugin (%s) is available. Please update!"
-msgstr  "En ny versjon av %s-pluginet (%s) er tilgjengelig. Vennligst "
-        "oppdater!"
+msgid "A new version of the %s plugin (%s) is available. Please update!"
+msgstr "Ny versjon av %s (%s) er tilgjengelig. Oppdater!"

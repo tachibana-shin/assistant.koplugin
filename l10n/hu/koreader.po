@@ -1,44 +1,30 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid   ""
-msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+msgstr  "Project-Id-Version: assistant.koplugin 1.0\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
-        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-        "Language-Team: AI Generated (Model: gpt-4o, Version: 2024-05-13)\n"
-        "Language: hu\n"
+        "POT-Creation-Date: 2025-08-14 10:58+0800\n"
+        "PO-Revision-Date: Thu Aug 14 11:15:32 +08 2025\n"
+        "Last-Translator: GPT-4 (OpenAI) <no-reply@openai.com>\n"
+        "Language-Team: Magyar <hu@li.org>\n"
+        "Language: Magyar (hu)\n"
         "MIME-Version: 1.0\n"
         "Content-Type: text/plain; charset=UTF-8\n"
         "Content-Transfer-Encoding: 8bit\n"
 
-#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
-msgid   "AI Assistant"
-msgstr  "AI Asszisztens"
-
-#: ../_meta.lua:5
-msgid   "💡 Enhance KOReader's reading with AI Power."
-msgstr  "💡 Fokozd a KOReader olvasási élményét MI-vel."
-
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
 msgid   "Ask Another Question"
-msgstr  "Tegyél fel egy újabb kérdést"
+msgstr  "Kérdezz egy másik kérdést"
 
 #: ../chatgptviewer.lua:306
 msgid   "Close"
-msgstr  "Bezárás"
+msgstr  "Bezár"
 
 #: ../chatgptviewer.lua:321
 msgid   "Copy"
-msgstr  "Másolás"
+msgstr  "Másol"
 
 #: ../chatgptviewer.lua:326
 msgid   "Text copied to clipboard"
-msgstr  "Szöveg vágólapra másolva"
+msgstr  "Szöveg a vágólapra másolva"
 
 #: ../chatgptviewer.lua:340
 msgid   "Add Note"
@@ -46,15 +32,15 @@ msgstr  "Jegyzet hozzáadása"
 
 #: ../chatgptviewer.lua:347
 msgid   "Highlight functionality not available"
-msgstr  "A kiemelés funkció nem érhető el"
+msgstr  "Herváztatás nem érhető el"
 
 #: ../chatgptviewer.lua:356
 msgid   "No text to add as note"
-msgstr  "Nincs szöveg a jegyzetként való hozzáadáshoz"
+msgstr  "Nincs szöveg a jegyzethez"
 
 #: ../chatgptviewer.lua:385
 msgid   "No text left to add as note"
-msgstr  "Nincs több szöveg a jegyzetként való hozzáadáshoz"
+msgstr  "Nincs több szöveg a jegyzethez"
 
 #: ../chatgptviewer.lua:398
 msgid   "Note added successfully"
@@ -66,23 +52,23 @@ msgstr  "Mégse"
 
 #: ../chatgptviewer.lua:577 ../dialogs.lua:267
 msgid   "Ask"
-msgstr  "Kérdez"
+msgstr  "Kérdezz"
 
 #: ../chatgptviewer.lua:583 ../dialogs.lua:273
 msgid   "Enter a question before proceeding."
-msgstr  "Adj meg egy kérdést a folytatáshoz."
+msgstr  "Írj kérdést a folytatáshoz."
 
 #: ../chatgptviewer.lua:631
 msgid   "Type your question here"
-msgstr  "Írd ide a kérdésedet"
+msgstr  "Írd be a kérdésedet ide"
 
 #: ../chatgptviewer.lua:782
 msgid   "Word copied to clipboard."
-msgstr  "Szó vágólapra másolva."
+msgstr  "Szó a vágólapra másolva."
 
 #: ../chatgptviewer.lua:783
 msgid   "Selection copied to clipboard."
-msgstr  "Kijelölés vágólapra másolva."
+msgstr  "Kiválasztott szöveg a vágólapra másolva."
 
 #: ../dialogs.lua:83
 msgid   "(Empty message)"
@@ -98,11 +84,11 @@ msgstr  "Kiemelt szöveg:"
 
 #: ../dialogs.lua:304
 msgid   "Book Analysis"
-msgstr  "Könyvelemzés"
+msgstr  "Könyv elemzés"
 
 #: ../dialogs.lua:341
-msgid   "Add this button to the Main Highlight Menu?"
-msgstr  "Hozzáadod ezt a gombot a Fő Kiemelés Menühöz?"
+msgid   "Add this button to the Highlight Menu?"
+msgstr  "Hozzáadod ezt a gombot a kiemelés menühöz?"
 
 #: ../dialogs.lua:342
 msgid   "Add"
@@ -110,22 +96,26 @@ msgstr  "Hozzáadás"
 
 #: ../dialogs.lua:368
 msgid   "Ask a question about the highlighted text"
-msgstr  "Tegyél fel egy kérdést a kiemelt szövegről"
+msgstr  "Kérdezz a kiemelt szövegről"
 
 #: ../dialogs.lua:369
 #, lua-format
 msgid   "Ask a question about this book:\n"
         "%s by %s"
-msgstr  "Tegyél fel egy kérdést erről a könyvről:\n"
-        "%s, szerző: %s"
+msgstr  "Kérdezz a könyvről:\n"
+        "%s, író: %s"
 
 #: ../dialogs.lua:372
 msgid   "Type your question here..."
-msgstr  "Írd ide a kérdésedet..."
+msgstr  "Írd be a kérdésed..."
 
 #: ../dialogs.lua:373
 msgid   "Ask anything about this book..."
-msgstr  "Kérdezz bármit erről a könyvről..."
+msgstr  "Kérdezz bármit a könyvről..."
+
+#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+msgid   "AI Assistant"
+msgstr  "AI Asszisztens"
 
 #: ../dialogs.lua:427
 msgid   "Error: No response received"
@@ -133,11 +123,11 @@ msgstr  "Hiba: Nem érkezett válasz"
 
 #: ../dictdialog.lua:28
 msgid   "AI Dictionary"
-msgstr  "AI Szótár"
+msgstr  "AI szótár"
 
 #: ../dictdialog.lua:29
 msgid   "Enter a word to look up..."
-msgstr  "Add meg a keresendő szót..."
+msgstr  "Írj egy szót, amelyet keresni szeretnél..."
 
 #: ../dictdialog.lua:40
 msgid   "Look Up"
@@ -151,29 +141,29 @@ msgstr  "Szótár"
 #, lua-format
 msgid   "Provider settings not found for: %s. Please check your configuration."
         "lua file."
-msgstr  "Szolgáltatói beállítások nem találhatók ehhez: %s. Kérjük, "
-        "ellenőrizd a configuration.lua fájlt."
+msgstr  "Nem találhatók szolgáltató beállításai a következőhöz: %s. "
+        "Ellenőrizd a configuration.lua fájlt."
 
 #: ../gpt_query.lua:74
 #, lua-format
-msgid   "Handler not found for: %s. Please ensure the handler exists in "
-        "api_handlers directory."
-msgstr  "Kezelő nem található ehhez: %s. Kérjük, győződj meg róla, hogy "
-        "létezik az api_handlers könyvtárban."
+msgid   "The handler for %s was not found. Please ensure the handler exists "
+        "in api_handlers directory."
+msgstr  "A %s kezelője nem található. Győződj meg, hogy a kezelő létezik az "
+        "api_handlers könyvtárban."
 
 #: ../gpt_query.lua:78
 #, lua-format
 msgid   "No provider set in configuration.lua. Please set the provider and "
         "provider_settings for %s."
-msgstr  "Nincs szolgáltató beállítva a configuration.lua fájlban. Kérjük, "
-        "állítsd be a szolgáltatót és a provider_settings értéket ehhez: %s."
+msgstr  "Nem van beállítva szolgáltató a configuration.lua fájlban. Állítsd "
+        "be a provider-t és a provider_settings-t a %s esetén."
 
 #: ../gpt_query.lua:122
 msgid   "Querying AI ..."
-msgstr  "Lekérdezés az AI-tól..."
+msgstr  "AI lekérdezése..."
 
 #: ../gpt_query.lua:138
-msgid   "AI Responding"
+msgid   "AI is responding"
 msgstr  "AI válaszol"
 
 #: ../gpt_query.lua:140
@@ -183,21 +173,21 @@ msgstr  "☁ %s/%s"
 
 #: ../gpt_query.lua:153
 msgid   "⏹ Stop"
-msgstr  "⏹ Leállítás"
+msgstr  "⏹ Állj"
 
 #: ../gpt_query.lua:174
-msgid   "Stream interrupted by user."
-msgstr  "Az adatfolyam megszakítva a felhasználó által."
+msgid   "Response interrupted."
+msgstr  "Válasz megszakítva."
 
 #: ../main.lua:73
-msgid   "Ask AI Question"
-msgstr  "Kérdés az AI-tól"
+msgid   "Ask the AI a question"
+msgstr  "Kérdezz az AI-tól"
 
 #: ../main.lua:82
-msgid   "AI Recap"
-msgstr  "AI Összefoglaló"
+msgid   "AI Recaps"
+msgstr  "AI összefoglalók"
 
-#: ../main.lua:91
+#: ../main.lua:91 ../settingsdialog.lua:26
 msgid   "Assistant Settings"
 msgstr  "Asszisztens beállításai"
 
@@ -205,45 +195,45 @@ msgstr  "Asszisztens beállításai"
 msgid   "Configuration Error.\n"
         "Please set up configuration.lua.\n"
         "\n"
-msgstr  "Konfigurációs hiba.\n"
-        "Kérjük, állítsa be a configuration.lua fájlt.\n"
+msgstr  "Beállítási hiba.\n"
+        "Állítsd be a configuration.lua-t.\n"
         "\n"
 
 #: ../main.lua:217
 msgid   "Useful Tips:\n"
         "\n"
         "Long Press:\n"
-        "- On a Prompt Button: Add to the main highlight menu.\n"
-        "- On a main highlight menu button to remove it.\n"
+        "- On a Prompt Button: Add to the highlight menu.\n"
+        "- On a highlight menu button to remove it.\n"
         "\n"
-        "Very Long Press (more than 3 seconds):\n"
-        "On a single word to show the highlight menu (instead of the "
-        "dictionary).\n"
+        "Very-Long Press (over 3 seconds):\n"
+        "On a single word in the book to show the highlight menu (instead of "
+        "the dictionary).\n"
         "\n"
-        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "Multi-Swipe (e.g., ⮠, ⮡, ↺):\n"
         "On the result dialog to close (as the Close button is far to "
         "reach).\n"
 msgstr  "Hasznos tippek:\n"
         "\n"
-        "Hosszú nyomás:\n"
-        "- Egy Prompt gombon: hozzáadás a fő kiemelési menühöz.\n"
-        "- Egy fő kiemelési menü gombon: eltávolítás onnan.\n"
+        "Hosszú lenyomás:\n"
+        "- Kérdésszimbolikon: Hozzáadás a kiemelés menühöz.\n"
+        "- Kiemelés menü gombra: Eltávolítás.\n"
         "\n"
-        "Nagyon hosszú nyomás (több mint 3 másodperc):\n"
-        "Egyetlen szón: a kiemelési menü megjelenítése (szótár helyett).\n"
+        "Nagyon hosszú lenyomás (több mint 3 másodperc):\n"
+        "Egy szóra a könyvben, hogy megjelenjen a kiemelés menü (a szótár "
+        "helyett).\n"
         "\n"
-        "Többujjas csúsztatás (pl. ⮠, ⮡, ↺):\n"
-        "Az eredmény párbeszédpanelen: bezárás (mivel a Bezárás gomb túl "
-        "messze van).\n"
+        "Többszöri húzás (pl. ⮠, ⮡, ↺):\n"
+        "Eredmény párbeszédpanelen: Bezár (mivel a Close gomb el van távol).\n"
 
 #: ../main.lua:290
 #, lua-format
 msgid   "Do you want an AI Recap?\n"
         "For %s by %s.\n"
-        "Last read %.0f hours ago."
-msgstr  "Szeretnél egy AI összefoglalót?\n"
-        "A(z) %s című könyvhöz, szerző: %s.\n"
-        "Utoljára %.0f órája olvastad."
+        "Last read %.0f hour(s) ago."
+msgstr  "Szeretnéd egy AI összefoglalót?\n"
+        "%s, író: %s.\n"
+        "Utoljára %.0f óra óta olvasva."
 
 #: ../main.lua:295
 msgid   "Yes"
@@ -255,8 +245,8 @@ msgstr  "Nem"
 
 #: ../main.lua:364
 #, lua-format
-msgid   "Remove [%s] from the Main Highlight Menu?"
-msgstr  "Eltávolítod [%s]-t a fő kiemelési menüből?"
+msgid   "Remove [%s] from Highlight Menu?"
+msgstr  "[%s] eltávolítása a kiemelés menüből?"
 
 #: ../main.lua:365
 msgid   "Remove"
@@ -264,27 +254,30 @@ msgstr  "Eltávolítás"
 
 #: ../main.lua:399 ../main.lua:421 ../main.lua:474
 msgid   "Configuration not found. Please set up configuration.lua first."
-msgstr  "Konfiguráció nem található. Kérjük, először állítsd be a "
-        "configuration.lua fájlt."
+msgstr  "Nem található konfiguráció. Először állítsd be a configuration.lua-t."
 
 #: ../main.lua:429
 msgid   "AI Recap feature is not enabled in configuration."
-msgstr  "Az AI összefoglaló funkció nincs engedélyezve a konfigurációban."
+msgstr  "Az AI összefoglaló funkció nincs bekapcsolva a konfigurációban."
 
 #: ../main.lua:517
-msgid   "Added [%1 (AI)] to Main Highlight Menu."
-msgstr  "Hozzáadva [%1 (AI)] a fő kiemelési menühöz."
+msgid   "Added [%1 (AI)] to Highlight Menu."
+msgstr  "[%1 (AI)] hozzáadva a kiemelés menühöz."
 
 #: ../main.lua:526
 #, lua-format
-msgid   "Removed [%s (AI)] from Main Highlight Menu."
-msgstr  "[%s (AI)] eltávolítva a Fő Kiemelés Menüből."
+msgid   "Removed [%s (AI)] from Highlight Menu."
+msgstr  "[%s (AI)] eltávolítva a kiemelés menüből."
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance your KOReader experience with AI"
+msgstr  "💡 Javítsd a KOReader élményedet AI segítségével"
 
 #: ../prompts.lua:20
-msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+msgid   "This prompt acts as a dictionary for the highlighted text, to a word "
         "or phrase."
-msgstr  "Ez az utasítás szótárként működik a kiemelt szöveg, szó vagy "
-        "kifejezés számára."
+msgstr  "Ez a lekérdezés szóközi szótárként szolgál a kiemelt szöveghez, "
+        "szóhoz vagy kifejezéshez."
 
 #: ../prompts.lua:25
 msgid   "Translate"
@@ -292,7 +285,7 @@ msgstr  "Fordítás"
 
 #: ../prompts.lua:26
 msgid   "This prompt translates the highlighted text to another language."
-msgstr  "Ez az utasítás lefordítja a kiemelt szöveget egy másik nyelvre."
+msgstr  "Ez a lekérdezés a kiemelt szöveget más nyelvre fordítja."
 
 #: ../prompts.lua:48
 msgid   "Simplify"
@@ -301,8 +294,8 @@ msgstr  "Egyszerűsítés"
 #: ../prompts.lua:50
 msgid   "This prompt simplifies the highlighted text to make it easier to "
         "understand."
-msgstr  "Ez az utasítás egyszerűsíti a kiemelt szöveget, hogy könnyebben "
-        "érthető legyen."
+msgstr  "Ez a lekérdezés egyszerűsíti a kiemelt szöveget, hogy könnyebb "
+        "legyen megérteni."
 
 #: ../prompts.lua:60
 msgid   "Explain"
@@ -311,49 +304,49 @@ msgstr  "Magyarázat"
 #: ../prompts.lua:62
 msgid   "This prompt explains the highlighted text in detail, ensuring "
         "clarity and understanding."
-msgstr  "Ez az utasítás részletesen elmagyarázza a kiemelt szöveget, hogy "
-        "világos és érthető legyen."
+msgstr  "Ez a lekérdezés részletesen magyarázza a kiemelt szöveget, "
+        "biztosítva a tisztaságot és megértést."
 
 #: ../prompts.lua:73
 msgid   "Summarize"
-msgstr  "Összefoglalás"
+msgstr  "Összegzés"
 
 #: ../prompts.lua:75
 msgid   "This prompt summarizes the highlighted text, capturing its main "
         "points and essential details."
-msgstr  "Ez az utasítás összefoglalja a kiemelt szöveget, kiemelve a fő "
-        "pontokat és a lényeges részleteket."
+msgstr  "Ez a lekérdezés összefoglalja a kiemelt szöveget, kiemelve fő "
+        "pontjait és lényeges részleteket."
 
 #: ../prompts.lua:84
 msgid   "Historical Context"
-msgstr  "Történelmi kontextus"
+msgstr  "Történelmi háttér"
 
 #: ../prompts.lua:86
 msgid   "This prompt provides a detailed historical context for the "
         "highlighted text, explaining its significance and background."
-msgstr  "Ez az utasítás részletes történelmi kontextust nyújt a kiemelt "
-        "szöveghez, elmagyarázva annak jelentőségét és hátterét."
+msgstr  "Ez a lekérdezés részletes történelmi kontextust ad a kiemelt "
+        "szöveghez, megmagyarázva jelentőségét és hátterét."
 
 #: ../prompts.lua:90
 msgid   "Key Points"
-msgstr  "Fő pontok"
+msgstr  "Kulcsfontosságú pontok"
 
 #: ../prompts.lua:92
 msgid   "This prompt extracts and lists the key points from the highlighted "
         "text, ensuring clarity and organization."
-msgstr  "Ez az utasítás kinyeri és felsorolja a kiemelt szöveg fő pontjait, "
-        "hogy világos és rendezett legyen."
+msgstr  "Ez a lekérdezés kinyeri és felsorolja a kulcsfontosságú pontokat a "
+        "kiemelt szövegből, biztosítva a tisztaságot és szervezettséget."
 
 #: ../prompts.lua:96
 msgid   "ELI5"
-msgstr  "ELI5"
+msgstr  "Egyszerűsítés"
 
 #: ../prompts.lua:98
 msgid   "This prompt explains the highlighted text as if to a five-year-old, "
         "simplifying complex concepts into easily understandable terms."
-msgstr  "Ez az utasítás úgy magyarázza el a kiemelt szöveget, mintha egy "
-        "ötévesnek beszélnénk, egyszerűsítve a bonyolult fogalmakat könnyen "
-        "érthető kifejezésekre."
+msgstr  "Ez a lekérdezés a kiemelt szöveget egy öt éves gyermeknek "
+        "magyarázza, egyszerűsítve a bonyolult fogalmakat könnyen érthető "
+        "szavakkal."
 
 #: ../prompts.lua:102
 msgid   "Grammar"
@@ -362,8 +355,8 @@ msgstr  "Nyelvtan"
 #: ../prompts.lua:104
 msgid   "This prompt analyzes the grammar of the highlighted text, providing "
         "a detailed explanation of its structure and any grammatical errors."
-msgstr  "Ez az utasítás elemzi a kiemelt szöveg nyelvtanát, részletes "
-        "magyarázatot adva a szerkezetéről és az esetleges nyelvtani hibákról."
+msgstr  "Ez a lekérdezés elemzi a kiemelt szöveg nyelvtanát, részletes "
+        "magyarázatot adva szerkezetére és bármely nyelvtani hibára."
 
 #: ../prompts.lua:109
 msgid   "Vocabulary"
@@ -373,9 +366,8 @@ msgstr  "Szókincs"
 msgid   "This prompt analyzes the vocabulary of the highlighted text, "
         "identifying complex words and providing definitions, synonyms, and "
         "usage examples."
-msgstr  "Ez az utasítás elemzi a kiemelt szöveg szókincsét, azonosítja a "
-        "bonyolult szavakat, és meghatározásokat, szinonimákat és használati "
-        "példákat ad."
+msgstr  "Ez a lekérdezés elemzi a kiemelt szöveg szókincsét, azonosítva a "
+        "komplex szavakat és definiálva, szinonimákat, valamint példákat ad."
 
 #: ../prompts.lua:127
 msgid   "Wikipedia"
@@ -384,37 +376,33 @@ msgstr  "Wikipedia"
 #: ../prompts.lua:129
 msgid   "This prompt generates a comprehensive Wikipedia-style article based "
         "on the highlighted text, ensuring factual accuracy and neutrality."
-msgstr  "Ez az utasítás egy átfogó, Wikipedia-stílusú cikket generál a "
-        "kiemelt szöveg alapján, biztosítva a ténybeli pontosságot és "
-        "semlegességet."
+msgstr  "Ez a lekérdezés egy átfogó Wikipedia-stílusú cikket generál a "
+        "kiemelt szöveg alapján, biztosítva a tények pontosságát és "
+        "semlegességét."
 
 #: ../recapdialog.lua:68
 msgid   "Recap"
-msgstr  "Összefoglaló"
-
-#: ../settingsdialog.lua:26
-msgid   "Assitant Settings"
-msgstr  "Asszisztens beállításai"
+msgstr  "Összefoglalás"
 
 #: ../settingsdialog.lua:53
 msgid   "Always use stream mode"
-msgstr  "Mindig használja az adatfolyam módot"
+msgstr  "Mindig használd a folyamatos módot"
 
 #: ../settingsdialog.lua:58
 msgid   "Use AI Assistant for 'Translate'"
-msgstr  "AI Asszisztens használata a 'Fordítás' funkcióhoz"
+msgstr  "Használja az AI asszisztenst a 'Fordítás' funkcióhoz"
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override enabled."
-msgstr  "AI Asszisztens felülbírálása engedélyezve."
+msgid   "AI Assistant override is enabled."
+msgstr  "Az AI asszisztens felülbírálása bekapcsolva."
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override disabled."
-msgstr  "AI Asszisztens felülbírálása letiltva."
+msgid   "AI Assistant override is disabled."
+msgstr  "Az AI asszisztens felülbírálása kikapcsolva."
 
 #: ../settingsdialog.lua:104
 msgid   "Select the AI Model provider."
-msgstr  "Válassz AI modell szolgáltatót."
+msgstr  "Válaszd ki az AI modell szolgáltatót."
 
 #: ../update_checker.lua:22
 msgid   "Checking for updates..."
@@ -423,4 +411,4 @@ msgstr  "Frissítések keresése..."
 #: ../update_checker.lua:56
 #, lua-format
 msgid   "A new version of the %s plugin (%s) is available. Please update!"
-msgstr  "Elérhető a(z) %s bővítmény új verziója (%s). Kérjük, frissíts!"
+msgstr  "Új %s bővítmény verzió (%s) érhető el. Kérlek frissíts!"

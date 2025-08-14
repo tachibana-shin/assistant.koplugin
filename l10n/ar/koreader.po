@@ -5,28 +5,20 @@
 #
 #, fuzzy
 msgid   ""
-msgstr  "Project-Id-Version: PACKAGE VERSION\n"
+msgstr  "Project-Id-Version: assitant.koplugin\n"
         "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
-        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-        "Language-Team: AI Generated (Model: gpt-4o, Version: 2024-05-13)\n"
-        "Language: ar\n"
+        "POT-Creation-Date: 2025-08-14 10:51+0800\n"
+        "PO-Revision-Date: 2025-08-14 10:51+0800\n"
+        "Last-Translator: ChatGPT-4.0\n"
+        "Language-Team: عربى (ar) <LL@li.org>\n"
+        "Language: عربى (ar)\n"
         "MIME-Version: 1.0\n"
         "Content-Type: text/plain; charset=UTF-8\n"
         "Content-Transfer-Encoding: 8bit\n"
 
-#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
-msgid   "AI Assistant"
-msgstr  "المساعد الذكي"
-
-#: ../_meta.lua:5
-msgid   "💡 Enhance KOReader's reading with AI Power."
-msgstr  "💡 عزّز القراءة في KOReader بقوة الذكاء الاصطناعي."
-
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
 msgid   "Ask Another Question"
-msgstr  "اطرح سؤالاً آخر"
+msgstr  "اسأل سؤالًا آخر"
 
 #: ../chatgptviewer.lua:306
 msgid   "Close"
@@ -46,15 +38,15 @@ msgstr  "إضافة ملاحظة"
 
 #: ../chatgptviewer.lua:347
 msgid   "Highlight functionality not available"
-msgstr  "وظيفة التمييز غير متاحة"
+msgstr  "ميزة التحديد غير متاحة"
 
 #: ../chatgptviewer.lua:356
 msgid   "No text to add as note"
-msgstr  "لا يوجد نص لإضافته كملاحظة"
+msgstr  "لا يوجد نص لإضافة ملاحظة"
 
 #: ../chatgptviewer.lua:385
 msgid   "No text left to add as note"
-msgstr  "لم يتبقَ نص لإضافته كملاحظة"
+msgstr  "لا يوجد نص متبقٍ لإضافة ملاحظة"
 
 #: ../chatgptviewer.lua:398
 msgid   "Note added successfully"
@@ -70,7 +62,7 @@ msgstr  "اسأل"
 
 #: ../chatgptviewer.lua:583 ../dialogs.lua:273
 msgid   "Enter a question before proceeding."
-msgstr  "أدخل سؤالاً قبل المتابعة."
+msgstr  "أدخل سؤالًا قبل المتابعة."
 
 #: ../chatgptviewer.lua:631
 msgid   "Type your question here"
@@ -90,7 +82,7 @@ msgstr  "(رسالة فارغة)"
 
 #: ../dialogs.lua:87
 msgid   "(No response)"
-msgstr  "(لا يوجد رد)"
+msgstr  "(لا توجد ردود)"
 
 #: ../dialogs.lua:117
 msgid   "Highlighted text:"
@@ -101,23 +93,23 @@ msgid   "Book Analysis"
 msgstr  "تحليل الكتاب"
 
 #: ../dialogs.lua:341
-msgid   "Add this button to the Main Highlight Menu?"
-msgstr  "هل تريد إضافة هذا الزر إلى قائمة التمييز الرئيسية؟"
+msgid   "Add this button to the Highlight Menu?"
+msgstr  "أضف هذا الزر إلى قائمة التحديد؟"
 
 #: ../dialogs.lua:342
 msgid   "Add"
-msgstr  "إضافة"
+msgstr  "أضف"
 
 #: ../dialogs.lua:368
 msgid   "Ask a question about the highlighted text"
-msgstr  "اطرح سؤالاً حول النص المميز"
+msgstr  "اسأل سؤالًا عن النص المميز"
 
 #: ../dialogs.lua:369
 #, lua-format
 msgid   "Ask a question about this book:\n"
         "%s by %s"
-msgstr  "اطرح سؤالاً حول هذا الكتاب:\n"
-        "%s لـ %s"
+msgstr  "اسأل سؤالًا عن هذا الكتاب:\n"
+        "%s بواسطة %s"
 
 #: ../dialogs.lua:372
 msgid   "Type your question here..."
@@ -127,13 +119,17 @@ msgstr  "اكتب سؤالك هنا..."
 msgid   "Ask anything about this book..."
 msgstr  "اسأل أي شيء عن هذا الكتاب..."
 
+#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+msgid   "AI Assistant"
+msgstr  "مساعد الذكاء الاصطناعي"
+
 #: ../dialogs.lua:427
 msgid   "Error: No response received"
-msgstr  "خطأ: لم يتم استلام رد"
+msgstr  "خطأ: لم يتم تلقي أي رد"
 
 #: ../dictdialog.lua:28
 msgid   "AI Dictionary"
-msgstr  "القاموس الذكي"
+msgstr  "قاموس الذكاء الاصطناعي"
 
 #: ../dictdialog.lua:29
 msgid   "Enter a word to look up..."
@@ -141,40 +137,40 @@ msgstr  "أدخل كلمة للبحث عنها..."
 
 #: ../dictdialog.lua:40
 msgid   "Look Up"
-msgstr  "ابحث"
+msgstr  "البحث"
 
 #: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
 msgid   "Dictionary"
-msgstr  "قاموس"
+msgstr  "القاموس"
 
 #: ../gpt_query.lua:52
 #, lua-format
 msgid   "Provider settings not found for: %s. Please check your configuration."
         "lua file."
-msgstr  "لم يتم العثور على إعدادات المزود لـ: %s. يرجى التحقق من ملف "
+msgstr  "لم يتم العثور على إعدادات الموفر لـ: %s. يرجى التحقق من ملف "
         "configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
-msgid   "Handler not found for: %s. Please ensure the handler exists in "
-        "api_handlers directory."
-msgstr  "لم يتم العثور على المعالج لـ: %s. يرجى التأكد من وجوده في دليل "
+msgid   "The handler for %s was not found. Please ensure the handler exists "
+        "in api_handlers directory."
+msgstr  "مُعالج %s لم يُعثر عليه. يرجى التأكد من وجود المعالج في مجلد "
         "api_handlers."
 
 #: ../gpt_query.lua:78
 #, lua-format
 msgid   "No provider set in configuration.lua. Please set the provider and "
         "provider_settings for %s."
-msgstr  "لم يتم تعيين مزود في configuration.lua. يرجى تعيين المزود وإعداداته "
-        "لـ %s."
+msgstr  "لم يتم تعيين موفر في configuration.lua. يرجى تعيين الموفر وإعدادات "
+        "الموفر لـ %s."
 
 #: ../gpt_query.lua:122
 msgid   "Querying AI ..."
-msgstr  "جاري الاستعلام عن الذكاء الاصطناعي..."
+msgstr  "جاري استعلام الذكاء الاصطناعي ..."
 
 #: ../gpt_query.lua:138
-msgid   "AI Responding"
-msgstr  "الذكاء الاصطناعي يجيب"
+msgid   "AI is responding"
+msgstr  "الذكاء الاصطناعي يستجيب"
 
 #: ../gpt_query.lua:140
 #, lua-format
@@ -186,18 +182,18 @@ msgid   "⏹ Stop"
 msgstr  "⏹ إيقاف"
 
 #: ../gpt_query.lua:174
-msgid   "Stream interrupted by user."
-msgstr  "تم مقاطعة البث من قبل المستخدم."
+msgid   "Response interrupted."
+msgstr  "تم مقاطعة الاستجابة."
 
 #: ../main.lua:73
-msgid   "Ask AI Question"
-msgstr  "اطرح سؤالاً على الذكاء الاصطناعي"
+msgid   "Ask the AI a question"
+msgstr  "اسأل الذكاء الاصطناعي سؤالًا"
 
 #: ../main.lua:82
-msgid   "AI Recap"
-msgstr  "تلخيص الذكاء الاصطناعي"
+msgid   "AI Recaps"
+msgstr  "ملخصات الذكاء الاصطناعي"
 
-#: ../main.lua:91
+#: ../main.lua:91 ../settingsdialog.lua:26
 msgid   "Assistant Settings"
 msgstr  "إعدادات المساعد"
 
@@ -205,44 +201,44 @@ msgstr  "إعدادات المساعد"
 msgid   "Configuration Error.\n"
         "Please set up configuration.lua.\n"
         "\n"
-msgstr  "خطأ في الإعداد.\n"
-        "يرجى إعداد ملف configuration.lua.\n"
+msgstr  "خطأ في التهيئة.\n"
+        "يرجى إعداد configuration.lua.\n"
         "\n"
 
 #: ../main.lua:217
 msgid   "Useful Tips:\n"
         "\n"
         "Long Press:\n"
-        "- On a Prompt Button: Add to the main highlight menu.\n"
-        "- On a main highlight menu button to remove it.\n"
+        "- On a Prompt Button: Add to the highlight menu.\n"
+        "- On a highlight menu button to remove it.\n"
         "\n"
-        "Very Long Press (more than 3 seconds):\n"
-        "On a single word to show the highlight menu (instead of the "
-        "dictionary).\n"
+        "Very-Long Press (over 3 seconds):\n"
+        "On a single word in the book to show the highlight menu (instead of "
+        "the dictionary).\n"
         "\n"
-        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
+        "Multi-Swipe (e.g., ⮠, ⮡, ↺):\n"
         "On the result dialog to close (as the Close button is far to "
         "reach).\n"
 msgstr  "نصائح مفيدة:\n"
         "\n"
         "الضغط الطويل:\n"
-        "- على زر Prompt: يُضاف إلى قائمة التمييز الرئيسية.\n"
-        "- على زر في قائمة التمييز الرئيسية لإزالته.\n"
+        "- على زر مطالبة: أضف إلى قائمة التحديد.\n"
+        "- على زر قائمة التحديد لإزالته.\n"
         "\n"
-        "الضغط الطويل جداً (أكثر من 3 ثوانٍ):\n"
-        "على كلمة واحدة لإظهار قائمة التمييز (بدلاً من القاموس).\n"
+        "الضغط الطويل جدًا (أكثر من 3 ثوانٍ):\n"
+        "على كلمة واحدة في الكتاب لإظهار قائمة التحديد (بدلاً من القاموس).\n"
         "\n"
-        "السحب المتعدد (مثل ⮠، ⮡، ↺):\n"
-        "على مربع النتائج لإغلاقه (بما أن زر الإغلاق بعيد).\n"
+        "التعدد السحري (مثل ⮠، ⮡، ↺):\n"
+        "على مربع الحوار لإغلاقه (بسبب زر الإغلاق بعيدًا).\n"
 
 #: ../main.lua:290
 #, lua-format
 msgid   "Do you want an AI Recap?\n"
         "For %s by %s.\n"
-        "Last read %.0f hours ago."
-msgstr  "هل تريد تلخيصاً من الذكاء الاصطناعي؟\n"
-        "لـ %s لـ %s.\n"
-        "آخر قراءة قبل %.0f ساعة."
+        "Last read %.0f hour(s) ago."
+msgstr  "هل تريد ملخصًا بالذكاء الاصطناعي؟\n"
+        "لـ %s بواسطة %s.\n"
+        "آخر قراءة %.0f ساعة مضت."
 
 #: ../main.lua:295
 msgid   "Yes"
@@ -254,8 +250,8 @@ msgstr  "لا"
 
 #: ../main.lua:364
 #, lua-format
-msgid   "Remove [%s] from the Main Highlight Menu?"
-msgstr  "إزالة [%s] من قائمة التمييز الرئيسية؟"
+msgid   "Remove [%s] from Highlight Menu?"
+msgstr  "إزالة [%s] من قائمة التحديد؟"
 
 #: ../main.lua:365
 msgid   "Remove"
@@ -263,42 +259,46 @@ msgstr  "إزالة"
 
 #: ../main.lua:399 ../main.lua:421 ../main.lua:474
 msgid   "Configuration not found. Please set up configuration.lua first."
-msgstr  "لم يتم العثور على الإعدادات. يرجى إعداد ملف configuration.lua أولاً."
+msgstr  "التكوين غير موجود. يرجى إعداد configuration.lua أولًا."
 
 #: ../main.lua:429
 msgid   "AI Recap feature is not enabled in configuration."
-msgstr  "ميزة تلخيص الذكاء الاصطناعي غير مفعّلة في الإعدادات."
+msgstr  "ميزة ملخص الذكاء الاصطناعي غير مفعلة في التكوين."
 
 #: ../main.lua:517
-msgid   "Added [%1 (AI)] to Main Highlight Menu."
-msgstr  "تمت إضافة [%1 (AI)] إلى قائمة التمييز الرئيسية."
+msgid   "Added [%1 (AI)] to Highlight Menu."
+msgstr  "تمت إضافة [%1 (الذكاء الاصطناعي)] إلى قائمة التحديد."
 
 #: ../main.lua:526
 #, lua-format
-msgid   "Removed [%s (AI)] from Main Highlight Menu."
-msgstr  "تمت إزالة [%s (AI)] من قائمة التمييز الرئيسية."
+msgid   "Removed [%s (AI)] from Highlight Menu."
+msgstr  "تمت إزالة [%s (الذكاء الاصطناعي)] من قائمة التحديد."
+
+#: ../_meta.lua:5
+msgid   "💡 Enhance your KOReader experience with AI"
+msgstr  "💡 عزز تجربة KOReader مع الذكاء الاصطناعي"
 
 #: ../prompts.lua:20
-msgid   "This prompt act as a dictionary for the highlighted text, to a word "
+msgid   "This prompt acts as a dictionary for the highlighted text, to a word "
         "or phrase."
-msgstr  "يعمل هذا الأمر كقاموس للنص المميز، سواء لكلمة أو عبارة."
+msgstr  "يعمل هذا الموجه كقاموس للنص المميز، للكلمة أو العبارة."
 
 #: ../prompts.lua:25
 msgid   "Translate"
-msgstr  "ترجمة"
+msgstr  "ترجم"
 
 #: ../prompts.lua:26
 msgid   "This prompt translates the highlighted text to another language."
-msgstr  "يقوم هذا الأمر بترجمة النص المميز إلى لغة أخرى."
+msgstr  "يترجم هذا الموجه النص المميز إلى لغة أخرى."
 
 #: ../prompts.lua:48
 msgid   "Simplify"
-msgstr  "تبسيط"
+msgstr  "بسط"
 
 #: ../prompts.lua:50
 msgid   "This prompt simplifies the highlighted text to make it easier to "
         "understand."
-msgstr  "يقوم هذا الأمر بتبسيط النص المميز لجعله أسهل في الفهم."
+msgstr  "يُبسط هذا الموجه النص المميز لتسهيل فهمه."
 
 #: ../prompts.lua:60
 msgid   "Explain"
@@ -307,17 +307,16 @@ msgstr  "شرح"
 #: ../prompts.lua:62
 msgid   "This prompt explains the highlighted text in detail, ensuring "
         "clarity and understanding."
-msgstr  "يقوم هذا الأمر بشرح النص المميز بالتفصيل لضمان الوضوح والفهم."
+msgstr  "يشرح هذا الموجه النص المميز بالتفصيل، مع ضمان الوضوح والفهم."
 
 #: ../prompts.lua:73
 msgid   "Summarize"
-msgstr  "تلخيص"
+msgstr  "ملخص"
 
 #: ../prompts.lua:75
 msgid   "This prompt summarizes the highlighted text, capturing its main "
         "points and essential details."
-msgstr  "يقوم هذا الأمر بتلخيص النص المميز مع تغطية النقاط الرئيسية والتفاصيل "
-        "الأساسية."
+msgstr  "يُلخّص هذا الموجه النص المميز، مع إبراز أهم النقاط والتفاصيل الأساسية."
 
 #: ../prompts.lua:84
 msgid   "Historical Context"
@@ -326,36 +325,37 @@ msgstr  "السياق التاريخي"
 #: ../prompts.lua:86
 msgid   "This prompt provides a detailed historical context for the "
         "highlighted text, explaining its significance and background."
-msgstr  "يوفر هذا الأمر سياقاً تاريخياً مفصلاً للنص المميز، موضحاً أهميته وخلفيته."
+msgstr  "يُقدّم هذا الموجه سياقًا تاريخيًا تفصيليًا للنص المميز، موضحًا أهميته "
+        "وخلفيته."
 
 #: ../prompts.lua:90
 msgid   "Key Points"
-msgstr  "النقاط الأساسية"
+msgstr  "النقاط الرئيسية"
 
 #: ../prompts.lua:92
 msgid   "This prompt extracts and lists the key points from the highlighted "
         "text, ensuring clarity and organization."
-msgstr  "يقوم هذا الأمر باستخراج وإدراج النقاط الأساسية من النص المميز مع "
-        "ضمان الوضوح والتنظيم."
+msgstr  "يستخرج هذا الموجه ويقائمة النقاط الرئيسية من النص المميز، مع ضمان "
+        "الوضوح والتنظيم."
 
 #: ../prompts.lua:96
 msgid   "ELI5"
-msgstr  "شرح كأنك تشرح لطفل عمره 5 سنوات"
+msgstr  "شرح بسيط للطفل"
 
 #: ../prompts.lua:98
 msgid   "This prompt explains the highlighted text as if to a five-year-old, "
         "simplifying complex concepts into easily understandable terms."
-msgstr  "يقوم هذا الأمر بشرح النص المميز كأنك تشرحه لطفل عمره خمس سنوات، "
-        "مبسطاً المفاهيم المعقدة إلى مصطلحات سهلة الفهم."
+msgstr  "يشرح هذا الموجه النص المميز كما لو كان يشرح لطفل يبلغ من العمر خمس "
+        "سنوات، مبسطًا المفاهيم المعقدة إلى مصطلحات سهلة الفهم."
 
 #: ../prompts.lua:102
 msgid   "Grammar"
-msgstr  "النحو"
+msgstr  "قواعد"
 
 #: ../prompts.lua:104
 msgid   "This prompt analyzes the grammar of the highlighted text, providing "
         "a detailed explanation of its structure and any grammatical errors."
-msgstr  "يقوم هذا الأمر بتحليل النحو في النص المميز، مقدماً شرحاً مفصلاً لبنيته "
+msgstr  "يقوم هذا الموجه بتحليل قواعد النص المميز، موفرًا شرحًا تفصيليًا لبنيته "
         "وأي أخطاء نحوية."
 
 #: ../prompts.lua:109
@@ -366,8 +366,8 @@ msgstr  "المفردات"
 msgid   "This prompt analyzes the vocabulary of the highlighted text, "
         "identifying complex words and providing definitions, synonyms, and "
         "usage examples."
-msgstr  "يقوم هذا الأمر بتحليل مفردات النص المميز، مع تحديد الكلمات المعقدة "
-        "وتقديم تعريفاتها ومرادفاتها وأمثلة استخدامها."
+msgstr  "يحلل هذا الموجه مفردات النص المميز، مع تحديد الكلمات المعقدة وتوفير "
+        "التعريفات، المرادفات، وأمثلة الاستخدام."
 
 #: ../prompts.lua:127
 msgid   "Wikipedia"
@@ -376,42 +376,38 @@ msgstr  "ويكيبيديا"
 #: ../prompts.lua:129
 msgid   "This prompt generates a comprehensive Wikipedia-style article based "
         "on the highlighted text, ensuring factual accuracy and neutrality."
-msgstr  "يقوم هذا الأمر بإنشاء مقالة شاملة بأسلوب ويكيبيديا بناءً على النص "
-        "المميز، مع ضمان الدقة والحيادية."
+msgstr  "يولد هذا الموجه مقالًا شاملة بنمط ويكيبيديا استنادًا إلى النص المميز، "
+        "مع التأكد من الدقة والحيادية."
 
 #: ../recapdialog.lua:68
 msgid   "Recap"
-msgstr  "تلخيص"
-
-#: ../settingsdialog.lua:26
-msgid   "Assitant Settings"
-msgstr  "إعدادات المساعد"
+msgstr  "ملخص"
 
 #: ../settingsdialog.lua:53
 msgid   "Always use stream mode"
-msgstr  "استخدم دائماً وضع البث"
+msgstr  "استخدم وضع البث دائمًا"
 
 #: ../settingsdialog.lua:58
 msgid   "Use AI Assistant for 'Translate'"
-msgstr  "استخدم المساعد الذكي للترجمة"
+msgstr  "استخدم مساعد الذكاء الاصطناعي للترجمة"
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override enabled."
-msgstr  "تم تفعيل تجاوز المساعد الذكي."
+msgid   "AI Assistant override is enabled."
+msgstr  "تمكين تجاوز مساعد الذكاء الاصطناعي."
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override disabled."
-msgstr  "تم تعطيل تجاوز المساعد الذكي."
+msgid   "AI Assistant override is disabled."
+msgstr  "تعطيل تجاوز مساعد الذكاء الاصطناعي."
 
 #: ../settingsdialog.lua:104
 msgid   "Select the AI Model provider."
-msgstr  "اختر مزود نموذج الذكاء الاصطناعي."
+msgstr  "اختر موفر نموذج الذكاء الاصطناعي."
 
 #: ../update_checker.lua:22
 msgid   "Checking for updates..."
-msgstr  "جاري التحقق من التحديثات..."
+msgstr  "التحقق من التحديثات..."
 
 #: ../update_checker.lua:56
 #, lua-format
 msgid   "A new version of the %s plugin (%s) is available. Please update!"
-msgstr  "يتوفر إصدار جديد من الإضافة %s (%s). يرجى التحديث!"
+msgstr  "يتوفر إصدار جديد من ملحق %s (%s). يرجى التحديث!"

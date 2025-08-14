@@ -1,411 +1,422 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 简体中文翻译
+# Copyright (C) 2025 THE PACKAGE'S COPYRIGHT HOLDER
+# 此文件与 PACKAGE 包使用相同的许可证。
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 #, fuzzy
-msgid   ""
-msgstr  "Project-Id-Version: PACKAGE VERSION\n"
-        "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-08-13 17:27+0800\n"
-        "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-        "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-        "Language-Team: AI Generated <k1@openai.com> (Model: gpt-4o, "
-        "2024-05-13)\n"
-        "Language: zh_CN\n"
-        "MIME-Version: 1.0\n"
-        "Content-Type: text/plain; charset=UTF-8\n"
-        "Content-Transfer-Encoding: 8bit\n"
-
-#: ../_meta.lua:4 ../dialogs.lua:376 ../main.lua:186
-msgid   "AI Assistant"
-msgstr  "AI 助手"
-
-#: ../_meta.lua:5
-msgid   "💡 Enhance KOReader's reading with AI Power."
-msgstr  "💡 用 AI 之力提升 KOReader 的阅读体验。"
+msgid ""
+msgstr ""
+"Project-Id-Version: assitant.koplugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"PO-Revision-Date: 2025-08-14 11:49+0800\n"
+"Last-Translator: GPT-4o <gpt-4o@openai.com>\n"
+"Language-Team: GPT-4o\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
-msgid   "Ask Another Question"
-msgstr  "再问一个问题"
+msgid "Ask Another Question"
+msgstr "再问一个问题"
 
 #: ../chatgptviewer.lua:306
-msgid   "Close"
-msgstr  "关闭"
+msgid "Close"
+msgstr "关闭"
 
 #: ../chatgptviewer.lua:321
-msgid   "Copy"
-msgstr  "复制"
+msgid "Copy"
+msgstr "复制"
 
 #: ../chatgptviewer.lua:326
-msgid   "Text copied to clipboard"
-msgstr  "已复制到剪贴板"
+msgid "Text copied to clipboard"
+msgstr "已复制到剪贴板"
 
 #: ../chatgptviewer.lua:340
-msgid   "Add Note"
-msgstr  "添加笔记"
+msgid "Add Note"
+msgstr "添加笔记"
 
 #: ../chatgptviewer.lua:347
-msgid   "Highlight functionality not available"
-msgstr  "高亮功能不可用"
+msgid "Highlight functionality not available"
+msgstr "高亮功能不可用"
 
 #: ../chatgptviewer.lua:356
-msgid   "No text to add as note"
-msgstr  "没有可添加为笔记的文本"
+msgid "No text to add as note"
+msgstr "无内容可添加为笔记"
 
 #: ../chatgptviewer.lua:385
-msgid   "No text left to add as note"
-msgstr  "没有剩余文本可添加为笔记"
+msgid "No text left to add as note"
+msgstr "已无剩余内容可添加为笔记"
 
 #: ../chatgptviewer.lua:398
-msgid   "Note added successfully"
-msgstr  "笔记添加成功"
+msgid "Note added successfully"
+msgstr "笔记添加成功"
 
 #: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
-msgid   "Cancel"
-msgstr  "取消"
+msgid "Cancel"
+msgstr "取消"
 
 #: ../chatgptviewer.lua:577 ../dialogs.lua:267
-msgid   "Ask"
-msgstr  "提问"
+msgid "Ask"
+msgstr "提问"
 
 #: ../chatgptviewer.lua:583 ../dialogs.lua:273
-msgid   "Enter a question before proceeding."
-msgstr  "请先输入问题再继续"
+msgid "Enter a question before proceeding."
+msgstr "请先输入问题再继续"
 
 #: ../chatgptviewer.lua:631
-msgid   "Type your question here"
-msgstr  "在此输入您的问题"
+msgid "Type your question here"
+msgstr "在此输入问题"
 
 #: ../chatgptviewer.lua:782
-msgid   "Word copied to clipboard."
-msgstr  "单词已复制到剪贴板"
+msgid "Word copied to clipboard."
+msgstr "单词已复制"
 
 #: ../chatgptviewer.lua:783
-msgid   "Selection copied to clipboard."
-msgstr  "选中文本已复制到剪贴板"
+msgid "Selection copied to clipboard."
+msgstr "选中内容已复制"
 
 #: ../dialogs.lua:83
-msgid   "(Empty message)"
-msgstr  "（空消息）"
+msgid "(Empty message)"
+msgstr "（空消息）"
 
 #: ../dialogs.lua:87
-msgid   "(No response)"
-msgstr  "（无响应）"
+msgid "(No response)"
+msgstr "（无响应）"
 
 #: ../dialogs.lua:117
-msgid   "Highlighted text:"
-msgstr  "高亮文本："
+msgid "Highlighted text:"
+msgstr "高亮文本："
 
 #: ../dialogs.lua:304
-msgid   "Book Analysis"
-msgstr  "书籍分析"
+msgid "Book Analysis"
+msgstr "书籍分析"
 
 #: ../dialogs.lua:341
-msgid   "Add this button to the Main Highlight Menu?"
-msgstr  "是否将此按钮添加到主高亮菜单？"
+msgid "Add this button to the Highlight Menu?"
+msgstr "添加此按钮到高亮菜单？"
 
 #: ../dialogs.lua:342
-msgid   "Add"
-msgstr  "添加"
+msgid "Add"
+msgstr "添加"
 
 #: ../dialogs.lua:368
-msgid   "Ask a question about the highlighted text"
-msgstr  "针对高亮文本提问"
+msgid "Ask a question about the highlighted text"
+msgstr "对高亮内容提问"
 
 #: ../dialogs.lua:369
 #, lua-format
-msgid   "Ask a question about this book:\n"
-        "%s by %s"
-msgstr  "针对本书提问：\n"
-        "%s，作者：%s"
+msgid ""
+"Ask a question about this book:\n"
+"%s by %s"
+msgstr ""
+"关于本书提问：\n"
+"%s 作者：%s"
 
 #: ../dialogs.lua:372
-msgid   "Type your question here..."
-msgstr  "在此输入您的问题…"
+msgid "Type your question here..."
+msgstr "在此输入问题…"
 
 #: ../dialogs.lua:373
-msgid   "Ask anything about this book..."
-msgstr  "关于本书的任何问题…"
+msgid "Ask anything about this book..."
+msgstr "关于本书的任何问题…"
+
+#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+msgid "AI Assistant"
+msgstr "AI 助手"
 
 #: ../dialogs.lua:427
-msgid   "Error: No response received"
-msgstr  "错误：未收到响应"
+msgid "Error: No response received"
+msgstr "错误：未收到响应"
 
 #: ../dictdialog.lua:28
-msgid   "AI Dictionary"
-msgstr  "AI 词典"
+msgid "AI Dictionary"
+msgstr "AI 词典"
 
 #: ../dictdialog.lua:29
-msgid   "Enter a word to look up..."
-msgstr  "输入要查询的单词…"
+msgid "Enter a word to look up..."
+msgstr "输入要查询的单词…"
 
 #: ../dictdialog.lua:40
-msgid   "Look Up"
-msgstr  "查询"
+msgid "Look Up"
+msgstr "查询"
 
 #: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
-msgid   "Dictionary"
-msgstr  "词典"
+msgid "Dictionary"
+msgstr "词典"
 
 #: ../gpt_query.lua:52
 #, lua-format
-msgid   "Provider settings not found for: %s. Please check your configuration."
-        "lua file."
-msgstr  "未找到 %s 的提供商设置，请检查 configuration.lua 文件。"
+msgid ""
+"Provider settings not found for: %s. Please check your configuration.lua "
+"file."
+msgstr "未找到 %s 的提供商设置，请检查 configuration.lua 文件"
 
 #: ../gpt_query.lua:74
 #, lua-format
-msgid   "Handler not found for: %s. Please ensure the handler exists in "
-        "api_handlers directory."
-msgstr  "未找到 %s 的处理程序，请确保 api_handlers 目录中存在该处理程序。"
+msgid ""
+"The handler for %s was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr "未找到 %s 的处理程序，请确认 api_handlers 目录中已创建"
 
 #: ../gpt_query.lua:78
 #, lua-format
-msgid   "No provider set in configuration.lua. Please set the provider and "
-        "provider_settings for %s."
-msgstr  "configuration.lua 中未设置提供商，请为 %s 设置 provider 和 "
-        "provider_settings。"
+msgid ""
+"No provider set in configuration.lua. Please set the provider and "
+"provider_settings for %s."
+msgstr "configuration.lua 中未设置提供商，请为 %s 配置 provider 与 provider_settings"
 
 #: ../gpt_query.lua:122
-msgid   "Querying AI ..."
-msgstr  "正在查询 AI…"
+msgid "Querying AI ..."
+msgstr "正在查询 AI…"
 
 #: ../gpt_query.lua:138
-msgid   "AI Responding"
-msgstr  "AI 正在回复"
+msgid "AI is responding"
+msgstr "AI 正在回复"
 
 #: ../gpt_query.lua:140
 #, lua-format
-msgid   "☁ %s/%s"
-msgstr  "☁ %s/%s"
+msgid "☁ %s/%s"
+msgstr "☁ %s/%s"
 
 #: ../gpt_query.lua:153
-msgid   "⏹ Stop"
-msgstr  "⏹ 停止"
+msgid "⏹ Stop"
+msgstr "⏹ 停止"
 
 #: ../gpt_query.lua:174
-msgid   "Stream interrupted by user."
-msgstr  "用户已中断流式传输。"
+msgid "Response interrupted."
+msgstr "回复已中断"
 
 #: ../main.lua:73
-msgid   "Ask AI Question"
-msgstr  "向 AI 提问"
+msgid "Ask the AI a question"
+msgstr "向 AI 提问"
 
 #: ../main.lua:82
-msgid   "AI Recap"
-msgstr  "AI 回顾"
+msgid "AI Recaps"
+msgstr "AI 回顾"
 
-#: ../main.lua:91
-msgid   "Assistant Settings"
-msgstr  "助手设置"
+#: ../main.lua:91 ../settingsdialog.lua:26
+msgid "Assistant Settings"
+msgstr "助手设置"
 
 #: ../main.lua:190
-msgid   "Configuration Error.\n"
-        "Please set up configuration.lua.\n"
-        "\n"
-msgstr  "配置错误。\n"
-        "请设置 configuration.lua。\n"
-        "\n"
+msgid ""
+"Configuration Error.\n"
+"Please set up configuration.lua.\n"
+"\n"
+msgstr ""
+"配置错误。\n"
+"请设置 configuration.lua。\n"
 
 #: ../main.lua:217
-msgid   "Useful Tips:\n"
-        "\n"
-        "Long Press:\n"
-        "- On a Prompt Button: Add to the main highlight menu.\n"
-        "- On a main highlight menu button to remove it.\n"
-        "\n"
-        "Very Long Press (more than 3 seconds):\n"
-        "On a single word to show the highlight menu (instead of the "
-        "dictionary).\n"
-        "\n"
-        "Multi-Swipe (like, ⮠, ⮡, ↺):\n"
-        "On the result dialog to close (as the Close button is far to "
-        "reach).\n"
-msgstr  "实用提示：\n"
-        "\n"
-        "长按：\n"
-        "- 在提示按钮上：添加到主高亮菜单。\n"
-        "- 在主高亮菜单按钮上：将其移除。\n"
-        "\n"
-        "超长按（超过 3 秒）：\n"
-        "在单个单词上：显示高亮菜单（而非词典）。\n"
-        "\n"
-        "多指滑动（如 ⮠、⮡、↺）：\n"
-        "在结果对话框上执行以关闭（因为关闭按钮较远）。\n"
+msgid ""
+"Useful Tips:\n"
+"\n"
+"Long Press:\n"
+"- On a Prompt Button: Add to the highlight menu.\n"
+"- On a highlight menu button to remove it.\n"
+"\n"
+"Very-Long Press (over 3 seconds):\n"
+"On a single word in the book to show the highlight menu (instead of the "
+"dictionary).\n"
+"\n"
+"Multi-Swipe (e.g., ⮠, ⮡, ↺):\n"
+"On the result dialog to close (as the Close button is far to reach).\n"
+msgstr ""
+"使用技巧：\n"
+"\n"
+"长按：\n"
+"- 在提示按钮上：加入高亮菜单。\n"
+"- 在高亮菜单按钮上：移除。\n"
+"\n"
+"超长按（3 秒以上）：\n"
+"在书中单词上触发高亮菜单（替代词典）。\n"
+"\n"
+"多指手势（如 ⮠、⮡、↺）：\n"
+"在结果窗口快速关闭（比点关闭按钮方便）。\n"
 
 #: ../main.lua:290
 #, lua-format
-msgid   "Do you want an AI Recap?\n"
-        "For %s by %s.\n"
-        "Last read %.0f hours ago."
-msgstr  "是否需要 AI 回顾？\n"
-        "《%s》，作者：%s。\n"
-        "上次阅读于 %.0f 小时前。"
+msgid ""
+"Do you want an AI Recap?\n"
+"For %s by %s.\n"
+"Last read %.0f hour(s) ago."
+msgstr ""
+"需要 AI 回顾吗？\n"
+"《%s》 作者：%s。\n"
+"距上次阅读 %.0f 小时。"
 
 #: ../main.lua:295
-msgid   "Yes"
-msgstr  "是"
+msgid "Yes"
+msgstr "是"
 
 #: ../main.lua:304
-msgid   "No"
-msgstr  "否"
+msgid "No"
+msgstr "否"
 
 #: ../main.lua:364
 #, lua-format
-msgid   "Remove [%s] from the Main Highlight Menu?"
-msgstr  "从主高亮菜单中移除 [%s]？"
+msgid "Remove [%s] from Highlight Menu?"
+msgstr "从菜单移除 [%s]？"
 
 #: ../main.lua:365
-msgid   "Remove"
-msgstr  "移除"
+msgid "Remove"
+msgstr "移除"
 
 #: ../main.lua:399 ../main.lua:421 ../main.lua:474
-msgid   "Configuration not found. Please set up configuration.lua first."
-msgstr  "未找到配置，请先设置 configuration.lua。"
+msgid "Configuration not found. Please set up configuration.lua first."
+msgstr "未找到配置，请先设置 configuration.lua"
 
 #: ../main.lua:429
-msgid   "AI Recap feature is not enabled in configuration."
-msgstr  "配置中未启用 AI 回顾功能。"
+msgid "AI Recap feature is not enabled in configuration."
+msgstr "配置中未启用 AI 回顾功能"
 
 #: ../main.lua:517
-msgid   "Added [%1 (AI)] to Main Highlight Menu."
-msgstr  "已将 [%1 (AI)] 添加到主高亮菜单。"
+msgid "Added [%1 (AI)] to Highlight Menu."
+msgstr "已添加 [%1 (AI)] 到高亮菜单"
 
 #: ../main.lua:526
 #, lua-format
-msgid   "Removed [%s (AI)] from Main Highlight Menu."
-msgstr  "已将 [%s (AI)] 从主高亮菜单移除。"
+msgid "Removed [%s (AI)] from Highlight Menu."
+msgstr "已从高亮菜单移除 [%s (AI)]"
+
+#: ../_meta.lua:5
+msgid "💡 Enhance your KOReader experience with AI"
+msgstr "💡 用 AI 提升 KOReader 体验"
 
 #: ../prompts.lua:20
-msgid   "This prompt act as a dictionary for the highlighted text, to a word "
-        "or phrase."
-msgstr  "此提示将高亮文本（单词或短语）作为词典条目进行解释。"
+msgid ""
+"This prompt acts as a dictionary for the highlighted text, to a word or "
+"phrase."
+msgstr "该提示将高亮内容作为词典条目解释单词或短语。"
 
 #: ../prompts.lua:25
-msgid   "Translate"
-msgstr  "翻译"
+msgid "Translate"
+msgstr "翻译"
 
 #: ../prompts.lua:26
-msgid   "This prompt translates the highlighted text to another language."
-msgstr  "此提示将高亮文本翻译成另一种语言。"
+msgid "This prompt translates the highlighted text to another language."
+msgstr "该提示将高亮内容翻译成其他语言。"
 
 #: ../prompts.lua:48
-msgid   "Simplify"
-msgstr  "简化"
+msgid "Simplify"
+msgstr "简化"
 
 #: ../prompts.lua:50
-msgid   "This prompt simplifies the highlighted text to make it easier to "
-        "understand."
-msgstr  "此提示将高亮文本简化，使其更易理解。"
+msgid ""
+"This prompt simplifies the highlighted text to make it easier to understand."
+msgstr "该提示简化高亮内容，使其更易理解。"
 
 #: ../prompts.lua:60
-msgid   "Explain"
-msgstr  "解释"
+msgid "Explain"
+msgstr "解释"
 
 #: ../prompts.lua:62
-msgid   "This prompt explains the highlighted text in detail, ensuring "
-        "clarity and understanding."
-msgstr  "此提示详细解释高亮文本，确保清晰易懂。"
+msgid ""
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
+msgstr "该提示详细解释高亮内容，确保清晰易懂。"
 
 #: ../prompts.lua:73
-msgid   "Summarize"
-msgstr  "总结"
+msgid "Summarize"
+msgstr "总结"
 
 #: ../prompts.lua:75
-msgid   "This prompt summarizes the highlighted text, capturing its main "
-        "points and essential details."
-msgstr  "此提示总结高亮文本，提炼要点与关键信息。"
+msgid ""
+"This prompt summarizes the highlighted text, capturing its main points and "
+"essential details."
+msgstr "该提示总结高亮内容，提炼要点与关键细节。"
 
 #: ../prompts.lua:84
-msgid   "Historical Context"
-msgstr  "历史背景"
+msgid "Historical Context"
+msgstr "历史背景"
 
 #: ../prompts.lua:86
-msgid   "This prompt provides a detailed historical context for the "
-        "highlighted text, explaining its significance and background."
-msgstr  "此提示为高亮文本提供详尽的历史背景，阐述其重要性与来龙去脉。"
+msgid ""
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
+msgstr "该提示为高亮内容提供详尽历史背景，解释其重要性与来龙去脉。"
 
 #: ../prompts.lua:90
-msgid   "Key Points"
-msgstr  "要点"
+msgid "Key Points"
+msgstr "要点"
 
 #: ../prompts.lua:92
-msgid   "This prompt extracts and lists the key points from the highlighted "
-        "text, ensuring clarity and organization."
-msgstr  "此提示提取并列出高亮文本的要点，确保条理清晰。"
+msgid ""
+"This prompt extracts and lists the key points from the highlighted text, "
+"ensuring clarity and organization."
+msgstr "该提示提取并列示高亮内容的要点，条理清晰。"
 
 #: ../prompts.lua:96
-msgid   "ELI5"
-msgstr  "通俗解释"
+msgid "ELI5"
+msgstr "五岁解释"
 
 #: ../prompts.lua:98
-msgid   "This prompt explains the highlighted text as if to a five-year-old, "
-        "simplifying complex concepts into easily understandable terms."
-msgstr  "此提示用五岁小孩也能听懂的方式解释高亮文本，把复杂概念变得简单易懂。"
+msgid ""
+"This prompt explains the highlighted text as if to a five-year-old, "
+"simplifying complex concepts into easily understandable terms."
+msgstr "该提示将高亮内容用五岁小孩也能懂的方式解释，化繁为简。"
 
 #: ../prompts.lua:102
-msgid   "Grammar"
-msgstr  "语法"
+msgid "Grammar"
+msgstr "语法"
 
 #: ../prompts.lua:104
-msgid   "This prompt analyzes the grammar of the highlighted text, providing "
-        "a detailed explanation of its structure and any grammatical errors."
-msgstr  "此提示分析高亮文本的语法，详细说明其结构及可能存在的语法错误。"
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr "该提示分析高亮内容的语法，详细说明结构及错误。"
 
 #: ../prompts.lua:109
-msgid   "Vocabulary"
-msgstr  "词汇"
+msgid "Vocabulary"
+msgstr "词汇"
 
 #: ../prompts.lua:111
-msgid   "This prompt analyzes the vocabulary of the highlighted text, "
-        "identifying complex words and providing definitions, synonyms, and "
-        "usage examples."
-msgstr  "此提示分析高亮文本的词汇，识别复杂单词并提供释义、同义词及用法示例。"
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr "该提示分析高亮内容的词汇，标出难词并提供释义、同义词及例句。"
 
 #: ../prompts.lua:127
-msgid   "Wikipedia"
-msgstr  "维基百科"
+msgid "Wikipedia"
+msgstr "维基百科"
 
 #: ../prompts.lua:129
-msgid   "This prompt generates a comprehensive Wikipedia-style article based "
-        "on the highlighted text, ensuring factual accuracy and neutrality."
-msgstr  "此提示根据高亮文本生成一篇全面的维基百科风格文章，确保事实准确与中"
-        "立。"
+msgid ""
+"This prompt generates a comprehensive Wikipedia-style article based on the "
+"highlighted text, ensuring factual accuracy and neutrality."
+msgstr "该提示基于高亮内容生成维基百科风格文章，确保事实准确与中立。"
 
 #: ../recapdialog.lua:68
-msgid   "Recap"
-msgstr  "回顾"
-
-#: ../settingsdialog.lua:26
-msgid   "Assitant Settings"
-msgstr  "助手设置"
+msgid "Recap"
+msgstr "回顾"
 
 #: ../settingsdialog.lua:53
-msgid   "Always use stream mode"
-msgstr  "始终使用流式模式"
+msgid "Always use stream mode"
+msgstr "始终使用流式模式"
 
 #: ../settingsdialog.lua:58
-msgid   "Use AI Assistant for 'Translate'"
-msgstr  "使用 AI 助手进行“翻译”"
+msgid "Use AI Assistant for 'Translate'"
+msgstr "使用 AI 助手进行“翻译”"
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override enabled."
-msgstr  "已启用 AI 助手覆盖。"
+msgid "AI Assistant override is enabled."
+msgstr "已启用 AI 助手覆盖。"
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override disabled."
-msgstr  "已禁用 AI 助手覆盖。"
+msgid "AI Assistant override is disabled."
+msgstr "已禁用 AI 助手覆盖。"
 
 #: ../settingsdialog.lua:104
-msgid   "Select the AI Model provider."
-msgstr  "选择 AI 模型提供商。"
+msgid "Select the AI Model provider."
+msgstr "选择 AI 模型提供商"
 
 #: ../update_checker.lua:22
-msgid   "Checking for updates..."
-msgstr  "正在检查更新…"
+msgid "Checking for updates..."
+msgstr "正在检查更新…"
 
 #: ../update_checker.lua:56
 #, lua-format
-msgid   "A new version of the %s plugin (%s) is available. Please update!"
-msgstr  "插件 %s 有新版本 (%s) 可用，请更新！"
+msgid "A new version of the %s plugin (%s) is available. Please update!"
+msgstr "插件 %s 有新版本（%s）可用，请及时更新！"
