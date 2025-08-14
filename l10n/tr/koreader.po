@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assitant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:45+0800\n"
 "Last-Translator: Kimi <kimi@anthropic.com>\n"
 "Language-Team: Türkçe <tr@li.org>\n"
@@ -122,7 +122,7 @@ msgstr "Sorunuzu buraya yazın..."
 msgid "Ask anything about this book..."
 msgstr "Bu kitap hakkında herhangi bir şey sor..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Yapay Zeka Asistanı"
 
@@ -142,7 +142,7 @@ msgstr "Aramak için kelime girin..."
 msgid "Look Up"
 msgstr "Ara"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Sözlük"
 
@@ -164,7 +164,7 @@ msgstr ""
 "%s için işleyici bulunamadı. Lütfen api_handlers klasöründe işleyicinin "
 "bulunduğundan emin olun."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
@@ -173,24 +173,24 @@ msgstr ""
 "configuration.lua'da sağlayıcı ayarlanmamış. Lütfen %s için sağlayıcıyı ve "
 "provider_settings'i ayarlayın."
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "Yapay Zeka sorgulanıyor..."
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "Yapay Zeka yanıtlıyor"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ Durdur"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "Yanıt kesildi."
 
@@ -206,17 +206,19 @@ msgstr "Yapay Zeka Özetleri"
 msgid "Assistant Settings"
 msgstr "Asistan Ayarları"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "configuration.lua içinde geçerli model sağlayıcısı bulunamadı"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "Yapılandırma Hatası.\n"
-"Lütfen configuration.lua dosyasını ayarlayın.\n"
-"\n"
+"Lütfen configuration.lua dosyasını kurun."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -243,7 +245,11 @@ msgstr ""
 "Çoklu Kaydırma (örn., ⮠, ⮡, ↺):\n"
 "Sonuç iletişim kutusunu kapatmak için (Kapat düğmesi uzakta).\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: model sağlayıcıları geçersiz."
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -254,36 +260,37 @@ msgstr ""
 "%s - %s için.\n"
 "Son okuma %.0f saat önce."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "Evet"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "Hayır"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "[%s] Vurgulama Menüsünden kaldırılsın mı?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "Kaldır"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "Yapılandırma bulunamadı. Lütfen önce configuration.lua dosyasını ayarlayın."
+msgstr ""
+"Yapılandırma bulunamadı. Lütfen önce configuration.lua dosyasını ayarlayın."
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "Yapay Zeka özeti özelliği yapılandırmada etkin değil."
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "[%1 (AI)] Vurgulama Menüsüne eklendi."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "[%s (AI)] Vurgulama Menüsünden kaldırıldı."
@@ -376,8 +383,8 @@ msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
 msgstr ""
-"Bu komut, vurgulanan metni beş yaşındaki birine anlatır gibi açıklar, karmaşık "
-"kavramları kolay anlaşılır hale getirir."
+"Bu komut, vurgulanan metni beş yaşındaki birine anlatır gibi açıklar, "
+"karmaşık kavramları kolay anlaşılır hale getirir."
 
 #: ../prompts.lua:102
 msgid "Grammar"

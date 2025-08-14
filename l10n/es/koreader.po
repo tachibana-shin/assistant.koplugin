@@ -4,420 +4,456 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
-msgid   ""
-msgstr  "Project-Id-Version: assitant.koplugin 1.0\n"
-        "Report-Msgid-Bugs-To: \n"
-        "POT-Creation-Date: 2025-08-14 10:58+0800\n"
-        "PO-Revision-Date: Thu Aug 14 11:05:01 +0800\n"
-        "Last-Translator: ChatGPT-4 2025 <info@openai.com>\n"
-        "Language-Team: ChatGPT-4 2025 <info@openai.com>\n"
-        "Language: Español/es\n"
-        "MIME-Version: 1.0\n"
-        "Content-Type: text/plain; charset=UTF-8\n"
-        "Content-Transfer-Encoding: 8bit\n"
+msgid ""
+msgstr ""
+"Project-Id-Version: assitant.koplugin 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
+"PO-Revision-Date: Thu Aug 14 11:05:01 +0800\n"
+"Last-Translator: ChatGPT-4 2025 <info@openai.com>\n"
+"Language-Team: ChatGPT-4 2025 <info@openai.com>\n"
+"Language: Español/es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
-msgid   "Ask Another Question"
-msgstr  "Hacer otra pregunta"
+msgid "Ask Another Question"
+msgstr "Hacer otra pregunta"
 
 #: ../chatgptviewer.lua:306
-msgid   "Close"
-msgstr  "Cerrar"
+msgid "Close"
+msgstr "Cerrar"
 
 #: ../chatgptviewer.lua:321
-msgid   "Copy"
-msgstr  "Copiar"
+msgid "Copy"
+msgstr "Copiar"
 
 #: ../chatgptviewer.lua:326
-msgid   "Text copied to clipboard"
-msgstr  "Texto copiado al portapapeles"
+msgid "Text copied to clipboard"
+msgstr "Texto copiado al portapapeles"
 
 #: ../chatgptviewer.lua:340
-msgid   "Add Note"
-msgstr  "Añadir nota"
+msgid "Add Note"
+msgstr "Añadir nota"
 
 #: ../chatgptviewer.lua:347
-msgid   "Highlight functionality not available"
-msgstr  "Función de resaltado no disponible"
+msgid "Highlight functionality not available"
+msgstr "Función de resaltado no disponible"
 
 #: ../chatgptviewer.lua:356
-msgid   "No text to add as note"
-msgstr  "No hay texto para añadir como nota"
+msgid "No text to add as note"
+msgstr "No hay texto para añadir como nota"
 
 #: ../chatgptviewer.lua:385
-msgid   "No text left to add as note"
-msgstr  "No queda texto para añadir como nota"
+msgid "No text left to add as note"
+msgstr "No queda texto para añadir como nota"
 
 #: ../chatgptviewer.lua:398
-msgid   "Note added successfully"
-msgstr  "Nota añadida correctamente"
+msgid "Note added successfully"
+msgstr "Nota añadida correctamente"
 
 #: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
-msgid   "Cancel"
-msgstr  "Cancelar"
+msgid "Cancel"
+msgstr "Cancelar"
 
 #: ../chatgptviewer.lua:577 ../dialogs.lua:267
-msgid   "Ask"
-msgstr  "Preguntar"
+msgid "Ask"
+msgstr "Preguntar"
 
 #: ../chatgptviewer.lua:583 ../dialogs.lua:273
-msgid   "Enter a question before proceeding."
-msgstr  "Ingresa una pregunta antes de continuar."
+msgid "Enter a question before proceeding."
+msgstr "Ingresa una pregunta antes de continuar."
 
 #: ../chatgptviewer.lua:631
-msgid   "Type your question here"
-msgstr  "Escribe tu pregunta aquí"
+msgid "Type your question here"
+msgstr "Escribe tu pregunta aquí"
 
 #: ../chatgptviewer.lua:782
-msgid   "Word copied to clipboard."
-msgstr  "Palabra copiada al portapapeles."
+msgid "Word copied to clipboard."
+msgstr "Palabra copiada al portapapeles."
 
 #: ../chatgptviewer.lua:783
-msgid   "Selection copied to clipboard."
-msgstr  "Selección copiada al portapapeles."
+msgid "Selection copied to clipboard."
+msgstr "Selección copiada al portapapeles."
 
 #: ../dialogs.lua:83
-msgid   "(Empty message)"
-msgstr  "(Mensaje vacío)"
+msgid "(Empty message)"
+msgstr "(Mensaje vacío)"
 
 #: ../dialogs.lua:87
-msgid   "(No response)"
-msgstr  "(Sin respuesta)"
+msgid "(No response)"
+msgstr "(Sin respuesta)"
 
 #: ../dialogs.lua:117
-msgid   "Highlighted text:"
-msgstr  "Texto resaltado:"
+msgid "Highlighted text:"
+msgstr "Texto resaltado:"
 
 #: ../dialogs.lua:304
-msgid   "Book Analysis"
-msgstr  "Análisis de libro"
+msgid "Book Analysis"
+msgstr "Análisis de libro"
 
 #: ../dialogs.lua:341
-msgid   "Add this button to the Highlight Menu?"
-msgstr  "¿Añadir este botón al menú de resaltado?"
+msgid "Add this button to the Highlight Menu?"
+msgstr "¿Añadir este botón al menú de resaltado?"
 
 #: ../dialogs.lua:342
-msgid   "Add"
-msgstr  "Añadir"
+msgid "Add"
+msgstr "Añadir"
 
 #: ../dialogs.lua:368
-msgid   "Ask a question about the highlighted text"
-msgstr  "Haz una pregunta sobre el texto resaltado"
+msgid "Ask a question about the highlighted text"
+msgstr "Haz una pregunta sobre el texto resaltado"
 
 #: ../dialogs.lua:369
 #, lua-format
-msgid   "Ask a question about this book:\n"
-        "%s by %s"
-msgstr  "Haz una pregunta sobre este libro:\n"
-        "%s por %s"
+msgid ""
+"Ask a question about this book:\n"
+"%s by %s"
+msgstr ""
+"Haz una pregunta sobre este libro:\n"
+"%s por %s"
 
 #: ../dialogs.lua:372
-msgid   "Type your question here..."
-msgstr  "Escribe tu pregunta aquí..."
+msgid "Type your question here..."
+msgstr "Escribe tu pregunta aquí..."
 
 #: ../dialogs.lua:373
-msgid   "Ask anything about this book..."
-msgstr  "Pregunta lo que quieras sobre este libro..."
+msgid "Ask anything about this book..."
+msgstr "Pregunta lo que quieras sobre este libro..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
-msgid   "AI Assistant"
-msgstr  "Asistente IA"
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
+msgid "AI Assistant"
+msgstr "Asistente IA"
 
 #: ../dialogs.lua:427
-msgid   "Error: No response received"
-msgstr  "Error: No se recibió respuesta"
+msgid "Error: No response received"
+msgstr "Error: No se recibió respuesta"
 
 #: ../dictdialog.lua:28
-msgid   "AI Dictionary"
-msgstr  "Diccionario IA"
+msgid "AI Dictionary"
+msgstr "Diccionario IA"
 
 #: ../dictdialog.lua:29
-msgid   "Enter a word to look up..."
-msgstr  "Introduce una palabra para buscar..."
+msgid "Enter a word to look up..."
+msgstr "Introduce una palabra para buscar..."
 
 #: ../dictdialog.lua:40
-msgid   "Look Up"
-msgstr  "Buscar"
+msgid "Look Up"
+msgstr "Buscar"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
-msgid   "Dictionary"
-msgstr  "Diccionario"
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
+msgid "Dictionary"
+msgstr "Diccionario"
 
 #: ../gpt_query.lua:52
 #, lua-format
-msgid   "Provider settings not found for: %s. Please check your configuration."
-        "lua file."
-msgstr  "No se encontraron ajustes del proveedor para: %s. Revisa tu archivo "
-        "configuration.lua."
+msgid ""
+"Provider settings not found for: %s. Please check your configuration.lua "
+"file."
+msgstr ""
+"No se encontraron ajustes del proveedor para: %s. Revisa tu archivo "
+"configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
-msgid   "The handler for %s was not found. Please ensure the handler exists "
-        "in api_handlers directory."
-msgstr  "No se encontró el manejador para %s. Asegúrate de que el manejador "
-        "exista en el directorio api_handlers."
+msgid ""
+"The handler for %s was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"No se encontró el manejador para %s. Asegúrate de que el manejador exista en "
+"el directorio api_handlers."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
-msgid   "No provider set in configuration.lua. Please set the provider and "
-        "provider_settings for %s."
-msgstr  "No hay proveedor establecido en configuration.lua. Configura el "
-        "proveedor y provider_settings para %s."
+msgid ""
+"No provider set in configuration.lua. Please set the provider and "
+"provider_settings for %s."
+msgstr ""
+"No hay proveedor establecido en configuration.lua. Configura el proveedor y "
+"provider_settings para %s."
 
-#: ../gpt_query.lua:122
-msgid   "Querying AI ..."
-msgstr  "Consultando IA..."
-
-#: ../gpt_query.lua:138
-msgid   "AI is responding"
-msgstr  "IA responde"
+#: ../gpt_query.lua:124
+msgid "Querying AI ..."
+msgstr "Consultando IA..."
 
 #: ../gpt_query.lua:140
+msgid "AI is responding"
+msgstr "IA responde"
+
+#: ../gpt_query.lua:142
 #, lua-format
-msgid   "☁ %s/%s"
-msgstr  "☁ %s/%s"
+msgid "☁ %s/%s"
+msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
-msgid   "⏹ Stop"
-msgstr  "⏹ Detener"
+#: ../gpt_query.lua:155
+msgid "⏹ Stop"
+msgstr "⏹ Detener"
 
-#: ../gpt_query.lua:174
-msgid   "Response interrupted."
-msgstr  "Respuesta interrumpida."
+#: ../gpt_query.lua:176
+msgid "Response interrupted."
+msgstr "Respuesta interrumpida."
 
 #: ../main.lua:73
-msgid   "Ask the AI a question"
-msgstr  "Pregúntale a la IA"
+msgid "Ask the AI a question"
+msgstr "Pregúntale a la IA"
 
 #: ../main.lua:82
-msgid   "AI Recaps"
-msgstr  "Resumenes IA"
+msgid "AI Recaps"
+msgstr "Resumenes IA"
 
 #: ../main.lua:91 ../settingsdialog.lua:26
-msgid   "Assistant Settings"
-msgstr  "Configuración del asistente"
+msgid "Assistant Settings"
+msgstr "Configuración del asistente"
 
-#: ../main.lua:190
-msgid   "Configuration Error.\n"
-        "Please set up configuration.lua.\n"
-        "\n"
-msgstr  "Error de configuración.\n"
-        "Configura configuration.lua.\n"
-        "\n"
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "No se encontró un proveedor de modelo válido en configuration.lua"
 
-#: ../main.lua:217
-msgid   "Useful Tips:\n"
-        "\n"
-        "Long Press:\n"
-        "- On a Prompt Button: Add to the highlight menu.\n"
-        "- On a highlight menu button to remove it.\n"
-        "\n"
-        "Very-Long Press (over 3 seconds):\n"
-        "On a single word in the book to show the highlight menu (instead of "
-        "the dictionary).\n"
-        "\n"
-        "Multi-Swipe (e.g., ⮠, ⮡, ↺):\n"
-        "On the result dialog to close (as the Close button is far to "
-        "reach).\n"
-msgstr  "Consejos útiles:\n"
-        "\n"
-        "Presión larga:\n"
-        "- En un botón de indicación: Añadir al menú de resaltado.\n"
-        "- En un botón de menú de resaltado para eliminarlo.\n"
-        "\n"
-        "Presión muy larga (más de 3 segundos):\n"
-        "En una palabra única del libro para mostrar el menú de resaltado (en "
-        "lugar del diccionario).\n"
-        "\n"
-        "Deslizamientos múltiples (p.ej., ⮠, ⮡, ↺):\n"
-        "En el cuadro de resultados para cerrar (pues el botón Cerrar está "
-        "lejos).\n"
+#: ../main.lua:208
+msgid ""
+"Configuration Error.\n"
+"Please set up configuration.lua."
+msgstr ""
+"Error de configuración.\n"
+"Configure configuration.lua."
 
-#: ../main.lua:290
+#: ../main.lua:232
+msgid ""
+"Useful Tips:\n"
+"\n"
+"Long Press:\n"
+"- On a Prompt Button: Add to the highlight menu.\n"
+"- On a highlight menu button to remove it.\n"
+"\n"
+"Very-Long Press (over 3 seconds):\n"
+"On a single word in the book to show the highlight menu (instead of the "
+"dictionary).\n"
+"\n"
+"Multi-Swipe (e.g., ⮠, ⮡, ↺):\n"
+"On the result dialog to close (as the Close button is far to reach).\n"
+msgstr ""
+"Consejos útiles:\n"
+"\n"
+"Presión larga:\n"
+"- En un botón de indicación: Añadir al menú de resaltado.\n"
+"- En un botón de menú de resaltado para eliminarlo.\n"
+"\n"
+"Presión muy larga (más de 3 segundos):\n"
+"En una palabra única del libro para mostrar el menú de resaltado (en lugar "
+"del diccionario).\n"
+"\n"
+"Deslizamientos múltiples (p.ej., ⮠, ⮡, ↺):\n"
+"En el cuadro de resultados para cerrar (pues el botón Cerrar está lejos).\n"
+
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: los proveedores de modelo no son válidos."
+
+#: ../main.lua:317
 #, lua-format
-msgid   "Do you want an AI Recap?\n"
-        "For %s by %s.\n"
-        "Last read %.0f hour(s) ago."
-msgstr  "¿Deseas un resumen IA?\n"
-        "Para %s por %s.\n"
-        "Última lectura hace %.0f hora(s) atrás."
+msgid ""
+"Do you want an AI Recap?\n"
+"For %s by %s.\n"
+"Last read %.0f hour(s) ago."
+msgstr ""
+"¿Deseas un resumen IA?\n"
+"Para %s por %s.\n"
+"Última lectura hace %.0f hora(s) atrás."
 
-#: ../main.lua:295
-msgid   "Yes"
-msgstr  "Sí"
+#: ../main.lua:322
+msgid "Yes"
+msgstr "Sí"
 
-#: ../main.lua:304
-msgid   "No"
-msgstr  "No"
+#: ../main.lua:331
+msgid "No"
+msgstr "No"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
-msgid   "Remove [%s] from Highlight Menu?"
-msgstr  "¿Eliminar [%s] del menú de resaltado?"
+msgid "Remove [%s] from Highlight Menu?"
+msgstr "¿Eliminar [%s] del menú de resaltado?"
 
-#: ../main.lua:365
-msgid   "Remove"
-msgstr  "Eliminar"
+#: ../main.lua:392
+msgid "Remove"
+msgstr "Eliminar"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
-msgid   "Configuration not found. Please set up configuration.lua first."
-msgstr  "Configuración no encontrada. Configura configuration.lua primero."
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
+msgid "Configuration not found. Please set up configuration.lua first."
+msgstr "Configuración no encontrada. Configura configuration.lua primero."
 
-#: ../main.lua:429
-msgid   "AI Recap feature is not enabled in configuration."
-msgstr  "La función de resumen IA no está activada en la configuración."
+#: ../main.lua:456
+msgid "AI Recap feature is not enabled in configuration."
+msgstr "La función de resumen IA no está activada en la configuración."
 
-#: ../main.lua:517
-msgid   "Added [%1 (AI)] to Highlight Menu."
-msgstr  "Añadido [%1 (IA)] al menú de resaltado."
+#: ../main.lua:544
+msgid "Added [%1 (AI)] to Highlight Menu."
+msgstr "Añadido [%1 (IA)] al menú de resaltado."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
-msgid   "Removed [%s (AI)] from Highlight Menu."
-msgstr  "Eliminado [%s (IA)] del menú de resaltado."
+msgid "Removed [%s (AI)] from Highlight Menu."
+msgstr "Eliminado [%s (IA)] del menú de resaltado."
 
 #: ../_meta.lua:5
-msgid   "💡 Enhance your KOReader experience with AI"
-msgstr  "💡 Mejora tu experiencia KOReader con IA"
+msgid "💡 Enhance your KOReader experience with AI"
+msgstr "💡 Mejora tu experiencia KOReader con IA"
 
 #: ../prompts.lua:20
-msgid   "This prompt acts as a dictionary for the highlighted text, to a word "
-        "or phrase."
-msgstr  "Este indicador actúa como diccionario del texto resaltado, para una "
-        "palabra o frase."
+msgid ""
+"This prompt acts as a dictionary for the highlighted text, to a word or "
+"phrase."
+msgstr ""
+"Este indicador actúa como diccionario del texto resaltado, para una palabra "
+"o frase."
 
 #: ../prompts.lua:25
-msgid   "Translate"
-msgstr  "Traducir"
+msgid "Translate"
+msgstr "Traducir"
 
 #: ../prompts.lua:26
-msgid   "This prompt translates the highlighted text to another language."
-msgstr  "Este indicador traduce el texto resaltado a otro idioma."
+msgid "This prompt translates the highlighted text to another language."
+msgstr "Este indicador traduce el texto resaltado a otro idioma."
 
 #: ../prompts.lua:48
-msgid   "Simplify"
-msgstr  "Simplificar"
+msgid "Simplify"
+msgstr "Simplificar"
 
 #: ../prompts.lua:50
-msgid   "This prompt simplifies the highlighted text to make it easier to "
-        "understand."
-msgstr  "Este indicador simplifica el texto resaltado para que sea más fácil "
-        "de comprender."
+msgid ""
+"This prompt simplifies the highlighted text to make it easier to understand."
+msgstr ""
+"Este indicador simplifica el texto resaltado para que sea más fácil de "
+"comprender."
 
 #: ../prompts.lua:60
-msgid   "Explain"
-msgstr  "Explicar"
+msgid "Explain"
+msgstr "Explicar"
 
 #: ../prompts.lua:62
-msgid   "This prompt explains the highlighted text in detail, ensuring "
-        "clarity and understanding."
-msgstr  "Este indicador explica el texto resaltado en detalle, garantizando "
-        "claridad y comprensión."
+msgid ""
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
+msgstr ""
+"Este indicador explica el texto resaltado en detalle, garantizando claridad "
+"y comprensión."
 
 #: ../prompts.lua:73
-msgid   "Summarize"
-msgstr  "Resumir"
+msgid "Summarize"
+msgstr "Resumir"
 
 #: ../prompts.lua:75
-msgid   "This prompt summarizes the highlighted text, capturing its main "
-        "points and essential details."
-msgstr  "Este indicador resume el texto resaltado, capturando sus puntos "
-        "principales y detalles esenciales."
+msgid ""
+"This prompt summarizes the highlighted text, capturing its main points and "
+"essential details."
+msgstr ""
+"Este indicador resume el texto resaltado, capturando sus puntos principales "
+"y detalles esenciales."
 
 #: ../prompts.lua:84
-msgid   "Historical Context"
-msgstr  "Contexto histórico"
+msgid "Historical Context"
+msgstr "Contexto histórico"
 
 #: ../prompts.lua:86
-msgid   "This prompt provides a detailed historical context for the "
-        "highlighted text, explaining its significance and background."
-msgstr  "Este indicador ofrece un contexto histórico detallado del texto "
-        "resaltado, explicando su importancia y trasfondo."
+msgid ""
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
+msgstr ""
+"Este indicador ofrece un contexto histórico detallado del texto resaltado, "
+"explicando su importancia y trasfondo."
 
 #: ../prompts.lua:90
-msgid   "Key Points"
-msgstr  "Puntos clave"
+msgid "Key Points"
+msgstr "Puntos clave"
 
 #: ../prompts.lua:92
-msgid   "This prompt extracts and lists the key points from the highlighted "
-        "text, ensuring clarity and organization."
-msgstr  "Este indicador extrae y enumera los puntos clave del texto "
-        "resaltado, garantizando claridad y organización."
+msgid ""
+"This prompt extracts and lists the key points from the highlighted text, "
+"ensuring clarity and organization."
+msgstr ""
+"Este indicador extrae y enumera los puntos clave del texto resaltado, "
+"garantizando claridad y organización."
 
 #: ../prompts.lua:96
-msgid   "ELI5"
-msgstr  "Explicación sencilla"
+msgid "ELI5"
+msgstr "Explicación sencilla"
 
 #: ../prompts.lua:98
-msgid   "This prompt explains the highlighted text as if to a five-year-old, "
-        "simplifying complex concepts into easily understandable terms."
-msgstr  "Este indicador explica el texto resaltado como si fuera a un niño de "
-        "cinco años, simplificando conceptos complejos en términos fáciles de "
-        "entender."
+msgid ""
+"This prompt explains the highlighted text as if to a five-year-old, "
+"simplifying complex concepts into easily understandable terms."
+msgstr ""
+"Este indicador explica el texto resaltado como si fuera a un niño de cinco "
+"años, simplificando conceptos complejos en términos fáciles de entender."
 
 #: ../prompts.lua:102
-msgid   "Grammar"
-msgstr  "Gramática"
+msgid "Grammar"
+msgstr "Gramática"
 
 #: ../prompts.lua:104
-msgid   "This prompt analyzes the grammar of the highlighted text, providing "
-        "a detailed explanation of its structure and any grammatical errors."
-msgstr  "Este indicador analiza la gramática del texto resaltado, "
-        "proporcionando una explicación detallada de su estructura y "
-        "cualquier error gramatical."
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr ""
+"Este indicador analiza la gramática del texto resaltado, proporcionando una "
+"explicación detallada de su estructura y cualquier error gramatical."
 
 #: ../prompts.lua:109
-msgid   "Vocabulary"
-msgstr  "Vocabulario"
+msgid "Vocabulary"
+msgstr "Vocabulario"
 
 #: ../prompts.lua:111
-msgid   "This prompt analyzes the vocabulary of the highlighted text, "
-        "identifying complex words and providing definitions, synonyms, and "
-        "usage examples."
-msgstr  "Este indicador analiza el vocabulario del texto resaltado, "
-        "identificando palabras complejas y proporcionando definiciones, "
-        "sinónimos y ejemplos de uso."
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr ""
+"Este indicador analiza el vocabulario del texto resaltado, identificando "
+"palabras complejas y proporcionando definiciones, sinónimos y ejemplos de "
+"uso."
 
 #: ../prompts.lua:127
-msgid   "Wikipedia"
-msgstr  "Wikipedia"
+msgid "Wikipedia"
+msgstr "Wikipedia"
 
 #: ../prompts.lua:129
-msgid   "This prompt generates a comprehensive Wikipedia-style article based "
-        "on the highlighted text, ensuring factual accuracy and neutrality."
-msgstr  "Este indicador genera un artículo al estilo Wikipedia basado en el "
-        "texto resaltado, asegurando precisión factual y neutralidad."
+msgid ""
+"This prompt generates a comprehensive Wikipedia-style article based on the "
+"highlighted text, ensuring factual accuracy and neutrality."
+msgstr ""
+"Este indicador genera un artículo al estilo Wikipedia basado en el texto "
+"resaltado, asegurando precisión factual y neutralidad."
 
 #: ../recapdialog.lua:68
-msgid   "Recap"
-msgstr  "Resumen"
+msgid "Recap"
+msgstr "Resumen"
 
 #: ../settingsdialog.lua:53
-msgid   "Always use stream mode"
-msgstr  "Usar siempre modo flujo"
+msgid "Always use stream mode"
+msgstr "Usar siempre modo flujo"
 
 #: ../settingsdialog.lua:58
-msgid   "Use AI Assistant for 'Translate'"
-msgstr  "Usar Asistente IA para 'Traducir'"
+msgid "Use AI Assistant for 'Translate'"
+msgstr "Usar Asistente IA para 'Traducir'"
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override is enabled."
-msgstr  "La sobrescritura del Asistente IA está habilitada."
+msgid "AI Assistant override is enabled."
+msgstr "La sobrescritura del Asistente IA está habilitada."
 
 #: ../settingsdialog.lua:64
-msgid   "AI Assistant override is disabled."
-msgstr  "La sobrescritura del Asistente IA está deshabilitada."
+msgid "AI Assistant override is disabled."
+msgstr "La sobrescritura del Asistente IA está deshabilitada."
 
 #: ../settingsdialog.lua:104
-msgid   "Select the AI Model provider."
-msgstr  "Selecciona el proveedor del modelo IA."
+msgid "Select the AI Model provider."
+msgstr "Selecciona el proveedor del modelo IA."
 
 #: ../update_checker.lua:22
-msgid   "Checking for updates..."
-msgstr  "Buscando actualizaciones..."
+msgid "Checking for updates..."
+msgstr "Buscando actualizaciones..."
 
 #: ../update_checker.lua:56
 #, lua-format
-msgid   "A new version of the %s plugin (%s) is available. Please update!"
-msgstr  "Una nueva versión del complemento %s (%s) está disponible. ¡Por "
-        "favor actualiza!"
+msgid "A new version of the %s plugin (%s) is available. Please update!"
+msgstr ""
+"Una nueva versión del complemento %s (%s) está disponible. ¡Por favor "
+"actualiza!"

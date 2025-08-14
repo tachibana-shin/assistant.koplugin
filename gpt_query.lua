@@ -75,7 +75,9 @@ function Querier:init(provider_name)
                 self.handler_name)
         end
     else
-        return _("No provider set in configuration.lua. Please set the provider and provider_settings for %s.")
+        return string.format(
+            _("No provider set in configuration.lua. Please set the provider and provider_settings for %s."),
+            provider_name)
     end
 end
 

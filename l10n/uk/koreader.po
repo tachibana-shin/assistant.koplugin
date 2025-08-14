@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assitant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:46+0800\n"
 "Last-Translator: ChatGPT o1-preview 2025-06-25\n"
 "Language-Team: ChatGPT o1-preview <LL@li.org>\n"
@@ -122,7 +122,7 @@ msgstr "Введіть питання…"
 msgid "Ask anything about this book..."
 msgstr "Запитайте що завгодно…"
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI-асистент"
 
@@ -142,7 +142,7 @@ msgstr "Слово для пошуку…"
 msgid "Look Up"
 msgstr "Шукати"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Словник"
 
@@ -151,43 +151,42 @@ msgstr "Словник"
 msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
-msgstr ""
-"Налаштування провайдера %s не знайдено. Перевірте configuration.lua"
+msgstr "Налаштування провайдера %s не знайдено. Перевірте configuration.lua"
 
 #: ../gpt_query.lua:74
 #, lua-format
 msgid ""
 "The handler for %s was not found. Please ensure the handler exists in "
 "api_handlers directory."
-msgstr ""
-"Обробник %s не знайдено. Переконайтеся, що він є в api_handlers"
+msgstr "Обробник %s не знайдено. Переконайтеся, що він є в api_handlers"
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"Не вказано провайдера в configuration.lua. Додайте provider і provider_settings для %s"
+"Не вказано провайдера в configuration.lua. Додайте provider і "
+"provider_settings для %s"
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "Запит до AI…"
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "AI відповідає"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ Зупинити"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "Відповідь перервано"
 
@@ -203,16 +202,19 @@ msgstr "AI-конспекти"
 msgid "Assistant Settings"
 msgstr "Налаштування асистента"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "У configuration.lua не знайдено дійсного постачальника моделей"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "Помилка конфігурації.\n"
-"Налаштуйте configuration.lua.\n"
+"Налаштуйте configuration.lua."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -239,7 +241,11 @@ msgstr ""
 "Жести (⮠, ⮡, ↺):\n"
 "На діалогу результату — закрити його.\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: постачальники моделей недійсні."
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -250,36 +256,36 @@ msgstr ""
 "%s, автор %s.\n"
 "Останній раз читали %.0f год тому."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "Так"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "Ні"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Видалити [%s] з меню підсвітки?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "Видалити"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Конфігурацію не знайдено. Спочатку налаштуйте configuration.lua"
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "AI-конспекти вимкнено в конфігурації"
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "Додано [%1 (AI)] до меню підсвітки"
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "Видалено [%s (AI)] з меню підсвітки"

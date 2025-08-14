@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assitant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:32+0800\n"
 "Last-Translator: Kimi <kimi@example.com>\n"
 "Language-Team: Norsk bokmål <LL@li.org>\n"
@@ -122,7 +122,7 @@ msgstr "Skriv spørsmålet her..."
 msgid "Ask anything about this book..."
 msgstr "Spør om hva som helst om boken..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI-assistent"
 
@@ -142,7 +142,7 @@ msgstr "Skriv inn et ord..."
 msgid "Look Up"
 msgstr "Slå opp"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Ordbok"
 
@@ -151,43 +151,40 @@ msgstr "Ordbok"
 msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
-msgstr ""
-"Innstillinger for %s mangler. Sjekk configuration.lua."
+msgstr "Innstillinger for %s mangler. Sjekk configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
 msgid ""
 "The handler for %s was not found. Please ensure the handler exists in "
 "api_handlers directory."
-msgstr ""
-"Håndterer for %s finnes ikke. Sjekk api_handlers-mappen."
+msgstr "Håndterer for %s finnes ikke. Sjekk api_handlers-mappen."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
-msgstr ""
-"Ingen leverandør satt i configuration.lua. Angi for %s."
+msgstr "Ingen leverandør satt i configuration.lua. Angi for %s."
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "Spør AI ..."
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "AI svarer"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ Stopp"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "Svar avbrutt."
 
@@ -203,16 +200,19 @@ msgstr "AI-oppsummeringer"
 msgid "Assistant Settings"
 msgstr "Assistentinnstillinger"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "Ingen gyldig modell-leverandør funnet i configuration.lua"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "Konfigurasjonsfeil.\n"
-"Sett opp configuration.lua.\n"
+"Sett opp configuration.lua."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -239,7 +239,11 @@ msgstr ""
 "Sveip-kombinasjoner:\n"
 "På resultatet for å lukke raskt.\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: modell-leverandører er ugyldige."
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -250,36 +254,36 @@ msgstr ""
 "For %s av %s.\n"
 "Sist lest for %.0f time(r) siden."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "Ja"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "Nei"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Fjern [%s] fra fremhevingsmenyen?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "Fjern"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Konfigurasjon mangler. Sett opp configuration.lua først."
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "AI-oppsummering er ikke aktivert."
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "Lagt til [%1 (AI)] i fremhevingsmenyen."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "Fjernet [%s (AI)] fra fremhevingsmenyen."

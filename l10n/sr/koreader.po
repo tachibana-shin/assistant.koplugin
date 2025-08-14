@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assitant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:41+0800\n"
 "Last-Translator: Kimi AI (v2025.08)\n"
 "Language-Team: Српски <sr@li.org>\n"
@@ -121,7 +121,7 @@ msgstr "Упиши питање овде..."
 msgid "Ask anything about this book..."
 msgstr "Питај било шта о књизи..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Помоћник ВИ"
 
@@ -141,7 +141,7 @@ msgstr "Унеси реч за претрагу..."
 msgid "Look Up"
 msgstr "Пронађи"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Речник"
 
@@ -150,40 +150,45 @@ msgstr "Речник"
 msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
-msgstr "Подешавања провајдера нису пронађена за: %s. Проверите configuration.lua."
+msgstr ""
+"Подешавања провајдера нису пронађена за: %s. Проверите configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
 msgid ""
 "The handler for %s was not found. Please ensure the handler exists in "
 "api_handlers directory."
-msgstr "Хендлер за %s није пронађен. Проверите да ли постоји у api_handlers директоријуму."
+msgstr ""
+"Хендлер за %s није пронађен. Проверите да ли постоји у api_handlers "
+"директоријуму."
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
-msgstr "Није подешен провајдер у configuration.lua. Подесите провајдера и поставке за %s."
+msgstr ""
+"Није подешен провајдер у configuration.lua. Подесите провајдера и поставке "
+"за %s."
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "Упитујем ВИ..."
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "ВИ одговара"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ Заустави"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "Одговор је прекинут."
 
@@ -199,16 +204,19 @@ msgstr "ВИ прегледи"
 msgid "Assistant Settings"
 msgstr "Поставке помоћника"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "Нема исправног провајдера модела у configuration.lua"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
 "Грешка у конфигурацији.\n"
-"Поставите configuration.lua.\n"
+"Поставите configuration.lua."
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -235,7 +243,11 @@ msgstr ""
 "Вишеструки свип (нпр. ⮠, ⮡, ↺):\n"
 "На дијалог резултата за затварање (дугме Затвори је далеко).\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: провајдери модела су неисправни."
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -246,36 +258,36 @@ msgstr ""
 "За %s од %s.\n"
 "Последње читање %.0f сат(и) раније."
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "Да"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "Не"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Уклонити [%s] из менија означавања?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "Уклони"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Конфигурација није пронађена. Прво подесите configuration.lua."
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "ВИ преглед није омогућен у конфигурацији."
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "Додато [%1 (ВИ)] у мени означавања."
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "Уклоњено [%s (ВИ)] из менија означавања."
@@ -335,7 +347,9 @@ msgstr "Историјски контекст"
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
-msgstr "Овај упит пружа историјски контекст означеног текста и објашњава његов значај."
+msgstr ""
+"Овај упит пружа историјски контекст означеног текста и објашњава његов "
+"значај."
 
 #: ../prompts.lua:90
 msgid "Key Points"
@@ -355,7 +369,9 @@ msgstr "Објасни као петогодишњаку"
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
-msgstr "Овај упит објашњава означени текст као петогодишњаку, поједностављујући сложене појмове."
+msgstr ""
+"Овај упит објашњава означени текст као петогодишњаку, поједностављујући "
+"сложене појмове."
 
 #: ../prompts.lua:102
 msgid "Grammar"
@@ -375,7 +391,9 @@ msgstr "Речник"
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
-msgstr "Овај упит анализира речник означеног текста, дефинише тешке речи и даје примере."
+msgstr ""
+"Овај упит анализира речник означеног текста, дефинише тешке речи и даје "
+"примере."
 
 #: ../prompts.lua:127
 msgid "Wikipedia"

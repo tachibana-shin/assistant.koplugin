@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assitant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 11:17+0800\n"
+"POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:44+0800\n"
 "Last-Translator: GPT-4o 2025-08-14\n"
 "Language-Team: GPT-4o <gpt-4o@example.com>\n"
@@ -122,7 +122,7 @@ msgstr "พิมพ์คำถามที่นี่..."
 msgid "Ask anything about this book..."
 msgstr "ถามอะไรก็ได้เกี่ยวกับหนังสือ..."
 
-#: ../dialogs.lua:376 ../main.lua:186 ../_meta.lua:4
+#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "ผู้ช่วย AI"
 
@@ -142,7 +142,7 @@ msgstr "ใส่คำที่ต้องการค้นหา..."
 msgid "Look Up"
 msgstr "ค้นหา"
 
-#: ../dictdialog.lua:177 ../main.lua:380 ../prompts.lua:19
+#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "พจนานุกรม"
 
@@ -151,43 +151,42 @@ msgstr "พจนานุกรม"
 msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
-msgstr ""
-"ไม่พบการตั้งค่าโปรไวเดอร์สำหรับ: %s กรุณาตรวจสอบไฟล์ configuration.lua"
+msgstr "ไม่พบการตั้งค่าโปรไวเดอร์สำหรับ: %s กรุณาตรวจสอบไฟล์ configuration.lua"
 
 #: ../gpt_query.lua:74
 #, lua-format
 msgid ""
 "The handler for %s was not found. Please ensure the handler exists in "
 "api_handlers directory."
-msgstr ""
-"ไม่พบตัวจัดการสำหรับ %s กรุณาตรวจสอบว่ามีไฟล์ในโฟลเดอร์ api_handlers"
+msgstr "ไม่พบตัวจัดการสำหรับ %s กรุณาตรวจสอบว่ามีไฟล์ในโฟลเดอร์ api_handlers"
 
-#: ../gpt_query.lua:78
+#: ../gpt_query.lua:79
 #, lua-format
 msgid ""
 "No provider set in configuration.lua. Please set the provider and "
 "provider_settings for %s."
 msgstr ""
-"ไม่ได้ตั้งค่าโปรไวเดอร์ใน configuration.lua กรุณาตั้งค่า provider และ provider_settings สำหรับ %s"
+"ไม่ได้ตั้งค่าโปรไวเดอร์ใน configuration.lua กรุณาตั้งค่า provider และ "
+"provider_settings สำหรับ %s"
 
-#: ../gpt_query.lua:122
+#: ../gpt_query.lua:124
 msgid "Querying AI ..."
 msgstr "กำลังสอบถาม AI..."
 
-#: ../gpt_query.lua:138
+#: ../gpt_query.lua:140
 msgid "AI is responding"
 msgstr "AI กำลังตอบ"
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:142
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
 
-#: ../gpt_query.lua:153
+#: ../gpt_query.lua:155
 msgid "⏹ Stop"
 msgstr "⏹ หยุด"
 
-#: ../gpt_query.lua:174
+#: ../gpt_query.lua:176
 msgid "Response interrupted."
 msgstr "การตอบกลับถูกหยุด"
 
@@ -203,16 +202,19 @@ msgstr "สรุป AI"
 msgid "Assistant Settings"
 msgstr "ตั้งค่าผู้ช่วย"
 
-#: ../main.lua:190
+#: ../main.lua:174
+msgid "No valid model provider is found in the configuration.lua"
+msgstr "ไม่พบโมเดลโปรไวเดอร์ที่ใช้งานได้ใน configuration.lua"
+
+#: ../main.lua:208
 msgid ""
 "Configuration Error.\n"
-"Please set up configuration.lua.\n"
-"\n"
+"Please set up configuration.lua."
 msgstr ""
-"การตั้งค่าผิดพลาด\n"
-"กรุณาตั้งค่า configuration.lua\n"
+"เกิดข้อผิดพลาดการตั้งค่า\n"
+"กรุณาตั้งค่า configuration.lua"
 
-#: ../main.lua:217
+#: ../main.lua:232
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -239,7 +241,11 @@ msgstr ""
 "ปัดหลายทิศทาง (เช่น ⮠, ⮡, ↺):\n"
 "ปิดหน้าต่างผลลัพธ์ (แทนการกดปุ่มปิด)\n"
 
-#: ../main.lua:290
+#: ../main.lua:259
+msgid "configuration.lua: model providers are invalid."
+msgstr "configuration.lua: โมเดลโปรไวเดอร์ไม่ถูกต้อง"
+
+#: ../main.lua:317
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -250,36 +256,36 @@ msgstr ""
 "สำหรับ %s โดย %s\n"
 "อ่านครั้งล่าสุด %.0f ชม. ก่อน"
 
-#: ../main.lua:295
+#: ../main.lua:322
 msgid "Yes"
 msgstr "ใช่"
 
-#: ../main.lua:304
+#: ../main.lua:331
 msgid "No"
 msgstr "ไม่"
 
-#: ../main.lua:364
+#: ../main.lua:391
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "ลบ [%s] ออกจากเมนูไฮไลต์หรือไม่?"
 
-#: ../main.lua:365
+#: ../main.lua:392
 msgid "Remove"
 msgstr "ลบ"
 
-#: ../main.lua:399 ../main.lua:421 ../main.lua:474
+#: ../main.lua:426 ../main.lua:448 ../main.lua:501
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "ไม่พบการตั้งค่า กรุณาตั้งค่า configuration.lua ก่อน"
 
-#: ../main.lua:429
+#: ../main.lua:456
 msgid "AI Recap feature is not enabled in configuration."
 msgstr "ฟีเจอร์สรุป AI ยังไม่เปิดใช้งานในการตั้งค่า"
 
-#: ../main.lua:517
+#: ../main.lua:544
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "เพิ่ม [%1 (AI)] ลงเมนูไฮไลต์แล้ว"
 
-#: ../main.lua:526
+#: ../main.lua:553
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "ลบ [%s (AI)] ออกจากเมนูไฮไลต์แล้ว"
