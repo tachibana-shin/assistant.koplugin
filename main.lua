@@ -145,17 +145,14 @@ function Assistant:getModelProvider()
 
   if is_provider_valid(setting_provider) then
     -- If the setting provider is valid, use it
-    logger.info("found valid provider", setting_provider)
     return setting_provider
   else
-    logger.info("invalid provider, delete", setting_provider)
     -- If the setting provider is invalid, delete this selection
     self.settings:delSetting("provider")
 
     local conf_provider = CONFIGURATION.provider -- provider name from configuration.lua
     if is_provider_valid(conf_provider) then
       -- if the configuration provider is valid, use it
-      logger.info("found default provider", conf_provider)
       setting_provider = conf_provider
     else
       -- try to find the one defined with `default = true`

@@ -36,7 +36,7 @@ MSGATTRIB_BIN = msgattrib
 MSGCAT_BIN = msgcat
 XGETTEXT_BIN = xgettext
 
-PO_FILES  := $(wildcard */*.po)
+PO_FILES  := $(wildcard */$(DOMAIN).po)
 LANGS     := $(patsubst %/,%,$(filter-out templates/,$(wildcard */)))
 
 update: template
@@ -69,8 +69,12 @@ clean:
 	@find . -type f \( -name "untranslated.po" -o -name "updated_translated.po" -o -name "updated.po" \) -print -delete
 
 ai-translate:
-	@set -e; for LANG in $(LANGS); do \
-		echo "Call AI translation for $$LANG..."; \
+	@set -e; \
+	TOTAL=$$(echo $(LANGS) | wc -w); \
+	COUNT=0; \
+	for LANG in $(LANGS); do \
+		COUNT=$$((COUNT+1)); \
+		echo "Translating language $$COUNT of $$TOTAL ($$LANG)..."; \
 		./AI_TRANSLATE.sh $$LANG && echo "... wait sometime due to API's limited" && sleep 20; \
 	done
 
