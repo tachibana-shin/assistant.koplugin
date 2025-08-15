@@ -50,7 +50,7 @@ function SettingsDialog:init()
     self.check_button_init_list = {
         {
             key = "forced_stream_mode",
-            text = _("Always use stream mode"),
+            text = _("Always enable stream response"),
             checked = self.settings:readSetting("forced_stream_mode", true),
         },
         {
@@ -59,10 +59,37 @@ function SettingsDialog:init()
             checked = self.settings:readSetting("ai_translate_override", false),
             changed_callback = function(checked)
                 self.assistant:syncTranslateOverride()
-                UIManager:show(InfoMessage:new{
-                    timeout = 3,
-                    text = checked and _("AI Assistant override is enabled.") or _("AI Assistant override is disabled.")
-                })
+            end,
+        },
+        {
+            key = "dict_popup_show_dictionary",
+            text = _("Show Dictionary(AI) in Dictionary Popup"),
+            checked = self.settings:readSetting("dict_popup_show_dictionary", true),
+        },
+        {
+            key = "dict_popup_show_wikipedia",
+            text = _("Show Wikipedia(AI) in Dictionary Popup"),
+            checked = self.settings:readSetting("dict_popup_show_wikipedia", true),
+        },
+        {
+            key = "auto_copy_asked_question",
+            text = _("Copy entered question to the clipboard"),
+            checked = self.settings:readSetting("auto_copy_asked_question", true),
+        },
+        {
+            key = "enable_recap",
+            text = _("Enable AI Recap"),
+            checked = self.settings:readSetting("enable_recap", false),
+            changed_callback = function(checked)
+                local Dispatcher = require("dispatcher")
+                if checked then
+                    UIManager:show(InfoMessage:new{
+                        timeout = 3,
+                        text = _("AI Recap will be enabled the next time a book is opened.")
+                    })
+                else
+                    Dispatcher:removeAction("ai_recap")
+                end
             end,
         },
     }
