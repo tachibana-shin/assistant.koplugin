@@ -278,10 +278,8 @@ function AssistantDialog:show(highlightedText)
           })
           return
         end
-        if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.auto_copy_asked_question then
-            if Device:hasClipboard() then
-                Device.input.setClipboardText(user_question)
-            end
+        if self.assistant.settings:readSetting("auto_copy_asked_question", true) and Device:hasClipboard() then
+          Device.input.setClipboardText(user_question)
         end
         self:_close()
         self:_prepareMessageHistoryForUserQuery(message_history, highlightedText, user_question)

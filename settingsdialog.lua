@@ -76,6 +76,11 @@ function SettingsDialog:init()
             checked = self.settings:readSetting("dict_popup_show_wikipedia", true),
         },
         {
+            key = "auto_copy_asked_question",
+            text = _("Copy user asked question to the clipboard"),
+            checked = self.settings:readSetting("auto_copy_asked_question", true),
+        },
+        {
             key = "enable_recap",
             text = _("Enable AI Recap"),
             checked = self.settings:readSetting("enable_recap", false),
