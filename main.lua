@@ -201,6 +201,8 @@ function Assistant:init()
       text = _("AI Assistant"),
       enabled = Device:hasClipboard(),
       callback = function()
+        
+        -- handle error message during loading
         if CONFIG_LOAD_ERROR and type(CONFIG_LOAD_ERROR) == "string" then
           local err_text = _("Configuration Error.\nPlease set up configuration.lua.")
           -- keep the error message clean
@@ -210,12 +212,13 @@ function Assistant:init()
           UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err_text })
           return
         end
+
         NetworkMgr:runWhenOnline(function()
           if not updateMessageShown then
             UpdateChecker.checkForUpdates(self.CONFIGURATION)
             updateMessageShown = true
           end
-          Trapper:wrap(function()
+          UIManager:nextTick(function()
             -- Show the main AI dialog with highlighted text
             self.assitant_dialog:show(_reader_highlight_instance.selected_text.text)
           end)
