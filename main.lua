@@ -22,6 +22,7 @@ local AssistantDialog = require("dialogs")
 local UpdateChecker = require("update_checker")
 local Prompts = require("prompts")
 local SettingsDialog = require("settingsdialog")
+local showDictionaryDialog = require("dictdialog")
 local meta = require("_meta")
 
 local Assistant = InputContainer:new {
@@ -75,7 +76,7 @@ function Assistant:onDispatcherRegisterActions()
   })
   
   -- Register AI recap action
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.enable_AI_recap then
+  if self.settings:readSetting("enable_recap", false) then
     Dispatcher:registerAction("ai_recap", {
       category = "none", 
       event = "AskAIRecap", 
@@ -283,58 +284,8 @@ On the result dialog to close (as the Close button is far to reach).
   self.assistant_dialog = AssistantDialog:new(self, CONFIGURATION)
   
   -- Recap Feature
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.enable_AI_recap then
-    local ReaderUI    = require("apps/reader/readerui")
-    -- avoid recurive overrides here
-    -- pulgin is loaded on every time file opened
-    if not ReaderUI._original_doShowReader then 
-      -- Save a reference to the original doShowReader method.
-      ReaderUI._original_doShowReader = ReaderUI.doShowReader
-
-      local assistant = self -- reference to the Assistant instance
-      local lfs         = require("libs/libkoreader-lfs")   -- for file attributes
-      local DocSettings = require("docsettings")			      -- for document progress
-    
-      -- Override to hook into the reader's doShowReader method.
-      function ReaderUI:doShowReader(file, provider, seamless)
-
-        -- Get file metadata; here we use the file's "access" attribute.
-        local attr = lfs.attributes(file)
-        local lastAccess = attr and attr.access or nil
-    
-        if lastAccess and lastAccess > 0 then -- Has been opened
-          local doc_settings = DocSettings:open(file)
-          local percent_finished = doc_settings:readSetting("percent_finished") or 0
-          local timeDiffHours = (os.time() - lastAccess) / 3600.0
-    
-          -- More than 28hrs since last open and less than 95% complete
-          -- percent = 0 may means the book is not started yet, the docsettings maybe empty
-          if timeDiffHours >= 28 and percent_finished > 0 and percent_finished <= 0.95 then 
-            -- Construct the message to display.
-            local doc_props = doc_settings:child("doc_props")
-            local title = doc_props:readSetting("title", "Unknown Title")
-            local authors = doc_props:readSetting("authors", "Unknown Author")
-            local message = string.format(T(_("Do you want an AI Recap?\nFor %s by %s.\nLast read %.0f hour(s) ago.")), title, authors, timeDiffHours) -- can add in percent_finished too
-    
-            -- Display the request popup using ConfirmBox.
-            UIManager:show(ConfirmBox:new{
-              text            = message,
-              ok_text         = _("Yes"),
-              ok_callback     = function()
-                NetworkMgr:runWhenOnline(function()
-                  local showRecapDialog = require("recapdialog")
-                  Trapper:wrap(function()
-                    showRecapDialog(assistant, title, authors, percent_finished)
-                  end)
-                end)
-              end,
-              cancel_text     = _("No"),
-            })
-          end
-        end
-        return ReaderUI._original_doShowReader(self, file, provider, seamless)
-      end
-    end
+  if self.settings:readSetting("enable_recap", false) then
+    self:_hookRecap()
   end
 
   -- Add Custom buttons to main select popup menu
@@ -376,7 +327,6 @@ function Assistant:addMainButton(prompt_idx, prompt)
           Trapper:wrap(function()
             if prompt.order == -10 and prompt_idx == "dictionary" then
               -- Dictionary prompt, show dictionary dialog
-              local showDictionaryDialog = require("dictdialog")
               showDictionaryDialog(self, _reader_highlight_instance.selected_text.text)
             else
               -- For other prompts, show the custom prompt dialog
@@ -400,21 +350,40 @@ function Assistant:addMainButton(prompt_idx, prompt)
   end)
 end
 
-function Assistant:onDictButtonsReady(dict_popup, buttons)
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.show_dictionary_button_in_dictionary_popup then
-    table.insert(buttons, 1, {{
-        id = "assistant_dictionary",
-        text = _("Dictionary").." (AI)",
-        font_bold = false,
-        callback = function()
-            NetworkMgr:runWhenOnline(function()
-                local showDictionaryDialog = require("dictdialog")
-                Trapper:wrap(function()
-                  showDictionaryDialog(self, dict_popup.word)
-                end)
-            end)
-        end,
-    }})
+function Assistant:onDictButtonsReady(dict_popup, dict_buttons)
+  local plugin_buttons = {}
+  if self.settings:readSetting("dict_popup_show_wikipedia", true) then
+    table.insert(plugin_buttons, {
+      id = "assistant_wikipedia",
+      font_bold = false,
+      text = _("Wikipedia") .. " (AI)",
+      callback = function()
+          NetworkMgr:runWhenOnline(function()
+              Trapper:wrap(function()
+                self.assistant_dialog:showCustomPrompt(dict_popup.word, "wikipedia")
+              end)
+          end)
+      end,
+    })
+  end
+
+  if self.settings:readSetting("dict_popup_show_dictionary", true) then
+    table.insert(plugin_buttons, {
+      id = "assistant_dictionary",
+      text = _("Dictionary") .. " (AI)",
+      font_bold = false,
+      callback = function()
+          NetworkMgr:runWhenOnline(function()
+              Trapper:wrap(function()
+                showDictionaryDialog(self, dict_popup.word)
+              end)
+          end)
+      end,
+    })
+  end
+
+  if #plugin_buttons > 0 then
+    table.insert(dict_buttons, 1, plugin_buttons)
   end
 end
 
@@ -438,21 +407,6 @@ function Assistant:onAskAIQuestion()
 end
 
 function Assistant:onAskAIRecap()
-  if not CONFIGURATION then
-    UIManager:show(InfoMessage:new{
-      icon = "notice-warning",
-      text = _("Configuration not found. Please set up configuration.lua first.")
-    })
-    return true
-  end
-  
-  if not CONFIGURATION.features or not CONFIGURATION.features.enable_AI_recap then
-    UIManager:show(InfoMessage:new{
-      icon = "notice-warning",
-      text = _("AI Recap feature is not enabled in configuration.")
-    })
-    return true
-  end
   
   NetworkMgr:runWhenOnline(function()
     
@@ -503,7 +457,6 @@ function Assistant:syncTranslateOverride()
               self.assistant_dialog:showCustomPrompt(text, "translate")
           else
             -- Show AI Dictionary dialog
-            local showDictionaryDialog = require("dictdialog")
             showDictionaryDialog(self, text)
           end
         end)
@@ -551,6 +504,62 @@ function Assistant:onAssistantSetButton(btnconf, action)
   end
 
   return true
+end
+
+-- Adds hook on opening a book, the recap feature
+function Assistant:_hookRecap()
+  local ReaderUI    = require("apps/reader/readerui")
+  -- avoid recurive overrides here
+  -- pulgin is loaded on every time file opened
+  if not ReaderUI._original_doShowReader then 
+
+    -- Save a reference to the original doShowReader method.
+    ReaderUI._original_doShowReader = ReaderUI.doShowReader
+
+    local assistant = self -- reference to the Assistant instance
+    local lfs         = require("libs/libkoreader-lfs")   -- for file attributes
+    local DocSettings = require("docsettings")			      -- for document progress
+  
+    -- Override to hook into the reader's doShowReader method.
+    function ReaderUI:doShowReader(file, provider, seamless)
+
+      -- Get file metadata; here we use the file's "access" attribute.
+      local attr = lfs.attributes(file)
+      local lastAccess = attr and attr.access or nil
+  
+      if lastAccess and lastAccess > 0 then -- Has been opened
+        local doc_settings = DocSettings:open(file)
+        local percent_finished = doc_settings:readSetting("percent_finished") or 0
+        local timeDiffHours = (os.time() - lastAccess) / 3600.0
+  
+        -- More than 28hrs since last open and less than 95% complete
+        -- percent = 0 may means the book is not started yet, the docsettings maybe empty
+        if timeDiffHours >= 28 and percent_finished > 0 and percent_finished <= 0.95 then 
+          -- Construct the message to display.
+          local doc_props = doc_settings:child("doc_props")
+          local title = doc_props:readSetting("title", "Unknown Title")
+          local authors = doc_props:readSetting("authors", "Unknown Author")
+          local message = string.format(T(_("Do you want an AI Recap?\nFor %s by %s.\nLast read %.0f hour(s) ago.")), title, authors, timeDiffHours) -- can add in percent_finished too
+  
+          -- Display the request popup using ConfirmBox.
+          UIManager:show(ConfirmBox:new{
+            text            = message,
+            ok_text         = _("Yes"),
+            ok_callback     = function()
+              NetworkMgr:runWhenOnline(function()
+                local showRecapDialog = require("recapdialog")
+                Trapper:wrap(function()
+                  showRecapDialog(assistant, title, authors, percent_finished)
+                end)
+              end)
+            end,
+            cancel_text     = _("No"),
+          })
+        end
+      end
+      return ReaderUI._original_doShowReader(self, file, provider, seamless)
+    end
+  end
 end
 
 return Assistant

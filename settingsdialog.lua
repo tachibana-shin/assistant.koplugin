@@ -65,6 +65,32 @@ function SettingsDialog:init()
                 })
             end,
         },
+        {
+            key = "dict_popup_show_dictionary",
+            text = _("Show Dictionary(AI) in Dictionary Popup"),
+            checked = self.settings:readSetting("dict_popup_show_dictionary", true),
+        },
+        {
+            key = "dict_popup_show_wikipedia",
+            text = _("Show Wikipedia(AI) in Dictionary Popup"),
+            checked = self.settings:readSetting("dict_popup_show_wikipedia", true),
+        },
+        {
+            key = "enable_recap",
+            text = _("Enable AI Recap"),
+            checked = self.settings:readSetting("enable_recap", false),
+            changed_callback = function(checked)
+                local Dispatcher = require("dispatcher")
+                if checked then
+                    UIManager:show(InfoMessage:new{
+                        timeout = 3,
+                        text = _("AI Recap will be enabled the next time a book is opened.")
+                    })
+                else
+                    Dispatcher:removeAction("ai_recap")
+                end
+            end,
+        },
     }
 
     -- action buttons
