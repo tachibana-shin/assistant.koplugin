@@ -31,7 +31,7 @@ local Assistant = InputContainer:new {
   settings = nil,
   querier = nil,
   updated = false, -- flag to track if settings were updated
-  assitant_dialog = nil, -- reference to the main dialog instance
+  assistant_dialog = nil, -- reference to the main dialog instance
   ui_language = nil,
   CONFIGURATION = nil,  -- reference to the main configuration
 }
@@ -87,7 +87,7 @@ function Assistant:onDispatcherRegisterActions()
 end
 
 function Assistant:addToMainMenu(menu_items)
-    menu_items.assitant_provider_switch = {
+    menu_items.assistant_provider_switch = {
         text = _("Assistant Settings"),
         sorting_hint = "more_tools",
         callback = function ()
@@ -105,7 +105,7 @@ function Assistant:showSettings()
   end
 
   local settingDlg = SettingsDialog:new{
-      assitant = self,
+      assistant = self,
       CONFIGURATION = CONFIGURATION,
       settings = self.settings,
   }
@@ -220,7 +220,7 @@ function Assistant:init()
           end
           UIManager:nextTick(function()
             -- Show the main AI dialog with highlighted text
-            self.assitant_dialog:show(_reader_highlight_instance.selected_text.text)
+            self.assistant_dialog:show(_reader_highlight_instance.selected_text.text)
           end)
         end)
       end,
@@ -262,7 +262,7 @@ On the result dialog to close (as the Close button is far to reach).
 
   -- Load the model provider from settings or default configuration
   self.querier = require("gpt_query"):new({
-    assitant = self,
+    assistant = self,
     settings = self.settings,
   })
 
@@ -280,7 +280,7 @@ On the result dialog to close (as the Close button is far to reach).
   self:syncTranslateOverride()
 
 
-  self.assitant_dialog = AssistantDialog:new(self, CONFIGURATION)
+  self.assistant_dialog = AssistantDialog:new(self, CONFIGURATION)
   
   -- Recap Feature
   if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.enable_AI_recap then
@@ -291,7 +291,7 @@ On the result dialog to close (as the Close button is far to reach).
       -- Save a reference to the original doShowReader method.
       ReaderUI._original_doShowReader = ReaderUI.doShowReader
 
-      local assitant = self -- reference to the Assistant instance
+      local assistant = self -- reference to the Assistant instance
       local lfs         = require("libs/libkoreader-lfs")   -- for file attributes
       local DocSettings = require("docsettings")			      -- for document progress
     
@@ -324,7 +324,7 @@ On the result dialog to close (as the Close button is far to reach).
                 NetworkMgr:runWhenOnline(function()
                   local showRecapDialog = require("recapdialog")
                   Trapper:wrap(function()
-                    showRecapDialog(assitant, title, authors, percent_finished)
+                    showRecapDialog(assistant, title, authors, percent_finished)
                   end)
                 end)
               end,
@@ -380,7 +380,7 @@ function Assistant:addMainButton(prompt_idx, prompt)
               showDictionaryDialog(self, _reader_highlight_instance.selected_text.text)
             else
               -- For other prompts, show the custom prompt dialog
-              self.assitant_dialog:showCustomPrompt(_reader_highlight_instance.selected_text.text, prompt_idx)
+              self.assistant_dialog:showCustomPrompt(_reader_highlight_instance.selected_text.text, prompt_idx)
             end
           end)
         end)
@@ -391,7 +391,7 @@ function Assistant:addMainButton(prompt_idx, prompt)
             text = string.format(_("Remove [%s] from Highlight Menu?"), btntext),
             ok_text = _("Remove"),
             ok_callback = function()
-              self:handleEvent(Event:new("AssitantSetButton", {order=prompt.order, idx=prompt_idx}, "remove"))
+              self:handleEvent(Event:new("AssistantSetButton", {order=prompt.order, idx=prompt_idx}, "remove"))
             end
           })
         end)
@@ -431,7 +431,7 @@ function Assistant:onAskAIQuestion()
   NetworkMgr:runWhenOnline(function()
     -- Show dialog without highlighted text
     Trapper:wrap(function()
-      self.assitant_dialog:show()
+      self.assistant_dialog:show()
     end)
   end)
   return true
@@ -500,7 +500,7 @@ function Assistant:syncTranslateOverride()
         Trapper:wrap(function()
           -- splitToWords result like this: { "The", " ", "good", " ", "news" }
           if #words > 5 then
-              self.assitant_dialog:showCustomPrompt(text, "translate")
+              self.assistant_dialog:showCustomPrompt(text, "translate")
           else
             -- Show AI Dictionary dialog
             local showDictionaryDialog = require("dictdialog")
@@ -521,7 +521,7 @@ function Assistant:syncTranslateOverride()
   end
 end
 
-function Assistant:onAssitantSetButton(btnconf, action)
+function Assistant:onAssistantSetButton(btnconf, action)
   local menukey = string.format("assistant_%02d_%s", btnconf.order, btnconf.idx)
   local settingkey = "showOnMain_" .. menukey
 

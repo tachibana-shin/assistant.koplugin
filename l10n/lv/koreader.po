@@ -1,11 +1,11 @@
 # AI asistents — latviešu tulkošana.
-# Copyright (C) 2025 assitant.koplugin
-# Šis fails ir izplatīts ar to pašu licenci kā assitant.koplugin pakotne.
+# Copyright (C) 2025 assistant.koplugin
+# Šis fails ir izplatīts ar to pašu licenci kā assistant.koplugin pakotne.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: assitant.koplugin\n"
+"Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:31+0800\n"

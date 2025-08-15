@@ -14,7 +14,7 @@ local Device = require("device")
 local Screen = Device.screen
 
 local Querier = {
-    assitant = nil, -- reference to the main assistant object
+    assistant = nil, -- reference to the main assistant object
     settings = nil,
     handler = nil,
     handler_name = nil,
@@ -40,7 +40,7 @@ end
 --- return: nil on success, or an error message if initialization fails.
 function Querier:init(provider_name)
 
-    local CONFIGURATION = self.assitant.CONFIGURATION
+    local CONFIGURATION = self.assistant.CONFIGURATION
 
     if CONFIGURATION and CONFIGURATION.provider_settings then
 
@@ -107,7 +107,7 @@ function StreamText:onTapTextBox(arg, ges) return true end
 --- return: answer, error (if any)
 function Querier:query(message_history, title)
     if not self:is_inited() then
-        return "", "Assitant: not configured."
+        return "", "Assistant: not configured."
     end
 
     if self.settings:readSetting("forced_stream_mode", true) then -- defalut true
@@ -143,7 +143,7 @@ function Querier:query(message_history, title)
             inputtext_class = StreamText, -- use our custom InputText class
             title_bar_left_icon = "appbar.settings",
             title_bar_left_icon_tap_callback = function ()
-                self.assitant:showSettings()
+                self.assistant:showSettings()
             end,
 
             readonly = false, skip_first_show_keyboard = true, keyboard_visible = false, fullscreen = false,

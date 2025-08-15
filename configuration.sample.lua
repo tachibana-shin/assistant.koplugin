@@ -160,7 +160,7 @@ local CONFIGURATION = {
 
             --
             -- example of adding a custom prompt:
-            -- myprompt = { system_prompt = "you are a helpful assitant.", user_prompt = "...", order = 50, show_on_main_popup = true, },
+            -- myprompt = { system_prompt = "you are a helpful assistant.", user_prompt = "...", order = 50, show_on_main_popup = true, },
 
         },
 

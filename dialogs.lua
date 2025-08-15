@@ -12,20 +12,23 @@ local Prompts = require("prompts")
 local Device = require("device")
 
 -- main dialog class
-local AssitantDialog = {
+local AssistantDialog = {
+  CONFIGURATION = nil,
+  assistant = nil,
+  querier = nil,
   input_dialog = nil,
 }
-AssitantDialog.__index = AssitantDialog
+AssistantDialog.__index = AssistantDialog
 
-function AssitantDialog:new(assitant, config)
-  local self = setmetatable({}, AssitantDialog)
-  self.assitant = assitant
-  self.querier = assitant.querier
-  self.config = config
+function AssistantDialog:new(assistant, c)
+  local self = setmetatable({}, AssistantDialog)
+  self.assistant = assistant
+  self.querier = assistant.querier
+  self.CONFIGURATION = c
   return self
 end
 
-function AssitantDialog:_close()
+function AssistantDialog:_close()
   if self.input_dialog then
     UIManager:close(self.input_dialog)
     self.input_dialog = nil
@@ -33,8 +36,8 @@ function AssitantDialog:_close()
 end
 
 -- Helper function to truncate text based on configuration
-function AssitantDialog:_truncateUserPrompt(text)
-  local CONFIGURATION = self.config
+function AssistantDialog:_truncateUserPrompt(text)
+  local CONFIGURATION = self.CONFIGURATION
   if not CONFIGURATION or not CONFIGURATION.features.max_display_user_prompt_length then
     return text
   end
@@ -50,13 +53,13 @@ function AssitantDialog:_truncateUserPrompt(text)
   return text
 end
 
-function AssitantDialog:_formatUserPrompt(user_prompt, highlightedText)
-  local CONFIGURATION = self.config
+function AssistantDialog:_formatUserPrompt(user_prompt, highlightedText)
+  local CONFIGURATION = self.CONFIGURATION
   local book = self:_getBookContext()
   
   -- Handle case where no text is highlighted (gesture-triggered)
   local text_to_use = highlightedText and highlightedText ~= "" and highlightedText or ""
-  local language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant.ui_language
+  local language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assistant.ui_language
   
   -- replace placeholders in the user prompt
   return user_prompt:gsub("{(%w+)}", {
@@ -67,8 +70,8 @@ function AssitantDialog:_formatUserPrompt(user_prompt, highlightedText)
   })
 end
 
-function AssitantDialog:_createResultText(highlightedText, message_history, previous_text, title)
-  local CONFIGURATION = self.config
+function AssistantDialog:_createResultText(highlightedText, message_history, previous_text, title)
+  local CONFIGURATION = self.CONFIGURATION
 
   -- Helper function to format a single message (user or assistant)
   local function formatSingleMessage(message, title)
@@ -135,8 +138,8 @@ function AssitantDialog:_createResultText(highlightedText, message_history, prev
 end
 
 -- Helper function to create and show ChatGPT viewer
-function AssitantDialog:_createAndShowViewer(highlightedText, message_history, title)
-  local CONFIGURATION = self.config
+function AssistantDialog:_createAndShowViewer(highlightedText, message_history, title)
+  local CONFIGURATION = self.CONFIGURATION
   local result_text = self:_createResultText(highlightedText, message_history, nil, title)
   local render_markdown = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown) or true
   local markdown_font_size = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.markdown_font_size) or 20
@@ -144,8 +147,8 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
   local chatgpt_viewer = ChatGPTViewer:new {
     title = title,
     text = result_text,
-    assitant = self.assitant,
-    ui = self.assitant.ui,
+    assistant = self.assistant,
+    ui = self.assistant.ui,
     onAskQuestion = function(viewer, user_question) -- callback for user entered question
         -- Use viewer's own highlighted_text value
         local current_highlight = viewer.highlighted_text or highlightedText
@@ -197,7 +200,7 @@ function AssitantDialog:_createAndShowViewer(highlightedText, message_history, t
 end
 
 
-function AssitantDialog:_prepareMessageHistoryForUserQuery(message_history, highlightedText, user_question)
+function AssistantDialog:_prepareMessageHistoryForUserQuery(message_history, highlightedText, user_question)
   local book = self:_getBookContext()
   local context = {}
   if highlightedText and highlightedText ~= "" then
@@ -226,8 +229,8 @@ I have a question about this book.]], book.title, book.author),
   table.insert(message_history, question_message)
 end
 
-function AssitantDialog:_getBookContext()
-  local prop = self.assitant.ui.document:getProps()
+function AssistantDialog:_getBookContext()
+  local prop = self.assistant.ui.document:getProps()
   return {
     title = prop.title or "Unknown Title",
     author = prop.authors or "Unknown Author"
@@ -236,18 +239,18 @@ end
 
 -- When clicked [Assistant] button in main select popup,
 -- Or when activated from guesture (no text highlighted)
-function AssitantDialog:show(highlightedText)
+function AssistantDialog:show(highlightedText)
 
   local is_highlighted = highlightedText and highlightedText ~= ""
   
   -- close any existing input dialog
   self:_close()
 
-  local CONFIGURATION = self.config
+  local CONFIGURATION = self.CONFIGURATION
 
   -- Handle regular dialog (user input prompt, other buttons)
   local book = self:_getBookContext()
-  local system_prompt = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.system_prompt or Prompts.assitant_prompts.default.system_prompt
+  local system_prompt = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.system_prompt or Prompts.assistant_prompts.default.system_prompt
   local message_history = {{
     role = "system",
     content = system_prompt
@@ -328,7 +331,7 @@ function AssitantDialog:show(highlightedText)
             if tab.order == -10 and tab.idx == "dictionary" then
               -- Special case for dictionary prompt
               local showDictionaryDialog = require("dictdialog")
-              showDictionaryDialog(self.assitant, highlightedText)
+              showDictionaryDialog(self.assistant, highlightedText)
             else
               self:showCustomPrompt(highlightedText, tab.idx)
             end
@@ -341,7 +344,7 @@ function AssitantDialog:show(highlightedText)
             text = string.format("%s: %s\n\n%s", tab.text, tab.desc, _("Add this button to the Highlight Menu?")),
             ok_text = _("Add"),
             ok_callback = function()
-              self.assitant:handleEvent(Event:new("AssitantSetButton", {order=tab.order, idx=tab.idx}, "add"))
+              self.assistant:handleEvent(Event:new("AssistantSetButton", {order=tab.order, idx=tab.idx}, "add"))
             end,
           })
         end
@@ -380,7 +383,7 @@ function AssitantDialog:show(highlightedText)
     title_bar_left_icon = "appbar.settings",
     title_bar_left_icon_tap_callback = function ()
         self.input_dialog:onCloseKeyboard()
-        self.assitant:showSettings()
+        self.assistant:showSettings()
     end,
     close_callback = function () self:_close() end,
     dismiss_callback = function () self:_close() end
@@ -391,9 +394,9 @@ end
 
 -- Process main select popup buttons
 -- ( custom prompts from configuration )
-function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
+function AssistantDialog:showCustomPrompt(highlightedText, prompt_index)
 
-  local prompt_config = Prompts.getMergedCustomPrompts(self.assitant.CONFIGURATION.features.prompts)[prompt_index]
+  local prompt_config = Prompts.getMergedCustomPrompts(self.assistant.CONFIGURATION.features.prompts)[prompt_index]
 
   local title = prompt_config.text or prompt_index
 
@@ -402,7 +405,7 @@ function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
   local message_history = {
     {
       role = "system",
-      content = prompt_config.system_prompt or Prompts.assitant_prompts.default.system_prompt,
+      content = prompt_config.system_prompt or Prompts.assistant_prompts.default.system_prompt,
     },
     {
       role = "user",
@@ -431,4 +434,4 @@ function AssitantDialog:showCustomPrompt(highlightedText, prompt_index)
   self:_createAndShowViewer(highlightedText, message_history, title)
 end
 
-return AssitantDialog
+return AssistantDialog

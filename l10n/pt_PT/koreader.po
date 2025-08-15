@@ -1,4 +1,4 @@
-# Tradução para Português do plugin assitant.koplugin
+# Tradução para Português do plugin assistant.koplugin
 # Copyright (C) 2025 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
@@ -6,7 +6,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: assitant.koplugin\n"
+"Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:36+0800\n"

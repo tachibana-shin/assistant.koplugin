@@ -5,7 +5,7 @@
 #
 #, fuzzy
 msgid   ""
-msgstr  "Project-Id-Version: assitant.koplugin 2025.08.14\n"
+msgstr  "Project-Id-Version: assistant.koplugin 2025.08.14\n"
         "Report-Msgid-Bugs-To: \n"
         "POT-Creation-Date: 2025-08-14 14:30+0800\n"
         "PO-Revision-Date: 2025-08-14 12:11+0800\n"

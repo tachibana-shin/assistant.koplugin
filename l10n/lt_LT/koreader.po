@@ -1,11 +1,11 @@
-# Lithuanian translation for assitant.koplugin
-# Copyright (C) 2025 assitant.koplugin
-# This file is distributed under the same license as the assitant.koplugin package.
+# Lithuanian translation for assistant.koplugin
+# Copyright (C) 2025 assistant.koplugin
+# This file is distributed under the same license as the assistant.koplugin package.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: assitant.koplugin 2025.08.14\n"
+"Project-Id-Version: assistant.koplugin 2025.08.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:30+0800\n"

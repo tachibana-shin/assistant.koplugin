@@ -6,15 +6,15 @@ local InfoMessage = require("ui/widget/infomessage")
 local Event = require("ui/event")
 local _ = require("owngettext")
 local ChatGPTViewer = require("chatgptviewer")
-local recap_prompts = require("prompts").assitant_prompts.recap
+local recap_prompts = require("prompts").assistant_prompts.recap
 
-local function showRecapDialog(assitant, title, author, progress_percent, message_history)
-    local CONFIGURATION = assitant.CONFIGURATION
-    local Querier = assitant.querier
-    local ui = assitant.ui
+local function showRecapDialog(assistant, title, author, progress_percent, message_history)
+    local CONFIGURATION = assistant.CONFIGURATION
+    local Querier = assistant.querier
+    local ui = assistant.ui
 
     -- Check if Querier is initialized
-    local ok, err = Querier:load_model(assitant:getModelProvider())
+    local ok, err = Querier:load_model(assistant:getModelProvider())
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
@@ -26,7 +26,7 @@ local function showRecapDialog(assitant, title, author, progress_percent, messag
     local recap_config = CONFIGURATION.features and CONFIGURATION.features.recap_config or {}
     local system_prompt = recap_config.system_prompt or recap_prompts.system_prompt
     local user_prompt_template = recap_config.user_prompt or recap_prompts.user_prompt
-    local language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant.ui_language
+    local language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assistant.ui_language
     
     local message_history = message_history or {
         {
@@ -63,7 +63,7 @@ local function showRecapDialog(assitant, title, author, progress_percent, messag
     end
 
     local chatgpt_viewer = ChatGPTViewer:new {
-      assitant = assitant,
+      assistant = assistant,
       ui = ui,
       title = _("Recap"),
       text = createResultText(answer),

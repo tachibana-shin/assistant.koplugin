@@ -29,7 +29,7 @@ Preserve the .po file structure, including msgid, msgstr, and other metadata.
 Ensure accurate and context-aware translation.
 The message will display on UI, keep the translation clean and short and easy understanding.
 The first message is the metadata for the PO file. Make the necessary updates to the metadata.
-The project is named `assitant.koplugin`.  Fill the Project-Id-Version attribute.
+The project is named `assistant.koplugin`.  Fill the Project-Id-Version attribute.
 Fill in the `Language` attribute with current translating language and the language code.
 Fill in the `Language-Team` and `Last-Translator` with your model name and versions.
 Do not modify other file structure.

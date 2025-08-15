@@ -132,7 +132,7 @@ Please provide a concise and clear summary of the following text in its own lang
 }
 
 
-local assitant_prompts = {
+local assistant_prompts = {
     default = {
         system_prompt = "You are a helpful AI assistant. Always respond in Markdown format.",
     },
@@ -198,7 +198,7 @@ end
 
 local M = {
     custom_prompts = custom_prompts, -- Custom prompts for the AI
-    assitant_prompts = assitant_prompts, -- Preconfigured prompts for the AI
+    assistant_prompts = assistant_prompts, -- Preconfigured prompts for the AI
     merged_prompts = nil, -- Merged prompts from custom and configuration
     sorted_custom_prompts = nil, -- Sorted custom prompts
     show_on_main_popup_prompts = nil, -- Prompts that should be shown on the main popup

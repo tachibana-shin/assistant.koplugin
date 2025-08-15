@@ -26,7 +26,7 @@ local SettingsDialog = InputDialog:extend{
     title = _("Assistant Settings"),
 
     -- inited variables
-    assitant = nil, -- reference to the main assistant object
+    assistant = nil, -- reference to the main assistant object
     CONFIGURATION = nil,
     settings = nil,
 
@@ -58,7 +58,7 @@ function SettingsDialog:init()
             text = _("Use AI Assistant for 'Translate'"),
             checked = self.settings:readSetting("ai_translate_override", false),
             changed_callback = function(checked)
-                self.assitant:syncTranslateOverride()
+                self.assistant:syncTranslateOverride()
                 UIManager:show(InfoMessage:new{
                     timeout = 3,
                     text = checked and _("AI Assistant override is enabled.") or _("AI Assistant override is disabled.")
@@ -77,17 +77,17 @@ function SettingsDialog:init()
             text="OK",
             callback=function ()
                 local radio = self.radio_button_table.checked_button
-                if radio.provider ~= self.assitant.querier.provider_name then
+                if radio.provider ~= self.assistant.querier.provider_name then
                     self.settings:saveSetting("provider", radio.provider)
-                    self.assitant.updated = true
-                    self.assitant.querier:load_model(radio.provider)
+                    self.assistant.updated = true
+                    self.assistant.querier:load_model(radio.provider)
                 end
 
                 for _, btn in ipairs(self.check_button_init_list) do
                     local checked = self.check_buttons[btn.key].checked
                     if self.settings:readSetting(btn.key, false) ~= checked then
                         self.settings:saveSetting(btn.key, checked)
-                        self.assitant.updated = true
+                        self.assistant.updated = true
                         if btn.changed_callback then
                             btn.changed_callback(checked)
                         end
@@ -106,7 +106,7 @@ function SettingsDialog:init()
       table.insert(self.radio_buttons, {{
         text = string.format("%s (%s)", key, tab.model),
         provider = key, -- note: this `provider` field belongs to the RadioButton, not our AI Model provider.
-        checked = (key == self.assitant.querier.provider_name),
+        checked = (key == self.assistant.querier.provider_name),
       }})
     end
 
@@ -197,7 +197,7 @@ end
 
 function SettingsDialog:onCloseWidget()
     InputDialog.onCloseWidget(self)
-    self.assitant._settings_dialog = nil
+    self.assistant._settings_dialog = nil
 end
 
 return SettingsDialog

@@ -6,15 +6,15 @@ local InfoMessage = require("ui/widget/infomessage")
 local TextBoxWidget = require("ui/widget/textboxwidget")
 local _ = require("owngettext")
 local Event = require("ui/event")
-local dict_prompts = require("prompts").assitant_prompts.dict
+local dict_prompts = require("prompts").assistant_prompts.dict
 
-local function showDictionaryDialog(assitant, highlightedText, message_history)
-    local CONFIGURATION = assitant.CONFIGURATION
-    local Querier = assitant.querier
-    local ui = assitant.ui
+local function showDictionaryDialog(assistant, highlightedText, message_history)
+    local CONFIGURATION = assistant.CONFIGURATION
+    local Querier = assistant.querier
+    local ui = assistant.ui
 
     -- Check if Querier is initialized
-    local ok, err = Querier:load_model(assitant:getModelProvider())
+    local ok, err = Querier:load_model(assistant:getModelProvider())
     if not ok then
         UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
         return
@@ -44,7 +44,7 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
                             UIManager:close(input_dialog)
                             if word and word ~= "" then
                                 -- Recursively call with the entered word
-                                showDictionaryDialog(assitant, word, message_history)
+                                showDictionaryDialog(assistant, word, message_history)
                             end
                         end,
                     },
@@ -114,7 +114,7 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
         end
     end
     
-    local resp_language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assitant.ui_language
+    local resp_language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assistant.ui_language
     local dict_language = CONFIGURATION.features.dictionary_translate_to or resp_language
     local context_message = {
         role = "user",
@@ -172,7 +172,7 @@ local function showDictionaryDialog(assitant, highlightedText, message_history)
     end
 
     chatgpt_viewer = ChatGPTViewer:new {
-        assitant = assitant,
+        assistant = assistant,
         ui = ui,
         title = _("Dictionary"),
         text = result_text,

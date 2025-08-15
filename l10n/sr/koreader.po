@@ -1,11 +1,11 @@
-# Српски превод за assitant.koplugin
-# Copyright (C) 2025 assitant.koplugin
+# Српски превод за assistant.koplugin
+# Copyright (C) 2025 assistant.koplugin
 # Овај фајл се дистрибуира под истом лиценцом као и програмски пакет.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: assitant.koplugin 1.0\n"
+"Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-14 14:30+0800\n"
 "PO-Revision-Date: 2025-08-14 11:41+0800\n"

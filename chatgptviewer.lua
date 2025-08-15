@@ -221,7 +221,7 @@ function ChatGPTViewer:init()
     close_callback = function() self:onClose() end,
     left_icon = "appbar.settings",
     left_icon_tap_callback = function()
-      self.assitant:showSettings()
+      self.assistant:showSettings()
     end,
     show_parent = self,
   }
@@ -420,7 +420,7 @@ function ChatGPTViewer:init()
 
 
   -- load configuration
-  local CONFIGURATION = self.assitant.CONFIGURATION
+  local CONFIGURATION = self.assistant.CONFIGURATION
   if CONFIGURATION.features.render_markdown ~= nil then
     -- defaults to true, if user omits the option (nil)
     self.render_markdown = CONFIGURATION.features.render_markdown
@@ -535,7 +535,7 @@ function ChatGPTViewer:askAnotherQuestion()
     return
   end
 
-  local CONFIGURATION = self.assitant.CONFIGURATION
+  local CONFIGURATION = self.assistant.CONFIGURATION
   
   -- Initialize default options
   local default_options = {}
