@@ -421,7 +421,7 @@ function ChatGPTViewer:init()
 
   -- load configuration
   local CONFIGURATION = self.assistant.CONFIGURATION
-  if CONFIGURATION.features.render_markdown ~= nil then
+  if CONFIGURATION.features and CONFIGURATION.features.render_markdown ~= nil then
     -- defaults to true, if user omits the option (nil)
     self.render_markdown = CONFIGURATION.features.render_markdown
   end
@@ -547,7 +547,9 @@ function ChatGPTViewer:askAnotherQuestion()
     end
     return true
   end) or {}
-  local merged_prompts = Prompts.getMergedCustomPrompts(CONFIGURATION.features.prompts) or {}
+
+  local user_prompts = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts
+  local merged_prompts = Prompts.getMergedCustomPrompts(user_prompts) or {}
     
   -- Add buttons in sorted order
   for _, tab in ipairs(sorted_prompts) do
