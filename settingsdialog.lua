@@ -50,7 +50,7 @@ function SettingsDialog:init()
     self.check_button_init_list = {
         {
             key = "forced_stream_mode",
-            text = _("Always use stream mode"),
+            text = _("Always enable stream response"),
             checked = self.settings:readSetting("forced_stream_mode", true),
         },
         {
@@ -59,10 +59,6 @@ function SettingsDialog:init()
             checked = self.settings:readSetting("ai_translate_override", false),
             changed_callback = function(checked)
                 self.assistant:syncTranslateOverride()
-                UIManager:show(InfoMessage:new{
-                    timeout = 3,
-                    text = checked and _("AI Assistant override is enabled.") or _("AI Assistant override is disabled.")
-                })
             end,
         },
         {
@@ -77,7 +73,7 @@ function SettingsDialog:init()
         },
         {
             key = "auto_copy_asked_question",
-            text = _("Copy user asked question to the clipboard"),
+            text = _("Copy entered question to the clipboard"),
             checked = self.settings:readSetting("auto_copy_asked_question", true),
         },
         {
