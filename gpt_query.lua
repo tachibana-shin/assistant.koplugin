@@ -179,7 +179,9 @@ function Querier:query(message_history, title)
         res = content
     end
 
-    if err ~= nil then
+    if #res == 0 then
+        return nil, _("No response received.") .. (err and tostring(err) or "")
+    elseif err ~= nil then
         return nil, tostring(err)
     end
 
@@ -194,7 +196,7 @@ function Querier:processStream(bgQuery, trunk_callback)
 
     if not pid then
         logger.warn("Failed to start background query process.")
-        return nil,  "Failed to start subprocess for request"
+        return nil, _("Failed to start subprocess for request")
     end
 
     local _coroutine = coroutine.running()  
@@ -302,7 +304,7 @@ function Querier:processStream(bgQuery, trunk_callback)
                         -- empty events, nothing to do
                     elseif line:sub(1, 8) == "NON200: " then
                         -- child write a non-200 response 
-                        logger.warn("Non-200 response from subprocess:", line)
+                        -- logger.warn("Non-200 response from subprocess:", line)
                         table.insert(result_buffer, "\n\n" .. line:sub(8))
                         break
                     else
