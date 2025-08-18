@@ -117,10 +117,6 @@ end
 
 function Assistant:getModelProvider()
 
-  if not (CONFIGURATION and CONFIGURATION.provider_settings) then
-    error("Configuration not found. Please set up configuration.lua first.")
-  end
-
   local provider_settings = CONFIGURATION.provider_settings -- provider settings table from configuration.lua
   local setting_provider = self.settings:readSetting("provider")
 
@@ -248,11 +244,7 @@ On the result dialog to close (as the Close button is far to reach).
   end)
 
   -- skip initialization if configuration.lua is not found
-  if not CONFIGURATION then
-    logger.warn("Configuration not found. Please set up configuration.lua first.")
-    return
-  end
-  -- keep the reference
+  if not CONFIGURATION then return end
   self.CONFIGURATION = CONFIGURATION
 
   local model_provider = self:getModelProvider()
