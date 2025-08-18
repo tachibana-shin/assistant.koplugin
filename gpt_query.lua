@@ -135,7 +135,7 @@ function Querier:query(message_history, title)
     -- open a stream dialog and run the background query in a subprocess
     if type(res) == "function" then
         local streamDialog = InputDialog:new{
-            face = Font:getFace("smallffont"),
+            face = Font:getFace("infofont", self.settings:readSetting("markdown_font_size", 20)),
             width = Screen:getWidth() - Screen:scaleBySize(30),
             title = _("AI is responding"),
             description = string.format(

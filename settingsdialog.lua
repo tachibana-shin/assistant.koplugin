@@ -11,6 +11,7 @@ local Geom = require("ui/geometry")
 local InfoMessage = require("ui/widget/infomessage")
 local Font = require("ui/font")
 local InputDialog = require("ui/widget/inputdialog")
+local ButtonDialog = require("ui/widget/buttondialog")
 local LineWidget = require("ui/widget/linewidget")
 local MovableContainer = require("ui/widget/container/movablecontainer")
 local RadioButtonTable = require("ui/widget/radiobuttontable")
@@ -19,6 +20,7 @@ local UIManager = require("ui/uimanager")
 local VerticalGroup = require("ui/widget/verticalgroup")
 local VerticalSpan = require("ui/widget/verticalspan")
 local _ = require("owngettext")
+local T = require("ffi/util").template
 local Screen = require("device").screen
 local ffiutil = require("ffi/util")
 local meta = require("_meta")
@@ -46,17 +48,18 @@ local SettingsDialog = InputDialog:extend{
     radio_buttons = nil,
     check_buttons = {},
 
-    title_bar_left_icon = "notice-info",
-    title_bar_left_icon_tap_callback = function ()
-        UIManager:show(InfoMessage:new{
-            alignment = "center",
-            show_icon = false,
-            text = string.format("%s %s\n\n%s", meta.fullname, meta.version, meta.description)
-        })
-    end,
+    title_bar_left_icon = "appbar.menu",
+    title_bar_left_icon_tap_callback = nil,
+    -- title_bar_left_icon_tap_callback = function ()
+    --     self:onShowMenu()
+    -- end,
 }
 
 function SettingsDialog:init()
+
+    self.title_bar_left_icon_tap_callback = function ()
+        self:onShowMenu()
+    end
 
     self.check_button_init_list = {
         {
@@ -248,6 +251,46 @@ function SettingsDialog:init()
     }
     self:refocusWidget()
 end
+
+function SettingsDialog:onShowMenu()
+    local fontsize = self.assistant.settings:readSetting("markdown_font_size", 20)
+    local dialog
+    local buttons = {
+        {{
+            text_func = function()
+                return T(_("Font size: %1"), fontsize)
+            end,
+            align = "left",
+            callback = function()
+                UIManager:close(dialog)
+                local SpinWidget = require("ui/widget/spinwidget")
+                local widget = SpinWidget:new{
+                    title_text = _("Assistant font size"),
+                    value = fontsize,
+                    value_min = 12,
+                    value_max = 30,
+                    default_value = 20,
+                    keep_shown_on_apply = true,
+                    callback = function(spin)
+                        self.assistant.settings:saveSetting("markdown_font_size", spin.value)
+                        self.assistant.updated = true
+                    end,
+                }
+                UIManager:show(widget)
+            end,
+        }},
+    }
+    dialog = ButtonDialog:new{
+        shrink_unneeded_width = true,
+        buttons = buttons,
+        anchor = function()
+            return self.title_bar.left_button.image.dimen
+        end,
+    }
+    UIManager:show(dialog)
+end
+
+
 
 function SettingsDialog:onCloseWidget()
     InputDialog.onCloseWidget(self)

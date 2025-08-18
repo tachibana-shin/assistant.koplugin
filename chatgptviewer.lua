@@ -427,6 +427,7 @@ function ChatGPTViewer:init()
   end
 
   if self.render_markdown then
+    self.markdown_font_size = self.assistant.settings:readSetting("markdown_font_size", 20)
     -- Convert Markdown to HTML and render in a ScrollHtmlWidget
     local html_body, err = MD(self.text, {})
     if err then
