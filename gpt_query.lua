@@ -176,6 +176,10 @@ function Querier:query(message_history, title)
             return nil, _("Response interrupted.")
         end
 
+        if err then
+            return nil, err
+        end
+
         res = content
     end
 
@@ -205,6 +209,7 @@ function Querier:processStream(bgQuery, trunk_callback)
         coroutine.resume(_coroutine, false)  
     end  
   
+    local non200 = false -- flag to indicate if we received a non-200 response
     local check_interval_sec = 0.125 -- loop check interval: 125ms  
     local chunksize = 1024 * 16 -- buffer size for reading data
     local buffer = ffi.new('char[?]', chunksize, {0}) -- Buffer for reading data
@@ -302,10 +307,10 @@ function Querier:processStream(bgQuery, trunk_callback)
                         end
                     elseif line:sub(1, 1) == ":" then
                         -- empty events, nothing to do
-                    elseif line:sub(1, 8) == "NON200: " then
-                        -- child write a non-200 response 
-                        -- logger.warn("Non-200 response from subprocess:", line)
-                        table.insert(result_buffer, "\n\n" .. line:sub(8))
+                    elseif line:sub(1, #(self.handler.PROTOCAL_NON_200)) == self.handler.PROTOCAL_NON_200 then
+                        -- child writes a non-200 response 
+                        non200 = true
+                        table.insert(result_buffer, "\n\n" .. line:sub(#(self.handler.PROTOCAL_NON_200)+1))
                         break
                     else
                         if #koutil.trim(line) > 0 then
@@ -352,7 +357,13 @@ function Querier:processStream(bgQuery, trunk_callback)
         end
     end
     UIManager:scheduleIn(collect_interval_sec, collect_and_clean)
-    return table.concat(result_buffer) 
+
+    local ret = table.concat(result_buffer)
+    if non200 then
+        -- return the result as error message
+        return nil, ret
+    end
+    return ret, nil
 end
 
 return Querier
