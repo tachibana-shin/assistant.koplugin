@@ -130,11 +130,13 @@ function SettingsDialog:init()
     self.radio_buttons = {} -- init radio buttons table
     self.description = _("Select the AI Model provider.")
     for key, tab in ffiutil.orderedPairs(self.CONFIGURATION.provider_settings) do
-      table.insert(self.radio_buttons, {{
-        text = string.format("%s (%s)", key, tab.model),
-        provider = key, -- note: this `provider` field belongs to the RadioButton, not our AI Model provider.
-        checked = (key == self.assistant.querier.provider_name),
-      }})
+        if not (tab.visible ~= nil and tab.visible == false) then -- skip `visible = false` providers
+            table.insert(self.radio_buttons, {{
+                text = string.format("%s (%s)", key, tab.model),
+                provider = key, -- note: this `provider` field belongs to the RadioButton, not our AI Model provider.
+                checked = (key == self.assistant.querier.provider_name),
+            }})
+        end
     end
 
     -- init title and buttons in base class
