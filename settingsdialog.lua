@@ -2,6 +2,7 @@
 This widget displays a setting dialog.
 ]]
 
+local FrontendUtil = require("util")
 local Blitbuffer = require("ffi/blitbuffer")
 local CenterContainer = require("ui/widget/container/centercontainer")
 local CheckButton = require("ui/widget/checkbutton")
@@ -129,14 +130,28 @@ function SettingsDialog:init()
     -- init radio buttons for selecting AI Model provider
     self.radio_buttons = {} -- init radio buttons table
     self.description = _("Select the AI Model provider.")
+
+    local columns = FrontendUtil.tableSize(self.CONFIGURATION.provider_settings) > 4 and 2 or 1 -- 2 columns if more than 4 providers, otherwise 1 column
+    local buttonrow = {}
     for key, tab in ffiutil.orderedPairs(self.CONFIGURATION.provider_settings) do
         if not (tab.visible ~= nil and tab.visible == false) then -- skip `visible = false` providers
-            table.insert(self.radio_buttons, {{
-                text = string.format("%s (%s)", key, tab.model),
-                provider = key, -- note: this `provider` field belongs to the RadioButton, not our AI Model provider.
-                checked = (key == self.assistant.querier.provider_name),
-            }})
+            if #buttonrow < columns then
+                table.insert(buttonrow, {
+                    text = columns == 1 and string.format("%s (%s)", key, tab.model) or key,
+                    provider = key, -- note: this `provider` field belongs to the RadioButton, not our AI Model provider.
+                    checked = (key == self.assistant.querier.provider_name),
+                })
+            end
+            if #buttonrow == columns then
+                table.insert(self.radio_buttons, buttonrow)
+                buttonrow = {}
+            end
         end
+    end
+
+    if #buttonrow > 0 then -- edge case: if there are remaining buttons in the last row
+        table.insert(self.radio_buttons, buttonrow)
+        buttonrow = {}
     end
 
     -- init title and buttons in base class
