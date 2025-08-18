@@ -258,11 +258,11 @@ function Querier:processStream(bgQuery, trunk_callback)
                     local line = partial_data:sub(1, line_end - 1)
                     partial_data = partial_data:sub(line_end + 1)
                     
-                    -- Check if this is an SSE data line
+                    -- Check if this is an Server-Sent-Event (SSE) data line
                     if line:sub(1, 6) == "data: " then
                         -- Clean up the JSON string (remove "data:" prefix and trim whitespace)
                         local json_str = koutil.trim(line:sub(7))
-                        if json_str == '[DONE]' then break end -- end of stream
+                        if json_str == '[DONE]' then break end -- end of SSE stream
 
                         -- Safely parse the JSON
                         local ok, event = pcall(json.decode, json_str)
@@ -289,6 +289,8 @@ function Querier:processStream(bgQuery, trunk_callback)
                                     trunk_callback(content)  -- Output to trunk callback
                                 end
                             end
+                        else
+                            logger.warn("Failed to parse JSON from SSE data:", json_str)
                         end
                     elseif line:sub(1, 1) == "{" then
                         -- If the line starts with '{', it might be a JSON object
@@ -303,18 +305,20 @@ function Querier:processStream(bgQuery, trunk_callback)
                                 logger.info("JSON object received:", line)
                             end
                         else
-                            logger.warn("Unexpected JSON object:", line)
+                            -- the json was breaked into lines, just log the raw line
+                            table.insert(result_buffer, line)  -- Add the raw line to the result
                         end
                     elseif line:sub(1, 1) == ":" then
-                        -- empty events, nothing to do
+                        -- SSE empty events, nothing to do
                     elseif line:sub(1, #(self.handler.PROTOCAL_NON_200)) == self.handler.PROTOCAL_NON_200 then
                         -- child writes a non-200 response 
                         non200 = true
                         table.insert(result_buffer, "\n\n" .. line:sub(#(self.handler.PROTOCAL_NON_200)+1))
-                        break
+                        break -- the request is done, no more data to read
                     else
                         if #koutil.trim(line) > 0 then
                             -- If the line is not empty, log it as a warning
+                            table.insert(result_buffer, line)  -- Add the raw line to the result
                             logger.warn("Unrecognized line format:", line)
                         end
                     end
