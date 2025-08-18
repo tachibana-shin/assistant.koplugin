@@ -22,6 +22,16 @@ local _ = require("owngettext")
 local Screen = require("device").screen
 local ffiutil = require("ffi/util")
 local meta = require("_meta")
+local logger = require("logger")
+
+-- hack: the CheckButton callback does not include a reference to itself.
+-- override to use our `xcallback` instead.
+local xCheckButton = CheckButton:extend{}
+function xCheckButton:onTapCheckButton()
+    local ret = CheckButton.onTapCheckButton(self)
+    if self.xcallback then self:xcallback() end
+    return ret
+end
 
 local SettingsDialog = InputDialog:extend{
     title = _("Assistant Settings"),
@@ -53,78 +63,72 @@ function SettingsDialog:init()
             key = "forced_stream_mode",
             text = _("Always enable stream response"),
             checked = self.settings:readSetting("forced_stream_mode", true),
+            callback = function(btn) 
+                self.settings:saveSetting(btn.key, btn.checked)
+                self.assistant.updated = true
+            end
         },
         {
             key = "ai_translate_override",
             text = _("Use AI Assistant for 'Translate'"),
             checked = self.settings:readSetting("ai_translate_override", false),
-            changed_callback = function(checked)
+            callback = function(btn) 
+                self.settings:saveSetting(btn.key, btn.checked)
+                self.assistant.updated = true
                 self.assistant:syncTranslateOverride()
-            end,
+            end
         },
         {
             key = "dict_popup_show_dictionary",
             text = _("Show Dictionary(AI) in Dictionary Popup"),
             checked = self.settings:readSetting("dict_popup_show_dictionary", true),
+            callback = function(btn) 
+                self.settings:saveSetting(btn.key, btn.checked)
+                self.assistant.updated = true
+            end
         },
         {
             key = "dict_popup_show_wikipedia",
             text = _("Show Wikipedia(AI) in Dictionary Popup"),
             checked = self.settings:readSetting("dict_popup_show_wikipedia", true),
+            callback = function(btn) 
+                self.settings:saveSetting(btn.key, btn.checked)
+                self.assistant.updated = true
+            end
         },
         {
             key = "auto_copy_asked_question",
             text = _("Copy entered question to the clipboard"),
             checked = self.settings:readSetting("auto_copy_asked_question", true),
+            callback = function(btn) 
+                self.settings:saveSetting(btn.key, btn.checked)
+                self.assistant.updated = true
+            end
         },
         {
             key = "enable_recap",
             text = _("Enable AI Recap"),
             checked = self.settings:readSetting("enable_recap", false),
-            changed_callback = function(checked)
+            callback = function(btn) 
+                self.settings:saveSetting(btn.key, btn.checked)
+                self.assistant.updated = true
                 local Dispatcher = require("dispatcher")
-                if checked then
-                    UIManager:show(InfoMessage:new{
-                        timeout = 3,
-                        text = _("AI Recap will be enabled the next time a book is opened.")
-                    })
+                if btn.checked then
+                    UIManager:show(InfoMessage:new{ timeout = 3, text = _("AI Recap will be enabled the next time a book is opened.") })
                 else
                     Dispatcher:removeAction("ai_recap")
                 end
-            end,
+            end
         },
     }
 
     -- action buttons
     self.buttons = {{
         {
-            text="Cancel",
-            callback=function () UIManager:close(self) end
-        },
-        {
-            text="OK",
-            callback=function ()
-                local radio = self.radio_button_table.checked_button
-                if radio.provider ~= self.assistant.querier.provider_name then
-                    self.settings:saveSetting("provider", radio.provider)
-                    self.assistant.updated = true
-                    self.assistant.querier:load_model(radio.provider)
-                end
-
-                for _, btn in ipairs(self.check_button_init_list) do
-                    local checked = self.check_buttons[btn.key].checked
-                    if self.settings:readSetting(btn.key, false) ~= checked then
-                        self.settings:saveSetting(btn.key, checked)
-                        self.assistant.updated = true
-                        if btn.changed_callback then
-                            btn.changed_callback(checked)
-                        end
-                    end
-                end
-
-                UIManager:close(self)
-            end
-        },
+            id = "close",
+            text = _("Close"),
+            callback = function() UIManager:close(self) end
+        }
     }}  
 
     -- init radio buttons for selecting AI Model provider
@@ -162,11 +166,15 @@ function SettingsDialog:init()
         radio_buttons = self.radio_buttons,
         width = self.element_width,
         face = Font:getFace("cfont", 18),
+        sep_width = 0,
         focused = true,
         scroll = false,
         parent = self,
-        -- button_select_callback = function(btn)
-        -- end
+        button_select_callback = function(btn)
+            self.settings:saveSetting("provider", btn.provider)
+            self.assistant.updated = true
+            self.assistant.querier:load_model(btn.provider)
+        end
     }
     self.layout = {self.layout[#self.layout]} -- keep bottom buttons
     self:mergeLayoutInVertical(self.radio_button_table, #self.layout) -- before bottom buttons
@@ -209,10 +217,12 @@ function SettingsDialog:init()
     }
 
     for _, btn in ipairs(self.check_button_init_list) do
-        self.check_buttons[btn.key] = CheckButton:new{
+        self.check_buttons[btn.key] = xCheckButton:new{
+            key = btn.key,
             text = btn.text,
             face = Font:getFace("cfont", 18),
             checked = btn.checked,
+            xcallback = btn.callback,
             parent = self,
         }
         self:addWidget(self.check_buttons[btn.key])
