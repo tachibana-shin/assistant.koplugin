@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-14 14:30+0800\n"
+"POT-Creation-Date: 2025-08-19 17:44+0800\n"
 "PO-Revision-Date: 2025-08-14 11:21+0800\n"
 "Last-Translator: GPT-4-1105-preview\n"
 "Language-Team: Hrvatski <hr@li.org>\n"
@@ -17,95 +17,96 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:266 ../chatgptviewer.lua:629
+#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:635
 msgid "Ask Another Question"
 msgstr "Postavi drugo pitanje"
 
-#: ../chatgptviewer.lua:306
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:121
 msgid "Close"
 msgstr "Zatvori"
 
-#: ../chatgptviewer.lua:321
+#: ../chatgptviewer.lua:326
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: ../chatgptviewer.lua:326
+#: ../chatgptviewer.lua:331
 msgid "Text copied to clipboard"
 msgstr "Tekst kopiran u međuspremnik"
 
-#: ../chatgptviewer.lua:340
+#: ../chatgptviewer.lua:345
 msgid "Add Note"
 msgstr "Dodaj bilješku"
 
-#: ../chatgptviewer.lua:347
+#: ../chatgptviewer.lua:352
 msgid "Highlight functionality not available"
 msgstr "Funkcija isticanja nije dostupna"
 
-#: ../chatgptviewer.lua:356
+#: ../chatgptviewer.lua:361
 msgid "No text to add as note"
 msgstr "Nema teksta za bilješku"
 
-#: ../chatgptviewer.lua:385
+#: ../chatgptviewer.lua:390
 msgid "No text left to add as note"
 msgstr "Nema preostalog teksta za bilješku"
 
-#: ../chatgptviewer.lua:398
+#: ../chatgptviewer.lua:403
 msgid "Note added successfully"
 msgstr "Bilješka dodana"
 
-#: ../chatgptviewer.lua:567 ../dialogs.lua:260 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
+#: ../settingsdialog.lua:306
 msgid "Cancel"
 msgstr "Otkaži"
 
-#: ../chatgptviewer.lua:577 ../dialogs.lua:267
+#: ../chatgptviewer.lua:585 ../dialogs.lua:270
 msgid "Ask"
 msgstr "Pitaj"
 
-#: ../chatgptviewer.lua:583 ../dialogs.lua:273
+#: ../chatgptviewer.lua:591 ../dialogs.lua:276
 msgid "Enter a question before proceeding."
 msgstr "Unesite pitanje prije nastavka."
 
-#: ../chatgptviewer.lua:631
+#: ../chatgptviewer.lua:637
 msgid "Type your question here"
 msgstr "Upišite pitanje ovdje"
 
-#: ../chatgptviewer.lua:782
+#: ../chatgptviewer.lua:788
 msgid "Word copied to clipboard."
 msgstr "Riječ kopirana u međuspremnik."
 
-#: ../chatgptviewer.lua:783
+#: ../chatgptviewer.lua:789
 msgid "Selection copied to clipboard."
 msgstr "Selektiran tekst kopiran u međuspremnik."
 
-#: ../dialogs.lua:83
+#: ../dialogs.lua:87
 msgid "(Empty message)"
 msgstr "(Prazna poruka)"
 
-#: ../dialogs.lua:87
+#: ../dialogs.lua:91
 msgid "(No response)"
 msgstr "(Bez odgovora)"
 
-#: ../dialogs.lua:117
+#: ../dialogs.lua:121
 msgid "Highlighted text:"
 msgstr "Istaknuti tekst:"
 
-#: ../dialogs.lua:304
+#: ../dialogs.lua:305
 msgid "Book Analysis"
 msgstr "Analiza knjige"
 
-#: ../dialogs.lua:341
+#: ../dialogs.lua:342
 msgid "Add this button to the Highlight Menu?"
 msgstr "Dodati ovaj gumb u izbornik za isticanje?"
 
-#: ../dialogs.lua:342
+#: ../dialogs.lua:343
 msgid "Add"
 msgstr "Dodaj"
 
-#: ../dialogs.lua:368
+#: ../dialogs.lua:369
 msgid "Ask a question about the highlighted text"
 msgstr "Postavite pitanje o istaknutom tekstu"
 
-#: ../dialogs.lua:369
+#: ../dialogs.lua:370
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -114,19 +115,19 @@ msgstr ""
 "Postavite pitanje o ovoj knjizi:\n"
 "%s autora %s"
 
-#: ../dialogs.lua:372
+#: ../dialogs.lua:373
 msgid "Type your question here..."
 msgstr "Upišite pitanje ovdje..."
 
-#: ../dialogs.lua:373
+#: ../dialogs.lua:374
 msgid "Ask anything about this book..."
 msgstr "Postavite bilo što o ovoj knjizi..."
 
-#: ../dialogs.lua:376 ../main.lua:204 ../_meta.lua:4
+#: ../dialogs.lua:377 ../main.lua:198 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI Pomoćnik"
 
-#: ../dialogs.lua:427
+#: ../dialogs.lua:430
 msgid "Error: No response received"
 msgstr "Greška: Nema odgovora"
 
@@ -142,7 +143,7 @@ msgstr "Unesite riječ za pretragu..."
 msgid "Look Up"
 msgstr "Pretraži"
 
-#: ../dictdialog.lua:177 ../main.lua:407 ../prompts.lua:19
+#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:19
 msgid "Dictionary"
 msgstr "Rječnik"
 
@@ -152,8 +153,8 @@ msgid ""
 "Provider settings not found for: %s. Please check your configuration.lua "
 "file."
 msgstr ""
-"Postavke pružatelja nisu pronađene za: %s. Provjerite datoteku configuration."
-"lua."
+"Postavke pružatelja nisu pronađene za: %s. Provjerite datoteku "
+"configuration.lua."
 
 #: ../gpt_query.lua:74
 #, lua-format
@@ -177,11 +178,11 @@ msgstr ""
 msgid "Querying AI ..."
 msgstr "Upit AI..."
 
-#: ../gpt_query.lua:140
+#: ../gpt_query.lua:139
 msgid "AI is responding"
 msgstr "AI odgovara"
 
-#: ../gpt_query.lua:142
+#: ../gpt_query.lua:141
 #, lua-format
 msgid "☁ %s/%s"
 msgstr "☁ %s/%s"
@@ -194,23 +195,31 @@ msgstr "⏹ Zaustavi"
 msgid "Response interrupted."
 msgstr "Odgovor prekinut."
 
-#: ../main.lua:73
+#: ../gpt_query.lua:187
+msgid "No response received."
+msgstr "Nema odgovora."
+
+#: ../gpt_query.lua:203
+msgid "Failed to start subprocess for request"
+msgstr "Neuspjelo pokretanje pod-procesa zahtjeva"
+
+#: ../main.lua:74
 msgid "Ask the AI a question"
 msgstr "Postavite pitanje AI-ju"
 
-#: ../main.lua:82
+#: ../main.lua:83
 msgid "AI Recaps"
 msgstr "AI Sažeci"
 
-#: ../main.lua:91 ../settingsdialog.lua:26
+#: ../main.lua:92 ../settingsdialog.lua:40
 msgid "Assistant Settings"
 msgstr "Postavke Pomoćnika"
 
-#: ../main.lua:174
+#: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "Nije pronađen valjani davatelj modela u configuration.lua"
 
-#: ../main.lua:208
+#: ../main.lua:204
 msgid ""
 "Configuration Error.\n"
 "Please set up configuration.lua."
@@ -218,7 +227,7 @@ msgstr ""
 "Greška konfiguracije.\n"
 "Postavite configuration.lua."
 
-#: ../main.lua:232
+#: ../main.lua:229
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -246,11 +255,37 @@ msgstr ""
 "Višestruki dodir (npr. ⮠, ⮡, ↺):\n"
 "Na dijalogu rezultata da se zatvori (budući da je gumb Zatvori daleko).\n"
 
-#: ../main.lua:259
+#: ../main.lua:252
 msgid "configuration.lua: model providers are invalid."
 msgstr "configuration.lua: davatelji modela su neispravni."
 
-#: ../main.lua:317
+#: ../main.lua:333
+#, lua-format
+msgid "Remove [%s] from Highlight Menu?"
+msgstr "Ukloni [%s] iz izbornika za isticanje?"
+
+#: ../main.lua:334
+msgid "Remove"
+msgstr "Ukloni"
+
+#: ../main.lua:351 ../prompts.lua:127
+msgid "Wikipedia"
+msgstr "Wikipedia"
+
+#: ../main.lua:387 ../main.lua:439
+msgid "Configuration not found. Please set up configuration.lua first."
+msgstr "Konfiguracija nije pronađena. Najprije postavite configuration.lua."
+
+#: ../main.lua:481
+msgid "Added [%1 (AI)] to Highlight Menu."
+msgstr "Dodano [%1 (AI)] u izbornik za isticanje."
+
+#: ../main.lua:490
+#, lua-format
+msgid "Removed [%s (AI)] from Highlight Menu."
+msgstr "Uklonjen [%s (AI)] iz izbornika za isticanje."
+
+#: ../main.lua:534
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -261,39 +296,13 @@ msgstr ""
 "Za %s autora %s.\n"
 "Posljednji put pročitao %.0f sat(ova) prije."
 
-#: ../main.lua:322
+#: ../main.lua:539
 msgid "Yes"
 msgstr "Da"
 
-#: ../main.lua:331
+#: ../main.lua:548
 msgid "No"
 msgstr "Ne"
-
-#: ../main.lua:391
-#, lua-format
-msgid "Remove [%s] from Highlight Menu?"
-msgstr "Ukloni [%s] iz izbornika za isticanje?"
-
-#: ../main.lua:392
-msgid "Remove"
-msgstr "Ukloni"
-
-#: ../main.lua:426 ../main.lua:448 ../main.lua:501
-msgid "Configuration not found. Please set up configuration.lua first."
-msgstr "Konfiguracija nije pronađena. Najprije postavite configuration.lua."
-
-#: ../main.lua:456
-msgid "AI Recap feature is not enabled in configuration."
-msgstr "Funkcija AI Sažetka nije omogućen u konfiguraciji."
-
-#: ../main.lua:544
-msgid "Added [%1 (AI)] to Highlight Menu."
-msgstr "Dodano [%1 (AI)] u izbornik za isticanje."
-
-#: ../main.lua:553
-#, lua-format
-msgid "Removed [%s (AI)] from Highlight Menu."
-msgstr "Uklonjen [%s (AI)] iz izbornika za isticanje."
 
 #: ../_meta.lua:5
 msgid "💡 Enhance your KOReader experience with AI"
@@ -408,10 +417,6 @@ msgstr ""
 "Ovaj prompt analizira vokabular istaknutog teksta, identificirajući složene "
 "riječi te pružajući definicije, sinonime i primjere upotrebe."
 
-#: ../prompts.lua:127
-msgid "Wikipedia"
-msgstr "Wikipedia"
-
 #: ../prompts.lua:129
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
@@ -424,25 +429,81 @@ msgstr ""
 msgid "Recap"
 msgstr "Sažetak"
 
-#: ../settingsdialog.lua:53
-msgid "Always use stream mode"
-msgstr "Uvijek koristi stream način"
+#: ../settingsdialog.lua:61
+msgid "Always enable stream response"
+msgstr "Uvijek omogući strujni odgovor"
 
-#: ../settingsdialog.lua:58
+#: ../settingsdialog.lua:69
 msgid "Use AI Assistant for 'Translate'"
 msgstr "Koristi AI Pomoćnika za 'Prevedi'"
 
-#: ../settingsdialog.lua:64
-msgid "AI Assistant override is enabled."
-msgstr "Prekidanje AI Pomoćnika omogućeno."
+#: ../settingsdialog.lua:78
+msgid "Show Dictionary(AI) in Dictionary Popup"
+msgstr "Prikaži Rječnik(AI) u skočnom rječniku"
 
-#: ../settingsdialog.lua:64
-msgid "AI Assistant override is disabled."
-msgstr "Prekidanje AI Pomoćnika onemogućeno."
+#: ../settingsdialog.lua:86
+msgid "Show Wikipedia(AI) in Dictionary Popup"
+msgstr "Prikaži Wikipedia(AI) u skočnom rječniku"
 
-#: ../settingsdialog.lua:104
+#: ../settingsdialog.lua:94
+msgid "Copy entered question to the clipboard"
+msgstr "Kopiraj upit u međuspremnik"
+
+#: ../settingsdialog.lua:102
+msgid "Enable AI Recap"
+msgstr "Omogući AI sažetak"
+
+#: ../settingsdialog.lua:109
+msgid "AI Recap will be enabled the next time a book is opened."
+msgstr "AI sažetak će biti omogućen pri sljedećem otvaranju knjige."
+
+#: ../settingsdialog.lua:128
 msgid "Select the AI Model provider."
 msgstr "Odaberite pružatelja AI modela."
+
+#: ../settingsdialog.lua:259
+msgid "Response Font Size: %1"
+msgstr "Veličina fonta odgovora: %1"
+
+#: ../settingsdialog.lua:266
+msgid "Response Font Size"
+msgstr "Veličina fonta odgovora"
+
+#: ../settingsdialog.lua:280
+msgid "Response Language: %1"
+msgstr "Jezik odgovora: %1"
+
+#: ../settingsdialog.lua:290
+msgid "Response Language"
+msgstr "Jezik odgovora"
+
+#: ../settingsdialog.lua:293
+msgid "AI Response Language"
+msgstr "Jezik AI odgovora"
+
+#: ../settingsdialog.lua:295 ../settingsdialog.lua:300
+msgid "Leave blank to use: %1"
+msgstr "Ostavi prazno za korištenje: %1"
+
+#: ../settingsdialog.lua:298
+msgid "Dictionary Language"
+msgstr "Jezik rječnika"
+
+#: ../settingsdialog.lua:313
+msgid "Clear"
+msgstr "Očisti"
+
+#: ../settingsdialog.lua:330
+msgid "Save"
+msgstr "Spremi"
+
+#: ../settingsdialog.lua:358
+msgid "RTL written Language"
+msgstr "Jezik pisani sdesna-na-lijevo"
+
+#: ../settingsdialog.lua:378
+msgid "Leave these fields blank to use the UI language: %1"
+msgstr "Ostavi ova polja prazna za korištenje jezika sučelja: %1"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."
