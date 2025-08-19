@@ -135,12 +135,12 @@ function Querier:query(message_history, title)
     -- open a stream dialog and run the background query in a subprocess
     if type(res) == "function" then
         local streamDialog = InputDialog:new{
-            face = Font:getFace("infofont", self.settings:readSetting("markdown_font_size", 20)),
             width = Screen:getWidth() - Screen:scaleBySize(30),
             title = _("AI is responding"),
             description = string.format(
                 _("☁ %s/%s"), self.provider_name, self.provider_settings.model),
             inputtext_class = StreamText, -- use our custom InputText class
+            input_face = Font:getFace("infofont", self.settings:readSetting("markdown_font_size", 20)),
             title_bar_left_icon = "appbar.settings",
             title_bar_left_icon_tap_callback = function ()
                 self.assistant:showSettings()
