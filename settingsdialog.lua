@@ -253,7 +253,7 @@ function SettingsDialog:init()
 end
 
 function SettingsDialog:onShowMenu()
-    local fontsize = self.assistant.settings:readSetting("markdown_font_size", 20)
+    local fontsize = self.assistant.settings:readSetting("response_font_size", 20)
     local dialog
     local buttons = {
         {{
@@ -272,7 +272,7 @@ function SettingsDialog:onShowMenu()
                     default_value = 20,
                     keep_shown_on_apply = true,
                     callback = function(spin)
-                        self.assistant.settings:saveSetting("markdown_font_size", spin.value)
+                        self.assistant.settings:saveSetting("response_font_size", spin.value)
                         self.assistant.updated = true
                     end,
                 }

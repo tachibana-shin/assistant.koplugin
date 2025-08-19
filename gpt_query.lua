@@ -140,7 +140,7 @@ function Querier:query(message_history, title)
             description = string.format(
                 _("☁ %s/%s"), self.provider_name, self.provider_settings.model),
             inputtext_class = StreamText, -- use our custom InputText class
-            input_face = Font:getFace("infofont", self.settings:readSetting("markdown_font_size", 20)),
+            input_face = Font:getFace("infofont", self.settings:readSetting("response_font_size", 20)),
             title_bar_left_icon = "appbar.settings",
             title_bar_left_icon_tap_callback = function ()
                 self.assistant:showSettings()

@@ -107,7 +107,6 @@ local ChatGPTViewer = InputContainer:extend {
   auto_para_direction = true,
   alignment_strict = false,
   render_markdown = true, -- converts markdown to HTML and displays the HTML
-  markdown_font_size = 20,
 
   title_face = nil,               -- use default from TitleBar
   title_multilines = nil,         -- see TitleBar for details
@@ -427,7 +426,6 @@ function ChatGPTViewer:init()
   end
 
   if self.render_markdown then
-    self.markdown_font_size = self.assistant.settings:readSetting("markdown_font_size", 20)
     -- Convert Markdown to HTML and render in a ScrollHtmlWidget
     local html_body, err = MD(self.text, {})
     if err then
@@ -438,7 +436,7 @@ function ChatGPTViewer:init()
     self.scroll_text_w = ScrollHtmlWidget:new {
       html_body = html_body,
       css = VIEWER_CSS,
-      default_font_size = Screen:scaleBySize(self.markdown_font_size),
+      default_font_size = Screen:scaleBySize(self.assistant.settings:readSetting("response_font_size", 20)),
       width = self.width - 2 * self.text_padding - 2 * self.text_margin,
       height = textw_height - 2 * self.text_padding - 2 * self.text_margin,
       dialog = self,
@@ -810,7 +808,7 @@ function ChatGPTViewer:update(new_text)
       self.scroll_text_w = ScrollHtmlWidget:new {
         html_body = html_body,
         css = VIEWER_CSS,
-        default_font_size = Screen:scaleBySize(self.markdown_font_size),
+        default_font_size = Screen:scaleBySize(self.assistant.settings:readSetting("response_font_size", 20)),
         width = self.width - 2 * self.text_padding - 2 * self.text_margin,
         height = self.textw:getSize().h - 2 * self.text_padding - 2 * self.text_margin,
         dialog = self,
