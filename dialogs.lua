@@ -5,6 +5,7 @@ local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
 local ConfirmBox = require("ui/widget/confirmbox")
 local Event = require("ui/event")
+local Font = require("ui/font")
 local _ = require("owngettext")
 local T = require("ffi/util").template
 local Trapper = require("ui/trapper")
@@ -146,6 +147,7 @@ function AssistantDialog:_createAndShowViewer(highlightedText, message_history, 
   local chatgpt_viewer = ChatGPTViewer:new {
     title = title,
     text = result_text,
+    text_face = Font:getFace("infofont", self.assistant.settings:readSetting("response_font_size", 20)),
     assistant = self.assistant,
     ui = self.assistant.ui,
     onAskQuestion = function(viewer, user_question) -- callback for user entered question

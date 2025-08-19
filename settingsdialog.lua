@@ -47,7 +47,6 @@ local SettingsDialog = InputDialog:extend{
     -- widgets
     buttons = nil,
     radio_buttons = nil,
-    check_buttons = {},
 
     title_bar_left_icon = "appbar.menu",
     title_bar_left_icon_tap_callback = nil,
@@ -64,7 +63,6 @@ function SettingsDialog:init()
 
     self.check_button_init_list = {
         {
-            key = "forced_stream_mode",
             text = _("Always enable stream response"),
             checked = self.settings:readSetting("forced_stream_mode", true),
             callback = function(btn) 
@@ -73,7 +71,6 @@ function SettingsDialog:init()
             end
         },
         {
-            key = "ai_translate_override",
             text = _("Use AI Assistant for 'Translate'"),
             checked = self.settings:readSetting("ai_translate_override", false),
             callback = function(btn) 
@@ -83,7 +80,6 @@ function SettingsDialog:init()
             end
         },
         {
-            key = "dict_popup_show_dictionary",
             text = _("Show Dictionary(AI) in Dictionary Popup"),
             checked = self.settings:readSetting("dict_popup_show_dictionary", true),
             callback = function(btn) 
@@ -92,7 +88,6 @@ function SettingsDialog:init()
             end
         },
         {
-            key = "dict_popup_show_wikipedia",
             text = _("Show Wikipedia(AI) in Dictionary Popup"),
             checked = self.settings:readSetting("dict_popup_show_wikipedia", true),
             callback = function(btn) 
@@ -101,7 +96,6 @@ function SettingsDialog:init()
             end
         },
         {
-            key = "auto_copy_asked_question",
             text = _("Copy entered question to the clipboard"),
             checked = self.settings:readSetting("auto_copy_asked_question", true),
             callback = function(btn) 
@@ -110,7 +104,6 @@ function SettingsDialog:init()
             end
         },
         {
-            key = "enable_recap",
             text = _("Enable AI Recap"),
             checked = self.settings:readSetting("enable_recap", false),
             callback = function(btn) 
@@ -221,15 +214,13 @@ function SettingsDialog:init()
     }
 
     for _, btn in ipairs(self.check_button_init_list) do
-        self.check_buttons[btn.key] = xCheckButton:new{
-            key = btn.key,
+        self:addWidget(xCheckButton:new{
             text = btn.text,
             face = Font:getFace("cfont", 18),
             checked = btn.checked,
             xcallback = btn.callback,
             parent = self,
-        }
-        self:addWidget(self.check_buttons[btn.key])
+        })
     end
 
     self.dialog_frame = FrameContainer:new{
@@ -329,6 +320,11 @@ function SettingsDialog:onShowMenu()
                                     for i, f in ipairs(langsetting.input_fields) do  
                                         f:setText("")  
                                     end  
+                                    if self._checkbtn_is_rtl then
+                                        self._checkbtn_is_rtl.checked = false
+                                        self._checkbtn_is_rtl:init()
+                                    end
+
                                     UIManager:setDirty(langsetting, function()  
                                         return "ui", langsetting.dialog_frame.dimen  
                                     end)  
@@ -356,6 +352,13 @@ function SettingsDialog:onShowMenu()
                                         end
                                     end
 
+                                    if self._checkbtn_is_rtl then
+                                        local checked = self._checkbtn_is_rtl.checked 
+                                        if checked ~= (self.assistant.settings:readSetting("response_is_rtl") or false) then
+                                            self.assistant.settings:saveSetting("response_is_rtl", checked)
+                                        end
+                                    end
+
                                     self.assistant.updated = true
                                     UIManager:close(langsetting)
                                 end
@@ -364,6 +367,20 @@ function SettingsDialog:onShowMenu()
                     },
 
                 }
+
+                self._checkbtn_is_rtl = CheckButton:new{
+                        text = "RTL written Language",
+                        face = Font:getFace("x_smallinfofont"),  
+                        checked = self.settings:readSetting("response_is_rtl") or false,
+                        parent = self,
+                }
+
+                langsetting:addWidget(FrameContainer:new{  
+                    padding = Size.padding.default,  
+                    margin = Size.margin.small,  
+                    bordersize = 0,  
+                    self._checkbtn_is_rtl,
+                })
 
                 if self.assistant.settings:has("dict_language") or
                     self.assistant.settings:has("response_language") then
