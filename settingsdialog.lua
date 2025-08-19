@@ -326,24 +326,15 @@ function SettingsDialog:onShowMenu()
                                 end
                             },
                             {
+                                id = "save",
                                 text = _("Save"),
-                                callback = function(touchmenu_instance)
+                                callback = function()
                                     local fields = langsetting:getFields()
-
-                                    if fields[1] ~= "" then
-                                        self.assistant.settings:saveSetting("response_language", fields[1])
-                                        if touchmenu_instance then touchmenu_instance:updateItems() end
-                                    else
-                                        if self.assistant.settings:has("response_language") then
-                                            self.assistant.settings:delSetting("response_language")
-                                        end
-                                    end
-
-                                    if fields[2] ~= "" then
-                                        self.assistant.settings:saveSetting("dict_language", fields[2])
-                                    else
-                                        if self.assistant.settings:has("dict_language") then
-                                            self.assistant.settings:delSetting("dict_language")
+                                    for i, key in ipairs({"response_language", "dict_language"}) do
+                                        if fields[i] == "" then
+                                            self.assistant.settings:delSetting(key)
+                                        else
+                                            self.assistant.settings:saveSetting(key, fields[i])
                                         end
                                     end
 
