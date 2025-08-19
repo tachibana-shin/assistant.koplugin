@@ -47,16 +47,11 @@ local SettingsDialog = InputDialog:extend{
     -- widgets
     buttons = nil,
     radio_buttons = nil,
-
-    title_bar_left_icon = "appbar.menu",
-    title_bar_left_icon_tap_callback = nil,
-    -- title_bar_left_icon_tap_callback = function ()
-    --     self:onShowMenu()
-    -- end,
 }
 
 function SettingsDialog:init()
 
+    self.title_bar_left_icon = "appbar.menu"
     self.title_bar_left_icon_tap_callback = function ()
         self:onShowMenu()
     end
@@ -317,17 +312,17 @@ function SettingsDialog:onShowMenu()
                             {
                                 text = _("Clear"),
                                 callback = function()
-                                    for i, f in ipairs(langsetting.input_fields) do  
-                                        f:setText("")  
-                                    end  
+                                    for i, f in ipairs(langsetting.input_fields) do
+                                        f:setText("")
+                                    end
                                     if self._checkbtn_is_rtl then
                                         self._checkbtn_is_rtl.checked = false
                                         self._checkbtn_is_rtl:init()
                                     end
 
-                                    UIManager:setDirty(langsetting, function()  
-                                        return "ui", langsetting.dialog_frame.dimen  
-                                    end)  
+                                    UIManager:setDirty(langsetting, function()
+                                        return "ui", langsetting.dialog_frame.dimen
+                                    end)
                                 end
                             },
                             {
@@ -353,7 +348,7 @@ function SettingsDialog:onShowMenu()
                                     end
 
                                     if self._checkbtn_is_rtl then
-                                        local checked = self._checkbtn_is_rtl.checked 
+                                        local checked = self._checkbtn_is_rtl.checked
                                         if checked ~= (self.assistant.settings:readSetting("response_is_rtl") or false) then
                                             self.assistant.settings:saveSetting("response_is_rtl", checked)
                                         end
@@ -369,13 +364,12 @@ function SettingsDialog:onShowMenu()
                 }
 
                 self._checkbtn_is_rtl = CheckButton:new{
-                        text = "RTL written Language",
+                        text = _("RTL written Language"),
                         face = Font:getFace("x_smallinfofont"),  
                         checked = self.settings:readSetting("response_is_rtl") or false,
                         parent = self,
                 }
-
-                langsetting:addWidget(FrameContainer:new{  
+                langsetting:addWidget(FrameContainer:new{
                     padding = Size.padding.default,  
                     margin = Size.margin.small,  
                     bordersize = 0,  
@@ -384,6 +378,7 @@ function SettingsDialog:onShowMenu()
 
                 if self.assistant.settings:has("dict_language") or
                     self.assistant.settings:has("response_language") then
+                    -- show a notice when fields filled
                     langsetting:addWidget(FrameContainer:new{  
                         padding = Size.padding.default,  
                         margin = Size.margin.small,  
@@ -392,7 +387,6 @@ function SettingsDialog:onShowMenu()
                             text = T(_("Leave these fields blank to use the UI language: %1"),  self.assistant.ui_language),
                             face = Font:getFace("x_smallinfofont"),  
                             width = math.floor(langsetting.width * 0.95),  
-                            -- width = langsetting.width,
                         }
                     })
                 end

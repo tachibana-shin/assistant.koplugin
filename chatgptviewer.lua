@@ -87,12 +87,12 @@ table td, table th {
 }
 ]]
 
-local RTL_CSS = [[  
+local RTL_CSS = [[
 body {
-    direction: rtl !important;   
-    text-align: right !important;  
-}  
-]]  
+    direction: rtl !important;
+    text-align: right !important;
+}
+]]
 
 local ChatGPTViewer = InputContainer:extend {
   title = nil,
@@ -816,7 +816,7 @@ function ChatGPTViewer:update(new_text)
       self.scroll_text_w = ScrollHtmlWidget:new {
         html_body = html_body,
         css = css,
-        default_font_size = Screen:scaleBySize(self.assistant.settings:readSetting("response_font_size", 20)),
+        default_font_size = Screen:scaleBySize(self.assistant.settings:readSetting("response_font_size") or 20),
         width = self.width - 2 * self.text_padding - 2 * self.text_margin,
         height = self.textw:getSize().h - 2 * self.text_padding - 2 * self.text_margin,
         dialog = self,

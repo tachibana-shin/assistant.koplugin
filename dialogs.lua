@@ -147,7 +147,7 @@ function AssistantDialog:_createAndShowViewer(highlightedText, message_history, 
   local chatgpt_viewer = ChatGPTViewer:new {
     title = title,
     text = result_text,
-    text_face = Font:getFace("infofont", self.assistant.settings:readSetting("response_font_size", 20)),
+    text_face = Font:getFace("infofont", self.assistant.settings:readSetting("response_font_size") or 20),
     assistant = self.assistant,
     ui = self.assistant.ui,
     onAskQuestion = function(viewer, user_question) -- callback for user entered question
