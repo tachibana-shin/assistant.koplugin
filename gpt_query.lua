@@ -177,7 +177,7 @@ function Querier:query(message_history, title)
         end
 
         if err then
-            return nil, err
+            return nil, err:gsub("^[\n%s]*", "") -- clean leading spaces and newlines
         end
 
         res = content
