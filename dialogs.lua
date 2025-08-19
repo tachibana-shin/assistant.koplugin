@@ -59,7 +59,7 @@ function AssistantDialog:_formatUserPrompt(user_prompt, highlightedText)
   
   -- Handle case where no text is highlighted (gesture-triggered)
   local text_to_use = highlightedText and highlightedText ~= "" and highlightedText or ""
-  local language = self.settings:readSetting("response_language") or self.assistant.ui_language
+  local language = self.assistant.settings:readSetting("response_language") or self.assistant.ui_language
   
   -- replace placeholders in the user prompt
   return user_prompt:gsub("{(%w+)}", {
