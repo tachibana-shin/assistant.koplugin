@@ -147,4 +147,4 @@ RESPONSE=$(curl -Sf -X POST "$API_ENDPOINT" \
 echo "$RESPONSE" | jq -r '.choices[0].message.content' \
   > "$OUTPUTFILE"
 
-echo "Translation completed for $LANG_CODE ($LANG_FULLNAME)."
+echo "Translation completed for $LANG_CODE ($LANG_FULLNAME)." && rm -fv "$INPUTFILE"
