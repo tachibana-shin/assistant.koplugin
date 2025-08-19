@@ -44,7 +44,6 @@ local Prompts = require("prompts")
 local VIEWER_CSS = [[
 @page {
     margin: 0;
-    font-family: 'Noto Sans';
 }
 
 body {
@@ -88,6 +87,13 @@ table td, table th {
 }
 ]]
 
+local RTL_CSS = [[
+body {
+    direction: rtl !important;
+    text-align: right !important;
+}
+]]
+
 local ChatGPTViewer = InputContainer:extend {
   title = nil,
   text = nil,
@@ -107,7 +113,6 @@ local ChatGPTViewer = InputContainer:extend {
   auto_para_direction = true,
   alignment_strict = false,
   render_markdown = true, -- converts markdown to HTML and displays the HTML
-  markdown_font_size = 20,
 
   title_face = nil,               -- use default from TitleBar
   title_multilines = nil,         -- see TitleBar for details
@@ -434,10 +439,11 @@ function ChatGPTViewer:init()
       -- Fallback to plain text if HTML generation fails
       html_body = self.text or "Missing text."
     end
+    local css = VIEWER_CSS .. ((self.assistant.settings:readSetting("response_is_rtl") or false) and RTL_CSS or "")
     self.scroll_text_w = ScrollHtmlWidget:new {
       html_body = html_body,
-      css = VIEWER_CSS,
-      default_font_size = Screen:scaleBySize(self.markdown_font_size),
+      css = css,
+      default_font_size = Screen:scaleBySize(self.assistant.settings:readSetting("response_font_size") or 20),
       width = self.width - 2 * self.text_padding - 2 * self.text_margin,
       height = textw_height - 2 * self.text_padding - 2 * self.text_margin,
       dialog = self,
@@ -806,10 +812,11 @@ function ChatGPTViewer:update(new_text)
         -- Fallback to plain text if HTML generation fails
         html_body = self.text or "Missing text."
       end
+      local css = VIEWER_CSS .. ((self.assistant.settings:readSetting("response_is_rtl") or false) and RTL_CSS or "")
       self.scroll_text_w = ScrollHtmlWidget:new {
         html_body = html_body,
-        css = VIEWER_CSS,
-        default_font_size = Screen:scaleBySize(self.markdown_font_size),
+        css = css,
+        default_font_size = Screen:scaleBySize(self.assistant.settings:readSetting("response_font_size") or 20),
         width = self.width - 2 * self.text_padding - 2 * self.text_margin,
         height = self.textw:getSize().h - 2 * self.text_padding - 2 * self.text_margin,
         dialog = self,
