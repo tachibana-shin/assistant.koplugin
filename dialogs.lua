@@ -59,7 +59,7 @@ function AssistantDialog:_formatUserPrompt(user_prompt, highlightedText)
   
   -- Handle case where no text is highlighted (gesture-triggered)
   local text_to_use = highlightedText and highlightedText ~= "" and highlightedText or ""
-  local language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assistant.ui_language
+  local language = self.settings:readSetting("response_language") or self.assistant.ui_language
   
   -- replace placeholders in the user prompt
   return user_prompt:gsub("{(%w+)}", {
@@ -142,7 +142,6 @@ function AssistantDialog:_createAndShowViewer(highlightedText, message_history, 
   local CONFIGURATION = self.CONFIGURATION
   local result_text = self:_createResultText(highlightedText, message_history, nil, title)
   local render_markdown = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown) or true
-  local markdown_font_size = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.markdown_font_size) or 20
   
   local chatgpt_viewer = ChatGPTViewer:new {
     title = title,
@@ -193,7 +192,6 @@ function AssistantDialog:_createAndShowViewer(highlightedText, message_history, 
     highlighted_text = highlightedText,
     message_history = message_history,
     render_markdown = render_markdown,
-    markdown_font_size = markdown_font_size,
   }
   
   UIManager:show(chatgpt_viewer)

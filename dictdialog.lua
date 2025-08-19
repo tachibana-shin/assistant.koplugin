@@ -114,8 +114,7 @@ local function showDictionaryDialog(assistant, highlightedText, message_history)
         end
     end
     
-    local resp_language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or assistant.ui_language
-    local dict_language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.dictionary_translate_to) or resp_language
+    local dict_language = assistant.settings:readSetting("response_language") or assistant.ui_language
     local context_message = {
         role = "user",
         content = string.gsub(dict_prompts.user_prompt, "{(%w+)}", {

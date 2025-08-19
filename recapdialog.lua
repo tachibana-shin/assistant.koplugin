@@ -26,7 +26,7 @@ local function showRecapDialog(assistant, title, author, progress_percent, messa
     local recap_config = CONFIGURATION.features and CONFIGURATION.features.recap_config or {}
     local system_prompt = recap_config.system_prompt or recap_prompts.system_prompt
     local user_prompt_template = recap_config.user_prompt or recap_prompts.user_prompt
-    local language = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.response_language) or self.assistant.ui_language
+    local language = assistant.settings:readSetting("response_language") or assistant.ui_language
     
     local message_history = message_history or {
         {
