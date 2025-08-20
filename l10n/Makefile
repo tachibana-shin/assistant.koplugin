@@ -56,14 +56,14 @@ extract-untranslated:
 
 check-ai-results:
 	@set -e; \
-	for LANG in $(LANGS); do \
-		if [ -s "$$LANG/untranslated.po" ]; then \
-			if [ ! -f "$$LANG/updated_translated.po" ]; then \
-				echo "\033[0;31mError: AI translation for '$$LANG' failed.\033[0m"; \
-				echo "File '$$LANG/updated_translated.po' was not created, but '$$LANG/untranslated.po' was not empty."; \
+	for lang in $(LANGS); do \
+		if [ -s "$$lang/untranslated.po" ]; then \
+			if [ ! -f "$$lang/updated_translated.po" ]; then \
+				echo "\033[0;31mError: AI translation for '$$lang' failed.\033[0m"; \
+				echo "File '$$lang/updated_translated.po' was not created, but '$$lang/untranslated.po' was not empty."; \
 				echo "This might be due to an API error or network issue."; \
 				echo "Please check the output above for any error messages from the AI translation script."; \
-				echo "You can try running the translation for this language again with: make ai-translate LANG=$$LANG"; \
+				echo "You can try running the translation for this language again with: make ai-translate L10N_LANG=$$lang"; \
 				exit 1; \
 			fi; \
 		fi; \
@@ -90,18 +90,18 @@ clean:
 
 ai-translate:
 	@set -e; \
-	if [ -n "$(LANG)" ]; then \
-		echo "Translating language $(LANG)..."; \
-		./AI_TRANSLATE.sh $(LANG); \
+	if [ -n "$(L10N_LANG)" ]; then \
+		echo "Translating language $(L10N_LANG)..."; \
+		./AI_TRANSLATE.sh $(L10N_LANG); \
 	else \
 		TO_TRANSLATE=$$(for lang in $(LANGS); do if [ -s "$$lang/untranslated.po" ]; then echo $$lang; fi; done); \
 		TOTAL=$$(echo $$TO_TRANSLATE | wc -w); \
 		COUNT=0; \
-		for LANG in $$TO_TRANSLATE; do \
+		for lang in $$TO_TRANSLATE; do \
 			COUNT=$$((COUNT+1)); \
-			echo "Translating language $$COUNT of $$TOTAL ($$LANG)..."; \
-			./AI_TRANSLATE.sh $$LANG && { \
-				FILE_SIZE=$$(wc -c < "$$LANG/untranslated.po"); \
+			echo "Translating language $$COUNT of $$TOTAL ($$lang)..."; \
+			./AI_TRANSLATE.sh $$lang && { \
+				FILE_SIZE=$$(wc -c < "$$lang/untranslated.po"); \
 				if [ $$FILE_SIZE -gt 5120 ]; then \
 					echo "... waiting 30s to avoid API rate limits (large file)"; \
 					sleep 30; \
