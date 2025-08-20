@@ -64,6 +64,14 @@ function CopyMultiInputDialog:init()  -- fix the MultiInputDialog cannot move
         MovableContainer:new{  self.dialog_frame,  },
     }
 end
+function CopyMultiInputDialog:onTap(arg, ges)  -- fix: tap outside to close
+    if ges.pos:notIntersectWith(self.dialog_frame.dimen) then
+        UIManager:close(self)
+        return true
+    end
+    return false
+end
+
 
 local function LanguageSetting(assistant)
     local langsetting
