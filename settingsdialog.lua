@@ -77,7 +77,7 @@ function SettingsDialog:init()
             text = _("Always enable stream response"),
             checked = self.settings:readSetting("forced_stream_mode", true),
             callback = function(btn) 
-                self.settings:saveSetting(btn.key, btn.checked)
+                self.settings:saveSetting("forced_stream_mode", btn.checked)
                 self.assistant.updated = true
             end
         },
@@ -85,7 +85,7 @@ function SettingsDialog:init()
             text = _("Use AI Assistant for 'Translate'"),
             checked = self.settings:readSetting("ai_translate_override", false),
             callback = function(btn) 
-                self.settings:saveSetting(btn.key, btn.checked)
+                self.settings:saveSetting("ai_translate_override", btn.checked)
                 self.assistant.updated = true
                 self.assistant:syncTranslateOverride()
             end
@@ -94,7 +94,7 @@ function SettingsDialog:init()
             text = _("Show Dictionary(AI) in Dictionary Popup"),
             checked = self.settings:readSetting("dict_popup_show_dictionary", true),
             callback = function(btn) 
-                self.settings:saveSetting(btn.key, btn.checked)
+                self.settings:saveSetting("dict_popup_show_dictionary", btn.checked)
                 self.assistant.updated = true
             end
         },
@@ -102,7 +102,7 @@ function SettingsDialog:init()
             text = _("Show Wikipedia(AI) in Dictionary Popup"),
             checked = self.settings:readSetting("dict_popup_show_wikipedia", true),
             callback = function(btn) 
-                self.settings:saveSetting(btn.key, btn.checked)
+                self.settings:saveSetting("dict_popup_show_wikipedia", btn.checked)
                 self.assistant.updated = true
             end
         },
@@ -110,7 +110,7 @@ function SettingsDialog:init()
             text = _("Copy entered question to the clipboard"),
             checked = self.settings:readSetting("auto_copy_asked_question", true),
             callback = function(btn) 
-                self.settings:saveSetting(btn.key, btn.checked)
+                self.settings:saveSetting("auto_copy_asked_question", btn.checked)
                 self.assistant.updated = true
             end
         },
@@ -118,7 +118,7 @@ function SettingsDialog:init()
             text = _("Enable AI Recap"),
             checked = self.settings:readSetting("enable_recap", false),
             callback = function(btn) 
-                self.settings:saveSetting(btn.key, btn.checked)
+                self.settings:saveSetting("enable_recap", btn.checked)
                 self.assistant.updated = true
                 local Dispatcher = require("dispatcher")
                 if btn.checked then
@@ -198,7 +198,7 @@ function SettingsDialog:init()
         }
     }
     for i, btn in ipairs(self.check_button_init_list) do
-        table.insert(self.check_button_table, HorizontalGroup:new{
+        local row =  HorizontalGroup:new{
             HorizontalSpan:new{ width = Screen:scaleBySize(15), },
             xCheckButton:new{
                 text = btn.text,
@@ -207,7 +207,9 @@ function SettingsDialog:init()
                 face = Font:getFace("xx_smallinfofont"),
                 parent = self,
             }
-        })
+        }
+        table.insert(self.check_button_table, row)
+        table.insert(self.layout, #self.layout, {row[2]}) -- add to focus layout
     end
 
     local vertical_span = VerticalSpan:new{
