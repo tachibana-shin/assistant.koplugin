@@ -52,6 +52,18 @@ function CopyMultiInputDialog:onSwitchFocus(inputbox)
         inputbox:addChars(vval)
     end
 end
+function CopyMultiInputDialog:init()  -- fix the MultiInputDialog cannot move
+    MultiInputDialog.init(self)
+    local keyboard_height = self.keyboard_visible and self._input_widget:getKeyboardDimen().h or 0
+    self[1] = CenterContainer:new{
+        dimen = Geom:new{ 
+            w = Screen:getWidth(),
+            h = Screen:getHeight() - keyboard_height,
+        },
+        ignore_if_over = "height",
+        MovableContainer:new{  self.dialog_frame,  },
+    }
+end
 
 local function LanguageSetting(assistant)
     local langsetting
@@ -154,6 +166,7 @@ local function LanguageSetting(assistant)
         })
     end
     UIManager:show(langsetting)
+    return langsetting
 end
 
 local function FontSizeSetting(assistant)
@@ -169,6 +182,7 @@ local function FontSizeSetting(assistant)
         end,
     }
     UIManager:show(widget)
+    return widget
 end
 
 local SettingsDialog = InputDialog:extend{
