@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-19 17:44+0800\n"
+"POT-Creation-Date: 2025-08-20 17:13+0800\n"
 "PO-Revision-Date: 2025-08-14 11:46+0800\n"
 "Last-Translator: ChatGPT o1-preview 2025-06-25\n"
 "Language-Team: ChatGPT o1-preview <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Ask Another Question"
 msgstr "Задати ще питання"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:121
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
 msgid "Close"
 msgstr "Закрити"
 
@@ -54,7 +54,7 @@ msgid "Note added successfully"
 msgstr "Нотатку додано"
 
 #: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
-#: ../settingsdialog.lua:306
+#: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -207,7 +207,7 @@ msgstr "Поставити питання AI"
 msgid "AI Recaps"
 msgstr "AI-конспекти"
 
-#: ../main.lua:92 ../settingsdialog.lua:40
+#: ../main.lua:92 ../settingsdialog.lua:197
 msgid "Assistant Settings"
 msgstr "Налаштування асистента"
 
@@ -406,81 +406,85 @@ msgstr "Стаття у стилі Вікіпедії за темою текст
 msgid "Recap"
 msgstr "Конспект"
 
-#: ../settingsdialog.lua:61
-msgid "Always enable stream response"
-msgstr "Завжди вмикати потік відповіді"
+#: ../settingsdialog.lua:82
+msgid "AI Response Language Setting"
+msgstr "Налаштування мови відповіді ШІ"
 
-#: ../settingsdialog.lua:69
-msgid "Use AI Assistant for 'Translate'"
-msgstr "AI-асистент для «Перекладу»"
-
-#: ../settingsdialog.lua:78
-msgid "Show Dictionary(AI) in Dictionary Popup"
-msgstr "Показувати Словник(ШІ) у спливаючому вікні"
-
-#: ../settingsdialog.lua:86
-msgid "Show Wikipedia(AI) in Dictionary Popup"
-msgstr "Показувати Wikipedia(ШІ) у спливаючому вікні"
-
-#: ../settingsdialog.lua:94
-msgid "Copy entered question to the clipboard"
-msgstr "Копіювати введене запитання до буфера"
-
-#: ../settingsdialog.lua:102
-msgid "Enable AI Recap"
-msgstr "Увімкнути ШІ-резюме"
-
-#: ../settingsdialog.lua:109
-msgid "AI Recap will be enabled the next time a book is opened."
-msgstr "ШІ-резюме вмикається при наступному відкритті книжки."
-
-#: ../settingsdialog.lua:128
-msgid "Select the AI Model provider."
-msgstr "Оберіть постачальника моделі"
-
-#: ../settingsdialog.lua:259
-msgid "Response Font Size: %1"
-msgstr "Розмір шрифту відповіді: %1"
-
-#: ../settingsdialog.lua:266
-msgid "Response Font Size"
-msgstr "Розмір шрифту відповіді"
-
-#: ../settingsdialog.lua:280
-msgid "Response Language: %1"
-msgstr "Мова відповіді: %1"
-
-#: ../settingsdialog.lua:290
-msgid "Response Language"
-msgstr "Мова відповіді"
-
-#: ../settingsdialog.lua:293
+#: ../settingsdialog.lua:85
 msgid "AI Response Language"
 msgstr "Мова відповіді ШІ"
 
-#: ../settingsdialog.lua:295 ../settingsdialog.lua:300
+#: ../settingsdialog.lua:87 ../settingsdialog.lua:92
 msgid "Leave blank to use: %1"
 msgstr "Залиште порожнім, щоб використовувати: %1"
 
-#: ../settingsdialog.lua:298
+#: ../settingsdialog.lua:90
 msgid "Dictionary Language"
 msgstr "Мова словника"
 
-#: ../settingsdialog.lua:313
+#: ../settingsdialog.lua:105
 msgid "Clear"
 msgstr "Очистити"
 
-#: ../settingsdialog.lua:330
+#: ../settingsdialog.lua:122
 msgid "Save"
 msgstr "Зберегти"
 
-#: ../settingsdialog.lua:358
+#: ../settingsdialog.lua:150
 msgid "RTL written Language"
 msgstr "Мова з RTL письмом"
 
-#: ../settingsdialog.lua:378
+#: ../settingsdialog.lua:170
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "Залиште поля порожніми, щоб використовувати мову інтерфейсу: %1"
+
+#: ../settingsdialog.lua:183
+msgid "Response Font Size"
+msgstr "Розмір шрифту відповіді"
+
+#: ../settingsdialog.lua:221
+msgid "Always enable stream response"
+msgstr "Завжди вмикати потік відповіді"
+
+#: ../settingsdialog.lua:229
+msgid "Use AI Assistant for 'Translate'"
+msgstr "AI-асистент для «Перекладу»"
+
+#: ../settingsdialog.lua:238
+msgid "Show Dictionary(AI) in Dictionary Popup"
+msgstr "Показувати Словник(ШІ) у спливаючому вікні"
+
+#: ../settingsdialog.lua:246
+msgid "Show Wikipedia(AI) in Dictionary Popup"
+msgstr "Показувати Wikipedia(ШІ) у спливаючому вікні"
+
+#: ../settingsdialog.lua:254
+msgid "Copy entered question to the clipboard"
+msgstr "Копіювати введене запитання до буфера"
+
+#: ../settingsdialog.lua:262
+msgid "Enable AI Recap"
+msgstr "Увімкнути ШІ-резюме"
+
+#: ../settingsdialog.lua:269
+msgid "AI Recap will be enabled the next time a book is opened."
+msgstr "ШІ-резюме вмикається при наступному відкритті книжки."
+
+#: ../settingsdialog.lua:338
+msgid "AI Assistant Features:"
+msgstr "Функції помічника ШІ:"
+
+#: ../settingsdialog.lua:365
+msgid "AI Model provider:"
+msgstr "Постачальник моделі ШІ:"
+
+#: ../settingsdialog.lua:373
+msgid "AI Language"
+msgstr "Мова ШІ"
+
+#: ../settingsdialog.lua:381
+msgid "Font Size"
+msgstr "Розмір шрифту"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."

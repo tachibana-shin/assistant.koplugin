@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-19 17:44+0800\n"
+"POT-Creation-Date: 2025-08-20 17:13+0800\n"
 "PO-Revision-Date: 2025-08-14 11:47+0800\n"
 "Last-Translator: koplugin-translator v1\n"
 "Language-Team: Tiếng Việt <vi@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Ask Another Question"
 msgstr "Hỏi câu khác"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:121
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
 msgid "Close"
 msgstr "Đóng"
 
@@ -54,7 +54,7 @@ msgid "Note added successfully"
 msgstr "Đã thêm ghi chú"
 
 #: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
-#: ../settingsdialog.lua:306
+#: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Hủy"
 
@@ -211,7 +211,7 @@ msgstr "Đặt câu hỏi cho AI"
 msgid "AI Recaps"
 msgstr "Tóm tắt AI"
 
-#: ../main.lua:92 ../settingsdialog.lua:40
+#: ../main.lua:92 ../settingsdialog.lua:197
 msgid "Assistant Settings"
 msgstr "Cài đặt Trợ lý"
 
@@ -419,81 +419,85 @@ msgstr ""
 msgid "Recap"
 msgstr "Tóm tắt"
 
-#: ../settingsdialog.lua:61
-msgid "Always enable stream response"
-msgstr "Luôn bật trả lời trực tiếp"
+#: ../settingsdialog.lua:82
+msgid "AI Response Language Setting"
+msgstr "Cài đặt ngôn ngữ phản hồi AI"
 
-#: ../settingsdialog.lua:69
-msgid "Use AI Assistant for 'Translate'"
-msgstr "Dùng Trợ lý AI cho 'Dịch'"
-
-#: ../settingsdialog.lua:78
-msgid "Show Dictionary(AI) in Dictionary Popup"
-msgstr "Hiện Từ điển(AI) trong cửa sổ Từ điển"
-
-#: ../settingsdialog.lua:86
-msgid "Show Wikipedia(AI) in Dictionary Popup"
-msgstr "Hiện Wikipedia(AI) trong cửa sổ Từ điển"
-
-#: ../settingsdialog.lua:94
-msgid "Copy entered question to the clipboard"
-msgstr "Sao chép câu hỏi vào bộ nhớ tạm"
-
-#: ../settingsdialog.lua:102
-msgid "Enable AI Recap"
-msgstr "Bật Tóm tắt AI"
-
-#: ../settingsdialog.lua:109
-msgid "AI Recap will be enabled the next time a book is opened."
-msgstr "Tóm tắt AI sẽ khả dụng khi mở sách lần tới."
-
-#: ../settingsdialog.lua:128
-msgid "Select the AI Model provider."
-msgstr "Chọn nhà cung cấp mô hình AI."
-
-#: ../settingsdialog.lua:259
-msgid "Response Font Size: %1"
-msgstr "Cỡ chữ phản hồi: %1"
-
-#: ../settingsdialog.lua:266
-msgid "Response Font Size"
-msgstr "Cỡ chữ phản hồi"
-
-#: ../settingsdialog.lua:280
-msgid "Response Language: %1"
-msgstr "Ngôn ngữ phản hồi: %1"
-
-#: ../settingsdialog.lua:290
-msgid "Response Language"
-msgstr "Ngôn ngữ phản hồi"
-
-#: ../settingsdialog.lua:293
+#: ../settingsdialog.lua:85
 msgid "AI Response Language"
 msgstr "Ngôn ngữ AI trả lời"
 
-#: ../settingsdialog.lua:295 ../settingsdialog.lua:300
+#: ../settingsdialog.lua:87 ../settingsdialog.lua:92
 msgid "Leave blank to use: %1"
 msgstr "Để trống để dùng: %1"
 
-#: ../settingsdialog.lua:298
+#: ../settingsdialog.lua:90
 msgid "Dictionary Language"
 msgstr "Ngôn ngữ Từ điển"
 
-#: ../settingsdialog.lua:313
+#: ../settingsdialog.lua:105
 msgid "Clear"
 msgstr "Xóa"
 
-#: ../settingsdialog.lua:330
+#: ../settingsdialog.lua:122
 msgid "Save"
 msgstr "Lưu"
 
-#: ../settingsdialog.lua:358
+#: ../settingsdialog.lua:150
 msgid "RTL written Language"
 msgstr "Ngôn ngữ viết RTL"
 
-#: ../settingsdialog.lua:378
+#: ../settingsdialog.lua:170
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "Để trống các trường này để dùng ngôn ngữ giao diện: %1"
+
+#: ../settingsdialog.lua:183
+msgid "Response Font Size"
+msgstr "Cỡ chữ phản hồi"
+
+#: ../settingsdialog.lua:221
+msgid "Always enable stream response"
+msgstr "Luôn bật trả lời trực tiếp"
+
+#: ../settingsdialog.lua:229
+msgid "Use AI Assistant for 'Translate'"
+msgstr "Dùng Trợ lý AI cho 'Dịch'"
+
+#: ../settingsdialog.lua:238
+msgid "Show Dictionary(AI) in Dictionary Popup"
+msgstr "Hiện Từ điển(AI) trong cửa sổ Từ điển"
+
+#: ../settingsdialog.lua:246
+msgid "Show Wikipedia(AI) in Dictionary Popup"
+msgstr "Hiện Wikipedia(AI) trong cửa sổ Từ điển"
+
+#: ../settingsdialog.lua:254
+msgid "Copy entered question to the clipboard"
+msgstr "Sao chép câu hỏi vào bộ nhớ tạm"
+
+#: ../settingsdialog.lua:262
+msgid "Enable AI Recap"
+msgstr "Bật Tóm tắt AI"
+
+#: ../settingsdialog.lua:269
+msgid "AI Recap will be enabled the next time a book is opened."
+msgstr "Tóm tắt AI sẽ khả dụng khi mở sách lần tới."
+
+#: ../settingsdialog.lua:338
+msgid "AI Assistant Features:"
+msgstr "Tính năng trợ lý AI:"
+
+#: ../settingsdialog.lua:365
+msgid "AI Model provider:"
+msgstr "Nhà cung cấp mô hình AI:"
+
+#: ../settingsdialog.lua:373
+msgid "AI Language"
+msgstr "Ngôn ngữ AI"
+
+#: ../settingsdialog.lua:381
+msgid "Font Size"
+msgstr "Kích thước phông chữ"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."

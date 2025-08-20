@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-19 17:44+0800\n"
+"POT-Creation-Date: 2025-08-20 17:13+0800\n"
 "PO-Revision-Date: Thu Aug 14 11:07:12 +08 2025\n"
 "Last-Translator: ChatGPT 4.0 <noreply@example.com>\n"
 "Language-Team: فارسی (fa) <translator@example.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Ask Another Question"
 msgstr "سوال دیگری بپرس"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:121
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
 msgid "Close"
 msgstr "بستن"
 
@@ -54,7 +54,7 @@ msgid "Note added successfully"
 msgstr "یادداشت با موفقیت افزوده شد"
 
 #: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
-#: ../settingsdialog.lua:306
+#: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "انصراف"
 
@@ -209,7 +209,7 @@ msgstr "به AI سؤال بپرسید"
 msgid "AI Recaps"
 msgstr "خلاصه‌های AI"
 
-#: ../main.lua:92 ../settingsdialog.lua:40
+#: ../main.lua:92 ../settingsdialog.lua:197
 msgid "Assistant Settings"
 msgstr "تنظیمات دستیار"
 
@@ -425,81 +425,85 @@ msgstr ""
 msgid "Recap"
 msgstr "خلاصه"
 
-#: ../settingsdialog.lua:61
-msgid "Always enable stream response"
-msgstr "همیشه پاسخ جریانی فعال باشد"
+#: ../settingsdialog.lua:82
+msgid "AI Response Language Setting"
+msgstr "تنظیم زبان پاسخ هوش مصنوعی"
 
-#: ../settingsdialog.lua:69
-msgid "Use AI Assistant for 'Translate'"
-msgstr "از دستیار AI برای «ترجمه» استفاده کنید"
-
-#: ../settingsdialog.lua:78
-msgid "Show Dictionary(AI) in Dictionary Popup"
-msgstr "نمایش دیکشنری (هوش‌مصنوعی) در پنجره دیکشنری"
-
-#: ../settingsdialog.lua:86
-msgid "Show Wikipedia(AI) in Dictionary Popup"
-msgstr "نمایش ویکی‌پدیا (هوش‌مصنوعی) در پنجره دیکشنری"
-
-#: ../settingsdialog.lua:94
-msgid "Copy entered question to the clipboard"
-msgstr "کپی پرسش واردشده به کلیپ‌بورد"
-
-#: ../settingsdialog.lua:102
-msgid "Enable AI Recap"
-msgstr "فعال‌سازی خلاصه‌سازی هوش‌مصنوعی"
-
-#: ../settingsdialog.lua:109
-msgid "AI Recap will be enabled the next time a book is opened."
-msgstr "خلاصه‌سازی هوش‌مصنوعی در بازکردن بعدی کتاب فعال می‌شود."
-
-#: ../settingsdialog.lua:128
-msgid "Select the AI Model provider."
-msgstr "انتخاب ارائه‌دهنده مدل AI."
-
-#: ../settingsdialog.lua:259
-msgid "Response Font Size: %1"
-msgstr "اندازه قلم پاسخ: %1"
-
-#: ../settingsdialog.lua:266
-msgid "Response Font Size"
-msgstr "اندازه قلم پاسخ"
-
-#: ../settingsdialog.lua:280
-msgid "Response Language: %1"
-msgstr "زبان پاسخ: %1"
-
-#: ../settingsdialog.lua:290
-msgid "Response Language"
-msgstr "زبان پاسخ"
-
-#: ../settingsdialog.lua:293
+#: ../settingsdialog.lua:85
 msgid "AI Response Language"
 msgstr "زبان پاسخ هوش‌مصنوعی"
 
-#: ../settingsdialog.lua:295 ../settingsdialog.lua:300
+#: ../settingsdialog.lua:87 ../settingsdialog.lua:92
 msgid "Leave blank to use: %1"
 msgstr "برای استفاده از %1 خالی بگذارید"
 
-#: ../settingsdialog.lua:298
+#: ../settingsdialog.lua:90
 msgid "Dictionary Language"
 msgstr "زبان دیکشنری"
 
-#: ../settingsdialog.lua:313
+#: ../settingsdialog.lua:105
 msgid "Clear"
 msgstr "پاک‌کردن"
 
-#: ../settingsdialog.lua:330
+#: ../settingsdialog.lua:122
 msgid "Save"
 msgstr "ذخیره"
 
-#: ../settingsdialog.lua:358
+#: ../settingsdialog.lua:150
 msgid "RTL written Language"
 msgstr "زبان راست‌به‌چپ"
 
-#: ../settingsdialog.lua:378
+#: ../settingsdialog.lua:170
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "برای استفاده از زبان رابط کاربری %1 این فیلدها را خالی بگذارید"
+
+#: ../settingsdialog.lua:183
+msgid "Response Font Size"
+msgstr "اندازه قلم پاسخ"
+
+#: ../settingsdialog.lua:221
+msgid "Always enable stream response"
+msgstr "همیشه پاسخ جریانی فعال باشد"
+
+#: ../settingsdialog.lua:229
+msgid "Use AI Assistant for 'Translate'"
+msgstr "از دستیار AI برای «ترجمه» استفاده کنید"
+
+#: ../settingsdialog.lua:238
+msgid "Show Dictionary(AI) in Dictionary Popup"
+msgstr "نمایش دیکشنری (هوش‌مصنوعی) در پنجره دیکشنری"
+
+#: ../settingsdialog.lua:246
+msgid "Show Wikipedia(AI) in Dictionary Popup"
+msgstr "نمایش ویکی‌پدیا (هوش‌مصنوعی) در پنجره دیکشنری"
+
+#: ../settingsdialog.lua:254
+msgid "Copy entered question to the clipboard"
+msgstr "کپی پرسش واردشده به کلیپ‌بورد"
+
+#: ../settingsdialog.lua:262
+msgid "Enable AI Recap"
+msgstr "فعال‌سازی خلاصه‌سازی هوش‌مصنوعی"
+
+#: ../settingsdialog.lua:269
+msgid "AI Recap will be enabled the next time a book is opened."
+msgstr "خلاصه‌سازی هوش‌مصنوعی در بازکردن بعدی کتاب فعال می‌شود."
+
+#: ../settingsdialog.lua:338
+msgid "AI Assistant Features:"
+msgstr "ویژگی‌های دستیار هوش مصنوعی:"
+
+#: ../settingsdialog.lua:365
+msgid "AI Model provider:"
+msgstr "ارائه‌دهنده مدل هوش مصنوعی:"
+
+#: ../settingsdialog.lua:373
+msgid "AI Language"
+msgstr "زبان هوش مصنوعی"
+
+#: ../settingsdialog.lua:381
+msgid "Font Size"
+msgstr "اندازه قلم"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."

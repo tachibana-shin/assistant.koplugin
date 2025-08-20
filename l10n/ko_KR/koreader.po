@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-19 17:44+0800\n"
+"POT-Creation-Date: 2025-08-20 17:13+0800\n"
 "PO-Revision-Date: 2025-08-14 11:29+0800\n"
 "Last-Translator: Kimi 1.5 <kimi@anthropic.com>\n"
 "Language-Team: 한국어 <ko@koreader.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Ask Another Question"
 msgstr "다른 질문하기"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:121
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
 msgid "Close"
 msgstr "닫기"
 
@@ -53,7 +53,7 @@ msgid "Note added successfully"
 msgstr "노트 추가 완료"
 
 #: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
-#: ../settingsdialog.lua:306
+#: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "취소"
 
@@ -208,7 +208,7 @@ msgstr "AI에게 질문하기"
 msgid "AI Recaps"
 msgstr "AI 요약"
 
-#: ../main.lua:92 ../settingsdialog.lua:40
+#: ../main.lua:92 ../settingsdialog.lua:197
 msgid "Assistant Settings"
 msgstr "어시스턴트 설정"
 
@@ -421,81 +421,85 @@ msgstr ""
 msgid "Recap"
 msgstr "요약"
 
-#: ../settingsdialog.lua:61
-msgid "Always enable stream response"
-msgstr "스트림 응답 항상 사용"
+#: ../settingsdialog.lua:82
+msgid "AI Response Language Setting"
+msgstr "AI 응답 언어 설정"
 
-#: ../settingsdialog.lua:69
-msgid "Use AI Assistant for 'Translate'"
-msgstr "'번역'에 AI 어시스턴트 사용"
-
-#: ../settingsdialog.lua:78
-msgid "Show Dictionary(AI) in Dictionary Popup"
-msgstr "사전 팝업에 AI 사전 표시"
-
-#: ../settingsdialog.lua:86
-msgid "Show Wikipedia(AI) in Dictionary Popup"
-msgstr "사전 팝업에 AI 위키백과 표시"
-
-#: ../settingsdialog.lua:94
-msgid "Copy entered question to the clipboard"
-msgstr "입력한 질문을 클립보드에 복사"
-
-#: ../settingsdialog.lua:102
-msgid "Enable AI Recap"
-msgstr "AI 요약 활성화"
-
-#: ../settingsdialog.lua:109
-msgid "AI Recap will be enabled the next time a book is opened."
-msgstr "책을 다음번에 열면 AI 요약이 활성화됩니다."
-
-#: ../settingsdialog.lua:128
-msgid "Select the AI Model provider."
-msgstr "AI 모델 제공자 선택"
-
-#: ../settingsdialog.lua:259
-msgid "Response Font Size: %1"
-msgstr "응답 글꼴 크기: %1"
-
-#: ../settingsdialog.lua:266
-msgid "Response Font Size"
-msgstr "응답 글꼴 크기"
-
-#: ../settingsdialog.lua:280
-msgid "Response Language: %1"
-msgstr "응답 언어: %1"
-
-#: ../settingsdialog.lua:290
-msgid "Response Language"
-msgstr "응답 언어"
-
-#: ../settingsdialog.lua:293
+#: ../settingsdialog.lua:85
 msgid "AI Response Language"
 msgstr "AI 응답 언어"
 
-#: ../settingsdialog.lua:295 ../settingsdialog.lua:300
+#: ../settingsdialog.lua:87 ../settingsdialog.lua:92
 msgid "Leave blank to use: %1"
 msgstr "비워두면 다음 사용: %1"
 
-#: ../settingsdialog.lua:298
+#: ../settingsdialog.lua:90
 msgid "Dictionary Language"
 msgstr "사전 언어"
 
-#: ../settingsdialog.lua:313
+#: ../settingsdialog.lua:105
 msgid "Clear"
 msgstr "지우기"
 
-#: ../settingsdialog.lua:330
+#: ../settingsdialog.lua:122
 msgid "Save"
 msgstr "저장"
 
-#: ../settingsdialog.lua:358
+#: ../settingsdialog.lua:150
 msgid "RTL written Language"
 msgstr "RTL 쓰기 방식 언어"
 
-#: ../settingsdialog.lua:378
+#: ../settingsdialog.lua:170
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "비워두면 UI 언어로 사용: %1"
+
+#: ../settingsdialog.lua:183
+msgid "Response Font Size"
+msgstr "응답 글꼴 크기"
+
+#: ../settingsdialog.lua:221
+msgid "Always enable stream response"
+msgstr "스트림 응답 항상 사용"
+
+#: ../settingsdialog.lua:229
+msgid "Use AI Assistant for 'Translate'"
+msgstr "'번역'에 AI 어시스턴트 사용"
+
+#: ../settingsdialog.lua:238
+msgid "Show Dictionary(AI) in Dictionary Popup"
+msgstr "사전 팝업에 AI 사전 표시"
+
+#: ../settingsdialog.lua:246
+msgid "Show Wikipedia(AI) in Dictionary Popup"
+msgstr "사전 팝업에 AI 위키백과 표시"
+
+#: ../settingsdialog.lua:254
+msgid "Copy entered question to the clipboard"
+msgstr "입력한 질문을 클립보드에 복사"
+
+#: ../settingsdialog.lua:262
+msgid "Enable AI Recap"
+msgstr "AI 요약 활성화"
+
+#: ../settingsdialog.lua:269
+msgid "AI Recap will be enabled the next time a book is opened."
+msgstr "책을 다음번에 열면 AI 요약이 활성화됩니다."
+
+#: ../settingsdialog.lua:338
+msgid "AI Assistant Features:"
+msgstr "AI 어시스턴트 기능:"
+
+#: ../settingsdialog.lua:365
+msgid "AI Model provider:"
+msgstr "AI 모델 제공자:"
+
+#: ../settingsdialog.lua:373
+msgid "AI Language"
+msgstr "AI 언어"
+
+#: ../settingsdialog.lua:381
+msgid "Font Size"
+msgstr "글꼴 크기"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."

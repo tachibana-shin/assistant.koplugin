@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-19 17:44+0800\n"
+"POT-Creation-Date: 2025-08-20 17:13+0800\n"
 "PO-Revision-Date: 2025-08-14 12:00+0800\n"
 "Last-Translator: k1.5 2025-08-14\n"
 "Language-Team: k1.5 2025-08-14\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Ask Another Question"
 msgstr "დაისვი კიდევ კითხვა"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:121
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
 msgid "Close"
 msgstr "დახურვა"
 
@@ -53,7 +53,7 @@ msgid "Note added successfully"
 msgstr "შენიშვნა დაემატა წარმატებით"
 
 #: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
-#: ../settingsdialog.lua:306
+#: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "გაუქმება"
 
@@ -208,7 +208,7 @@ msgstr "დაუსვით კითხვა KI-ს"
 msgid "AI Recaps"
 msgstr "KI შეჯამება"
 
-#: ../main.lua:92 ../settingsdialog.lua:40
+#: ../main.lua:92 ../settingsdialog.lua:197
 msgid "Assistant Settings"
 msgstr "ასისტენტის პარამეტრები"
 
@@ -411,81 +411,85 @@ msgstr ""
 msgid "Recap"
 msgstr "შეჯამება"
 
-#: ../settingsdialog.lua:61
-msgid "Always enable stream response"
-msgstr "მუდმივად ჩართული ნაკადური პასუხი"
+#: ../settingsdialog.lua:82
+msgid "AI Response Language Setting"
+msgstr "AI პასუხის ენის პარამეტრი"
 
-#: ../settingsdialog.lua:69
-msgid "Use AI Assistant for 'Translate'"
-msgstr "გამოიყენე KI ასისტენტი \"თარგმნა\"-თვის"
-
-#: ../settingsdialog.lua:78
-msgid "Show Dictionary(AI) in Dictionary Popup"
-msgstr "აჩვენე ლექსიკონი(აი) ლექსიკონის ფანჯარაში"
-
-#: ../settingsdialog.lua:86
-msgid "Show Wikipedia(AI) in Dictionary Popup"
-msgstr "აჩვენე ვიკიპედია(აი) ლექსიკონის ფანჯარაში"
-
-#: ../settingsdialog.lua:94
-msgid "Copy entered question to the clipboard"
-msgstr "შეყვანილი კითხვის დაკოპირება"
-
-#: ../settingsdialog.lua:102
-msgid "Enable AI Recap"
-msgstr "აი-შემაჯამებლის ჩართვა"
-
-#: ../settingsdialog.lua:109
-msgid "AI Recap will be enabled the next time a book is opened."
-msgstr "აი-შემაჯამებელი ჩაირთვება წიგნის შემდეგ გახსნაზე."
-
-#: ../settingsdialog.lua:128
-msgid "Select the AI Model provider."
-msgstr "აირჩიეთ KI მოდელის მომწოდებელი."
-
-#: ../settingsdialog.lua:259
-msgid "Response Font Size: %1"
-msgstr "პასუხის შრიფტის ზომა: %1"
-
-#: ../settingsdialog.lua:266
-msgid "Response Font Size"
-msgstr "პასუხის შრიფტის ზომა"
-
-#: ../settingsdialog.lua:280
-msgid "Response Language: %1"
-msgstr "პასუხის ენა: %1"
-
-#: ../settingsdialog.lua:290
-msgid "Response Language"
-msgstr "პასუხის ენა"
-
-#: ../settingsdialog.lua:293
+#: ../settingsdialog.lua:85
 msgid "AI Response Language"
 msgstr "აი-პასუხის ენა"
 
-#: ../settingsdialog.lua:295 ../settingsdialog.lua:300
+#: ../settingsdialog.lua:87 ../settingsdialog.lua:92
 msgid "Leave blank to use: %1"
 msgstr "დატოვე ცარიელი %1-ის გამოსაყენებლად"
 
-#: ../settingsdialog.lua:298
+#: ../settingsdialog.lua:90
 msgid "Dictionary Language"
 msgstr "ლექსიკონის ენა"
 
-#: ../settingsdialog.lua:313
+#: ../settingsdialog.lua:105
 msgid "Clear"
 msgstr "გასუფთავება"
 
-#: ../settingsdialog.lua:330
+#: ../settingsdialog.lua:122
 msgid "Save"
 msgstr "შენახვა"
 
-#: ../settingsdialog.lua:358
+#: ../settingsdialog.lua:150
 msgid "RTL written Language"
 msgstr "მარჯვნიდან-მარცხნივ წერილი"
 
-#: ../settingsdialog.lua:378
+#: ../settingsdialog.lua:170
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "დატოვეთ ცარიელი ინტერფეისის ენის გამოსაყენებლად: %1"
+
+#: ../settingsdialog.lua:183
+msgid "Response Font Size"
+msgstr "პასუხის შრიფტის ზომა"
+
+#: ../settingsdialog.lua:221
+msgid "Always enable stream response"
+msgstr "მუდმივად ჩართული ნაკადური პასუხი"
+
+#: ../settingsdialog.lua:229
+msgid "Use AI Assistant for 'Translate'"
+msgstr "გამოიყენე KI ასისტენტი \"თარგმნა\"-თვის"
+
+#: ../settingsdialog.lua:238
+msgid "Show Dictionary(AI) in Dictionary Popup"
+msgstr "აჩვენე ლექსიკონი(აი) ლექსიკონის ფანჯარაში"
+
+#: ../settingsdialog.lua:246
+msgid "Show Wikipedia(AI) in Dictionary Popup"
+msgstr "აჩვენე ვიკიპედია(აი) ლექსიკონის ფანჯარაში"
+
+#: ../settingsdialog.lua:254
+msgid "Copy entered question to the clipboard"
+msgstr "შეყვანილი კითხვის დაკოპირება"
+
+#: ../settingsdialog.lua:262
+msgid "Enable AI Recap"
+msgstr "აი-შემაჯამებლის ჩართვა"
+
+#: ../settingsdialog.lua:269
+msgid "AI Recap will be enabled the next time a book is opened."
+msgstr "აი-შემაჯამებელი ჩაირთვება წიგნის შემდეგ გახსნაზე."
+
+#: ../settingsdialog.lua:338
+msgid "AI Assistant Features:"
+msgstr "AI დამხმარის ფუნქციები:"
+
+#: ../settingsdialog.lua:365
+msgid "AI Model provider:"
+msgstr "AI მოდელის პროვაიდერი:"
+
+#: ../settingsdialog.lua:373
+msgid "AI Language"
+msgstr "AI ენა"
+
+#: ../settingsdialog.lua:381
+msgid "Font Size"
+msgstr "შრიფტის ზომა"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."

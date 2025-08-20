@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-19 17:44+0800\n"
+"POT-Creation-Date: 2025-08-20 17:13+0800\n"
 "PO-Revision-Date: Thu Aug 14 11:05:01 +0800\n"
 "Last-Translator: ChatGPT-4 2025 <info@openai.com>\n"
 "Language-Team: ChatGPT-4 2025 <info@openai.com>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "Ask Another Question"
 msgstr "Hacer otra pregunta"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:121
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
 msgid "Close"
 msgstr "Cerrar"
 
@@ -54,7 +54,7 @@ msgid "Note added successfully"
 msgstr "Nota añadida correctamente"
 
 #: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
-#: ../settingsdialog.lua:306
+#: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -211,7 +211,7 @@ msgstr "Pregúntale a la IA"
 msgid "AI Recaps"
 msgstr "Resumenes IA"
 
-#: ../main.lua:92 ../settingsdialog.lua:40
+#: ../main.lua:92 ../settingsdialog.lua:197
 msgid "Assistant Settings"
 msgstr "Configuración del asistente"
 
@@ -432,81 +432,85 @@ msgstr ""
 msgid "Recap"
 msgstr "Resumen"
 
-#: ../settingsdialog.lua:61
-msgid "Always enable stream response"
-msgstr "Activar siempre respuesta en flujo"
+#: ../settingsdialog.lua:82
+msgid "AI Response Language Setting"
+msgstr "Configuración del idioma de respuesta de IA"
 
-#: ../settingsdialog.lua:69
-msgid "Use AI Assistant for 'Translate'"
-msgstr "Usar Asistente IA para 'Traducir'"
-
-#: ../settingsdialog.lua:78
-msgid "Show Dictionary(AI) in Dictionary Popup"
-msgstr "Mostrar Diccionario(IA) en ventana de diccionario"
-
-#: ../settingsdialog.lua:86
-msgid "Show Wikipedia(AI) in Dictionary Popup"
-msgstr "Mostrar Wikipedia(IA) en ventana de diccionario"
-
-#: ../settingsdialog.lua:94
-msgid "Copy entered question to the clipboard"
-msgstr "Copiar pregunta al portapapeles"
-
-#: ../settingsdialog.lua:102
-msgid "Enable AI Recap"
-msgstr "Activar resumen IA"
-
-#: ../settingsdialog.lua:109
-msgid "AI Recap will be enabled the next time a book is opened."
-msgstr "El resumen IA se activará al abrir el próximo libro."
-
-#: ../settingsdialog.lua:128
-msgid "Select the AI Model provider."
-msgstr "Selecciona el proveedor del modelo IA."
-
-#: ../settingsdialog.lua:259
-msgid "Response Font Size: %1"
-msgstr "Tamaño de fuente de respuesta: %1"
-
-#: ../settingsdialog.lua:266
-msgid "Response Font Size"
-msgstr "Tamaño de fuente de respuesta"
-
-#: ../settingsdialog.lua:280
-msgid "Response Language: %1"
-msgstr "Idioma de respuesta: %1"
-
-#: ../settingsdialog.lua:290
-msgid "Response Language"
-msgstr "Idioma de respuesta"
-
-#: ../settingsdialog.lua:293
+#: ../settingsdialog.lua:85
 msgid "AI Response Language"
 msgstr "Idioma de respuesta IA"
 
-#: ../settingsdialog.lua:295 ../settingsdialog.lua:300
+#: ../settingsdialog.lua:87 ../settingsdialog.lua:92
 msgid "Leave blank to use: %1"
 msgstr "Dejar vacío para usar: %1"
 
-#: ../settingsdialog.lua:298
+#: ../settingsdialog.lua:90
 msgid "Dictionary Language"
 msgstr "Idioma del diccionario"
 
-#: ../settingsdialog.lua:313
+#: ../settingsdialog.lua:105
 msgid "Clear"
 msgstr "Borrar"
 
-#: ../settingsdialog.lua:330
+#: ../settingsdialog.lua:122
 msgid "Save"
 msgstr "Guardar"
 
-#: ../settingsdialog.lua:358
+#: ../settingsdialog.lua:150
 msgid "RTL written Language"
 msgstr "Idioma de escritura RTL"
 
-#: ../settingsdialog.lua:378
+#: ../settingsdialog.lua:170
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "Dejar vacíos para usar el idioma de interfaz: %1"
+
+#: ../settingsdialog.lua:183
+msgid "Response Font Size"
+msgstr "Tamaño de fuente de respuesta"
+
+#: ../settingsdialog.lua:221
+msgid "Always enable stream response"
+msgstr "Activar siempre respuesta en flujo"
+
+#: ../settingsdialog.lua:229
+msgid "Use AI Assistant for 'Translate'"
+msgstr "Usar Asistente IA para 'Traducir'"
+
+#: ../settingsdialog.lua:238
+msgid "Show Dictionary(AI) in Dictionary Popup"
+msgstr "Mostrar Diccionario(IA) en ventana de diccionario"
+
+#: ../settingsdialog.lua:246
+msgid "Show Wikipedia(AI) in Dictionary Popup"
+msgstr "Mostrar Wikipedia(IA) en ventana de diccionario"
+
+#: ../settingsdialog.lua:254
+msgid "Copy entered question to the clipboard"
+msgstr "Copiar pregunta al portapapeles"
+
+#: ../settingsdialog.lua:262
+msgid "Enable AI Recap"
+msgstr "Activar resumen IA"
+
+#: ../settingsdialog.lua:269
+msgid "AI Recap will be enabled the next time a book is opened."
+msgstr "El resumen IA se activará al abrir el próximo libro."
+
+#: ../settingsdialog.lua:338
+msgid "AI Assistant Features:"
+msgstr "Funciones del asistente de IA:"
+
+#: ../settingsdialog.lua:365
+msgid "AI Model provider:"
+msgstr "Proveedor del modelo de IA:"
+
+#: ../settingsdialog.lua:373
+msgid "AI Language"
+msgstr "Idioma de IA"
+
+#: ../settingsdialog.lua:381
+msgid "Font Size"
+msgstr "Tamaño de fuente"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."
