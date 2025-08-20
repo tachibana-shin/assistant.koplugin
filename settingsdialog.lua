@@ -30,13 +30,26 @@ local ffiutil = require("ffi/util")
 local meta = require("_meta")
 local logger = require("logger")
 
--- hack: the CheckButton callback does not include a reference to itself.
+-- Custom Widget: the CheckButton callback does not include a reference to itself.
 -- override to use our `xcallback` instead.
 local xCheckButton = CheckButton:extend{}
 function xCheckButton:onTapCheckButton()
     local ret = CheckButton.onTapCheckButton(self)
     if self.xcallback then self:xcallback() end
     return ret
+end
+
+-- Custom Widget: auto fill the empty field
+local MultiInputDialog = require("ui/widget/multiinputdialog")
+local CopyMultiInputDialog = MultiInputDialog:extend{}
+function CopyMultiInputDialog:onSwitchFocus(inputbox)
+    MultiInputDialog.onSwitchFocus(self, inputbox)
+    local vidx = inputbox.idx == 1 and 2 or 1
+    local vval = self.input_fields[vidx]:getText() 
+    -- copy value from the other field
+    if vval ~= "" and inputbox:getText() == "" then
+        inputbox:addChars(vval)
+    end
 end
 
 local SettingsDialog = InputDialog:extend{
@@ -277,17 +290,6 @@ function SettingsDialog:init()
     }
     self:refocusWidget()
 end
-
-local MultiInputDialog = require("ui/widget/multiinputdialog")
-local CopyMultiInputDialog = MultiInputDialog:extend{}
-function CopyMultiInputDialog:onSwitchFocus(inputbox)
-    MultiInputDialog.onSwitchFocus(self, inputbox)
-    -- copy first field to the second
-    if inputbox.idx == 2 and self.input_fields[1]:getText() ~= "" and inputbox:getText() == "" then
-        inputbox:addChars(self.input_fields[1]:getText())
-    end
-end
-
 
 function SettingsDialog:onShowMenu()
     local fontsize = self.assistant.settings:readSetting("response_font_size", 20)
