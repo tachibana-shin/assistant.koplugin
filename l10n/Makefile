@@ -1,4 +1,4 @@
-.PHONY: all translate template update extract-untranslated ai-translate import-translation check clean
+.PHONY: all translate template update extract-untranslated ai-translate check-ai-results import-translation check clean
 
 all: translate
 
@@ -7,23 +7,26 @@ all: translate
 # 2. Merges the template into language .po files.
 # 3. Extracts all untranslated strings.
 # 4. Runs the AI translation script on them.
-# 5. Merges the new translations back into the .po files.
-# 6. Checks the syntax of the final .po files.
-# 7. Cleans up all intermediate files.
+# 5. Verifies that AI translation produced output files.
+# 6. Merges the new translations back into the .po files.
+# 7. Checks the syntax of the final .po files.
+# 8. Cleans up all intermediate files.
 translate:
-	@echo "[1/7] Generating POT template file..."
+	@echo "[1/8] Generating POT template file..."
 	@$(MAKE) template
-	@echo "[2/7] Merging POT file into PO files..."
+	@echo "[2/8] Merging POT file into PO files..."
 	@$(MAKE) update
-	@echo "[3/7] Generating untranslated files..."
+	@echo "[3/8] Generating untranslated files..."
 	@$(MAKE) extract-untranslated
-	@echo "[4/7] Running AI translation..."
+	@echo "[4/8] Running AI translation..."
 	@$(MAKE) ai-translate
-	@echo "[5/7] Merging untranslated files..."
+	@echo "[5/8] Verifying AI translation results..."
+	@$(MAKE) check-ai-results
+	@echo "[6/8] Merging untranslated files..."
 	@$(MAKE) import-translation
-	@echo "[6/7] Checking PO files..."
+	@echo "[7/8] Checking PO files..."
 	@$(MAKE) check
-	@echo "[7/7] Cleaning up intermediate files..."
+	@echo "[8/8] Cleaning up intermediate files..."
 	@$(MAKE) clean
 	@echo "\nTranslation process completed successfully!"
 
@@ -51,11 +54,28 @@ extract-untranslated:
 		$(MSGATTRIB_BIN) --untranslated $$po_file -o $$dir/untranslated.po; \
 	done
 
+check-ai-results:
+	@set -e; \
+	for LANG in $(LANGS); do \
+		if [ -s "$$LANG/untranslated.po" ]; then \
+			if [ ! -f "$$LANG/updated_translated.po" ]; then \
+				echo "\033[0;31mError: AI translation for '$$LANG' failed.\033[0m"; \
+				echo "File '$$LANG/updated_translated.po' was not created, but '$$LANG/untranslated.po' was not empty."; \
+				echo "This might be due to an API error or network issue."; \
+				echo "Please check the output above for any error messages from the AI translation script."; \
+				echo "You can try running the translation for this language again with: make ai-translate LANG=$$LANG"; \
+				exit 1; \
+			fi; \
+		fi; \
+	done
+
 import-translation:
 	@for po_file in $(PO_FILES); do \
 		dir=$$(dirname $$po_file); \
-		$(MSGCAT_BIN) --use-first $$po_file $$dir/updated_translated.po -o updated.po; \
-		mv updated.po $$po_file; \
+		if [ -f "$$dir/updated_translated.po" ]; then \
+			$(MSGCAT_BIN) --use-first $$po_file $$dir/updated_translated.po -o updated.po; \
+			mv updated.po $$po_file; \
+		fi; \
 	done
 
 check:
@@ -70,13 +90,22 @@ clean:
 
 ai-translate:
 	@set -e; \
-	TOTAL=$$(echo $(LANGS) | wc -w); \
-	COUNT=0; \
-	for LANG in $(LANGS); do \
-		COUNT=$$((COUNT+1)); \
-		echo "Translating language $$COUNT of $$TOTAL ($$LANG)..."; \
-		./AI_TRANSLATE.sh $$LANG && echo "... wait sometime due to API's limited" && sleep 20; \
-	done
+	if [ -n "$(LANG)" ]; then \
+		echo "Translating language $(LANG)..."; \
+		./AI_TRANSLATE.sh $(LANG); \
+	else \
+		TO_TRANSLATE=$$(for lang in $(LANGS); do if [ -s "$$lang/untranslated.po" ]; then echo $$lang; fi; done); \
+		TOTAL=$$(echo $$TO_TRANSLATE | wc -w); \
+		COUNT=0; \
+		for LANG in $$TO_TRANSLATE; do \
+			COUNT=$$((COUNT+1)); \
+			echo "Translating language $$COUNT of $$TOTAL ($$LANG)..."; \
+			./AI_TRANSLATE.sh $$LANG && echo "... waiting to avoid API rate limits" && sleep 20; \
+		done; \
+		if [ -z "$$TO_TRANSLATE" ]; then \
+			echo "All languages are up to date. Nothing to translate."; \
+		fi; \
+	fi
 
 template:
 	mkdir -p $(TEMPLATE_DIR)
