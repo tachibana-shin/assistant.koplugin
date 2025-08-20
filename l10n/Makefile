@@ -100,7 +100,16 @@ ai-translate:
 		for LANG in $$TO_TRANSLATE; do \
 			COUNT=$$((COUNT+1)); \
 			echo "Translating language $$COUNT of $$TOTAL ($$LANG)..."; \
-			./AI_TRANSLATE.sh $$LANG && echo "... waiting to avoid API rate limits" && sleep 20; \
+			./AI_TRANSLATE.sh $$LANG && { \
+				FILE_SIZE=$$(wc -c < "$$LANG/untranslated.po"); \
+				if [ $$FILE_SIZE -gt 5120 ]; then \
+					echo "... waiting 30s to avoid API rate limits (large file)"; \
+					sleep 30; \
+				else \
+					echo "... waiting 6s to avoid API rate limits"; \
+					sleep 6; \
+				fi; \
+			}; \
 		done; \
 		if [ -z "$$TO_TRANSLATE" ]; then \
 			echo "All languages are up to date. Nothing to translate."; \
