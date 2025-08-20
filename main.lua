@@ -89,7 +89,7 @@ end
 
 function Assistant:addToMainMenu(menu_items)
     menu_items.assistant_provider_switch = {
-        text = _("Assistant Settings"),
+        text = _("AI Assistant Settings"),
         sorting_hint = "more_tools",
         callback = function ()
           self:showSettings()

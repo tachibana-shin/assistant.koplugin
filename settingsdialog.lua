@@ -194,7 +194,7 @@ local function FontSizeSetting(assistant)
 end
 
 local SettingsDialog = InputDialog:extend{
-    title = _("Assistant Settings"),
+    title = _("AI Assistant Settings"),
 
     -- inited variables
     assistant = nil, -- reference to the main assistant object
