@@ -222,10 +222,11 @@ function SettingsDialog:init()
         face = Font:getFace("xx_smallinfofont"),
     }
 
+    -- main dialog widget layout table
     self.vgroup = VerticalGroup:new{
         align = "left",
-        self.title_bar,
-        CenterContainer:new{
+        self.title_bar,         -- -- Title Bar
+        CenterContainer:new{    -- -- Description text for provider radio
             dimen = Geom:new{
                 w = self.width,
                 h = radio_desc:getLineHeight() + Size.padding.tiny
@@ -235,14 +236,14 @@ function SettingsDialog:init()
                 radio_desc,
             },
         },
-        CenterContainer:new{
+        CenterContainer:new{    -- -- Provider radio buttons
             dimen = Geom:new{
                 w = self.width,
                 h = self.radio_button_table:getSize().h,
             },
             self.radio_button_table,
         },
-        CenterContainer:new{
+        CenterContainer:new{    -- -- Seperating line
             dimen = Geom:new{
                 w = self.width,
                 h = Size.padding.large,
@@ -255,15 +256,15 @@ function SettingsDialog:init()
                 }
             },
         },
-        CenterContainer:new{
+        CenterContainer:new{    -- -- Features Check buttons
             dimen = Geom:new{
                 w = self.width,
                 h = self.check_button_table:getSize().h,
             },
             self.check_button_table,
         },
-        vertical_span,
-        CenterContainer:new{
+        vertical_span,          -- -- Seperating space
+        CenterContainer:new{    -- -- Button at the bottom
             dimen = Geom:new{
                 w = self.title_bar:getSize().w,
                 h = self.button_table:getSize().h,
