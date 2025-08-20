@@ -362,7 +362,7 @@ function SettingsDialog:init()
 
     local radio_desc = TextBoxWidget:new{
         width = self.width - 2 * Size.padding.large,
-        text = _("Select the AI Model provider:"),
+        text = _("AI Model provider:"),
         face = Font:getFace("xx_smallinfofont"),
     }
 
