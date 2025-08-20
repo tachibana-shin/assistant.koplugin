@@ -8,6 +8,8 @@ local CenterContainer = require("ui/widget/container/centercontainer")
 local CheckButton = require("ui/widget/checkbutton")
 local FrameContainer = require("ui/widget/container/framecontainer")
 local Geom = require("ui/geometry")
+local HorizontalGroup = require("ui/widget/horizontalgroup")
+local HorizontalSpan = require("ui/widget/horizontalspan")
 local InfoMessage = require("ui/widget/infomessage")
 local Font = require("ui/font")
 local InputDialog = require("ui/widget/inputdialog")
@@ -15,6 +17,7 @@ local ButtonDialog = require("ui/widget/buttondialog")
 local LineWidget = require("ui/widget/linewidget")
 local MovableContainer = require("ui/widget/container/movablecontainer")
 local RadioButtonTable = require("ui/widget/radiobuttontable")
+local ButtonTable = require("ui/widget/buttontable")
 local TextBoxWidget = require("ui/widget/textboxwidget")
 local Size = require("ui/size")
 local UIManager = require("ui/uimanager")
@@ -125,7 +128,6 @@ function SettingsDialog:init()
 
     -- init radio buttons for selecting AI Model provider
     self.radio_buttons = {} -- init radio buttons table
-    self.description = _("Select the AI Model provider.")
 
     local columns = FrontendUtil.tableSize(self.CONFIGURATION.provider_settings) > 4 and 2 or 1 -- 2 columns if more than 4 providers, otherwise 1 column
     local buttonrow = {}
@@ -171,13 +173,53 @@ function SettingsDialog:init()
     self.layout = {self.layout[#self.layout]} -- keep bottom buttons
     self:mergeLayoutInVertical(self.radio_button_table, #self.layout) -- before bottom buttons
 
+    self.check_button_table = VerticalGroup:new{
+        align = "left",
+        HorizontalGroup:new{
+            HorizontalSpan:new{ width = Size.padding.tiny },
+            TextBoxWidget:new{
+                text = _("AI Assistant Features:"),
+                face = Font:getFace("xx_smallinfofont"),
+                width = self.width - 2 * Size.padding.large,
+            }
+        }
+    }
+    for i, btn in ipairs(self.check_button_init_list) do
+        table.insert(self.check_button_table, HorizontalGroup:new{
+            HorizontalSpan:new{ width = Screen:scaleBySize(15), },
+            xCheckButton:new{
+                text = btn.text,
+                checked = btn.checked,
+                xcallback = btn.callback,
+                face = Font:getFace("xx_smallinfofont"),
+                parent = self,
+            }
+        })
+    end
+
     local vertical_span = VerticalSpan:new{
         width = Size.padding.large,
     }
+
+    local radio_desc = TextBoxWidget:new{
+        width = self.width - 2 * Size.padding.large,
+        text = _("Select the AI Model provider:"),
+        face = Font:getFace("xx_smallinfofont"),
+    }
+
     self.vgroup = VerticalGroup:new{
         align = "left",
         self.title_bar,
-        vertical_span,
+        CenterContainer:new{
+            dimen = Geom:new{
+                w = self.width,
+                h = radio_desc:getLineHeight() + Size.padding.tiny
+            },
+            HorizontalGroup:new{
+                HorizontalSpan:new{ width = Size.padding.tiny },
+                radio_desc,
+            },
+        },
         CenterContainer:new{
             dimen = Geom:new{
                 w = self.width,
@@ -198,6 +240,13 @@ function SettingsDialog:init()
                 }
             },
         },
+        CenterContainer:new{
+            dimen = Geom:new{
+                w = self.width,
+                h = self.check_button_table:getSize().h,
+            },
+            self.check_button_table,
+        },
         vertical_span,
         CenterContainer:new{
             dimen = Geom:new{
@@ -207,16 +256,6 @@ function SettingsDialog:init()
             self.button_table,
         }
     }
-
-    for _, btn in ipairs(self.check_button_init_list) do
-        self:addWidget(xCheckButton:new{
-            text = btn.text,
-            face = Font:getFace("cfont", 18),
-            checked = btn.checked,
-            xcallback = btn.callback,
-            parent = self,
-        })
-    end
 
     self.dialog_frame = FrameContainer:new{
         radius = Size.radius.window,
