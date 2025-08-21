@@ -11,13 +11,12 @@ AUTH_HEADER="Authorization: Bearer ${API_KEY}"
 PROMPT_TEMPLATE="Translate the following gettext .po file content to __YOUR_LANGUAGE__. \
 Preserve the .po file structure, including msgid, msgstr, and other metadata. \
 Ensure accurate and context-aware translation.  \
-The commented text in the first lines are descriptive text for the file, update it as necessary.
+The commented text in the first lines are descriptive text for the file, update it as necessary. \
 The message will display on UI, keep the translation clean and short and easy understanding. \
 The first message is the metadata for the PO file. Make the necessary updates to the metadata. \
-The project is named \`assistant.koplugin\`. Fill the Project-Id-Version field. \
 The time now is `date`, fill the PO-Revision-Date field. \
-Fill in the \`Language\` with current translating language: __YOUR_LANGUAGE__ and the language code. \
-Fill in the \`Language-Team\` and \`Last-Translator\` with your model name and versions. \
+Fill the \`Language\` field with the translating language: __YOUR_LANGUAGE__ and the language code. \
+Fill the \`Language-Team\` and \`Last-Translator\` field with your identificated model name and versions. \
 Do not modify other file structure. \
 Only output the translated file content, do not use markdown format. \
 "
