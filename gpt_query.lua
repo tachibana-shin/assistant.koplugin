@@ -191,12 +191,17 @@ function Querier:query(message_history, title)
         streamDialog.title_bar:init()
 
         UIManager:show(streamDialog)
-        local content, err = self:processStream(res, function (content)
+        local ok, content, err = pcall(self.processStream, self, res, function (content)
             UIManager:nextTick(function ()
                 -- schedule the text update in the UIManager task queue
                 streamDialog:addTextToInput(content)
             end)
         end)
+        if not ok then
+            logger.warn("Error processing stream: " .. tostring(content))
+            err = content -- content contains the error message
+        end
+
         UIManager:close(streamDialog)
 
         if self.stream_interrupted then
