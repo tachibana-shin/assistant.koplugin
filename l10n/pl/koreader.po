@@ -7,20 +7,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-20 17:13+0800\n"
-"PO-Revision-Date: 2025-08-14 12:09+0800\n"
-"Last-Translator: GPT-4.0 2025-08-14\n"
-"Language-Team: GPT-4.0 <gpt@openai.com>\n"
+"POT-Creation-Date: 2025-08-21 14:29+0800\n"
+"PO-Revision-Date: 2025-08-21 14:33+0800\n"
+"Last-Translator: ChatGPT 4.0\n"
+"Language-Team: ChatGPT 4.0 <gpt@openai.com>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:635
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "Ustawienia Asystenta AI"
+
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "Język AI: %1"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Rozmiar czcionki: %1"
+
+#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
 msgstr "Zadaj kolejne pytanie"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "Zamknij"
 
@@ -52,28 +64,28 @@ msgstr "Nie pozostał tekst do notatki"
 msgid "Note added successfully"
 msgstr "Notatka dodana pomyślnie"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Anuluj"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:270
+#: ../chatgptviewer.lua:585 ../dialogs.lua:271
 msgid "Ask"
 msgstr "Zapytaj"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:276
+#: ../chatgptviewer.lua:591 ../dialogs.lua:277
 msgid "Enter a question before proceeding."
 msgstr "Wpisz pytanie, aby kontynuować."
 
-#: ../chatgptviewer.lua:637
+#: ../chatgptviewer.lua:641
 msgid "Type your question here"
 msgstr "Wpisz pytanie tutaj"
 
-#: ../chatgptviewer.lua:788
+#: ../chatgptviewer.lua:792
 msgid "Word copied to clipboard."
 msgstr "Słowo skopiowano do schowka."
 
-#: ../chatgptviewer.lua:789
+#: ../chatgptviewer.lua:793
 msgid "Selection copied to clipboard."
 msgstr "Zaznaczenie skopiowano do schowka."
 
@@ -89,23 +101,23 @@ msgstr "(Brak odpowiedzi)"
 msgid "Highlighted text:"
 msgstr "Podświetlony tekst:"
 
-#: ../dialogs.lua:305
+#: ../dialogs.lua:306
 msgid "Book Analysis"
 msgstr "Analiza książki"
 
-#: ../dialogs.lua:342
+#: ../dialogs.lua:343
 msgid "Add this button to the Highlight Menu?"
 msgstr "Dodać ten przycisk do menu podświetlania?"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:344
 msgid "Add"
 msgstr "Dodaj"
 
-#: ../dialogs.lua:369
+#: ../dialogs.lua:371
 msgid "Ask a question about the highlighted text"
 msgstr "Zadaj pytanie o podświetlony tekst"
 
-#: ../dialogs.lua:370
+#: ../dialogs.lua:372
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -114,19 +126,19 @@ msgstr ""
 "Zadaj pytanie o tę książkę:\n"
 "%s autorstwa %s"
 
-#: ../dialogs.lua:373
+#: ../dialogs.lua:375
 msgid "Type your question here..."
 msgstr "Wpisz pytanie…"
 
-#: ../dialogs.lua:374
+#: ../dialogs.lua:376
 msgid "Ask anything about this book..."
 msgstr "Zadaj cokolwiek o tej książce…"
 
-#: ../dialogs.lua:377 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Asystent AI"
 
-#: ../dialogs.lua:430
+#: ../dialogs.lua:435
 msgid "Error: No response received"
 msgstr "Błąd: brak odpowiedzi"
 
@@ -188,15 +200,15 @@ msgstr "☁ %s/%s"
 msgid "⏹ Stop"
 msgstr "⏹ Stop"
 
-#: ../gpt_query.lua:176
+#: ../gpt_query.lua:185
 msgid "Response interrupted."
 msgstr "Odpowiedź przerwana."
 
-#: ../gpt_query.lua:187
+#: ../gpt_query.lua:198
 msgid "No response received."
 msgstr "Brak odpowiedzi."
 
-#: ../gpt_query.lua:203
+#: ../gpt_query.lua:211
 msgid "Failed to start subprocess for request"
 msgstr "Nie udało się uruchomić podprocesu dla żądania"
 
@@ -207,10 +219,6 @@ msgstr "Zadaj pytanie AI"
 #: ../main.lua:83
 msgid "AI Recaps"
 msgstr "Podsumowania AI"
-
-#: ../main.lua:92 ../settingsdialog.lua:197
-msgid "Assistant Settings"
-msgstr "Ustawienia asystenta"
 
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
@@ -311,34 +319,37 @@ msgid ""
 msgstr ""
 "Ten prompt działa jak słownik dla podświetlonego tekstu, słowa lub frazy."
 
-#: ../prompts.lua:25
+#: ../prompts.lua:24
+msgid "Vocabulary"
+msgstr "Słownictwo"
+
+#: ../prompts.lua:26
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr ""
+"Ten prompt analizuje słownictwo podświetlonego tekstu, wskazując trudne "
+"słowa i podając definicje, synonimy i przykłady użycia."
+
+#: ../prompts.lua:42
+msgid "Grammar"
+msgstr "Gramatyka"
+
+#: ../prompts.lua:44
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr ""
+"Ten prompt analizuje gramatykę podświetlonego tekstu, szczegółowo opisując "
+"jego strukturę i ewentualne błędy."
+
+#: ../prompts.lua:50
 msgid "Translate"
 msgstr "Przetłumacz"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:51
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Ten prompt tłumaczy podświetlony tekst na inny język."
-
-#: ../prompts.lua:48
-msgid "Simplify"
-msgstr "Uprość"
-
-#: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Ten prompt upraszcza podświetlony tekst, ułatwiając jego zrozumienie."
-
-#: ../prompts.lua:60
-msgid "Explain"
-msgstr "Wyjaśnij"
-
-#: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr ""
-"Ten prompt szczegółowo wyjaśnia podświetlony tekst, zapewniając jasność i "
-"zrozumienie."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -353,22 +364,19 @@ msgstr ""
 "najważniejsze szczegóły."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "Kontekst historyczny"
+msgid "Simplify"
+msgstr "Uprość"
 
 #: ../prompts.lua:86
 msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
-msgstr ""
-"Ten prompt dostarcza szczegółowego kontekstu historycznego dla "
-"podświetlonego tekstu, wyjaśniając jego znaczenie i tło."
+"This prompt simplifies the highlighted text to make it easier to understand."
+msgstr "Ten prompt upraszcza podświetlony tekst, ułatwiając jego zrozumienie."
 
-#: ../prompts.lua:90
+#: ../prompts.lua:96
 msgid "Key Points"
 msgstr "Kluczowe punkty"
 
-#: ../prompts.lua:92
+#: ../prompts.lua:98
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
@@ -376,11 +384,11 @@ msgstr ""
 "Ten prompt wydobywa i wypisuje kluczowe punkty z podświetlonego tekstu, "
 "zapewniając klarowność i porządek."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:102
 msgid "ELI5"
 msgstr "Wytłumacz jak 5-latkowi"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:104
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
@@ -388,29 +396,29 @@ msgstr ""
 "Ten prompt wyjaśnia podświetlony tekst tak, jakby rozmawiał z pięciolatkiem, "
 "upraszczając złożone pojęcia."
 
-#: ../prompts.lua:102
-msgid "Grammar"
-msgstr "Gramatyka"
+#: ../prompts.lua:108
+msgid "Explain"
+msgstr "Wyjaśnij"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:110
 msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
 msgstr ""
-"Ten prompt analizuje gramatykę podświetlonego tekstu, szczegółowo opisując "
-"jego strukturę i ewentualne błędy."
+"Ten prompt szczegółowo wyjaśnia podświetlony tekst, zapewniając jasność i "
+"zrozumienie."
 
-#: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "Słownictwo"
+#: ../prompts.lua:121
+msgid "Historical Context"
+msgstr "Kontekst historyczny"
 
-#: ../prompts.lua:111
+#: ../prompts.lua:123
 msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
 msgstr ""
-"Ten prompt analizuje słownictwo podświetlonego tekstu, wskazując trudne "
-"słowa i podając definicje, synonimy i przykłady użycia."
+"Ten prompt dostarcza szczegółowego kontekstu historycznego dla "
+"podświetlonego tekstu, wyjaśniając jego znaczenie i tło."
 
 #: ../prompts.lua:129
 msgid ""
@@ -448,61 +456,53 @@ msgstr "Wyczyść"
 msgid "Save"
 msgstr "Zapisz"
 
-#: ../settingsdialog.lua:150
+#: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "Język pisany od prawej do lewej"
 
-#: ../settingsdialog.lua:170
+#: ../settingsdialog.lua:173
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "Pozostaw puste pola, aby użyć języka interfejsu: %1"
 
-#: ../settingsdialog.lua:183
+#: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Rozmiar czcionki odpowiedzi"
 
-#: ../settingsdialog.lua:221
+#: ../settingsdialog.lua:226
 msgid "Always enable stream response"
 msgstr "Zawsze włącz strumień odpowiedzi"
 
-#: ../settingsdialog.lua:229
+#: ../settingsdialog.lua:234
 msgid "Use AI Assistant for 'Translate'"
 msgstr "Użyj AI do tłumaczenia"
 
-#: ../settingsdialog.lua:238
+#: ../settingsdialog.lua:243
 msgid "Show Dictionary(AI) in Dictionary Popup"
 msgstr "Pokaż Słownik(AI) w okienku słownika"
 
-#: ../settingsdialog.lua:246
+#: ../settingsdialog.lua:251
 msgid "Show Wikipedia(AI) in Dictionary Popup"
 msgstr "Pokaż Wikipedia(AI) w okienku słownika"
 
-#: ../settingsdialog.lua:254
+#: ../settingsdialog.lua:259
 msgid "Copy entered question to the clipboard"
 msgstr "Kopiuj wpisane pytanie do schowka"
 
-#: ../settingsdialog.lua:262
+#: ../settingsdialog.lua:267
 msgid "Enable AI Recap"
 msgstr "Włącz podsumowanie AI"
 
-#: ../settingsdialog.lua:269
+#: ../settingsdialog.lua:274
 msgid "AI Recap will be enabled the next time a book is opened."
 msgstr "Podsumowanie AI włączy się przy następnym otwarciu książki."
 
-#: ../settingsdialog.lua:338
+#: ../settingsdialog.lua:346
 msgid "AI Assistant Features:"
 msgstr "Funkcje asystenta AI:"
 
-#: ../settingsdialog.lua:365
+#: ../settingsdialog.lua:373
 msgid "AI Model provider:"
 msgstr "Dostawca modelu AI:"
-
-#: ../settingsdialog.lua:373
-msgid "AI Language"
-msgstr "Język AI"
-
-#: ../settingsdialog.lua:381
-msgid "Font Size"
-msgstr "Rozmiar czcionki"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."

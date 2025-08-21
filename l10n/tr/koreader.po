@@ -1,4 +1,4 @@
-# Türkçe Çeviri Dosyası
+# Turkish translation for assistant.koplugin
 # Copyright (C) 2025 YAZILIMIN TELİF HAKKI SAHİBİ
 # Bu dosya, PAKET paketiyle aynı lisans altında dağıtılmaktadır.
 # İLK YAZAR <EMAIL@ADDRESS>, 2025.
@@ -8,20 +8,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-20 17:13+0800\n"
-"PO-Revision-Date: 2025-08-14 11:45+0800\n"
-"Last-Translator: Kimi <kimi@anthropic.com>\n"
+"POT-Creation-Date: 2025-08-21 14:29+0800\n"
+"PO-Revision-Date: 2025-08-21 14:34+0800\n"
+"Last-Translator: ChatGPT 4.0 <chatgpt@openai.com>\n"
 "Language-Team: Türkçe <tr@li.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:635
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "AI Asistanı Ayarları"
+
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "AI Dili: %1"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Yazı Boyutu: %1"
+
+#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
 msgstr "Başka Soru Sor"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "Kapat"
 
@@ -53,28 +65,28 @@ msgstr "Eklenecek metin kalmadı"
 msgid "Note added successfully"
 msgstr "Not başarıyla eklendi"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "İptal"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:270
+#: ../chatgptviewer.lua:585 ../dialogs.lua:271
 msgid "Ask"
 msgstr "Sor"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:276
+#: ../chatgptviewer.lua:591 ../dialogs.lua:277
 msgid "Enter a question before proceeding."
 msgstr "Devam etmeden önce bir soru girin."
 
-#: ../chatgptviewer.lua:637
+#: ../chatgptviewer.lua:641
 msgid "Type your question here"
 msgstr "Sorunuzu buraya yazın"
 
-#: ../chatgptviewer.lua:788
+#: ../chatgptviewer.lua:792
 msgid "Word copied to clipboard."
 msgstr "Kelime kopyalandı."
 
-#: ../chatgptviewer.lua:789
+#: ../chatgptviewer.lua:793
 msgid "Selection copied to clipboard."
 msgstr "Seçim kopyalandı."
 
@@ -90,23 +102,23 @@ msgstr "(Yanıt yok)"
 msgid "Highlighted text:"
 msgstr "Vurgulanan metin:"
 
-#: ../dialogs.lua:305
+#: ../dialogs.lua:306
 msgid "Book Analysis"
 msgstr "Kitap Analizi"
 
-#: ../dialogs.lua:342
+#: ../dialogs.lua:343
 msgid "Add this button to the Highlight Menu?"
 msgstr "Bu düğmeyi Vurgulama Menüsüne eklensin mi?"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:344
 msgid "Add"
 msgstr "Ekle"
 
-#: ../dialogs.lua:369
+#: ../dialogs.lua:371
 msgid "Ask a question about the highlighted text"
 msgstr "Vurgulanan metin hakkında soru sor"
 
-#: ../dialogs.lua:370
+#: ../dialogs.lua:372
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -115,19 +127,19 @@ msgstr ""
 "Bu kitap hakkında soru sor:\n"
 "%s - %s"
 
-#: ../dialogs.lua:373
+#: ../dialogs.lua:375
 msgid "Type your question here..."
 msgstr "Sorunuzu buraya yazın..."
 
-#: ../dialogs.lua:374
+#: ../dialogs.lua:376
 msgid "Ask anything about this book..."
 msgstr "Bu kitap hakkında herhangi bir şey sor..."
 
-#: ../dialogs.lua:377 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Yapay Zeka Asistanı"
 
-#: ../dialogs.lua:430
+#: ../dialogs.lua:435
 msgid "Error: No response received"
 msgstr "Hata: Yanıt alınamadı"
 
@@ -191,15 +203,15 @@ msgstr "☁ %s/%s"
 msgid "⏹ Stop"
 msgstr "⏹ Durdur"
 
-#: ../gpt_query.lua:176
+#: ../gpt_query.lua:185
 msgid "Response interrupted."
 msgstr "Yanıt kesildi."
 
-#: ../gpt_query.lua:187
+#: ../gpt_query.lua:198
 msgid "No response received."
 msgstr "Yanıt alınmadı."
 
-#: ../gpt_query.lua:203
+#: ../gpt_query.lua:211
 msgid "Failed to start subprocess for request"
 msgstr "İstek için alt süreç başlatılamadı"
 
@@ -210,10 +222,6 @@ msgstr "Yapay Zekaya soru sor"
 #: ../main.lua:83
 msgid "AI Recaps"
 msgstr "Yapay Zeka Özetleri"
-
-#: ../main.lua:92 ../settingsdialog.lua:197
-msgid "Assistant Settings"
-msgstr "Asistan Ayarları"
 
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
@@ -316,36 +324,37 @@ msgstr ""
 "Bu komut, vurgulanan metin için bir sözlük gibi çalışır, bir kelimeye veya "
 "ifadeye."
 
-#: ../prompts.lua:25
+#: ../prompts.lua:24
+msgid "Vocabulary"
+msgstr "Kelime Dağarcığı"
+
+#: ../prompts.lua:26
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr ""
+"Bu komut, vurgulanan metnin kelime dağarcığını analiz eder, karmaşık "
+"kelimeleri tanımlar, tanımlar, eş anlamlılar ve kullanım örnekleri sağlar."
+
+#: ../prompts.lua:42
+msgid "Grammar"
+msgstr "Dil Bilgisi"
+
+#: ../prompts.lua:44
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr ""
+"Bu komut, vurgulanan metnin dil bilgisini analiz eder, yapısı ve dil bilgisi "
+"hataları hakkında ayrıntılı açıklama sağlar."
+
+#: ../prompts.lua:50
 msgid "Translate"
 msgstr "Çevir"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:51
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Bu komut, vurgulanan metni başka bir dile çevirir."
-
-#: ../prompts.lua:48
-msgid "Simplify"
-msgstr "Basitleştir"
-
-#: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr ""
-"Bu komut, vurgulanan metni daha kolay anlaşılır hale getirmek için "
-"basitleştirir."
-
-#: ../prompts.lua:60
-msgid "Explain"
-msgstr "Açıkla"
-
-#: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr ""
-"Bu komut, vurgulanan metni ayrıntılı olarak açıklar, netlik ve anlayış "
-"sağlar."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -360,22 +369,21 @@ msgstr ""
 "yakalar."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "Tarihsel Bağlam"
+msgid "Simplify"
+msgstr "Basitleştir"
 
 #: ../prompts.lua:86
 msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
+"This prompt simplifies the highlighted text to make it easier to understand."
 msgstr ""
-"Bu komut, vurgulanan metin için ayrıntılı tarihsel bağlam sağlar, önemini ve "
-"arka planını açıklar."
+"Bu komut, vurgulanan metni daha kolay anlaşılır hale getirmek için "
+"basitleştirir."
 
-#: ../prompts.lua:90
+#: ../prompts.lua:96
 msgid "Key Points"
 msgstr "Ana Noktalar"
 
-#: ../prompts.lua:92
+#: ../prompts.lua:98
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
@@ -383,11 +391,11 @@ msgstr ""
 "Bu komut, vurgulanan metinden ana noktaları çıkarır ve listeler, netlik ve "
 "düzen sağlar."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:102
 msgid "ELI5"
 msgstr "ELI5"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:104
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
@@ -395,29 +403,29 @@ msgstr ""
 "Bu komut, vurgulanan metni beş yaşındaki birine anlatır gibi açıklar, "
 "karmaşık kavramları kolay anlaşılır hale getirir."
 
-#: ../prompts.lua:102
-msgid "Grammar"
-msgstr "Dil Bilgisi"
+#: ../prompts.lua:108
+msgid "Explain"
+msgstr "Açıkla"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:110
 msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
 msgstr ""
-"Bu komut, vurgulanan metnin dil bilgisini analiz eder, yapısı ve dil bilgisi "
-"hataları hakkında ayrıntılı açıklama sağlar."
+"Bu komut, vurgulanan metni ayrıntılı olarak açıklar, netlik ve anlayış "
+"sağlar."
 
-#: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "Kelime Dağarcığı"
+#: ../prompts.lua:121
+msgid "Historical Context"
+msgstr "Tarihsel Bağlam"
 
-#: ../prompts.lua:111
+#: ../prompts.lua:123
 msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
 msgstr ""
-"Bu komut, vurgulanan metnin kelime dağarcığını analiz eder, karmaşık "
-"kelimeleri tanımlar, tanımlar, eş anlamlılar ve kullanım örnekleri sağlar."
+"Bu komut, vurgulanan metin için ayrıntılı tarihsel bağlam sağlar, önemini ve "
+"arka planını açıklar."
 
 #: ../prompts.lua:129
 msgid ""
@@ -455,61 +463,53 @@ msgstr "Temizle"
 msgid "Save"
 msgstr "Kaydet"
 
-#: ../settingsdialog.lua:150
+#: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "Sağdan sola yazılan dil"
 
-#: ../settingsdialog.lua:170
+#: ../settingsdialog.lua:173
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "Arayüz dilini kullanmak için bu alanları boş bırak: %1"
 
-#: ../settingsdialog.lua:183
+#: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Yanıt Yazı Boyutu"
 
-#: ../settingsdialog.lua:221
+#: ../settingsdialog.lua:226
 msgid "Always enable stream response"
 msgstr "Akış yanıtı her zaman etkin"
 
-#: ../settingsdialog.lua:229
+#: ../settingsdialog.lua:234
 msgid "Use AI Assistant for 'Translate'"
 msgstr "'Çevir' için Yapay Zeka Asistanı kullan"
 
-#: ../settingsdialog.lua:238
+#: ../settingsdialog.lua:243
 msgid "Show Dictionary(AI) in Dictionary Popup"
 msgstr "Sözlük(AI)’yi sözlük penceresinde göster"
 
-#: ../settingsdialog.lua:246
+#: ../settingsdialog.lua:251
 msgid "Show Wikipedia(AI) in Dictionary Popup"
 msgstr "Wikipedia(AI)’yi sözlük penceresinde göster"
 
-#: ../settingsdialog.lua:254
+#: ../settingsdialog.lua:259
 msgid "Copy entered question to the clipboard"
 msgstr "Sorulan soruyu panoya kopyala"
 
-#: ../settingsdialog.lua:262
+#: ../settingsdialog.lua:267
 msgid "Enable AI Recap"
 msgstr "AI Özetini etkinleştir"
 
-#: ../settingsdialog.lua:269
+#: ../settingsdialog.lua:274
 msgid "AI Recap will be enabled the next time a book is opened."
 msgstr "AI Özeti, bir sonraki kitap açıldığında etkinleşecek."
 
-#: ../settingsdialog.lua:338
+#: ../settingsdialog.lua:346
 msgid "AI Assistant Features:"
 msgstr "Yapay Zeka Asistanı Özellikleri:"
 
-#: ../settingsdialog.lua:365
+#: ../settingsdialog.lua:373
 msgid "AI Model provider:"
 msgstr "Yapay Zeka Modeli Sağlayıcısı:"
-
-#: ../settingsdialog.lua:373
-msgid "AI Language"
-msgstr "Yapay Zeka Dili"
-
-#: ../settingsdialog.lua:381
-msgid "Font Size"
-msgstr "Yazı Tipi Boyutu"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-20 17:13+0800\n"
-"PO-Revision-Date: 2025-08-14 11:08+0800\n"
+"POT-Creation-Date: 2025-08-21 14:29+0800\n"
+"PO-Revision-Date: 2025-08-21 14:31+0800\n"
 "Last-Translator: ChatGPT-4.0 <chatgpt@example.com>\n"
 "Language-Team: Suomi <fi@li.org>\n"
 "Language: Suomi (fi)\n"
@@ -17,11 +17,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:635
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "AI-avustajan asetukset"
+
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "AI-kieli: %1"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Fonttikoko: %1"
+
+#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
 msgstr "Kysy toinen kysymys"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "Sulje"
 
@@ -53,28 +65,28 @@ msgstr "Ei enää tekstiä lisättäväksi huomautukseksi"
 msgid "Note added successfully"
 msgstr "Huomautus lisätty onnistuneesti"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:270
+#: ../chatgptviewer.lua:585 ../dialogs.lua:271
 msgid "Ask"
 msgstr "Kysy"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:276
+#: ../chatgptviewer.lua:591 ../dialogs.lua:277
 msgid "Enter a question before proceeding."
 msgstr "Kirjoita kysymys ennen jatkamista."
 
-#: ../chatgptviewer.lua:637
+#: ../chatgptviewer.lua:641
 msgid "Type your question here"
 msgstr "Kirjoita kysymyksesi tähän"
 
-#: ../chatgptviewer.lua:788
+#: ../chatgptviewer.lua:792
 msgid "Word copied to clipboard."
 msgstr "Sana kopioitiin leikepöydälle."
 
-#: ../chatgptviewer.lua:789
+#: ../chatgptviewer.lua:793
 msgid "Selection copied to clipboard."
 msgstr "Valinta kopioitiin leikepöydälle."
 
@@ -90,23 +102,23 @@ msgstr "(Ei vastausta)"
 msgid "Highlighted text:"
 msgstr "Korostettu teksti:"
 
-#: ../dialogs.lua:305
+#: ../dialogs.lua:306
 msgid "Book Analysis"
 msgstr "Kirjan analyysi"
 
-#: ../dialogs.lua:342
+#: ../dialogs.lua:343
 msgid "Add this button to the Highlight Menu?"
 msgstr "Lisätäänkö tämä painike korostusvalikkoon?"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:344
 msgid "Add"
 msgstr "Lisää"
 
-#: ../dialogs.lua:369
+#: ../dialogs.lua:371
 msgid "Ask a question about the highlighted text"
 msgstr "Kysy kysymys korostetusta tekstiä koskien"
 
-#: ../dialogs.lua:370
+#: ../dialogs.lua:372
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -115,19 +127,19 @@ msgstr ""
 "Kysy kysymys tästä kirjasta:\n"
 "%s kirjailija: %s"
 
-#: ../dialogs.lua:373
+#: ../dialogs.lua:375
 msgid "Type your question here..."
 msgstr "Kirjoita kysymyksesi tähän..."
 
-#: ../dialogs.lua:374
+#: ../dialogs.lua:376
 msgid "Ask anything about this book..."
 msgstr "Kysy mitä tahansa tästä kirjasta..."
 
-#: ../dialogs.lua:377 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI-avustaja"
 
-#: ../dialogs.lua:430
+#: ../dialogs.lua:435
 msgid "Error: No response received"
 msgstr "Virhe: vastausta ei vastaanotettu"
 
@@ -190,15 +202,15 @@ msgstr "☁ %s/%s"
 msgid "⏹ Stop"
 msgstr "⏹ Pysäytä"
 
-#: ../gpt_query.lua:176
+#: ../gpt_query.lua:185
 msgid "Response interrupted."
 msgstr "Vastaus keskeytetty."
 
-#: ../gpt_query.lua:187
+#: ../gpt_query.lua:198
 msgid "No response received."
 msgstr "Ei vastausta."
 
-#: ../gpt_query.lua:203
+#: ../gpt_query.lua:211
 msgid "Failed to start subprocess for request"
 msgstr "Aliprosessia ei saatu käyntiin"
 
@@ -209,10 +221,6 @@ msgstr "Kysy AI:ltä kysymys"
 #: ../main.lua:83
 msgid "AI Recaps"
 msgstr "AI-kertaukset"
-
-#: ../main.lua:92 ../settingsdialog.lua:197
-msgid "Assistant Settings"
-msgstr "Avustajan asetukset"
 
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
@@ -313,35 +321,38 @@ msgid ""
 msgstr ""
 "Tämä prompt toimii sanakirjana korostetusta tekstistä, sanalle tai fraasille."
 
-#: ../prompts.lua:25
+#: ../prompts.lua:24
+msgid "Vocabulary"
+msgstr "Sanasto"
+
+#: ../prompts.lua:26
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr ""
+"Tämä prompt analysoi korostetun tekstin sanastoa, tunnistaa monimutkaiset "
+"sanat ja tarjoaa määritelmät, synonyymit ja käyttöesimerkit."
+
+#: ../prompts.lua:42
+msgid "Grammar"
+msgstr "Kielioppi"
+
+#: ../prompts.lua:44
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr ""
+"Tämä prompt analysoi korostetun tekstin kielioppia, tarjoaa "
+"yksityiskohtaisen selityksen rakenteesta ja mahdollisista kielioppi-"
+"virheistä."
+
+#: ../prompts.lua:50
 msgid "Translate"
 msgstr "Käännä"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:51
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Tämä prompt kääntää korostetun tekstin toiselle kielelle."
-
-#: ../prompts.lua:48
-msgid "Simplify"
-msgstr "Yksinkertaista"
-
-#: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr ""
-"Tämä prompt yksinkertaistaa korostetun tekstin ymmärtämisen helpottamiseksi."
-
-#: ../prompts.lua:60
-msgid "Explain"
-msgstr "Selitä"
-
-#: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr ""
-"Tämä prompt selittää korostetun tekstin yksityiskohtaisesti, varmistaa "
-"selkeyden ja ymmärryksen."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -356,22 +367,20 @@ msgstr ""
 "tiedot."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "Historiallinen konteksti"
+msgid "Simplify"
+msgstr "Yksinkertaista"
 
 #: ../prompts.lua:86
 msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
+"This prompt simplifies the highlighted text to make it easier to understand."
 msgstr ""
-"Tämä prompt antaa yksityiskohtaisen historiallisten kontekstit korostetulle "
-"tekstille, selittää sen merkityksen ja taustan."
+"Tämä prompt yksinkertaistaa korostetun tekstin ymmärtämisen helpottamiseksi."
 
-#: ../prompts.lua:90
+#: ../prompts.lua:96
 msgid "Key Points"
 msgstr "Avainkohdat"
 
-#: ../prompts.lua:92
+#: ../prompts.lua:98
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
@@ -379,11 +388,11 @@ msgstr ""
 "Tämä prompt poimii ja listaa korostetun tekstin avainkohdat, varmistaen "
 "selkeyden ja järjestyksen."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:102
 msgid "ELI5"
 msgstr "ELI5"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:104
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
@@ -391,30 +400,29 @@ msgstr ""
 "Tämä prompt selittää korostetun tekstin viiden vuoden ikäiselle, "
 "yksinkertaistaa monimutkaiset käsitteet helposti ymmärrettäviksi."
 
-#: ../prompts.lua:102
-msgid "Grammar"
-msgstr "Kielioppi"
+#: ../prompts.lua:108
+msgid "Explain"
+msgstr "Selitä"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:110
 msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
 msgstr ""
-"Tämä prompt analysoi korostetun tekstin kielioppia, tarjoaa "
-"yksityiskohtaisen selityksen rakenteesta ja mahdollisista kielioppi-"
-"virheistä."
+"Tämä prompt selittää korostetun tekstin yksityiskohtaisesti, varmistaa "
+"selkeyden ja ymmärryksen."
 
-#: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "Sanasto"
+#: ../prompts.lua:121
+msgid "Historical Context"
+msgstr "Historiallinen konteksti"
 
-#: ../prompts.lua:111
+#: ../prompts.lua:123
 msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
 msgstr ""
-"Tämä prompt analysoi korostetun tekstin sanastoa, tunnistaa monimutkaiset "
-"sanat ja tarjoaa määritelmät, synonyymit ja käyttöesimerkit."
+"Tämä prompt antaa yksityiskohtaisen historiallisten kontekstit korostetulle "
+"tekstille, selittää sen merkityksen ja taustan."
 
 #: ../prompts.lua:129
 msgid ""
@@ -452,61 +460,53 @@ msgstr "Tyhjennä"
 msgid "Save"
 msgstr "Tallenna"
 
-#: ../settingsdialog.lua:150
+#: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "Oikealta vasemmalle kirjoitettava kieli"
 
-#: ../settingsdialog.lua:170
+#: ../settingsdialog.lua:173
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "Jätä nämä kentät tyhjiksi käyttääksesi käyttöliittymän kieltä: %1"
 
-#: ../settingsdialog.lua:183
+#: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Vastauksen fonttikoko"
 
-#: ../settingsdialog.lua:221
+#: ../settingsdialog.lua:226
 msgid "Always enable stream response"
 msgstr "Käytä aina suoratoistovastausta"
 
-#: ../settingsdialog.lua:229
+#: ../settingsdialog.lua:234
 msgid "Use AI Assistant for 'Translate'"
 msgstr "Käytä AI-avustajaa 'Käännä' -toiminnolle"
 
-#: ../settingsdialog.lua:238
+#: ../settingsdialog.lua:243
 msgid "Show Dictionary(AI) in Dictionary Popup"
 msgstr "Näytä sanakirja (tekoäly) ponnahdusikkunassa"
 
-#: ../settingsdialog.lua:246
+#: ../settingsdialog.lua:251
 msgid "Show Wikipedia(AI) in Dictionary Popup"
 msgstr "Näytä Wikipedia (tekoäly) ponnahdusikkunassa"
 
-#: ../settingsdialog.lua:254
+#: ../settingsdialog.lua:259
 msgid "Copy entered question to the clipboard"
 msgstr "Kopioi kysymys leikepöydälle"
 
-#: ../settingsdialog.lua:262
+#: ../settingsdialog.lua:267
 msgid "Enable AI Recap"
 msgstr "Ota tekoäly-yhteenveto käyttöön"
 
-#: ../settingsdialog.lua:269
+#: ../settingsdialog.lua:274
 msgid "AI Recap will be enabled the next time a book is opened."
 msgstr "Tekoäly-yhteenveto aktivoituu seuraavan kirjan avaamisen yhteydessä."
 
-#: ../settingsdialog.lua:338
+#: ../settingsdialog.lua:346
 msgid "AI Assistant Features:"
 msgstr "AI‑avustajan ominaisuudet:"
 
-#: ../settingsdialog.lua:365
+#: ../settingsdialog.lua:373
 msgid "AI Model provider:"
 msgstr "AI‑mallin tarjoaja:"
-
-#: ../settingsdialog.lua:373
-msgid "AI Language"
-msgstr "AI‑kieli"
-
-#: ../settingsdialog.lua:381
-msgid "Font Size"
-msgstr "Fonttikoko"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."

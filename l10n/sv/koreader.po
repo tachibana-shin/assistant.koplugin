@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-20 17:13+0800\n"
-"PO-Revision-Date: 2025-08-14 12:03+0800\n"
+"POT-Creation-Date: 2025-08-21 14:29+0800\n"
+"PO-Revision-Date: 2025-08-21 14:34+0800\n"
 "Last-Translator: GPT-4o <gpt-4o@openai.com>\n"
 "Language-Team: Svenska <LL@li.org>\n"
 "Language: sv\n"
@@ -16,11 +16,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:635
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "AI-assistentinställningar"
+
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "AI-språk: %1"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Teckenstorlek: %1"
+
+#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
 msgstr "Ställ en ny fråga"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "Stäng"
 
@@ -52,28 +64,28 @@ msgstr "Ingen text kvar att lägga till som anteckning"
 msgid "Note added successfully"
 msgstr "Anteckning tillagd"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:270
+#: ../chatgptviewer.lua:585 ../dialogs.lua:271
 msgid "Ask"
 msgstr "Fråga"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:276
+#: ../chatgptviewer.lua:591 ../dialogs.lua:277
 msgid "Enter a question before proceeding."
 msgstr "Skriv en fråga först."
 
-#: ../chatgptviewer.lua:637
+#: ../chatgptviewer.lua:641
 msgid "Type your question here"
 msgstr "Skriv din fråga här"
 
-#: ../chatgptviewer.lua:788
+#: ../chatgptviewer.lua:792
 msgid "Word copied to clipboard."
 msgstr "Ord kopierat till urklipp."
 
-#: ../chatgptviewer.lua:789
+#: ../chatgptviewer.lua:793
 msgid "Selection copied to clipboard."
 msgstr "Markering kopierad till urklipp."
 
@@ -89,23 +101,23 @@ msgstr "(Inget svar)"
 msgid "Highlighted text:"
 msgstr "Markerad text:"
 
-#: ../dialogs.lua:305
+#: ../dialogs.lua:306
 msgid "Book Analysis"
 msgstr "Bokanalys"
 
-#: ../dialogs.lua:342
+#: ../dialogs.lua:343
 msgid "Add this button to the Highlight Menu?"
 msgstr "Lägg till den här knappen i markeringsmenyn?"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:344
 msgid "Add"
 msgstr "Lägg till"
 
-#: ../dialogs.lua:369
+#: ../dialogs.lua:371
 msgid "Ask a question about the highlighted text"
 msgstr "Ställ en fråga om den markerade texten"
 
-#: ../dialogs.lua:370
+#: ../dialogs.lua:372
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -114,19 +126,19 @@ msgstr ""
 "Ställ en fråga om den här boken:\n"
 "%s av %s"
 
-#: ../dialogs.lua:373
+#: ../dialogs.lua:375
 msgid "Type your question here..."
 msgstr "Skriv din fråga här..."
 
-#: ../dialogs.lua:374
+#: ../dialogs.lua:376
 msgid "Ask anything about this book..."
 msgstr "Fråga vad som helst om boken..."
 
-#: ../dialogs.lua:377 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI-assistent"
 
-#: ../dialogs.lua:430
+#: ../dialogs.lua:435
 msgid "Error: No response received"
 msgstr "Fel: Inget svar mottaget"
 
@@ -188,15 +200,15 @@ msgstr "☁ %s/%s"
 msgid "⏹ Stop"
 msgstr "⏹ Stopp"
 
-#: ../gpt_query.lua:176
+#: ../gpt_query.lua:185
 msgid "Response interrupted."
 msgstr "Svar avbrutet."
 
-#: ../gpt_query.lua:187
+#: ../gpt_query.lua:198
 msgid "No response received."
 msgstr "Inget svar mottogs."
 
-#: ../gpt_query.lua:203
+#: ../gpt_query.lua:211
 msgid "Failed to start subprocess for request"
 msgstr "Kunde inte starta underprocess för förfrågan"
 
@@ -207,10 +219,6 @@ msgstr "Ställ en fråga till AI"
 #: ../main.lua:83
 msgid "AI Recaps"
 msgstr "AI-sammanfattningar"
-
-#: ../main.lua:92 ../settingsdialog.lua:197
-msgid "Assistant Settings"
-msgstr "Assistentinställningar"
 
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
@@ -310,32 +318,33 @@ msgid ""
 "phrase."
 msgstr "Denna prompt fungerar som ordbok för markerad text, ord eller fras."
 
-#: ../prompts.lua:25
+#: ../prompts.lua:24
+msgid "Vocabulary"
+msgstr "Ordförråd"
+
+#: ../prompts.lua:26
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr "Analyserar ordförråd i markerad text och ger definitioner och exempel."
+
+#: ../prompts.lua:42
+msgid "Grammar"
+msgstr "Grammatik"
+
+#: ../prompts.lua:44
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr "Analyserar grammatik i markerad text och förklarar eventuella fel."
+
+#: ../prompts.lua:50
 msgid "Translate"
 msgstr "Översätt"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:51
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Denna prompt översätter markerad text till ett annat språk."
-
-#: ../prompts.lua:48
-msgid "Simplify"
-msgstr "Förenkla"
-
-#: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Förenklar markerad text för att göra den lättare att förstå."
-
-#: ../prompts.lua:60
-msgid "Explain"
-msgstr "Förklara"
-
-#: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr "Förklarar markerad text i detalj för ökad förståelse."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -348,54 +357,53 @@ msgid ""
 msgstr "Sammanfattar markerad text och lyfter fram huvudpunkter och detaljer."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "Historiskt sammanhang"
+msgid "Simplify"
+msgstr "Förenkla"
 
 #: ../prompts.lua:86
 msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
-msgstr "Ger detaljerat historiskt sammanhang för markerad text."
+"This prompt simplifies the highlighted text to make it easier to understand."
+msgstr "Förenklar markerad text för att göra den lättare att förstå."
 
-#: ../prompts.lua:90
+#: ../prompts.lua:96
 msgid "Key Points"
 msgstr "Nyckelpunkter"
 
-#: ../prompts.lua:92
+#: ../prompts.lua:98
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
 msgstr "Extraherar och listar nyckelpunkter från markerad text."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:102
 msgid "ELI5"
 msgstr "Förklara som till en 5-åring"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:104
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
 msgstr "Förklarar markerad text som till en femåring – enkelt och tydligt."
 
-#: ../prompts.lua:102
-msgid "Grammar"
-msgstr "Grammatik"
+#: ../prompts.lua:108
+msgid "Explain"
+msgstr "Förklara"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:110
 msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
-msgstr "Analyserar grammatik i markerad text och förklarar eventuella fel."
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
+msgstr "Förklarar markerad text i detalj för ökad förståelse."
 
-#: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "Ordförråd"
+#: ../prompts.lua:121
+msgid "Historical Context"
+msgstr "Historiskt sammanhang"
 
-#: ../prompts.lua:111
+#: ../prompts.lua:123
 msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
-msgstr "Analyserar ordförråd i markerad text och ger definitioner och exempel."
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
+msgstr "Ger detaljerat historiskt sammanhang för markerad text."
 
 #: ../prompts.lua:129
 msgid ""
@@ -431,61 +439,53 @@ msgstr "Rensa"
 msgid "Save"
 msgstr "Spara"
 
-#: ../settingsdialog.lua:150
+#: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "RTL-skrivet språk"
 
-#: ../settingsdialog.lua:170
+#: ../settingsdialog.lua:173
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "Lämna dessa fält tomma för att använda gränssnittets språk: %1"
 
-#: ../settingsdialog.lua:183
+#: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Svarstextstorlek"
 
-#: ../settingsdialog.lua:221
+#: ../settingsdialog.lua:226
 msgid "Always enable stream response"
 msgstr "Aktivera alltid strömsvar"
 
-#: ../settingsdialog.lua:229
+#: ../settingsdialog.lua:234
 msgid "Use AI Assistant for 'Translate'"
 msgstr "Använd AI-assistent för 'Översätt'"
 
-#: ../settingsdialog.lua:238
+#: ../settingsdialog.lua:243
 msgid "Show Dictionary(AI) in Dictionary Popup"
 msgstr "Visa ordbok (AI) i ordbokspopup"
 
-#: ../settingsdialog.lua:246
+#: ../settingsdialog.lua:251
 msgid "Show Wikipedia(AI) in Dictionary Popup"
 msgstr "Visa Wikipedia (AI) i ordbokspopup"
 
-#: ../settingsdialog.lua:254
+#: ../settingsdialog.lua:259
 msgid "Copy entered question to the clipboard"
 msgstr "Kopiera inmatad fråga till urklipp"
 
-#: ../settingsdialog.lua:262
+#: ../settingsdialog.lua:267
 msgid "Enable AI Recap"
 msgstr "Aktivera AI-sammanfattning"
 
-#: ../settingsdialog.lua:269
+#: ../settingsdialog.lua:274
 msgid "AI Recap will be enabled the next time a book is opened."
 msgstr "AI-sammanfattning aktiveras nästa gång en bok öppnas."
 
-#: ../settingsdialog.lua:338
+#: ../settingsdialog.lua:346
 msgid "AI Assistant Features:"
 msgstr "AI‑assistentfunktioner:"
 
-#: ../settingsdialog.lua:365
+#: ../settingsdialog.lua:373
 msgid "AI Model provider:"
 msgstr "AI‑modellleverantör:"
-
-#: ../settingsdialog.lua:373
-msgid "AI Language"
-msgstr "AI-språk"
-
-#: ../settingsdialog.lua:381
-msgid "Font Size"
-msgstr "Teckenstorlek"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."

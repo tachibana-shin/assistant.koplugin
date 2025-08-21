@@ -7,20 +7,32 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-20 17:13+0800\n"
-"PO-Revision-Date: 2025-08-14 11:41+0800\n"
-"Last-Translator: Kimi AI (v2025.08)\n"
+"POT-Creation-Date: 2025-08-21 14:29+0800\n"
+"PO-Revision-Date: 2025-08-21 14:34+0800\n"
+"Last-Translator: ChatGPT (GPT-4)\n"
 "Language-Team: Српски <sr@li.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:635
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "Подешавања AI асистената"
+
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "AI језик: %1"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Величина фонта: %1"
+
+#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
 msgstr "Постави још једно питање"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:281
+#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "Затвори"
 
@@ -52,28 +64,28 @@ msgstr "Није остало текста за белешку"
 msgid "Note added successfully"
 msgstr "Белешка је додата"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:263 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Откажи"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:270
+#: ../chatgptviewer.lua:585 ../dialogs.lua:271
 msgid "Ask"
 msgstr "Питај"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:276
+#: ../chatgptviewer.lua:591 ../dialogs.lua:277
 msgid "Enter a question before proceeding."
 msgstr "Унесите питање пре наставка."
 
-#: ../chatgptviewer.lua:637
+#: ../chatgptviewer.lua:641
 msgid "Type your question here"
 msgstr "Упишите питање овде"
 
-#: ../chatgptviewer.lua:788
+#: ../chatgptviewer.lua:792
 msgid "Word copied to clipboard."
 msgstr "Реч копирана."
 
-#: ../chatgptviewer.lua:789
+#: ../chatgptviewer.lua:793
 msgid "Selection copied to clipboard."
 msgstr "Избор копиран."
 
@@ -89,23 +101,23 @@ msgstr "(Нема одговора)"
 msgid "Highlighted text:"
 msgstr "Означени текст:"
 
-#: ../dialogs.lua:305
+#: ../dialogs.lua:306
 msgid "Book Analysis"
 msgstr "Анализа књиге"
 
-#: ../dialogs.lua:342
+#: ../dialogs.lua:343
 msgid "Add this button to the Highlight Menu?"
 msgstr "Додај ово дугме у мени означавања?"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:344
 msgid "Add"
 msgstr "Додај"
 
-#: ../dialogs.lua:369
+#: ../dialogs.lua:371
 msgid "Ask a question about the highlighted text"
 msgstr "Постави питање о означеном тексту"
 
-#: ../dialogs.lua:370
+#: ../dialogs.lua:372
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -114,19 +126,19 @@ msgstr ""
 "Постави питање о књизи:\n"
 "%s од %s"
 
-#: ../dialogs.lua:373
+#: ../dialogs.lua:375
 msgid "Type your question here..."
 msgstr "Упиши питање овде..."
 
-#: ../dialogs.lua:374
+#: ../dialogs.lua:376
 msgid "Ask anything about this book..."
 msgstr "Питај било шта о књизи..."
 
-#: ../dialogs.lua:377 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Помоћник ВИ"
 
-#: ../dialogs.lua:430
+#: ../dialogs.lua:435
 msgid "Error: No response received"
 msgstr "Грешка: нема одговора"
 
@@ -189,15 +201,15 @@ msgstr "☁ %s/%s"
 msgid "⏹ Stop"
 msgstr "⏹ Заустави"
 
-#: ../gpt_query.lua:176
+#: ../gpt_query.lua:185
 msgid "Response interrupted."
 msgstr "Одговор је прекинут."
 
-#: ../gpt_query.lua:187
+#: ../gpt_query.lua:198
 msgid "No response received."
 msgstr "Нема одговора."
 
-#: ../gpt_query.lua:203
+#: ../gpt_query.lua:211
 msgid "Failed to start subprocess for request"
 msgstr "Покретање подпроцеса није успело"
 
@@ -208,10 +220,6 @@ msgstr "Постави питање ВИ"
 #: ../main.lua:83
 msgid "AI Recaps"
 msgstr "ВИ прегледи"
-
-#: ../main.lua:92 ../settingsdialog.lua:197
-msgid "Assistant Settings"
-msgstr "Поставке помоћника"
 
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
@@ -311,32 +319,35 @@ msgid ""
 "phrase."
 msgstr "Овај упит делује као речник за означени текст, реч или фразу."
 
-#: ../prompts.lua:25
+#: ../prompts.lua:24
+msgid "Vocabulary"
+msgstr "Речник"
+
+#: ../prompts.lua:26
+msgid ""
+"This prompt analyzes the vocabulary of the highlighted text, identifying "
+"complex words and providing definitions, synonyms, and usage examples."
+msgstr ""
+"Овај упит анализира речник означеног текста, дефинише тешке речи и даје "
+"примере."
+
+#: ../prompts.lua:42
+msgid "Grammar"
+msgstr "Граматика"
+
+#: ../prompts.lua:44
+msgid ""
+"This prompt analyzes the grammar of the highlighted text, providing a "
+"detailed explanation of its structure and any grammatical errors."
+msgstr "Овај упит анализира граматику означеног текста и објашњава грешке."
+
+#: ../prompts.lua:50
 msgid "Translate"
 msgstr "Преведи"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:51
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Овај упит преводи означени текст на други језик."
-
-#: ../prompts.lua:48
-msgid "Simplify"
-msgstr "Поједностави"
-
-#: ../prompts.lua:50
-msgid ""
-"This prompt simplifies the highlighted text to make it easier to understand."
-msgstr "Овај упит поједностављује означени текст ради лакшег разумевања."
-
-#: ../prompts.lua:60
-msgid "Explain"
-msgstr "Објасни"
-
-#: ../prompts.lua:62
-msgid ""
-"This prompt explains the highlighted text in detail, ensuring clarity and "
-"understanding."
-msgstr "Овај упит детаљно објашњава означени текст ради јасноће и разумевања."
 
 #: ../prompts.lua:73
 msgid "Summarize"
@@ -349,32 +360,29 @@ msgid ""
 msgstr "Овај упит сажима означени текст и издваја главне тачке и важне детаље."
 
 #: ../prompts.lua:84
-msgid "Historical Context"
-msgstr "Историјски контекст"
+msgid "Simplify"
+msgstr "Поједностави"
 
 #: ../prompts.lua:86
 msgid ""
-"This prompt provides a detailed historical context for the highlighted text, "
-"explaining its significance and background."
-msgstr ""
-"Овај упит пружа историјски контекст означеног текста и објашњава његов "
-"значај."
+"This prompt simplifies the highlighted text to make it easier to understand."
+msgstr "Овај упит поједностављује означени текст ради лакшег разумевања."
 
-#: ../prompts.lua:90
+#: ../prompts.lua:96
 msgid "Key Points"
 msgstr "Кључне тачке"
 
-#: ../prompts.lua:92
+#: ../prompts.lua:98
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
 msgstr "Овај упит издваја и наводи кључне тачке означеног текста."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:102
 msgid "ELI5"
 msgstr "Објасни као петогодишњаку"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:104
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
@@ -382,27 +390,27 @@ msgstr ""
 "Овај упит објашњава означени текст као петогодишњаку, поједностављујући "
 "сложене појмове."
 
-#: ../prompts.lua:102
-msgid "Grammar"
-msgstr "Граматика"
+#: ../prompts.lua:108
+msgid "Explain"
+msgstr "Објасни"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:110
 msgid ""
-"This prompt analyzes the grammar of the highlighted text, providing a "
-"detailed explanation of its structure and any grammatical errors."
-msgstr "Овај упит анализира граматику означеног текста и објашњава грешке."
+"This prompt explains the highlighted text in detail, ensuring clarity and "
+"understanding."
+msgstr "Овај упит детаљно објашњава означени текст ради јасноће и разумевања."
 
-#: ../prompts.lua:109
-msgid "Vocabulary"
-msgstr "Речник"
+#: ../prompts.lua:121
+msgid "Historical Context"
+msgstr "Историјски контекст"
 
-#: ../prompts.lua:111
+#: ../prompts.lua:123
 msgid ""
-"This prompt analyzes the vocabulary of the highlighted text, identifying "
-"complex words and providing definitions, synonyms, and usage examples."
+"This prompt provides a detailed historical context for the highlighted text, "
+"explaining its significance and background."
 msgstr ""
-"Овај упит анализира речник означеног текста, дефинише тешке речи и даје "
-"примере."
+"Овај упит пружа историјски контекст означеног текста и објашњава његов "
+"значај."
 
 #: ../prompts.lua:129
 msgid ""
@@ -438,61 +446,53 @@ msgstr "Очисти"
 msgid "Save"
 msgstr "Сачувај"
 
-#: ../settingsdialog.lua:150
+#: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "Језик писан сдесна-налијево"
 
-#: ../settingsdialog.lua:170
+#: ../settingsdialog.lua:173
 msgid "Leave these fields blank to use the UI language: %1"
 msgstr "Остави поља празна да користиш језик интерфејса: %1"
 
-#: ../settingsdialog.lua:183
+#: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Величина фонта одговора"
 
-#: ../settingsdialog.lua:221
+#: ../settingsdialog.lua:226
 msgid "Always enable stream response"
 msgstr "Увек укључи стрим одговор"
 
-#: ../settingsdialog.lua:229
+#: ../settingsdialog.lua:234
 msgid "Use AI Assistant for 'Translate'"
 msgstr "Користи ВИ помоћника за „Преведи“"
 
-#: ../settingsdialog.lua:238
+#: ../settingsdialog.lua:243
 msgid "Show Dictionary(AI) in Dictionary Popup"
 msgstr "Прикажи Речник (AI) у искачућем прозору"
 
-#: ../settingsdialog.lua:246
+#: ../settingsdialog.lua:251
 msgid "Show Wikipedia(AI) in Dictionary Popup"
 msgstr "Прикажи Википедију (AI) у искачућем прозору"
 
-#: ../settingsdialog.lua:254
+#: ../settingsdialog.lua:259
 msgid "Copy entered question to the clipboard"
 msgstr "Копирај питање у привремену меморију"
 
-#: ../settingsdialog.lua:262
+#: ../settingsdialog.lua:267
 msgid "Enable AI Recap"
 msgstr "Укључи AI преглед"
 
-#: ../settingsdialog.lua:269
+#: ../settingsdialog.lua:274
 msgid "AI Recap will be enabled the next time a book is opened."
 msgstr "AI преглед ће бити активиран при следећем отварању књиге."
 
-#: ../settingsdialog.lua:338
+#: ../settingsdialog.lua:346
 msgid "AI Assistant Features:"
 msgstr "Функције AI асистента:"
 
-#: ../settingsdialog.lua:365
+#: ../settingsdialog.lua:373
 msgid "AI Model provider:"
 msgstr "Провајдер AI модела:"
-
-#: ../settingsdialog.lua:373
-msgid "AI Language"
-msgstr "Језик AI"
-
-#: ../settingsdialog.lua:381
-msgid "Font Size"
-msgstr "Величина фонта"
 
 #: ../update_checker.lua:22
 msgid "Checking for updates..."
