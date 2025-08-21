@@ -13,6 +13,7 @@ Preserve the .po file structure, including msgid, msgstr, and other metadata. \
 Ensure accurate and context-aware translation.  \
 The commented text in the first lines are descriptive text for the file, update it as necessary. \
 The message will display on UI, keep the translation clean and short and easy understanding. \
+When a line contains \`@translators\` is present, consider that as context to the message bellow. \
 The first message is the metadata for the PO file. Make the necessary updates to the metadata. \
 The time now is `date`, fill the PO-Revision-Date field. \
 Fill the \`Language\` field with the translating language: __YOUR_LANGUAGE__ and the language code. \
