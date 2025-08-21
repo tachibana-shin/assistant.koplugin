@@ -149,7 +149,8 @@ function Querier:query(message_history, title)
     -- when res is a function, it means we are in streaming mode
     -- open a stream dialog and run the background query in a subprocess
     if type(res) == "function" then
-        local streamDialog = InputDialog:new{
+        local streamDialog 
+        streamDialog = InputDialog:new{
             width = Screen:getWidth() - Screen:scaleBySize(30),
             title = _("AI is responding"),
             description = string.format(
@@ -173,6 +174,7 @@ function Querier:query(message_history, title)
                             if self.interrupt_stream then
                                 self.interrupt_stream()
                             end
+                            UIManager:close(streamDialog)
                         end,
                     },
                 }
@@ -184,6 +186,7 @@ function Querier:query(message_history, title)
             if self.interrupt_stream then
                 self.interrupt_stream()
             end
+            UIManager:close(streamDialog)
         end
         streamDialog.title_bar:init()
 
