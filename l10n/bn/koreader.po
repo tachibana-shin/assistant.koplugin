@@ -1,15 +1,15 @@
 # কিছু বর্ণনামূলক শিরোনাম।
-# কপিরাইট (C) YEAR প্যাকেজের কপিরাইট ধারক
+# কপিরাইট (C) 2025 প্যাকেজের কপিরাইট ধারক
 # এই ফাইলটি PACKAGE প্যাকেজের একই লাইসেন্সের অধীনে বিতরণ করা হয়।
-# প্রথম লেখক <EMAIL@ADDRESS>, YEAR.
+# প্রথম লেখক <EMAIL@ADDRESS>, 2025.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 14:29+0800\n"
-"PO-Revision-Date: 2025-08-21 14:29:47+0800\n"
+"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"PO-Revision-Date: 2025-08-21 15:17:03+0800\n"
 "Last-Translator: ChatGPT-4o <chatgpt4o@openai.com>\n"
 "Language-Team: ChatGPT-4o <chatgpt4o@openai.com>\n"
 "Language: bn\n"
@@ -17,17 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../main.lua:92 ../settingsdialog.lua:202
-msgid "AI Assistant Settings"
-msgstr "এআই সহকারী সেটিংস"
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "ক্রিয়ার রূপ"
 
-#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
-msgid "AI Language: %1"
-msgstr "এআই ভাষা: %1"
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "সমার্থক শব্দ"
 
-#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
-msgid "Font Size: %1"
-msgstr "ফন্টের আকার: %1"
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "অর্থ"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "অনুবাদ"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "ব্যাখ্যা"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "উদাহরণ"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "শব্দের উৎস"
 
 #: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
@@ -155,7 +172,7 @@ msgstr "অনুসন্ধানের জন্য একটি শব্দ
 msgid "Look Up"
 msgstr "অনুসন্ধান"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:19
+#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "অভিধান"
 
@@ -223,6 +240,10 @@ msgstr "এআইকে একটি প্রশ্ন জিজ্ঞাসা
 msgid "AI Recaps"
 msgstr "এআই সারসংক্ষেপ"
 
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "এআই সহকারী সেটিংস"
+
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "configuration.lua-তে কোনো বৈধ মডেল প্রদানকারী পাওয়া যায়নি"
@@ -275,7 +296,7 @@ msgstr "হাইলাইট মেনু থেকে [%s] মুছতে চ
 msgid "Remove"
 msgstr "মুছুন"
 
-#: ../main.lua:351 ../prompts.lua:127
+#: ../main.lua:351 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "উইকিপিডিয়া"
 
@@ -315,18 +336,18 @@ msgstr "না"
 msgid "💡 Enhance your KOReader experience with AI"
 msgstr "💡 এআই দিয়ে আপনার KOReader অভিজ্ঞতা উন্নত করুন"
 
-#: ../prompts.lua:20
+#: ../prompts.lua:21
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr ""
 "এই প্রম্প্টটি উল্লেখিত পাঠ্যকে একটি শব্দ বা বাক্যাংশ হিসেবে অভিধান হিসাবে কাজ করে।"
 
-#: ../prompts.lua:24
+#: ../prompts.lua:25
 msgid "Vocabulary"
 msgstr "ভোকাবুলারি"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:27
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
@@ -334,11 +355,11 @@ msgstr ""
 "এই প্রম্প্টটি উল্লেখিত পাঠ্যের শব্দভান্ডার বিশ্লেষণ করে, জটিল শব্দ চিহ্নিত করে এবং "
 "সংজ্ঞা, সমার্থক ও ব্যবহার উদাহরণ প্রদান করে।"
 
-#: ../prompts.lua:42
+#: ../prompts.lua:43
 msgid "Grammar"
 msgstr "ব্যাকরণ"
 
-#: ../prompts.lua:44
+#: ../prompts.lua:45
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
@@ -346,39 +367,39 @@ msgstr ""
 "এই প্রম্প্টটি উল্লেখিত পাঠ্যের ব্যাকরণ বিশ্লেষণ করে, এর গঠন ও সম্ভাব্য ব্যাকরণগত ভুলের "
 "বিস্তারিত ব্যাখ্যা দেয়।"
 
-#: ../prompts.lua:50
+#: ../prompts.lua:51
 msgid "Translate"
 msgstr "অনুবাদ"
 
-#: ../prompts.lua:51
+#: ../prompts.lua:52
 msgid "This prompt translates the highlighted text to another language."
 msgstr "এই প্রম্প্টটি উল্লেখিত পাঠ্যকে অন্য ভাষায় অনুবাদ করে।"
 
-#: ../prompts.lua:73
+#: ../prompts.lua:74
 msgid "Summarize"
 msgstr "সংক্ষেপণ"
 
-#: ../prompts.lua:75
+#: ../prompts.lua:76
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
 msgstr ""
 "এই প্রম্প্টটি উল্লেখিত পাঠ্যকে সংক্ষেপ করে, মূল পয়েন্ট ও গুরুত্বপূর্ণ বিবরণ ধরে রাখে।"
 
-#: ../prompts.lua:84
+#: ../prompts.lua:85
 msgid "Simplify"
 msgstr "সরলীকরণ"
 
-#: ../prompts.lua:86
+#: ../prompts.lua:87
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
 msgstr "এই প্রম্প্টটি উল্লেখিত পাঠ্যকে সহজ করে বোঝা সহজ করে।"
 
-#: ../prompts.lua:96
+#: ../prompts.lua:97
 msgid "Key Points"
 msgstr "মূল পয়েন্ট"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:99
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
@@ -386,11 +407,11 @@ msgstr ""
 "এই প্রম্প্টটি উল্লেখিত পাঠ্য থেকে মূল পয়েন্ট বের করে এবং তালিকাভুক্ত করে, পরিষ্কারতা ও "
 "সংগঠন নিশ্চিত করে।"
 
-#: ../prompts.lua:102
+#: ../prompts.lua:103
 msgid "ELI5"
 msgstr "৫ বছরের শিশুর জন্য ব্যাখ্যা"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:105
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
@@ -398,11 +419,11 @@ msgstr ""
 "এই প্রম্প্টটি উল্লেখিত পাঠ্যকে পাঁচ বছরের শিশুর মতো ব্যাখ্যা করে, জটিল ধারণাগুলোকে "
 "সহজভাবে বুঝতে সহায়তা করে।"
 
-#: ../prompts.lua:108
+#: ../prompts.lua:109
 msgid "Explain"
 msgstr "ব্যাখ্যা"
 
-#: ../prompts.lua:110
+#: ../prompts.lua:111
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
@@ -410,11 +431,11 @@ msgstr ""
 "এই প্রম্প্টটি উল্লেখিত পাঠ্য বিস্তারিতভাবে ব্যাখ্যা করে, পরিষ্কারতা ও বোঝাপড়া নিশ্চিত "
 "করে।"
 
-#: ../prompts.lua:121
+#: ../prompts.lua:122
 msgid "Historical Context"
 msgstr "ঐতিহাসিক প্রেক্ষাপট"
 
-#: ../prompts.lua:123
+#: ../prompts.lua:124
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
@@ -422,7 +443,7 @@ msgstr ""
 "এই প্রম্প্টটি উল্লেখিত পাঠ্যের বিস্তারিত ঐতিহাসিক প্রেক্ষাপট দেয়, এর গুরুত্ব ও পটভূমি "
 "ব্যাখ্যা করে।"
 
-#: ../prompts.lua:129
+#: ../prompts.lua:130
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
@@ -458,6 +479,10 @@ msgstr "মুছে ফেলো"
 msgid "Save"
 msgstr "সংরক্ষণ"
 
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "এআই ভাষা: %1"
+
 #: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "ডান-থেকে-বাম লেখা ভাষা"
@@ -469,6 +494,10 @@ msgstr "UI ভাষা ব্যবহার করতে এই ঘরগু�
 #: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "উত্তরের ফন্ট সাইজ"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "ফন্টের আকার: %1"
 
 #: ../settingsdialog.lua:226
 msgid "Always enable stream response"

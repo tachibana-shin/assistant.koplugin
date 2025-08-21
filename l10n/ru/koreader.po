@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 14:29+0800\n"
-"PO-Revision-Date: 2025-08-21 14:33+0800\n"
+"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"PO-Revision-Date: 2025-08-21 15:23+0800\n"
 "Last-Translator: ChatGPT-4 <chatgpt-4@example.com>\n"
 "Language-Team: ChatGPT Russian Translators <team@example.com>\n"
 "Language: ru_RU\n"
@@ -16,17 +16,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../main.lua:92 ../settingsdialog.lua:202
-msgid "AI Assistant Settings"
-msgstr "Настройки AI‑ассистента"
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "Спряжение"
 
-#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
-msgid "AI Language: %1"
-msgstr "Язык ИИ: %1"
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "Синонимы"
 
-#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
-msgid "Font Size: %1"
-msgstr "Размер шрифта: %1"
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "Значение"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "Перевод"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "Объяснение"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "Пример"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "Этимология"
 
 #: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
@@ -154,7 +171,7 @@ msgstr "Слово для поиска…"
 msgid "Look Up"
 msgstr "Найти"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:19
+#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "Словарь"
 
@@ -218,6 +235,10 @@ msgstr "Спросить ИИ"
 msgid "AI Recaps"
 msgstr "Резюме ИИ"
 
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "Настройки AI‑ассистента"
+
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "В configuration.lua не найдено подходящего провайдера моделей"
@@ -269,7 +290,7 @@ msgstr "Удалить [%s] из меню выделения?"
 msgid "Remove"
 msgstr "Удалить"
 
-#: ../main.lua:351 ../prompts.lua:127
+#: ../main.lua:351 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "Википедия"
 
@@ -309,100 +330,100 @@ msgstr "Нет"
 msgid "💡 Enhance your KOReader experience with AI"
 msgstr "💡 Улучшите KOReader с ИИ"
 
-#: ../prompts.lua:20
+#: ../prompts.lua:21
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr "Словарь для выделенного текста"
 
-#: ../prompts.lua:24
+#: ../prompts.lua:25
 msgid "Vocabulary"
 msgstr "Словарь"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:27
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
 msgstr "Анализ словаря выделенного"
 
-#: ../prompts.lua:42
+#: ../prompts.lua:43
 msgid "Grammar"
 msgstr "Грамматика"
 
-#: ../prompts.lua:44
+#: ../prompts.lua:45
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
 msgstr "Анализ грамматики выделенного"
 
-#: ../prompts.lua:50
+#: ../prompts.lua:51
 msgid "Translate"
 msgstr "Перевести"
 
-#: ../prompts.lua:51
+#: ../prompts.lua:52
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Перевод выделенного текста"
 
-#: ../prompts.lua:73
+#: ../prompts.lua:74
 msgid "Summarize"
 msgstr "Суммировать"
 
-#: ../prompts.lua:75
+#: ../prompts.lua:76
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
 msgstr "Краткое содержание выделенного"
 
-#: ../prompts.lua:84
+#: ../prompts.lua:85
 msgid "Simplify"
 msgstr "Упростить"
 
-#: ../prompts.lua:86
+#: ../prompts.lua:87
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
 msgstr "Упрощает выделенный текст"
 
-#: ../prompts.lua:96
+#: ../prompts.lua:97
 msgid "Key Points"
 msgstr "Ключевые моменты"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:99
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
 msgstr "Основные моменты выделенного"
 
-#: ../prompts.lua:102
+#: ../prompts.lua:103
 msgid "ELI5"
 msgstr "Простым языком"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:105
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
 msgstr "Объясняет «как пятилетнему»"
 
-#: ../prompts.lua:108
+#: ../prompts.lua:109
 msgid "Explain"
 msgstr "Объяснить"
 
-#: ../prompts.lua:110
+#: ../prompts.lua:111
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
 msgstr "Подробно объясняет выделенное"
 
-#: ../prompts.lua:121
+#: ../prompts.lua:122
 msgid "Historical Context"
 msgstr "Исторический контекст"
 
-#: ../prompts.lua:123
+#: ../prompts.lua:124
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
 msgstr "Исторический контекст выделенного"
 
-#: ../prompts.lua:129
+#: ../prompts.lua:130
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
@@ -436,6 +457,10 @@ msgstr "Очистить"
 msgid "Save"
 msgstr "Сохранить"
 
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "Язык ИИ: %1"
+
 #: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "Язык с письмом справа налево"
@@ -447,6 +472,10 @@ msgstr "Оставьте поля пустыми для использовани
 #: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Размер шрифта ответа"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Размер шрифта: %1"
 
 #: ../settingsdialog.lua:226
 msgid "Always enable stream response"

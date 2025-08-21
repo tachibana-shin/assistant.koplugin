@@ -1,5 +1,5 @@
-# Turkish translation for assistant.koplugin
-# Copyright (C) 2025 YAZILIMIN TELİF HAKKI SAHİBİ
+# assistant.koplugin için Türkçe çeviri
+# Copyright (C) 2025 YAZILIMİN TELİF HAKKI SAHİBİ
 # Bu dosya, PAKET paketiyle aynı lisans altında dağıtılmaktadır.
 # İLK YAZAR <EMAIL@ADDRESS>, 2025.
 #
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 14:29+0800\n"
-"PO-Revision-Date: 2025-08-21 14:34+0800\n"
+"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"PO-Revision-Date: 2025-08-21 15:24+0800\n"
 "Last-Translator: ChatGPT 4.0 <chatgpt@openai.com>\n"
 "Language-Team: Türkçe <tr@li.org>\n"
 "Language: tr\n"
@@ -17,17 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../main.lua:92 ../settingsdialog.lua:202
-msgid "AI Assistant Settings"
-msgstr "AI Asistanı Ayarları"
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "Çekim"
 
-#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
-msgid "AI Language: %1"
-msgstr "AI Dili: %1"
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "Eşanlamlılar"
 
-#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
-msgid "Font Size: %1"
-msgstr "Yazı Boyutu: %1"
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "Anlam"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "Çeviri"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "Açıklama"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "Örnek"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "Kelime Kökeni"
 
 #: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
@@ -155,7 +172,7 @@ msgstr "Aramak için kelime girin..."
 msgid "Look Up"
 msgstr "Ara"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:19
+#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "Sözlük"
 
@@ -223,6 +240,10 @@ msgstr "Yapay Zekaya soru sor"
 msgid "AI Recaps"
 msgstr "Yapay Zeka Özetleri"
 
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "AI Asistanı Ayarları"
+
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "configuration.lua içinde geçerli model sağlayıcısı bulunamadı"
@@ -275,7 +296,7 @@ msgstr "[%s] Vurgulama Menüsünden kaldırılsın mı?"
 msgid "Remove"
 msgstr "Kaldır"
 
-#: ../main.lua:351 ../prompts.lua:127
+#: ../main.lua:351 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "Vikipedi"
 
@@ -316,7 +337,7 @@ msgstr "Hayır"
 msgid "💡 Enhance your KOReader experience with AI"
 msgstr "💡 KOReader deneyiminizi Yapay Zeka ile geliştirin"
 
-#: ../prompts.lua:20
+#: ../prompts.lua:21
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
@@ -324,11 +345,11 @@ msgstr ""
 "Bu komut, vurgulanan metin için bir sözlük gibi çalışır, bir kelimeye veya "
 "ifadeye."
 
-#: ../prompts.lua:24
+#: ../prompts.lua:25
 msgid "Vocabulary"
 msgstr "Kelime Dağarcığı"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:27
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
@@ -336,11 +357,11 @@ msgstr ""
 "Bu komut, vurgulanan metnin kelime dağarcığını analiz eder, karmaşık "
 "kelimeleri tanımlar, tanımlar, eş anlamlılar ve kullanım örnekleri sağlar."
 
-#: ../prompts.lua:42
+#: ../prompts.lua:43
 msgid "Grammar"
 msgstr "Dil Bilgisi"
 
-#: ../prompts.lua:44
+#: ../prompts.lua:45
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
@@ -348,19 +369,19 @@ msgstr ""
 "Bu komut, vurgulanan metnin dil bilgisini analiz eder, yapısı ve dil bilgisi "
 "hataları hakkında ayrıntılı açıklama sağlar."
 
-#: ../prompts.lua:50
+#: ../prompts.lua:51
 msgid "Translate"
 msgstr "Çevir"
 
-#: ../prompts.lua:51
+#: ../prompts.lua:52
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Bu komut, vurgulanan metni başka bir dile çevirir."
 
-#: ../prompts.lua:73
+#: ../prompts.lua:74
 msgid "Summarize"
 msgstr "Özetle"
 
-#: ../prompts.lua:75
+#: ../prompts.lua:76
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
@@ -368,22 +389,22 @@ msgstr ""
 "Bu komut, vurgulanan metni özetler, ana noktalarını ve temel detaylarını "
 "yakalar."
 
-#: ../prompts.lua:84
+#: ../prompts.lua:85
 msgid "Simplify"
 msgstr "Basitleştir"
 
-#: ../prompts.lua:86
+#: ../prompts.lua:87
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
 msgstr ""
 "Bu komut, vurgulanan metni daha kolay anlaşılır hale getirmek için "
 "basitleştirir."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:97
 msgid "Key Points"
 msgstr "Ana Noktalar"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:99
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
@@ -391,11 +412,11 @@ msgstr ""
 "Bu komut, vurgulanan metinden ana noktaları çıkarır ve listeler, netlik ve "
 "düzen sağlar."
 
-#: ../prompts.lua:102
+#: ../prompts.lua:103
 msgid "ELI5"
 msgstr "ELI5"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:105
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
@@ -403,11 +424,11 @@ msgstr ""
 "Bu komut, vurgulanan metni beş yaşındaki birine anlatır gibi açıklar, "
 "karmaşık kavramları kolay anlaşılır hale getirir."
 
-#: ../prompts.lua:108
+#: ../prompts.lua:109
 msgid "Explain"
 msgstr "Açıkla"
 
-#: ../prompts.lua:110
+#: ../prompts.lua:111
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
@@ -415,11 +436,11 @@ msgstr ""
 "Bu komut, vurgulanan metni ayrıntılı olarak açıklar, netlik ve anlayış "
 "sağlar."
 
-#: ../prompts.lua:121
+#: ../prompts.lua:122
 msgid "Historical Context"
 msgstr "Tarihsel Bağlam"
 
-#: ../prompts.lua:123
+#: ../prompts.lua:124
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
@@ -427,7 +448,7 @@ msgstr ""
 "Bu komut, vurgulanan metin için ayrıntılı tarihsel bağlam sağlar, önemini ve "
 "arka planını açıklar."
 
-#: ../prompts.lua:129
+#: ../prompts.lua:130
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
@@ -463,6 +484,10 @@ msgstr "Temizle"
 msgid "Save"
 msgstr "Kaydet"
 
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "AI Dili: %1"
+
 #: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "Sağdan sola yazılan dil"
@@ -474,6 +499,10 @@ msgstr "Arayüz dilini kullanmak için bu alanları boş bırak: %1"
 #: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Yanıt Yazı Boyutu"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Yazı Boyutu: %1"
 
 #: ../settingsdialog.lua:226
 msgid "Always enable stream response"

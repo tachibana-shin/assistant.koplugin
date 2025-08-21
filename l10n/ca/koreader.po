@@ -1,4 +1,4 @@
-# FITXER DESCRIPTIU PER AI Assistant (KOReader plugin).
+# FITXER DESCRIPTIU PER a l'Assistent AI (plugin KOReader).
 # Copyright (C) 2025 KOReader Contributors
 # This file is distributed under the same license as the assistant.koplugin package.
 #
@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 14:29+0800\n"
-"PO-Revision-Date: 2025-08-21 14:29+0800\n"
+"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"PO-Revision-Date: 2025-08-21 15:17+0800\n"
 "Last-Translator: ChatGPT (gpt-4o, 2025-08-21)\n"
 "Language-Team: Català <gpt-4o@openai.com>\n"
 "Language: ca\n"
@@ -16,17 +16,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../main.lua:92 ../settingsdialog.lua:202
-msgid "AI Assistant Settings"
-msgstr "Configuració de l'Assistent d'IA"
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "Conjugació"
 
-#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
-msgid "AI Language: %1"
-msgstr "Llengua d'IA: %1"
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "Sinònims"
 
-#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
-msgid "Font Size: %1"
-msgstr "Mida de la lletra: %1"
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "Significat"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "Traducció"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "Explicació"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "Exemple"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "Origen de la paraula"
 
 #: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
@@ -154,7 +171,7 @@ msgstr "Introdueix una paraula per cercar..."
 msgid "Look Up"
 msgstr "Cercar"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:19
+#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "Diccionari"
 
@@ -222,6 +239,10 @@ msgstr "Fer una pregunta a l’IA"
 msgid "AI Recaps"
 msgstr "Resums IA"
 
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "Configuració de l'Assistent d'IA"
+
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "No s’ha trobat cap proveïdor de model vàlid a configuration.lua"
@@ -275,7 +296,7 @@ msgstr "Eliminar [%s] del menú de ressaltats?"
 msgid "Remove"
 msgstr "Eliminar"
 
-#: ../main.lua:351 ../prompts.lua:127
+#: ../main.lua:351 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -315,17 +336,17 @@ msgstr "No"
 msgid "💡 Enhance your KOReader experience with AI"
 msgstr "💡 Millora l’experiència KOReader amb IA"
 
-#: ../prompts.lua:20
+#: ../prompts.lua:21
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr "Aquesta ordre fa de diccionari per al text ressaltat, paraula o frase."
 
-#: ../prompts.lua:24
+#: ../prompts.lua:25
 msgid "Vocabulary"
 msgstr "Vocabulari"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:27
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
@@ -333,72 +354,72 @@ msgstr ""
 "Aquesta ordre analitza el vocabulari del text ressaltat amb definicions i "
 "exemples."
 
-#: ../prompts.lua:42
+#: ../prompts.lua:43
 msgid "Grammar"
 msgstr "Gramàtica"
 
-#: ../prompts.lua:44
+#: ../prompts.lua:45
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
 msgstr ""
 "Aquesta ordre analitza la gramàtica del text ressaltat i detalla errors."
 
-#: ../prompts.lua:50
+#: ../prompts.lua:51
 msgid "Translate"
 msgstr "Traduir"
 
-#: ../prompts.lua:51
+#: ../prompts.lua:52
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Aquesta ordre tradueix el text ressaltat a un altre idioma."
 
-#: ../prompts.lua:73
+#: ../prompts.lua:74
 msgid "Summarize"
 msgstr "Resumir"
 
-#: ../prompts.lua:75
+#: ../prompts.lua:76
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
 msgstr ""
 "Aquesta ordre resumeix el text ressaltat recollint-ne els punts principals."
 
-#: ../prompts.lua:84
+#: ../prompts.lua:85
 msgid "Simplify"
 msgstr "Simplificar"
 
-#: ../prompts.lua:86
+#: ../prompts.lua:87
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
 msgstr ""
 "Aquesta ordre simplifica el text ressaltat per facilitar-ne la comprensió."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:97
 msgid "Key Points"
 msgstr "Punts clau"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:99
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
 msgstr "Aquesta ordre extreu i llista els punts clau del text ressaltat."
 
-#: ../prompts.lua:102
+#: ../prompts.lua:103
 msgid "ELI5"
 msgstr "ELI5"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:105
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
 msgstr ""
 "Aquesta ordre explica el text ressaltat com si fos per a un nini de 5 anys."
 
-#: ../prompts.lua:108
+#: ../prompts.lua:109
 msgid "Explain"
 msgstr "Explicar"
 
-#: ../prompts.lua:110
+#: ../prompts.lua:111
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
@@ -406,17 +427,17 @@ msgstr ""
 "Aquesta ordre explica detalladament el text ressaltat per assegurar-ne la "
 "claredat."
 
-#: ../prompts.lua:121
+#: ../prompts.lua:122
 msgid "Historical Context"
 msgstr "Context històric"
 
-#: ../prompts.lua:123
+#: ../prompts.lua:124
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
 msgstr "Aquesta ordre ofereix context històric detallat per al text ressaltat."
 
-#: ../prompts.lua:129
+#: ../prompts.lua:130
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
@@ -451,6 +472,10 @@ msgstr "Neteja"
 msgid "Save"
 msgstr "Desa"
 
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "Llengua d'IA: %1"
+
 #: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "Idioma d’escriptura dreta-esquerra"
@@ -462,6 +487,10 @@ msgstr "Deixeu aquests camps buits per usar l’idioma de la interfície: %1"
 #: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Mida de lletra resposta"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Mida de la lletra: %1"
 
 #: ../settingsdialog.lua:226
 msgid "Always enable stream response"

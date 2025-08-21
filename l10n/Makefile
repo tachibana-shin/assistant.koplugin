@@ -106,8 +106,8 @@ ai-translate:
 					echo "... waiting 30s to avoid API rate limits (large file)"; \
 					sleep 30; \
 				else \
-					echo "... waiting 6s to avoid API rate limits"; \
-					sleep 6; \
+					echo "... waiting 10s to avoid API rate limits"; \
+					sleep 10; \
 				fi; \
 			}; \
 		done; \

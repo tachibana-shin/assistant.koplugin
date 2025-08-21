@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 14:29+0800\n"
-"PO-Revision-Date: Thu Aug 21 14:31:02 +08 2025\n"
+"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"PO-Revision-Date: Thu Aug 21 15:18:55 +08 2025\n"
 "Last-Translator: ChatGPT 4.0 <noreply@example.com>\n"
 "Language-Team: ChatGPT 4.0 <noreply@example.com>\n"
 "Language: fa\n"
@@ -17,17 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../main.lua:92 ../settingsdialog.lua:202
-msgid "AI Assistant Settings"
-msgstr "تنظیمات دستیار هوش مصنوعی"
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "صرف"
 
-#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
-msgid "AI Language: %1"
-msgstr "زبان هوش مصنوعی: %1"
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "مترادف‌ها"
 
-#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
-msgid "Font Size: %1"
-msgstr "اندازه قلم: %1"
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "معنی"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "ترجمه"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "توضیح"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "مثال"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "ریشه واژه"
 
 #: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
@@ -155,7 +172,7 @@ msgstr "کلمه‌ای را برای جستجو وارد کنید..."
 msgid "Look Up"
 msgstr "جستجو"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:19
+#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "لغت‌نامه"
 
@@ -221,6 +238,10 @@ msgstr "به AI سؤال بپرسید"
 msgid "AI Recaps"
 msgstr "خلاصه‌های AI"
 
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "تنظیمات دستیار هوش مصنوعی"
+
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "هیچ ارائه‌دهندهٔ مدل معتبری در configuration.lua یافت نشد"
@@ -273,7 +294,7 @@ msgstr "آیا می‌خواهید [%s] را از منوی برجسته‌ساز
 msgid "Remove"
 msgstr "حذف"
 
-#: ../main.lua:351 ../prompts.lua:127
+#: ../main.lua:351 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "ویکی‌پدیا"
 
@@ -313,18 +334,18 @@ msgstr "خیر"
 msgid "💡 Enhance your KOReader experience with AI"
 msgstr "💡 تجربهٔ KOReader خود را با AI بهبود بخشید"
 
-#: ../prompts.lua:20
+#: ../prompts.lua:21
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr ""
 "این پرامپت به‌عنوان لغت‌نامه برای متن برجسته‌شده، برای واژه یا عبارت عمل می‌کند."
 
-#: ../prompts.lua:24
+#: ../prompts.lua:25
 msgid "Vocabulary"
 msgstr "زبان‌سازی"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:27
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
@@ -332,11 +353,11 @@ msgstr ""
 "این پرامپت واژگان متن برجسته‌شده را تحلیل می‌کند، واژه‌های پیچیده را شناسایی "
 "می‌کند و تعاریف، هم‌معانی و مثال‌های کاربردی ارائه می‌دهد."
 
-#: ../prompts.lua:42
+#: ../prompts.lua:43
 msgid "Grammar"
 msgstr "قواعد‌نگاری"
 
-#: ../prompts.lua:44
+#: ../prompts.lua:45
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
@@ -344,19 +365,19 @@ msgstr ""
 "این پرامپت گرامر متن برجسته‌شده را تحلیل می‌کند و توضیح تفصیلی ساختار آن و هر "
 "گونه خطای گرامری را ارائه می‌دهد."
 
-#: ../prompts.lua:50
+#: ../prompts.lua:51
 msgid "Translate"
 msgstr "ترجمه"
 
-#: ../prompts.lua:51
+#: ../prompts.lua:52
 msgid "This prompt translates the highlighted text to another language."
 msgstr "این پرامپت متن برجسته‌شده را به زبان دیگر ترجمه می‌کند."
 
-#: ../prompts.lua:73
+#: ../prompts.lua:74
 msgid "Summarize"
 msgstr "خلاصه‌سازی"
 
-#: ../prompts.lua:75
+#: ../prompts.lua:76
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
@@ -364,20 +385,20 @@ msgstr ""
 "این پرامپت متن برجسته‌شده را خلاصه می‌کند و نکات اصلی و جزئیات اساسی را شامل "
 "می‌کند."
 
-#: ../prompts.lua:84
+#: ../prompts.lua:85
 msgid "Simplify"
 msgstr "ساده‌سازی"
 
-#: ../prompts.lua:86
+#: ../prompts.lua:87
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
 msgstr "این پرامپت متن برجسته‌شده را ساده می‌کند تا درک آن راحت‌تر شود."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:97
 msgid "Key Points"
 msgstr "نکات کلیدی"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:99
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
@@ -385,11 +406,11 @@ msgstr ""
 "این پرامپت نکات کلیدی متن برجسته‌شده را استخراج و فهرست می‌کند تا وضوح و "
 "سازمان‌سازی آن را تضمین کند."
 
-#: ../prompts.lua:102
+#: ../prompts.lua:103
 msgid "ELI5"
 msgstr "ELI5"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:105
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
@@ -397,11 +418,11 @@ msgstr ""
 "این پرامپت متن برجسته‌شده را همانند توضیح به یک کودک پنج‌ساله توضیح می‌دهد، "
 "مفاهیم پیچیده را به عبارات ساده و قابل فهم تبدیل می‌کند."
 
-#: ../prompts.lua:108
+#: ../prompts.lua:109
 msgid "Explain"
 msgstr "توضیح"
 
-#: ../prompts.lua:110
+#: ../prompts.lua:111
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
@@ -409,11 +430,11 @@ msgstr ""
 "این پرامپت متن برجسته‌شده را به‌صورت دقیق توضیح می‌دهد تا وضوح و درک آن نیاز "
 "باشد."
 
-#: ../prompts.lua:121
+#: ../prompts.lua:122
 msgid "Historical Context"
 msgstr "زمینه تاریخی"
 
-#: ../prompts.lua:123
+#: ../prompts.lua:124
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
@@ -421,7 +442,7 @@ msgstr ""
 "این پرامپت زمینهٔ تاریخی دقیقی برای متن برجسته‌شده فراهم می‌کند و اهمیت و زمینهٔ "
 "آن را توضیح می‌دهد."
 
-#: ../prompts.lua:129
+#: ../prompts.lua:130
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
@@ -457,6 +478,10 @@ msgstr "پاک‌کردن"
 msgid "Save"
 msgstr "ذخیره"
 
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "زبان هوش مصنوعی: %1"
+
 #: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "زبان راست‌به‌چپ"
@@ -468,6 +493,10 @@ msgstr "برای استفاده از زبان رابط کاربری %1 این ف
 #: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "اندازه قلم پاسخ"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "اندازه قلم: %1"
 
 #: ../settingsdialog.lua:226
 msgid "Always enable stream response"

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 14:29+0800\n"
-"PO-Revision-Date: 2025-08-21 14:50+0800\n"
+"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"PO-Revision-Date: 2025-08-21 15:24+0800\n"
 "Last-Translator: GPT-4o (2024-06)\n"
 "Language-Team: GPT-4o (2024-06)\n"
 "Language: zh_CN\n"
@@ -17,17 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../main.lua:92 ../settingsdialog.lua:202
-msgid "AI Assistant Settings"
-msgstr "AI 助手设置"
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "变形"
 
-#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
-msgid "AI Language: %1"
-msgstr "AI 语言：%1"
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "同义词"
 
-#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
-msgid "Font Size: %1"
-msgstr "字体大小：%1"
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "含义"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "翻译"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "解释"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "示例"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "词源"
 
 #: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
@@ -155,7 +172,7 @@ msgstr "输入要查询的单词…"
 msgid "Look Up"
 msgstr "查询"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:19
+#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "词典"
 
@@ -218,6 +235,10 @@ msgstr "向 AI 提问"
 msgid "AI Recaps"
 msgstr "AI 回顾"
 
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "AI 助手设置"
+
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "configuration.lua 中未找到有效的模型提供方"
@@ -270,7 +291,7 @@ msgstr "从菜单移除 [%s]？"
 msgid "Remove"
 msgstr "移除"
 
-#: ../main.lua:351 ../prompts.lua:127
+#: ../main.lua:351 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "维基百科"
 
@@ -310,100 +331,100 @@ msgstr "否"
 msgid "💡 Enhance your KOReader experience with AI"
 msgstr "💡 用 AI 提升 KOReader 体验"
 
-#: ../prompts.lua:20
+#: ../prompts.lua:21
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr "该提示将高亮内容作为词典条目解释单词或短语。"
 
-#: ../prompts.lua:24
+#: ../prompts.lua:25
 msgid "Vocabulary"
 msgstr "词汇"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:27
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
 msgstr "该提示分析高亮内容的词汇，标出难词并提供释义、同义词及例句。"
 
-#: ../prompts.lua:42
+#: ../prompts.lua:43
 msgid "Grammar"
 msgstr "语法"
 
-#: ../prompts.lua:44
+#: ../prompts.lua:45
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
 msgstr "该提示分析高亮内容的语法，详细说明结构及错误。"
 
-#: ../prompts.lua:50
+#: ../prompts.lua:51
 msgid "Translate"
 msgstr "翻译"
 
-#: ../prompts.lua:51
+#: ../prompts.lua:52
 msgid "This prompt translates the highlighted text to another language."
 msgstr "该提示将高亮内容翻译成其他语言。"
 
-#: ../prompts.lua:73
+#: ../prompts.lua:74
 msgid "Summarize"
 msgstr "总结"
 
-#: ../prompts.lua:75
+#: ../prompts.lua:76
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
 msgstr "该提示总结高亮内容，提炼要点与关键细节。"
 
-#: ../prompts.lua:84
+#: ../prompts.lua:85
 msgid "Simplify"
 msgstr "简化"
 
-#: ../prompts.lua:86
+#: ../prompts.lua:87
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
 msgstr "该提示简化高亮内容，使其更易理解。"
 
-#: ../prompts.lua:96
+#: ../prompts.lua:97
 msgid "Key Points"
 msgstr "要点"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:99
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
 msgstr "该提示提取并列示高亮内容的要点，条理清晰。"
 
-#: ../prompts.lua:102
+#: ../prompts.lua:103
 msgid "ELI5"
 msgstr "五岁解释"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:105
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
 msgstr "该提示将高亮内容用五岁小孩也能懂的方式解释，化繁为简。"
 
-#: ../prompts.lua:108
+#: ../prompts.lua:109
 msgid "Explain"
 msgstr "解释"
 
-#: ../prompts.lua:110
+#: ../prompts.lua:111
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
 msgstr "该提示详细解释高亮内容，确保清晰易懂。"
 
-#: ../prompts.lua:121
+#: ../prompts.lua:122
 msgid "Historical Context"
 msgstr "历史背景"
 
-#: ../prompts.lua:123
+#: ../prompts.lua:124
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
 msgstr "该提示为高亮内容提供详尽历史背景，解释其重要性与来龙去脉。"
 
-#: ../prompts.lua:129
+#: ../prompts.lua:130
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
@@ -437,6 +458,10 @@ msgstr "清除"
 msgid "Save"
 msgstr "保存"
 
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "AI 语言：%1"
+
 #: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "右到左书写语言"
@@ -448,6 +473,10 @@ msgstr "留空则使用界面语言：%1"
 #: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "回复字体大小"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "字体大小：%1"
 
 #: ../settingsdialog.lua:226
 msgid "Always enable stream response"

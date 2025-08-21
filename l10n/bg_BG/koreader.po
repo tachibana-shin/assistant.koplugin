@@ -1,4 +1,4 @@
-# Някакво описателно заглавие.
+# Описание на файл за превод.
 # Авторски права (C) YEAR СОБСТВЕНИКА НА ПАКЕТА
 # Този файл се разпространява под същия лиценз като пакета PACKAGE.
 # ПЪРВИ АВТОР <EMAIL@ADDRESS>, YEAR.
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 14:29+0800\n"
-"PO-Revision-Date: 2025-08-21 14:29:38+0800\n"
+"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"PO-Revision-Date: 2025-08-21 15:16+0800\n"
 "Last-Translator: ChatGPT 4.0 <none>\n"
 "Language-Team: ChatGPT 4.0 <none>\n"
 "Language: български bg\n"
@@ -17,17 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../main.lua:92 ../settingsdialog.lua:202
-msgid "AI Assistant Settings"
-msgstr "Настройки на AI асистент"
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "Спрежение"
 
-#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
-msgid "AI Language: %1"
-msgstr "Език на AI: %1"
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "Синоними"
 
-#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
-msgid "Font Size: %1"
-msgstr "Размер на шрифта: %1"
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "Значение"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "Превод"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "Обяснение"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "Пример"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "Етимология"
 
 #: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
@@ -155,7 +172,7 @@ msgstr "Въведете дума за търсене..."
 msgid "Look Up"
 msgstr "Търси"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:19
+#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "Дикция"
 
@@ -223,6 +240,10 @@ msgstr "Попитайте AI"
 msgid "AI Recaps"
 msgstr "AI Резюмета"
 
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "Настройки на AI асистент"
+
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "В configuration.lua няма валиден доставчик на модел"
@@ -276,7 +297,7 @@ msgstr "Премахнете [%s] от менюто за маркиране?"
 msgid "Remove"
 msgstr "Премахни"
 
-#: ../main.lua:351 ../prompts.lua:127
+#: ../main.lua:351 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "Уикипедия"
 
@@ -316,17 +337,17 @@ msgstr "Не"
 msgid "💡 Enhance your KOReader experience with AI"
 msgstr "💡 Подобрете KOReader с AI"
 
-#: ../prompts.lua:20
+#: ../prompts.lua:21
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr "Това запитване действа като речник за подчертаното, за дума или фраза."
 
-#: ../prompts.lua:24
+#: ../prompts.lua:25
 msgid "Vocabulary"
 msgstr "Лексика"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:27
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
@@ -334,11 +355,11 @@ msgstr ""
 "Това запитване анализира лексиката на подчертаното, идентифицирайки сложни "
 "думи и предоставяйки дефиниции, синониме и примери за употреба."
 
-#: ../prompts.lua:42
+#: ../prompts.lua:43
 msgid "Grammar"
 msgstr "Граматика"
 
-#: ../prompts.lua:44
+#: ../prompts.lua:45
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
@@ -346,19 +367,19 @@ msgstr ""
 "Това запитване анализира граматиката на подчертаното, предоставяйки подробен "
 "анализ на структурата и граматически грешки."
 
-#: ../prompts.lua:50
+#: ../prompts.lua:51
 msgid "Translate"
 msgstr "Преведи"
 
-#: ../prompts.lua:51
+#: ../prompts.lua:52
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Това запитване превежда подчертаното в друг език."
 
-#: ../prompts.lua:73
+#: ../prompts.lua:74
 msgid "Summarize"
 msgstr "Резюмира"
 
-#: ../prompts.lua:75
+#: ../prompts.lua:76
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
@@ -366,20 +387,20 @@ msgstr ""
 "Това запитване резюмира подчертаното, захващайки основните точки и важни "
 "детайли."
 
-#: ../prompts.lua:84
+#: ../prompts.lua:85
 msgid "Simplify"
 msgstr "Упрощи"
 
-#: ../prompts.lua:86
+#: ../prompts.lua:87
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
 msgstr "Това запитване упрощава подчертаното, за да бъде по-лесно разбрано."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:97
 msgid "Key Points"
 msgstr "Ключови точки"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:99
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
@@ -387,11 +408,11 @@ msgstr ""
 "Това запитване извлича и изброява ключовите точки от подчертаното, "
 "осигурявайки яснота и организация."
 
-#: ../prompts.lua:102
+#: ../prompts.lua:103
 msgid "ELI5"
 msgstr "ELI5"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:105
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
@@ -399,11 +420,11 @@ msgstr ""
 "Това запитване обяснява подчертаното, сякаш на петгодишен, опростявайки "
 "сложни концепции до лесно разбрани термини."
 
-#: ../prompts.lua:108
+#: ../prompts.lua:109
 msgid "Explain"
 msgstr "Обясни"
 
-#: ../prompts.lua:110
+#: ../prompts.lua:111
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
@@ -411,11 +432,11 @@ msgstr ""
 "Това запитване обяснява подчертаното подробно, осигурявайки яснота и "
 "разбиране."
 
-#: ../prompts.lua:121
+#: ../prompts.lua:122
 msgid "Historical Context"
 msgstr "Исторически контекст"
 
-#: ../prompts.lua:123
+#: ../prompts.lua:124
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
@@ -423,7 +444,7 @@ msgstr ""
 "Това запитване предоставя подробен исторически контекст за подчертаното, "
 "обяснявайки неговото значение и фон."
 
-#: ../prompts.lua:129
+#: ../prompts.lua:130
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
@@ -459,6 +480,10 @@ msgstr "Изчисти"
 msgid "Save"
 msgstr "Запази"
 
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "Език на AI: %1"
+
 #: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "Език с писане отдясно наляво"
@@ -470,6 +495,10 @@ msgstr "Остави тези полета празни, за да ползва�
 #: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Размер на шрифта на отговора"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Размер на шрифта: %1"
 
 #: ../settingsdialog.lua:226
 msgid "Always enable stream response"

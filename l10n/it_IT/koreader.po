@@ -8,26 +8,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 14:29+0800\n"
-"PO-Revision-Date: Thu Aug 21 14:32:09 +08 2025\n"
+"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"PO-Revision-Date: Thu Aug 21 15:20:35 +08 2025\n"
 "Last-Translator: ChatGPT-4 Turbo <none>\n"
 "Language-Team: ChatGPT-4 Turbo <none>\n"
-"Language: Italiano\n"
+"Language: Italiano (it)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../main.lua:92 ../settingsdialog.lua:202
-msgid "AI Assistant Settings"
-msgstr "Impostazioni dell'Assistente IA"
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "Coniugazione"
 
-#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
-msgid "AI Language: %1"
-msgstr "Lingua IA: %1"
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "Sinonimi"
 
-#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
-msgid "Font Size: %1"
-msgstr "Dimensione carattere: %1"
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "Significato"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "Traduzione"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "Spiegazione"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "Esempio"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "Origine della parola"
 
 #: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
@@ -155,7 +172,7 @@ msgstr "Inserisci una parola da cercare..."
 msgid "Look Up"
 msgstr "Cerca"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:19
+#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "Dizionario"
 
@@ -223,6 +240,10 @@ msgstr "Fai una domanda all'AI"
 msgid "AI Recaps"
 msgstr "Riassunti AI"
 
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "Impostazioni dell'Assistente IA"
+
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "Nessun provider di modello valido trovato in configuration.lua"
@@ -277,7 +298,7 @@ msgstr "Rimuovere [%s] dal menu Evidenzia?"
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: ../main.lua:351 ../prompts.lua:127
+#: ../main.lua:351 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -317,7 +338,7 @@ msgstr "No"
 msgid "💡 Enhance your KOReader experience with AI"
 msgstr "💡 Migliora l'esperienza KOReader con AI"
 
-#: ../prompts.lua:20
+#: ../prompts.lua:21
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
@@ -325,11 +346,11 @@ msgstr ""
 "Questo prompt funge da dizionario per il testo evidenziato, per una parola o "
 "frase."
 
-#: ../prompts.lua:24
+#: ../prompts.lua:25
 msgid "Vocabulary"
 msgstr "Vocabolario"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:27
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
@@ -337,11 +358,11 @@ msgstr ""
 "Questo prompt analizza il vocabolario del testo evidenziato, identificando "
 "parole complesse e fornendo definizioni, sinonimi ed esempi di uso."
 
-#: ../prompts.lua:42
+#: ../prompts.lua:43
 msgid "Grammar"
 msgstr "Grammatica"
 
-#: ../prompts.lua:44
+#: ../prompts.lua:45
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
@@ -350,19 +371,19 @@ msgstr ""
 "spiegazione dettagliata della sua struttura e di eventuali errori "
 "grammaticali."
 
-#: ../prompts.lua:50
+#: ../prompts.lua:51
 msgid "Translate"
 msgstr "Traduci"
 
-#: ../prompts.lua:51
+#: ../prompts.lua:52
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Questo prompt traduce il testo evidenziato in un'altra lingua."
 
-#: ../prompts.lua:73
+#: ../prompts.lua:74
 msgid "Summarize"
 msgstr "Riassumi"
 
-#: ../prompts.lua:75
+#: ../prompts.lua:76
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
@@ -370,21 +391,21 @@ msgstr ""
 "Questo prompt riassume il testo evidenziato, catturando i punti principali e "
 "i dettagli essenziali."
 
-#: ../prompts.lua:84
+#: ../prompts.lua:85
 msgid "Simplify"
 msgstr "Semplifica"
 
-#: ../prompts.lua:86
+#: ../prompts.lua:87
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
 msgstr ""
 "Questo prompt semplifica il testo evidenziato per renderlo più comprensibile."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:97
 msgid "Key Points"
 msgstr "Punti Chiave"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:99
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
@@ -392,11 +413,11 @@ msgstr ""
 "Questo prompt estrae e elenca i punti chiave dal testo evidenziato, "
 "garantendo chiarezza e organizzazione."
 
-#: ../prompts.lua:102
+#: ../prompts.lua:103
 msgid "ELI5"
 msgstr "Spiega come se avessi 5 anni"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:105
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
@@ -405,11 +426,11 @@ msgstr ""
 "di cinque anni, semplificando concetti complessi in termini facilmente "
 "comprensibili."
 
-#: ../prompts.lua:108
+#: ../prompts.lua:109
 msgid "Explain"
 msgstr "Spiega"
 
-#: ../prompts.lua:110
+#: ../prompts.lua:111
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
@@ -417,11 +438,11 @@ msgstr ""
 "Questo prompt spiega il testo evidenziato in dettaglio, garantendo chiarezza "
 "e comprensione."
 
-#: ../prompts.lua:121
+#: ../prompts.lua:122
 msgid "Historical Context"
 msgstr "Contesto Storico"
 
-#: ../prompts.lua:123
+#: ../prompts.lua:124
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
@@ -429,7 +450,7 @@ msgstr ""
 "Questo prompt fornisce un contesto storico dettagliato per il testo "
 "evidenziato, spiegando la sua importanza e sfondo."
 
-#: ../prompts.lua:129
+#: ../prompts.lua:130
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
@@ -465,6 +486,10 @@ msgstr "Pulisci"
 msgid "Save"
 msgstr "Salva"
 
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "Lingua IA: %1"
+
 #: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "Lingua scritta da destra a sinistra"
@@ -476,6 +501,10 @@ msgstr "Lascia vuoti questi campi per usare la lingua dell’interfaccia: %1"
 #: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Dimensione carattere risposta"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Dimensione carattere: %1"
 
 #: ../settingsdialog.lua:226
 msgid "Always enable stream response"

@@ -1,4 +1,4 @@
-# Một số mô tả.
+# Một một mô tả.
 # Bản quyền (C) 2025 CHỦ SỞ HỮU BẢN QUYỀN GÓI
 # Tệp này được phân phối theo cùng giấy phép với gói PACKAGE.
 # TÁC GIẢ ĐẦU TIÊN <EMAIL@ADDRESS>, 2025.
@@ -8,26 +8,43 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 14:29+0800\n"
-"PO-Revision-Date: 2025-08-21 14:49+0800\n"
+"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"PO-Revision-Date: 2025-08-21 15:24+0800\n"
 "Last-Translator: ChatGPT-4.0\n"
 "Language-Team: ChatGPT-4.0\n"
-"Language: Tiếng Việt (vi)\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../main.lua:92 ../settingsdialog.lua:202
-msgid "AI Assistant Settings"
-msgstr "Cài đặt Trợ lý AI"
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "Chia động từ"
 
-#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
-msgid "AI Language: %1"
-msgstr "Ngôn ngữ AI: %1"
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "Từ đồng nghĩa"
 
-#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
-msgid "Font Size: %1"
-msgstr "Cỡ chữ: %1"
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "Nghĩa"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "Dịch"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "Giải thích"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "Ví dụ"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "Nguồn gốc từ"
 
 #: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
 msgid "Ask Another Question"
@@ -155,7 +172,7 @@ msgstr "Nhập từ cần tra..."
 msgid "Look Up"
 msgstr "Tra cứu"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:19
+#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "Từ điển"
 
@@ -223,6 +240,10 @@ msgstr "Đặt câu hỏi cho AI"
 msgid "AI Recaps"
 msgstr "Tóm tắt AI"
 
+#: ../main.lua:92 ../settingsdialog.lua:202
+msgid "AI Assistant Settings"
+msgstr "Cài đặt Trợ lý AI"
+
 #: ../main.lua:168
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "Không tìm thấy nhà cung cấp mô hình hợp lệ trong configuration.lua"
@@ -275,7 +296,7 @@ msgstr "Xoá [%s] khỏi menu đánh dấu?"
 msgid "Remove"
 msgstr "Xoá"
 
-#: ../main.lua:351 ../prompts.lua:127
+#: ../main.lua:351 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
@@ -315,17 +336,17 @@ msgstr "Không"
 msgid "💡 Enhance your KOReader experience with AI"
 msgstr "💡 Nâng cao trải nghiệm KOReader với AI"
 
-#: ../prompts.lua:20
+#: ../prompts.lua:21
 msgid ""
 "This prompt acts as a dictionary for the highlighted text, to a word or "
 "phrase."
 msgstr "Lệnh này hoạt động như từ điển cho văn bản được đánh dấu."
 
-#: ../prompts.lua:24
+#: ../prompts.lua:25
 msgid "Vocabulary"
 msgstr "Từ vựng"
 
-#: ../prompts.lua:26
+#: ../prompts.lua:27
 msgid ""
 "This prompt analyzes the vocabulary of the highlighted text, identifying "
 "complex words and providing definitions, synonyms, and usage examples."
@@ -333,11 +354,11 @@ msgstr ""
 "Lệnh này phân tích từ vựng, định nghĩa, từ đồng nghĩa và ví dụ sử dụng của "
 "văn bản được đánh dấu."
 
-#: ../prompts.lua:42
+#: ../prompts.lua:43
 msgid "Grammar"
 msgstr "Ngữ pháp"
 
-#: ../prompts.lua:44
+#: ../prompts.lua:45
 msgid ""
 "This prompt analyzes the grammar of the highlighted text, providing a "
 "detailed explanation of its structure and any grammatical errors."
@@ -345,77 +366,77 @@ msgstr ""
 "Lệnh này phân tích ngữ pháp, cấu trúc và lỗi (nếu có) của văn bản được đánh "
 "dấu."
 
-#: ../prompts.lua:50
+#: ../prompts.lua:51
 msgid "Translate"
 msgstr "Dịch"
 
-#: ../prompts.lua:51
+#: ../prompts.lua:52
 msgid "This prompt translates the highlighted text to another language."
 msgstr "Lệnh này dịch văn bản được đánh dấu sang ngôn ngữ khác."
 
-#: ../prompts.lua:73
+#: ../prompts.lua:74
 msgid "Summarize"
 msgstr "Tóm tắt"
 
-#: ../prompts.lua:75
+#: ../prompts.lua:76
 msgid ""
 "This prompt summarizes the highlighted text, capturing its main points and "
 "essential details."
 msgstr "Lệnh này tóm tắt văn bản, nêu ý chính và chi tiết cần thiết."
 
-#: ../prompts.lua:84
+#: ../prompts.lua:85
 msgid "Simplify"
 msgstr "Đơn giản hoá"
 
-#: ../prompts.lua:86
+#: ../prompts.lua:87
 msgid ""
 "This prompt simplifies the highlighted text to make it easier to understand."
 msgstr "Lệnh này đơn giản hoá văn bản để dễ hiểu hơn."
 
-#: ../prompts.lua:96
+#: ../prompts.lua:97
 msgid "Key Points"
 msgstr "Điểm chính"
 
-#: ../prompts.lua:98
+#: ../prompts.lua:99
 msgid ""
 "This prompt extracts and lists the key points from the highlighted text, "
 "ensuring clarity and organization."
 msgstr ""
 "Lệnh này trích xuất và liệt kê các điểm chính một cách rõ ràng, có tổ chức."
 
-#: ../prompts.lua:102
+#: ../prompts.lua:103
 msgid "ELI5"
 msgstr "Giải thích như cho trẻ 5 tuổi"
 
-#: ../prompts.lua:104
+#: ../prompts.lua:105
 msgid ""
 "This prompt explains the highlighted text as if to a five-year-old, "
 "simplifying complex concepts into easily understandable terms."
 msgstr ""
 "Lệnh này giải thích văn bản một cách đơn giản, dễ hiểu như cho trẻ 5 tuổi."
 
-#: ../prompts.lua:108
+#: ../prompts.lua:109
 msgid "Explain"
 msgstr "Giải thích"
 
-#: ../prompts.lua:110
+#: ../prompts.lua:111
 msgid ""
 "This prompt explains the highlighted text in detail, ensuring clarity and "
 "understanding."
 msgstr "Lệnh này giải thích chi tiết văn bản được đánh dấu."
 
-#: ../prompts.lua:121
+#: ../prompts.lua:122
 msgid "Historical Context"
 msgstr "Bối cảnh lịch sử"
 
-#: ../prompts.lua:123
+#: ../prompts.lua:124
 msgid ""
 "This prompt provides a detailed historical context for the highlighted text, "
 "explaining its significance and background."
 msgstr ""
 "Lệnh này cung cấp bối cảnh lịch sử và ý nghĩa của văn bản được đánh dấu."
 
-#: ../prompts.lua:129
+#: ../prompts.lua:130
 msgid ""
 "This prompt generates a comprehensive Wikipedia-style article based on the "
 "highlighted text, ensuring factual accuracy and neutrality."
@@ -451,6 +472,10 @@ msgstr "Xóa"
 msgid "Save"
 msgstr "Lưu"
 
+#: ../settingsdialog.lua:142 ../settingsdialog.lua:382
+msgid "AI Language: %1"
+msgstr "Ngôn ngữ AI: %1"
+
 #: ../settingsdialog.lua:153
 msgid "RTL written Language"
 msgstr "Ngôn ngữ viết RTL"
@@ -462,6 +487,10 @@ msgstr "Để trống các trường này để dùng ngôn ngữ giao diện: %
 #: ../settingsdialog.lua:186
 msgid "Response Font Size"
 msgstr "Cỡ chữ phản hồi"
+
+#: ../settingsdialog.lua:194 ../settingsdialog.lua:391
+msgid "Font Size: %1"
+msgstr "Cỡ chữ: %1"
 
 #: ../settingsdialog.lua:226
 msgid "Always enable stream response"
