@@ -347,7 +347,7 @@ function Assistant:onDictButtonsReady(dict_popup, dict_buttons)
   if self.settings:readSetting("dict_popup_show_wikipedia", true) then
     table.insert(plugin_buttons, {
       id = "assistant_wikipedia",
-      font_bold = false,
+      font_bold = true,
       text = _("Wikipedia") .. " (AI)",
       callback = function()
           NetworkMgr:runWhenOnline(function()
@@ -363,7 +363,7 @@ function Assistant:onDictButtonsReady(dict_popup, dict_buttons)
     table.insert(plugin_buttons, {
       id = "assistant_dictionary",
       text = _("Dictionary") .. " (AI)",
-      font_bold = false,
+      font_bold = true,
       callback = function()
           NetworkMgr:runWhenOnline(function()
               Trapper:wrap(function()
@@ -374,8 +374,8 @@ function Assistant:onDictButtonsReady(dict_popup, dict_buttons)
     })
   end
 
-  if #plugin_buttons > 0 then
-    table.insert(dict_buttons, 1, plugin_buttons)
+  if #plugin_buttons > 0 and #dict_buttons > 1 then
+    table.insert(dict_buttons, 2, plugin_buttons) -- add to the last second row of buttons
   end
 end
 
