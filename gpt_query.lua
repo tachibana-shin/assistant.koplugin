@@ -292,13 +292,17 @@ function Querier:processStream(bgQuery, trunk_callback)
                         if ok and event then
                         
                             local content
-                            if event.choices and #event.choices > 0 and event.choices[1].delta then
+                            if event.choices and #event.choices > 0 and event.choices[1].delta 
+                                    and event.choices[1].delta.content then
                                 -- openai API
                                 content = event.choices[1].delta.content
-                            elseif event.candidates and #event.candidates > 0 and event.candidates[1].content then 
+                            elseif event.candidates and #event.candidates > 0 and event.candidates[1].content
+                                    and event.candidates[1].content.parts and #event.candidates[1].content.parts > 0
+                                    and event.candidates[1].content.parts[1].text then
                                 -- gemini API
                                 content = event.candidates[1].content.parts[1].text
-                            elseif event.content and #event.content > 0 and event.content[1] then
+                            elseif event.content and #event.content > 0 and event.content[1] 
+                                    and event.content[1].text then
                                 -- Anthropic Claude (Messages API)
                                 content = event.content[1].text
                             else
