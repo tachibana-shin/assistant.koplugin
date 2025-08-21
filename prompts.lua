@@ -20,8 +20,33 @@ local custom_prompts = {
             desc = _("This prompt acts as a dictionary for the highlighted text, to a word or phrase."),
             -- this prompt is a stub -- it will be replaced by the actual prompt in the code below
         },
+        vocabulary = {
+            text = _("Vocabulary"),
+            order = 10,
+            desc = _("This prompt analyzes the vocabulary of the highlighted text, identifying complex words and providing definitions, synonyms, and usage examples."),
+            user_prompt = [[**Your Task:** Analyze the Input Text below. Find words/phrases that are B2 level or higher. Ignore common words (B1 level) and proper nouns.
+
+                            **Output Requirements:**
+                            1.  For each difficult word/phrase found:
+                                *   Correct any typos.
+                                *   Convert it to its base form (e.g., "go", "dog", "good", "kick the bucket").
+                                *   List up to 3 simple synonyms (suitable for B1+ learners). Do not reuse the original word.
+                                *   Explain its meaning simply **in {language}**, considering its context in the text. Do not reuse the original word in the explanation.
+                            2.  Format: Create a numbered list using this exact structure for each item:
+                                `index. __base form__: synonym1, synonym2, synonym3 : {language} explanation`
+                            3.  Output Content: **ONLY** provide the numbered list. Do not include the original text, titles, or any extra sentences.
+
+                            **Input Text:** {highlight} ]], 
+        },
+        grammar = {
+            text = _("Grammar"),
+            order = 20,
+            desc = _("This prompt analyzes the grammar of the highlighted text, providing a detailed explanation of its structure and any grammatical errors."),
+            system_prompt = "You are a helpful AI assistant. Always respond in Markdown format, but use markdown lists to present comparisons instead of tables.",
+            user_prompt = "You are a meticulous and highly knowledgeable Grammar Expert with an encyclopedic understanding of syntax, morphology, punctuation, and linguistic structures across various languages. When presented with a text, your expertise lies in thoroughly dissecting its grammatical composition and providing a comprehensive, insightful explanation. Your task is to analyze the provided text, elucidating its sentence structures, parts of speech, verb tenses, clause relationships, and any other relevant grammatical elements. If present, you should also identify and clearly explain any grammatical errors, along with their corrections and the underlying rules. Your explanation should be didactic, detailed, and easy to understand, formatted clearly to highlight specific points. All explanations must be rendered exclusively in the language I specify. Please provide a detailed and comprehensive explanation of the grammar of the following text, rendered entirely in {language}: {highlight}",
+        },
         translate = {
-            order = 100,
+            order = 30,
             text = _("Translate"),
             desc = _("This prompt translates the highlighted text to another language."),
             user_prompt = [[You are a helpful translation assistant. Provide direct translations without additional commentary. 
@@ -44,9 +69,20 @@ Follow these steps to complete the translation:
 
 Output only the translated text without any further explanation.]],
         },
+        summarize = {
+            text = _("Summarize"),
+            order = 40,
+            desc = _("This prompt summarizes the highlighted text, capturing its main points and essential details."),
+            user_prompt = [[
+You are an exceptionally skilled summarization expert and a master of linguistic precision. 
+Your core competency is to distill extensive information into its most essential form while rigorously adhering to the original language of the input text. 
+Your task is to receive the following text and provide a summary that is both genuinely concise and remarkably clear. 
+This summary must accurately capture every main point and crucial detail, eliminating all extraneous information, so that a reader can grasp the complete essence of the original content quickly and effectively, exclusively in its native language.
+Please provide a concise and clear summary of the following text in its own language: {highlight}]],
+        },
         simplify = {
             text = _("Simplify"),
-            order = 110,
+            order = 50,
             desc = _("This prompt simplifies the highlighted text to make it easier to understand."),
             user_prompt = [[You are an experienced linguistic expert and an effective communicator, skilled at transforming complex content into clear, easily understandable expressions.
 I have a piece of text that I need you to simplify using its original language. 
@@ -56,9 +92,21 @@ Your goal is to enhance the text's readability and clarity, making it accessible
 
 {highlight}]],
         },
+        key_points = {
+            text = _("Key Points"),
+            order = 60,
+            desc = _("This prompt extracts and lists the key points from the highlighted text, ensuring clarity and organization."),
+            user_prompt = "You are a highly analytical and extremely efficient Key Points Expert, adept at distilling any given text into its fundamental essence. Your primary function is to meticulously identify and extract all the critical insights, core arguments, essential facts, and conclusive statements from the provided content. Your goal is to produce a summary that is not just concise but also remarkably comprehensive in its coverage of the main points, leaving out all superfluous information. You must then present these key points in a meticulously organized and easy-to-read list, ensuring each point is clear, independent, and directly addresses a central idea of the original text. All output must be exclusively in the language I specify. Please provide a concise and clear list of key points from the following text, and rendered entirely in {language}: {highlight}",
+        },
+        ELI5 = {
+            text = _("ELI5"),
+            order = 70,
+            desc = _("This prompt explains the highlighted text as if to a five-year-old, simplifying complex concepts into easily understandable terms."),
+            user_prompt = "You are an exceptional ELI5 (Explain Like I'm 5) Expert, mastering the art of simplifying the most intricate concepts. Your unique talent lies in transforming complex terms or ideas into effortlessly understandable explanations, as if speaking to a curious five-year-old. When I provide you with a concept, your task is to strip away all jargon, technicalities, and unnecessary complexities, focusing solely on the fundamental essence. You must use only plain, everyday language, simple analogies, and concise sentences to ensure immediate comprehension for anyone, regardless of their background knowledge. Your explanation should be direct, clear, and perfectly accessible. All output must be delivered exclusively in the language I specify. Please provide a concise, simple, and crystal-clear ELI5 explanation of the following, rendered entirely in {language}: {highlight}.",
+        },
         explain = {
             text = _("Explain"),
-            order = 120,
+            order = 80,
             desc = _("This prompt explains the highlighted text in detail, ensuring clarity and understanding."),
             user_prompt = [[You are an expert Explainer and a highly skilled Cross-Cultural Communicator.
 Your task is to accurately and comprehensively explain any given text. 
@@ -69,63 +117,15 @@ Ensure your {language} explanation is precise, captures all nuances of the origi
 
 {highlight}]],
         },
-        summarize = {
-            text = _("Summarize"),
-            order = 130,
-            desc = _("This prompt summarizes the highlighted text, capturing its main points and essential details."),
-            user_prompt = [[
-You are an exceptionally skilled summarization expert and a master of linguistic precision. 
-Your core competency is to distill extensive information into its most essential form while rigorously adhering to the original language of the input text. 
-Your task is to receive the following text and provide a summary that is both genuinely concise and remarkably clear. 
-This summary must accurately capture every main point and crucial detail, eliminating all extraneous information, so that a reader can grasp the complete essence of the original content quickly and effectively, exclusively in its native language.
-Please provide a concise and clear summary of the following text in its own language: {highlight}]],
-        },
         historical_context = {
             text = _("Historical Context"),
-            order = 140,
+            order = 90,
             desc = _("This prompt provides a detailed historical context for the highlighted text, explaining its significance and background."),
             user_prompt = "You are a distinguished Historical Context Expert with profound knowledge of global history, socio-political movements, and cultural evolution. You possess an exceptional ability to place any given text within its precise historical framework. When I provide you with a text, your primary task is to meticulously uncover and articulate its relevant historical background, including the significant events, prevailing ideologies, societal structures, scientific advancements, and cultural environment that shaped its creation and meaning. Beyond merely listing facts, you must forge clear, insightful connections between these historical elements and the text's content, themes, and underlying messages. Furthermore, your comprehensive explanation must be delivered entirely in the language specified by me. Please provide a detailed and insightful explanation of the historical context of the following text, rendered completely in {language}: {highlight}",
         },
-        key_points = {
-            text = _("Key Points"),
-            order = 150,
-            desc = _("This prompt extracts and lists the key points from the highlighted text, ensuring clarity and organization."),
-            user_prompt = "You are a highly analytical and extremely efficient Key Points Expert, adept at distilling any given text into its fundamental essence. Your primary function is to meticulously identify and extract all the critical insights, core arguments, essential facts, and conclusive statements from the provided content. Your goal is to produce a summary that is not just concise but also remarkably comprehensive in its coverage of the main points, leaving out all superfluous information. You must then present these key points in a meticulously organized and easy-to-read list, ensuring each point is clear, independent, and directly addresses a central idea of the original text. All output must be exclusively in the language I specify. Please provide a concise and clear list of key points from the following text, and rendered entirely in {language}: {highlight}",
-        },
-        ELI5 = {
-            text = _("ELI5"),
-            order = 160,
-            desc = _("This prompt explains the highlighted text as if to a five-year-old, simplifying complex concepts into easily understandable terms."),
-            user_prompt = "You are an exceptional ELI5 (Explain Like I'm 5) Expert, mastering the art of simplifying the most intricate concepts. Your unique talent lies in transforming complex terms or ideas into effortlessly understandable explanations, as if speaking to a curious five-year-old. When I provide you with a concept, your task is to strip away all jargon, technicalities, and unnecessary complexities, focusing solely on the fundamental essence. You must use only plain, everyday language, simple analogies, and concise sentences to ensure immediate comprehension for anyone, regardless of their background knowledge. Your explanation should be direct, clear, and perfectly accessible. All output must be delivered exclusively in the language I specify. Please provide a concise, simple, and crystal-clear ELI5 explanation of the following, rendered entirely in {language}: {highlight}.",
-        },
-        grammar = {
-            text = _("Grammar"),
-            order = 170,
-            desc = _("This prompt analyzes the grammar of the highlighted text, providing a detailed explanation of its structure and any grammatical errors."),
-            system_prompt = "You are a helpful AI assistant. Always respond in Markdown format, but use markdown lists to present comparisons instead of tables.",
-            user_prompt = "You are a meticulous and highly knowledgeable Grammar Expert with an encyclopedic understanding of syntax, morphology, punctuation, and linguistic structures across various languages. When presented with a text, your expertise lies in thoroughly dissecting its grammatical composition and providing a comprehensive, insightful explanation. Your task is to analyze the provided text, elucidating its sentence structures, parts of speech, verb tenses, clause relationships, and any other relevant grammatical elements. If present, you should also identify and clearly explain any grammatical errors, along with their corrections and the underlying rules. Your explanation should be didactic, detailed, and easy to understand, formatted clearly to highlight specific points. All explanations must be rendered exclusively in the language I specify. Please provide a detailed and comprehensive explanation of the grammar of the following text, rendered entirely in {language}: {highlight}",
-        },
-        vocabulary = {
-            text = _("Vocabulary"),
-            order = 180,
-            desc = _("This prompt analyzes the vocabulary of the highlighted text, identifying complex words and providing definitions, synonyms, and usage examples."),
-            user_prompt = [[**Your Task:** Analyze the Input Text below. Find words/phrases that are B2 level or higher. Ignore common words (B1 level) and proper nouns.
-
-                            **Output Requirements:**
-                            1.  For each difficult word/phrase found:
-                                *   Correct any typos.
-                                *   Convert it to its base form (e.g., "go", "dog", "good", "kick the bucket").
-                                *   List up to 3 simple synonyms (suitable for B1+ learners). Do not reuse the original word.
-                                *   Explain its meaning simply **in {language}**, considering its context in the text. Do not reuse the original word in the explanation.
-                            2.  Format: Create a numbered list using this exact structure for each item:
-                                `index. __base form__: synonym1, synonym2, synonym3 : {language} explanation`
-                            3.  Output Content: **ONLY** provide the numbered list. Do not include the original text, titles, or any extra sentences.
-
-                            **Input Text:** {highlight} ]], 
-        },
         wikipedia = {
             text = _("Wikipedia"),
-            order = 190,
+            order = 100,
             desc = _("This prompt generates a comprehensive Wikipedia-style article based on the highlighted text, ensuring factual accuracy and neutrality."),
             user_prompt = "You are an exceptionally thorough and objective Informative Assistant designed to emulate the structure and content quality of a Wikipedia page. Your extensive knowledge base allows you to act as a definitive source for factual and unbiased information. When I provide you with a topic, your core task is to research and synthesize the most critical and universally accepted information about that subject. You must then present this information in the comprehensive, encyclopedic format of a Wikipedia article. Begin with a concise, overview introductory paragraph that defines the topic and summarizes its essence. Subsequently, elaborate on the most important facets, key historical events, fundamental concepts, or significant applications, ensuring every piece of information is factual, neutral, and devoid of opinion. All content generated should strictly adhere to Wikipedia's tone and style, and the entire response must be delivered exclusively in the language I specify. Please act as a Wikipedia page for the following topic, starting with an introductory paragraph and thoroughly covering its most important aspects, delivered entirely in {language}: {highlight}",
         },
