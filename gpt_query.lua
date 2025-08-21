@@ -183,12 +183,11 @@ function Querier:query(message_history, title)
         res = content
     end
 
-    if #res == 0 then
-        return nil, _("No response received.") .. (err and tostring(err) or "")
-    elseif err ~= nil then
+    if type(res) ~= "string" or err ~= nil then
         return nil, tostring(err)
+    elseif #res == 0 then
+        return nil, _("No response received.") .. (err and tostring(err) or "")
     end
-
     return res
 end
 
