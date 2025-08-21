@@ -258,7 +258,8 @@ function AssistantDialog:show(highlightedText)
 
   -- Create button rows (3 buttons per row)
   local button_rows = {}
-  local all_buttons = {
+  local prompt_buttons = {}
+  local first_row = {
     {
       text = _("Cancel"),
       id = "close",
@@ -321,7 +322,7 @@ function AssistantDialog:show(highlightedText)
     -- logger.warn("Sorted prompts: ", sorted_prompts)
     -- Add buttons in sorted order
     for i, tab in ipairs(sorted_prompts) do
-      table.insert(all_buttons, {
+      table.insert(prompt_buttons, {
         text = tab.text,
         callback = function()
           self:_close()
@@ -350,9 +351,10 @@ function AssistantDialog:show(highlightedText)
     end
   end
   
+  table.insert(button_rows, first_row)
   -- Organize buttons into rows of three
   local current_row = {}
-  for _, button in ipairs(all_buttons) do
+  for _, button in ipairs(prompt_buttons) do
     table.insert(current_row, button)
     if #current_row == 3 then
       table.insert(button_rows, current_row)

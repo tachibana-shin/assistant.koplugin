@@ -570,7 +570,7 @@ function ChatGPTViewer:askAnotherQuestion()
   end
 
   -- Prepare buttons
-  local buttons = {
+  local first_row = {
     {
       text = _("Cancel"),
       id = "close",
@@ -606,9 +606,11 @@ function ChatGPTViewer:askAnotherQuestion()
     }
   }
 
+  local prompt_buttons = {}
+
   -- Add custom prompt buttons
   for _, option in ipairs(default_options) do
-    table.insert(buttons, {
+    table.insert(prompt_buttons, {
       text = option.text,
       callback = function()
         UIManager:close(self.input_dialog)
@@ -618,13 +620,15 @@ function ChatGPTViewer:askAnotherQuestion()
     })
   end
 
-  -- Split buttons into rows (3 buttons per row)
   local button_rows = {}
-  for i = 1, #buttons, 3 do
+  table.insert(button_rows, first_row)
+
+  -- Split buttons into rows (3 buttons per row)
+  for i = 1, #prompt_buttons, 3 do
     local row = {}
     for j = 0, 2 do
-      if buttons[i + j] then
-        table.insert(row, buttons[i + j])
+      if prompt_buttons[i + j] then
+        table.insert(row, prompt_buttons[i + j])
       end
     end
     table.insert(button_rows, row)
