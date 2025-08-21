@@ -102,6 +102,21 @@ function StreamText:initKeyboard() end
 function StreamText:onKeyPress() end
 function StreamText:onTextInput(text) end
 function StreamText:onTapTextBox(arg, ges) return true end
+function StreamText:initTextBox(text, char_added)
+    local _m = self.for_measurement_only
+    self.for_measurement_only = true                -- trick the method from super class
+    InputText.initTextBox(self, text, char_added)   -- skips `UIManager:setDirty`
+    self.for_measurement_only = _m
+    UIManager:setDirty(self.parent, function()      -- use our own method of refresh
+        return "fast", self.dimen                   -- `fast` is suitable for stream responding 
+    end)
+end
+function  StreamText:onCloseWidget()
+    UIManager:setDirty(self.parent, function()
+        return "flashui", self.dimen                -- fast mode makes scren dirty, clean it when done
+    end)
+    return InputText.onCloseWidget(self)
+end
 
 --- Query the AI with the provided message history
 --- return: answer, error (if any)
