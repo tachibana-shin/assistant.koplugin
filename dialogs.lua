@@ -388,7 +388,10 @@ function AssistantDialog:show(highlightedText)
     close_callback = function () self:_close() end,
     dismiss_callback = function () self:_close() end
   }
-  
+
+  --  adds a close button to the top right
+  self.input_dialog.title_bar.close_callback = function() self:_close() end
+  self.input_dialog.title_bar:init()
   UIManager:show(self.input_dialog)
 end
 

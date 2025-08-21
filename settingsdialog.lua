@@ -316,6 +316,9 @@ function SettingsDialog:init()
 
     -- init title and buttons in base class
     InputDialog.init(self)
+    --  adds a close button to the top right
+    self.title_bar.close_callback = function() UIManager:close(self) end
+    self.title_bar:init()
     self.element_width = math.floor(self.width * 0.9)
 
     self.radio_button_table = RadioButtonTable:new{

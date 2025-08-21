@@ -163,6 +163,15 @@ function Querier:query(message_history, title)
                 }
             }
         }
+
+        --  adds a close button to the top right
+        streamDialog.title_bar.close_callback = function()
+            if self.interrupt_stream then
+                self.interrupt_stream()
+            end
+        end
+        streamDialog.title_bar:init()
+
         UIManager:show(streamDialog)
         local content, err = self:processStream(res, function (content)
             UIManager:nextTick(function ()
