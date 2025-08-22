@@ -103,21 +103,23 @@ function  StreamText:onCloseWidget()
     return InputText.onCloseWidget(self)
 end
 
+function Querier:_closeStreamDialog(dialog)
+    if self.interrupt_stream then
+        self.interrupt_stream()
+    end
+    UIManager:close(dialog)
+end
+
 --- Query the AI with the provided message history
 --- return: answer, error (if any)
 function Querier:query(message_history, title)
     if not self:is_inited() then
-        return "", "Assistant: not configured."
+        return nil, _("Plugin is not configured.")
     end
 
     if self.settings:readSetting("forced_stream_mode", true) then -- defalut true
-        if not self.provider_settings.additional_parameters then
-            self.provider_settings.additional_parameters = {}
-        end
-        self.provider_settings.additional_parameters["stream"] = true
+        koutil.tableSetValue(self.provider_settings, true, "additional_parameters", "stream")
     end
-
-    self.stream_interrupted = false -- reset the stream interrupted flag
 
     local infomsg = InfoMessage:new{
       icon = "book.opened",
@@ -134,12 +136,12 @@ function Querier:query(message_history, title)
     -- when res is a function, it means we are in streaming mode
     -- open a stream dialog and run the background query in a subprocess
     if type(res) == "function" then
+        self.stream_interrupted = false -- reset the stream interrupted flag
         local streamDialog 
         streamDialog = InputDialog:new{
             width = Screen:getWidth() - Screen:scaleBySize(30),
             title = _("AI is responding"),
-            description = string.format(
-                _("☁ %s/%s"), self.provider_name, self.provider_settings.model),
+            description = T("☁ %1/%2", self.provider_name, self.provider_settings.model),
             inputtext_class = StreamText, -- use our custom InputText class
             input_face = Font:getFace("infofont", self.settings:readSetting("response_font_size") or 20),
             title_bar_left_icon = "appbar.settings",
@@ -155,24 +157,14 @@ function Querier:query(message_history, title)
                     {
                         text = _("⏹ Stop"),
                         id = "close", -- id:close response to default cancel action (esc key ...)
-                        callback = function()
-                            if self.interrupt_stream then
-                                self.interrupt_stream()
-                            end
-                            UIManager:close(streamDialog)
-                        end,
+                        callback = function() self:_closeStreamDialog(streamDialog) end,
                     },
                 }
             }
         }
 
         --  adds a close button to the top right
-        streamDialog.title_bar.close_callback = function()
-            if self.interrupt_stream then
-                self.interrupt_stream()
-            end
-            UIManager:close(streamDialog)
-        end
+        streamDialog.title_bar.close_callback = function() self:_closeStreamDialog(streamDialog) end
         streamDialog.title_bar:init()
 
         UIManager:show(streamDialog)
