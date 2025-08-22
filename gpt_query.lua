@@ -1,5 +1,6 @@
 --- Querier module for handling AI queries with dynamic provider loading
 local _ = require("owngettext")
+local T = require("ffi/util").template
 local InfoMessage = require("ui/widget/infomessage")
 local InputDialog = require("ui/widget/inputdialog")
 local InputText = require("ui/widget/inputtext")
@@ -35,63 +36,47 @@ function Querier:is_inited()
     return self.handler ~= nil
 end
 
---- Initialize the Querier with the provider settings and handler
---- This function checks the CONFIGURATION for the provider and loads the appropriate handler.
---- return: nil on success, or an error message if initialization fails.
-function Querier:init(provider_name)
-
-    local CONFIGURATION = self.assistant.CONFIGURATION
-
-    if CONFIGURATION and CONFIGURATION.provider_settings then
-
-        --- Check if the provider is set in the configuration
-        if CONFIGURATION.provider_settings and CONFIGURATION.provider_settings[provider_name] then
-            self.provider_settings = CONFIGURATION.provider_settings[provider_name]
-        else
-            return string.format(
-                _("Provider settings not found for: %s. Please check your configuration.lua file."),
-                provider_name)
-        end
-
-        self.provider_name = provider_name
-
-        local underscore_pos = self.provider_name:find("_")
-        if underscore_pos then
-            -- Extract the substring before the first underscore as the handler name
-            self.handler_name = self.provider_name:sub(1, underscore_pos - 1)
-        else
-            self.handler_name = self.provider_name
-        end
-
-        --- Load the handler based on the provider name
-        local success, handler = pcall(function()
-            return require("api_handlers." .. self.handler_name)
-        end)
-        if success then
-            self.handler = handler
-        else
-            return string.format(
-                _("The handler for %s was not found. Please ensure the handler exists in api_handlers directory."),
-                self.handler_name)
-        end
-    else
-        return string.format(
-            _("No provider set in configuration.lua. Please set the provider and provider_settings for %s."),
-            provider_name)
-    end
-end
-
 --- Load provider model for the Querier
 function Querier:load_model(provider_name)
-    -- If the provider name is different or not initialized, reinitialize
-    if provider_name ~= self.provider_name or not self:is_inited() then
-        local err = self:init(provider_name)
-        if err then
-            logger.warn("Querier initialization failed: " .. err)
-            return false, err
-        end
+    -- If the provider is already loaded, do nothing.
+    if provider_name == self.provider_name and self:is_inited() then
+        return true
     end
-    return true
+
+    local CONFIGURATION = self.assistant.CONFIGURATION
+    local provider_settings = koutil.tableGetValue(CONFIGURATION, "provider_settings", provider_name)
+    if not provider_settings then
+        local err = T(_("Provider settings not found for: %1. Please check your configuration.lua file."),
+         provider_name)
+        logger.warn("Querier initialization failed: " .. err)
+        return false, err
+    end
+
+    local handler_name
+    local underscore_pos = provider_name:find("_")
+    if underscore_pos and underscore_pos > 0 then
+        -- Extract `openai` from `openai_o4mimi`
+        handler_name = provider_name:sub(1, underscore_pos - 1)
+    else
+        handler_name = provider_name -- original name
+    end
+
+    -- Load the handler based on the provider name
+    local success, handler = pcall(function()
+        return require("api_handlers." .. handler_name)
+    end)
+    if success then
+        self.handler = handler
+        self.handler_name = handler_name
+        self.provider_settings = provider_settings
+        self.provider_name = provider_name
+        return true
+    else
+        local err = T(_("The handler for %1 was not found. Please ensure the handler exists in api_handlers directory."),
+                handler_name)
+        logger.warn("Querier initialization failed: " .. err)
+        return false, err
+    end
 end
 
 -- InputText class for showing streaming responses
