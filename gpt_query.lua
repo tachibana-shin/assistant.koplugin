@@ -302,15 +302,13 @@ function Querier:processStream(bgQuery, trunk_callback)
                             local content
                             -- OpenAI (compatiable) API
                             content = koutil.tableGetValue(event, "choices", 1, "delta", "content")
-                            if not content then
-                                -- Genmini API
+                            if not content then -- Genmini API
                                 content = koutil.tableGetValue(event, "candidates", 1, "content", "parts", 1, "text")
                             end
-                            if not content then
-                                -- Anthropic API
+                            if not content then -- Anthropic API
                                 content = koutil.tableGetValue(event, "content", 1, "text")
                             end
-                            if not content then
+                            if not content then -- Log the unreconized event
                                 logger.warn("Unexpected event format:", json_str)
                                 content = json_str
                             end
@@ -324,14 +322,20 @@ function Querier:processStream(bgQuery, trunk_callback)
                         else
                             logger.warn("Failed to parse JSON from SSE data:", json_str)
                         end
+                    elseif line:sub(1, 7) == "event: " then
+                        -- Ignore SSE event lines (from Anthropic)
+                    elseif line:sub(1, 1) == ":" then
+                        -- SSE empty events, nothing to do
                     elseif line:sub(1, 1) == "{" then
                         -- If the line starts with '{', it might be a JSON object
                         local ok, j = pcall(json.decode, line)
                         if ok then
                             -- log the json
-                            if j.error and j.error.message then
-                                table.insert(result_buffer, j.error.message)
+                            local err_message = koutil.tableGetValue(j, "error", "message")
+                            if err_message then
+                                table.insert(result_buffer, err_message)
                             end
+
                             if trunk_callback then
                                 trunk_callback(line)  -- Output to trunk callback
                                 logger.info("JSON object received:", line)
@@ -340,8 +344,6 @@ function Querier:processStream(bgQuery, trunk_callback)
                             -- the json was breaked into lines, just log the raw line
                             table.insert(result_buffer, line)  -- Add the raw line to the result
                         end
-                    elseif line:sub(1, 1) == ":" then
-                        -- SSE empty events, nothing to do
                     elseif line:sub(1, #(self.handler.PROTOCAL_NON_200)) == self.handler.PROTOCAL_NON_200 then
                         -- child writes a non-200 response 
                         non200 = true
@@ -396,7 +398,23 @@ function Querier:processStream(bgQuery, trunk_callback)
 
     local ret = table.concat(result_buffer)
     if non200 then
-        -- return the result as error message
+        ret = koutil.trim(ret)
+        -- try to parse the json, returns only message from the API.
+        if ret:sub(1, 1) == '{' then
+            local endPos = ret:reverse():find("}")
+            if endPos and endPos > 0 then
+                local ok, j = pcall(json.decode, ret:sub(1, #ret - endPos + 1))
+                if ok then
+                    local err
+                    err = koutil.tableGetValue(j, "error", "message") -- OpenAI / Anthropic / Gemini 
+                    if err then return nil, err end
+                    err = koutil.tableGetValue(j, "message") -- Mistral / Cohere
+                    if err then return nil, err end
+                end
+            end
+        end
+
+        -- return all received content as error message
         return nil, ret
     end
     return ret, nil
