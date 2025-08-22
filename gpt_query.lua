@@ -382,9 +382,8 @@ function Querier:processStream(bgQuery, trunk_callback)
     end
     UIManager:scheduleIn(collect_interval_sec, collect_and_clean)
 
-    local ret = table.concat(result_buffer)
+    local ret = koutil.trim(table.concat(result_buffer))
     if non200 then
-        ret = koutil.trim(ret)
         -- try to parse the json, returns only message from the API.
         if ret:sub(1, 1) == '{' then
             local endPos = ret:reverse():find("}")
@@ -403,9 +402,11 @@ function Querier:processStream(bgQuery, trunk_callback)
         -- return all received content as error message
         return nil, ret
     else
-        local reasoning = table.concat(reasoning_content_buffer):gsub("^%.+", "")
+        local reasoning = table.concat(reasoning_content_buffer):gsub("^%.+", "", 1)
         if #reasoning > 0 then
-            ret = T("#### %1\n\n<dd>%2</dd>\n\n%3", _("Deeply Thought"), reasoning, ret)
+            ret = T("<dl><dt>%1</dt><dd>%2</dd></dl>\n\n%3", _("Deeply Thought"), reasoning, ret)
+        elseif ret:sub(1, 7) == "<think>" then
+            ret = ret:gsub("<think>", T("<dl><dt>%1</dt><dd>", _("Deeply Thought")), 1):gsub("</think>", "</dd></dl>", 1)
         end
     end
     return ret, nil
