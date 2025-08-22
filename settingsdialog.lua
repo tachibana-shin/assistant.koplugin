@@ -151,7 +151,7 @@ local function LanguageSetting(dlg)
     chkbtn_is_rtl = CheckButton:new{
         text = _("RTL written Language"),
         face = Font:getFace("xx_smallinfofont"),  
-        checked = dlg.assistant.settings:readSetting("response_is_rtl") or false,
+        checked = dlg.assistant.settings:readSetting("response_is_rtl") or dlg.assistant.ui_language_is_rtl,
         parent = langsetting,
     }
     langsetting:addWidget(FrameContainer:new{
