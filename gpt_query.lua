@@ -8,7 +8,7 @@ local UIManager = require("ui/uimanager")
 local Font = require("ui/font")
 local koutil = require("util")
 local logger = require("logger")
-local json = require("json")
+local rapidjson = require('rapidjson')
 local ffi = require("ffi")
 local ffiutil = require("ffi/util")
 local Device = require("device")
@@ -225,6 +225,7 @@ function Querier:processStream(bgQuery, trunk_callback)
     local completed = false   -- Flag to indicate if the reading is completed
     local partial_data = ""   -- Buffer for incomplete line data
     local result_buffer = {}  -- Buffer for storing results
+    local reasoning_content_buffer = {}  -- Buffer for storing results
 
     while true do  
 
@@ -273,36 +274,36 @@ function Querier:processStream(bgQuery, trunk_callback)
                         if json_str == '[DONE]' then break end -- end of SSE stream
 
                         -- Safely parse the JSON
-                        local ok, event = pcall(json.decode, json_str)
+                        local ok, event = pcall(rapidjson.decode, json_str, {null = nil})
                         if ok and event then
                         
-                            local content
+                            local reasoning_content, content
 
-                            -- OpenAI (compatiable) API
                             local choice = koutil.tableGetValue(event, "choices", 1)
                             if choice then
+                                -- OpenAI (compatiable) API
                                 if koutil.tableGetValue(choice, "finish_reason") then content="\n" end
                                 local delta = koutil.tableGetValue(choice, "delta")
                                 if delta then
-                                    content = koutil.tableGetValue(delta, "content") 
-                                              or koutil.tableGetValue(delta, "reasoning_content")
-                                              or "."
-                                end
-                            end
-
-                            if not content then
-                                content =
-                                    koutil.tableGetValue(event, "candidates", 1, "content", "parts", 1, "text") or  -- Genmini API
-                                    koutil.tableGetValue(event, "content", 1, "text") -- Anthropic API
-                            end
-                                
-                            if content then
-                                table.insert(result_buffer, content)
-                                if trunk_callback then
-                                    trunk_callback(content)  -- Output to trunk callback
+                                    reasoning_content = koutil.tableGetValue(delta, "reasoning_content")
+                                    content = koutil.tableGetValue(delta, "content")
+                                    if not content and not reasoning_content then reasoning_content = "." end
                                 end
                             else
-                                logger.warn("Unexpected content:", json_str)
+                                content =
+                                    koutil.tableGetValue(event, "candidates", 1, "content", "parts", 1, "text") or  -- Genmini API
+                                    koutil.tableGetValue(event, "content", 1, "text") or -- Anthropic API
+                                    nil
+                            end
+                                
+                            if type(content) == "string" then
+                                table.insert(result_buffer, content)
+                                if trunk_callback then trunk_callback(content) end
+                            elseif type(reasoning_content) == "string" then
+                                table.insert(reasoning_content_buffer, reasoning_content)
+                                if trunk_callback then trunk_callback(reasoning_content) end
+                            else
+                                logger.warn("Unexpected SSE data:", json_str)
                             end
                         else
                             logger.warn("Failed to parse JSON from SSE data:", json_str)
@@ -313,7 +314,7 @@ function Querier:processStream(bgQuery, trunk_callback)
                         -- SSE empty events, nothing to do
                     elseif line:sub(1, 1) == "{" then
                         -- If the line starts with '{', it might be a JSON object
-                        local ok, j = pcall(json.decode, line)
+                        local ok, j = pcall(rapidjson.decode, line, {null=nil})
                         if ok then
                             -- log the json
                             local err_message = koutil.tableGetValue(j, "error", "message")
@@ -388,7 +389,7 @@ function Querier:processStream(bgQuery, trunk_callback)
         if ret:sub(1, 1) == '{' then
             local endPos = ret:reverse():find("}")
             if endPos and endPos > 0 then
-                local ok, j = pcall(json.decode, ret:sub(1, #ret - endPos + 1))
+                local ok, j = pcall(rapidjson.decode, ret:sub(1, #ret - endPos + 1), {null=nil})
                 if ok then
                     local err
                     err = koutil.tableGetValue(j, "error", "message") -- OpenAI / Anthropic / Gemini 
@@ -402,9 +403,9 @@ function Querier:processStream(bgQuery, trunk_callback)
         -- return all received content as error message
         return nil, ret
     else
-        -- remove leading dots (reasoning marks)
-        if ret:sub(1, 3) == "..." then
-            ret = ret:gsub("^%.+", "")
+        local reasoning = table.concat(reasoning_content_buffer):gsub("^%.+", "")
+        if #reasoning > 0 then
+            ret = T("#### %1\n\n<dd>%2</dd>\n\n%3", _("Deeply Thought"), reasoning, ret)
         end
     end
     return ret, nil
