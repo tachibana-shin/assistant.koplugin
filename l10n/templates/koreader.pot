@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.08\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"POT-Creation-Date: 2025-08-22 16:58+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,169 +17,160 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
+#. @translators this is a button text, keep short
+#: ../chatgptviewer.lua:272 ../chatgptviewer.lua:634
 msgid "Ask Another Question"
 msgstr ""
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
+#: ../chatgptviewer.lua:312 ../settingsdialog.lua:286
 msgid "Close"
 msgstr ""
 
-#: ../chatgptviewer.lua:326
+#: ../chatgptviewer.lua:327
 msgid "Copy"
 msgstr ""
 
-#: ../chatgptviewer.lua:331
-msgid "Text copied to clipboard"
+#: ../chatgptviewer.lua:332
+msgid "Text copied to the clipboard"
 msgstr ""
 
-#: ../chatgptviewer.lua:345
+#: ../chatgptviewer.lua:346
 msgid "Add Note"
 msgstr ""
 
-#: ../chatgptviewer.lua:352
+#: ../chatgptviewer.lua:353
 msgid "Highlight functionality not available"
 msgstr ""
 
-#: ../chatgptviewer.lua:361
+#: ../chatgptviewer.lua:362
 msgid "No text to add as note"
 msgstr ""
 
-#: ../chatgptviewer.lua:390
+#: ../chatgptviewer.lua:391
 msgid "No text left to add as note"
 msgstr ""
 
-#: ../chatgptviewer.lua:403
+#: ../chatgptviewer.lua:404
 msgid "Note added successfully"
 msgstr ""
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:570 ../dialogs.lua:257 ../dictdialog.lua:36
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr ""
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:271
+#: ../chatgptviewer.lua:580 ../dialogs.lua:264
 msgid "Ask"
 msgstr ""
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:277
+#: ../chatgptviewer.lua:586 ../dialogs.lua:270
 msgid "Enter a question before proceeding."
 msgstr ""
 
-#: ../chatgptviewer.lua:641
+#: ../chatgptviewer.lua:636
 msgid "Type your question here"
 msgstr ""
 
-#: ../chatgptviewer.lua:792
+#: ../chatgptviewer.lua:787
 msgid "Word copied to clipboard."
 msgstr ""
 
-#: ../chatgptviewer.lua:793
+#: ../chatgptviewer.lua:788
 msgid "Selection copied to clipboard."
 msgstr ""
 
-#: ../dialogs.lua:87
+#: ../dialogs.lua:85
 msgid "(Empty message)"
 msgstr ""
 
-#: ../dialogs.lua:91
+#: ../dialogs.lua:89
 msgid "(No response)"
 msgstr ""
 
-#: ../dialogs.lua:121
+#: ../dialogs.lua:118
 msgid "Highlighted text:"
 msgstr ""
 
-#: ../dialogs.lua:306
+#: ../dialogs.lua:299
 msgid "Book Analysis"
 msgstr ""
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:336
 msgid "Add this button to the Highlight Menu?"
 msgstr ""
 
-#: ../dialogs.lua:344
+#: ../dialogs.lua:337
 msgid "Add"
 msgstr ""
 
-#: ../dialogs.lua:371
+#: ../dialogs.lua:364
 msgid "Ask a question about the highlighted text"
 msgstr ""
 
-#: ../dialogs.lua:372
+#: ../dialogs.lua:365
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
 "%s by %s"
 msgstr ""
 
-#: ../dialogs.lua:375
+#: ../dialogs.lua:368
 msgid "Type your question here..."
 msgstr ""
 
-#: ../dialogs.lua:376
+#: ../dialogs.lua:369
 msgid "Ask anything about this book..."
 msgstr ""
 
-#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:372 ../main.lua:196 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr ""
 
-#: ../dialogs.lua:435
+#: ../dialogs.lua:427
 msgid "Error: No response received"
 msgstr ""
 
-#: ../dictdialog.lua:28
+#: ../dictdialog.lua:30
 msgid "AI Dictionary"
 msgstr ""
 
-#: ../dictdialog.lua:29
+#: ../dictdialog.lua:31
 msgid "Enter a word to look up..."
 msgstr ""
 
-#: ../dictdialog.lua:40
+#: ../dictdialog.lua:42
 msgid "Look Up"
 msgstr ""
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
+#: ../dictdialog.lua:177 ../main.lua:363 ../prompts.lua:20
 msgid "Dictionary"
 msgstr ""
 
-#: ../gpt_query.lua:52
-#, lua-format
+#: ../gpt_query.lua:49
 msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
+"Provider settings not found for: %1. Please check your configuration.lua "
 "file."
 msgstr ""
 
-#: ../gpt_query.lua:74
-#, lua-format
+#: ../gpt_query.lua:75
 msgid ""
-"The handler for %s was not found. Please ensure the handler exists in "
+"The handler for %1 was not found. Please ensure the handler exists in "
 "api_handlers directory."
 msgstr ""
 
-#: ../gpt_query.lua:79
-#, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
+#: ../gpt_query.lua:117
+msgid "Plugin is not configured."
 msgstr ""
 
-#: ../gpt_query.lua:124
+#: ../gpt_query.lua:126
 msgid "Querying AI ..."
 msgstr ""
 
-#: ../gpt_query.lua:139
+#: ../gpt_query.lua:143
 msgid "AI is responding"
 msgstr ""
 
-#: ../gpt_query.lua:141
-#, lua-format
-msgid "☁ %s/%s"
-msgstr ""
-
-#: ../gpt_query.lua:155
+#: ../gpt_query.lua:158
 msgid "⏹ Stop"
 msgstr ""
 
@@ -195,6 +186,10 @@ msgstr ""
 msgid "Failed to start subprocess for request"
 msgstr ""
 
+#: ../gpt_query.lua:407 ../gpt_query.lua:409
+msgid "Deeply Thought"
+msgstr ""
+
 #: ../main.lua:74
 msgid "Ask the AI a question"
 msgstr ""
@@ -207,17 +202,17 @@ msgstr ""
 msgid "AI Assistant Settings"
 msgstr ""
 
-#: ../main.lua:168
+#: ../main.lua:166
 msgid "No valid model provider is found in the configuration.lua"
 msgstr ""
 
-#: ../main.lua:204
+#: ../main.lua:202
 msgid ""
 "Configuration Error.\n"
 "Please set up configuration.lua."
 msgstr ""
 
-#: ../main.lua:229
+#: ../main.lua:227
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -233,37 +228,37 @@ msgid ""
 "On the result dialog to close (as the Close button is far to reach).\n"
 msgstr ""
 
-#: ../main.lua:252
+#: ../main.lua:250
 msgid "configuration.lua: model providers are invalid."
 msgstr ""
 
-#: ../main.lua:333
+#: ../main.lua:331
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr ""
 
-#: ../main.lua:334
+#: ../main.lua:332
 msgid "Remove"
 msgstr ""
 
-#: ../main.lua:351 ../prompts.lua:128
+#: ../main.lua:349 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr ""
 
-#: ../main.lua:387 ../main.lua:439
+#: ../main.lua:385 ../main.lua:437
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr ""
 
-#: ../main.lua:481
+#: ../main.lua:479
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr ""
 
-#: ../main.lua:490
+#: ../main.lua:488
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr ""
 
-#: ../main.lua:534
+#: ../main.lua:532
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -271,11 +266,11 @@ msgid ""
 "Last read %.0f hour(s) ago."
 msgstr ""
 
-#: ../main.lua:539
+#: ../main.lua:537
 msgid "Yes"
 msgstr ""
 
-#: ../main.lua:548
+#: ../main.lua:546
 msgid "No"
 msgstr ""
 
@@ -411,7 +406,7 @@ msgstr ""
 msgid "Word Origin"
 msgstr ""
 
-#: ../recapdialog.lua:68
+#: ../recapdialog.lua:69
 msgid "Recap"
 msgstr ""
 
@@ -495,11 +490,11 @@ msgstr ""
 msgid "AI Model provider:"
 msgstr ""
 
-#: ../update_checker.lua:22
+#: ../update_checker.lua:23
 msgid "Checking for updates..."
 msgstr ""
 
-#: ../update_checker.lua:56
+#: ../update_checker.lua:57
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
 msgstr ""

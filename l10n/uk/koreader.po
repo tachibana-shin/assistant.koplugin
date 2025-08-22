@@ -8,134 +8,130 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"POT-Creation-Date: 2025-08-22 16:58+0800\n"
 "PO-Revision-Date: 2025-08-21 15:24+0800\n"
-"Last-Translator: ChatGPT o1-preview 2025-08-21\n"
+"Last-Translator: ChatGPT o1-preview 2025-08-22\n"
 "Language-Team: ChatGPT o1-preview <LL@li.org>\n"
-"Language: uk\n"
+"Language: Українська (uk)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. @translators used in the dictionary.
-#: ../prompts.lua:171
-msgid "Conjugation"
-msgstr "Відмінювання"
+#: ../chatgptviewer.lua:332
+msgid "Text copied to the clipboard"
+msgstr "Текст скопійовано до буфера обміну"
 
-#: ../prompts.lua:172
-msgid "Synonyms"
-msgstr "Синоніми"
+#: ../gpt_query.lua:49
+msgid ""
+"Provider settings not found for: %1. Please check your configuration.lua "
+"file."
+msgstr ""
+"Налаштування провайдера не знайдено для: %1. Перевірте файл "
+"configuration.lua."
 
-#: ../prompts.lua:173
-msgid "Meaning"
-msgstr "Значення"
+#: ../gpt_query.lua:75
+msgid ""
+"The handler for %1 was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"Обробник для %1 не знайдено. Переконайтеся, що обробник існує в каталозі "
+"api_handlers."
 
-#: ../prompts.lua:174
-msgid "Translation"
-msgstr "Переклад"
+#: ../gpt_query.lua:117
+msgid "Plugin is not configured."
+msgstr "Плагін не налаштовано."
 
-#: ../prompts.lua:175
-msgid "Explanation"
-msgstr "Пояснення"
+#: ../gpt_query.lua:407 ../gpt_query.lua:409
+msgid "Deeply Thought"
+msgstr "Глибоко продумано"
 
-#: ../prompts.lua:176
-msgid "Example"
-msgstr "Приклад"
-
-#: ../prompts.lua:177
-msgid "Word Origin"
-msgstr "Походження слова"
-
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
+#. @translators this is a button text, keep short
+#: ../chatgptviewer.lua:272 ../chatgptviewer.lua:634
 msgid "Ask Another Question"
 msgstr "Задати ще питання"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
+#: ../chatgptviewer.lua:312 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "Закрити"
 
-#: ../chatgptviewer.lua:326
+#: ../chatgptviewer.lua:327
 msgid "Copy"
 msgstr "Копіювати"
 
-#: ../chatgptviewer.lua:331
-msgid "Text copied to clipboard"
-msgstr "Текст скопійовано"
-
-#: ../chatgptviewer.lua:345
+#: ../chatgptviewer.lua:346
 msgid "Add Note"
 msgstr "Додати нотатку"
 
-#: ../chatgptviewer.lua:352
+#: ../chatgptviewer.lua:353
 msgid "Highlight functionality not available"
 msgstr "Підсвітка недоступна"
 
-#: ../chatgptviewer.lua:361
+#: ../chatgptviewer.lua:362
 msgid "No text to add as note"
 msgstr "Немає тексту для нотатки"
 
-#: ../chatgptviewer.lua:390
+#: ../chatgptviewer.lua:391
 msgid "No text left to add as note"
 msgstr "Текст уже додано"
 
-#: ../chatgptviewer.lua:403
+#: ../chatgptviewer.lua:404
 msgid "Note added successfully"
 msgstr "Нотатку додано"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:570 ../dialogs.lua:257 ../dictdialog.lua:36
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:271
+#: ../chatgptviewer.lua:580 ../dialogs.lua:264
 msgid "Ask"
 msgstr "Запитати"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:277
+#: ../chatgptviewer.lua:586 ../dialogs.lua:270
 msgid "Enter a question before proceeding."
 msgstr "Введіть питання"
 
-#: ../chatgptviewer.lua:641
+#: ../chatgptviewer.lua:636
 msgid "Type your question here"
 msgstr "Ваше питання…"
 
-#: ../chatgptviewer.lua:792
+#: ../chatgptviewer.lua:787
 msgid "Word copied to clipboard."
 msgstr "Слово скопійовано"
 
-#: ../chatgptviewer.lua:793
+#: ../chatgptviewer.lua:788
 msgid "Selection copied to clipboard."
 msgstr "Виділення скопійовано"
 
-#: ../dialogs.lua:87
+#: ../dialogs.lua:85
 msgid "(Empty message)"
 msgstr "(Пусто)"
 
-#: ../dialogs.lua:91
+#: ../dialogs.lua:89
 msgid "(No response)"
 msgstr "(Немає відповіді)"
 
-#: ../dialogs.lua:121
+#: ../dialogs.lua:118
 msgid "Highlighted text:"
 msgstr "Підсвічений текст:"
 
-#: ../dialogs.lua:306
+#: ../dialogs.lua:299
 msgid "Book Analysis"
 msgstr "Аналіз книги"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:336
 msgid "Add this button to the Highlight Menu?"
 msgstr "Додати кнопку до меню підсвітки?"
 
-#: ../dialogs.lua:344
+#: ../dialogs.lua:337
 msgid "Add"
 msgstr "Додати"
 
-#: ../dialogs.lua:371
+#: ../dialogs.lua:364
 msgid "Ask a question about the highlighted text"
 msgstr "Запитати про позначений текст"
 
-#: ../dialogs.lua:372
+#: ../dialogs.lua:365
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -144,75 +140,47 @@ msgstr ""
 "Запитати про книгу:\n"
 "%s, автор %s"
 
-#: ../dialogs.lua:375
+#: ../dialogs.lua:368
 msgid "Type your question here..."
 msgstr "Введіть питання…"
 
-#: ../dialogs.lua:376
+#: ../dialogs.lua:369
 msgid "Ask anything about this book..."
 msgstr "Запитайте що завгодно…"
 
-#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:372 ../main.lua:196 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI-асистент"
 
-#: ../dialogs.lua:435
+#: ../dialogs.lua:427
 msgid "Error: No response received"
 msgstr "Помилка: відповідь не отримано"
 
-#: ../dictdialog.lua:28
+#: ../dictdialog.lua:30
 msgid "AI Dictionary"
 msgstr "AI-словник"
 
-#: ../dictdialog.lua:29
+#: ../dictdialog.lua:31
 msgid "Enter a word to look up..."
 msgstr "Слово для пошуку…"
 
-#: ../dictdialog.lua:40
+#: ../dictdialog.lua:42
 msgid "Look Up"
 msgstr "Шукати"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
+#: ../dictdialog.lua:177 ../main.lua:363 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "Словник"
 
-#: ../gpt_query.lua:52
-#, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr "Налаштування провайдера %s не знайдено. Перевірте configuration.lua"
-
-#: ../gpt_query.lua:74
-#, lua-format
-msgid ""
-"The handler for %s was not found. Please ensure the handler exists in "
-"api_handlers directory."
-msgstr "Обробник %s не знайдено. Переконайтеся, що він є в api_handlers"
-
-#: ../gpt_query.lua:79
-#, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"Не вказано провайдера в configuration.lua. Додайте provider і "
-"provider_settings для %s"
-
-#: ../gpt_query.lua:124
+#: ../gpt_query.lua:126
 msgid "Querying AI ..."
 msgstr "Запит до AI…"
 
-#: ../gpt_query.lua:139
+#: ../gpt_query.lua:143
 msgid "AI is responding"
 msgstr "AI відповідає"
 
-#: ../gpt_query.lua:141
-#, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
-
-#: ../gpt_query.lua:155
+#: ../gpt_query.lua:158
 msgid "⏹ Stop"
 msgstr "⏹ Зупинити"
 
@@ -240,11 +208,11 @@ msgstr "AI-конспекти"
 msgid "AI Assistant Settings"
 msgstr "Налаштування AI‑асистента"
 
-#: ../main.lua:168
+#: ../main.lua:166
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "У configuration.lua не знайдено дійсного постачальника моделей"
 
-#: ../main.lua:204
+#: ../main.lua:202
 msgid ""
 "Configuration Error.\n"
 "Please set up configuration.lua."
@@ -252,7 +220,7 @@ msgstr ""
 "Помилка конфігурації.\n"
 "Налаштуйте configuration.lua."
 
-#: ../main.lua:229
+#: ../main.lua:227
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -279,37 +247,37 @@ msgstr ""
 "Жести (⮠, ⮡, ↺):\n"
 "На діалогу результату — закрити його.\n"
 
-#: ../main.lua:252
+#: ../main.lua:250
 msgid "configuration.lua: model providers are invalid."
 msgstr "configuration.lua: постачальники моделей недійсні."
 
-#: ../main.lua:333
+#: ../main.lua:331
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Видалити [%s] з меню підсвітки?"
 
-#: ../main.lua:334
+#: ../main.lua:332
 msgid "Remove"
 msgstr "Видалити"
 
-#: ../main.lua:351 ../prompts.lua:128
+#: ../main.lua:349 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "Вікіпедія"
 
-#: ../main.lua:387 ../main.lua:439
+#: ../main.lua:385 ../main.lua:437
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Конфігурацію не знайдено. Спочатку налаштуйте configuration.lua"
 
-#: ../main.lua:481
+#: ../main.lua:479
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "Додано [%1 (AI)] до меню підсвітки"
 
-#: ../main.lua:490
+#: ../main.lua:488
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "Видалено [%s (AI)] з меню підсвітки"
 
-#: ../main.lua:534
+#: ../main.lua:532
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -320,11 +288,11 @@ msgstr ""
 "%s, автор %s.\n"
 "Останній раз читали %.0f год тому."
 
-#: ../main.lua:539
+#: ../main.lua:537
 msgid "Yes"
 msgstr "Так"
 
-#: ../main.lua:548
+#: ../main.lua:546
 msgid "No"
 msgstr "Ні"
 
@@ -431,7 +399,36 @@ msgid ""
 "highlighted text, ensuring factual accuracy and neutrality."
 msgstr "Стаття у стилі Вікіпедії за темою тексту"
 
-#: ../recapdialog.lua:68
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "Відмінювання"
+
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "Синоніми"
+
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "Значення"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "Переклад"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "Пояснення"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "Приклад"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "Походження слова"
+
+#: ../recapdialog.lua:69
 msgid "Recap"
 msgstr "Конспект"
 
@@ -515,11 +512,11 @@ msgstr "Функції помічника ШІ:"
 msgid "AI Model provider:"
 msgstr "Постачальник моделі ШІ:"
 
-#: ../update_checker.lua:22
+#: ../update_checker.lua:23
 msgid "Checking for updates..."
 msgstr "Перевірка оновлень…"
 
-#: ../update_checker.lua:56
+#: ../update_checker.lua:57
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
 msgstr "Доступна нова версія плагіна %s (%s). Оновіться!"

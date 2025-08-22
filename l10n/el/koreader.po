@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 15:16+0800\n"
-"PO-Revision-Date: 2025-08-21 15:18:05+0800\n"
+"POT-Creation-Date: 2025-08-22 16:58+0800\n"
+"PO-Revision-Date: 2025-08-22 17:00:02+0800\n"
 "Last-Translator: OpenAI ChatGPT 4.0 <noemail@openai.com>\n"
 "Language-Team: OpenAI ChatGPT 4.0 <noemail@openai.com>\n"
 "Language: Ελληνικά (el)\n"
@@ -17,125 +17,120 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. @translators used in the dictionary.
-#: ../prompts.lua:171
-msgid "Conjugation"
-msgstr "Κλίση"
+#: ../chatgptviewer.lua:332
+msgid "Text copied to the clipboard"
+msgstr "Το κείμενο αντιγράφηκε στο πρόχειρο"
 
-#: ../prompts.lua:172
-msgid "Synonyms"
-msgstr "Συνώνυμα"
+#: ../gpt_query.lua:49
+msgid ""
+"Provider settings not found for: %1. Please check your configuration.lua "
+"file."
+msgstr ""
+"Δεν βρέθηκαν ρυθμίσεις παρόχου για: %1. Ελέγξτε το αρχείο configuration.lua."
 
-#: ../prompts.lua:173
-msgid "Meaning"
-msgstr "Σημασία"
+#: ../gpt_query.lua:75
+msgid ""
+"The handler for %1 was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"Δεν βρέθηκε ο χειριστής για %1. Βεβαιωθείτε ότι ο χειριστής υπάρχει στον "
+"φάκελο api_handlers."
 
-#: ../prompts.lua:174
-msgid "Translation"
-msgstr "Μετάφραση"
+#: ../gpt_query.lua:117
+msgid "Plugin is not configured."
+msgstr "Το πρόσθετο δεν είναι διαμορφωμένο."
 
-#: ../prompts.lua:175
-msgid "Explanation"
-msgstr "Εξήγηση"
+#: ../gpt_query.lua:407 ../gpt_query.lua:409
+msgid "Deeply Thought"
+msgstr "Deeply Thought"
 
-#: ../prompts.lua:176
-msgid "Example"
-msgstr "Παράδειγμα"
-
-#: ../prompts.lua:177
-msgid "Word Origin"
-msgstr "Καταγωγή Λέξης"
-
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
+#. @translators this is a button text, keep short
+#: ../chatgptviewer.lua:272 ../chatgptviewer.lua:634
 msgid "Ask Another Question"
 msgstr "Κάντε άλλη ερώτηση"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
+#: ../chatgptviewer.lua:312 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "Κλείσιμο"
 
-#: ../chatgptviewer.lua:326
+#: ../chatgptviewer.lua:327
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: ../chatgptviewer.lua:331
-msgid "Text copied to clipboard"
-msgstr "Το κείμενο αντιγράφηκε στο clipboard"
-
-#: ../chatgptviewer.lua:345
+#: ../chatgptviewer.lua:346
 msgid "Add Note"
 msgstr "Προσθήκη σημείωσης"
 
-#: ../chatgptviewer.lua:352
+#: ../chatgptviewer.lua:353
 msgid "Highlight functionality not available"
 msgstr "Η λειτουργία επισήμανσης δεν είναι διαθέσιμη"
 
-#: ../chatgptviewer.lua:361
+#: ../chatgptviewer.lua:362
 msgid "No text to add as note"
 msgstr "Δεν υπάρχει κείμενο για προσθήκη ως σημείωση"
 
-#: ../chatgptviewer.lua:390
+#: ../chatgptviewer.lua:391
 msgid "No text left to add as note"
 msgstr "Δεν απομένει κείμενο για προσθήκη ως σημείωση"
 
-#: ../chatgptviewer.lua:403
+#: ../chatgptviewer.lua:404
 msgid "Note added successfully"
 msgstr "Η σημείωση προστέθηκε με επιτυχία"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:570 ../dialogs.lua:257 ../dictdialog.lua:36
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:271
+#: ../chatgptviewer.lua:580 ../dialogs.lua:264
 msgid "Ask"
 msgstr "Ρώτα"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:277
+#: ../chatgptviewer.lua:586 ../dialogs.lua:270
 msgid "Enter a question before proceeding."
 msgstr "Πληκτρολογήστε μια ερώτηση πριν προχωρήσετε."
 
-#: ../chatgptviewer.lua:641
+#: ../chatgptviewer.lua:636
 msgid "Type your question here"
 msgstr "Πληκτρολογήστε την ερώτησή σας εδώ"
 
-#: ../chatgptviewer.lua:792
+#: ../chatgptviewer.lua:787
 msgid "Word copied to clipboard."
 msgstr "Η λέξη αντιγράφηκε στο clipboard."
 
-#: ../chatgptviewer.lua:793
+#: ../chatgptviewer.lua:788
 msgid "Selection copied to clipboard."
 msgstr "Η επιλογή αντιγράφηκε στο clipboard."
 
-#: ../dialogs.lua:87
+#: ../dialogs.lua:85
 msgid "(Empty message)"
 msgstr "(Κενή μηνύματος)"
 
-#: ../dialogs.lua:91
+#: ../dialogs.lua:89
 msgid "(No response)"
 msgstr "(Κανένα απόκριση)"
 
-#: ../dialogs.lua:121
+#: ../dialogs.lua:118
 msgid "Highlighted text:"
 msgstr "Επισημασμένο κείμενο:"
 
-#: ../dialogs.lua:306
+#: ../dialogs.lua:299
 msgid "Book Analysis"
 msgstr "Ανάλυση βιβλίου"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:336
 msgid "Add this button to the Highlight Menu?"
 msgstr "Προσθήκη αυτού του κουμπιού στο μενού επισήμανσης;"
 
-#: ../dialogs.lua:344
+#: ../dialogs.lua:337
 msgid "Add"
 msgstr "Προσθήκη"
 
-#: ../dialogs.lua:371
+#: ../dialogs.lua:364
 msgid "Ask a question about the highlighted text"
 msgstr "Ρωτήστε κάτι για το επισημασμένο κείμενο"
 
-#: ../dialogs.lua:372
+#: ../dialogs.lua:365
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -144,79 +139,47 @@ msgstr ""
 "Ρωτήστε κάτι για αυτό το βιβλίο:\n"
 "%s από %s"
 
-#: ../dialogs.lua:375
+#: ../dialogs.lua:368
 msgid "Type your question here..."
 msgstr "Πληκτρολογήστε την ερώτησή σας εδώ..."
 
-#: ../dialogs.lua:376
+#: ../dialogs.lua:369
 msgid "Ask anything about this book..."
 msgstr "Ρωτήστε οτιδήποτε για αυτό το βιβλίο..."
 
-#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:372 ../main.lua:196 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Βοηθός Τεχνητής Νοημοσύνης"
 
-#: ../dialogs.lua:435
+#: ../dialogs.lua:427
 msgid "Error: No response received"
 msgstr "Σφάλμα: Δεν λήφθηκε απάντηση"
 
-#: ../dictdialog.lua:28
+#: ../dictdialog.lua:30
 msgid "AI Dictionary"
 msgstr "Κατάλογος Τεχνητής Νοημοσύνης"
 
-#: ../dictdialog.lua:29
+#: ../dictdialog.lua:31
 msgid "Enter a word to look up..."
 msgstr "Εισαγάγετε μια λέξη για αναζήτηση..."
 
-#: ../dictdialog.lua:40
+#: ../dictdialog.lua:42
 msgid "Look Up"
 msgstr "Αναζήτηση"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
+#: ../dictdialog.lua:177 ../main.lua:363 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "Λεξικό"
 
-#: ../gpt_query.lua:52
-#, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"Οι ρυθμίσεις πάροχου δεν βρέθηκαν για: %s. Παρακαλώ ελέγξτε το αρχείο "
-"configuration.lua."
-
-#: ../gpt_query.lua:74
-#, lua-format
-msgid ""
-"The handler for %s was not found. Please ensure the handler exists in "
-"api_handlers directory."
-msgstr ""
-"Ο χειριστής για το %s δεν βρέθηκε. Παρακαλώ βεβαιωθείτε ότι ο χειριστής "
-"υπάρχει στον κατάλογο api_handlers."
-
-#: ../gpt_query.lua:79
-#, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"Δεν έχει οριστεί πάροχος στο configuration.lua. Παρακαλώ ορίστε τον πάροχο "
-"και τις ρυθμίσεις πάροχου για το %s."
-
-#: ../gpt_query.lua:124
+#: ../gpt_query.lua:126
 msgid "Querying AI ..."
 msgstr "Ερώτηση στην AI ..."
 
-#: ../gpt_query.lua:139
+#: ../gpt_query.lua:143
 msgid "AI is responding"
 msgstr "Η AI απαντά"
 
-#: ../gpt_query.lua:141
-#, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
-
-#: ../gpt_query.lua:155
+#: ../gpt_query.lua:158
 msgid "⏹ Stop"
 msgstr "⏹ Διακοπή"
 
@@ -244,11 +207,11 @@ msgstr "Σύνολα AI"
 msgid "AI Assistant Settings"
 msgstr "Ρυθμίσεις Βοηθού AI"
 
-#: ../main.lua:168
+#: ../main.lua:166
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "Δεν βρέθηκε έγκυρος πάροχος μοντέλου στο configuration.lua"
 
-#: ../main.lua:204
+#: ../main.lua:202
 msgid ""
 "Configuration Error.\n"
 "Please set up configuration.lua."
@@ -256,7 +219,7 @@ msgstr ""
 "Σφάλμα ρύθμισης.\n"
 "Παρακαλούμε ορίστε το configuration.lua."
 
-#: ../main.lua:229
+#: ../main.lua:227
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -285,38 +248,38 @@ msgstr ""
 "Στο διάλογο αποτελέσματος για κλείσιμο (επειδή το κουμπί Κλείσιμο είναι "
 "πρόσθετο).\n"
 
-#: ../main.lua:252
+#: ../main.lua:250
 msgid "configuration.lua: model providers are invalid."
 msgstr "configuration.lua: οι πάροχοι μοντέλων είναι άκυροι."
 
-#: ../main.lua:333
+#: ../main.lua:331
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Αφαιρέστε το [%s] από το μενού επισήμανσης;"
 
-#: ../main.lua:334
+#: ../main.lua:332
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: ../main.lua:351 ../prompts.lua:128
+#: ../main.lua:349 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "Βικιπαίδεια"
 
-#: ../main.lua:387 ../main.lua:439
+#: ../main.lua:385 ../main.lua:437
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr ""
 "Η διαμόρφωση δεν βρέθηκε. Παρακαλώ ρυθμίστε το configuration.lua πρώτα."
 
-#: ../main.lua:481
+#: ../main.lua:479
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "Προστέθηκε το [%1 (AI)] στο μενού επισήμανσης."
 
-#: ../main.lua:490
+#: ../main.lua:488
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "Αφαιρέθηκε το [%s (AI)] από το μενού επισήμανσης."
 
-#: ../main.lua:534
+#: ../main.lua:532
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -327,11 +290,11 @@ msgstr ""
 "Για %s από %s.\n"
 "Δεύτερης τελευταία ανάγνωση %.0f ώρα(ες) πριν."
 
-#: ../main.lua:539
+#: ../main.lua:537
 msgid "Yes"
 msgstr "Ναι"
 
-#: ../main.lua:548
+#: ../main.lua:546
 msgid "No"
 msgstr "Όχι"
 
@@ -460,7 +423,36 @@ msgstr ""
 "βασισμένο στο επισημασμένο κείμενο, εξασφαλίζοντας αληθοφανή ακρίβεια και "
 "ουδετερότητα."
 
-#: ../recapdialog.lua:68
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "Κλίση"
+
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "Συνώνυμα"
+
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "Σημασία"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "Μετάφραση"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "Εξήγηση"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "Παράδειγμα"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "Καταγωγή Λέξης"
+
+#: ../recapdialog.lua:69
 msgid "Recap"
 msgstr "Ανασκόπηση"
 
@@ -544,11 +536,11 @@ msgstr "Δυνατότητες βοηθού AI:"
 msgid "AI Model provider:"
 msgstr "Πάροχος μοντέλου AI:"
 
-#: ../update_checker.lua:22
+#: ../update_checker.lua:23
 msgid "Checking for updates..."
 msgstr "Έλεγχος ενημερώσεων..."
 
-#: ../update_checker.lua:56
+#: ../update_checker.lua:57
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
 msgstr ""

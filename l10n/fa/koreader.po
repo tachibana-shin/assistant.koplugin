@@ -1,6 +1,6 @@
-# Persian translation for assistant.koplugin.
-# Copyright (C) 2025 THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# ترجمه فارسی برای افزونه assistant.koplugin.
+# Copyright (C) 2025 صاحب حق کپی‌رایت بسته
+# این فایل تحت همان مجوز بسته توزیع می‌شود.
 # ChatGPT 4.0 <noreply@example.com>, 2025.
 #
 #, fuzzy
@@ -8,134 +8,129 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"POT-Creation-Date: 2025-08-22 16:58+0800\n"
 "PO-Revision-Date: Thu Aug 21 15:18:55 +08 2025\n"
 "Last-Translator: ChatGPT 4.0 <noreply@example.com>\n"
 "Language-Team: ChatGPT 4.0 <noreply@example.com>\n"
-"Language: fa\n"
+"Language: فارسی (fa)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. @translators used in the dictionary.
-#: ../prompts.lua:171
-msgid "Conjugation"
-msgstr "صرف"
+#: ../chatgptviewer.lua:332
+msgid "Text copied to the clipboard"
+msgstr "متن در حافظه کپی شد"
 
-#: ../prompts.lua:172
-msgid "Synonyms"
-msgstr "مترادف‌ها"
+#: ../gpt_query.lua:49
+msgid ""
+"Provider settings not found for: %1. Please check your configuration.lua "
+"file."
+msgstr ""
+"تنظیمات ارائه‌دهنده برای %1 یافت نشد. لطفاً فایل configuration.lua را بررسی "
+"کنید."
 
-#: ../prompts.lua:173
-msgid "Meaning"
-msgstr "معنی"
+#: ../gpt_query.lua:75
+msgid ""
+"The handler for %1 was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"پردازنده برای %1 یافت نشد. مطمئن شوید که در پوشه api_handlers وجود دارد."
 
-#: ../prompts.lua:174
-msgid "Translation"
-msgstr "ترجمه"
+#: ../gpt_query.lua:117
+msgid "Plugin is not configured."
+msgstr "افزونه پیکربندی نشده است."
 
-#: ../prompts.lua:175
-msgid "Explanation"
-msgstr "توضیح"
+#: ../gpt_query.lua:407 ../gpt_query.lua:409
+msgid "Deeply Thought"
+msgstr "بررسی عمیق"
 
-#: ../prompts.lua:176
-msgid "Example"
-msgstr "مثال"
-
-#: ../prompts.lua:177
-msgid "Word Origin"
-msgstr "ریشه واژه"
-
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
+#. @translators this is a button text, keep short
+#: ../chatgptviewer.lua:272 ../chatgptviewer.lua:634
 msgid "Ask Another Question"
 msgstr "سوال دیگری بپرس"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
+#: ../chatgptviewer.lua:312 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "بستن"
 
-#: ../chatgptviewer.lua:326
+#: ../chatgptviewer.lua:327
 msgid "Copy"
 msgstr "کپی"
 
-#: ../chatgptviewer.lua:331
-msgid "Text copied to clipboard"
-msgstr "متن در حافظه کپی شد"
-
-#: ../chatgptviewer.lua:345
+#: ../chatgptviewer.lua:346
 msgid "Add Note"
 msgstr "افزودن یادداشت"
 
-#: ../chatgptviewer.lua:352
+#: ../chatgptviewer.lua:353
 msgid "Highlight functionality not available"
 msgstr "قابلیت برجسته‌سازی در دسترس نیست"
 
-#: ../chatgptviewer.lua:361
+#: ../chatgptviewer.lua:362
 msgid "No text to add as note"
 msgstr "متنی برای افزودن به یادداشت وجود ندارد"
 
-#: ../chatgptviewer.lua:390
+#: ../chatgptviewer.lua:391
 msgid "No text left to add as note"
 msgstr "هیچ متنی برای افزودن به یادداشت باقی نمانده است"
 
-#: ../chatgptviewer.lua:403
+#: ../chatgptviewer.lua:404
 msgid "Note added successfully"
 msgstr "یادداشت با موفقیت افزوده شد"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:570 ../dialogs.lua:257 ../dictdialog.lua:36
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "انصراف"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:271
+#: ../chatgptviewer.lua:580 ../dialogs.lua:264
 msgid "Ask"
 msgstr "پرس"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:277
+#: ../chatgptviewer.lua:586 ../dialogs.lua:270
 msgid "Enter a question before proceeding."
 msgstr "قبل از ادامه، یک سؤال وارد کنید"
 
-#: ../chatgptviewer.lua:641
+#: ../chatgptviewer.lua:636
 msgid "Type your question here"
 msgstr "سؤالتان را اینجا تایپ کنید"
 
-#: ../chatgptviewer.lua:792
+#: ../chatgptviewer.lua:787
 msgid "Word copied to clipboard."
 msgstr "کلمه در حافظه کپی شد."
 
-#: ../chatgptviewer.lua:793
+#: ../chatgptviewer.lua:788
 msgid "Selection copied to clipboard."
 msgstr "انتخاب در حافظه کپی شد."
 
-#: ../dialogs.lua:87
+#: ../dialogs.lua:85
 msgid "(Empty message)"
 msgstr "(پیغام خالی)"
 
-#: ../dialogs.lua:91
+#: ../dialogs.lua:89
 msgid "(No response)"
 msgstr "(بدون پاسخ)"
 
-#: ../dialogs.lua:121
+#: ../dialogs.lua:118
 msgid "Highlighted text:"
 msgstr "متن برجسته شده:"
 
-#: ../dialogs.lua:306
+#: ../dialogs.lua:299
 msgid "Book Analysis"
 msgstr "تحلیل کتاب"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:336
 msgid "Add this button to the Highlight Menu?"
 msgstr "آیا این دکمه را به منوی برجسته‌سازی اضافه کنید؟"
 
-#: ../dialogs.lua:344
+#: ../dialogs.lua:337
 msgid "Add"
 msgstr "افزودن"
 
-#: ../dialogs.lua:371
+#: ../dialogs.lua:364
 msgid "Ask a question about the highlighted text"
 msgstr "سؤالی درباره متن برجسته شده بپرسید"
 
-#: ../dialogs.lua:372
+#: ../dialogs.lua:365
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -144,77 +139,47 @@ msgstr ""
 "سؤالی درباره این کتاب بپرسید:\n"
 "%s توسط %s"
 
-#: ../dialogs.lua:375
+#: ../dialogs.lua:368
 msgid "Type your question here..."
 msgstr "سؤالتان را اینجا تایپ کنید..."
 
-#: ../dialogs.lua:376
+#: ../dialogs.lua:369
 msgid "Ask anything about this book..."
 msgstr "هر چیزی در مورد این کتاب بپرسید..."
 
-#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:372 ../main.lua:196 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "دستیار هوشمند"
 
-#: ../dialogs.lua:435
+#: ../dialogs.lua:427
 msgid "Error: No response received"
 msgstr "خطا: هیچ پاسخی دریافت نشد"
 
-#: ../dictdialog.lua:28
+#: ../dictdialog.lua:30
 msgid "AI Dictionary"
 msgstr "لغت‌نامه هوشمند"
 
-#: ../dictdialog.lua:29
+#: ../dictdialog.lua:31
 msgid "Enter a word to look up..."
 msgstr "کلمه‌ای را برای جستجو وارد کنید..."
 
-#: ../dictdialog.lua:40
+#: ../dictdialog.lua:42
 msgid "Look Up"
 msgstr "جستجو"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
+#: ../dictdialog.lua:177 ../main.lua:363 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "لغت‌نامه"
 
-#: ../gpt_query.lua:52
-#, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"تنظیمات سرویس‌دهنده برای %s یافت نشد. فایل configuration.lua را بررسی کنید."
-
-#: ../gpt_query.lua:74
-#, lua-format
-msgid ""
-"The handler for %s was not found. Please ensure the handler exists in "
-"api_handlers directory."
-msgstr ""
-"هاندلر برای %s پیدا نشد. مطمئن شوید هاندلر در پوشه api_handlers وجود دارد."
-
-#: ../gpt_query.lua:79
-#, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"هیچ سرویس‌دهنده‌ای در configuration.lua تنظیم نشده است. سرویس‌دهنده و تنظیمات "
-"آن برای %s را تنظیم کنید."
-
-#: ../gpt_query.lua:124
+#: ../gpt_query.lua:126
 msgid "Querying AI ..."
 msgstr "در حال پرسش از AI …"
 
-#: ../gpt_query.lua:139
+#: ../gpt_query.lua:143
 msgid "AI is responding"
 msgstr "AI در حال پاسخ دادن است"
 
-#: ../gpt_query.lua:141
-#, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
-
-#: ../gpt_query.lua:155
+#: ../gpt_query.lua:158
 msgid "⏹ Stop"
 msgstr "⏹ متوقف کن"
 
@@ -242,11 +207,11 @@ msgstr "خلاصه‌های AI"
 msgid "AI Assistant Settings"
 msgstr "تنظیمات دستیار هوش مصنوعی"
 
-#: ../main.lua:168
+#: ../main.lua:166
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "هیچ ارائه‌دهندهٔ مدل معتبری در configuration.lua یافت نشد"
 
-#: ../main.lua:204
+#: ../main.lua:202
 msgid ""
 "Configuration Error.\n"
 "Please set up configuration.lua."
@@ -254,7 +219,7 @@ msgstr ""
 "خطای پیکربندی.\n"
 "لطفاً configuration.lua را تنظیم کنید."
 
-#: ../main.lua:229
+#: ../main.lua:227
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -281,37 +246,37 @@ msgstr ""
 "چندبار اسلاید (مثلاً ⮠، ⮡، ↺):\n"
 "بر روی دیالوگ نتیجه برای بسته شدن (چون دکمهٔ بستن دور است).\n"
 
-#: ../main.lua:252
+#: ../main.lua:250
 msgid "configuration.lua: model providers are invalid."
 msgstr "configuration.lua: ارائه‌دهندگان مدل نامعتبرند."
 
-#: ../main.lua:333
+#: ../main.lua:331
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "آیا می‌خواهید [%s] را از منوی برجسته‌سازی حذف کنید؟"
 
-#: ../main.lua:334
+#: ../main.lua:332
 msgid "Remove"
 msgstr "حذف"
 
-#: ../main.lua:351 ../prompts.lua:128
+#: ../main.lua:349 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "ویکی‌پدیا"
 
-#: ../main.lua:387 ../main.lua:439
+#: ../main.lua:385 ../main.lua:437
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "پیکربندی یافت نشد. ابتدا configuration.lua را تنظیم کنید."
 
-#: ../main.lua:481
+#: ../main.lua:479
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "[%1 (AI)] به منوی برجسته‌سازی افزوده شد."
 
-#: ../main.lua:490
+#: ../main.lua:488
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "[%s (AI)] از منوی برجسته‌سازی حذف شد."
 
-#: ../main.lua:534
+#: ../main.lua:532
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -322,11 +287,11 @@ msgstr ""
 "برای %s توسط %s.\n"
 "آخرین بار %.0f ساعت پیش خوانده شده است."
 
-#: ../main.lua:539
+#: ../main.lua:537
 msgid "Yes"
 msgstr "بله"
 
-#: ../main.lua:548
+#: ../main.lua:546
 msgid "No"
 msgstr "خیر"
 
@@ -450,7 +415,36 @@ msgstr ""
 "این پرامپت مقالهٔ جامع در سبک ویکی‌پدیا بر اساس متن برجسته‌شده تولید می‌کند، دقت "
 "و بی‌طرفی را تضمین می‌کند."
 
-#: ../recapdialog.lua:68
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "صرف"
+
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "مترادف‌ها"
+
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "معنی"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "ترجمه"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "توضیح"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "مثال"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "ریشه واژه"
+
+#: ../recapdialog.lua:69
 msgid "Recap"
 msgstr "خلاصه"
 
@@ -534,11 +528,11 @@ msgstr "ویژگی‌های دستیار هوش مصنوعی:"
 msgid "AI Model provider:"
 msgstr "ارائه‌دهنده مدل هوش مصنوعی:"
 
-#: ../update_checker.lua:22
+#: ../update_checker.lua:23
 msgid "Checking for updates..."
 msgstr "در حال بررسی بروزرسانی‌ها..."
 
-#: ../update_checker.lua:56
+#: ../update_checker.lua:57
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
 msgstr "نسخهٔ جدیدی از افزونهٔ %s (%s) موجود است. لطفاً به‌روزرسانی کنید!"

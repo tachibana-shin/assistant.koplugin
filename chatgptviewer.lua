@@ -268,6 +268,7 @@ function ChatGPTViewer:init()
   -- Only add Ask Another Question button if showAskQuestion is true
   if self.onAskQuestion then
     table.insert(default_buttons, {
+      -- @translators this is a button text, keep short
       text = _("Ask Another Question"),
       id = "ask_another_question",
       callback = function()
@@ -328,7 +329,7 @@ function ChatGPTViewer:init()
           if self.text and self.text ~= "" then
               Device.input.setClipboardText(self.text)
               UIManager:show(InfoMessage:new{
-                  text = _("Text copied to clipboard"),
+                  text = _("Text copied to the clipboard"),
                   timeout = 3,
               })
           end

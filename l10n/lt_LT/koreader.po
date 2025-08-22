@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 2025.08.21\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"POT-Creation-Date: 2025-08-22 16:58+0800\n"
 "PO-Revision-Date: 2025-08-21 15:21:37+0800\n"
 "Last-Translator: ChatGPT 4.0 <chatgpt@openai.com>\n"
 "Language-Team: ChatGPT 4.0 <chatgpt@openai.com>\n"
@@ -16,125 +16,120 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. @translators used in the dictionary.
-#: ../prompts.lua:171
-msgid "Conjugation"
-msgstr "Konjugacija"
+#: ../chatgptviewer.lua:332
+msgid "Text copied to the clipboard"
+msgstr "Tekstas nukopijuotas į iškarpinę"
 
-#: ../prompts.lua:172
-msgid "Synonyms"
-msgstr "Sinonimai"
+#: ../gpt_query.lua:49
+msgid ""
+"Provider settings not found for: %1. Please check your configuration.lua "
+"file."
+msgstr ""
+"Nerasti tiekėjo nustatymai: %1. Patikrinkite savo configuration.lua failą."
 
-#: ../prompts.lua:173
-msgid "Meaning"
-msgstr "Reikšmė"
+#: ../gpt_query.lua:75
+msgid ""
+"The handler for %1 was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"Nerastas %1 apdorotojas. Įsitikinkite, kad apdorotojas yra api_handlers "
+"kataloge."
 
-#: ../prompts.lua:174
-msgid "Translation"
-msgstr "Vertimas"
+#: ../gpt_query.lua:117
+msgid "Plugin is not configured."
+msgstr "Priedas nesukonfigūruotas."
 
-#: ../prompts.lua:175
-msgid "Explanation"
-msgstr "Paaiškinimas"
+#: ../gpt_query.lua:407 ../gpt_query.lua:409
+msgid "Deeply Thought"
+msgstr "Giliai apmąstymas"
 
-#: ../prompts.lua:176
-msgid "Example"
-msgstr "Pavyzdys"
-
-#: ../prompts.lua:177
-msgid "Word Origin"
-msgstr "Žodžio kilmė"
-
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
+#. @translators this is a button text, keep short
+#: ../chatgptviewer.lua:272 ../chatgptviewer.lua:634
 msgid "Ask Another Question"
 msgstr "Užduoti dar vieną klausimą"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
+#: ../chatgptviewer.lua:312 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "Užverti"
 
-#: ../chatgptviewer.lua:326
+#: ../chatgptviewer.lua:327
 msgid "Copy"
 msgstr "Kopijuoti"
 
-#: ../chatgptviewer.lua:331
-msgid "Text copied to clipboard"
-msgstr "Tekstas nukopijuotas į iškarpinę"
-
-#: ../chatgptviewer.lua:345
+#: ../chatgptviewer.lua:346
 msgid "Add Note"
 msgstr "Pridėti pastabą"
 
-#: ../chatgptviewer.lua:352
+#: ../chatgptviewer.lua:353
 msgid "Highlight functionality not available"
 msgstr "Pažymėjimo funkcija nepasiekiama"
 
-#: ../chatgptviewer.lua:361
+#: ../chatgptviewer.lua:362
 msgid "No text to add as note"
 msgstr "Nėra teksto, kurį pridėti kaip pastabą"
 
-#: ../chatgptviewer.lua:390
+#: ../chatgptviewer.lua:391
 msgid "No text left to add as note"
 msgstr "Neliko teksto, kurį pridėti kaip pastabą"
 
-#: ../chatgptviewer.lua:403
+#: ../chatgptviewer.lua:404
 msgid "Note added successfully"
 msgstr "Pastaba sėkmingai pridėta"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:570 ../dialogs.lua:257 ../dictdialog.lua:36
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:271
+#: ../chatgptviewer.lua:580 ../dialogs.lua:264
 msgid "Ask"
 msgstr "Klausti"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:277
+#: ../chatgptviewer.lua:586 ../dialogs.lua:270
 msgid "Enter a question before proceeding."
 msgstr "Įveskite klausimą prieš tęsdami."
 
-#: ../chatgptviewer.lua:641
+#: ../chatgptviewer.lua:636
 msgid "Type your question here"
 msgstr "Įveskite savo klausimą čia"
 
-#: ../chatgptviewer.lua:792
+#: ../chatgptviewer.lua:787
 msgid "Word copied to clipboard."
 msgstr "Žodis nukopijuotas į iškarpinę."
 
-#: ../chatgptviewer.lua:793
+#: ../chatgptviewer.lua:788
 msgid "Selection copied to clipboard."
 msgstr "Pažymėjimas nukopijuotas į iškarpinę."
 
-#: ../dialogs.lua:87
+#: ../dialogs.lua:85
 msgid "(Empty message)"
 msgstr "(Tuščia žinutė)"
 
-#: ../dialogs.lua:91
+#: ../dialogs.lua:89
 msgid "(No response)"
 msgstr "(Nėra atsakymo)"
 
-#: ../dialogs.lua:121
+#: ../dialogs.lua:118
 msgid "Highlighted text:"
 msgstr "Pažymėtas tekstas:"
 
-#: ../dialogs.lua:306
+#: ../dialogs.lua:299
 msgid "Book Analysis"
 msgstr "Knygos analizė"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:336
 msgid "Add this button to the Highlight Menu?"
 msgstr "Pridėti šį mygtuką prie pažymėjimo meniu?"
 
-#: ../dialogs.lua:344
+#: ../dialogs.lua:337
 msgid "Add"
 msgstr "Pridėti"
 
-#: ../dialogs.lua:371
+#: ../dialogs.lua:364
 msgid "Ask a question about the highlighted text"
 msgstr "Užduoti klausimą apie pažymėtą tekstą"
 
-#: ../dialogs.lua:372
+#: ../dialogs.lua:365
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -143,78 +138,47 @@ msgstr ""
 "Užduoti klausimą apie šią knygą:\n"
 "%s, autorius %s"
 
-#: ../dialogs.lua:375
+#: ../dialogs.lua:368
 msgid "Type your question here..."
 msgstr "Įveskite savo klausimą čia..."
 
-#: ../dialogs.lua:376
+#: ../dialogs.lua:369
 msgid "Ask anything about this book..."
 msgstr "Užduokite bet ką apie šią knygą..."
 
-#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:372 ../main.lua:196 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI asistentas"
 
-#: ../dialogs.lua:435
+#: ../dialogs.lua:427
 msgid "Error: No response received"
 msgstr "Klaida: nebuvo gautas atsakymas"
 
-#: ../dictdialog.lua:28
+#: ../dictdialog.lua:30
 msgid "AI Dictionary"
 msgstr "AI žodynas"
 
-#: ../dictdialog.lua:29
+#: ../dictdialog.lua:31
 msgid "Enter a word to look up..."
 msgstr "Įveskite žodį paieškai..."
 
-#: ../dictdialog.lua:40
+#: ../dictdialog.lua:42
 msgid "Look Up"
 msgstr "Ieškoti"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
+#: ../dictdialog.lua:177 ../main.lua:363 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "Žodynas"
 
-#: ../gpt_query.lua:52
-#, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"Nerasti tiekėjo nustatymai: %s. Patikrinkite savo configuration.lua failą."
-
-#: ../gpt_query.lua:74
-#, lua-format
-msgid ""
-"The handler for %s was not found. Please ensure the handler exists in "
-"api_handlers directory."
-msgstr ""
-"Neužfiksuotas %s apdorotojas. Įsitikinkite, kad jis egzistuoja kataloge "
-"api_handlers."
-
-#: ../gpt_query.lua:79
-#, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"configuration.lua nenustatytas tiekėjas. Nustatykite tiekėją ir "
-"provider_settings „%s“."
-
-#: ../gpt_query.lua:124
+#: ../gpt_query.lua:126
 msgid "Querying AI ..."
 msgstr "Užklausiama AI..."
 
-#: ../gpt_query.lua:139
+#: ../gpt_query.lua:143
 msgid "AI is responding"
 msgstr "AI atsako"
 
-#: ../gpt_query.lua:141
-#, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
-
-#: ../gpt_query.lua:155
+#: ../gpt_query.lua:158
 msgid "⏹ Stop"
 msgstr "⏹ Stabdyti"
 
@@ -242,11 +206,11 @@ msgstr "AI santraukos"
 msgid "AI Assistant Settings"
 msgstr "AI asistento nustatymai"
 
-#: ../main.lua:168
+#: ../main.lua:166
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "configuration.lua nerastas tinkamas modelio teikėjas"
 
-#: ../main.lua:204
+#: ../main.lua:202
 msgid ""
 "Configuration Error.\n"
 "Please set up configuration.lua."
@@ -254,7 +218,7 @@ msgstr ""
 "Konfigūracijos klaida.\n"
 "Nustatykite configuration.lua."
 
-#: ../main.lua:229
+#: ../main.lua:227
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -281,37 +245,37 @@ msgstr ""
 "Keli perbraukimai (pvz., ⮠, ⮡, ↺):\n"
 "Rezultatų dialoge, kad užvertum (nes mygtukas „Užverti“ per toli).\n"
 
-#: ../main.lua:252
+#: ../main.lua:250
 msgid "configuration.lua: model providers are invalid."
 msgstr "configuration.lua: modelio teikėjai neteisingi."
 
-#: ../main.lua:333
+#: ../main.lua:331
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Pašalinti [%s] iš pažymėjimo meniu?"
 
-#: ../main.lua:334
+#: ../main.lua:332
 msgid "Remove"
 msgstr "Pašalinti"
 
-#: ../main.lua:351 ../prompts.lua:128
+#: ../main.lua:349 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "Vikipedija"
 
-#: ../main.lua:387 ../main.lua:439
+#: ../main.lua:385 ../main.lua:437
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Konfigūracija nerasta. Pirmiausia nustatykite configuration.lua."
 
-#: ../main.lua:481
+#: ../main.lua:479
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "Pridėta [%1 (AI)] prie pažymėjimo meniu."
 
-#: ../main.lua:490
+#: ../main.lua:488
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "Pašalinta [%s (AI)] iš pažymėjimo meniu."
 
-#: ../main.lua:534
+#: ../main.lua:532
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -322,11 +286,11 @@ msgstr ""
 "Knyga %s, autorius %s.\n"
 "Paskutinį kartą skaitėte prieš %.0f val."
 
-#: ../main.lua:539
+#: ../main.lua:537
 msgid "Yes"
 msgstr "Taip"
 
-#: ../main.lua:548
+#: ../main.lua:546
 msgid "No"
 msgstr "Ne"
 
@@ -446,7 +410,36 @@ msgstr ""
 "Šis raginimas sukuria išsamų „Vikipedijos“ stiliaus straipsnį pagal pažymėtą "
 "tekstą."
 
-#: ../recapdialog.lua:68
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "Konjugacija"
+
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "Sinonimai"
+
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "Reikšmė"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "Vertimas"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "Paaiškinimas"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "Pavyzdys"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "Žodžio kilmė"
+
+#: ../recapdialog.lua:69
 msgid "Recap"
 msgstr "Santrauka"
 
@@ -530,11 +523,11 @@ msgstr "Dirbtinio intelekto asistentų funkcijos:"
 msgid "AI Model provider:"
 msgstr "Dirbtinio intelekto modelio tiekėjas:"
 
-#: ../update_checker.lua:22
+#: ../update_checker.lua:23
 msgid "Checking for updates..."
 msgstr "Tikrinami atnaujinimai..."
 
-#: ../update_checker.lua:56
+#: ../update_checker.lua:57
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
 msgstr "Prieinama nauja %s įskiepio versija (%s). Prašome atnaujinti!"

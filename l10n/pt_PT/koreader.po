@@ -8,134 +8,130 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"POT-Creation-Date: 2025-08-22 16:58+0800\n"
 "PO-Revision-Date: 2025-08-21 15:22+0800\n"
 "Last-Translator: ChatGPT 4.0 <chatgpt@example.com>\n"
 "Language-Team: ChatGPT 4.0 <chatgpt@example.com>\n"
-"Language: pt\n"
+"Language: Português (pt)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. @translators used in the dictionary.
-#: ../prompts.lua:171
-msgid "Conjugation"
-msgstr "Conjugação"
+#: ../chatgptviewer.lua:332
+msgid "Text copied to the clipboard"
+msgstr "Texto copiado para a área de transferência"
 
-#: ../prompts.lua:172
-msgid "Synonyms"
-msgstr "Sinônimos"
+#: ../gpt_query.lua:49
+msgid ""
+"Provider settings not found for: %1. Please check your configuration.lua "
+"file."
+msgstr ""
+"Configurações do provedor não encontradas para: %1. Verifique seu arquivo "
+"configuration.lua."
 
-#: ../prompts.lua:173
-msgid "Meaning"
-msgstr "Significado"
+#: ../gpt_query.lua:75
+msgid ""
+"The handler for %1 was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"O manipulador para %1 não foi encontrado. Certifique‑se de que o manipulador "
+"exista no diretório api_handlers."
 
-#: ../prompts.lua:174
-msgid "Translation"
-msgstr "Tradução"
+#: ../gpt_query.lua:117
+msgid "Plugin is not configured."
+msgstr "O plugin não está configurado."
 
-#: ../prompts.lua:175
-msgid "Explanation"
-msgstr "Explicação"
+#: ../gpt_query.lua:407 ../gpt_query.lua:409
+msgid "Deeply Thought"
+msgstr "Pensamento Profundo"
 
-#: ../prompts.lua:176
-msgid "Example"
-msgstr "Exemplo"
-
-#: ../prompts.lua:177
-msgid "Word Origin"
-msgstr "Origem da palavra"
-
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
+#. @translators this is a button text, keep short
+#: ../chatgptviewer.lua:272 ../chatgptviewer.lua:634
 msgid "Ask Another Question"
 msgstr "Faça outra pergunta"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
+#: ../chatgptviewer.lua:312 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "Fechar"
 
-#: ../chatgptviewer.lua:326
+#: ../chatgptviewer.lua:327
 msgid "Copy"
 msgstr "Copiar"
 
-#: ../chatgptviewer.lua:331
-msgid "Text copied to clipboard"
-msgstr "Texto copiado para a área de transferência"
-
-#: ../chatgptviewer.lua:345
+#: ../chatgptviewer.lua:346
 msgid "Add Note"
 msgstr "Adicionar nota"
 
-#: ../chatgptviewer.lua:352
+#: ../chatgptviewer.lua:353
 msgid "Highlight functionality not available"
 msgstr "Destaque indisponível"
 
-#: ../chatgptviewer.lua:361
+#: ../chatgptviewer.lua:362
 msgid "No text to add as note"
 msgstr "Nenhum texto para adicionar como nota"
 
-#: ../chatgptviewer.lua:390
+#: ../chatgptviewer.lua:391
 msgid "No text left to add as note"
 msgstr "Sem texto restante para nota"
 
-#: ../chatgptviewer.lua:403
+#: ../chatgptviewer.lua:404
 msgid "Note added successfully"
 msgstr "Nota adicionada"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:570 ../dialogs.lua:257 ../dictdialog.lua:36
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:271
+#: ../chatgptviewer.lua:580 ../dialogs.lua:264
 msgid "Ask"
 msgstr "Perguntar"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:277
+#: ../chatgptviewer.lua:586 ../dialogs.lua:270
 msgid "Enter a question before proceeding."
 msgstr "Digite uma pergunta antes de continuar."
 
-#: ../chatgptviewer.lua:641
+#: ../chatgptviewer.lua:636
 msgid "Type your question here"
 msgstr "Digite sua pergunta"
 
-#: ../chatgptviewer.lua:792
+#: ../chatgptviewer.lua:787
 msgid "Word copied to clipboard."
 msgstr "Palavra copiada."
 
-#: ../chatgptviewer.lua:793
+#: ../chatgptviewer.lua:788
 msgid "Selection copied to clipboard."
 msgstr "Seleção copiada."
 
-#: ../dialogs.lua:87
+#: ../dialogs.lua:85
 msgid "(Empty message)"
 msgstr "(Mensagem vazia)"
 
-#: ../dialogs.lua:91
+#: ../dialogs.lua:89
 msgid "(No response)"
 msgstr "(Sem resposta)"
 
-#: ../dialogs.lua:121
+#: ../dialogs.lua:118
 msgid "Highlighted text:"
 msgstr "Texto destacado:"
 
-#: ../dialogs.lua:306
+#: ../dialogs.lua:299
 msgid "Book Analysis"
 msgstr "Análise do livro"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:336
 msgid "Add this button to the Highlight Menu?"
 msgstr "Adicionar este botão ao menu de destaque?"
 
-#: ../dialogs.lua:344
+#: ../dialogs.lua:337
 msgid "Add"
 msgstr "Adicionar"
 
-#: ../dialogs.lua:371
+#: ../dialogs.lua:364
 msgid "Ask a question about the highlighted text"
 msgstr "Faça uma pergunta sobre o texto destacado"
 
-#: ../dialogs.lua:372
+#: ../dialogs.lua:365
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -144,79 +140,47 @@ msgstr ""
 "Faça uma pergunta sobre este livro:\n"
 "%s de %s"
 
-#: ../dialogs.lua:375
+#: ../dialogs.lua:368
 msgid "Type your question here..."
 msgstr "Digite sua pergunta..."
 
-#: ../dialogs.lua:376
+#: ../dialogs.lua:369
 msgid "Ask anything about this book..."
 msgstr "Pergunte qualquer coisa sobre este livro..."
 
-#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:372 ../main.lua:196 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "Assistente IA"
 
-#: ../dialogs.lua:435
+#: ../dialogs.lua:427
 msgid "Error: No response received"
 msgstr "Erro: nenhuma resposta recebida"
 
-#: ../dictdialog.lua:28
+#: ../dictdialog.lua:30
 msgid "AI Dictionary"
 msgstr "Dicionário IA"
 
-#: ../dictdialog.lua:29
+#: ../dictdialog.lua:31
 msgid "Enter a word to look up..."
 msgstr "Digite uma palavra para pesquisar..."
 
-#: ../dictdialog.lua:40
+#: ../dictdialog.lua:42
 msgid "Look Up"
 msgstr "Pesquisar"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
+#: ../dictdialog.lua:177 ../main.lua:363 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "Dicionário"
 
-#: ../gpt_query.lua:52
-#, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"Configurações do provedor não encontradas para: %s. Verifique o arquivo "
-"configuration.lua."
-
-#: ../gpt_query.lua:74
-#, lua-format
-msgid ""
-"The handler for %s was not found. Please ensure the handler exists in "
-"api_handlers directory."
-msgstr ""
-"Handler para %s não encontrado. Certifique-se de que existe na pasta "
-"api_handlers."
-
-#: ../gpt_query.lua:79
-#, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"Nenhum provedor definido em configuration.lua. Defina o provedor e "
-"provider_settings para %s."
-
-#: ../gpt_query.lua:124
+#: ../gpt_query.lua:126
 msgid "Querying AI ..."
 msgstr "Consultando IA..."
 
-#: ../gpt_query.lua:139
+#: ../gpt_query.lua:143
 msgid "AI is responding"
 msgstr "IA respondendo"
 
-#: ../gpt_query.lua:141
-#, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
-
-#: ../gpt_query.lua:155
+#: ../gpt_query.lua:158
 msgid "⏹ Stop"
 msgstr "⏹ Parar"
 
@@ -244,11 +208,11 @@ msgstr "Resumos IA"
 msgid "AI Assistant Settings"
 msgstr "Configurações do Assistente de IA"
 
-#: ../main.lua:168
+#: ../main.lua:166
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "Nenhum fornecedor de modelo válido foi encontrado em configuration.lua"
 
-#: ../main.lua:204
+#: ../main.lua:202
 msgid ""
 "Configuration Error.\n"
 "Please set up configuration.lua."
@@ -256,7 +220,7 @@ msgstr ""
 "Erro de Configuração.\n"
 "Configure o ficheiro configuration.lua."
 
-#: ../main.lua:229
+#: ../main.lua:227
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -284,37 +248,37 @@ msgstr ""
 "Gestos múltiplos (ex.: ⮠, ⮡, ↺):\n"
 "No diálogo de resultados para fechar (o botão Fechar pode estar distante).\n"
 
-#: ../main.lua:252
+#: ../main.lua:250
 msgid "configuration.lua: model providers are invalid."
 msgstr "configuration.lua: os fornecedores de modelo são inválidos."
 
-#: ../main.lua:333
+#: ../main.lua:331
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "Remover [%s] do menu de destaque?"
 
-#: ../main.lua:334
+#: ../main.lua:332
 msgid "Remove"
 msgstr "Remover"
 
-#: ../main.lua:351 ../prompts.lua:128
+#: ../main.lua:349 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "Wikipedia"
 
-#: ../main.lua:387 ../main.lua:439
+#: ../main.lua:385 ../main.lua:437
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "Configuração não encontrada. Configure o configuration.lua primeiro."
 
-#: ../main.lua:481
+#: ../main.lua:479
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "[%1 (IA)] adicionado ao menu de destaque."
 
-#: ../main.lua:490
+#: ../main.lua:488
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "[%s (IA)] removido do menu de destaque."
 
-#: ../main.lua:534
+#: ../main.lua:532
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -325,11 +289,11 @@ msgstr ""
 "Para %s de %s.\n"
 "Última leitura há %.0f h."
 
-#: ../main.lua:539
+#: ../main.lua:537
 msgid "Yes"
 msgstr "Sim"
 
-#: ../main.lua:548
+#: ../main.lua:546
 msgid "No"
 msgstr "Não"
 
@@ -444,7 +408,36 @@ msgstr ""
 "Gera um artigo estilo Wikipedia baseado no texto destacado, garantindo "
 "precisão e neutralidade."
 
-#: ../recapdialog.lua:68
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "Conjugação"
+
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "Sinônimos"
+
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "Significado"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "Tradução"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "Explicação"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "Exemplo"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "Origem da palavra"
+
+#: ../recapdialog.lua:69
 msgid "Recap"
 msgstr "Resumo"
 
@@ -528,11 +521,11 @@ msgstr "Recursos do Assistente de IA:"
 msgid "AI Model provider:"
 msgstr "Provedor do Modelo de IA:"
 
-#: ../update_checker.lua:22
+#: ../update_checker.lua:23
 msgid "Checking for updates..."
 msgstr "Verificando atualizações..."
 
-#: ../update_checker.lua:56
+#: ../update_checker.lua:57
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
 msgstr "Uma nova versão do plugin %s (%s) está disponível. Atualize!"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"POT-Creation-Date: 2025-08-22 16:58+0800\n"
 "PO-Revision-Date: 2025-08-21 15:19:57+0800\n"
 "Last-Translator: ChatGPT-4.0 (OpenAI) <chatgpt@example.com>\n"
 "Language-Team: OpenAI ChatGPT 4.0 (हिन्दी) <hi@example.com>\n"
@@ -11,125 +11,118 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. @translators used in the dictionary.
-#: ../prompts.lua:171
-msgid "Conjugation"
-msgstr "क्रिया रूप"
+#: ../chatgptviewer.lua:332
+msgid "Text copied to the clipboard"
+msgstr "पाठ क्लिपबोर्ड में कॉपी किया गया"
 
-#: ../prompts.lua:172
-msgid "Synonyms"
-msgstr "पर्यायवाची शब्द"
+#: ../gpt_query.lua:49
+msgid ""
+"Provider settings not found for: %1. Please check your configuration.lua "
+"file."
+msgstr "प्रोवाइडर सेटिंग्स नहीं मिलीं: %1। कृपया अपनी configuration.lua फ़ाइल जांचें।"
 
-#: ../prompts.lua:173
-msgid "Meaning"
-msgstr "अर्थ"
+#: ../gpt_query.lua:75
+msgid ""
+"The handler for %1 was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"%1 के हैंडलर नहीं मिला। कृपया सुनिश्चित करें कि हैंडलर api_handlers निर्देशिका में मौजूद है।"
 
-#: ../prompts.lua:174
-msgid "Translation"
-msgstr "अनुवाद"
+#: ../gpt_query.lua:117
+msgid "Plugin is not configured."
+msgstr "प्लगइन कॉन्फ़िगर नहीं किया गया है।"
 
-#: ../prompts.lua:175
-msgid "Explanation"
-msgstr "व्याख्या"
+#: ../gpt_query.lua:407 ../gpt_query.lua:409
+msgid "Deeply Thought"
+msgstr "गहराई से विचार"
 
-#: ../prompts.lua:176
-msgid "Example"
-msgstr "उदाहरण"
-
-#: ../prompts.lua:177
-msgid "Word Origin"
-msgstr "शब्द मूल"
-
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
+#. @translators this is a button text, keep short
+#: ../chatgptviewer.lua:272 ../chatgptviewer.lua:634
 msgid "Ask Another Question"
 msgstr "एक और प्रश्न पूछें"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
+#: ../chatgptviewer.lua:312 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "बंद करें"
 
-#: ../chatgptviewer.lua:326
+#: ../chatgptviewer.lua:327
 msgid "Copy"
 msgstr "कॉपी करें"
 
-#: ../chatgptviewer.lua:331
-msgid "Text copied to clipboard"
-msgstr "पाठ क्लिपबोर्ड पर कॉपी किया गया"
-
-#: ../chatgptviewer.lua:345
+#: ../chatgptviewer.lua:346
 msgid "Add Note"
 msgstr "नोट जोड़ें"
 
-#: ../chatgptviewer.lua:352
+#: ../chatgptviewer.lua:353
 msgid "Highlight functionality not available"
 msgstr "हाइलाइट सुविधा उपलब्ध नहीं है"
 
-#: ../chatgptviewer.lua:361
+#: ../chatgptviewer.lua:362
 msgid "No text to add as note"
 msgstr "जोड़ने के लिए कोई पाठ नहीं"
 
-#: ../chatgptviewer.lua:390
+#: ../chatgptviewer.lua:391
 msgid "No text left to add as note"
 msgstr "जोड़ने के लिए कोई पाठ शेष नहीं"
 
-#: ../chatgptviewer.lua:403
+#: ../chatgptviewer.lua:404
 msgid "Note added successfully"
 msgstr "नोट सफलतापूर्वक जोड़ा गया"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:570 ../dialogs.lua:257 ../dictdialog.lua:36
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "रद्द करें"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:271
+#: ../chatgptviewer.lua:580 ../dialogs.lua:264
 msgid "Ask"
 msgstr "पूछें"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:277
+#: ../chatgptviewer.lua:586 ../dialogs.lua:270
 msgid "Enter a question before proceeding."
 msgstr "आगे बढ़ने से पहले एक प्रश्न दर्ज करें।"
 
-#: ../chatgptviewer.lua:641
+#: ../chatgptviewer.lua:636
 msgid "Type your question here"
 msgstr "यहां अपना प्रश्न टाइप करें"
 
-#: ../chatgptviewer.lua:792
+#: ../chatgptviewer.lua:787
 msgid "Word copied to clipboard."
 msgstr "शब्द क्लिपबोर्ड पर कॉपी किया गया।"
 
-#: ../chatgptviewer.lua:793
+#: ../chatgptviewer.lua:788
 msgid "Selection copied to clipboard."
 msgstr "चयन क्लिपबोर्ड पर कॉपी किया गया।"
 
-#: ../dialogs.lua:87
+#: ../dialogs.lua:85
 msgid "(Empty message)"
 msgstr "(खाली संदेश)"
 
-#: ../dialogs.lua:91
+#: ../dialogs.lua:89
 msgid "(No response)"
 msgstr "(कोई प्रतिक्रिया नहीं)"
 
-#: ../dialogs.lua:121
+#: ../dialogs.lua:118
 msgid "Highlighted text:"
 msgstr "हाइलाइट किया हुआ पाठ:"
 
-#: ../dialogs.lua:306
+#: ../dialogs.lua:299
 msgid "Book Analysis"
 msgstr "पुस्तक विश्लेषण"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:336
 msgid "Add this button to the Highlight Menu?"
 msgstr "क्या आप इस बटन को हाइलाइट मेनू में जोड़ना चाहते हैं?"
 
-#: ../dialogs.lua:344
+#: ../dialogs.lua:337
 msgid "Add"
 msgstr "जोड़ें"
 
-#: ../dialogs.lua:371
+#: ../dialogs.lua:364
 msgid "Ask a question about the highlighted text"
 msgstr "हाइलाइट किए गए पाठ के बारे में एक प्रश्न पूछें"
 
-#: ../dialogs.lua:372
+#: ../dialogs.lua:365
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -138,77 +131,47 @@ msgstr ""
 "इस पुस्तक के बारे में एक प्रश्न पूछें:\n"
 "%s द्वारा %s"
 
-#: ../dialogs.lua:375
+#: ../dialogs.lua:368
 msgid "Type your question here..."
 msgstr "यहां अपना प्रश्न टाइप करें..."
 
-#: ../dialogs.lua:376
+#: ../dialogs.lua:369
 msgid "Ask anything about this book..."
 msgstr "इस पुस्तक के बारे में कुछ भी पूछें..."
 
-#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:372 ../main.lua:196 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "एआई सहायक"
 
-#: ../dialogs.lua:435
+#: ../dialogs.lua:427
 msgid "Error: No response received"
 msgstr "त्रुटि: कोई प्रतिक्रिया प्राप्त नहीं हुई"
 
-#: ../dictdialog.lua:28
+#: ../dictdialog.lua:30
 msgid "AI Dictionary"
 msgstr "एआई शब्दकोश"
 
-#: ../dictdialog.lua:29
+#: ../dictdialog.lua:31
 msgid "Enter a word to look up..."
 msgstr "खोजने के लिए एक शब्द दर्ज करें..."
 
-#: ../dictdialog.lua:40
+#: ../dictdialog.lua:42
 msgid "Look Up"
 msgstr "खोजें"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
+#: ../dictdialog.lua:177 ../main.lua:363 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "शब्दकोश"
 
-#: ../gpt_query.lua:52
-#, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr "प्रदाता सेटिंग्स नहीं मिली: %s. कृपया अपनी configuration.lua फ़ाइल जाँचें।"
-
-#: ../gpt_query.lua:74
-#, lua-format
-msgid ""
-"The handler for %s was not found. Please ensure the handler exists in "
-"api_handlers directory."
-msgstr ""
-"%s के लिए हैंडलर नहीं मिला। कृपया सुनिश्चित करें कि हैंडलर api_handlers निर्देशिका में मौजूद "
-"है।"
-
-#: ../gpt_query.lua:79
-#, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"configuration.lua में कोई प्रदाता सेट नहीं है। कृपया %s के लिए प्रदाता और "
-"provider_settings सेट करें।"
-
-#: ../gpt_query.lua:124
+#: ../gpt_query.lua:126
 msgid "Querying AI ..."
 msgstr "एआई से पूछताछ हो रही है ..."
 
-#: ../gpt_query.lua:139
+#: ../gpt_query.lua:143
 msgid "AI is responding"
 msgstr "एआई प्रतिक्रिया दे रहा है"
 
-#: ../gpt_query.lua:141
-#, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
-
-#: ../gpt_query.lua:155
+#: ../gpt_query.lua:158
 msgid "⏹ Stop"
 msgstr "⏹ रोकें"
 
@@ -236,11 +199,11 @@ msgstr "एआई रीकैप्स"
 msgid "AI Assistant Settings"
 msgstr "एआई सहायक सेटिंग्स"
 
-#: ../main.lua:168
+#: ../main.lua:166
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "configuration.lua में कोई मान्य मॉडल प्रदाता नहीं मिला।"
 
-#: ../main.lua:204
+#: ../main.lua:202
 msgid ""
 "Configuration Error.\n"
 "Please set up configuration.lua."
@@ -248,7 +211,7 @@ msgstr ""
 "विन्यास त्रुटि।\n"
 "कृपया configuration.lua सेट करें।"
 
-#: ../main.lua:229
+#: ../main.lua:227
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -275,37 +238,37 @@ msgstr ""
 "मल्टी-स्वाइप (जैसे, ⮠, ⮡, ↺):\n"
 "परिणाम संवाद को बंद करने के लिए (क्योंकि क्लोज़ बटन पहुँच से बाहर है)।\n"
 
-#: ../main.lua:252
+#: ../main.lua:250
 msgid "configuration.lua: model providers are invalid."
 msgstr "configuration.lua: मॉडल प्रदाता अमान्य हैं।"
 
-#: ../main.lua:333
+#: ../main.lua:331
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "क्या आप [%s] को हाइलाइट मेनू से हटाना चाहते हैं?"
 
-#: ../main.lua:334
+#: ../main.lua:332
 msgid "Remove"
 msgstr "हटाएँ"
 
-#: ../main.lua:351 ../prompts.lua:128
+#: ../main.lua:349 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "विकिपीडिया"
 
-#: ../main.lua:387 ../main.lua:439
+#: ../main.lua:385 ../main.lua:437
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "कॉन्फ़िगरेशन नहीं मिला। कृपया पहले configuration.lua सेटअप करें।"
 
-#: ../main.lua:481
+#: ../main.lua:479
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "[%1 (एआई)] को हाइलाइट मेनू में जोड़ा गया।"
 
-#: ../main.lua:490
+#: ../main.lua:488
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "[%s (एआई)] को हाइलाइट मेनू से हटाया गया।"
 
-#: ../main.lua:534
+#: ../main.lua:532
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -316,11 +279,11 @@ msgstr ""
 "%s द्वारा %s के लिए।\n"
 "अंतिम पढ़ना %.0f घंटे पहले।"
 
-#: ../main.lua:539
+#: ../main.lua:537
 msgid "Yes"
 msgstr "हाँ"
 
-#: ../main.lua:548
+#: ../main.lua:546
 msgid "No"
 msgstr "नहीं"
 
@@ -445,7 +408,36 @@ msgstr ""
 "यह प्रॉम्प्ट हाइलाइट किए गए पाठ के आधार पर व्यापक विकिपीडिया-शैली का लेख तैयार करता "
 "है, तथ्यात्मक सटीकता और तटस्थता सुनिश्चित करते हुए।"
 
-#: ../recapdialog.lua:68
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "क्रिया रूप"
+
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "पर्यायवाची शब्द"
+
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "अर्थ"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "अनुवाद"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "व्याख्या"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "उदाहरण"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "शब्द मूल"
+
+#: ../recapdialog.lua:69
 msgid "Recap"
 msgstr "रीकैप"
 
@@ -529,11 +521,11 @@ msgstr "एआई सहायक सुविधाएँ:"
 msgid "AI Model provider:"
 msgstr "एआई मॉडल प्रदाता:"
 
-#: ../update_checker.lua:22
+#: ../update_checker.lua:23
 msgid "Checking for updates..."
 msgstr "अपडेट्स की जाँच कर रहा है..."
 
-#: ../update_checker.lua:56
+#: ../update_checker.lua:57
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
 msgstr "%s प्लगइन (%s) का नया संस्करण उपलब्ध है। कृपया अपडेट करें!"

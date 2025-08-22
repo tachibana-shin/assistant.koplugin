@@ -7,134 +7,130 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"POT-Creation-Date: 2025-08-22 16:58+0800\n"
 "PO-Revision-Date: 2025-08-21 15:21+0800\n"
 "Last-Translator: ChatGPT 4.0 <chatgpt@openai.com>\n"
-"Language-Team: 한국어 <ko@koreader.org>\n"
+"Language-Team: ChatGPT 4.0 <chatgpt@openai.com>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. @translators used in the dictionary.
-#: ../prompts.lua:171
-msgid "Conjugation"
-msgstr "활용"
+#: ../chatgptviewer.lua:332
+msgid "Text copied to the clipboard"
+msgstr "클립보드에 복사되었습니다."
 
-#: ../prompts.lua:172
-msgid "Synonyms"
-msgstr "동의어"
+#: ../gpt_query.lua:49
+msgid ""
+"Provider settings not found for: %1. Please check your configuration.lua "
+"file."
+msgstr ""
+"다음에 대한 제공자 설정을 찾을 수 없습니다: %1. configuration.lua 파일을 확인"
+"하십시오."
 
-#: ../prompts.lua:173
-msgid "Meaning"
-msgstr "뜻"
+#: ../gpt_query.lua:75
+msgid ""
+"The handler for %1 was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"%1에 대한 핸들러를 찾을 수 없습니다. api_handlers 디렉터리에 핸들러가 존재하"
+"는지 확인하십시오."
 
-#: ../prompts.lua:174
-msgid "Translation"
-msgstr "번역"
+#: ../gpt_query.lua:117
+msgid "Plugin is not configured."
+msgstr "플러그인이 설정되지 않았습니다."
 
-#: ../prompts.lua:175
-msgid "Explanation"
-msgstr "설명"
+#: ../gpt_query.lua:407 ../gpt_query.lua:409
+msgid "Deeply Thought"
+msgstr "Deeply Thought"
 
-#: ../prompts.lua:176
-msgid "Example"
-msgstr "예시"
-
-#: ../prompts.lua:177
-msgid "Word Origin"
-msgstr "어원"
-
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
+#. @translators this is a button text, keep short
+#: ../chatgptviewer.lua:272 ../chatgptviewer.lua:634
 msgid "Ask Another Question"
 msgstr "다른 질문하기"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
+#: ../chatgptviewer.lua:312 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "닫기"
 
-#: ../chatgptviewer.lua:326
+#: ../chatgptviewer.lua:327
 msgid "Copy"
 msgstr "복사"
 
-#: ../chatgptviewer.lua:331
-msgid "Text copied to clipboard"
-msgstr "텍스트가 복사됨"
-
-#: ../chatgptviewer.lua:345
+#: ../chatgptviewer.lua:346
 msgid "Add Note"
 msgstr "노트 추가"
 
-#: ../chatgptviewer.lua:352
+#: ../chatgptviewer.lua:353
 msgid "Highlight functionality not available"
 msgstr "하이라이트 기능 사용 불가"
 
-#: ../chatgptviewer.lua:361
+#: ../chatgptviewer.lua:362
 msgid "No text to add as note"
 msgstr "노트로 추가할 텍스트 없음"
 
-#: ../chatgptviewer.lua:390
+#: ../chatgptviewer.lua:391
 msgid "No text left to add as note"
 msgstr "남은 텍스트 없음"
 
-#: ../chatgptviewer.lua:403
+#: ../chatgptviewer.lua:404
 msgid "Note added successfully"
 msgstr "노트 추가 완료"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:570 ../dialogs.lua:257 ../dictdialog.lua:36
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "취소"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:271
+#: ../chatgptviewer.lua:580 ../dialogs.lua:264
 msgid "Ask"
 msgstr "질문"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:277
+#: ../chatgptviewer.lua:586 ../dialogs.lua:270
 msgid "Enter a question before proceeding."
 msgstr "질문을 입력하세요."
 
-#: ../chatgptviewer.lua:641
+#: ../chatgptviewer.lua:636
 msgid "Type your question here"
 msgstr "질문을 입력하세요"
 
-#: ../chatgptviewer.lua:792
+#: ../chatgptviewer.lua:787
 msgid "Word copied to clipboard."
 msgstr "단어 복사됨"
 
-#: ../chatgptviewer.lua:793
+#: ../chatgptviewer.lua:788
 msgid "Selection copied to clipboard."
 msgstr "선택 영역 복사됨"
 
-#: ../dialogs.lua:87
+#: ../dialogs.lua:85
 msgid "(Empty message)"
 msgstr "(빈 메시지)"
 
-#: ../dialogs.lua:91
+#: ../dialogs.lua:89
 msgid "(No response)"
 msgstr "(응답 없음)"
 
-#: ../dialogs.lua:121
+#: ../dialogs.lua:118
 msgid "Highlighted text:"
 msgstr "하이라이트한 텍스트:"
 
-#: ../dialogs.lua:306
+#: ../dialogs.lua:299
 msgid "Book Analysis"
 msgstr "책 분석"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:336
 msgid "Add this button to the Highlight Menu?"
 msgstr "이 버튼을 하이라이트 메뉴에 추가할까요?"
 
-#: ../dialogs.lua:344
+#: ../dialogs.lua:337
 msgid "Add"
 msgstr "추가"
 
-#: ../dialogs.lua:371
+#: ../dialogs.lua:364
 msgid "Ask a question about the highlighted text"
 msgstr "하이라이트한 텍스트에 대해 질문"
 
-#: ../dialogs.lua:372
+#: ../dialogs.lua:365
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -143,77 +139,47 @@ msgstr ""
 "이 책에 대해 질문하세요:\n"
 "%s (저자: %s)"
 
-#: ../dialogs.lua:375
+#: ../dialogs.lua:368
 msgid "Type your question here..."
 msgstr "질문을 입력하세요..."
 
-#: ../dialogs.lua:376
+#: ../dialogs.lua:369
 msgid "Ask anything about this book..."
 msgstr "이 책에 대해 무엇이든 질문하세요..."
 
-#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:372 ../main.lua:196 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AI 어시스턴트"
 
-#: ../dialogs.lua:435
+#: ../dialogs.lua:427
 msgid "Error: No response received"
 msgstr "오류: 응답을 받지 못했습니다"
 
-#: ../dictdialog.lua:28
+#: ../dictdialog.lua:30
 msgid "AI Dictionary"
 msgstr "AI 사전"
 
-#: ../dictdialog.lua:29
+#: ../dictdialog.lua:31
 msgid "Enter a word to look up..."
 msgstr "단어를 입력하세요..."
 
-#: ../dictdialog.lua:40
+#: ../dictdialog.lua:42
 msgid "Look Up"
 msgstr "찾기"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
+#: ../dictdialog.lua:177 ../main.lua:363 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "사전"
 
-#: ../gpt_query.lua:52
-#, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"프로바이더 설정을 찾을 수 없습니다: %s. configuration.lua 파일을 확인하세요."
-
-#: ../gpt_query.lua:74
-#, lua-format
-msgid ""
-"The handler for %s was not found. Please ensure the handler exists in "
-"api_handlers directory."
-msgstr ""
-"%s 핸들러를 찾을 수 없습니다. api_handlers 디렉토리에 존재하는지 확인하세요."
-
-#: ../gpt_query.lua:79
-#, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"configuration.lua에 프로바이더가 설정되지 않았습니다. 프로바이더와 "
-"provider_settings를 설정하세요: %s"
-
-#: ../gpt_query.lua:124
+#: ../gpt_query.lua:126
 msgid "Querying AI ..."
 msgstr "AI에 질문 중..."
 
-#: ../gpt_query.lua:139
+#: ../gpt_query.lua:143
 msgid "AI is responding"
 msgstr "AI 응답 중"
 
-#: ../gpt_query.lua:141
-#, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
-
-#: ../gpt_query.lua:155
+#: ../gpt_query.lua:158
 msgid "⏹ Stop"
 msgstr "⏹ 중지"
 
@@ -241,11 +207,11 @@ msgstr "AI 요약"
 msgid "AI Assistant Settings"
 msgstr "AI 어시스턴트 설정"
 
-#: ../main.lua:168
+#: ../main.lua:166
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "configuration.lua에 유효한 모델 제공자가 없습니다"
 
-#: ../main.lua:204
+#: ../main.lua:202
 msgid ""
 "Configuration Error.\n"
 "Please set up configuration.lua."
@@ -253,7 +219,7 @@ msgstr ""
 "설정 오류입니다.\n"
 "configuration.lua를 설정해 주세요."
 
-#: ../main.lua:229
+#: ../main.lua:227
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -280,37 +246,37 @@ msgstr ""
 "멀티 스와이프 (예: ⮠, ⮡, ↺):\n"
 "결과 대화창을 닫기 (닫기 버튼이 멀 때)\n"
 
-#: ../main.lua:252
+#: ../main.lua:250
 msgid "configuration.lua: model providers are invalid."
 msgstr "configuration.lua의 모델 제공자가 유효하지 않습니다"
 
-#: ../main.lua:333
+#: ../main.lua:331
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "[%s]를 하이라이트 메뉴에서 제거할까요?"
 
-#: ../main.lua:334
+#: ../main.lua:332
 msgid "Remove"
 msgstr "제거"
 
-#: ../main.lua:351 ../prompts.lua:128
+#: ../main.lua:349 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "위키피디아"
 
-#: ../main.lua:387 ../main.lua:439
+#: ../main.lua:385 ../main.lua:437
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "설정을 찾을 수 없습니다. 먼저 configuration.lua를 설정하세요."
 
-#: ../main.lua:481
+#: ../main.lua:479
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "[%1 (AI)]를 하이라이트 메뉴에 추가했습니다."
 
-#: ../main.lua:490
+#: ../main.lua:488
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "[%s (AI)]를 하이라이트 메뉴에서 제거했습니다."
 
-#: ../main.lua:534
+#: ../main.lua:532
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -321,11 +287,11 @@ msgstr ""
 "%s (저자: %s)\n"
 "마지막으로 %.0f시간 전에 읽음"
 
-#: ../main.lua:539
+#: ../main.lua:537
 msgid "Yes"
 msgstr "예"
 
-#: ../main.lua:548
+#: ../main.lua:546
 msgid "No"
 msgstr "아니오"
 
@@ -446,7 +412,36 @@ msgstr ""
 "이 프롬프트는 하이라이트한 텍스트를 바탕으로 위키피디아 스타일의 포괄적 문서"
 "를 생성합니다."
 
-#: ../recapdialog.lua:68
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "활용"
+
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "동의어"
+
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "뜻"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "번역"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "설명"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "예시"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "어원"
+
+#: ../recapdialog.lua:69
 msgid "Recap"
 msgstr "요약"
 
@@ -530,11 +525,11 @@ msgstr "AI 어시스턴트 기능:"
 msgid "AI Model provider:"
 msgstr "AI 모델 제공자:"
 
-#: ../update_checker.lua:22
+#: ../update_checker.lua:23
 msgid "Checking for updates..."
 msgstr "업데이트 확인 중..."
 
-#: ../update_checker.lua:56
+#: ../update_checker.lua:57
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
 msgstr "새 버전의 %s 플러그인 (%s)이 있습니다. 업데이트하세요!"

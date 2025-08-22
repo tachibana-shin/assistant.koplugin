@@ -7,134 +7,130 @@ msgid ""
 msgstr ""
 "Project-Id-Version: assistant.koplugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-21 15:16+0800\n"
+"POT-Creation-Date: 2025-08-22 16:58+0800\n"
 "PO-Revision-Date: 2025-08-21 15:20+0800\n"
 "Last-Translator: ChatGPT 4.0 <chatgpt@example.com>\n"
-"Language-Team: 日本語 <ja@chatgpt>\n"
-"Language: ja\n"
+"Language-Team: ChatGPT 4.0 <ja@chatgpt>\n"
+"Language: 日本語 (ja)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. @translators used in the dictionary.
-#: ../prompts.lua:171
-msgid "Conjugation"
-msgstr "活用"
+#: ../chatgptviewer.lua:332
+msgid "Text copied to the clipboard"
+msgstr "テキストがクリップボードにコピーされました"
 
-#: ../prompts.lua:172
-msgid "Synonyms"
-msgstr "同義語"
+#: ../gpt_query.lua:49
+msgid ""
+"Provider settings not found for: %1. Please check your configuration.lua "
+"file."
+msgstr ""
+"プロバイダー設定が見つかりません: %1。configuration.lua ファイルを確認してく"
+"ださい。"
 
-#: ../prompts.lua:173
-msgid "Meaning"
-msgstr "意味"
+#: ../gpt_query.lua:75
+msgid ""
+"The handler for %1 was not found. Please ensure the handler exists in "
+"api_handlers directory."
+msgstr ""
+"%1 のハンドラが見つかりません。api_handlers ディレクトリにハンドラが存在する"
+"か確認してください。"
 
-#: ../prompts.lua:174
-msgid "Translation"
-msgstr "翻訳"
+#: ../gpt_query.lua:117
+msgid "Plugin is not configured."
+msgstr "プラグインが設定されていません。"
 
-#: ../prompts.lua:175
-msgid "Explanation"
-msgstr "説明"
+#: ../gpt_query.lua:407 ../gpt_query.lua:409
+msgid "Deeply Thought"
+msgstr "Deeply Thought"
 
-#: ../prompts.lua:176
-msgid "Example"
-msgstr "例"
-
-#: ../prompts.lua:177
-msgid "Word Origin"
-msgstr "語源"
-
-#: ../chatgptviewer.lua:271 ../chatgptviewer.lua:639
+#. @translators this is a button text, keep short
+#: ../chatgptviewer.lua:272 ../chatgptviewer.lua:634
 msgid "Ask Another Question"
 msgstr "別の質問をする"
 
-#: ../chatgptviewer.lua:311 ../settingsdialog.lua:286
+#: ../chatgptviewer.lua:312 ../settingsdialog.lua:286
 msgid "Close"
 msgstr "閉じる"
 
-#: ../chatgptviewer.lua:326
+#: ../chatgptviewer.lua:327
 msgid "Copy"
 msgstr "コピー"
 
-#: ../chatgptviewer.lua:331
-msgid "Text copied to clipboard"
-msgstr "テキストをコピーしました"
-
-#: ../chatgptviewer.lua:345
+#: ../chatgptviewer.lua:346
 msgid "Add Note"
 msgstr "ノートを追加"
 
-#: ../chatgptviewer.lua:352
+#: ../chatgptviewer.lua:353
 msgid "Highlight functionality not available"
 msgstr "ハイライト機能は利用できません"
 
-#: ../chatgptviewer.lua:361
+#: ../chatgptviewer.lua:362
 msgid "No text to add as note"
 msgstr "ノートに追加するテキストがありません"
 
-#: ../chatgptviewer.lua:390
+#: ../chatgptviewer.lua:391
 msgid "No text left to add as note"
 msgstr "残りのテキストがありません"
 
-#: ../chatgptviewer.lua:403
+#: ../chatgptviewer.lua:404
 msgid "Note added successfully"
 msgstr "ノートを追加しました"
 
-#: ../chatgptviewer.lua:575 ../dialogs.lua:264 ../dictdialog.lua:34
+#: ../chatgptviewer.lua:570 ../dialogs.lua:257 ../dictdialog.lua:36
 #: ../settingsdialog.lua:98
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../chatgptviewer.lua:585 ../dialogs.lua:271
+#: ../chatgptviewer.lua:580 ../dialogs.lua:264
 msgid "Ask"
 msgstr "質問"
 
-#: ../chatgptviewer.lua:591 ../dialogs.lua:277
+#: ../chatgptviewer.lua:586 ../dialogs.lua:270
 msgid "Enter a question before proceeding."
 msgstr "質問を入力してください"
 
-#: ../chatgptviewer.lua:641
+#: ../chatgptviewer.lua:636
 msgid "Type your question here"
 msgstr "質問を入力"
 
-#: ../chatgptviewer.lua:792
+#: ../chatgptviewer.lua:787
 msgid "Word copied to clipboard."
 msgstr "単語をコピーしました"
 
-#: ../chatgptviewer.lua:793
+#: ../chatgptviewer.lua:788
 msgid "Selection copied to clipboard."
 msgstr "選択範囲をコピーしました"
 
-#: ../dialogs.lua:87
+#: ../dialogs.lua:85
 msgid "(Empty message)"
 msgstr "(空のメッセージ)"
 
-#: ../dialogs.lua:91
+#: ../dialogs.lua:89
 msgid "(No response)"
 msgstr "(応答なし)"
 
-#: ../dialogs.lua:121
+#: ../dialogs.lua:118
 msgid "Highlighted text:"
 msgstr "ハイライトしたテキスト:"
 
-#: ../dialogs.lua:306
+#: ../dialogs.lua:299
 msgid "Book Analysis"
 msgstr "本の分析"
 
-#: ../dialogs.lua:343
+#: ../dialogs.lua:336
 msgid "Add this button to the Highlight Menu?"
 msgstr "このボタンをハイライトメニューに追加しますか？"
 
-#: ../dialogs.lua:344
+#: ../dialogs.lua:337
 msgid "Add"
 msgstr "追加"
 
-#: ../dialogs.lua:371
+#: ../dialogs.lua:364
 msgid "Ask a question about the highlighted text"
 msgstr "ハイライトしたテキストについて質問"
 
-#: ../dialogs.lua:372
+#: ../dialogs.lua:365
 #, lua-format
 msgid ""
 "Ask a question about this book:\n"
@@ -143,78 +139,47 @@ msgstr ""
 "この本について質問してください:\n"
 "%s（著者：%s）"
 
-#: ../dialogs.lua:375
+#: ../dialogs.lua:368
 msgid "Type your question here..."
 msgstr "質問を入力..."
 
-#: ../dialogs.lua:376
+#: ../dialogs.lua:369
 msgid "Ask anything about this book..."
 msgstr "本について何でも質問..."
 
-#: ../dialogs.lua:379 ../main.lua:198 ../_meta.lua:4
+#: ../dialogs.lua:372 ../main.lua:196 ../_meta.lua:4
 msgid "AI Assistant"
 msgstr "AIアシスタント"
 
-#: ../dialogs.lua:435
+#: ../dialogs.lua:427
 msgid "Error: No response received"
 msgstr "エラー: 応答がありません"
 
-#: ../dictdialog.lua:28
+#: ../dictdialog.lua:30
 msgid "AI Dictionary"
 msgstr "AI辞書"
 
-#: ../dictdialog.lua:29
+#: ../dictdialog.lua:31
 msgid "Enter a word to look up..."
 msgstr "単語を入力..."
 
-#: ../dictdialog.lua:40
+#: ../dictdialog.lua:42
 msgid "Look Up"
 msgstr "検索"
 
-#: ../dictdialog.lua:176 ../main.lua:365 ../prompts.lua:20
+#: ../dictdialog.lua:177 ../main.lua:363 ../prompts.lua:20
 msgid "Dictionary"
 msgstr "辞書"
 
-#: ../gpt_query.lua:52
-#, lua-format
-msgid ""
-"Provider settings not found for: %s. Please check your configuration.lua "
-"file."
-msgstr ""
-"プロバイダー設定が見つかりません: %s。configuration.luaを確認してください。"
-
-#: ../gpt_query.lua:74
-#, lua-format
-msgid ""
-"The handler for %s was not found. Please ensure the handler exists in "
-"api_handlers directory."
-msgstr ""
-"ハンドラー %s が見つかりません。api_handlersディレクトリに存在するか確認して"
-"ください。"
-
-#: ../gpt_query.lua:79
-#, lua-format
-msgid ""
-"No provider set in configuration.lua. Please set the provider and "
-"provider_settings for %s."
-msgstr ""
-"configuration.luaにプロバイダーが設定されていません。%s のプロバイダーと設定"
-"を追加してください。"
-
-#: ../gpt_query.lua:124
+#: ../gpt_query.lua:126
 msgid "Querying AI ..."
 msgstr "AI に問い合わせ中..."
 
-#: ../gpt_query.lua:139
+#: ../gpt_query.lua:143
 msgid "AI is responding"
 msgstr "AI が応答中"
 
-#: ../gpt_query.lua:141
-#, lua-format
-msgid "☁ %s/%s"
-msgstr "☁ %s/%s"
-
-#: ../gpt_query.lua:155
+#: ../gpt_query.lua:158
 msgid "⏹ Stop"
 msgstr "⏹ 停止"
 
@@ -242,11 +207,11 @@ msgstr "AI要約"
 msgid "AI Assistant Settings"
 msgstr "AI アシスタント設定"
 
-#: ../main.lua:168
+#: ../main.lua:166
 msgid "No valid model provider is found in the configuration.lua"
 msgstr "configuration.lua に有効なモデルプロバイダーが見つかりません"
 
-#: ../main.lua:204
+#: ../main.lua:202
 msgid ""
 "Configuration Error.\n"
 "Please set up configuration.lua."
@@ -254,7 +219,7 @@ msgstr ""
 "設定エラー。\n"
 "configuration.lua を設定してください。"
 
-#: ../main.lua:229
+#: ../main.lua:227
 msgid ""
 "Useful Tips:\n"
 "\n"
@@ -281,37 +246,37 @@ msgstr ""
 "マルチスワイプ（例: ⮠, ⮡, ↺）:\n"
 "結果ダイアログを閉じる（閉じるボタンが遠いとき）。\n"
 
-#: ../main.lua:252
+#: ../main.lua:250
 msgid "configuration.lua: model providers are invalid."
 msgstr "configuration.lua のモデルプロバイダーが無効です"
 
-#: ../main.lua:333
+#: ../main.lua:331
 #, lua-format
 msgid "Remove [%s] from Highlight Menu?"
 msgstr "ハイライトメニューから [%s] を削除しますか？"
 
-#: ../main.lua:334
+#: ../main.lua:332
 msgid "Remove"
 msgstr "削除"
 
-#: ../main.lua:351 ../prompts.lua:128
+#: ../main.lua:349 ../prompts.lua:128
 msgid "Wikipedia"
 msgstr "ウィキペディア"
 
-#: ../main.lua:387 ../main.lua:439
+#: ../main.lua:385 ../main.lua:437
 msgid "Configuration not found. Please set up configuration.lua first."
 msgstr "設定が見つかりません。先に configuration.lua を設定してください。"
 
-#: ../main.lua:481
+#: ../main.lua:479
 msgid "Added [%1 (AI)] to Highlight Menu."
 msgstr "[%1 (AI)] をハイライトメニューに追加しました。"
 
-#: ../main.lua:490
+#: ../main.lua:488
 #, lua-format
 msgid "Removed [%s (AI)] from Highlight Menu."
 msgstr "[%s (AI)] をハイライトメニューから削除しました。"
 
-#: ../main.lua:534
+#: ../main.lua:532
 #, lua-format
 msgid ""
 "Do you want an AI Recap?\n"
@@ -322,11 +287,11 @@ msgstr ""
 "『%s』（著者：%s）\n"
 "最終読書 %.0f 時間前"
 
-#: ../main.lua:539
+#: ../main.lua:537
 msgid "Yes"
 msgstr "はい"
 
-#: ../main.lua:548
+#: ../main.lua:546
 msgid "No"
 msgstr "いいえ"
 
@@ -435,7 +400,36 @@ msgstr ""
 "ハイライトしたテキストを元に、ウィキペディア風の正確で中立な記事を生成しま"
 "す。"
 
-#: ../recapdialog.lua:68
+#. @translators used in the dictionary.
+#: ../prompts.lua:171
+msgid "Conjugation"
+msgstr "活用"
+
+#: ../prompts.lua:172
+msgid "Synonyms"
+msgstr "同義語"
+
+#: ../prompts.lua:173
+msgid "Meaning"
+msgstr "意味"
+
+#: ../prompts.lua:174
+msgid "Translation"
+msgstr "翻訳"
+
+#: ../prompts.lua:175
+msgid "Explanation"
+msgstr "説明"
+
+#: ../prompts.lua:176
+msgid "Example"
+msgstr "例"
+
+#: ../prompts.lua:177
+msgid "Word Origin"
+msgstr "語源"
+
+#: ../recapdialog.lua:69
 msgid "Recap"
 msgstr "要約"
 
@@ -519,11 +513,11 @@ msgstr "AI アシスタント機能："
 msgid "AI Model provider:"
 msgstr "AI モデルプロバイダー："
 
-#: ../update_checker.lua:22
+#: ../update_checker.lua:23
 msgid "Checking for updates..."
 msgstr "アップデートを確認中..."
 
-#: ../update_checker.lua:56
+#: ../update_checker.lua:57
 #, lua-format
 msgid "A new version of the %s plugin (%s) is available. Please update!"
 msgstr ""
