@@ -13,7 +13,6 @@ local HorizontalSpan = require("ui/widget/horizontalspan")
 local InfoMessage = require("ui/widget/infomessage")
 local Font = require("ui/font")
 local InputDialog = require("ui/widget/inputdialog")
-local ButtonDialog = require("ui/widget/buttondialog")
 local LineWidget = require("ui/widget/linewidget")
 local MovableContainer = require("ui/widget/container/movablecontainer")
 local RadioButtonTable = require("ui/widget/radiobuttontable")
@@ -108,7 +107,7 @@ local function LanguageSetting(dlg)
                             f:setText("")
                         end
                         if chkbtn_is_rtl then
-                            chkbtn_is_rtl.checked = false
+                            chkbtn_is_rtl.checked = dlg.assistant.ui_language_is_rtl
                             chkbtn_is_rtl:init()
                         end
 

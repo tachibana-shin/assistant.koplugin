@@ -11,7 +11,6 @@ local Trapper = require("ui/trapper")
 local Language = require("ui/language")
 local LuaSettings = require("luasettings")
 local DataStorage = require("datastorage")
-local RadioButtonWidget = require("ui/widget/radiobuttonwidget")
 local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
 local FrontendUtil = require("util")
@@ -265,7 +264,9 @@ On the result dialog to close (as the Close button is far to reach).
   end
 
   -- store the UI language
-  self.ui_language = Language:getLanguageName(G_reader_settings:readSetting("language") or "en") or "English"
+  local ui_locale = G_reader_settings:readSetting("language") or "en"
+  self.ui_language = Language:getLanguageName(ui_locale) or "English"
+  self.ui_language_is_rtl = Language:isLanguageRTL(ui_locale)
 
   -- Conditionally override translate method based on user setting
   self:syncTranslateOverride()
