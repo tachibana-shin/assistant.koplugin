@@ -277,17 +277,23 @@ function Querier:processStream(bgQuery, trunk_callback)
                         if ok and event then
                         
                             local content
+
                             -- OpenAI (compatiable) API
-                            content = koutil.tableGetValue(event, "choices", 1, "delta", "content")
-                            if not content then -- Genmini API
-                                content = koutil.tableGetValue(event, "candidates", 1, "content", "parts", 1, "text")
+                            local choice = koutil.tableGetValue(event, "choices", 1)
+                            if choice then
+                                if koutil.tableGetValue(choice, "finish_reason") then content="\n" end
+                                local delta = koutil.tableGetValue(choice, "delta")
+                                if delta then
+                                    content = koutil.tableGetValue(delta, "content") 
+                                              or koutil.tableGetValue(delta, "reasoning_content")
+                                              or "."
+                                end
                             end
-                            if not content then -- Anthropic API
-                                content = koutil.tableGetValue(event, "content", 1, "text")
-                            end
-                            if not content then -- Log the unreconized event
-                                logger.warn("Unexpected event format:", json_str)
-                                content = json_str
+
+                            if not content then
+                                content =
+                                    koutil.tableGetValue(event, "candidates", 1, "content", "parts", 1, "text") or  -- Genmini API
+                                    koutil.tableGetValue(event, "content", 1, "text") -- Anthropic API
                             end
                                 
                             if content then
@@ -295,6 +301,8 @@ function Querier:processStream(bgQuery, trunk_callback)
                                 if trunk_callback then
                                     trunk_callback(content)  -- Output to trunk callback
                                 end
+                            else
+                                logger.warn("Unexpected content:", json_str)
                             end
                         else
                             logger.warn("Failed to parse JSON from SSE data:", json_str)
@@ -393,6 +401,11 @@ function Querier:processStream(bgQuery, trunk_callback)
 
         -- return all received content as error message
         return nil, ret
+    else
+        -- remove leading dots (reasoning marks)
+        if ret:sub(1, 3) == "..." then
+            ret = ret:gsub("^%.+", "")
+        end
     end
     return ret, nil
 end
