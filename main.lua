@@ -33,6 +33,7 @@ local Assistant = InputContainer:new {
   updated = false, -- flag to track if settings were updated
   assistant_dialog = nil, -- reference to the main dialog instance
   ui_language = nil,
+  ui_language_is_rtl = nil,
   CONFIGURATION = nil,  -- reference to the main configuration
 }
 
