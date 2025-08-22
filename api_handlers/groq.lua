@@ -1,5 +1,6 @@
 local BaseHandler = require("api_handlers.base")
 local json = require("json")
+local koutil = require("util")
 local logger = require("logger")
 
 local groqHandler = BaseHandler:new()
@@ -53,14 +54,16 @@ function groqHandler:query(message_history, groq_settings)
     local status, code, response = self:makeRequest(groq_settings.base_url, headers, requestBody)
     if status then
         local success, responseData = pcall(json.decode, response)
-        if success and responseData and responseData.choices and responseData.choices[1] then
-            return responseData.choices[1].message.content
+        if success then
+            local content = koutil.tableGetValue(responseData, "choices", 1, "message", "content")
+            if content then return content end
         end
         
         -- server response error message
         logger.warn("API Error", code, response)
-        if success and responseData and responseData.error and responseData.error.message then
-            return nil, responseData.error.message 
+        if success then
+            local err_msg = koutil.tableGetValue(responseData, "error", "message")
+            if err_msg then return nil, err_msg end
         end
     end
     

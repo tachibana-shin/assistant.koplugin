@@ -1,5 +1,6 @@
 local BaseHandler = require("api_handlers.base")
 local json = require("json")
+local koutil = require("util")
 local logger = require("logger")
 
 local AnthropicHandler = BaseHandler:new()
@@ -23,15 +24,15 @@ function AnthropicHandler:query(message_history, anthropic_settings)
     local requestBodyTable = {
         model = anthropic_settings.model,
         messages = messages,
-        max_tokens = (anthropic_settings.additional_parameters and anthropic_settings.additional_parameters.max_tokens),
-        stream = (anthropic_settings.additional_parameters and anthropic_settings.additional_parameters.stream) or false,
+        max_tokens = koutil.tableGetValue(anthropic_settings, "additional_parameters", "max_tokens"),
+        stream = koutil.tableGetValue(anthropic_settings, "additional_parameters", "stream") or false,
     }
 
     local requestBody = json.encode(requestBodyTable)
     local headers = {
         ["Content-Type"] = "application/json",
         ["x-api-key"] = anthropic_settings.api_key,
-        ["anthropic-version"] = (anthropic_settings.additional_parameters and anthropic_settings.additional_parameters.anthropic_version)
+        ["anthropic-version"] = koutil.tableGetValue(anthropic_settings, "additional_parameters", "anthropic_version")
     }
     if requestBodyTable.stream then
         -- For streaming responses, we need to handle the response differently
@@ -54,10 +55,12 @@ function AnthropicHandler:query(message_history, anthropic_settings)
         return nil, "Error: Failed to parse Anthropic API response"
     end
     
-    if parsed and parsed.content and parsed.content[1] and parsed.content[1].text then
-        return parsed.content[1].text
-    elseif parsed and parsed.error and parsed.error.message then
-        return nil, parsed.error.message 
+    local content = koutil.tableGetValue(parsed, "content", 1, "text")
+    if content then return content end
+
+    local err_msg = koutil.tableGetValue(parsed, "error", "message")
+    if err_msg then
+        return nil, err_msg
     else
         return nil, "Error: Unexpected response format from API"
     end

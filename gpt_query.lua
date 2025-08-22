@@ -123,8 +123,8 @@ function Querier:query(message_history, title)
 
     local infomsg = InfoMessage:new{
       icon = "book.opened",
-      text = string.format("%s\n️☁️ %s\n⚡ %s", title or _("Querying AI ..."),
-            self.provider_name, self.provider_settings.model),
+      text = string.format("%s\n️☁️ %s\n⚡ %s", title or _("Querying AI ..."), self.provider_name,
+            koutil.tableGetValue(self.provider_settings, "model")),
     }
 
     UIManager:show(infomsg)
@@ -141,7 +141,7 @@ function Querier:query(message_history, title)
         streamDialog = InputDialog:new{
             width = Screen:getWidth() - Screen:scaleBySize(30),
             title = _("AI is responding"),
-            description = T("☁ %1/%2", self.provider_name, self.provider_settings.model),
+            description = T("☁ %1/%2", self.provider_name, koutil.tableGetValue(self.provider_settings, "model")),
             inputtext_class = StreamText, -- use our custom InputText class
             input_face = Font:getFace("infofont", self.settings:readSetting("response_font_size") or 20),
             title_bar_left_icon = "appbar.settings",

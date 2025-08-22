@@ -7,14 +7,15 @@ local UIManager = require("ui/uimanager")
 local Trapper = require("ui/trapper")
 local logger = require("logger")
 local _ = require("owngettext")
+local koutil = require("util")
 
 local update_url = "https://api.github.com/repos/omer-faruq/assistant.koplugin/releases/latest"
 
 local CONFIGURATION = nil
 
 local function checkForUpdates()
-
-  if CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.updater_disabled then
+  
+  if koutil.tableGetValue(CONFIGURATION, "features", "updater_disabled") then
     return
   end
 

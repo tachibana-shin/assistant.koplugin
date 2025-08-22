@@ -5,7 +5,9 @@ local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
 local TextBoxWidget = require("ui/widget/textboxwidget")
 local _ = require("owngettext")
+local T = require("ffi/util").template
 local Event = require("ui/event")
+local koutil = require("util")
 local dict_prompts = require("prompts").assistant_prompts.dict
 
 local function showDictionaryDialog(assistant, highlightedText, message_history)
@@ -135,15 +137,14 @@ local function showDictionaryDialog(assistant, highlightedText, message_history)
 
     local function createResultText(highlightedText, answer)
         local result_text
-        if CONFIGURATION and CONFIGURATION.features and (CONFIGURATION.features.render_markdown or CONFIGURATION.features.render_markdown == nil) then
-        -- in markdown mode, outputs markdown formated highlighted text
-        result_text = "... " .. prev_context .. " **" .. highlightedText ..  "** " ..  next_context ..  " ...\n\n" ..  answer
+        local render_markdown = koutil.tableGetValue(CONFIGURATION, "features", "render_markdown")
+        if render_markdown then
+            -- in markdown mode, outputs markdown formatted highlighted text
+            result_text = T("... %1 **%2** %3 ...\n\n%4", prev_context, highlightedText, next_context, answer)
         else
         -- in plain text mode, use widget controled characters.
-        result_text =
-            TextBoxWidget.PTF_HEADER .. 
-            "... " .. prev_context .. TextBoxWidget.PTF_BOLD_START .. highlightedText .. TextBoxWidget.PTF_BOLD_END .. next_context .. " ...\n\n" ..
-            answer 
+        result_text = T("%1... %2%3%4 ...\n\n%5", TextBoxWidget.PTF_HEADER, prev_context, 
+            TextBoxWidget.PTF_BOLD_START, highlightedText, TextBoxWidget.PTF_BOLD_END,  next_context, answer)
         end
         return result_text
     end

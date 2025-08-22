@@ -1,5 +1,6 @@
 local BaseHandler = require("api_handlers.base")
 local json = require("json")
+local koutil = require("util")
 local logger = require("logger")
 
 local OpenRouterProvider = BaseHandler:new()
@@ -11,17 +12,18 @@ function OpenRouterProvider:query(message_history, openrouter_settings)
         messages = message_history,
         max_tokens = openrouter_settings.max_tokens,
         temperature = openrouter_settings.temperature,
-        stream = (openrouter_settings.additional_parameters and openrouter_settings.additional_parameters.stream) or false,
+        stream = koutil.tableGetValue(openrouter_settings, "additional_parameters", "stream") or false,
     }
     
     -- Handle reasoning tokens configuration
-    if openrouter_settings.additional_parameters and openrouter_settings.additional_parameters.reasoning ~= nil then
-        -- Create a copy of the reasoning configuration
+    local reasoning = koutil.tableGetValue(openrouter_settings, "additional_parameters", "reasoning")
+    if reasoning then
+        -- Create a copy of the reasoning configuration to avoid modifying the original settings
         requestBodyTable.reasoning = {}
-        for k, v in pairs(openrouter_settings.additional_parameters.reasoning) do
+        for k, v in pairs(reasoning) do
             requestBodyTable.reasoning[k] = v
         end
-        
+
         -- Set exclude to true by default if not explicitly set
         if requestBodyTable.reasoning.exclude == nil then
             requestBodyTable.reasoning.exclude = true
@@ -46,14 +48,16 @@ function OpenRouterProvider:query(message_history, openrouter_settings)
 
     if status then
         local success, responseData = pcall(json.decode, response)
-        if success and responseData and responseData.choices and responseData.choices[1] then
-            return responseData.choices[1].message.content
+        if success then
+            local content = koutil.tableGetValue(responseData, "choices", 1, "message", "content")
+            if content then return content end
         end
         
         -- server response error message
         logger.warn("API Error", code, response)
-        if success and responseData and responseData.error and responseData.error.message then
-            return nil, responseData.error.message 
+        if success then
+            local err_msg = koutil.tableGetValue(responseData, "error", "message")
+            if err_msg then return nil, err_msg end
         end
     end
     

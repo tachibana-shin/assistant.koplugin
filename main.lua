@@ -121,13 +121,11 @@ function Assistant:getModelProvider()
   local setting_provider = self.settings:readSetting("provider")
 
   local function is_provider_valid(key)
-    if key and provider_settings[key] and 
-        provider_settings[key].model and 
-        provider_settings[key].base_url and 
-        provider_settings[key].api_key then
-          return true
-    end
-    return false
+    if not key then return false end
+    local provider = FrontendUtil.tableGetValue(CONFIGURATION, "provider_settings", key)
+    return provider and FrontendUtil.tableGetValue(provider, "model") and
+        FrontendUtil.tableGetValue(provider, "base_url") and
+        FrontendUtil.tableGetValue(provider, "api_key")
   end
 
   local function find_setting_provider(filter_func)
@@ -153,8 +151,8 @@ function Assistant:getModelProvider()
       setting_provider = conf_provider
     else
       -- try to find the one defined with `default = true`
-      setting_provider = find_setting_provider(function(tab, key)
-        return tab.default and tab.default == true
+      setting_provider = find_setting_provider(function(key, tab)
+        return FrontendUtil.tableGetValue(tab, "default") == true
       end)
       
       -- still invalid (none of them defined `default`)

@@ -1,5 +1,6 @@
 -- filepath: /Users/Q620675/Code/assistant.koplugin/api_handlers/azure_openai.lua
 local BaseHandler = require("api_handlers.base")
+local koutil = require("util")
 local json = require("json")
 local logger = require("logger")
 
@@ -47,14 +48,16 @@ function AzureOpenAIHandler:query(message_history, azure_settings )
     
     if status then
         local success, responseData = pcall(json.decode, response)
-        if success and responseData and responseData.choices and responseData.choices[1] then
-            return responseData.choices[1].message.content
+        if success then
+            local content = koutil.tableGetValue(responseData, "choices", 1, "message", "content")
+            if content then return content end
         end
 
         -- server response error message
         logger.warn("API Error", code, response)
-        if success and responseData and responseData.error and responseData.error.message then
-            return nil, responseData.error.message
+        if success then
+            local err_msg = koutil.tableGetValue(responseData, "error", "message")
+            if err_msg then return nil, err_msg end
         end
     end
 

@@ -425,11 +425,7 @@ function ChatGPTViewer:init()
 
 
   -- load configuration
-  local CONFIGURATION = self.assistant.CONFIGURATION
-  if CONFIGURATION.features and CONFIGURATION.features.render_markdown ~= nil then
-    -- defaults to true, if user omits the option (nil)
-    self.render_markdown = CONFIGURATION.features.render_markdown
-  end
+  self.render_markdown = util.tableGetValue(self.assistant.CONFIGURATION, "features", "render_markdown") or true
 
   if self.render_markdown then
     -- Convert Markdown to HTML and render in a ScrollHtmlWidget
@@ -541,8 +537,6 @@ function ChatGPTViewer:askAnotherQuestion()
     return
   end
 
-  local CONFIGURATION = self.assistant.CONFIGURATION
-  
   -- Initialize default options
   local default_options = {}
   
@@ -554,7 +548,7 @@ function ChatGPTViewer:askAnotherQuestion()
     return true
   end) or {}
 
-  local user_prompts = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts
+  local user_prompts = util.tableGetValue(self.assistant.CONFIGURATION, "features", "prompts")
   local merged_prompts = Prompts.getMergedCustomPrompts(user_prompts) or {}
     
   -- Add buttons in sorted order

@@ -5,6 +5,7 @@ local TextBoxWidget = require("ui/widget/textboxwidget")
 local InfoMessage = require("ui/widget/infomessage")
 local Event = require("ui/event")
 local _ = require("owngettext")
+local koutil = require("util")
 local ChatGPTViewer = require("chatgptviewer")
 local recap_prompts = require("prompts").assistant_prompts.recap
 
@@ -23,9 +24,9 @@ local function showRecapDialog(assistant, title, author, progress_percent, messa
     local formatted_progress_percent = string.format("%.2f", progress_percent * 100)
     
     -- Get recap CONFIGURATION with fallbacks
-    local recap_config = CONFIGURATION.features and CONFIGURATION.features.recap_config or {}
-    local system_prompt = recap_config.system_prompt or recap_prompts.system_prompt
-    local user_prompt_template = recap_config.user_prompt or recap_prompts.user_prompt
+    local recap_config = koutil.tableGetValue(CONFIGURATION, "features", "recap_config") or {}
+    local system_prompt = koutil.tableGetValue(recap_config, "system_prompt") or koutil.tableGetValue(recap_prompts, "system_prompt")
+    local user_prompt_template = koutil.tableGetValue(recap_config, "user_prompt") or koutil.tableGetValue(recap_prompts, "user_prompt")
     local language = assistant.settings:readSetting("response_language") or assistant.ui_language
     
     local message_history = message_history or {

@@ -10,6 +10,7 @@ local _ = require("owngettext")
 local T = require("ffi/util").template
 local Trapper = require("ui/trapper")
 local Prompts = require("prompts")
+local koutil = require("util")
 local Device = require("device")
 
 -- main dialog class
@@ -38,12 +39,12 @@ end
 
 -- Helper function to truncate text based on configuration
 function AssistantDialog:_truncateUserPrompt(text)
-  local CONFIGURATION = self.CONFIGURATION
-  if not CONFIGURATION or not CONFIGURATION.features.max_display_user_prompt_length then
+  if not self.CONFIGURATION then
     return text
   end
   
-  local max_length = CONFIGURATION.features.max_display_user_prompt_length
+  local max_length = koutil.tableGetValue(self.CONFIGURATION, "features", "max_display_user_prompt_length")
+  if not max_length then return text end
   if max_length <= 0 then
     return text
   end
@@ -55,7 +56,6 @@ function AssistantDialog:_truncateUserPrompt(text)
 end
 
 function AssistantDialog:_formatUserPrompt(user_prompt, highlightedText)
-  local CONFIGURATION = self.CONFIGURATION
   local book = self:_getBookContext()
   
   -- Handle case where no text is highlighted (gesture-triggered)
@@ -72,8 +72,6 @@ function AssistantDialog:_formatUserPrompt(user_prompt, highlightedText)
 end
 
 function AssistantDialog:_createResultText(highlightedText, message_history, previous_text, title)
-  local CONFIGURATION = self.CONFIGURATION
-
   -- Helper function to format a single message (user or assistant)
   local function formatSingleMessage(message, title)
     if not message then return "" end
@@ -105,15 +103,14 @@ function AssistantDialog:_createResultText(highlightedText, message_history, pre
     end
 
     -- won't show if `hide_highlighted_text` is set to false
-    if CONFIGURATION.features and CONFIGURATION.features.hide_highlighted_text then
+    if koutil.tableGetValue(self.CONFIGURATION, "features", "hide_highlighted_text") then
       show_highlighted_text = false
     end
 
     -- won't show if highlighted text is longer than threshold `long_highlight_threshold`
-    if show_highlighted_text and CONFIGURATION.features
-          and CONFIGURATION.features.hide_long_highlights and CONFIGURATION.features.long_highlight_threshold and
-          highlightedText and #highlightedText > CONFIGURATION.features.long_highlight_threshold then
-        show_highlighted_text = false
+    if show_highlighted_text and koutil.tableGetValue(self.CONFIGURATION, "features", "hide_long_highlights") and
+        highlightedText and #highlightedText > (koutil.tableGetValue(self.CONFIGURATION, "features", "long_highlight_threshold") or 99999) then
+      show_highlighted_text = false
     end
 
     local result_parts = {}
@@ -140,9 +137,7 @@ end
 
 -- Helper function to create and show ChatGPT viewer
 function AssistantDialog:_createAndShowViewer(highlightedText, message_history, title)
-  local CONFIGURATION = self.CONFIGURATION
   local result_text = self:_createResultText(highlightedText, message_history, nil, title)
-  local render_markdown = (CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.render_markdown) or true
   
   local chatgpt_viewer = ChatGPTViewer:new {
     title = title,
@@ -193,7 +188,7 @@ function AssistantDialog:_createAndShowViewer(highlightedText, message_history, 
       end,
     highlighted_text = highlightedText,
     message_history = message_history,
-    render_markdown = render_markdown,
+    render_markdown = koutil.tableGetValue(self.CONFIGURATION, "features", "render_markdown") or true,
   }
   
   UIManager:show(chatgpt_viewer)
@@ -246,11 +241,9 @@ function AssistantDialog:show(highlightedText)
   -- close any existing input dialog
   self:_close()
 
-  local CONFIGURATION = self.CONFIGURATION
-
   -- Handle regular dialog (user input prompt, other buttons)
   local book = self:_getBookContext()
-  local system_prompt = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.system_prompt or Prompts.assistant_prompts.default.system_prompt
+  local system_prompt = koutil.tableGetValue(self.CONFIGURATION, "features", "system_prompt") or koutil.tableGetValue(Prompts, "assistant_prompts", "default", "system_prompt")
   local message_history = {{
     role = "system",
     content = system_prompt
@@ -399,18 +392,17 @@ end
 -- ( custom prompts from configuration )
 function AssistantDialog:showCustomPrompt(highlightedText, prompt_index)
 
-  local CONFIGURATION = self.CONFIGURATION
-  local user_prompts = CONFIGURATION and CONFIGURATION.features and CONFIGURATION.features.prompts
+  local user_prompts = koutil.tableGetValue(self.CONFIGURATION, "features", "prompts")
   local prompt_config = Prompts.getMergedCustomPrompts(user_prompts)[prompt_index]
 
-  local title = prompt_config.text or prompt_index
+  local title = koutil.tableGetValue(prompt_config, "text") or prompt_index
 
   highlightedText = highlightedText:gsub("\n", "\n\n") -- ensure newlines are doubled (LLM presumes markdown input)
-  local user_content = self:_formatUserPrompt(prompt_config.user_prompt, highlightedText)
+  local user_content = self:_formatUserPrompt(koutil.tableGetValue(prompt_config, "user_prompt"), highlightedText)
   local message_history = {
     {
       role = "system",
-      content = prompt_config.system_prompt or Prompts.assistant_prompts.default.system_prompt,
+      content = koutil.tableGetValue(prompt_config, "system_prompt") or koutil.tableGetValue(Prompts, "assistant_prompts", "default", "system_prompt"),
     },
     {
       role = "user",

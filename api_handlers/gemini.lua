@@ -1,5 +1,6 @@
 local BaseHandler = require("api_handlers.base")
 local json = require("json")
+local koutil = require("util")
 local logger = require("logger")
 
 local GeminiHandler = BaseHandler:new()
@@ -35,15 +36,13 @@ function GeminiHandler:query(message_history, gemini_settings)
         table.insert(contents, 1, systemMessage)
     end
 
-    local thinking_budget = gemini_settings and gemini_settings.additional_parameters and
-                            gemini_settings.additional_parameters.thinking_budget
+    local thinking_budget = koutil.tableGetValue(gemini_settings, "additional_parameters", "thinking_budget")
     if thinking_budget ~= nil then
         generationConfig = generationConfig or { thinkingConfig = {} }
         generationConfig.thinkingConfig.thinkingBudget = thinking_budget
     end
 
-    local stream = (gemini_settings and gemini_settings.additional_parameters and
-                            gemini_settings.additional_parameters.stream) or false
+    local stream = koutil.tableGetValue(gemini_settings, "additional_parameters", "stream") or false
 
     local requestBodyTable = {
         contents = contents,
@@ -63,7 +62,7 @@ function GeminiHandler:query(message_history, gemini_settings)
         ["x-goog-api-key"] = gemini_settings.api_key,
     }
 
-    local model = gemini_settings.model or "gemini-1.5-pro-latest"
+    local model = gemini_settings.model or "gemini-2.0-flash"
     local base_url = gemini_settings.base_url or "https://generativelanguage.googleapis.com/v1beta/models/"
     
     local url = string.format(stream and "%s%s:streamGenerateContent?alt=sse" or "%s%s:generateContent",
@@ -99,12 +98,12 @@ function GeminiHandler:query(message_history, gemini_settings)
         return nil,"Error: Failed to parse Gemini API response"
     end
     
-    if parsed and parsed.candidates and parsed.candidates[1] and 
-       parsed.candidates[1].content and parsed.candidates[1].content.parts and
-       parsed.candidates[1].content.parts[1] then
-        return parsed.candidates[1].content.parts[1].text
-    elseif parsed and parsed.error and parsed.error.message then
-        return nil, parsed.error.message 
+    local content = koutil.tableGetValue(parsed, "candidates", 1, "content", "parts", 1, "text")
+    if content then return content end
+
+    local err_msg = koutil.tableGetValue(parsed, "error", "message")
+    if err_msg then
+        return nil, err_msg
     else
         return nil,"Error: Unexpected response format from Gemini API"
     end

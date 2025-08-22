@@ -294,10 +294,10 @@ function SettingsDialog:init()
     local columns = FrontendUtil.tableSize(self.CONFIGURATION.provider_settings) > 4 and 2 or 1 -- 2 columns if more than 4 providers, otherwise 1 column
     local buttonrow = {}
     for key, tab in ffiutil.orderedPairs(self.CONFIGURATION.provider_settings) do
-        if not (tab.visible ~= nil and tab.visible == false) then -- skip `visible = false` providers
+        if not (FrontendUtil.tableGetValue(tab, "visible") == false) then -- skip `visible = false` providers
             if #buttonrow < columns then
                 table.insert(buttonrow, {
-                    text = columns == 1 and string.format("%s (%s)", key, tab.model) or key,
+                    text = columns == 1 and string.format("%s (%s)", key, FrontendUtil.tableGetValue(tab, "model")) or key,
                     provider = key, -- note: this `provider` field belongs to the RadioButton, not our AI Model provider.
                     checked = (key == self.assistant.querier.provider_name),
                 })

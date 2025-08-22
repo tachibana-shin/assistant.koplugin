@@ -1,5 +1,6 @@
 local BaseHandler = require("api_handlers.base")
 local json = require("json")
+local koutil = require("util")
 local logger = require("logger")
 
 local MistralHandler = BaseHandler:new()
@@ -54,14 +55,16 @@ function MistralHandler:query(message_history, mistral_settings)
 
     if status then
         local success, responseData = pcall(json.decode, response)
-        if success and responseData and responseData.choices and responseData.choices[1] then
-            return responseData.choices[1].message.content
+        if success then
+            local content = koutil.tableGetValue(responseData, "choices", 1, "message", "content")
+            if content then return content end
         end
         
         -- server response error message
         logger.warn("API Error", code, response)
-        if success and responseData and responseData.message then
-            return nil,  "API Error: " .. responseData.message 
+        if success then
+            local err_msg = koutil.tableGetValue(responseData, "message")
+            if err_msg then return nil, "API Error: " .. err_msg end
         end
     end
     
