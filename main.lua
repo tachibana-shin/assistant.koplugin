@@ -255,7 +255,10 @@ On the result dialog to close (as the Close button is far to reach).
                 text = _("Purge Settings"),
                 callback = function()
                   UIManager:show(ConfirmBox:new{
-                    text = _("Are you sure to purge the assistant plugin settings? It may help when you encounter some issues. \n\nconfiguration.lua is safe, only the settings in the dialog are purged."),
+                    text = _([[Are you sure to purge the assistant plugin settings? 
+This resets the assistant plugin to the status the first time you installed it.
+
+configuration.lua is safe, only the settings in the dialog are purged.]]),
                     ok_text = _("Purge"),
                     ok_callback = function()
                       self.settings:reset({})
