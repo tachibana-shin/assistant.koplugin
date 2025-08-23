@@ -14,6 +14,7 @@ local DataStorage = require("datastorage")
 local ConfirmBox  = require("ui/widget/confirmbox")
 local T 		      = require("ffi/util").template
 local FrontendUtil = require("util")
+local ButtonDialog = require("ui/widget/buttondialog")
 local ffiutil = require("ffi/util")
 
 local _ = require("owngettext")
@@ -228,11 +229,7 @@ function Assistant:init()
         end)
       end,
       hold_callback = function()
-        UIManager:show(InfoMessage:new{
-            -- alignment = "center",
-            text_face = Font:getFace("x_smallinfofont"),
-            show_icon = false,
-            text = string.format("%s %s\n\n", meta.fullname, meta.version) .. _([[Useful Tips:
+        local info_text = string.format("%s %s\n\n", meta.fullname, meta.version) .. _([[Useful Tips:
 
 Long Press:
 - On a Prompt Button: Add to the highlight menu.
@@ -244,6 +241,31 @@ On a single word in the book to show the highlight menu (instead of the dictiona
 Multi-Swipe (e.g., ⮠, ⮡, ↺):
 On the result dialog to close (as the Close button is far to reach).
 ]])
+        UIManager:show(ConfirmBox:new{
+            text = info_text,
+            no_ok_button = true, other_buttons_first = true,
+            other_buttons = {{
+              {
+                text = _("Settings"),
+                callback = function()
+                  self:showSettings()
+                end
+              },
+              {
+                text = _("Purge Settings"),
+                callback = function()
+                  UIManager:show(ConfirmBox:new{
+                    text = _("Are you sure to purge the assistant plugin settings? It may help when you encounter some issues. \n\nconfiguration.lua is safe, only the settings in the dialog are purged."),
+                    ok_text = _("Purge"),
+                    ok_callback = function()
+                      self.settings:reset({})
+                      self.settings:flush()
+                      UIManager:askForRestart()
+                    end
+                  })
+                end
+              },
+            }}
         })
       end,
     }
