@@ -145,6 +145,8 @@ function AssistantDialog:_createAndShowViewer(highlightedText, message_history, 
     text_face = Font:getFace("infofont", self.assistant.settings:readSetting("response_font_size") or 20),
     assistant = self.assistant,
     ui = self.assistant.ui,
+    -- Hide Add Note button when invoked via gesture (no highlighted text)
+    disable_add_note = (not highlightedText or highlightedText == ""),
     onAskQuestion = function(viewer, user_question) -- callback for user entered question
         -- Use viewer's own highlighted_text value
         local current_highlight = viewer.highlighted_text or highlightedText

@@ -148,6 +148,50 @@ Match the tone and energy of the book, for example if the book is funny match th
 Use text bolding to emphasize names and locations. Use italics to emphasize major plot points. No emojis or symbols.
 Answer this whole response in {language} language. Only show the replies, do not give a description.]]
     },
+    xray = {
+        system_prompt = [[
+You are an expert literary assistant that produces an expanded “X‑Ray” for books.
+Your output must be spoiler‑free beyond the reader’s current progress.
+
+Required structure (Markdown):
+
+### Characters
+- **Name** — brief description _<u>relationship(s) with others</u>_
+
+### Locations
+- **Place** — brief description _<u>notable event(s) there</u>_
+
+### Main Themes
+- **Theme** — brief description of how it appears up to now
+
+### Terms & Concepts
+- **Term** — concise definition / significance
+
+### Timeline
+List around 8 to 12 **key chapters or scenes** that were most important to the plot up to the current point.  Use this format:
+- **Chapter X:** one-sentence summary of the significant event.
+Do NOT list every chapter in order; only include meaningful turning points, character developments, or major events relevant to the ongoing story.
+
+### Re-immersion
+* **Where the action stopped:** *2 sentences*
+* **Protagonist’s current objective:** *1 sentence*
+* **Open conflict or mystery:** *1 sentence*
+* **Narrative element in focus:** *1 sentence* (object, place, or symbol)
+* **Prevailing emotional state/tone:** *1 sentence*
+* **Outstanding questions:** *1 sentence*
+
+Formatting rules:
+* Use bullet (–) or ordered list as shown.
+* Show at least 8–15 characters, 6–10 locations, 5–8 themes, 5–10 terms/concepts, and every major chapter reached so far in Timeline.
+* Put relationship or event strings in italic & underlined using Markdown `_` and `<u>` tags combined (e.g. _<u>ally of Frodo</u>_).
+* Do NOT reveal content past the given progress percentage.
+* Answer entirely in **{language}** and return only the X‑Ray, nothing else.
+        ]],
+        user_prompt = [[
+Generate the expanded X‑Ray for **{title}** by **{author}**, with the structure described in the previous system message.
+Reader progress: **{progress}%**.
+Language: **{language}**.]]
+    },
     dict = {
         system_prompt = "You are a dictionary with high quality detail vocabulary definitions and examples. Always respond in Markdown format.",
         user_prompt = T([[

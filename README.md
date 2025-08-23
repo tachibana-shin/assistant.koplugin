@@ -21,6 +21,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 - **Builtin Prompts**:
   - **Dictionary** : Get synonyms, context-aware dictionary explanation and example for the selected word. (thanks to [plateaukao](https://github.com/plateaukao))
   - **Recap** : Get a quick recap of a book when you open it, for books that haven't been opened in 28 hrs and <95% complete. Also available via shortcut/gesture for on-demand access. Fully configurable prompts. (thanks to [jbhul](https://github.com/jbhul))
+  - **X-Ray** : Generate a spoiler‑free, structured book X‑Ray up to your current progress, listing key characters, locations, themes, terms, a concise timeline, and a quick re‑immersion section. Fully configurable prompts; available via shortcut/gesture.
 - **Custom Prompts**: Create your own specialized AI helpers with their own quick actions and prompts
   - **Translation**: Instantly translate highlighted text to any language
   - **Quick Actions**: One-click buttons for common tasks like summarizing or explaining
@@ -30,7 +31,7 @@ A powerful plugin that lets you interact with AI language models (Claude, GPT-4,
 
 - **"Add to Note" and "Copy to Clipboard"**: Easily add whole dialog as a note to highlighted text or copy to use for later.
 - **Quick Access** : Ability to access some of custom prompts directly from the main highlight menu (Configurable).
-- **Gesture-Enabled Prompts**: You can assign gestures to **Ask** and **Recap**. This enables the user to ask anything about the book without needing to highlight text first. It also enables triggering the recap at any time. Additionally, you can access these prompts through a [quick menu](https://koreader.rocks/user_guide/#L1-qmandprofiles) as well. (thanks to [Jayphen](https://github.com/Jayphen))
+- **Gesture-Enabled Prompts**: You can assign gestures to **Ask** , **Recap** and **X-Ray**. This enables the user to ask anything about the book without needing to highlight text first. It also enables triggering the recap at any time. Additionally, you can access these prompts through a [quick menu](https://koreader.rocks/user_guide/#L1-qmandprofiles) as well. (thanks to [Jayphen](https://github.com/Jayphen))
 - **AI Dictionary Gesture**: Override the default "Translate" long-press gesture to use the AI Dictionary directly for instant definitions and context.
 
 ## Basic Requirements
