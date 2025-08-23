@@ -170,9 +170,11 @@ function AssistantDialog:_createAndShowViewer(highlightedText, message_history, 
           
           -- Check if we got a valid response
           if not answer or answer == "" or err ~= nil then
-            UIManager:show(InfoMessage:new{
-              icon = "notice-warning",
-              text = err or "",
+            UIManager:show(ConfirmBox:new{
+              text = T(_("API Error: \n%1\n\nTry another provider in the settings dialog."), err or _("Unknown error")),
+              ok_text = _("Settings"),
+              ok_callback = function() self.assistant:showSettings() end,
+              cancel_text = _("Close"),
             })
             return
           end
@@ -284,10 +286,11 @@ function AssistantDialog:show(highlightedText)
           
           -- Check if we got a valid response
           if err then
-            UIManager:show(InfoMessage:new{
-              icon = "notice-warning",
-              text = "Error: " .. (err or ""),
-              timeout = 3
+            UIManager:show(ConfirmBox:new{
+              text = T(_("API Error: \n%1\n\nTry another provider in the settings dialog."), err or _("Unknown error")),
+              ok_text = _("Settings"),
+              ok_callback = function() self.assistant:showSettings() end,
+              cancel_text = _("Close"),
             })
             return
           end
@@ -415,7 +418,12 @@ function AssistantDialog:showCustomPrompt(highlightedText, prompt_index)
   
   local answer, err = self.querier:query(message_history, string.format("🌐 Loading for %s ...", title or prompt_index))
   if err then
-    UIManager:show(InfoMessage:new{text = err, icon = "notice-warning"})
+    UIManager:show(ConfirmBox:new{
+      text = T(_("API Error: \n%1\n\nTry another provider in the settings dialog."), err or _("Unknown error")),
+      ok_text = _("Settings"),
+      ok_callback = function() self.assistant:showSettings() end,
+      cancel_text = _("Close"),
+    })
     return
   end
   if answer then

@@ -3,8 +3,10 @@ local InputDialog = require("ui/widget/inputdialog")
 local UIManager = require("ui/uimanager")
 local TextBoxWidget = require("ui/widget/textboxwidget")
 local InfoMessage = require("ui/widget/infomessage")
+local ConfirmBox = require("ui/widget/confirmbox")
 local Event = require("ui/event")
 local _ = require("owngettext")
+local T = require("ffi/util").template
 local koutil = require("util")
 local ChatGPTViewer = require("chatgptviewer")
 local recap_prompts = require("prompts").assistant_prompts.recap
@@ -59,7 +61,12 @@ local function showRecapDialog(assistant, title, author, progress_percent, messa
 
     local answer, err = Querier:query(message_history, "Loading Recap ...")
     if err ~= nil then
-      UIManager:show(InfoMessage:new{ icon = "notice-warning", text = err })
+        UIManager:show(ConfirmBox:new{
+          text = T(_("API Error: \n%1\n\nTry another provider in the settings dialog."), err or _("Unknown error")),
+          ok_text = _("Settings"),
+          ok_callback = function() assistant:showSettings() end,
+          cancel_text = _("Close"),
+        })
       return
     end
 
