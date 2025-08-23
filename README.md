@@ -121,8 +121,8 @@ local CONFIGURATION = {
     -- Provider-specific settings (override defaults in api_handlers/defaults.lua)
     provider_settings = {
         openai = {
-            defalut = true, -- optional, if provider is not set, will try to find the one with `defalut =  true`
-            visible = true, -- optional, if set to false, will not shown in the profile switch
+            default = true, -- optional, if provider is not set, will try to find the one with `default =  true`
+            visible = true, -- optional, if set to false, will not be shown in the profile switch
             model = "api-model",
             base_url = "URL_to_API",
             api_key = "your-api-key", -- set your api key here
@@ -130,7 +130,7 @@ local CONFIGURATION = {
               --.. other parameters
             }
         },  
-        openai_grok = { -- using same openai handler for compatible API, eg grok
+        openai_grok = { -- using the same OpenAI handler for a compatible API, eg grok
             model = "grok-3-mini-fast", -- see: https://x.ai/api
             base_url = "https://api.x.ai/v1/chat/completions",
             api_key = "your-grok-api-key", -- set your api key here
@@ -187,7 +187,7 @@ return CONFIGURATION
 #### Standard Usage
 
 1. Open any book in KOReader
-2. Highlight text you want to analyze
+2. Highlight the text you want to analyze
 3. Tap the highlight and select "Assistant"
 4. Choose an action:
    - **Ask**: Ask a specific question about the text
@@ -212,8 +212,12 @@ Now, when you long-press a word, the AI Dictionary will open directly. To use th
 
 ### Tips
 
-- Use **Long-tap** (tap & hold for 3+ secs) on a single word to popup the highlight menu
-- Use **Select** button on the highlight menu to use text from multiple pages
+- Use **Long-tap** (tap & hold for 3+ secs) on a single word to pop up the highlight menu
+- **Long press** :
+  - On the "AI Assistant" main button to see the **settings** and **reset** buttons
+  - On a prompt button to **add** it to the main highlight menu.
+  - On a button in the main highlight menu to **remove** it.
+- Use the **Select** button on the highlight menu to use text from multiple pages
 - Draw a multiswipe to **CLOSE** the dialog (eg: swipe ⮠  or ⮡  or circle ↺)
 - Keep highlights reasonably sized for best results
 - Use **"Ask"** for specific questions about the text
