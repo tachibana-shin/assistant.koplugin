@@ -286,6 +286,10 @@ On the result dialog to close (as the Close button is far to reach).
 
   self.assistant_dialog = AssistantDialog:new(self, CONFIGURATION)
   
+  -- Ensure custom prompts from configuration are merged before building menus
+  -- so that `show_on_main_popup` and `visible` overrides take effect.
+  Prompts.getMergedCustomPrompts(FrontendUtil.tableGetValue(CONFIGURATION, "features", "prompts"))
+  
   -- Recap Feature
   if self.settings:readSetting("enable_recap", false) then
     self:_hookRecap()
