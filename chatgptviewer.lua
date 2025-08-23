@@ -590,7 +590,7 @@ function ChatGPTViewer:askAnotherQuestion()
           })
           return
         end
-        if self.settings:readSetting("auto_copy_asked_question", true) and Device:hasClipboard() then
+        if self.assistant.settings:readSetting("auto_copy_asked_question", true) and Device:hasClipboard() then
           Device.input.setClipboardText(question)
         end
         UIManager:close(self.input_dialog)
@@ -813,7 +813,8 @@ function ChatGPTViewer:update(new_text)
         -- Fallback to plain text if HTML generation fails
         html_body = self.text or "Missing text."
       end
-      local css = VIEWER_CSS .. ((self.assistant.settings:readSetting("response_is_rtl") or false) and RTL_CSS or "")
+      local css = VIEWER_CSS .. ((self.assistant.settings:readSetting("response_is_rtl") 
+                                or self.assistant.ui_language_is_rtl) and RTL_CSS or "")
       self.scroll_text_w = ScrollHtmlWidget:new {
         html_body = html_body,
         css = css,
