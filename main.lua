@@ -245,6 +245,9 @@ On the result dialog to close (as the Close button is far to reach).
   if not CONFIGURATION then return end
   self.CONFIGURATION = CONFIGURATION
 
+  -- Sync provider selection from configuration if configuration provider changed
+  self:syncProviderSelectionFromConfig()
+
   local model_provider = self:getModelProvider()
   if not model_provider then
     CONFIG_LOAD_ERROR = _("configuration.lua: model providers are invalid.")
@@ -551,6 +554,25 @@ function Assistant:_hookRecap()
       end
       return ReaderUI._original_doShowReader(self, file, provider, seamless)
     end
+  end
+end
+
+function Assistant:syncProviderSelectionFromConfig()
+  -- Sync the selected provider from configuration.lua into settings only when
+  -- configuration provider changes compared to the last remembered value.
+  -- The remembered value is stored in settings as "previous_config_ai_provider".
+  local conf = self.CONFIGURATION
+  if not conf then return end
+
+  local config_provider = FrontendUtil.tableGetValue(conf, "provider")
+  if not config_provider or config_provider == "" then return end
+
+  local previous_config_ai_provider = self.settings:readSetting("previous_config_ai_provider")
+  if previous_config_ai_provider ~= config_provider then
+    -- Config changed (or first install). Mark config's provider as selected and remember it.
+    self.settings:saveSetting("provider", config_provider)
+    self.settings:saveSetting("previous_config_ai_provider", config_provider)
+    self.updated = true
   end
 end
 
