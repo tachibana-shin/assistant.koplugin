@@ -292,14 +292,15 @@ function Querier:processStream(bgQuery, trunk_callback)
                             else
                                 content =
                                     koutil.tableGetValue(event, "candidates", 1, "content", "parts", 1, "text") or  -- Genmini API
-                                    koutil.tableGetValue(event, "content", 1, "text") or -- Anthropic API
+                                    koutil.tableGetValue(event, "content", 1, "text") or -- Anthropic non-stream message event
+                                    koutil.tableGetValue(event, "delta", "text") or -- Anthropic streaming (content_block_delta)
                                     nil
                             end
                                 
-                            if type(content) == "string" then
+                            if type(content) == "string" and #content > 0 then
                                 table.insert(result_buffer, content)
                                 if trunk_callback then trunk_callback(content) end
-                            elseif type(reasoning_content) == "string" then
+                            elseif type(reasoning_content) == "string" and #reasoning_content > 0 then
                                 table.insert(reasoning_content_buffer, reasoning_content)
                                 if trunk_callback then trunk_callback(reasoning_content) end
                             else
