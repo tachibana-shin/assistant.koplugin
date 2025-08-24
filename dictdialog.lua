@@ -132,12 +132,7 @@ local function showDictionaryDialog(assistant, highlightedText, message_history)
     -- Query the AI with the message history
     local answer, err = Querier:query(message_history, "Loading AI Dictionary ...")
     if err ~= nil then
-        UIManager:show(ConfirmBox:new{
-          text = T(_("API Error: \n%1\n\nTry another provider in the settings dialog."), err or _("Unknown error")),
-          ok_text = _("Settings"),
-          ok_callback = function() assistant:showSettings() end,
-          cancel_text = _("Close"),
-        })
+        assistant.querier:showErrorWithSettingButton(err)
         return
     end
 

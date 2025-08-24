@@ -58,7 +58,7 @@ local function showXRayDialog(assistant, title, author, progress_percent, histor
 
     local answer, qerr = Querier:query(message_history, "Loading X-Ray ...")
     if qerr then
-        UIManager:show(InfoMessage:new{ icon = "notice-warning", text = qerr })
+        assistant.querier:showErrorWithSettingButton(qerr)
         return
     end
 

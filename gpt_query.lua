@@ -2,6 +2,7 @@
 local _ = require("owngettext")
 local T = require("ffi/util").template
 local InfoMessage = require("ui/widget/infomessage")
+local ConfirmBox  = require("ui/widget/confirmbox")
 local InputDialog = require("ui/widget/inputdialog")
 local InputText = require("ui/widget/inputtext")
 local UIManager = require("ui/uimanager")
@@ -108,6 +109,15 @@ function Querier:_closeStreamDialog(dialog)
         self.interrupt_stream()
     end
     UIManager:close(dialog)
+end
+
+function Querier:showErrorWithSettingButton(err)
+    UIManager:show(ConfirmBox:new{
+        text = T(_("API Error:\n%1\n\nTry another provider in the settings dialog."), err or _("Unknown error")),
+        ok_text = _("Settings"),
+        ok_callback = function() self.assistant:showSettings() end,
+        cancel_text = _("Close"),
+    })
 end
 
 --- Query the AI with the provided message history

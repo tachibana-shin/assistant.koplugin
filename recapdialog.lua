@@ -60,13 +60,8 @@ local function showRecapDialog(assistant, title, author, progress_percent, messa
     end
 
     local answer, err = Querier:query(message_history, "Loading Recap ...")
-    if err ~= nil then
-        UIManager:show(ConfirmBox:new{
-          text = T(_("API Error: \n%1\n\nTry another provider in the settings dialog."), err or _("Unknown error")),
-          ok_text = _("Settings"),
-          ok_callback = function() assistant:showSettings() end,
-          cancel_text = _("Close"),
-        })
+    if err then
+      assistant.querier:showErrorWithSettingButton(err)
       return
     end
 
