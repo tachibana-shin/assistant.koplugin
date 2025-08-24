@@ -170,7 +170,7 @@ function AssistantDialog:_createAndShowViewer(highlightedText, message_history, 
           
           -- Check if we got a valid response
           if err then
-            self.querier:showErrorWithSettingButton(err)
+            self.querier:showError(err)
             return
           end
           
@@ -281,7 +281,7 @@ function AssistantDialog:show(highlightedText)
           
           -- Check if we got a valid response
           if err then
-            self.querier:showErrorWithSettingButton(err)
+            self.querier:showError(err)
             return
           end
           
@@ -408,7 +408,7 @@ function AssistantDialog:showCustomPrompt(highlightedText, prompt_index)
   
   local answer, err = self.querier:query(message_history, string.format("🌐 Loading for %s ...", title or prompt_index))
   if err then
-    self.querier:showErrorWithSettingButton(err)
+    self.querier:showError(err)
     return
   end
   if answer then

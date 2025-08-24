@@ -132,7 +132,7 @@ local function showDictionaryDialog(assistant, highlightedText, message_history)
     -- Query the AI with the message history
     local answer, err = Querier:query(message_history, "Loading AI Dictionary ...")
     if err ~= nil then
-        assistant.querier:showErrorWithSettingButton(err)
+        assistant.querier:showError(err)
         return
     end
 

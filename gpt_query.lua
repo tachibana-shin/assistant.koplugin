@@ -111,13 +111,19 @@ function Querier:_closeStreamDialog(dialog)
     UIManager:close(dialog)
 end
 
-function Querier:showErrorWithSettingButton(err)
-    UIManager:show(ConfirmBox:new{
-        text = T(_("API Error:\n%1\n\nTry another provider in the settings dialog."), err or _("Unknown error")),
-        ok_text = _("Settings"),
-        ok_callback = function() self.assistant:showSettings() end,
-        cancel_text = _("Close"),
-    })
+function Querier:showError(err)
+    local dialog
+    if self.stream_interrupted then
+        dialog = InfoMessage:new{ icon = "notice-warning", text = _("Response interrupted by user.") }
+    else
+        dialog = ConfirmBox:new{
+            text = T(_("API Error:\n%1\n\nTry another provider in the settings dialog."), err or _("Unknown error")),
+            ok_text = _("Settings"),
+            ok_callback = function() self.assistant:showSettings() end,
+            cancel_text = _("Close"),
+        }
+    end
+    UIManager:show(dialog)
 end
 
 --- Query the AI with the provided message history

@@ -61,7 +61,7 @@ local function showRecapDialog(assistant, title, author, progress_percent, messa
 
     local answer, err = Querier:query(message_history, "Loading Recap ...")
     if err then
-      assistant.querier:showErrorWithSettingButton(err)
+      assistant.querier:showError(err)
       return
     end
 

@@ -58,7 +58,7 @@ local function showXRayDialog(assistant, title, author, progress_percent, histor
 
     local answer, qerr = Querier:query(message_history, "Loading X-Ray ...")
     if qerr then
-        assistant.querier:showErrorWithSettingButton(qerr)
+        assistant.querier:showError(qerr)
         return
     end
 
