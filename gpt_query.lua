@@ -114,7 +114,7 @@ end
 function Querier:showError(err)
     local dialog
     if self.stream_interrupted then
-        dialog = InfoMessage:new{ icon = "notice-warning", text = _("Response interrupted by user.") }
+        dialog = InfoMessage:new{ timeout = 3, text = err }
     else
         dialog = ConfirmBox:new{
             text = T(_("API Error:\n%1\n\nTry another provider in the settings dialog."), err or _("Unknown error")),
