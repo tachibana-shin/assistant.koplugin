@@ -1,4 +1,6 @@
 /configuration.lua
 /apikeys.lua
 lib/*
+untranslated.po
+updated_translated.po
 .DS_Store

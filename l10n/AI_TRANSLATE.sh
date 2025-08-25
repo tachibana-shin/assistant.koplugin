@@ -14,9 +14,9 @@ Ensure accurate and context-aware translation.  \
 The commented text in the first lines are descriptive text for the file, update it as necessary. \
 The message will display on UI, keep the translation clean and short and easy understanding. \
 When a line contains \`@translators\` is present, consider that as context to the message. \
-The first message is the metadata for the PO file. Make the necessary updates to the metadata. \
+The first message is the metadata for the PO file. Make necessary updates to the metadata. \
 Fill the \`Language\` field with the language name and the language code. \
-Fill the \`Language-Team\` and \`Last-Translator\` fields with your identificated model name and versions. \
+Fill the \`Language-Team\` and \`Last-Translator\` fields with your identifical model name and versions. \
 Do not modify other file structure. \
 Only output the translated file content, do not use markdown format. \
 "
