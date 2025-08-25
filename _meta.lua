@@ -1,4 +1,4 @@
-local _ = require("owngettext")
+local _ = require("assistant_gettext")
 return {
     name = "assistant",
     fullname = _("AI Assistant"),

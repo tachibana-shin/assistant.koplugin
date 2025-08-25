@@ -5,11 +5,11 @@ local TextBoxWidget = require("ui/widget/textboxwidget")
 local InfoMessage = require("ui/widget/infomessage")
 local ConfirmBox = require("ui/widget/confirmbox")
 local Event = require("ui/event")
-local _ = require("owngettext")
+local _ = require("assistant_gettext")
 local T = require("ffi/util").template
 local koutil = require("util")
-local ChatGPTViewer = require("chatgptviewer")
-local recap_prompts = require("prompts").assistant_prompts.recap
+local ChatGPTViewer = require("assistant_viewer")
+local recap_prompts = require("assistant_prompts").assistant_prompts.recap
 
 local function showRecapDialog(assistant, title, author, progress_percent, message_history)
     local CONFIGURATION = assistant.CONFIGURATION

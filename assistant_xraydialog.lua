@@ -2,10 +2,10 @@ local logger        = require("logger")
 local UIManager     = require("ui/uimanager")
 local InfoMessage   = require("ui/widget/infomessage")
 local TextBoxWidget = require("ui/widget/textboxwidget")
-local ChatGPTViewer = require("chatgptviewer")
-local _             = require("owngettext")
+local ChatGPTViewer = require("assistant_viewer")
+local _             = require("assistant_gettext")
 local koutil        = require("util")
-local assistant_prompts = require("prompts").assistant_prompts
+local assistant_prompts = require("assistant_prompts").assistant_prompts
 
 local function showXRayDialog(assistant, title, author, progress_percent, history)
     local CONFIGURATION = assistant.CONFIGURATION
