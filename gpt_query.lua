@@ -319,7 +319,7 @@ function Querier:processStream(bgQuery, trunk_callback)
                             elseif type(reasoning_content) == "string" and #reasoning_content > 0 then
                                 table.insert(reasoning_content_buffer, reasoning_content)
                                 if trunk_callback then trunk_callback(reasoning_content) end
-                            else
+                            elseif content == nil and reasoning_content == nil then
                                 logger.warn("Unexpected SSE data:", json_str)
                             end
                         else
