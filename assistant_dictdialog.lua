@@ -1,15 +1,15 @@
 local logger = require("logger")
 local InputDialog = require("ui/widget/inputdialog")
-local ChatGPTViewer = require("chatgptviewer")
+local ChatGPTViewer = require("assistant_viewer")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
 local ConfirmBox = require("ui/widget/confirmbox")
 local TextBoxWidget = require("ui/widget/textboxwidget")
-local _ = require("owngettext")
+local _ = require("assistant_gettext")
 local T = require("ffi/util").template
 local Event = require("ui/event")
 local koutil = require("util")
-local dict_prompts = require("prompts").assistant_prompts.dict
+local dict_prompts = require("assistant_prompts").assistant_prompts.dict
 
 local function showDictionaryDialog(assistant, highlightedText, message_history)
     local CONFIGURATION = assistant.CONFIGURATION

@@ -1,5 +1,5 @@
 --- Querier module for handling AI queries with dynamic provider loading
-local _ = require("owngettext")
+local _ = require("assistant_gettext")
 local T = require("ffi/util").template
 local InfoMessage = require("ui/widget/infomessage")
 local ConfirmBox  = require("ui/widget/confirmbox")

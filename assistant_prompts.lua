@@ -1,4 +1,4 @@
-local _ = require("owngettext")
+local _ = require("assistant_gettext")
 local T = require("ffi/util").template
 -- preconfigured prompts for various tasks
 

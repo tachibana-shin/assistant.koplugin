@@ -1,15 +1,15 @@
 local logger = require("logger")
 local InputDialog = require("ui/widget/inputdialog")
-local ChatGPTViewer = require("chatgptviewer")
+local ChatGPTViewer = require("assistant_viewer")
 local UIManager = require("ui/uimanager")
 local InfoMessage = require("ui/widget/infomessage")
 local ConfirmBox = require("ui/widget/confirmbox")
 local Event = require("ui/event")
 local Font = require("ui/font")
-local _ = require("owngettext")
+local _ = require("assistant_gettext")
 local T = require("ffi/util").template
 local Trapper = require("ui/trapper")
-local Prompts = require("prompts")
+local Prompts = require("assistant_prompts")
 local koutil = require("util")
 local Device = require("device")
 
@@ -317,7 +317,7 @@ function AssistantDialog:show(highlightedText)
           Trapper:wrap(function()
             if tab.order == -10 and tab.idx == "dictionary" then
               -- Special case for dictionary prompt
-              local showDictionaryDialog = require("dictdialog")
+              local showDictionaryDialog = require("assistant_dictdialog")
               showDictionaryDialog(self.assistant, highlightedText)
             else
               self:showCustomPrompt(highlightedText, tab.idx)

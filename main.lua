@@ -17,12 +17,12 @@ local FrontendUtil = require("util")
 local ButtonDialog = require("ui/widget/buttondialog")
 local ffiutil = require("ffi/util")
 
-local _ = require("owngettext")
-local AssistantDialog = require("dialogs")
-local UpdateChecker = require("update_checker")
-local Prompts = require("prompts")
-local SettingsDialog = require("settingsdialog")
-local showDictionaryDialog = require("dictdialog")
+local _ = require("assistant_gettext")
+local AssistantDialog = require("assistant_dialog")
+local UpdateChecker = require("assistant_update_checker")
+local Prompts = require("assistant_prompts")
+local SettingsDialog = require("assistant_settings")
+local showDictionaryDialog = require("assistant_dictdialog")
 local meta = require("_meta")
 
 local Assistant = InputContainer:new {
@@ -38,7 +38,7 @@ local Assistant = InputContainer:new {
   CONFIGURATION = nil,  -- reference to the main configuration
 }
 
-local function loadConfigFile(filePath)
+local function testConfigFile(filePath)
     local env = {}
     setmetatable(env, {__index = _G})
     local chunk, err = loadfile(filePath, "t", env) -- test mode to loadfile, check syntax errors
@@ -55,12 +55,12 @@ local CONFIG_LOAD_ERROR = nil
 local CONFIGURATION = nil
 
 -- try the configuration.lua and store the error message if any
-local e, err = loadConfigFile(CONFIG_FILE_PATH)
+local e, err = testConfigFile(CONFIG_FILE_PATH)
 if e == nil then CONFIG_LOAD_ERROR = err end
 
 -- Load Configuration
 if CONFIG_LOAD_ERROR then logger.warn(CONFIG_LOAD_ERROR) end
-local success, result = pcall(function() return require("configuration") end)
+local success, result = pcall(function() return dofile(CONFIG_FILE_PATH) end)
 if success then CONFIGURATION = result
 else logger.warn("configuration.lua not found, skipping...") end
 
@@ -288,7 +288,7 @@ configuration.lua is safe, only the settings in the dialog are purged.]]),
   end
 
   -- Load the model provider from settings or default configuration
-  self.querier = require("gpt_query"):new({
+  self.querier = require("assistant_querier"):new({
     assistant = self,
     settings = self.settings,
   })
@@ -451,7 +451,7 @@ function Assistant:onAskAIRecap()
     local authors = doc_props:readSetting("authors") or self.ui.document:getProps().authors or "Unknown Author"
     
     -- Show recap dialog
-    local showRecapDialog = require("recapdialog")
+    local showRecapDialog = require("assistant_recapdialog")
     Trapper:wrap(function()
       showRecapDialog(self, title, authors, percent_finished)
     end)
@@ -478,7 +478,7 @@ function Assistant:onAskAIXRay()
     local authors = doc_props:readSetting("authors") or self.ui.document:getProps().authors or "Unknown Author"
 
     -- Show X-Ray dialog
-    local showXRayDialog = require("xraydialog")
+    local showXRayDialog = require("assistant_xraydialog")
     Trapper:wrap(function()
       showXRayDialog(self, title, authors, percent_finished)
     end)
@@ -606,7 +606,7 @@ function Assistant:_hookRecap()
             ok_text         = _("Yes"),
             ok_callback     = function()
               NetworkMgr:runWhenOnline(function()
-                local showRecapDialog = require("recapdialog")
+                local showRecapDialog = require("assistant_recapdialog")
                 Trapper:wrap(function()
                   showRecapDialog(assistant, title, authors, percent_finished)
                 end)

@@ -32,12 +32,12 @@ local VerticalGroup = require("ui/widget/verticalgroup")
 local WidgetContainer = require("ui/widget/container/widgetcontainer")
 local T = require("ffi/util").template
 local util = require("util")
-local _ = require("owngettext")
+local _ = require("assistant_gettext")
 local InfoMessage = require("ui/widget/infomessage")
 local Screen = Device.screen
-local MD = require("mdparser")
+local MD = require("assistant_mdparser")
 
-local Prompts = require("prompts")
+local Prompts = require("assistant_prompts")
 
 -- Undo default margins and padding in ScrollHtmlWidget.
 -- Based on ui/widget/dictquicklookup.
