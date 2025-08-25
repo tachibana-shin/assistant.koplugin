@@ -23,10 +23,10 @@ local UpdateChecker = require("assistant_update_checker")
 local Prompts = require("assistant_prompts")
 local SettingsDialog = require("assistant_settings")
 local showDictionaryDialog = require("assistant_dictdialog")
-local meta = require("_meta")
 
 local Assistant = InputContainer:new {
   name = "assistant",
+  meta = nil,           -- reference to the _meta module
   is_doc_only = true,   -- only available in doc model
   settings_file = DataStorage:getSettingsDir() .. "/assistant.lua",
   settings = nil,
@@ -42,27 +42,27 @@ local function testConfigFile(filePath)
     local env = {}
     setmetatable(env, {__index = _G})
     local chunk, err = loadfile(filePath, "t", env) -- test mode to loadfile, check syntax errors
-    if not chunk then return nil, err end
+    if not chunk then return false, err end
     local success, result = pcall(chunk) -- run the code, checks runtime errors
-    if not success then return nil, result end
-    return env
+    if not success then return false, result end
+    return true, nil
 end
 
 -- configuration locations
-local CONFIG_FILE_PATH = string.format("%s/plugins/%s.koplugin/configuration.lua",
-                                      DataStorage:getDataDir(), meta.name)
+local ASSISTANT_DIR = T("%1/plugins/%2.koplugin/", DataStorage:getDataDir(), Assistant.name)
+local CONFIG_FILE_PATH = ASSISTANT_DIR .. "configuration.lua"
+local META_FILE_PATH = ASSISTANT_DIR .. "_meta.lua"
 local CONFIG_LOAD_ERROR = nil
 local CONFIGURATION = nil
 
--- try the configuration.lua and store the error message if any
-local e, err = testConfigFile(CONFIG_FILE_PATH)
-if e == nil then CONFIG_LOAD_ERROR = err end
+-- test the configuration.lua and store the error message if any
+local ok, err = testConfigFile(CONFIG_FILE_PATH)
+if not ok then CONFIG_LOAD_ERROR = err end
 
 -- Load Configuration
-if CONFIG_LOAD_ERROR then logger.warn(CONFIG_LOAD_ERROR) end
 local success, result = pcall(function() return dofile(CONFIG_FILE_PATH) end)
 if success then CONFIGURATION = result
-else logger.warn("configuration.lua not found, skipping...") end
+else logger.warn(result) end
 
 -- Flag to ensure the update message is shown only once per session
 local updateMessageShown = false
@@ -190,6 +190,9 @@ function Assistant:onFlushSettings()
 end
 
 function Assistant:init()
+  -- loading our own _meta.lua
+  self.meta = dofile(META_FILE_PATH)
+
   -- init settings
   self.settings = LuaSettings:open(self.settings_file)
 
@@ -219,7 +222,7 @@ function Assistant:init()
 
         NetworkMgr:runWhenOnline(function()
           if not updateMessageShown then
-            UpdateChecker.checkForUpdates(self.CONFIGURATION)
+            UpdateChecker.checkForUpdates(self)
             updateMessageShown = true
           end
           UIManager:nextTick(function()

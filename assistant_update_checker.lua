@@ -1,7 +1,6 @@
 local http = require("socket.http")
 local ltn12 = require("ltn12")
 local json = require("json")
-local meta = require("_meta")
 local InfoMessage = require("ui/widget/infomessage")
 local UIManager = require("ui/uimanager")
 local Trapper = require("ui/trapper")
@@ -12,6 +11,7 @@ local koutil = require("util")
 local update_url = "https://api.github.com/repos/omer-faruq/assistant.koplugin/releases/latest"
 
 local CONFIGURATION = nil
+local meta = nil
 
 local function checkForUpdates()
   
@@ -67,8 +67,9 @@ local function checkForUpdates()
 end
 
 return {
-  checkForUpdates = function(_conf)
-    if _conf then CONFIGURATION = _conf end
-    Trapper:wrap(checkForUpdates)
+  checkForUpdates = function(assistant)
+    CONFIGURATION = assistant.CONFIGURATION
+    meta = assistant.meta
+    return Trapper:wrap(checkForUpdates)
   end
 }
